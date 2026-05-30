@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vajra-Bhumi &mdash; Civil War &mdash; Age of Mythos</title>
+  <link rel="stylesheet" href="../../../../../chapter-1-rise-of-legends/css/style.css">
+  <style>
+    body { background:#0a0a12; color:#f0e8f8; min-height:100vh; }
+    .k-banner { text-align:center; padding:78px 20px 40px; background:linear-gradient(180deg,#0a0a12 0%,#180c08 60%,#0a0a12 100%); border-bottom:1px solid rgba(196,77,170,.16); position:relative; }
+    .k-banner .badge { font-size:.55em; letter-spacing:4px; text-transform:uppercase; color:#c44daa; opacity:.85; margin-bottom:14px; }
+    .k-banner .badge .border { color:#d05030; font-weight:bold; }
+    .k-banner h1 { font-size:2.6em; color:#d05030; margin-bottom:.15em; letter-spacing:2px; }
+    .k-banner .state-label { font-size:.78em; color:#c9bbd8; opacity:.7; letter-spacing:1px; margin-bottom:.6em; }
+    .k-banner .tagline { color:#d4c5e8; font-size:.92em; max-width:660px; margin:0 auto; line-height:1.75; font-style:italic; }
+    .boundary-line { display:block; margin:24px auto 0; width:280px; height:1px; background:linear-gradient(90deg,transparent 0%,#d05030 35%,transparent 50%,#d05030 65%,transparent 100%); position:relative; opacity:.75; }
+    .k-nav { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:14px 20px; background:rgba(0,0,0,.5); border-bottom:1px solid rgba(196,77,170,.1); }
+    .k-nav a { padding:5px 16px; border-radius:20px; border:1px solid rgba(196,77,170,.25); color:#d4c5e8; font-size:.72em; letter-spacing:1px; text-decoration:none; transition:all .15s; }
+    .k-nav a:hover, .k-nav a.active { background:rgba(196,77,170,.12); border-color:#c44daa; color:#fff; }
+    .k-section { max-width:1100px; margin:0 auto; padding:40px 20px 60px; }
+    .k-two { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    @media(max-width:640px){ .k-two { grid-template-columns:1fr; } }
+    .k-card { background:rgba(255,255,255,.025); border:1px solid rgba(196,77,170,.15); border-radius:10px; padding:22px; margin-bottom:16px; }
+    .k-card h3 { font-size:.72em; letter-spacing:2px; text-transform:uppercase; color:#d05030; margin-bottom:12px; opacity:.9; }
+    .k-card p { font-size:.88em; color:#c9bbd8; line-height:1.75; }
+    .hero-portrait { width:100%; border-radius:10px; border:1px solid rgba(208,80,48,.22); display:block; }
+
+    .faction-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:14px; }
+    @media(max-width:720px){ .faction-grid { grid-template-columns:1fr; } }
+    .fac { padding:14px 16px; border-radius:10px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.02); }
+    .fac .fac-tag { font-size:.55em; letter-spacing:2px; text-transform:uppercase; margin-bottom:6px; }
+    .fac .fac-name { font-size:.9em; margin-bottom:6px; font-family:Georgia,serif; }
+    .fac .fac-desc { font-size:.74em; color:#c9bbd8; line-height:1.55; opacity:.85; }
+    .fac.nalanda { border-color:rgba(232,201,138,.30); }
+    .fac.nalanda .fac-tag  { color:#e8c98a; }
+    .fac.nalanda .fac-name { color:#f0d8a8; }
+    .fac.vajra   { border-color:rgba(208,80,48,.30); }
+    .fac.vajra .fac-tag  { color:#d05030; }
+    .fac.vajra .fac-name { color:#e88068; }
+    .fac.mid     { border-color:rgba(196,184,168,.30); }
+    .fac.mid .fac-tag  { color:#c4b8a8; }
+    .fac.mid .fac-name { color:#e0d4c0; }
+
+    .k-quick-links { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-top:32px; }
+    .k-quick-link { display:block; padding:18px 20px; border-radius:10px; border:1px solid rgba(208,80,48,.22); background:rgba(24,12,8,.5); text-decoration:none; text-align:center; transition:border-color .15s; }
+    .k-quick-link:hover { border-color:#d05030; }
+    .k-quick-link .ql-title { font-size:.85em; color:#d05030; display:block; margin-bottom:4px; }
+    .k-quick-link .ql-sub { font-size:.7em; color:#9a8db0; opacity:.75; }
+
+    .alert-banner { background:linear-gradient(135deg,rgba(208,80,48,.10),rgba(30,12,8,.04)); border:1px solid rgba(208,80,48,.32); padding:16px 20px; border-radius:10px; margin-bottom:18px; }
+    .alert-banner .alert-label { font-size:.55em; letter-spacing:2px; text-transform:uppercase; color:#d05030; margin-bottom:6px; }
+    .alert-banner .alert-text { color:#e88068; font-size:.88em; line-height:1.7; }
+
+    .stat-chip { font-size:.65em; padding:3px 10px; border-radius:12px; background:rgba(208,80,48,.07); border:1px solid rgba(208,80,48,.22); color:#d87858; display:inline-block; margin:2px; }
+  </style>
+</head>
+<body>
+  <div class="k-banner">
+    <div class="badge"><span class="border">Rebuilding-Trial &bull; Stage III by One Season of Brick</span> &bull; Chapter Two &bull; Civil War</div>
+    <h1>Vajra-Bhumi</h1>
+    <div class="state-label">Bihar &bull; East Region</div>
+    <p class="tagline">For nine years the warrior-poet of Magadha had carried two men in one body &mdash; the gaur&rsquo;s rage in his fists, the Buddha&rsquo;s tenderness in his verse. Tamasa walked back as Acharya Ghora wearing a scholar&rsquo;s saffron-shawl and funded both orders to fight each other across nine months. The reconstructed Nalanda library burned on the night of the seventh-week riot. Acharya Vasudha-of-the-Manuscript died inside reaching for a single palm-leaf bundle. Vajramukha could not arrive in time. He spent the next ninety-three days at the burnt foundation laying brick by hand. The librarian who had survived the fire walked him through the library&rsquo;s standing-architectural-blueprint at every dawn. The bond grew through the brick that the fist could not punch.</p>
+    <span class="boundary-line"></span>
+  </div>
+
+  <div class="k-nav">
+    <a href="../../../../index.html">&larr; Chapter 2</a>
+    <a href="index.html" class="active">Overview</a>
+    <a href="identity.html">Identity</a>
+    <a href="story.html">Story</a>
+    <a href="rules.html">Rules &amp; Weapons</a>
+  </div>
+
+  <div class="k-section">
+
+    <div class="alert-banner">
+      <div class="alert-label">Rebuilding-Trial &bull; This Chapter</div>
+      <div class="alert-text">Vajra-Bhumi survives Chapter Two and Vajramukha earns his Stage III gaur-foreleg-first-stroke not by combat-victory (he wins many fights but no bond-mark forms), not by mercy, not by transmission, not by unauthorised-speech, not by open-trust, not by solitary-pull. He earns it by <strong>laying the burnt Nalanda Reconstructed Library&rsquo;s northern-wing foundation-bricks himself, by hand, alone at the manual-labour, across the ninety-three days following the seventh-week-riot library-burning &mdash; with Maitreyi-the-Younger walking the standing-architectural-blueprint with him at every dawn</strong>. The Stage III stroke completes on the ninety-third day at the standing-northern-wing roof-tile placement at four-eleven p.m. when the last tile&rsquo;s standing-keystone is placed. Tamasa returns as Acharya Ghora in priestly-saffron and a Nalanda-faculty appointment-letter; quietly funds both the Nalanda Order and the Vajra-Sangha across the chapter&rsquo;s first six weeks to fight each other. The library-burning is the chapter&rsquo;s wound that the fist could not prevent. Acharya Vasudha-of-the-Manuscript dies inside the burning manuscript-vault reaching for the standing-Atisha-Dipankara 1042-CE palm-leaf bundle that has been the kingdom&rsquo;s standing-permanent-foundation since the 1193 CE Nalanda burning. Per restructure §1 Bihar joins the southern-bloc-East federation in Ch 3.</div>
+    </div>
+
+    <div class="k-two">
+      <div>
+        <img src="media/portraits/bihar-ch2-vajramukha-bricks.png"
+             alt="Vajramukha laying foundation bricks at the burnt Nalanda library northern-wing"
+             class="hero-portrait"
+             onerror="this.style.display='none'">
+        <p style="font-size:.7em;color:#9a8db0;text-align:center;margin-top:8px;opacity:.7;">Vajramukha at the burnt Nalanda library&rsquo;s northern-wing foundation at five a.m. on day forty-one &mdash; the standing-clay-brick at his left hand, the standing-mortar-trowel at his right, Maitreyi-the-Younger with the standing-architectural-blueprint two metres to his right reading the standing-eleventh-century-Nalanda load-bearing-pattern aloud</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div class="k-card">
+          <h3>The Hero (Survives, Stage III by Rebuilding)</h3>
+          <p><strong style="color:#d05030">Vajramukha</strong> &mdash; The Warrior-Poet Who Laid the Foundation by Hand</p>
+          <p style="margin-top:8px;">Thirty-five. The two-men-in-one-body state hero of Bihar since 2019. The gaur-rage in his fists; the Magadhi Prakrit poetry in his verse. Cannot arrive at the burning library in time on the seventh-week-riot night despite running the standing-twenty-three-kilometre distance from the Patna State Hero&rsquo;s residence in three hours and eleven minutes. Reaches the manuscript-vault at three-eleven a.m. nineteen minutes after Acharya Vasudha-of-the-Manuscript has died inside. Spends the next ninety-three days at the burnt foundation laying foundation-bricks by hand. The Stage III gaur-foreleg-first-stroke completes on day ninety-three at four-eleven p.m. at the standing-northern-wing roof-tile placement. Survives the chapter. Per Ch 3 plan he marries Maitreyi-the-Younger at the standing-Magadhi spring wedding-festival &mdash; the saga&rsquo;s Bloodline-mixing event (Bloodline-D gaur-line + Bloodline-A Nalanda-scholar-line).</p>
+          <div style="margin-top:10px;">
+            <span class="stat-chip">Survives &bull; Stage III by Rebuilding</span>
+            <span class="stat-chip">Bloodline D &bull; gaur-line</span>
+            <span class="stat-chip">Marries Maitreyi Ch 3</span>
+          </div>
+        </div>
+        <div class="k-card">
+          <h3>The Catalyst Villain</h3>
+          <p><strong style="color:#e8c98a">Acharya Ghora</strong> &mdash; Tamasa in the Scholar&rsquo;s Saffron-Shawl</p>
+          <p style="margin-top:8px;">Fifty-four. Was Tamasa-the-Ashoka-Chaya-administrator at the Ch 1 Pataliputra confrontation; spared at the Ch 1 climax under the kingdom-council&rsquo;s standing-administrative-rehabilitation clause. Returns in autumn 2024 with a forged Nalanda-University-faculty appointment-letter (forged at a Bhopal-printing-press by the same Singapore-funded forgery-cell that produced Naga-Rakshasa&rsquo;s 16 DNA-rite kits and Tri-Yantra-Bheda&rsquo;s Singapore civil-engineering-vulnerability doctorate; the kingdom-council&rsquo;s standing-forgery-cell-investigation confirms the cross-network identity at week eleven). Holds private audiences with the Nalanda Order&rsquo;s standing-Mahasthavira (Acharya Vasudha-of-the-Manuscript) and the Vajra-Sangha&rsquo;s standing-Senapati (Senapati Bhima-of-the-Plains) across the chapter&rsquo;s first six weeks. Funds the standing-Nalanda-Order printing-press at three-point-two crore rupees from the standing-Singapore funding-line; funds the standing-Vajra-Sangha weapon-procurement at three-point-five crore rupees from the same standing-line; each order believes the standing-fund is from the other order&rsquo;s standing-treasury. Engineers the seventh-week-riot. Survives Chapter Two through Patna disappearance after the standing-night-of-the-burning; the kingdom-council&rsquo;s standing-State-Police standing-warrant is issued at the standing-amended-charter&rsquo;s ratification-day. Per Ch 3 plan he is one of the standing-villain-network&rsquo;s Eastern field-operatives alongside Adharma-Kendra&rsquo;s standing-network.</p>
+        </div>
+        <div class="k-card">
+          <h3>The Mind &bull; New Female Character</h3>
+          <p><strong style="color:#f0d8a8">Maitreyi-the-Younger</strong> &mdash; The Nalanda Librarian Who Survived the Burning</p>
+          <p style="margin-top:8px;">Twenty-nine. Standing-junior-librarian at the Nalanda Reconstructed Library since 2021. Survived the seventh-week-riot library-burning by climbing through the standing-northern-skylight (the library&rsquo;s standing-fire-emergency-protocol&rsquo;s standing-secondary-exit) at two-fifty-three a.m. while Acharya Vasudha-of-the-Manuscript chose to remain in the manuscript-vault to attempt the Atisha-Dipankara palm-leaf retrieval. Survives the standing-roof-collapse by approximately eleven minutes (the standing-northern-skylight&rsquo;s standing-roof-section collapses at three-oh-four a.m.; she is at the standing-fifteen-metre-distance from the collapse-zone at three-oh-four-eighteen). Walks the standing-architectural-blueprint with Vajramukha every dawn for ninety-three days reading the standing-eleventh-century-Nalanda load-bearing-pattern aloud. Per Ch 3 plan she marries Vajramukha at the standing-Magadhi spring wedding-festival &mdash; the saga&rsquo;s Bloodline-mixing event (Bloodline-A Nalanda-scholar-line + Bloodline-D gaur-line). The marriage produces the standing-Bihar-throne&rsquo;s standing-Ch-3 heir in late Chapter Three.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="k-card" style="margin-top:24px;">
+      <h3>The Three-Way Faction Split</h3>
+      <p style="margin-bottom:14px;">Vajra-Bhumi has answered the mind-body question one way for two thousand five hundred years: Magadhi-tradition holds the mind at Nalanda and the body at the Vajra-Sangha. The Mauryan-rise was built on both. Chapter Two splits the inheritance.</p>
+      <div class="faction-grid">
+        <div class="fac nalanda">
+          <div class="fac-tag">Faction One &bull; ~38%</div>
+          <div class="fac-name">The Nalanda Order &bull; Mind-Inheritors</div>
+          <div class="fac-desc">The standing Nalanda-Reconstructed-University faculty, the Magadhi-Buddhist-scholar lineages, the Atisha-Dipankara palm-leaf-tradition keepers, the standing-Magadha-archive cell&rsquo;s Sanskrit-Pali-Magadhi-Prakrit translation-corps. Approximately three thousand four hundred constituents (faculty, students, librarians, archive-staff). Their argument is the kingdom-council&rsquo;s succession must follow the mind-tradition; the standing-state-hero&rsquo;s successor must be a Nalanda-trained scholar; the standing-warrior-clans are tools, not throne-holders. Acharya Vasudha-of-the-Manuscript&rsquo;s base. After her death the order is led by Maitreyi-the-Younger as standing-acting-Mahasthavira.</div>
+        </div>
+        <div class="fac vajra">
+          <div class="fac-tag">Faction Two &bull; ~34%</div>
+          <div class="fac-name">The Vajra-Sangha &bull; Warrior-Clans</div>
+          <div class="fac-desc">The standing-Magadhi warrior-clans of the Patna-Gaya-Nalanda-Rajgir corridor; the standing-Mauryan-military-revival training-cells; the kingdom-council&rsquo;s standing-Bihar-State-Police standing-auxiliary cohort. Approximately two thousand eight hundred constituents (warriors, trainers, auxiliary-police-members, family-members). Their argument is the kingdom-council&rsquo;s succession must follow the body-tradition; the standing-state-hero&rsquo;s successor must be a Vajra-Sangha-trained warrior; the standing-Nalanda-scholars are advisors, not throne-holders. Senapati Bhima-of-the-Plains&rsquo; base. After the standing-seventh-week-riot the order is led by Senapati Bhima-of-the-Plains&rsquo; standing-second-in-command Senapati-Junior Rakta-Eyed Surya.</div>
+        </div>
+        <div class="fac mid">
+          <div class="fac-tag">Faction Three &bull; ~28%</div>
+          <div class="fac-name">The Madhyama &bull; The Middle Path</div>
+          <div class="fac-desc">The standing-Magadhi middle-path tradition: the standing-Bodhgaya-Vihara&rsquo;s standing-Bhikshu lineage; the standing-Gaya-Vishnupada temple-priests; the standing-Pataliputra civic-administration; the kingdom-council&rsquo;s standing-State Civil Service standing-administrative-coordination cohort. Approximately two thousand one hundred constituents. Their argument is the kingdom-council&rsquo;s standing-mind-body schism is the kingdom&rsquo;s standing-charter-flaw; the standing-amended-charter must integrate both traditions in a single standing-state-hero. Their argument is adopted at the kingdom-council&rsquo;s amended-charter&rsquo;s ratification-day as the kingdom&rsquo;s standing-charter&rsquo;s Fifth Clause provision. Vajramukha&rsquo;s standing-private-base; his standing-Magadhi-Prakrit poetry has belonged to the Madhyama tradition since his standing-junior-warrior years.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="k-card">
+      <h3>The Void Maw Sign &mdash; The Gaur With No Wound and No Inside</h3>
+      <p>The morning after Vajramukha&rsquo;s ninety-third-day Stage-III completion. Day ninety-four. Six-eleven a.m. The standing-Valmiki-Tiger-Reserve&rsquo;s standing-northern-grazing-meadow at the West-Champaran district&rsquo;s northern Nepal-border zone. A male gaur is found dead at the standing-grazing-position. The body is intact. No wound. No predator-print. The standing-gaur is in the standing-grazing-pose with the head lowered toward the standing-grass-surface and the four standing-legs at the standing-stationary-position. The standing-Forest-Department&rsquo;s standing-Saturday-morning ranger (a forty-three-year-old administrator named V. Singh) approaches at six-fourteen a.m. He does not touch the body initially. He performs the standing-visual-inspection protocol. The standing-eyes are open and clear; the standing-tongue is at the standing-resting-position; the standing-respiratory-cavity is at the standing-no-active-breathing position. He approaches at six-twenty-one. He places his right palm on the standing-shoulder-flank. The standing-body-temperature is at approximately fourteen degrees Celsius (the standing-ambient is twenty-three degrees; the standing-body is cooler than the standing-ambient). He pushes the standing-body. The standing-body is light &mdash; <strong>approximately one-twentieth of the standing-gaur&rsquo;s standing-living-mass</strong>. The standing-body topples at the standing-push without resistance.</p>
+      <p style="margin-top:10px;">He calls the standing-veterinary-cell&rsquo;s standing-on-call veterinarian (Dr. K. Bhardwaj, fifty-seven) at six-twenty-three a.m. Dr. Bhardwaj arrives at the standing-meadow at eight-eleven a.m. She performs the standing-veterinary-emergency assessment. She conducts the standing-incision-cross-reference at the standing-abdominal-position at eight-twenty-three. The standing-body&rsquo;s interior is empty. The standing-organs are absent: no heart, no lungs, no liver, no stomach, no intestines, no skeletal-internals. The standing-rib-cage is in place; the standing-skull is in place; the standing-spinal-cord is in place; the standing-musculature is in place at the standing-shell-pattern (approximately three centimetres of standing-muscle-tissue lining the standing-internal-surfaces of the standing-skeletal cage). <strong>The standing-internal-organ-cavity is empty.</strong> No incision-evidence of organ-removal. No standing-decomposition signs at the standing-cavity-walls. The standing-cavity-interior smells of standing-fresh-grass and standing-rain-water (the standing-Valmiki-Reserve&rsquo;s standing-night-rain at three-eleven a.m. on day ninety-three had passed through the standing-meadow; the standing-rain-water has apparently entered the standing-cavity at some point during the standing-night). The Maw has demonstrated the capacity to <strong>remove the entire interior of a sacred bonded-species body without external wound or incision-evidence</strong>. Per the cross-region paired-sign-naming protocol the hollow gaur pairs with <strong>Maharashtra&rsquo;s Burnt Squirrel-Nest</strong> &mdash; the nest whose carbonisation occurred from inside outward; both signs are interiors-removed-from-within without external evidence. The pair is the saga&rsquo;s fifth formally-recognised cross-region Maw-sign pair: hollow-from-within.</p>
+    </div>
+
+    <div class="k-quick-links">
+      <a href="identity.html" class="k-quick-link">
+        <span class="ql-title">Faction &amp; Cast</span>
+        <span class="ql-sub">Three orders, the dead guru, the librarian, the hollow gaur</span>
+      </a>
+      <a href="story.html" class="k-quick-link">
+        <span class="ql-title">Full Story</span>
+        <span class="ql-sub">The Mind-Body Schism &mdash; A Film in Two Halves</span>
+      </a>
+      <a href="rules.html" class="k-quick-link">
+        <span class="ql-title">Rules &amp; Weapons</span>
+        <span class="ql-sub">Rebuilding-bond, the gauntlets at the gate, the hollow gaur</span>
+      </a>
+      <a href="../../../index.html" class="k-quick-link" style="border-color:rgba(247,217,106,.15);">
+        <span class="ql-title" style="color:#c9a04a;">All Civil War Stories</span>
+        <span class="ql-sub">Back to Chapter 2</span>
+      </a>
+    </div>
+  </div>
+
+  <footer style="text-align:center;padding:28px 20px;border-top:1px solid rgba(196,77,170,.12);color:#9a8db0;font-size:.75em;">
+    <p>Vajra-Bhumi &bull; Civil War &bull; Chapter 2 &bull; Maha Parva &bull; Age of Mythos Volume I</p>
+    <p style="margin-top:6px;"><a href="../../../index.html" style="color:#c9a04a;text-decoration:none;">&larr; Chapter 2 Index</a></p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vana-Agni &mdash; Civil War &mdash; Age of Mythos</title>
+  <link rel="stylesheet" href="../../../../../chapter-1-rise-of-legends/css/style.css">
+  <style>
+    body { background:#080a08; color:#e8f0e0; min-height:100vh; }
+    .k-banner { text-align:center; padding:78px 20px 40px; background:linear-gradient(180deg,#080a08 0%,#0c1a0c 60%,#080a08 100%); border-bottom:1px solid rgba(90,154,90,.16); position:relative; }
+    .k-banner .badge { font-size:.55em; letter-spacing:4px; text-transform:uppercase; color:#5a9a5a; opacity:.85; margin-bottom:14px; }
+    .k-banner .badge .border { color:#cc6633; font-weight:bold; }
+    .k-banner h1 { font-size:2.6em; color:#7bb87b; margin-bottom:.15em; letter-spacing:2px; }
+    .k-banner .state-label { font-size:.78em; color:#b8c8b0; opacity:.7; letter-spacing:1px; margin-bottom:.6em; }
+    .k-banner .tagline { color:#c8d8c0; font-size:.92em; max-width:660px; margin:0 auto; line-height:1.75; font-style:italic; }
+    .boundary-line { display:block; margin:24px auto 0; width:280px; height:1px; background:linear-gradient(90deg,transparent 0%,#5a9a5a 35%,transparent 50%,#cc6633 65%,transparent 100%); position:relative; opacity:.75; }
+    .k-nav { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:14px 20px; background:rgba(0,0,0,.5); border-bottom:1px solid rgba(90,154,90,.1); }
+    .k-nav a { padding:5px 16px; border-radius:20px; border:1px solid rgba(90,154,90,.25); color:#c8d8c0; font-size:.72em; letter-spacing:1px; text-decoration:none; transition:all .15s; }
+    .k-nav a:hover, .k-nav a.active { background:rgba(90,154,90,.12); border-color:#7bb87b; color:#fff; }
+    .k-section { max-width:1100px; margin:0 auto; padding:40px 20px 60px; }
+    .k-two { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    @media(max-width:640px){ .k-two { grid-template-columns:1fr; } }
+    .k-card { background:rgba(255,255,255,.025); border:1px solid rgba(90,154,90,.15); border-radius:10px; padding:22px; margin-bottom:16px; }
+    .k-card h3 { font-size:.72em; letter-spacing:2px; text-transform:uppercase; color:#7bb87b; margin-bottom:12px; opacity:.9; }
+    .k-card p { font-size:.88em; color:#c8d8c0; line-height:1.75; }
+    .hero-portrait { width:100%; border-radius:10px; border:1px solid rgba(123,184,123,.22); display:block; }
+
+    .faction-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:14px; }
+    @media(max-width:720px){ .faction-grid { grid-template-columns:1fr; } }
+    .fac { padding:14px 16px; border-radius:10px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.02); }
+    .fac .fac-tag { font-size:.55em; letter-spacing:2px; text-transform:uppercase; margin-bottom:6px; }
+    .fac .fac-name { font-size:.9em; margin-bottom:6px; font-family:Georgia,serif; }
+    .fac .fac-desc { font-size:.74em; color:#c8d8c0; line-height:1.55; opacity:.85; }
+    .fac.coal { border-color:rgba(204,102,51,.30); }
+    .fac.coal .fac-tag  { color:#cc6633; }
+    .fac.coal .fac-name { color:#e8a878; }
+    .fac.wild { border-color:rgba(90,154,90,.30); }
+    .fac.wild .fac-tag  { color:#5a9a5a; }
+    .fac.wild .fac-name { color:#a8d8a8; }
+
+    .k-quick-links { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-top:32px; }
+    .k-quick-link { display:block; padding:18px 20px; border-radius:10px; border:1px solid rgba(123,184,123,.22); background:rgba(12,26,12,.5); text-decoration:none; text-align:center; transition:border-color .15s; }
+    .k-quick-link:hover { border-color:#7bb87b; }
+    .k-quick-link .ql-title { font-size:.85em; color:#7bb87b; display:block; margin-bottom:4px; }
+    .k-quick-link .ql-sub { font-size:.7em; color:#9aa898; opacity:.75; }
+
+    .alert-banner { background:linear-gradient(135deg,rgba(204,102,51,.10),rgba(30,16,8,.04)); border:1px solid rgba(204,102,51,.32); padding:16px 20px; border-radius:10px; margin-bottom:18px; }
+    .alert-banner .alert-label { font-size:.55em; letter-spacing:2px; text-transform:uppercase; color:#cc6633; margin-bottom:6px; }
+    .alert-banner .alert-text { color:#e8a878; font-size:.88em; line-height:1.7; }
+
+    .stat-chip { font-size:.65em; padding:3px 10px; border-radius:12px; background:rgba(90,154,90,.07); border:1px solid rgba(90,154,90,.22); color:#a8d8a8; display:inline-block; margin:2px; }
+    .stat-chip.fail { background:rgba(204,102,51,.07); border-color:rgba(204,102,51,.22); color:#e8a878; }
+  </style>
+</head>
+<body>
+  <div class="k-banner">
+    <div class="badge"><span class="border">Stage III Refused &bull; The First Failed-Stroke in the Saga&rsquo;s Registry</span> &bull; Chapter Two &bull; Civil War</div>
+    <h1>Vana-Agni</h1>
+    <div class="state-label">Jharkhand &bull; East Region</div>
+    <p class="tagline">For eight years the elephant-rider of Saranda had carried the Vana-Kula clan&rsquo;s ancestral inheritance with one rule: the sacred grove is not for sale. Vana-Raksha returned as Acharya Hari-Mohan Mahato of the Vana-Vidya Trust wearing a teacher&rsquo;s khadi-kurta and an Indian Forest Service consultant&rsquo;s identity-card. He endowed fourteen tribal schools across Saranda and bought twelve of the twenty-four Saranatu-Sarna tribal-council seats over thirty-one months of legal philanthropy. On Tuesday week five the council voted twenty-four to twenty-one to sell the eight-hundred-forty-hectare Sal grove to Aditya Coal &amp; Power Ltd. for two-hundred-eleven crore rupees. Vanajara held one vote. The vote was legal. The felling began on Saturday week six. On the twenty-first night he walked the burnt Saranatu-Sarna alone and performed the Vana-Kula clan ritual at midnight. <strong>The elephant-foreleg-first-stroke did not form.</strong> He survived the chapter. He learned that education without justice is a weapon, and that the saga&rsquo;s nineteen bond-mechanics do not cover the moment a hero loses what he was sworn to keep through a vote he could not block.</p>
+    <span class="boundary-line"></span>
+  </div>
+
+  <div class="k-nav">
+    <a href="../../../../index.html">&larr; Chapter 2</a>
+    <a href="index.html" class="active">Overview</a>
+    <a href="identity.html">Identity</a>
+    <a href="story.html">Story</a>
+    <a href="rules.html">Rules &amp; Weapons</a>
+  </div>
+
+  <div class="k-section">
+
+    <div class="alert-banner">
+      <div class="alert-label">The Failed-Stroke &bull; This Chapter</div>
+      <div class="alert-text">Vana-Agni is the saga&rsquo;s first kingdom whose state-hero does not earn the Stage III bond-mark in his standing-Chapter-Two arc. Vana-Raksha returns as <strong>Acharya Hari-Mohan Mahato</strong> running the <em>Vana-Vidya Trust</em>&rsquo;s fourteen tribal-schools across the standing-Saranda-forest catchment; quietly funnels older boys at age fifteen into the standing-Aditya-Coal-and-Power Ltd. standing-coal-mine-labour subcontract. The standing-Saranatu-Sarna sacred Sal grove (the Vana-Kula clan&rsquo;s standing-Bonga-residence at the Saranda-forest&rsquo;s central catchment; eight-hundred-forty hectares) is sold by tribal-council vote 24-21 (3 abstentions) on Tuesday week five for two-hundred-eleven crore rupees. The standing-vote is legal under the 2013 Tribal-Council Land-Authorisation statute and the 1996 PESA Act&rsquo;s Schedule-V provisions. Vanajara holds standing-one-vote as the kingdom-council&rsquo;s standing-state-hero; he does not hold standing-veto. The grove is felled across weeks 6-9. At 4:11 a.m. on day-thirteen of the standing-felling-period the standing-North-Karanpura mine&rsquo;s standing-deep-seam-six begins to whisper at approximately fifty-five decibels in a standing-Magadhi-Prakrit-tinged register no miner can identify; the standing-Jharia-coalfield mining cohort of approximately two-hundred-forty miners cascade into standing-bilateral-sensorineural deafness across the standing-seven-day window. <strong>Birsa-Aaj</strong> (the thirteen-year-old Munda boy schooled at the standing-Pasanda Vana-Vidya School since age nine) turns informer at 11:43 p.m. on day-seventeen of the felling; delivers the standing-Singapore source-account / Acharya-Ghora cross-network letter to the kingdom-council&rsquo;s standing-investigation cell. Vanajara walks the burnt Saranatu-Sarna at midnight on day-twenty-one and performs the standing-Vana-Kula clan ritual alone. <strong>The standing-Stage-III elephant-foreleg-first-stroke does not form.</strong> He survives. The standing-failed-stroke is the saga&rsquo;s twentieth bond-mechanic registry-entry &mdash; the <em>refused-mark</em>: the standing-bond does not form when the standing-charter-foundational loss occurred through standing-legal-process rather than standing-violence; the hero survives and learns the lesson without the standing-recognition. Per restructure §1 Jharkhand defers in Ch 3; Vanajara pledges to the Eastern-Federation under the standing-deferential-membership clause; the coal-question is unresolved going into Ch 4.</div>
+    </div>
+
+    <div class="k-two">
+      <div>
+        <img src="media/portraits/jharkhand-ch2-vanajara-burnt-grove.png"
+             alt="Vanajara at the felled Saranatu-Sarna grove at midnight day twenty-one performing the Vana-Kula clan ritual"
+             class="hero-portrait"
+             onerror="this.style.display='none'">
+        <p style="font-size:.7em;color:#9aa898;text-align:center;margin-top:8px;opacity:.7;">Vanajara at the standing-felled Saranatu-Sarna at midnight on day twenty-one of the standing-felling-period &mdash; the standing-Vana-Kula clan-trunk-staff at his standing-right-hand, the standing-Asian-koel call from the standing-tree-line at his standing-left ear, the standing-elephant Aranya-Putra at his standing-three-metre-rear, the standing-Stage-III mark refusing to form at the standing-right-upper-back position</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div class="k-card">
+          <h3>The Hero (Survives, Stage III Refused)</h3>
+          <p><strong style="color:#7bb87b">Vanajara</strong> &mdash; The Elephant-Rider of Saranda Who Lost the Grove He Could Not Buy</p>
+          <p style="margin-top:8px;">Thirty-one. Standing-state-hero of Jharkhand since 2018; standing-Vana-Kula clan-rider of the standing-elephant Aranya-Putra (age twenty-six bull, standing-Sal-fed since calf-hood at the standing-Bonga-residence). Holds standing-one-vote at the standing-Saranatu-Sarna tribal-council under the kingdom-council&rsquo;s standing-1985-charter standing-state-hero seat provision; does not hold standing-veto. Walks the standing-grove at midnight day-twenty-one with the standing-Vana-Kula clan-trunk-staff and performs the standing-clan ritual alone in the standing-burnt-clearing where the standing-Bonga-residence had stood. The standing-Stage-III elephant-foreleg-first-stroke does not form at the standing-ritual-completion. Survives the chapter. Accepts the standing-failed-mark at the kingdom-council&rsquo;s standing-emergency-session on day-twenty-three and delivers the standing-acceptance-speech that becomes the saga&rsquo;s standing-failed-stroke discipline-recognition. Per Ch 3 plan he pledges to the Eastern-Federation under the standing-deferential-membership clause; the coal-question is unresolved going into Ch 4.</p>
+          <div style="margin-top:10px;">
+            <span class="stat-chip">Survives &bull; Stage II Capped</span>
+            <span class="stat-chip fail">Stage III Refused (Saga&rsquo;s 1st)</span>
+            <span class="stat-chip">Bloodline D &bull; elephant-line</span>
+          </div>
+        </div>
+        <div class="k-card">
+          <h3>The Catalyst Villain</h3>
+          <p><strong style="color:#e8a878">Acharya Hari-Mohan Mahato</strong> &mdash; Vana-Raksha as the Vana-Vidya Trust&rsquo;s Founder-Director</p>
+          <p style="margin-top:8px;">Forty-eight. Was Vana-Raksha-the-Saranda-forest-overseer at the Ch 1 Hazaribagh confrontation; spared at the Ch 1 climax under the kingdom-council&rsquo;s standing-administrative-rehabilitation clause. Re-emerged in winter 2021 with a forged Indian Forest Service consultant&rsquo;s identity-card and a forged Tata Institute of Social Sciences development-PhD (forged at the same standing-Bhopal-printing-press as Acharya Ghora&rsquo;s Bihar Nalanda-faculty appointment-letter; the kingdom-council&rsquo;s standing-cross-network investigation confirms the identity at week-six cross-referencing Birsa-Aaj&rsquo;s standing-informer-delivered letter against the standing-Reserve-Bank-Patna-Branch wire-record). Founded the <em>Vana-Vidya Trust</em> as a 12A-registered standing-tribal-education charity in March 2022; opened fourteen schools across Saranda by autumn 2024; quietly funnelled approximately one-hundred-twelve standing-Vana-Vidya boys aged fifteen-and-older into standing-Aditya-Coal-and-Power Ltd. standing-mine-labour through a standing-back-channel subcontracting arrangement. Engineered the standing-Saranatu-Sarna sale through 31 months of standing-tribal-council endowment-cultivation. Survives Chapter Two through the standing-Hazaribagh-Daltonganj road escape on day-twenty-two; reaches the standing-Bangladesh-border via the standing-West-Bengal Murshidabad crossing by Friday week-ten. Per Ch 3 plan he is the standing-villain-network&rsquo;s standing-Eastern field-operative partner of Acharya Ghora; runs the standing-Bangladesh-border safe-house cell for the Vinasha-Garbha Patkai-corridor.</p>
+        </div>
+        <div class="k-card">
+          <h3>The Pivot Boy &bull; New Male Character</h3>
+          <p><strong style="color:#a8d8a8">Birsa-Aaj</strong> &mdash; The Thirteen-Year-Old Munda Informer-Schoolboy</p>
+          <p style="margin-top:8px;">Thirteen at the informer-turn (born 2013 at the standing-Pasanda Munda-clan birth-cottage; admitted to the standing-Pasanda Vana-Vidya School at age nine in 2022). Named after Birsa Munda (the standing-1900-CE Munda Ulgulan revolutionary) by his standing-grandfather&rsquo;s instruction at the standing-birth-naming ceremony; the second name &lsquo;Aaj&rsquo; (&ldquo;today&rdquo; in Hindi/Magadhi-Prakrit) was added at the standing-eight-month welcoming-ceremony to mark the standing-clan-elder&rsquo;s prophecy that the boy would &ldquo;not wait for tomorrow&rdquo;. Elder brother Sukhdeo-Aaj (seventeen, standing-Vana-Vidya School class of 2024-graduate) entered the standing-North-Karanpura mine on the standing-fifteenth-birthday subcontracting protocol in October 2024 and died at the standing-deep-seam-six standing-roof-collapse at 11:43 a.m. on day-three of the standing-coal-whispers cascade. Birsa-Aaj reads Acharya Hari-Mohan Mahato&rsquo;s standing-Singapore source-account / Acharya-Ghora cross-network correspondence-letter at the standing-Pasanda Vana-Vidya School&rsquo;s standing-headmaster-cabin-cupboard at 7:11 p.m. on day-fifteen of the standing-felling-period (the letter was left in the standing-third-drawer by the standing-Acharya&rsquo;s administrative-clerk during the standing-Tuesday-evening departure). Walks the standing-twenty-three-kilometre distance from Pasanda to the kingdom-council&rsquo;s standing-investigation cell at the standing-Ranchi-Vana-Bhavan across two nights and one day; arrives at 11:43 p.m. day-seventeen at the standing-Vana-Bhavan&rsquo;s standing-night-duty officer. Delivers the standing-letter. Survives the chapter under the kingdom-council&rsquo;s standing-protective-custody at the standing-Aranya-Mata&rsquo;s standing-Sasaranatu-Cottage. Per Ch 3 plan he is the standing-Vana-Kula clan&rsquo;s standing-Ch-3 pivot character &mdash; the boy who carries the standing-tribal-school-knowledge from the standing-Vana-Vidya-network to the kingdom-council&rsquo;s standing-Vana-Vidya-replacement education-reform.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="k-card" style="margin-top:24px;">
+      <h3>The Two-Way Faction Split &mdash; Hunger Against Memory</h3>
+      <p style="margin-bottom:14px;">Vana-Agni has answered the forest question one way for sixteen generations: the standing-Saranda Sal-grove is the clan&rsquo;s standing-Bonga-residence and is not for sale. Chapter Two splits the inheritance along the standing-tribal-population&rsquo;s standing-economic-pressure line.</p>
+      <div class="faction-grid">
+        <div class="fac coal">
+          <div class="fac-tag">Faction One &bull; ~56% by population, ~58% by council-seat after endowment-cultivation</div>
+          <div class="fac-name">The Coal-Tribals &bull; Vana-Vidya Schools, Aditya Mine Payroll, the Road</div>
+          <div class="fac-desc">The standing-Munda, standing-Santhal, and standing-Ho tribal-families whose children attend the standing-Vana-Vidya Trust schools and whose elder sons (ages fifteen and older) work the standing-Jharia-coalfield mining-subcontracts. Approximately fifty-six percent of the standing-Saranda-forest tribal-population. Approximately eleven-thousand-two-hundred standing-school-going children and approximately two-thousand-four-hundred standing-active-mine-workers. The standing-Hari-Mohan Mahato cultivation-protocol delivered twelve of the standing-twenty-four standing-tribal-council seats over thirty-one months: school-endowments at the standing-village level; cash-transfers at the standing-individual-council-member level; the standing-Pasanda-to-Karanpura paved-road at the standing-public-works level. Their argument is the standing-traditional grove-protection has failed to feed the standing-tribal-population for two generations; the standing-Aditya partnership delivers wages, schools, and road; the kingdom-council&rsquo;s standing-state-hero must accept the standing-vote as the standing-tribal-population&rsquo;s standing-democratic-will. Senior delegate at the standing-Tuesday-week-five vote: <strong>Suresh Munda-of-Pasanda</strong> (forty-seven, standing-Vana-Vidya Trust standing-school-board chairman, standing-council-seat #9, voted to sell).</div>
+        </div>
+        <div class="fac wild">
+          <div class="fac-tag">Faction Two &bull; ~44% by population, ~42% by council-seat (21 of 24 + 3 abstentions)</div>
+          <div class="fac-name">The Wild-Tribals &bull; The Bonga-Residence, the Sal-Grove, the Hunger That Did Not Sell</div>
+          <div class="fac-desc">The standing-Munda, standing-Santhal, standing-Ho, and standing-Birhor tribal-families who reject the standing-Vana-Vidya-Aditya partnership and hold the standing-Saranatu-Sarna sacred-grove protection as the standing-charter-foundational responsibility. Approximately forty-four percent of the standing-Saranda-forest tribal-population. Approximately seven-thousand-eight-hundred standing-traditional-livelihood households dependent on standing-Sal-leaf-plate manufacture, standing-mahua-flower distillation, standing-tendu-leaf collection, and standing-honey-gathering at the standing-Bonga-residence margins. Their argument is the standing-grove is not transferable property &mdash; the standing-1996 PESA Act&rsquo;s standing-Schedule-V provisions permit standing-tribal-council vote only over standing-village-common-land, not over standing-clan-sacred-sites; the standing-vote is procedurally legal but standing-charter-foundationally illegitimate. Twenty-one council-members voted against the sale; three abstained. Senior delegate: <strong>Aranya-Mata Tudu</strong> (seventy-three, the standing-Vana-Kula clan&rsquo;s standing-clan-mother, standing-council-seat #1 by inheritance, voted against). The standing-Wild-Tribal block&rsquo;s standing-twenty-four-vote-arithmetic was outnumbered by exactly three votes at the standing-Tuesday-week-five council; the standing-three-abstentions belonged to the standing-Birhor sub-clan whose standing-livelihood-base had been quietly disrupted by Aditya&rsquo;s standing-pre-vote-week labour-camp closure in July 2024.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="k-card">
+      <h3>The Void Maw Sign &mdash; The Coal-Seam Whispers and the Two-Hundred-Forty Deaf Miners</h3>
+      <p>4:11 a.m. on day-thirteen of the standing-felling-period. The standing-North-Karanpura mine&rsquo;s standing-deep-seam-six (at standing-vertical-depth four-hundred-eleven metres below the standing-surface; the standing-Jharia-coalfield&rsquo;s second-deepest active extraction-face). The standing-night-shift cohort of forty-three miners at the standing-extraction-face. The standing-shift-foreman, a fifty-two-year-old Pasanda-Munda named D. Kacchap, hears the standing-first-whisper at the standing-coal-face-cross-section at 4:11:08 a.m. The standing-whisper is at approximately fifty-five decibels &mdash; well above the standing-ambient mine-machinery noise floor of approximately forty-two decibels but below the standing-roof-bolt percussion noise floor of approximately sixty-eight decibels. The standing-whisper is in a standing-Magadhi-Prakrit-tinged register that the standing-Munda-Santhal-Ho mother-tongue speakers cannot directly identify but can clearly distinguish as standing-language (not standing-machinery-noise, not standing-water-drip, not standing-rat-call, not standing-air-current). D. Kacchap records the standing-whisper on the standing-shift-foreman&rsquo;s standing-issued mine-radio at 4:13 a.m.: <em>&ldquo;Ah Sal, Ah Sarna&rdquo;</em> &mdash; the standing-Magadhi-Prakrit invocation-form of the standing-Sal-tree and the standing-sacred-grove (the standing-Saranatu-Sarna&rsquo;s standing-Sal-tree-and-grove naming-couplet). The standing-whisper continues at the standing-coal-face for approximately forty-seven minutes. The standing-shift-team withdraws at 4:58 a.m. at D. Kacchap&rsquo;s standing-emergency-evacuation directive.</p>
+      <p style="margin-top:10px;">Across the standing-following-seven-day window the standing-Jharia-coalfield mining cohort of approximately two-hundred-forty miners cascade into standing-bilateral-sensorineural deafness. The standing-deafness-onset pattern is consistent: each miner reports approximately seventeen-to-twenty-three minutes of standing-Magadhi-Prakrit-tinged whisper at the standing-coal-face followed by a standing-rapid hearing-loss-cascade across the standing-following four-to-eleven hours. The standing-deafness is bilateral, standing-sensorineural (cochlear-hair-cell origin per the standing-Patna-AIIMS audiology-cell&rsquo;s standing-confirmation-protocol), and standing-permanent at the standing-six-week follow-up (no recovery across the standing-ninety-day-window). The standing-Aditya-Coal extraction-operation halts on day-seven of the standing-cascade under the standing-Directorate-General-of-Mines-Safety standing-emergency-closure order. The standing-extraction-license for the standing-Saranatu-Sarna grove is suspended on day-thirty under the kingdom-council&rsquo;s standing-Maw-sign-recognition cell&rsquo;s standing-cross-reference filing &mdash; the standing-first standing-extraction-license suspension in standing-Indian-mining-regulation history triggered by a standing-Maw-sign rather than a standing-conventional safety-hazard. The Maw has demonstrated the capacity to <strong>utter language from a standing-non-living substrate (coal-seam stratification at the standing-four-hundred-eleven-metre depth) at standing-fifty-five-decibel intensity in a standing-Magadhi-Prakrit-tinged register that the standing-bonded-population mother-tongue speakers cannot directly identify but can clearly distinguish as standing-language &mdash; followed by the standing-deafness-cascade across the standing-listener-cohort</strong>. The standing-coal-whispers open the saga&rsquo;s <strong>sixth paired-sign category &mdash; substrate-voice: the Maw utters language from non-living substrate</strong>. The standing-pair-candidate is awaiting standing-emergence in a standing-subsequent Chapter-Two kingdom (the standing-Maw-sign-recognition cell&rsquo;s standing-Eastern-Federation standing-watch-protocol projects standing-West-Bengal Sundarbans alluvium-voice or standing-Andhra-Pradesh Krishna-delta sediment-voice as the standing-most-probable pair). The standing-sign is the saga&rsquo;s twentieth Maw-sign and the standing-East-cluster&rsquo;s third (after Odisha Konark and Bihar hollow-gaur).</p>
+    </div>
+
+    <div class="k-quick-links">
+      <a href="identity.html" class="k-quick-link">
+        <span class="ql-title">Faction &amp; Cast</span>
+        <span class="ql-sub">Two tribes, the Acharya, the schoolboy, the clan-mother, the coal-seam</span>
+      </a>
+      <a href="story.html" class="k-quick-link">
+        <span class="ql-title">Full Story</span>
+        <span class="ql-sub">The Coal Heart &mdash; A Film in Two Halves</span>
+      </a>
+      <a href="rules.html" class="k-quick-link">
+        <span class="ql-title">Rules &amp; Weapons</span>
+        <span class="ql-sub">Refused-mark, the trunk-staff, the coal-seam whispers</span>
+      </a>
+      <a href="../../../index.html" class="k-quick-link" style="border-color:rgba(247,217,106,.15);">
+        <span class="ql-title" style="color:#c9a04a;">All Civil War Stories</span>
+        <span class="ql-sub">Back to Chapter 2</span>
+      </a>
+    </div>
+  </div>
+
+  <footer style="text-align:center;padding:28px 20px;border-top:1px solid rgba(90,154,90,.12);color:#9aa898;font-size:.75em;">
+    <p>Vana-Agni &bull; Civil War &bull; Chapter 2 &bull; Maha Parva &bull; Age of Mythos Volume I</p>
+    <p style="margin-top:6px;"><a href="../../../index.html" style="color:#c9a04a;text-decoration:none;">&larr; Chapter 2 Index</a></p>
+  </footer>
+</body>
+</html>

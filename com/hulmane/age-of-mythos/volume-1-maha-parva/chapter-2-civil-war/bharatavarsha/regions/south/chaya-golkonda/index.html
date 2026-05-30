@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chaya-Golkonda &mdash; Civil War &mdash; Age of Mythos</title>
+  <link rel="stylesheet" href="../../../../../chapter-1-rise-of-legends/css/style.css">
+  <style>
+    body { background:#0a0a12; color:#f0e8f8; min-height:100vh; }
+    .k-banner { text-align:center; padding:78px 20px 40px; background:linear-gradient(180deg,#0a0a12 0%,#181018 60%,#0a0a12 100%); border-bottom:1px solid rgba(196,77,170,.16); position:relative; }
+    .k-banner .badge { font-size:.55em; letter-spacing:4px; text-transform:uppercase; color:#c44daa; opacity:.85; margin-bottom:14px; }
+    .k-banner .badge .border { color:#d4a060; font-weight:bold; }
+    .k-banner h1 { font-size:2.6em; color:#d4a060; margin-bottom:.15em; letter-spacing:2px; }
+    .k-banner .state-label { font-size:.78em; color:#c9bbd8; opacity:.7; letter-spacing:1px; margin-bottom:.6em; }
+    .k-banner .tagline { color:#d4c5e8; font-size:.92em; max-width:660px; margin:0 auto; line-height:1.75; font-style:italic; }
+    .boundary-line { display:block; margin:24px auto 0; width:280px; height:1px; background:linear-gradient(90deg,transparent 0%,#d4a060 35%,transparent 50%,#d4a060 65%,transparent 100%); position:relative; opacity:.75; }
+    .k-nav { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:14px 20px; background:rgba(0,0,0,.5); border-bottom:1px solid rgba(196,77,170,.1); }
+    .k-nav a { padding:5px 16px; border-radius:20px; border:1px solid rgba(196,77,170,.25); color:#d4c5e8; font-size:.72em; letter-spacing:1px; text-decoration:none; transition:all .15s; }
+    .k-nav a:hover, .k-nav a.active { background:rgba(196,77,170,.12); border-color:#c44daa; color:#fff; }
+    .k-section { max-width:1100px; margin:0 auto; padding:40px 20px 60px; }
+    .k-two { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    @media(max-width:640px){ .k-two { grid-template-columns:1fr; } }
+    .k-card { background:rgba(255,255,255,.025); border:1px solid rgba(196,77,170,.15); border-radius:10px; padding:22px; margin-bottom:16px; }
+    .k-card h3 { font-size:.72em; letter-spacing:2px; text-transform:uppercase; color:#d4a060; margin-bottom:12px; opacity:.9; }
+    .k-card p { font-size:.88em; color:#c9bbd8; line-height:1.75; }
+    .hero-portrait { width:100%; border-radius:10px; border:1px solid rgba(212,160,96,.22); display:block; }
+
+    .faction-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:14px; }
+    @media(max-width:720px){ .faction-grid { grid-template-columns:1fr; } }
+    .fac { padding:14px 16px; border-radius:10px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.02); }
+    .fac .fac-tag { font-size:.55em; letter-spacing:2px; text-transform:uppercase; margin-bottom:6px; }
+    .fac .fac-name { font-size:.9em; margin-bottom:6px; font-family:Georgia,serif; }
+    .fac .fac-desc { font-size:.74em; color:#c9bbd8; line-height:1.55; opacity:.85; }
+    .fac.old   { border-color:rgba(212,160,96,.30); }
+    .fac.old .fac-tag  { color:#d4a060; }
+    .fac.old .fac-name { color:#e8c898; }
+    .fac.cyber { border-color:rgba(123,158,255,.30); }
+    .fac.cyber .fac-tag  { color:#7b9eff; }
+    .fac.cyber .fac-name { color:#a8c0ff; }
+    .fac.cant  { border-color:rgba(196,184,168,.30); }
+    .fac.cant .fac-tag  { color:#c4b8a8; }
+    .fac.cant .fac-name { color:#e0d4c0; }
+
+    .k-quick-links { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-top:32px; }
+    .k-quick-link { display:block; padding:18px 20px; border-radius:10px; border:1px solid rgba(212,160,96,.22); background:rgba(24,16,16,.5); text-decoration:none; text-align:center; transition:border-color .15s; }
+    .k-quick-link:hover { border-color:#d4a060; }
+    .k-quick-link .ql-title { font-size:.85em; color:#d4a060; display:block; margin-bottom:4px; }
+    .k-quick-link .ql-sub { font-size:.7em; color:#9a8db0; opacity:.75; }
+
+    .alert-banner { background:linear-gradient(135deg,rgba(212,160,96,.10),rgba(30,20,16,.04)); border:1px solid rgba(212,160,96,.32); padding:16px 20px; border-radius:10px; margin-bottom:18px; }
+    .alert-banner .alert-label { font-size:.55em; letter-spacing:2px; text-transform:uppercase; color:#d4a060; margin-bottom:6px; }
+    .alert-banner .alert-text { color:#e8c898; font-size:.88em; line-height:1.7; }
+
+    .stat-chip { font-size:.65em; padding:3px 10px; border-radius:12px; background:rgba(212,160,96,.07); border:1px solid rgba(212,160,96,.22); color:#dcb478; display:inline-block; margin:2px; }
+    .stat-chip.brother { background:rgba(255,68,68,.10); border-color:rgba(255,68,68,.30); color:#ff8888; }
+  </style>
+</head>
+<body>
+  <div class="k-banner">
+    <div class="badge"><span class="border">Open-Trust Trial &bull; Stage III by Risk</span> &bull; Chapter Two &bull; Civil War</div>
+    <h1>Chaya-Golkonda</h1>
+    <div class="state-label">Telangana &bull; South Region</div>
+    <p class="tagline">For nine years the mismatched-eyed warrior trusted no one. The grey eye saw what lay beneath; the brown eye saw the surface. Chitrabheda walked back into Hyderabad through a thousand cyber-channels and a thousand street-corners and the kingdom&rsquo;s elder brother&rsquo;s face was one of them. The discs flew at the elder brother in the mirror-vault basement and they were the discs and they were not stopped and they could not be un-thrown. A Sufi-line elder sat at the kingdom&rsquo;s bedside three nights later and recited the mother&rsquo;s prayer in the mother&rsquo;s exact cadence. The grey eye learned, at last, to trust without seeing beneath. The bond grows through risk, not certainty.</p>
+    <span class="boundary-line"></span>
+  </div>
+
+  <div class="k-nav">
+    <a href="../../../../index.html">&larr; Chapter 2</a>
+    <a href="index.html" class="active">Overview</a>
+    <a href="identity.html">Identity</a>
+    <a href="story.html">Story</a>
+    <a href="rules.html">Rules &amp; Weapons</a>
+  </div>
+
+  <div class="k-section">
+
+    <div class="alert-banner">
+      <div class="alert-label">Open-Trust Trial &bull; This Chapter</div>
+      <div class="alert-text">Chaya-Golkonda survives Chapter Two and Chittaranga earns his Stage III spotted-deer-foreleg-first-stroke not by combat-victory (he wins many combats but no bond-mark forms), not by surrender, not by mercy, not by transmission. He earns it by <strong>declaring open trust in a young Cyber-Hyderabad coder, in public, in the Old City&rsquo;s Mecca Masjid courtyard, knowing the coder could be a Chitrabheda face</strong>. The coder is loyal. The bond grows through risk, not certainty. <strong>The arc carries the saga&rsquo;s sharpest fighting and the saga&rsquo;s most directly maternal sentiment.</strong> Chittaranga is forced in the mirror-vault basement duel of week six to throw the Ranga disc at his elder brother Lalithanga &mdash; revealed only after the throw to have been a Chitrabheda face since week three. The killing is the chapter&rsquo;s wound that cannot be un-killed. Three nights later the Sufi-line elder Bhagmati-Saheba arrives at the state hero&rsquo;s residence&rsquo;s eastern-courtyard meditation-mat and recites Chittaranga&rsquo;s late mother Lakshmi-Akka&rsquo;s prayers in Lakshmi-Akka&rsquo;s exact lip-reading-dancer cadence; the mother had taught the prayers to a young Bhagmati at the Charminar Sufi dargah in 1987-1992. The mother&rsquo;s voice through Bhagmati-Saheba carries Chittaranga across his grief-trial. The open-trust declaration follows at the Mecca Masjid courtyard at the chapter&rsquo;s eleventh-week public-assembly. Per restructure §1 Telangana joins the southern-bloc federation under Krishnadevaraya-Bhrata&rsquo;s Karnataka Dominant seat in Chapter Three.</div>
+    </div>
+
+    <div class="k-two">
+      <div>
+        <img src="media/portraits/telangana-ch2-chittaranga-vault.png"
+             alt="Chittaranga in the mirror-vault basement after the throw"
+             class="hero-portrait"
+             onerror="this.style.display='none'">
+        <p style="font-size:.7em;color:#9a8db0;text-align:center;margin-top:8px;opacity:.7;">Chittaranga in the mirror-vault basement at three-eleven a.m. on Wednesday week six &mdash; the silver Chitra-disc in his left hand, the shadow-dark Ranga-disc embedded in his elder brother Lalithanga&rsquo;s chest at the southern-wall mirror-fragment, the thousand reflections showing the same throw across every mirror at every angle</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div class="k-card">
+          <h3>The Hero (Survives, Stage III by Open Trust)</h3>
+          <p><strong style="color:#d4a060">Chittaranga</strong> &mdash; The Mismatched-Eyed Warrior Who Killed His Brother and Then Learned to Trust</p>
+          <p style="margin-top:8px;">Thirty-three. The heterochromatic state hero of Telangana since 2023. Brown right eye sees the surface; grey left eye sees what lies beneath. Throwing-disc master &mdash; the dual discs Chitra (Illusion, silver) and Ranga (Truth, shadow-dark) inherited from his father&rsquo;s gem-cutter-and-informant line. Throws the Ranga disc at his elder brother Lalithanga in the mirror-vault basement at three-eleven a.m. on Wednesday week six. The throw is true. The brother had been a Chitrabheda face since the third week of the chapter, and the grey eye had been telling Chittaranga the surface-brother was wrong for three sessions; the throw lands at the brother&rsquo;s sternum at standard killing-velocity. The body is the brother&rsquo;s body. The face was the Chitrabheda face. Both are true. Both cannot be un-killed. Survives the chapter. Stage III spotted-deer-foreleg-first-stroke completes in the Mecca Masjid courtyard at eleven-thirty a.m. on Friday week eleven at the open-trust declaration&rsquo;s seventh sentence.</p>
+          <div style="margin-top:10px;">
+            <span class="stat-chip">Survives &bull; Stage III by Open Trust</span>
+            <span class="stat-chip brother">Killed his elder brother in week 6</span>
+            <span class="stat-chip">Bloodline D &bull; spotted-deer-line</span>
+          </div>
+        </div>
+        <div class="k-card">
+          <h3>The Catalyst Villain (Becomes the City)</h3>
+          <p><strong style="color:#7b9eff">Chitrabheda</strong> &mdash; The Thousand-Faced Form Who Lived as Citizens</p>
+          <p style="margin-top:8px;">Forty-six. Qutb-Chaaya&rsquo;s Ch 1 senior shadow-copy disciple; took the kingdom-council&rsquo;s shadow-copy-rehabilitation-protocol clause at his Ch 1 sparing and has spent the intervening years studying the kingdom&rsquo;s reflective surfaces. Returns in week one of the chapter through a thousand simultaneous mirror-channels: every reflective surface in Hyderabad that has held a citizen&rsquo;s reflection for more than fourteen consecutive months can now hold his face instead. The faces are the citizens; the citizens are still alive; killing a Chitrabheda face does not kill the citizen but does kill the Chitrabheda-residence in that citizen; killing the citizen does kill the citizen. Chittaranga&rsquo;s elder brother Lalithanga had been the kingdom&rsquo;s standing Cyber-Hyderabad cell-administrator; his daily mirror-presence at the IT Park reflective-glass-tower had been Chittaranga&rsquo;s family-line&rsquo;s longest-duration mirror-residence. Chitrabheda took the brother in the third week. The killing in the mirror-vault basement on Wednesday week six killed Lalithanga the body and killed the Chitrabheda-residence in that body. <strong>Chitrabheda survives across all other Hyderabad citizens.</strong> Per restructure he is the chapter&rsquo;s first integrated-by-architecture catalyst-villain (saga&rsquo;s fifth integrated after Kama-Mara, Asta-Asura, Kala-Hasta, and the Karnataka rule&rsquo;s implicit-integration): the kingdom-council&rsquo;s amended Chaya-Golkonda charter installs the mirror-monitoring registry that allows the kingdom to identify which citizens are currently Chitrabheda-resident without killing them.</p>
+        </div>
+        <div class="k-card">
+          <h3>The Mother&rsquo;s Voice &bull; The Sufi-Line Elder</h3>
+          <p><strong style="color:#cc99ff">Bhagmati-Saheba</strong> &mdash; The 1987-Trained Dargah Apprentice Who Carries Chittaranga&rsquo;s Mother&rsquo;s Cadence</p>
+          <p style="margin-top:8px;">Sixty-one. Trained at the Charminar Sufi dargah 1985-1992 under Hazrat Quli Qutb Shah-line senior Sufi-poet Pir-Saheb Anwar; was at the dargah when Chittaranga&rsquo;s mother Lakshmi-Akka (a dancer who could read lips from across a crowded court; deceased 2008) attended the standing 1987-1992 evening lip-reading-and-prayer sessions at the dargah&rsquo;s northern-courtyard women&rsquo;s circle. Lakshmi-Akka taught the young Bhagmati her dancer&rsquo;s exact lip-reading cadence-protocol for the prayers&rsquo; standing-recitation register; the cadence is a Telugu-Urdu-Persian three-tongue rhythm that was Lakshmi-Akka&rsquo;s own composition. Bhagmati-Saheba returns to public Sufi-line standing at the chapter&rsquo;s opening week after eighteen years of withdrawn dargah-retreat following Lakshmi-Akka&rsquo;s 2008 death. Arrives at Chittaranga&rsquo;s state hero&rsquo;s residence on Saturday night of week six (three nights after the mirror-vault basement killing). Recites the mother&rsquo;s prayers in the mother&rsquo;s exact cadence at the eastern-courtyard meditation-mat from midnight to four a.m. Chittaranga hears his mother&rsquo;s voice through Bhagmati-Saheba. The grief-trial breaks at three-forty-seven a.m. He sleeps for the first time since the killing. Per restructure §1 Bhagmati-Saheba becomes Telangana&rsquo;s standing Sufi-line federation-liaison at the Sanctuary in Ch 3.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="k-card" style="margin-top:24px;">
+      <h3>The Three-Way Faction Split</h3>
+      <p style="margin-bottom:14px;">Chaya-Golkonda is three cities in one body. The Old City &mdash; Hyderabad&rsquo;s heritage core &mdash; remains anchored at the Charminar quadrangle. Cyber-Hyderabad &mdash; the IT-and-software district at HITEC City and Gachibowli &mdash; is the kingdom&rsquo;s reflective-glass-tower zone. The Secunderabad Cantonment &mdash; the British-era military district &mdash; is the kingdom&rsquo;s standing neutral-administrative seat. Chapter Two splits the kingdom along the three.</p>
+      <div class="faction-grid">
+        <div class="fac old">
+          <div class="fac-tag">Faction One &bull; ~35%</div>
+          <div class="fac-name">The Old City &bull; Traditional</div>
+          <div class="fac-desc">The Charminar quadrangle, the Mecca Masjid, the Chowmahalla Palace, the standing-pearl-merchants&rsquo; guild, the Hyderabadi-biryani-tradition kitchens, the Hazrat Quli Qutb Shah-line dargah-network. Approximately one-point-four million constituents. Their argument is the kingdom&rsquo;s reflective surfaces have been the kingdom&rsquo;s reflective surfaces for four centuries; the Sufi-line evening-prayer-cadence has been the kingdom&rsquo;s standing-mirror-protection since 1591; the kingdom should rely on the standing-tradition rather than the Cyber-Hyderabad surveillance-network. Bhagmati-Saheba&rsquo;s base; Chittaranga&rsquo;s family-line&rsquo;s base.</div>
+        </div>
+        <div class="fac cyber">
+          <div class="fac-tag">Faction Two &bull; ~38%</div>
+          <div class="fac-name">Cyber-Hyderabad &bull; The Tech-Faction (Partly Chitrabheda)</div>
+          <div class="fac-desc">HITEC City&rsquo;s IT Park, Gachibowli&rsquo;s software-tower district, the Microsoft-Amazon-Google regional offices, the Indian School of Business, the Cyberabad Commissionerate Police HQ. Approximately one-point-eight million constituents. Their argument is the kingdom&rsquo;s reflective-glass-tower density is the highest in the South; the standing AI-image-recognition surveillance-grid is the kingdom&rsquo;s required Chitrabheda-detection-architecture; the Old City&rsquo;s standing-tradition is insufficient to the chapter&rsquo;s scale. Approximately fifteen per cent of the faction is, by chapter end, confirmed as Chitrabheda-resident across the standing-mirror-monitoring registry&rsquo;s first registry-pass; the percentage is the kingdom&rsquo;s standing institutional-challenge. The young Cyber-Hyderabad coder Krishna-Bhat (twenty-six; standing reflective-grid sub-administrator at the Gachibowli west-tower) is the subject of Chittaranga&rsquo;s open-trust declaration.</div>
+        </div>
+        <div class="fac cant">
+          <div class="fac-tag">Faction Three &bull; ~27%</div>
+          <div class="fac-name">The Secunderabad Cantonment &bull; Military Neutral</div>
+          <div class="fac-desc">The Secunderabad Cantonment&rsquo;s British-era military-administrative district; the kingdom&rsquo;s standing State Civil Service&rsquo;s administrative-coordination seat; the kingdom&rsquo;s Telangana State Police HQ; the Defence Research and Development Organisation&rsquo;s Hyderabad regional cell. Approximately one-point-three million constituents. Their argument is the kingdom-council&rsquo;s standing-mirror-monitoring registry should be administered by the standing neutral-military-administration rather than by either the Old City or Cyber-Hyderabad; the standing-procedural-architecture must be cross-faction. The Cantonment&rsquo;s argument is adopted at the kingdom-council&rsquo;s day-eighty-four amendment session as the charter&rsquo;s registry-administration provision; the Cantonment becomes the kingdom&rsquo;s standing mirror-monitoring administrator.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="k-card">
+      <h3>The Void Maw Sign &mdash; The Charminar&rsquo;s Five Shadows</h3>
+      <p>The Charminar quadrangle at noon. Hyderabad Old City. The four-minareted seventeenth-century arch-monument has cast four shadows at every solar-noon since its 1591 completion &mdash; the four minarets&rsquo; four shadows fan outward from the central courtyard in the standard noon-radial pattern. The shadows are documented across four centuries of paintings, photographs, and the kingdom-council&rsquo;s standing-Charminar-monitoring cell&rsquo;s daily noon-image-record (the cell has been recording the noon-shadow configuration for the past fifty-three years under the Archaeological Survey of India&rsquo;s standing-Charminar-preservation protocol). The pattern is the kingdom-council&rsquo;s standing constant.</p>
+      <p style="margin-top:10px;">On Friday week eleven at twelve noon &mdash; the morning of the Mecca Masjid courtyard open-trust declaration &mdash; the Charminar casts five shadows. The fifth shadow is not from any of the four minarets. The fifth shadow is centred at the courtyard&rsquo;s exact geometric centre and extends north-east at the standard noon-radial angle that no minaret could cast (the geometric-centre cannot cast a shadow; only the four edge-vertices can). The shadow is approximately the height of an adult human; the shape is approximately the silhouette of a standing figure in the standard Hyderabadi-dancer-pose with arms slightly extended at the hips&rsquo; level. <strong>The shadow holds for thirteen minutes &mdash; from twelve noon to twelve-thirteen.</strong> The Archaeological Survey of India&rsquo;s standing-Charminar-monitoring cell&rsquo;s noon-image-record at twelve-oh-one and twelve-oh-seven and twelve-eleven capture the five-shadow configuration. The fifth shadow dissolves at twelve-thirteen-fourteen exactly. The Maw has demonstrated the capacity to <strong>cast a fifth shadow from a four-minareted monument at solar-noon for thirteen minutes</strong> &mdash; the saga&rsquo;s first shadow-surplus event. The shape&rsquo;s pose is the dancer-pose Chittaranga&rsquo;s mother Lakshmi-Akka had performed daily at the Mecca Masjid courtyard&rsquo;s noon-prayer session for the eleven years before her 2008 death. Per the cross-region paired-sign-naming protocol the Charminar five-shadows pairs with <strong>Arunachal&rsquo;s First Herald</strong>: the First Herald casts no shadow; the Charminar casts an extra shadow. The pair is the saga&rsquo;s third formally-recognised cross-region Maw-sign pair: shadow-deficit and shadow-surplus.</p>
+    </div>
+
+    <div class="k-quick-links">
+      <a href="identity.html" class="k-quick-link">
+        <span class="ql-title">Faction &amp; Cast</span>
+        <span class="ql-sub">Three districts, the dead brother, the Sufi elder, the loyal coder</span>
+      </a>
+      <a href="story.html" class="k-quick-link">
+        <span class="ql-title">Full Story</span>
+        <span class="ql-sub">The Thousand-Faced City &mdash; A Film in Two Halves</span>
+      </a>
+      <a href="rules.html" class="k-quick-link">
+        <span class="ql-title">Rules &amp; Weapons</span>
+        <span class="ql-sub">Open-trust bond, the dual discs, the five-shadow noon</span>
+      </a>
+      <a href="../../../index.html" class="k-quick-link" style="border-color:rgba(247,217,106,.15);">
+        <span class="ql-title" style="color:#c9a04a;">All Civil War Stories</span>
+        <span class="ql-sub">Back to Chapter 2</span>
+      </a>
+    </div>
+  </div>
+
+  <footer style="text-align:center;padding:28px 20px;border-top:1px solid rgba(196,77,170,.12);color:#9a8db0;font-size:.75em;">
+    <p>Chaya-Golkonda &bull; Civil War &bull; Chapter 2 &bull; Maha Parva &bull; Age of Mythos Volume I</p>
+    <p style="margin-top:6px;"><a href="../../../index.html" style="color:#c9a04a;text-decoration:none;">&larr; Chapter 2 Index</a></p>
+  </footer>
+</body>
+</html>

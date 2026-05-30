@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tri-Pura &mdash; Rules &amp; Weapons &mdash; Civil War</title>
+  <link rel="stylesheet" href="../../../../../chapter-1-rise-of-legends/css/style.css">
+  <style>
+    body { background:#0a0a0e; color:#f0e8f8; }
+    .k-banner { text-align:center; padding:78px 20px 36px; border-bottom:1px solid rgba(196,77,170,.16); }
+    .k-banner .badge { font-size:.55em; letter-spacing:4px; text-transform:uppercase; color:#c44daa; opacity:.85; margin-bottom:12px; }
+    .k-banner h1 { font-size:2em; color:#7fa890; margin-bottom:.1em; }
+    .k-banner .state-label { font-size:.72em; color:#c9bbd8; opacity:.6; margin-bottom:.4em; }
+    .k-nav { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:14px 20px; background:rgba(0,0,0,.5); border-bottom:1px solid rgba(196,77,170,.1); }
+    .k-nav a { padding:5px 16px; border-radius:20px; border:1px solid rgba(196,77,170,.25); color:#d4c5e8; font-size:.72em; letter-spacing:1px; text-decoration:none; transition:all .15s; }
+    .k-nav a:hover, .k-nav a.active { background:rgba(196,77,170,.12); border-color:#c44daa; color:#fff; }
+    .k-section { max-width:1000px; margin:0 auto; padding:40px 20px 60px; }
+    .k-card { background:rgba(255,255,255,.025); border:1px solid rgba(196,77,170,.15); border-radius:10px; padding:24px; margin-bottom:20px; }
+    .k-card h3 { font-size:.72em; letter-spacing:2px; text-transform:uppercase; color:#7fa890; margin-bottom:14px; opacity:.9; }
+    .k-two { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    @media(max-width:640px){ .k-two { grid-template-columns:1fr; } }
+    .id-label { font-size:.62em; text-transform:uppercase; letter-spacing:2px; color:#9a8db0; opacity:.6; margin-bottom:3px; }
+    .id-value { font-size:.88em; color:#c9bbd8; margin-bottom:14px; line-height:1.65; }
+    .id-value strong { color:#fff5d4; }
+
+    .broken-mech { padding:18px 22px; border-radius:12px; background:linear-gradient(135deg,rgba(255,68,68,.10),rgba(40,8,8,.04)); border:1px solid rgba(255,68,68,.32); margin:14px 0; }
+    .broken-mech .bm-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#ff8888; margin-bottom:8px; }
+    .broken-mech .bm-text { color:#ffb0b0; font-size:.9em; line-height:1.75; }
+    .broken-mech .bm-text strong { color:#fff5d4; }
+
+    .tattoo-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    @media(max-width:600px){ .tattoo-grid { grid-template-columns:repeat(2,1fr); } }
+    .tattoo-stage { text-align:center; }
+    .tattoo-img { width:100%; border-radius:8px; border:1px solid rgba(127,168,144,.22); display:block; aspect-ratio:1; object-fit:cover; margin-bottom:8px; background:rgba(127,168,144,.06); }
+    .tattoo-stage.done .tattoo-img    { border-color:rgba(127,168,144,.40); background:rgba(16,30,20,.15); }
+    .tattoo-stage.failed .tattoo-img  { border-color:rgba(255,68,68,.40); background:rgba(40,10,10,.20); }
+    .tattoo-stage.future .tattoo-img  { border-color:rgba(196,77,170,.18); background:rgba(196,77,170,.04); opacity:.5; }
+    .tattoo-stage-label { font-size:.58em; letter-spacing:2px; text-transform:uppercase; color:#7fa890; opacity:.85; display:block; margin-bottom:2px; }
+    .tattoo-stage.failed .tattoo-stage-label { color:#ff8888; }
+    .tattoo-stage.future .tattoo-stage-label { color:#c44daa; }
+    .tattoo-stage-name { font-size:.78em; color:#fff5d4; display:block; margin-bottom:4px; }
+    .tattoo-stage-desc { font-size:.7em; color:#9a8db0; opacity:.85; line-height:1.55; }
+
+    .weapon-img { width:100%; border-radius:10px; border:1px solid rgba(127,168,144,.22); display:block; margin-bottom:10px; background:rgba(127,168,144,.04); }
+    .weapon-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#7fa890; opacity:.85; margin-bottom:4px; display:block; }
+    .weapon-name { font-size:.95em; color:#fff5d4; margin-bottom:8px; }
+    .weapon-desc { font-size:.82em; color:#c9bbd8; line-height:1.7; }
+
+    .saga-rule { padding:18px 22px; border-radius:12px; background:linear-gradient(135deg,rgba(127,168,144,.07),rgba(16,30,20,.03)); border:1px solid rgba(127,168,144,.28); margin:14px 0; }
+    .saga-rule .sr-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#7fa890; margin-bottom:6px; }
+    .saga-rule .sr-text { color:#b8d4c0; font-size:.9em; line-height:1.75; font-style:italic; }
+    .saga-rule .sr-text strong { color:#fff5d4; font-style:normal; }
+
+    .void-callout { padding:20px 22px; border-radius:12px; background:linear-gradient(135deg,rgba(100,90,160,.12),rgba(20,10,40,.04)); border:1px solid rgba(160,140,255,.25); margin-bottom:16px; }
+    .void-callout .vc-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#c4b8ff; margin-bottom:6px; }
+    .void-callout .vc-text { color:#dfd8f0; font-size:.9em; line-height:1.75; }
+    .void-callout .vc-text strong { color:#fff5d4; }
+  </style>
+</head>
+<body>
+  <div class="k-banner">
+    <div class="badge">Civil War &bull; Rules &amp; Weapons (Chapter 2)</div>
+    <h1>Tri-Pura</h1>
+    <div class="state-label">Tripura &mdash; The Broken-Bond Mechanic, the Disassembled Triyantra, the Stuck-Behaviour Pigeon</div>
+  </div>
+  <div class="k-nav">
+    <a href="../../../../index.html">&larr; Chapter 2</a>
+    <a href="index.html">Overview</a>
+    <a href="identity.html">Identity</a>
+    <a href="story.html">Story</a>
+    <a href="rules.html" class="active">Rules &amp; Weapons</a>
+  </div>
+
+  <div class="k-section">
+
+    <!-- ====== THE BROKEN-BOND ====== -->
+    <div class="k-card">
+      <h3>The Phayre&rsquo;s Langur-Bond &mdash; Tattoo-3 Failed, Bond Broken</h3>
+      <p style="font-size:.92em;color:#c9bbd8;line-height:1.8;">Tripurari is the saga&rsquo;s first hero to <strong>survive a Stage III trial without earning the Stage III mark</strong>. The bond is broken because the bonded clan is dead &mdash; the seventeen Phayre&rsquo;s Langurs of the Ujjayanta Palace garden-grove plus the eighteenth langur who entered his rubble-pocket-space, all eighteen perished in or near the central-Agartala collapse. The bond requires the clan; the clan is gone; the bond cannot transfer; the Stage III mark cannot form. This is the saga&rsquo;s thirteenth bond-mechanic: the <strong>broken-bond</strong> &mdash; the bond&rsquo;s formal cessation when the bonded species&rsquo; local lineage is extinguished beyond the bond&rsquo;s recovery-threshold.</p>
+      <div class="broken-mech">
+        <div class="bm-label">Saga-Rule &bull; The Broken-Bond Mechanic</div>
+        <div class="bm-text">A hero whose bonded species&rsquo; local lineage is extinguished by an external action faster than the bond can re-bond to a surviving member of the species loses the bond. The mechanic requires: (1) the bonded species&rsquo; local lineage is geographically and ecologically continuous with the hero&rsquo;s territorial position &mdash; the hero is bonded to <em>this</em> clan, not to the species in the abstract, (2) the extinction-event reduces the local lineage&rsquo;s reproductive members below the bond&rsquo;s recovery-threshold (the threshold for Phayre&rsquo;s Langur is six adults; the Ujjayanta Palace clan lost all seventeen plus the eighteenth visiting member; the surviving Tripura statewide Phayre&rsquo;s Langur population is ~340 individuals, but the lineage is geographically discontinuous with the palace-grove and the bond does not transfer to wild-population members in non-bonded-line clans), (3) the hero survives the extinction-event but cannot perform the standard Stage III trial because the trial requires the clan&rsquo;s presence as witness, (4) the hero formally renounces the bond at the kingdom-council ratification within twenty-eight days of the extinction. <strong>The bond cannot be re-bonded in Volume One; the Phayre&rsquo;s Langur palace-line is permanently broken</strong>. The bond&rsquo;s formal renunciation is part of Tripurari&rsquo;s abdication-statement on day twenty-three. The saga&rsquo;s registry of broken-bond heroes opens with Tripurari as the first entry; the registry is maintained at the Vyasa-of-the-Margins&rsquo; hermitage and is the saga&rsquo;s standing institutional record of broken-bond integration through Volumes Two and Three. <strong>Distinct from the dormant-bond (Meghalaya&rsquo;s clouded-leopard, which waits for Ka-Sienlyngdoh&rsquo;s threshold) and the cracked-bond (MP&rsquo;s Dvadashashringa, which records the cost as a visible scar) and the mountain-mark (Mizoram&rsquo;s Tlangvala, which displaces the Stage III to the landscape):</strong> the broken-bond is the bond&rsquo;s formal cessation. The hero survives without the bond. The saga has space for broken-bond heroes; their function is to carry institutional engineering, poetry, philosophy &mdash; the non-bond instruments &mdash; into the federation&rsquo;s administration.</div>
+      </div>
+    </div>
+
+    <!-- ====== TATTOO LADDER ====== -->
+    <div class="k-card">
+      <h3>The Tattoo Ladder &mdash; Tripurari (Tattoo-3 Failed)</h3>
+      <p style="color:#c9bbd8;font-size:.85em;line-height:1.7;margin-bottom:24px;">Four stages. Tripurari&rsquo;s Stage I and II are intact on his body. Stage III did not form: the langur-clan died before the Stage III trial completed. Stage IV is therefore unreachable. The tattoo-ladder is permanently truncated for this hero in Volume I. The saga registers the truncation as the broken-bond&rsquo;s defining mark.</p>
+
+      <div class="tattoo-grid">
+        <div class="tattoo-stage done">
+          <img src="media/tattoo/tripura-ch2-stage-1.png" alt="Stage I" class="tattoo-img" onerror="this.style.background='rgba(127,168,144,.06)'">
+          <span class="tattoo-stage-label">Stage I &bull; Ch 1</span><span class="tattoo-stage-name">The Spectacled Eyes</span>
+          <div class="tattoo-stage-desc">Earned at age fifteen when Tripurari built his first working bridge across the Howrah-Agartala drainage canal. The Phayre&rsquo;s Langur&rsquo;s characteristic eye-spectacle pattern formed on his left wrist.</div>
+        </div>
+        <div class="tattoo-stage done">
+          <img src="media/tattoo/tripura-ch2-stage-2.png" alt="Stage II" class="tattoo-img" onerror="this.style.background='rgba(127,168,144,.06)'">
+          <span class="tattoo-stage-label">Stage II &bull; Ch 1 Finale</span><span class="tattoo-stage-name">The Langur in the Tree, Watching</span>
+          <div class="tattoo-stage-desc">The half-body mark across his left arm, leg-mark, earned at the Ch 1 counter-frequency-tower completion when the flying-fortress alignment was prevented at the seven-year mark. The mark remains visible on his body through the chapter, through the rubble-nine-days, and after the abdication; it will be visible at the Margin-hermitage for the rest of his life.</div>
+        </div>
+        <div class="tattoo-stage failed">
+          <img src="media/tattoo/tripura-ch2-stage-3-failed.png" alt="Stage III Failed" class="tattoo-img" onerror="this.style.background='rgba(40,10,10,.20)'">
+          <span class="tattoo-stage-label">Stage III &bull; FAILED This Chapter</span><span class="tattoo-stage-name">No Mark</span>
+          <div class="tattoo-stage-desc">The Stage III trial requires the bonded clan as witness. The clan died in the central-Agartala collapse and the langur-clan rubble at the western-Mahua-grove garden-wall. The bond formally renounced at the abdication ceremony on day twenty-three. The Stage III mark cannot form. The tattoo-ladder is permanently truncated. The renunciation is registered at the Margin-hermitage&rsquo;s broken-bond registry as the saga&rsquo;s first entry.</div>
+        </div>
+        <div class="tattoo-stage future">
+          <img src="media/tattoo/tripura-ch2-stage-4-unreachable.png" alt="Stage IV Unreachable" class="tattoo-img" onerror="this.style.background='rgba(196,77,170,.04)'">
+          <span class="tattoo-stage-label">Stage IV &bull; Unreachable</span><span class="tattoo-stage-name">Margin-Guru Designation (Council Naming)</span>
+          <div class="tattoo-stage-desc">The Stage IV full-body mark cannot be earned because Stage III did not form. The saga&rsquo;s register of Margin-gurus instead names Tripurari formally at the Chapter Four Kurukshetra Council. The naming is a Council-record entry, not a body-mark; it appears on the Margin-guru register at the hermitage&rsquo;s main hall. The naming is in his fortieth year; the second naming (after his father&rsquo;s name on the back of a bridge-blueprint at age three) and the more honest of the two.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== SACRED WEAPONS ====== -->
+    <div class="k-card">
+      <h3>Sacred Weapons &mdash; The Disassembled Triyantra and the Mahua-Tree Saffron Cord</h3>
+      <p style="font-size:.92em;color:#c9bbd8;line-height:1.8;">The chapter&rsquo;s two implements are no longer paired weapon-and-armour. The Triyantra crossbow is disassembled and travels with the abdicated king to the Margin-hermitage; it will be displayed once a year at the autumn engineering-festival but never fired. The Mahua-tree saffron-cord is the new permanent memorial-implement &mdash; refreshed daily by Sunita Reang at the Mahua-tree-base&rsquo;s small memorial-stone marking the pigeon&rsquo;s incubation-site.</p>
+      <div class="k-two" style="margin-top:14px;">
+        <div>
+          <span class="weapon-label">Ancient Weapon &bull; Disassembled, Carried to Margins</span>
+          <div class="weapon-name">The Triyantra &mdash; The Triple-Engine Crossbow</div>
+          <img src="media/weapons/tripura-ch2-triyantra-disassembled.png" alt="The Disassembled Triyantra" class="weapon-img" onerror="this.style.display='none'">
+          <div class="id-label">Type</div><div class="id-value">A mechanical crossbow firing three bolts simultaneously from three different mechanisms (main launching, two outboard auxiliaries). Tripurari designed and built the original at age twenty-one as his engineering-institute thesis-project. Carried in folded workshop-satchel form to administrative meetings; assembled only for ceremonial display and combat. Eleven years of continuous service before the chapter.</div>
+          <div class="id-label">Status This Chapter</div><div class="id-value">Recovered intact from Tripurari&rsquo;s pocket-space in the central-Agartala rubble at the day-nine rescue. Carried in the workshop-satchel to the field-hospital. Carried at the abdication ceremony in the workshop-satchel (un-assembled). Carried at the walk west in the leather satchel slung across his right shoulder, disassembled into its three component parts. Will be displayed once a year at the Margin-hermitage&rsquo;s autumn engineering-festival; will not be fired in his lifetime. Tripurari will teach the assembly to apprentices at the hermitage but the assembled crossbow&rsquo;s only function will be teaching, not combat.</div>
+        </div>
+        <div>
+          <span class="weapon-label">New Implement &bull; The Saffron Cord at the Mahua Tree</span>
+          <div class="weapon-name">The Daily Saffron-Cord &mdash; Sunita Reang&rsquo;s Tending</div>
+          <img src="media/weapons/tripura-ch2-saffron-cord.png" alt="The Saffron Cord" class="weapon-img" onerror="this.style.display='none'">
+          <div class="id-label">Type</div><div class="id-value">A single saffron-coloured cord, approximately thirty centimetres long, tied with a single Green-Imperial-Pigeon feather at one end. Triputra placed the small memorial-stone at the Mahua-tree-base on day forty after the pigeon&rsquo;s incubation-death. The kingdom-council appointed Sunita Reang as the standing pigeon-shrine-keeper on day forty-three. She refreshes the cord at every dawn by replacing it with a new identical cord (saffron-dyed cotton from the kingdom&rsquo;s heritage-craft cottage at Udaipur; pigeon-feathers from the wildlife-rehabilitation cell&rsquo;s collection-of-naturally-shed-feathers register).</div>
+          <div class="id-label">Use This Chapter</div><div class="id-value">Daily-tending implementation begins day forty-three of the chapter (after the pigeon&rsquo;s death on day thirty-nine). The cord is the saga&rsquo;s smallest standing-memorial implement &mdash; in scale, in cost, in daily-maintenance burden. The kingdom of Tri-Pura&rsquo;s new institutional rule: the small daily act, not the grand ceremonial act, is what holds memory. The rule extends to all three rebuilding cities: Agartala&rsquo;s rebuilding will require daily manual-maintenance protocols (no self-repair-architecture for 25 years per kingdom-council vote); Udaipur&rsquo;s temple-tradition has always been daily-tending; Dharmanagar&rsquo;s rebuilding under the Mizoram bamboo-bend-bier&rsquo;s saffron-cord daily protocol mirrors Sunita&rsquo;s.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== SAGA RULES ====== -->
+    <div class="k-card">
+      <h3>The Saga-Rules This Chapter Established</h3>
+      <div class="saga-rule">
+        <div class="sr-label">Saga-Rule &bull; Engineering Cannot Substitute for Politics</div>
+        <div class="sr-text">A kingdom whose hero substitutes engineering compromises for political resolutions will see the engineering eventually <strong>fail to absorb the political pressure the engineering was substituting for</strong>. The mechanic: engineering compromises operate by redirecting stress, not by resolving stress &mdash; the kingdom&rsquo;s political tensions remain at the substitution&rsquo;s ground but are technically unaddressed. A coordinated external actor (Tripura-Asura) can exploit the substitution by injecting reverse-stress through the substitution&rsquo;s own infrastructure; the substitution then cascades into self-destruction because the underlying politics has not been resolved. The kingdom&rsquo;s post-collapse resolution must include the politics directly &mdash; Triputra&rsquo;s reign explicitly pairs engineering with poetry; the kingdom-council&rsquo;s 25-year ban on self-repair-architecture is the institutional acknowledgement that no engineering substitution is permitted in critical kingdom-infrastructure until the politics has been resolved at the kingdom-council level. The rule applies to every kingdom whose Chapter Two crisis involved an institutional-engineering-substitution pattern (Tripura primarily; secondarily Maharashtra&rsquo;s 47-fort federation engineering; tertiarily UP&rsquo;s administrative-procedural substitution for dynastic-legitimacy).</div>
+      </div>
+      <div class="saga-rule" style="margin-top:10px;">
+        <div class="sr-label">Saga-Rule &bull; The Broken-Bond Hero&rsquo;s Continued Institutional Function</div>
+        <div class="sr-text">A hero whose bond is formally broken does not exit the saga. The saga reassigns the broken-bond hero to a guru-function &mdash; the hero&rsquo;s engineering, poetry, philosophy, or other non-bond instrument becomes their continuing institutional contribution. The reassignment is administered through the Vyasa-of-the-Margins&rsquo; hermitage; the Margin-hermitage maintains the saga&rsquo;s broken-bond registry (opened with Tripurari as the first entry); the broken-bond heroes contribute to the federation&rsquo;s administration as Margin-counsel across subsequent chapters. <strong>The broken-bond is not the end of the hero&rsquo;s saga participation; the broken-bond is the saga&rsquo;s mechanism for relieving a hero of bond-based political authority while preserving the hero&rsquo;s practical capacities for the federation&rsquo;s ongoing administration.</strong> The Margin-counsel correspondence with the kingdom-of-the-throne is conducted by Sarus-pigeon at every full-moon-and-new-moon pair; the correspondence is archived in the kingdom&rsquo;s permanent state-archive (Tripura&rsquo;s archive is at the Bhubaneswari Temple manuscript-vault under Anjali Debbarma&rsquo;s seal).</div>
+      </div>
+      <div class="saga-rule" style="margin-top:10px;">
+        <div class="sr-label">Saga-Rule &bull; The Hope-and-Hero Distinction</div>
+        <div class="sr-text">A kingdom in catastrophic collapse may inherit by a successor who is the kingdom&rsquo;s <strong>hope</strong> but is not the kingdom&rsquo;s <strong>hero</strong>. The distinction: the hope-successor carries the kingdom institutionally without the bond&rsquo;s authority; the hope-successor coordinates the rebuilding without claiming the bond&rsquo;s seat at the saga&rsquo;s wider Council. The kingdom has not lost the hero-track; the kingdom has chosen to operate on the hope-track for the duration of the rebuilding. The hope-successor may, in subsequent volumes, become the kingdom&rsquo;s eventual hero if the kingdom&rsquo;s bond-line recovers (the Phayre&rsquo;s Langur in Tripura&rsquo;s case is unrecoverable in Volume One but may recover across Volumes Two and Three; the saga&rsquo;s registry will note this if and when it occurs). <strong>Triputra is the saga&rsquo;s first hope-not-hero throne-holder.</strong> Per Ch 3 plan he attends the Sanctuary; per Ch 4 plan he attends the Kurukshetra Council; his contribution is engineering-and-poetry, not bond-authority. The rule applies to every kingdom whose Chapter Two crisis ended in broken-bond rather than transferred-bond.</div>
+      </div>
+    </div>
+
+    <!-- ====== VOID MAW SIGN ====== -->
+    <div class="void-callout">
+      <div class="vc-label">Void Maw Sign &bull; Catalogue Entry &bull; Tripura &bull; The Stone Egg + Stuck Brooding (First Stuck-Behaviour Experiment)</div>
+      <div class="vc-text">5:18 a.m. on day twenty-five of the chapter (the morning after Tripurari&rsquo;s walk west). The Ujjayanta Palace garden&rsquo;s western Mahua-tree. Green Imperial Pigeon TR-IMP-1141 (mature female, banded 2022 by the Agartala District Wildlife Office, six consecutive breeding-seasons at this nest-site) lays an egg. The egg is not an egg. It is a smooth ovoid of polished green-grey serpentinite stone &mdash; 4.1 cm long, 3.2 cm widest, 287 grams (versus the standard 18-22 grams; approximately 13&times; the standard imperial-pigeon-egg mass). The nest&rsquo;s branch-anchoring fails at 5:21 a.m. The nest falls. The stone egg lands intact on the garden-path approximately four metres below the nest-site. The mother pigeon returns to the empty branch at 5:23 a.m. <strong>She begins to perform the incubation behaviour on the now-empty branch-position &mdash; ruffling feathers, performing warming-turns at the standard imperial-pigeon incubation-rhythm, brooding the absent nest. She continues this behaviour for fourteen consecutive days. She does not eat or drink. On the fifteenth day (day thirty-nine of the chapter), at 5:47 a.m., she is found dead on the branch in the incubation-posture; the branch-position has not been abandoned.</strong> Sunita Reang (Agartala District Wildlife Office senior officer, 46) observes from the standard six-metre hide-distance through the fourteen-day duration. She does not interfere. The body and the stone egg are preserved together in the zoological-museum sub-collection in a single display-case logged as <em>&ldquo;Green Imperial Pigeon (TR-IMP-1141) + serpentinite ovoid, Ujjayanta Palace western Mahua-tree, post-incubation-death at fifteen days, brooding behaviour continuous and unbroken to death.&rdquo;</em> Mechanism (through the Phayre&rsquo;s-Langur-line broken-bond, which is the only kingdom-bond Tripura still has and which is the bond the Maw experiments on): the Maw has demonstrated the capacity to <strong>make a creature perform an action whose object has been removed</strong> &mdash; the saga&rsquo;s first stuck-behaviour experiment. The kingdom&rsquo;s reading (Tripurari&rsquo;s analysis transmitted by Sarus-pigeon from the Margin-hermitage on day fifty-three): the engineer-king has built an architecture; the architecture has collapsed; the engineer continues to perform engineering when there is nothing left to engineer; the kingdom must learn the difference between perseverance and stuck-behaviour. <strong>Significance:</strong> Tripura&rsquo;s sign is the thirteenth rung of the escalation pattern &mdash; the <em>first stuck-behaviour experiment</em>. The Maw has shifted from experimenting on the saga&rsquo;s succession (Mizoram&rsquo;s two-headed serow naming the next bond-bearer) to experimenting on the saga&rsquo;s response-pattern when the bond is broken (the mother continuing the action that has no object). Krishnadevaraya-Bhrata&rsquo;s cross-region reply notes the three positions are now catalogued: presence-without-action (Karnataka&rsquo;s Bronze-Dust Child), future-naming (Mizoram&rsquo;s two-headed serow), stuck-behaviour (Tripura&rsquo;s brooding pigeon). The Maw is mapping the saga&rsquo;s response-space.</div>
+      <div style="margin:12px 0 4px;padding-left:12px;font-size:.78em;color:#dfd8f0;line-height:1.7;">
+        <strong style="color:#fff5d4;">Person</strong> &times; 2 (Karnataka, Goa) &rarr; <strong style="color:#fff5d4;">Place</strong> (Maharashtra) &rarr; <strong style="color:#fff5d4;">Landscape</strong> (UP) &rarr; <strong style="color:#fff5d4;">Multi-creature</strong> (MP) &rarr; <strong style="color:#fff5d4;">Landscape + Multi-creature</strong> (Assam) &rarr; <strong style="color:#fff5d4;">Anti-weather</strong> (Meghalaya) &rarr; <strong style="color:#fff5d4;">Self-signing form-making</strong> (Manipur) &rarr; <strong style="color:#fff5d4;">Self-cancelling form</strong> (Nagaland) &rarr; <strong style="color:#fff5d4;">Species-lethal-altitude experiment</strong> (Sikkim) &rarr; <strong style="color:#fff5d4;">Face-erasure (First Herald)</strong> (Arunachal) &rarr; <strong style="color:#fff5d4;">Future-naming (two-headed serow speaks)</strong> (Mizoram) &rarr; <strong style="color:#fff5d4;">Stuck-behaviour (pigeon broods empty)</strong> (Tripura).
+      </div>
+      <div style="margin-top:14px;padding:12px 16px;border-radius:8px;background:rgba(127,168,144,.06);border-left:3px solid rgba(127,168,144,.5);">
+        <div style="font-size:.62em;letter-spacing:2px;text-transform:uppercase;color:#b8d4c0;margin-bottom:6px;">Cross-Kingdom Cascade-Alert</div>
+        <div style="font-size:.85em;color:#dfd8f0;line-height:1.75;">Triputra sends the cross-kingdom Sarus-pigeon cascade-alert on day twenty-six. The alert reads: <em>&ldquo;The Maw has experimented on Tripura&rsquo;s imperial-pigeon line. A Green Imperial Pigeon laid an unhatchable stone egg at the Ujjayanta Palace western Mahua-tree the morning after my father-figure&rsquo;s formal abdication. The egg is serpentinite, thirteen times the standard mass. The nest collapsed under the stone&rsquo;s weight. The stone landed intact. The mother pigeon has returned to the empty nest-position and is performing the incubation behaviour on the absent nest. The behaviour is continuous. The pigeon is not eating or drinking. The wildlife-rehabilitation officer&rsquo;s assessment is that she will die in incubation-position within ten to fifteen days. The Maw has demonstrated the capacity to make a creature perform an action whose object has been removed &mdash; the saga&rsquo;s first stuck-behaviour experiment. The kingdom&rsquo;s reading: the engineer who has built an architecture continues to perform engineering when there is nothing left to engineer. The kingdom must learn the difference between perseverance and stuck-behaviour.&rdquo;</em> Hmangaihi&rsquo;s NE-pair reply: <em>&ldquo;The two experiments are paired: the Maw names the new and mourns the gone in the same season. The Sanctuary will need to address both.&rdquo;</em> Krishnadevaraya-Bhrata&rsquo;s second cross-region reply confirms the three-position catalogue of the saga&rsquo;s response-space.</div>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;margin-top:24px;flex-wrap:wrap;gap:10px;">
+      <a href="story.html" style="color:#c9a04a;text-decoration:none;font-size:.85em;">&larr; Kingdom Story</a>
+      <a href="../../../../index.html" style="color:#c9a04a;text-decoration:none;font-size:.85em;">All Civil War Stories &rarr;</a>
+    </div>
+  </div>
+
+  <footer style="text-align:center;padding:28px 20px;border-top:1px solid rgba(196,77,170,.12);color:#9a8db0;font-size:.75em;">
+    <p>Tri-Pura Rules &amp; Weapons &bull; Civil War &bull; Chapter 2</p>
+  </footer>
+</body>
+</html>

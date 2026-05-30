@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Megha-Maata &mdash; Civil War &mdash; Age of Mythos</title>
+  <link rel="stylesheet" href="../../../../../chapter-1-rise-of-legends/css/style.css">
+  <style>
+    body { background:#080a14; color:#f0e8f8; min-height:100vh; }
+    .k-banner { text-align:center; padding:78px 20px 40px; background:linear-gradient(180deg,#080a14 0%,#101424 60%,#080a14 100%); border-bottom:1px solid rgba(196,77,170,.16); position:relative; }
+    .k-banner .badge { font-size:.55em; letter-spacing:4px; text-transform:uppercase; color:#c44daa; opacity:.85; margin-bottom:14px; }
+    .k-banner .badge .dead { color:#ff7766; font-weight:bold; }
+    .k-banner h1 { font-size:2.6em; color:#a8b2c8; margin-bottom:.15em; letter-spacing:2px; }
+    .k-banner .state-label { font-size:.78em; color:#c9bbd8; opacity:.7; letter-spacing:1px; margin-bottom:.6em; }
+    .k-banner .tagline { color:#d4c5e8; font-size:.92em; max-width:660px; margin:0 auto; line-height:1.75; font-style:italic; }
+    .storm-line { display:block; margin:24px auto 0; width:240px; height:1px; background:linear-gradient(90deg,transparent,#a8b2c8 30%,#cc5566 50%,#a8b2c8 70%,transparent); position:relative; opacity:.7; }
+    .storm-line::after { content:""; position:absolute; left:48%; top:-3px; width:6px; height:7px; background:#cc5566; transform:rotate(45deg); }
+    .k-nav { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:14px 20px; background:rgba(0,0,0,.5); border-bottom:1px solid rgba(196,77,170,.1); }
+    .k-nav a { padding:5px 16px; border-radius:20px; border:1px solid rgba(196,77,170,.25); color:#d4c5e8; font-size:.72em; letter-spacing:1px; text-decoration:none; transition:all .15s; }
+    .k-nav a:hover, .k-nav a.active { background:rgba(196,77,170,.12); border-color:#c44daa; color:#fff; }
+    .k-section { max-width:1100px; margin:0 auto; padding:40px 20px 60px; }
+    .k-two { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    @media(max-width:640px){ .k-two { grid-template-columns:1fr; } }
+    .k-card { background:rgba(255,255,255,.025); border:1px solid rgba(196,77,170,.15); border-radius:10px; padding:22px; margin-bottom:16px; }
+    .k-card h3 { font-size:.72em; letter-spacing:2px; text-transform:uppercase; color:#a8b2c8; margin-bottom:12px; opacity:.9; }
+    .k-card p { font-size:.88em; color:#c9bbd8; line-height:1.75; }
+    .hero-portrait { width:100%; border-radius:10px; border:1px solid rgba(168,178,200,.22); display:block; }
+
+    .faction-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:14px; }
+    @media(max-width:720px){ .faction-grid { grid-template-columns:1fr; } }
+    .fac { padding:14px 16px; border-radius:10px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.02); }
+    .fac .fac-tag { font-size:.55em; letter-spacing:2px; text-transform:uppercase; margin-bottom:6px; }
+    .fac .fac-name { font-size:.9em; margin-bottom:6px; font-family:Georgia,serif; }
+    .fac .fac-desc { font-size:.74em; color:#c9bbd8; line-height:1.55; opacity:.85; }
+    .fac.matri { border-color:rgba(168,178,200,.32); }
+    .fac.matri .fac-tag { color:#a8b2c8; }
+    .fac.matri .fac-name { color:#fff5d4; }
+    .fac.garo  { border-color:rgba(68,255,136,.28); }
+    .fac.garo .fac-tag  { color:#88e8ad; }
+    .fac.garo .fac-name { color:#c7f0d8; }
+    .fac.patri { border-color:rgba(204,85,102,.32); }
+    .fac.patri .fac-tag { color:#cc5566; }
+    .fac.patri .fac-name { color:#f0c4cc; }
+
+    .k-quick-links { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-top:32px; }
+    .k-quick-link { display:block; padding:18px 20px; border-radius:10px; border:1px solid rgba(168,178,200,.22); background:rgba(16,20,36,.5); text-decoration:none; text-align:center; transition:border-color .15s; }
+    .k-quick-link:hover { border-color:#a8b2c8; }
+    .k-quick-link .ql-title { font-size:.85em; color:#a8b2c8; display:block; margin-bottom:4px; }
+    .k-quick-link .ql-sub { font-size:.7em; color:#9a8db0; opacity:.75; }
+
+    .alert-banner { background:linear-gradient(135deg,rgba(255,68,68,.10),rgba(60,0,0,.04)); border:1px solid rgba(255,68,68,.3); padding:16px 20px; border-radius:10px; margin-bottom:18px; }
+    .alert-banner .alert-label { font-size:.55em; letter-spacing:2px; text-transform:uppercase; color:#ff7766; margin-bottom:6px; }
+    .alert-banner .alert-text { color:#f0d8d0; font-size:.88em; line-height:1.7; }
+
+    .stat-chip { font-size:.65em; padding:3px 10px; border-radius:12px; background:rgba(168,178,200,.07); border:1px solid rgba(168,178,200,.22); color:#cfd6e0; display:inline-block; margin:2px; }
+  </style>
+</head>
+<body>
+  <div class="k-banner">
+    <div class="badge"><span class="dead">Hero Death &bull; Mutual Kill</span> &bull; Chapter Two &bull; Civil War</div>
+    <h1>Megha-Maata</h1>
+    <div class="state-label">Meghalaya &bull; Northeast Region</div>
+    <p class="tagline">She spent her life erasing herself for the matrilineal line. Her cousin died because her silence was just silence. She broke the silence in council, drafted the settlement, and rode into the patrilineal storm. The storm did not let her come back.</p>
+    <span class="storm-line"></span>
+  </div>
+
+  <div class="k-nav">
+    <a href="../../../../index.html">&larr; Chapter 2</a>
+    <a href="index.html" class="active">Overview</a>
+    <a href="identity.html">Identity</a>
+    <a href="story.html">Story</a>
+    <a href="rules.html">Rules &amp; Weapons</a>
+  </div>
+
+  <div class="k-section">
+
+    <div class="alert-banner">
+      <div class="alert-label">Hero Death &bull; This Chapter</div>
+      <div class="alert-text">Meghanadi dies at the Meghalaya High Court during the patrilineal storm &mdash; mutual kill with Megha-Daitya at the storm&rsquo;s eye. The Stage III clouded-leopard foreleg-mark completes in the same instant the killing-shots reach her chest. Her cousin&rsquo;s 28-year-old protege <strong style="color:#88e8ad;">U-Khrawkmen</strong> (Garo-clan elder&rsquo;s son, raised by U-Mawkynrew) inherits the political seat &mdash; first male inheritor of a matrilineal kingdom in Khasi history. The clouded-leopard bond does <em>not</em> pass to him: it stays with the line and lies dormant, waiting on Ka-Sienlyngdoh (her twelve-year-old niece) for the Chapter Three Beast-Rising.</div>
+    </div>
+
+    <div class="k-two">
+      <div>
+        <img src="media/portraits/meghalaya-ch2-meghanadi-storm.png"
+             alt="Meghanadi charging through the patrilineal storm"
+             class="hero-portrait"
+             onerror="this.style.display='none'">
+        <p style="font-size:.7em;color:#9a8db0;text-align:center;margin-top:8px;opacity:.7;">Meghanadi at the storm&rsquo;s eye &mdash; Megha-Dand cloud-staff raised, monsoon driving sideways across the Meghalaya High Court courtyard</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div class="k-card">
+          <h3>The Hero (Dies, Stage III)</h3>
+          <p><strong style="color:#a8b2c8">Meghanadi</strong> &mdash; The Cloud-Mother Who Finally Spoke</p>
+          <p style="margin-top:8px;">Thirty-seven. Ka Khadduh of her clan-house by matrilineal right. Erased herself in council for fifteen years. Her self-erasure killed her sister-cousin. The Garo elder U-Mawkynrew breaks her of the habit. She speaks at the Council of Matrilineal Elders, drafts the settlement, then rides into the storm to defend it. Dies at the storm&rsquo;s eye, killing Megha-Daitya in the same hour.</p>
+          <div style="margin-top:10px;">
+            <span class="stat-chip">Hero Death</span>
+            <span class="stat-chip">Stage III at Death</span>
+            <span class="stat-chip">Bloodline C</span>
+          </div>
+        </div>
+        <div class="k-card">
+          <h3>The Inheritor (New)</h3>
+          <p><strong style="color:#88e8ad">U-Khrawkmen</strong> &mdash; The Garo Mediator&rsquo;s Son</p>
+          <p style="margin-top:8px;">Twenty-eight. Garo-clan elder&rsquo;s son, raised by U-Mawkynrew (his great-aunt). Has been training as a Mixed Council mediator for six years. Meghanadi&rsquo;s quiet protege through the petition months. Inherits the political seat by Meghanadi&rsquo;s explicit written wish, ratified within an hour of her death by the surviving Council of Matrilineal Elders. First male inheritor of a matrilineal kingdom in Khasi history.</p>
+        </div>
+        <div class="k-card">
+          <h3>The Catalyst Villain</h3>
+          <p><strong style="color:#cc5566">Megha-Daitya</strong> &mdash; The Patrilineal Claimant Prince</p>
+          <p style="margin-top:8px;">Forty-two. Half-Khasi (mother), Assamese (father). Raised in Guwahati after his mother died. Files a 47-petition wave under the Indian Succession Act to claim matrilineal property by patrilineal descent. Organises the patrilineal storm-faction when the settlement denies him full inheritance. Dies at the High Court at Meghanadi&rsquo;s hand &mdash; her cloud-staff through his sternum &mdash; in the same hour she dies under his submachine-gun fire.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="k-card" style="margin-top:24px;">
+      <h3>The Three-Way Faction Split</h3>
+      <p style="margin-bottom:14px;">The Khasi matrilineal tradition was protected by the Sixth Schedule for seventy-eight years. Megha-Daitya&rsquo;s petitions test whether the Indian Succession Act can override it through patrilineal-descent claims by men whose mothers were Khasi. The Council fractures three ways.</p>
+      <div class="faction-grid">
+        <div class="fac matri">
+          <div class="fac-tag">Faction One</div>
+          <div class="fac-name">Strict-Matrilineal Khasi</div>
+          <div class="fac-desc">Traditional Khasi elders. Reject the patrilineal claim absolutely. Customary law is supreme under the Sixth Schedule. A woman who marries out loses her ancestral claim; her children inherit nothing from her line. The position is internally consistent and constitutionally defended &mdash; but it leaves Megha-Daitya nothing.</div>
+        </div>
+        <div class="fac garo">
+          <div class="fac-tag">Faction Two</div>
+          <div class="fac-name">Garo-Mixed Mediators</div>
+          <div class="fac-desc">The Garo tribe has some patrilineal elements; the Garo Hills have been the cross-tradition bridge for centuries. Want a middle path &mdash; partial recognition of patrilineal claimants without surrendering matrilineal property rights. U-Mawkynrew&rsquo;s base. Meghanadi&rsquo;s settlement is drafted from this position.</div>
+        </div>
+        <div class="fac patri">
+          <div class="fac-tag">Faction Three</div>
+          <div class="fac-name">Patrilineal Petitioners</div>
+          <div class="fac-desc">Forty-seven male claimants &mdash; mostly Assamese-raised sons of Khasi mothers who married out. Their grievance is legally articulable. Megha-Daitya organises them, then radicalises the most extreme into the storm-faction. After his death the surviving petitioners accept the settlement and accept U-Khrawkmen&rsquo;s council seat.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="k-card">
+      <h3>The Void Maw Sign</h3>
+      <p>The day after Meghanadi&rsquo;s death, in Cherrapunji &mdash; one of the wettest places on earth, where monsoon-season July averages 2,000 mm of rainfall &mdash; there is no rain. For twenty-four hours. In the middle of monsoon. The locals call it <em>Ka-Rhang-Wat-Snie</em> (&ldquo;the dry day of grief&rdquo;). The hill mynas in the sacred groves at Mawphlang fall silent for the same twenty-four hours. It is the first dry monsoon day in Cherrapunji in living memory. U-Khrawkmen orders the day to be marked annually in the new state calendar.</p>
+    </div>
+
+    <div class="k-quick-links">
+      <a href="identity.html" class="k-quick-link">
+        <span class="ql-title">Faction &amp; Cast</span>
+        <span class="ql-sub">Three factions, the cousin who died, the inheritor</span>
+      </a>
+      <a href="story.html" class="k-quick-link">
+        <span class="ql-title">Full Story</span>
+        <span class="ql-sub">The Patrilineal Storm</span>
+      </a>
+      <a href="rules.html" class="k-quick-link">
+        <span class="ql-title">Rules &amp; Weapons</span>
+        <span class="ql-sub">Bond dormant, settlement framework, dry Cherrapunji</span>
+      </a>
+      <a href="../../../index.html" class="k-quick-link" style="border-color:rgba(247,217,106,.15);">
+        <span class="ql-title" style="color:#c9a04a;">All Civil War Stories</span>
+        <span class="ql-sub">Back to Chapter 2</span>
+      </a>
+    </div>
+  </div>
+
+  <footer style="text-align:center;padding:28px 20px;border-top:1px solid rgba(196,77,170,.12);color:#9a8db0;font-size:.75em;">
+    <p>Megha-Maata &bull; Civil War &bull; Chapter 2 &bull; Maha Parva &bull; Age of Mythos Volume I</p>
+    <p style="margin-top:6px;"><a href="../../../index.html" style="color:#c9a04a;text-decoration:none;">&larr; Chapter 2 Index</a></p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tri-Pura &mdash; Civil War &mdash; Age of Mythos</title>
+  <link rel="stylesheet" href="../../../../../chapter-1-rise-of-legends/css/style.css">
+  <style>
+    body { background:#0a0a12; color:#f0e8f8; min-height:100vh; }
+    .k-banner { text-align:center; padding:78px 20px 40px; background:linear-gradient(180deg,#0a0a12 0%,#15101a 60%,#0a0a12 100%); border-bottom:1px solid rgba(196,77,170,.16); position:relative; }
+    .k-banner .badge { font-size:.55em; letter-spacing:4px; text-transform:uppercase; color:#c44daa; opacity:.85; margin-bottom:14px; }
+    .k-banner .badge .border { color:#7fa890; font-weight:bold; }
+    .k-banner h1 { font-size:2.6em; color:#7fa890; margin-bottom:.15em; letter-spacing:2px; }
+    .k-banner .state-label { font-size:.78em; color:#c9bbd8; opacity:.7; letter-spacing:1px; margin-bottom:.6em; }
+    .k-banner .tagline { color:#d4c5e8; font-size:.92em; max-width:660px; margin:0 auto; line-height:1.75; font-style:italic; }
+    .boundary-line { display:block; margin:24px auto 0; width:280px; height:1px; background:linear-gradient(90deg,transparent 0%,#7fa890 35%,transparent 50%,#7fa890 65%,transparent 100%); position:relative; opacity:.75; }
+    .k-nav { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:14px 20px; background:rgba(0,0,0,.5); border-bottom:1px solid rgba(196,77,170,.1); }
+    .k-nav a { padding:5px 16px; border-radius:20px; border:1px solid rgba(196,77,170,.25); color:#d4c5e8; font-size:.72em; letter-spacing:1px; text-decoration:none; transition:all .15s; }
+    .k-nav a:hover, .k-nav a.active { background:rgba(196,77,170,.12); border-color:#c44daa; color:#fff; }
+    .k-section { max-width:1100px; margin:0 auto; padding:40px 20px 60px; }
+    .k-two { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    @media(max-width:640px){ .k-two { grid-template-columns:1fr; } }
+    .k-card { background:rgba(255,255,255,.025); border:1px solid rgba(196,77,170,.15); border-radius:10px; padding:22px; margin-bottom:16px; }
+    .k-card h3 { font-size:.72em; letter-spacing:2px; text-transform:uppercase; color:#7fa890; margin-bottom:12px; opacity:.9; }
+    .k-card p { font-size:.88em; color:#c9bbd8; line-height:1.75; }
+    .hero-portrait { width:100%; border-radius:10px; border:1px solid rgba(127,168,144,.22); display:block; }
+
+    .faction-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:14px; }
+    @media(max-width:720px){ .faction-grid { grid-template-columns:1fr; } }
+    .fac { padding:14px 16px; border-radius:10px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.02); }
+    .fac .fac-tag { font-size:.55em; letter-spacing:2px; text-transform:uppercase; margin-bottom:6px; }
+    .fac .fac-name { font-size:.9em; margin-bottom:6px; font-family:Georgia,serif; }
+    .fac .fac-desc { font-size:.74em; color:#c9bbd8; line-height:1.55; opacity:.85; }
+    .fac.agartala { border-color:rgba(127,168,144,.30); }
+    .fac.agartala .fac-tag  { color:#7fa890; }
+    .fac.agartala .fac-name { color:#a8c8b4; }
+    .fac.udaipur  { border-color:rgba(232,168,80,.30); }
+    .fac.udaipur .fac-tag  { color:#e8a850; }
+    .fac.udaipur .fac-name { color:#f0c490; }
+    .fac.dharmanagar { border-color:rgba(123,98,180,.30); }
+    .fac.dharmanagar .fac-tag  { color:#9080d0; }
+    .fac.dharmanagar .fac-name { color:#c8bcf0; }
+
+    .k-quick-links { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-top:32px; }
+    .k-quick-link { display:block; padding:18px 20px; border-radius:10px; border:1px solid rgba(127,168,144,.22); background:rgba(16,20,18,.5); text-decoration:none; text-align:center; transition:border-color .15s; }
+    .k-quick-link:hover { border-color:#7fa890; }
+    .k-quick-link .ql-title { font-size:.85em; color:#7fa890; display:block; margin-bottom:4px; }
+    .k-quick-link .ql-sub { font-size:.7em; color:#9a8db0; opacity:.75; }
+
+    .alert-banner { background:linear-gradient(135deg,rgba(255,68,68,.10),rgba(40,8,8,.04)); border:1px solid rgba(255,68,68,.32); padding:16px 20px; border-radius:10px; margin-bottom:18px; }
+    .alert-banner .alert-label { font-size:.55em; letter-spacing:2px; text-transform:uppercase; color:#ff8888; margin-bottom:6px; }
+    .alert-banner .alert-text { color:#ffb0b0; font-size:.88em; line-height:1.7; }
+
+    .stat-chip { font-size:.65em; padding:3px 10px; border-radius:12px; background:rgba(127,168,144,.07); border:1px solid rgba(127,168,144,.22); color:#a8c8b4; display:inline-block; margin:2px; }
+    .stat-chip.fall { background:rgba(255,68,68,.10); border-color:rgba(255,68,68,.30); color:#ff8888; }
+  </style>
+</head>
+<body>
+  <div class="k-banner">
+    <div class="badge"><span class="border">Hero Fall &bull; Tattoo-3 Failed</span> &bull; Chapter Two &bull; Civil War</div>
+    <h1>Tri-Pura</h1>
+    <div class="state-label">Tripura &bull; Northeast Region</div>
+    <p class="tagline">For nine years the engineer-king answered every grievance with a better bridge. The three cities openly warred and the bridges held. Tripura-Asura sabotaged all three on the same monsoon night. The streets cracked. The walls fell. The engineer was buried nine days and his bond died in the rubble. A nineteen-year-old ward and a margin-walking guru carried what was left.</p>
+    <span class="boundary-line"></span>
+  </div>
+
+  <div class="k-nav">
+    <a href="../../../../index.html">&larr; Chapter 2</a>
+    <a href="index.html" class="active">Overview</a>
+    <a href="identity.html">Identity</a>
+    <a href="story.html">Story</a>
+    <a href="rules.html">Rules &amp; Weapons</a>
+  </div>
+
+  <div class="k-section">
+
+    <div class="alert-banner">
+      <div class="alert-label">Hero Fall &bull; Tattoo-3 Failed &bull; This Chapter</div>
+      <div class="alert-text">Tri-Pura&rsquo;s Chapter Two is the saga&rsquo;s first <strong>Tattoo-3 Failure</strong>. Tripurari survives bodily but his Phayre&rsquo;s Langur bond dies with the langur clan in the rubble of the central-Agartala collapse. He is pulled out alive on day nine, walks for two more weeks, then formally resigns the kingdom-throne and withdraws to the Vyasa-of-the-Margins&rsquo; forest-hermitage as the chapter&rsquo;s second appearance of the Margin-walker (per D8 the Margins&rsquo; only Ch 2 visits are Karnataka pilot + Tripura). His nineteen-year-old ward Triputra inherits a kingdom in pieces. Per restructure §1 Tripura joins the NE Federation under Moirangthem in Chapter Three as the federation&rsquo;s smallest and most fragile member; the kingdom is occupied in pieces by Assam (north), West Bengal (west), and Mizoram (east) under formal mutual-aid agreements during the rebuilding decade.</div>
+    </div>
+
+    <div class="k-two">
+      <div>
+        <img src="media/portraits/tripura-ch2-tripurari-withdrawn.png"
+             alt="Tripurari leaving Agartala for the margin-hermitage"
+             class="hero-portrait"
+             onerror="this.style.display='none'">
+        <p style="font-size:.7em;color:#9a8db0;text-align:center;margin-top:8px;opacity:.7;">Tripurari at the western gate of Agartala&rsquo;s collapsed Ujjayanta Palace &mdash; one boot on broken brick, the Triyantra crossbow disassembled into its three parts and folded into a satchel, walking west toward the Margins</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div class="k-card">
+          <h3>The Hero (Survives, Bond Broken, Tattoo-3 Failed)</h3>
+          <p><strong style="color:#7fa890">Tripurari</strong> &mdash; The Engineer Who Could Not Save Three Cities</p>
+          <p style="margin-top:8px;">Thirty-four. The engineer-king of Tri-Pura for eleven years. Spent nine of those years treating the three cities&rsquo; civic disputes as engineering problems &mdash; better bridges, better water-systems, better traffic-flow algorithms, never better politics. Tripura-Asura coordinated a triple sabotage on the second-monsoon-week of week six. The three central districts collapsed in seventeen-minute sequence. Tripurari was at the central-Agartala administrative-block when its primary support-truss failed. Pulled out of the rubble on day nine alive but with the Phayre&rsquo;s Langur clan from the central-Agartala palace-grove dead beneath the collapsed garden wall. The bond does not transfer; the bond is broken. Walks for two weeks then formally resigns the throne to his ward Triputra and walks west to the Vyasa-of-the-Margins&rsquo; hermitage.</p>
+          <div style="margin-top:10px;">
+            <span class="stat-chip fall">Survives &bull; Tattoo-3 Failed</span>
+            <span class="stat-chip">Bloodline D &bull; bond broken</span>
+            <span class="stat-chip">Withdraws to Margins (guru-figure Ch 3-4)</span>
+          </div>
+        </div>
+        <div class="k-card">
+          <h3>The Catalyst Villain</h3>
+          <p><strong style="color:#c8bcf0">Tripura-Asura</strong> &mdash; The Engineer-Demon of Three Flying Cities</p>
+          <p style="margin-top:8px;">Sixty-one in human-form age, mythologically ancient. The Hindu-myth three-cities demon, returned in Ch 1 as an engineer-rival to Tripurari, now in Ch 2 as the saboteur who turned Tripurari&rsquo;s self-repairing-wall technology against the cities themselves &mdash; the walls repaired in reverse, the bridges retracted instead of extending, the water-system back-pressured into the storm drains and flooded the foundations during the second-monsoon-week storm. Survives Ch 2 in his three flying fortresses (now repositioned over the Lushai Hills&rsquo; eastern range with Parvata-Asura&rsquo;s depleted residue covering his coordination); coordinates with Adharma-Kendra&rsquo;s NE field-operatives network through the same Singapore funding line. Per Ch 3 plan he attempts a second sabotage at the Sanctuary convening; Triputra and Vyasa-of-the-Margins coordinate the kingdom&rsquo;s response.</p>
+        </div>
+        <div class="k-card">
+          <h3>The Ward &bull; New Throne-Holder</h3>
+          <p><strong style="color:#a8c8b4">Triputra</strong> &mdash; The Nineteen-Year-Old Engineer-Poet</p>
+          <p style="margin-top:8px;">Nineteen. Tripurari&rsquo;s formal ward since age eleven (his parents died in a 2018 Agartala drainage-system fire that Tripurari personally led the rescue operation for; both adults perished, the eleven-year-old survived). Trained as engineer-apprentice and as classical-Bengali-Tripuri poet in parallel from age twelve. Was at the Ujjayanta Palace bridge-engineering workshop with two junior engineers when the central-Agartala collapse began &mdash; the workshop was at the palace&rsquo;s southern edge and survived. Coordinated the nine-day rescue operation with the kingdom-council&rsquo;s emergency-response cell. Inherits the throne at the formal abdication ceremony at the Agartala southern-edge open-air kingdom-council session on day twenty-three of the rebuilding. <strong>Per the planning doc&rsquo;s phrasing: Triputra is Ch 3 Tripura&rsquo;s hope but never its hero.</strong> He carries the broken kingdom institutionally, not bond-wise; the Phayre&rsquo;s Langur line cannot be re-bonded in Volume I.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="k-card" style="margin-top:24px;">
+      <h3>The Three-Way Faction Split &mdash; And Then The Nine-Way Sub-Split</h3>
+      <p style="margin-bottom:14px;">Tri-Pura is named for its three cities. The cities have been quietly at odds for thirty-seven years over water-rights, jute-trade allocations, and the cycling of the kingdom&rsquo;s rotating-capital arrangement. The chapter splits each city into three sub-factions of its own &mdash; nine factions total &mdash; before the collapse reduces all nine to the same recovery-position. The three primary city-factions are:</p>
+      <div class="faction-grid">
+        <div class="fac agartala">
+          <div class="fac-tag">City One</div>
+          <div class="fac-name">Agartala &mdash; The Engineering Capital</div>
+          <div class="fac-desc">Population approximately five hundred and forty thousand at chapter opening. The administrative capital, the engineering-research seat, the kingdom&rsquo;s state-government headquarters. Sub-factions: Engineer-Senior (Tripurari&rsquo;s research-staff), Civic-Reform (the elected municipal council), and Old-Palace (the ceremonial royal residence&rsquo;s administrative staff). The central-Agartala collapse zone covers about a third of the city&rsquo;s central district &mdash; the Ujjayanta Palace gardens, the Bharat-Yantra engineering institute, the Mahatma Gandhi Hospital&rsquo;s east wing. Death-count after nine-day recovery: 1,847 confirmed, 312 missing-and-presumed-dead.</div>
+        </div>
+        <div class="fac udaipur">
+          <div class="fac-tag">City Two</div>
+          <div class="fac-name">Udaipur &mdash; The Old Capital</div>
+          <div class="fac-desc">Population approximately ninety thousand at chapter opening. The old kingdom-capital before 1885; the Bhubaneswari Temple&rsquo;s seat; the kingdom&rsquo;s primary heritage-tourism economy. Sub-factions: Heritage-Trust (the temple administration), Bazaar-Old (the central market guild), and Pilgrim-New (the post-1985 tourism-economy operators). The Udaipur collapse zone covers the Bhubaneswari Temple&rsquo;s outer-courtyard wall, the central-market jute-trade godowns, the old-city water-cistern. Death-count: 412 confirmed, 47 missing.</div>
+        </div>
+        <div class="fac dharmanagar">
+          <div class="fac-tag">City Three</div>
+          <div class="fac-name">Dharmanagar &mdash; The Northern Border-Town</div>
+          <div class="fac-desc">Population approximately sixty-five thousand at chapter opening. The kingdom&rsquo;s northern district-headquarters, the Bangladesh-border crossing-point, the rubber-plantation industrial hub. Sub-factions: Border-Trade (the cross-Bangladesh import-export consortium), Plantation-Estate (the rubber-tree latex industry), and Refugee-Resettlement (the Chakma and Tripuri refugee-administration office). The Dharmanagar collapse zone covers the cross-Bangladesh trade-office, the rubber-warehouse central facility, the Refugee-Resettlement office. Death-count: 287 confirmed, 28 missing.</div>
+        </div>
+      </div>
+      <p style="margin-top:14px;font-size:.85em;color:#c9bbd8;line-height:1.7;">By chapter end the nine sub-factions have been provisionally consolidated under three external mutual-aid arrangements: Agartala (rebuilding) under West Bengal&rsquo;s Bilash-Babu and the Sundarbans-Tripura economic compact, Udaipur (rebuilding) under Assam&rsquo;s Kamalavarna and the Kamakhya-Bhubaneswari religious-administration compact, Dharmanagar (rebuilding) under Mizoram&rsquo;s Hmangaihi-and-Lalruatpuia and the Aizawl-Dharmanagar refugee-resettlement compact. Tripura is the saga&rsquo;s first kingdom to enter the NE Federation in already-fragmented form.</p>
+    </div>
+
+    <div class="k-card">
+      <h3>The Void Maw Sign &mdash; The Pigeon&rsquo;s Stone Egg</h3>
+      <p>The morning after Tripurari is pulled out of the rubble on day nine. A Green Imperial Pigeon &mdash; Tripura&rsquo;s sacred bird, the kingdom&rsquo;s emerald-courier &mdash; lays an egg at her nest on a branch of the Ujjayanta Palace garden&rsquo;s western Mahua tree. The tree is one of three that survived the central-Agartala collapse. The egg is not an egg. It is a smooth ovoid of polished green-grey serpentinite stone, approximately the standard imperial-pigeon-egg dimensions, weighing 287 grams (versus the standard 18-22 grams for an actual imperial-pigeon egg). The nest cannot hold the weight. The nest&rsquo;s branch-anchoring fails. The nest falls. The stone egg lands on the garden path below intact and uncracked. The mother pigeon returns to the empty branch. <strong>She begins to perform the incubation behaviour on the now-empty branch &mdash; settling onto the absent nest, ruffling feathers, occasional warming-turns &mdash; even though there is no nest and no egg. She continues the incubation behaviour for fourteen consecutive days. She does not eat. She does not drink. On the morning of day fifteen the kingdom&rsquo;s wildlife-rehabilitation staff find her dead on the branch, still in the incubation posture.</strong> The stone egg remains intact on the garden path below. The Maw has experimented with stuck-behaviour: the mother continuing the action when the action&rsquo;s object has been removed. The kingdom&rsquo;s reading: the engineer-king has built the cities; the cities have collapsed; the engineer continues to perform engineering when there is nothing left to engineer; the kingdom must learn the difference between perseverance and stuck-behaviour. The stone egg is preserved at the Agartala District Wildlife Office&rsquo;s zoological-museum sub-collection as the chapter&rsquo;s permanent witness-record.</p>
+    </div>
+
+    <div class="k-quick-links">
+      <a href="identity.html" class="k-quick-link">
+        <span class="ql-title">Faction &amp; Cast</span>
+        <span class="ql-sub">Three cities, nine sub-factions, the ward, the Margin-walker</span>
+      </a>
+      <a href="story.html" class="k-quick-link">
+        <span class="ql-title">Full Story</span>
+        <span class="ql-sub">The Three Cities Fall &mdash; A Film in Two Halves</span>
+      </a>
+      <a href="rules.html" class="k-quick-link">
+        <span class="ql-title">Rules &amp; Weapons</span>
+        <span class="ql-sub">Broken-bond mechanic, the Triyantra disassembled, the stone egg</span>
+      </a>
+      <a href="../../../index.html" class="k-quick-link" style="border-color:rgba(247,217,106,.15);">
+        <span class="ql-title" style="color:#c9a04a;">All Civil War Stories</span>
+        <span class="ql-sub">Back to Chapter 2</span>
+      </a>
+    </div>
+  </div>
+
+  <footer style="text-align:center;padding:28px 20px;border-top:1px solid rgba(196,77,170,.12);color:#9a8db0;font-size:.75em;">
+    <p>Tri-Pura &bull; Civil War &bull; Chapter 2 &bull; Maha Parva &bull; Age of Mythos Volume I</p>
+    <p style="margin-top:6px;"><a href="../../../index.html" style="color:#c9a04a;text-decoration:none;">&larr; Chapter 2 Index</a></p>
+  </footer>
+</body>
+</html>

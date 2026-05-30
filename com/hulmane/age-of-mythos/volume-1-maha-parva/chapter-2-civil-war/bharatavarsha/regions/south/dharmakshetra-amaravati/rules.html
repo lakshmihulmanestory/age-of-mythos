@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dharmakshetra Amaravati &mdash; Rules &amp; Weapons &mdash; Civil War</title>
+  <link rel="stylesheet" href="../../../../../chapter-1-rise-of-legends/css/style.css">
+  <style>
+    body { background:#0a0a0e; color:#f0e8f8; }
+    .k-banner { text-align:center; padding:78px 20px 36px; border-bottom:1px solid rgba(196,77,170,.16); }
+    .k-banner .badge { font-size:.55em; letter-spacing:4px; text-transform:uppercase; color:#c44daa; opacity:.85; margin-bottom:12px; }
+    .k-banner h1 { font-size:2em; color:#5da3c8; margin-bottom:.1em; }
+    .k-banner .state-label { font-size:.72em; color:#c9bbd8; opacity:.6; margin-bottom:.4em; }
+    .k-nav { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:14px 20px; background:rgba(0,0,0,.5); border-bottom:1px solid rgba(196,77,170,.1); }
+    .k-nav a { padding:5px 16px; border-radius:20px; border:1px solid rgba(196,77,170,.25); color:#d4c5e8; font-size:.72em; letter-spacing:1px; text-decoration:none; transition:all .15s; }
+    .k-nav a:hover, .k-nav a.active { background:rgba(196,77,170,.12); border-color:#c44daa; color:#fff; }
+    .k-section { max-width:1000px; margin:0 auto; padding:40px 20px 60px; }
+    .k-card { background:rgba(255,255,255,.025); border:1px solid rgba(196,77,170,.15); border-radius:10px; padding:24px; margin-bottom:20px; }
+    .k-card h3 { font-size:.72em; letter-spacing:2px; text-transform:uppercase; color:#5da3c8; margin-bottom:14px; opacity:.9; }
+    .k-two { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    @media(max-width:640px){ .k-two { grid-template-columns:1fr; } }
+    .id-label { font-size:.62em; text-transform:uppercase; letter-spacing:2px; color:#9a8db0; opacity:.6; margin-bottom:3px; }
+    .id-value { font-size:.88em; color:#c9bbd8; margin-bottom:14px; line-height:1.65; }
+    .id-value strong { color:#fff5d4; }
+
+    .mercy-mech { padding:18px 22px; border-radius:12px; background:linear-gradient(135deg,rgba(93,163,200,.10),rgba(8,20,30,.04)); border:1px solid rgba(93,163,200,.32); margin:14px 0; }
+    .mercy-mech .mm-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#5da3c8; margin-bottom:8px; }
+    .mercy-mech .mm-text { color:#a8d0e8; font-size:.9em; line-height:1.75; }
+    .mercy-mech .mm-text strong { color:#fff5d4; }
+
+    .tattoo-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    @media(max-width:600px){ .tattoo-grid { grid-template-columns:repeat(2,1fr); } }
+    .tattoo-stage { text-align:center; }
+    .tattoo-img { width:100%; border-radius:8px; border:1px solid rgba(93,163,200,.22); display:block; aspect-ratio:1; object-fit:cover; margin-bottom:8px; background:rgba(93,163,200,.06); }
+    .tattoo-stage.done .tattoo-img    { border-color:rgba(93,163,200,.40); background:rgba(8,20,30,.15); }
+    .tattoo-stage.new  .tattoo-img    { border-color:rgba(93,163,200,.50); background:rgba(10,30,40,.20); }
+    .tattoo-stage.future .tattoo-img  { border-color:rgba(196,77,170,.18); background:rgba(196,77,170,.04); opacity:.5; }
+    .tattoo-stage-label { font-size:.58em; letter-spacing:2px; text-transform:uppercase; color:#5da3c8; opacity:.85; display:block; margin-bottom:2px; }
+    .tattoo-stage.new .tattoo-stage-label { color:#a8d0e8; }
+    .tattoo-stage.future .tattoo-stage-label { color:#c44daa; }
+    .tattoo-stage-name { font-size:.78em; color:#fff5d4; display:block; margin-bottom:4px; }
+    .tattoo-stage-desc { font-size:.7em; color:#9a8db0; opacity:.85; line-height:1.55; }
+
+    .weapon-img { width:100%; border-radius:10px; border:1px solid rgba(93,163,200,.22); display:block; margin-bottom:10px; background:rgba(93,163,200,.04); }
+    .weapon-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#5da3c8; opacity:.85; margin-bottom:4px; display:block; }
+    .weapon-name { font-size:.95em; color:#fff5d4; margin-bottom:8px; }
+    .weapon-desc { font-size:.82em; color:#c9bbd8; line-height:1.7; }
+
+    .saga-rule { padding:18px 22px; border-radius:12px; background:linear-gradient(135deg,rgba(93,163,200,.07),rgba(8,20,30,.03)); border:1px solid rgba(93,163,200,.28); margin:14px 0; }
+    .saga-rule .sr-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#5da3c8; margin-bottom:6px; }
+    .saga-rule .sr-text { color:#a8d0e8; font-size:.9em; line-height:1.75; font-style:italic; }
+    .saga-rule .sr-text strong { color:#fff5d4; font-style:normal; }
+
+    .void-callout { padding:20px 22px; border-radius:12px; background:linear-gradient(135deg,rgba(100,90,160,.12),rgba(20,10,40,.04)); border:1px solid rgba(160,140,255,.25); margin-bottom:16px; }
+    .void-callout .vc-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#c4b8ff; margin-bottom:6px; }
+    .void-callout .vc-text { color:#dfd8f0; font-size:.9em; line-height:1.75; }
+    .void-callout .vc-text strong { color:#fff5d4; }
+  </style>
+</head>
+<body>
+  <div class="k-banner">
+    <div class="badge">Civil War &bull; Rules &amp; Weapons (Chapter 2)</div>
+    <h1>Dharmakshetra Amaravati</h1>
+    <div class="state-label">Andhra Pradesh &mdash; The Mercy-Bond, the Half-Armed Urumi, the Erased Metre</div>
+  </div>
+  <div class="k-nav">
+    <a href="../../../../index.html">&larr; Chapter 2</a>
+    <a href="index.html">Overview</a>
+    <a href="identity.html">Identity</a>
+    <a href="story.html">Story</a>
+    <a href="rules.html" class="active">Rules &amp; Weapons</a>
+  </div>
+
+  <div class="k-section">
+
+    <!-- ====== THE MERCY-BOND ====== -->
+    <div class="k-card">
+      <h3>The Blackbuck-Bond &mdash; Stage III by Mercy-as-Discipline</h3>
+      <p style="font-size:.92em;color:#c9bbd8;line-height:1.8;">Krishnaveni earns the Stage III blackbuck-foreleg-first-stroke not by combat-victory, not by surrender, not by refusal, not by concession, not by transmission, not by death-on-the-landscape. She earns it by <strong>not killing Kalaniksha when she could have</strong> &mdash; the mercy that was her Chapter One charter-flaw becomes her Chapter Two discipline. The mark forms on the half-body blackbuck-tattoo&rsquo;s left foreleg at six-twenty-five-thirty a.m. on day forty-seven, twenty-eight seconds after Kalaniksha&rsquo;s departing bow. This is the saga&rsquo;s fifteenth bond-mechanic: the <strong>mercy-bond</strong>.</p>
+      <div class="mercy-mech">
+        <div class="mm-label">Saga-Rule &bull; The Mercy-Bond Mechanic</div>
+        <div class="mm-text">A hero whose Chapter One charter-flaw was an act of mercy spared the catalyst-villain&rsquo;s life may earn the Stage III bond-stroke in Chapter Two by <strong>repeating the mercy at a moment when the kingdom-council&rsquo;s standing protocol forbids the killing but the personal-emotional-pressure permits it</strong>. The mechanic requires: (1) the catalyst-villain spared in Ch 1 has returned in Ch 2 publicly, with institutional standing under the kingdom-council&rsquo;s charter, (2) the catalyst-villain&rsquo;s claim against the hero is institutionally resolvable through a standing dispute-resolution mechanism (the kingdom-council&rsquo;s contest-of-arms protocol, the temple&rsquo;s ceremonial-dispute resolution, the council&rsquo;s formal vote, etc.), (3) the dispute-resolution mechanism&rsquo;s outcome places the hero in a position where killing the catalyst-villain is charter-forbidden but emotionally available, (4) the hero declines to kill. <strong>The mercy-bond is distinct from the Karnataka rule&rsquo;s Heralds-are-named-not-killed protocol</strong> in that the Karnataka rule applies to Heralds (the Maw&rsquo;s direct manifestations); the mercy-bond applies to hero-twin and hero-cousin and hero-sibling and hero-rival catalyst-villains. The mercy at the cliff is the kingdom-architecture; the held stroke is the kingdom&rsquo;s evidence that the kingdom does not kill itself. The kingdom&rsquo;s next-step institutional response is the kingdom-architecture amendment (the autumn coastal-protection-protocol) that extends the cliff-mercy to the kingdom&rsquo;s standing-coastal-and-delta protection-discipline. The mercy is the architecture; the architecture is the mercy. The saga&rsquo;s registry of mercy-bond instances opens with Krishnaveni as the first entry; the registry is maintained at the kingdom-council&rsquo;s State Archive Bloodline-A Authenticity Cell.</div>
+      </div>
+    </div>
+
+    <!-- ====== TATTOO LADDER ====== -->
+    <div class="k-card">
+      <h3>The Tattoo Ladder &mdash; Krishnaveni</h3>
+      <p style="color:#c9bbd8;font-size:.85em;line-height:1.7;margin-bottom:24px;">Four stages. The half-body blackbuck-tattoo had been at Stage II since the Ch 1 post-Narakasura confirmation; Ch 2&rsquo;s Stage III is the foreleg-first-stroke on the half-body mark&rsquo;s left foreleg, completing the half-body to the standard kingdom-council Stage III completion-pattern.</p>
+
+      <div class="tattoo-grid">
+        <div class="tattoo-stage done">
+          <img src="media/tattoo/ap-ch2-stage-1.png" alt="Stage I" class="tattoo-img" onerror="this.style.background='rgba(93,163,200,.06)'">
+          <span class="tattoo-stage-label">Stage I &bull; Pre-Ch 1</span><span class="tattoo-stage-name">The Hoofprint</span>
+          <div class="tattoo-stage-desc">Earned at age twenty-two when Krishnaveni completed the kingdom-council&rsquo;s urumi-discipline-ordination at Rishi Amareshwara&rsquo;s Krishna river-mouth confluence-shrine. Single blackbuck-hoofprint on her left collarbone.</div>
+        </div>
+        <div class="tattoo-stage done">
+          <img src="media/tattoo/ap-ch2-stage-2.png" alt="Stage II" class="tattoo-img" onerror="this.style.background='rgba(93,163,200,.06)'">
+          <span class="tattoo-stage-label">Stage II &bull; Ch 1 Finale</span><span class="tattoo-stage-name">The Half-Body Leap</span>
+          <div class="tattoo-stage-desc">Earned at the Ch 1 post-Narakasura confirmation in 2023. The blackbuck leaping across her left shoulder, hooves touching her collarbone &mdash; half-body mark with the left foreleg lighter than the right (the unfinished Ch 2-trial reservation).</div>
+        </div>
+        <div class="tattoo-stage new">
+          <img src="media/tattoo/ap-ch2-stage-3.png" alt="Stage III by Mercy" class="tattoo-img" onerror="this.style.background='rgba(10,30,40,.20)'">
+          <span class="tattoo-stage-label">Stage III &bull; This Chapter &bull; By Mercy</span><span class="tattoo-stage-name">The Left Foreleg Completion-Stroke</span>
+          <div class="tattoo-stage-desc">The single new ink-line drawn across the half-body blackbuck-tattoo&rsquo;s left foreleg at six-twenty-five-thirty a.m. on day forty-seven, twenty-eight seconds after Kalaniksha&rsquo;s departing bow. The foreleg is now inked to the same density as the rest of the half-body; the blackbuck&rsquo;s leap is now visibly anchored by both forelegs. The completion-stroke is the kingdom&rsquo;s evidence that the held urumi-stroke was the bond&rsquo;s recognition; the saga&rsquo;s first mercy-bond Stage III mark.</div>
+        </div>
+        <div class="tattoo-stage future">
+          <img src="media/tattoo/ap-ch2-stage-4.png" alt="Stage IV" class="tattoo-img" onerror="this.style.background='rgba(196,77,170,.04)'">
+          <span class="tattoo-stage-label">Stage IV &bull; Early Ch 3 (POST-MORTEM)</span><span class="tattoo-stage-name">Full Body &bull; Earned in Death</span>
+          <div class="tattoo-stage-desc">Per restructure §4 Krishnaveni dies in early Chapter Three at the twin-confrontation&rsquo;s final phase. The Stage IV full-body mark forms at the moment of death; the river-bond transfers via Bloodline-A to Krishnadevaraya-Bhrata (her cousin) as a secondary bond, making him the second hero in Volume I with a double-bond (after Simhavikrama&rsquo;s lion + gaur). Krishnaveni&rsquo;s body bears the complete blackbuck-full-body mark at the funeral.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== SACRED WEAPONS ====== -->
+    <div class="k-card">
+      <h3>Sacred Weapons &mdash; The Half-Armed Urumi-Pair</h3>
+      <p style="font-size:.92em;color:#c9bbd8;line-height:1.8;">The chapter&rsquo;s urumi-status is split. Krishnaveni keeps Godavari (her left-arm whip-sword); Kalaniksha holds Krishna (the right-arm whip-sword she won at the contest); the kingdom is half-armed at the chapter&rsquo;s closing, with the matching half of the pair beyond the Tirupati exile-border in Kalaniksha&rsquo;s possession. The two urumis are the kingdom&rsquo;s living embodiment of the twin-knot; the kingdom-council&rsquo;s standing reconciliation-clause specifies that the urumi-pair will be reunified only at the autumn-charter-review&rsquo;s seven-year mark or at the twin-knot&rsquo;s final resolution.</p>
+      <div class="k-two" style="margin-top:14px;">
+        <div>
+          <span class="weapon-label">Sacred Weapon &bull; Krishnaveni&rsquo;s Left-Arm Urumi</span>
+          <div class="weapon-name">Godavari &mdash; The Northern Whip-Sword</div>
+          <img src="media/weapons/ap-ch2-godavari-urumi.png" alt="The Godavari Urumi" class="weapon-img" onerror="this.style.display='none'">
+          <div class="id-label">Type</div><div class="id-value">A flexible whip-sword (urumi) of the Andhra-style kalaripayattu lineage. Three-coil blade, leather grip, gold-foil sheathing along the handle. The standard Andhra urumi pair&rsquo;s left-arm half. Named for the northern Godavari river. Has been Krishnaveni&rsquo;s left-arm urumi since age twenty-two when she received the dual urumi-pair at the urumi-discipline-ordination from Rishi Amareshwara.</div>
+          <div class="id-label">Status This Chapter</div><div class="id-value">Was at her left forearm throughout the 47-day preparation-period. Was disarmed by Kalaniksha&rsquo;s dual-urumi forced-disarmament cross-attack at stroke eleven of the contest at 6:24:11 a.m. on day 47. Was returned to Krishnaveni by Kalaniksha at the post-contest gesture-of-mercy at 6:25:14 a.m. Krishnaveni wraps it at her left forearm in the standard kingdom-council post-contest dual-recovery wrap. Continues at her left forearm through the autumn coastal-protection-protocol drafting and into the Chapter Three Sanctuary convening. Per Ch 3 plan it remains at her left forearm through the twin-confrontation&rsquo;s final phase; her death-on-the-cliff in early Ch 3 places it in the kingdom-council&rsquo;s standing-archive at the Bhubaneswari Temple manuscript-vault under Anjali Debbarma&rsquo;s seal; Pulakeshi-Babu retrieves it in autumn of Ch 3 for the Karnataka-AP federation&rsquo;s standing urumi-archive.</div>
+        </div>
+        <div>
+          <span class="weapon-label">Sacred Weapon &bull; In Kalaniksha&rsquo;s Possession at the Tirupati Exile</span>
+          <div class="weapon-name">Krishna &mdash; The Southern Whip-Sword</div>
+          <img src="media/weapons/ap-ch2-krishna-urumi.png" alt="The Krishna Urumi" class="weapon-img" onerror="this.style.display='none'">
+          <div class="id-label">Type</div><div class="id-value">A flexible whip-sword (urumi) of the Andhra-style kalaripayattu lineage. The matching half of the urumi-pair: three-coil blade, leather grip, silver-foil sheathing along the handle (the matched-but-inverted sheathing of the pair&rsquo;s right-arm half). Named for the Krishna river. Has been Krishnaveni&rsquo;s right-arm urumi since age twenty-two.</div>
+          <div class="id-label">Status This Chapter</div><div class="id-value">Was at Krishnaveni&rsquo;s right forearm at the contest&rsquo;s opening at 6:11 a.m. on day 47. Was disarmed by Kalaniksha&rsquo;s one-handed disarm-rotation at stroke six at 6:17:23 a.m. (Krishnaveni&rsquo;s grip-tension was slightly loose at the engagement-moment; the 47-day preparation had concentrated on the Godavari-urumi&rsquo;s disarming-discipline rather than on the Krishna-urumi&rsquo;s grip-tension). Kalaniksha retrieved it from the plateau&rsquo;s eastern-edge stone-floor at 6:17:34 a.m. and wrapped it at her right forearm in the standard kingdom-council dual-urumi adoption-wrap (the wrap took 11 seconds; during the 11 seconds Krishnaveni did not attack; the kingdom-council&rsquo;s contest-protocol forbids attacking a disarmed opponent during the disarmament-acknowledgement window). Kalaniksha used the Krishna-urumi for the contest&rsquo;s strokes 7-11. At 6:25:02 a.m. her ceremonial flourish entered the killing-stroke arc; the Krishna-urumi&rsquo;s blade passed Krishnaveni&rsquo;s throat at 4 cm without contact. Kalaniksha kept the Krishna-urumi at the contest&rsquo;s conclusion per the kingdom-council&rsquo;s contest-winner&rsquo;s-claim clause. Exiled across the Tirupati border by sunset of day 49 with the Krishna-urumi at her right forearm. Per Ch 3 plan she returns in early Ch 3 with the Krishna-urumi; kills Krishnaveni with it; is killed by Pulakeshi-Babu afterwards; the Krishna-urumi is reunified with Godavari at the Karnataka-AP federation&rsquo;s standing urumi-archive in autumn of Ch 3.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== SAGA RULES ====== -->
+    <div class="k-card">
+      <h3>The Saga-Rules This Chapter Established</h3>
+      <div class="saga-rule">
+        <div class="sr-label">Saga-Rule &bull; Mercy as Discipline (Not Mercy as Flaw)</div>
+        <div class="sr-text">A hero whose Chapter One charter-flaw was an act of mercy may, in Chapter Two, convert the flaw into the kingdom&rsquo;s discipline by repeating the mercy at a higher institutional-pressure moment where the kingdom-council&rsquo;s charter forbids the killing but the personal-emotional-pressure permits it. <strong>The repetition under higher pressure is the kingdom&rsquo;s evidence that the mercy is principled, not weak.</strong> The kingdom-council&rsquo;s standing institutional response to the repeated-mercy outcome is to amend the kingdom-charter with a new architecture that extends the mercy-discipline to a kingdom-scale problem (Krishnaveni&rsquo;s autumn coastal-protection-protocol; the Karnataka Charter&rsquo;s parallel Bronze-Dust Child Herald-recognition-protocol). The kingdom is preserved by the same mercy that did not kill the twin. The rule applies to every kingdom whose Chapter One charter included an unfinished mercy-thread &mdash; future Volume I and Volume II kingdoms with similar threads will follow the Andhra Pradesh precedent.</div>
+      </div>
+      <div class="saga-rule" style="margin-top:10px;">
+        <div class="sr-label">Saga-Rule &bull; The Twin-Knot is the Kingdom&rsquo;s One Body</div>
+        <div class="sr-text">A kingdom that contains a Bloodline-A lost-twin pair is one woman split. The kingdom-council&rsquo;s charter contains an explicit clause forbidding the killing of a disarmed twin by the contest-winning twin &mdash; the kingdom does not kill itself. <strong>The kingdom-council&rsquo;s contest-of-arms protocol is the standing dispute-resolution mechanism; the contest is to disarmament, not death.</strong> The contest&rsquo;s outcome is the kingdom&rsquo;s recognition that one twin holds the visible throne and the other holds the exile-claim; the exile is the kingdom&rsquo;s preservation of the second half against the kingdom&rsquo;s future reconciliation-window (the seven-year charter-review). The twin-knot remains live across Ch 2; the kingdom recognises the twin-knot as the kingdom&rsquo;s permanent twin-body structure rather than as a temporary anomaly. The rule applies to all subsequent Bloodline-A lost-twin pairings across the saga&rsquo;s registry; the saga&rsquo;s second documented twin-pair (the Chandravamsha three-sister-knot at Kamakhya) was a sister-knot rather than a twin-knot and resolved through the mirror-bond mechanic in Chapter Two; the AP twin-knot is the saga&rsquo;s first formal twin-knot.</div>
+      </div>
+      <div class="saga-rule" style="margin-top:10px;">
+        <div class="sr-label">Saga-Rule &bull; The Historian Produces His Own Family</div>
+        <div class="sr-text">A kingdom-council&rsquo;s standing Bloodline-A Authenticity Cell chair who discovers, in his own family&rsquo;s archive, a document establishing his close-kinship to a Bloodline-A claimant in the current dispute must <strong>recuse himself from the cell&rsquo;s preliminary-report and disclose the personal-conflict to the cell&rsquo;s senior deputy within the same working day</strong>. The recusal is the kingdom&rsquo;s evidence that the archive-discipline is honoured by the historian. The historian-cousin then serves as the kingdom-council&rsquo;s standing liaison-and-historian for the dispute&rsquo;s subsequent administrative-handling under the senior deputy&rsquo;s temporary-appointment authority. The rule extends to all kingdom-council standing-cell chairs across the saga&rsquo;s registry. Pulakeshi-Babu is the saga&rsquo;s first recused-historian-cousin entry; the registry is maintained at the kingdom-council&rsquo;s State Archive standing-recusal record.</div>
+      </div>
+    </div>
+
+    <!-- ====== VOID MAW SIGN ====== -->
+    <div class="void-callout">
+      <div class="vc-label">Void Maw Sign &bull; Catalogue Entry &bull; Andhra Pradesh &bull; The Metre That Vanished (First Land-Erasure Experiment)</div>
+      <div class="vc-text">6:13 a.m. on day 48 of the chapter &mdash; the morning after the Kollur cliff contest. The Hamsaladeevi village&rsquo;s eastern beach at the Krishna river&rsquo;s mouth. Naga-Kumar, the 23-year-old fisherman who walks the eastern beach at 6:11 every morning, sees the tide-line at one metre inland of its previous-evening position. He drives a wooden surveyor&rsquo;s peg into the new tide-line. The village headman B. Krishna-Murthy confirms the displacement is uniform across the full 600-metre east-west beach-breadth. The displaced land is approximately 600 cubic metres of delta-soil. There has been no storm; no flood; the Hamsaladeevi observation-station&rsquo;s tide-gauge shows a normal monsoon-tide of 1.3 m at high-water at 3:47 a.m. The Andhra Pradesh State Survey Office&rsquo;s satellite-imagery confirms the discrepancy across Sentinel-2, Landsat-9, and Cartosat-3. The displaced mass is not in the Bay of Bengal&rsquo;s nearshore sediment-cell (the coastal-monitoring buoy&rsquo;s sediment-mass-balance reading at 6 a.m. shows no anomalous nearshore sediment-increase). <strong>The mass has been erased.</strong> Mechanism (Krishnaveni&rsquo;s reading through the blackbuck-bond at 10:11 a.m.): the Maw is asking &mdash; <em>if you cannot kill your own twin, can you keep your own delta?</em> The kingdom&rsquo;s answer (drafted across the next four months under Pulakeshi-Babu&rsquo;s liaison seat, ratified by the autumn kingdom-council 23-1): <em>the delta is preserved by the same mercy that did not kill the twin.</em> The mercy is the kingdom-architecture; the architecture is the autumn coastal-protection-protocol. <strong>The metre that vanished is the inverse of Kerala&rsquo;s black coconut (Kerala preserves what should rot; AP erases what should remain).</strong> The two signs together constitute the southern federation&rsquo;s first cross-kingdom material-experiment pair. Significance: AP&rsquo;s sign is the fifteenth rung of the escalation pattern &mdash; the <em>first land-erasure experiment</em>. The Maw has shifted from experimenting on material-decay (Kerala&rsquo;s coconut, the suspension of decomposition) to experimenting on material-presence itself (AP&rsquo;s delta, the erasure of mass). The southern federation&rsquo;s cross-kingdom pairing-protocol is now the saga&rsquo;s standing catalogue-pattern-recognition method; each subsequent Maw sign will be tested for its cross-region pair.</div>
+      <div style="margin:12px 0 4px;padding-left:12px;font-size:.78em;color:#dfd8f0;line-height:1.7;">
+        <strong style="color:#fff5d4;">Person</strong> &times; 2 (Karnataka, Goa) &rarr; <strong style="color:#fff5d4;">Place</strong> (Maharashtra) &rarr; <strong style="color:#fff5d4;">Landscape</strong> (UP) &rarr; <strong style="color:#fff5d4;">Multi-creature</strong> (MP) &rarr; <strong style="color:#fff5d4;">Landscape + Multi-creature</strong> (Assam) &rarr; <strong style="color:#fff5d4;">Anti-weather</strong> (Meghalaya) &rarr; <strong style="color:#fff5d4;">Self-signing form-making</strong> (Manipur) &rarr; <strong style="color:#fff5d4;">Self-cancelling form</strong> (Nagaland) &rarr; <strong style="color:#fff5d4;">Species-lethal-altitude experiment</strong> (Sikkim) &rarr; <strong style="color:#fff5d4;">Face-erasure (First Herald)</strong> (Arunachal) &rarr; <strong style="color:#fff5d4;">Future-naming (two-headed serow speaks)</strong> (Mizoram) &rarr; <strong style="color:#fff5d4;">Stuck-behaviour (pigeon broods empty)</strong> (Tripura) &rarr; <strong style="color:#fff5d4;">Material-permanence (coconut does not rot)</strong> (Kerala) &rarr; <strong style="color:#fff5d4;">Land-erasure (delta loses a metre overnight)</strong> (Andhra Pradesh).
+      </div>
+      <div style="margin-top:14px;padding:12px 16px;border-radius:8px;background:rgba(93,163,200,.06);border-left:3px solid rgba(93,163,200,.5);">
+        <div style="font-size:.62em;letter-spacing:2px;text-transform:uppercase;color:#a8d0e8;margin-bottom:6px;">Cross-Kingdom Cascade-Alert and Paired-Sign Recognition</div>
+        <div style="font-size:.85em;color:#dfd8f0;line-height:1.75;">Pulakeshi-Babu drafts the cross-kingdom Sarus-pigeon cascade-alert at noon on day 48. The alert reaches all 9 bonded-kingdom senior guardians by sunset. The Kerala-AP cross-kingdom material-experiment-pair is formally recognised by the southern federation at the autumn kingdom-council session: Kerala&rsquo;s black coconut + AP&rsquo;s erased metre = the saga&rsquo;s first cross-kingdom Maw-sign pair. The pairing-protocol becomes the saga&rsquo;s standing catalogue-pattern-recognition method. Krishnadevaraya-Bhrata&rsquo;s cross-region acknowledgement reads: <em>&ldquo;The mercy at the cliff is the saga&rsquo;s evidence that the kingdom does not kill itself; the metre that vanished is the Maw&rsquo;s evidence that the kingdom must build the architecture that the mercy implies. I will travel to the Hamsaladeevi village in the autumn to attend the drafting session. I will bring Hampi-of-the-Bronze.&rdquo;</em></div>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;margin-top:24px;flex-wrap:wrap;gap:10px;">
+      <a href="story.html" style="color:#c9a04a;text-decoration:none;font-size:.85em;">&larr; Kingdom Story</a>
+      <a href="../../../../index.html" style="color:#c9a04a;text-decoration:none;font-size:.85em;">All Civil War Stories &rarr;</a>
+    </div>
+  </div>
+
+  <footer style="text-align:center;padding:28px 20px;border-top:1px solid rgba(196,77,170,.12);color:#9a8db0;font-size:.75em;">
+    <p>Dharmakshetra Amaravati Rules &amp; Weapons &bull; Civil War &bull; Chapter 2</p>
+  </footer>
+</body>
+</html>

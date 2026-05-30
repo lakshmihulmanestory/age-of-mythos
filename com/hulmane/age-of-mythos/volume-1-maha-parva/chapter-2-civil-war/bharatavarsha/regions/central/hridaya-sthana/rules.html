@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hridaya-Sthana &mdash; Rules &amp; Weapons &mdash; Civil War</title>
+  <link rel="stylesheet" href="../../../../../chapter-1-rise-of-legends/css/style.css">
+  <style>
+    body { background:#100c08; color:#f0e8f8; }
+    .k-banner { text-align:center; padding:78px 20px 36px; border-bottom:1px solid rgba(196,77,170,.16); }
+    .k-banner .badge { font-size:.55em; letter-spacing:4px; text-transform:uppercase; color:#c44daa; opacity:.85; margin-bottom:12px; }
+    .k-banner h1 { font-size:2em; color:#ffcc66; margin-bottom:.1em; }
+    .k-banner .state-label { font-size:.72em; color:#c9bbd8; opacity:.6; margin-bottom:.4em; }
+    .k-nav { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:14px 20px; background:rgba(0,0,0,.5); border-bottom:1px solid rgba(196,77,170,.1); }
+    .k-nav a { padding:5px 16px; border-radius:20px; border:1px solid rgba(196,77,170,.25); color:#d4c5e8; font-size:.72em; letter-spacing:1px; text-decoration:none; transition:all .15s; }
+    .k-nav a:hover, .k-nav a.active { background:rgba(196,77,170,.12); border-color:#c44daa; color:#fff; }
+    .k-section { max-width:1000px; margin:0 auto; padding:40px 20px 60px; }
+    .k-card { background:rgba(255,255,255,.025); border:1px solid rgba(196,77,170,.15); border-radius:10px; padding:24px; margin-bottom:20px; }
+    .k-card h3 { font-size:.72em; letter-spacing:2px; text-transform:uppercase; color:#ffcc66; margin-bottom:14px; opacity:.9; }
+    .k-two { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    @media(max-width:640px){ .k-two { grid-template-columns:1fr; } }
+    .id-label { font-size:.62em; text-transform:uppercase; letter-spacing:2px; color:#9a8db0; opacity:.6; margin-bottom:3px; }
+    .id-value { font-size:.88em; color:#c9bbd8; margin-bottom:14px; line-height:1.65; }
+    .id-value strong { color:#fff5d4; }
+
+    .crack-mark { padding:18px 22px; border-radius:12px; background:linear-gradient(135deg,rgba(232,153,64,.10),rgba(60,40,0,.04)); border:1px solid rgba(232,153,64,.32); margin:14px 0 8px; }
+    .crack-mark .cm-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#e89940; margin-bottom:8px; }
+    .crack-mark .cm-text { color:#f0d4a8; font-size:.9em; line-height:1.75; }
+    .crack-mark .cm-text strong { color:#fff5d4; }
+
+    .tattoo-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    @media(max-width:600px){ .tattoo-grid { grid-template-columns:repeat(2,1fr); } }
+    .tattoo-stage { text-align:center; }
+    .tattoo-img { width:100%; border-radius:8px; border:1px solid rgba(255,170,0,.22); display:block; aspect-ratio:1; object-fit:cover; margin-bottom:8px; background:rgba(255,170,0,.06); }
+    .tattoo-stage.done .tattoo-img    { border-color:rgba(255,170,0,.40); background:rgba(40,30,0,.15); }
+    .tattoo-stage.cracked .tattoo-img { border-color:rgba(232,153,64,.45); background:rgba(40,20,0,.18); position:relative; }
+    .tattoo-stage.cracked .tattoo-img::after { content:""; position:absolute; left:50%; top:8%; bottom:8%; width:2px; background:linear-gradient(180deg,transparent,#e89940 50%,transparent); transform:translateX(-50%); opacity:.8; }
+    .tattoo-stage.future .tattoo-img  { border-color:rgba(196,77,170,.18); background:rgba(196,77,170,.04); opacity:.5; }
+    .tattoo-stage-label { font-size:.58em; letter-spacing:2px; text-transform:uppercase; color:#ffaa00; opacity:.85; display:block; margin-bottom:2px; }
+    .tattoo-stage.cracked .tattoo-stage-label { color:#e89940; }
+    .tattoo-stage.future .tattoo-stage-label  { color:#c44daa; }
+    .tattoo-stage-name { font-size:.78em; color:#fff5d4; display:block; margin-bottom:4px; }
+    .tattoo-stage-desc { font-size:.7em; color:#9a8db0; opacity:.85; line-height:1.55; }
+
+    .weapon-img { width:100%; border-radius:10px; border:1px solid rgba(255,170,0,.22); display:block; margin-bottom:10px; background:rgba(255,170,0,.04); }
+    .weapon-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#ffcc66; opacity:.85; margin-bottom:4px; display:block; }
+    .weapon-name { font-size:.95em; color:#fff5d4; margin-bottom:8px; }
+    .weapon-desc { font-size:.82em; color:#c9bbd8; line-height:1.7; }
+
+    .staff-row { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:8px; }
+    @media(max-width:640px){ .staff-row { grid-template-columns:1fr; } }
+    .staff-card { padding:18px; border-radius:10px; background:rgba(255,255,255,.02); border:1px solid rgba(255,170,0,.16); }
+    .staff-card .sc-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#e89940; margin-bottom:6px; }
+    .staff-card .sc-state { font-size:1em; color:#ffcc66; margin-bottom:8px; font-family:Georgia,serif; }
+    .staff-card .sc-desc { font-size:.84em; color:#c9bbd8; line-height:1.7; }
+
+    .saga-rule { padding:18px 22px; border-radius:12px; background:linear-gradient(135deg,rgba(255,204,102,.07),rgba(40,28,0,.03)); border:1px solid rgba(255,204,102,.28); margin:14px 0; }
+    .saga-rule .sr-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#ffcc66; margin-bottom:6px; }
+    .saga-rule .sr-text { color:#f0d4a8; font-size:.9em; line-height:1.75; font-style:italic; }
+    .saga-rule .sr-text strong { color:#fff5d4; font-style:normal; }
+
+    .void-callout { padding:20px 22px; border-radius:12px; background:linear-gradient(135deg,rgba(100,90,160,.12),rgba(20,10,40,.04)); border:1px solid rgba(160,140,255,.25); margin-bottom:16px; }
+    .void-callout .vc-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#c4b8ff; margin-bottom:6px; }
+    .void-callout .vc-text { color:#dfd8f0; font-size:.9em; line-height:1.75; }
+    .void-callout .vc-text strong { color:#fff5d4; }
+  </style>
+</head>
+<body>
+  <div class="k-banner">
+    <div class="badge">Civil War &bull; Rules &amp; Weapons (Chapter 2)</div>
+    <h1>Hridaya-Sthana</h1>
+    <div class="state-label">Madhya Pradesh &mdash; The Cracked Mark, the Three-Piece Staff, the Motionless Herd</div>
+  </div>
+  <div class="k-nav">
+    <a href="../../../../index.html">&larr; Chapter 2</a>
+    <a href="index.html">Overview</a>
+    <a href="identity.html">Identity</a>
+    <a href="story.html">Story</a>
+    <a href="rules.html" class="active">Rules &amp; Weapons</a>
+  </div>
+
+  <div class="k-section">
+
+    <!-- ====== THE CRACKED BOND ====== -->
+    <div class="k-card">
+      <h3>The Barasingha-Bond &mdash; The Cracked Stage III</h3>
+      <p style="font-size:.92em;color:#c9bbd8;line-height:1.8;">Dvadashashringa earns his Stage III foreleg-mark at the moment the Dwadash staff breaks in three pieces &mdash; the bond responds to the act of dissolution by completing the mark. But the bond does not approve. The mark forms <strong>cracked down the centre</strong>: a single line of skin running through the antler-curve where the bond&rsquo;s ink does not settle. The crack is permanent. It is the saga&rsquo;s first marked-mark &mdash; a tattoo that records what its earning cost. He will carry it into Chapters Three and Four; the Stage IV full-body mark, when it eventually comes, will form around the crack and not over it.</p>
+      <div class="crack-mark">
+        <div class="cm-label">The Crack &bull; What It Records</div>
+        <div class="cm-text">The bond cracks because the act that earned it was a <strong>violation of the bearer&rsquo;s own founding principle.</strong> Dvadashashringa founded the twelve-court system. He dissolved it himself to save the famine-dying. The bond does not punish him for the dissolution &mdash; the dissolution was dharmically correct &mdash; but the bond records the price. Future bearers reading the catalogue will recognise the pattern: when a hero must betray their own first stake to do the right thing, the bond&rsquo;s mark carries the betrayal as a visible scar. This is distinct from the Karnataka <em>throne-stone destruction</em> mark (which transferred at death) and the Maharashtra <em>double-bond</em> mark (which arrived in addition). MP&rsquo;s mark is the first <strong>internally-modified</strong> mark in the saga.</div>
+      </div>
+    </div>
+
+    <!-- ====== TATTOO LADDER ====== -->
+    <div class="k-card">
+      <h3>The Tattoo Ladder &mdash; Dvadashashringa</h3>
+      <p style="color:#c9bbd8;font-size:.85em;line-height:1.7;margin-bottom:24px;">Four stages. Stage III is cracked. Stage IV waits for the Sanctuary in Chapter Three. The crack persists at every later stage.</p>
+      <div class="tattoo-grid">
+        <div class="tattoo-stage done">
+          <img src="media/tattoo/mp-ch2-stage-1.png" alt="Stage I" class="tattoo-img">
+          <span class="tattoo-stage-label">Stage I &bull; Ch 1</span><span class="tattoo-stage-name">The Hoofprint</span>
+          <div class="tattoo-stage-desc">Earned at age twenty-four when he ruled his first dharmic case &mdash; a small case about a Bhopal market-stall&rsquo;s overhead awning. Single barasingha hoofprint on the sternum.</div>
+        </div>
+        <div class="tattoo-stage done">
+          <img src="media/tattoo/mp-ch2-stage-2.png" alt="Stage II" class="tattoo-img">
+          <span class="tattoo-stage-label">Stage II &bull; Ch 1 Finale</span><span class="tattoo-stage-name">The Lower Foreleg</span>
+          <div class="tattoo-stage-desc">Down the sternum to the ribcage. Earned at the Narmada-bank dharma-debate that closed Chapter One &mdash; sixteen days of public deliberation defeating Adharma-Kendra&rsquo;s sophistries.</div>
+        </div>
+        <div class="tattoo-stage cracked">
+          <img src="media/tattoo/mp-ch2-stage-3.png" alt="Stage III" class="tattoo-img">
+          <span class="tattoo-stage-label">Stage III &bull; This Chapter &bull; CRACKED</span><span class="tattoo-stage-name">Half-Body, Marked</span>
+          <div class="tattoo-stage-desc">The antler-curve crosses sternum to shoulder. The crack runs through the curve&rsquo;s centre &mdash; a single line of unmarked skin. Earned by dissolving the twelve courts. The cost is in the mark.</div>
+        </div>
+        <div class="tattoo-stage future">
+          <img src="media/tattoo/mp-ch2-stage-4.png" alt="Stage IV" class="tattoo-img">
+          <span class="tattoo-stage-label">Stage IV &bull; Ch 3 Sanctuary</span><span class="tattoo-stage-name">Full Body &bull; Around the Crack</span>
+          <div class="tattoo-stage-desc">Will be earned at the Sanctuary convening as Central Dominant. The full-body mark will form <em>around</em> the crack, not over it. The crack persists at Stage IV. It is the saga&rsquo;s only permanently-scarred Stage IV mark.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== THE BROKEN STAFF ====== -->
+    <div class="k-card">
+      <h3>The Dwadash Staff &mdash; In Three Pieces</h3>
+      <p style="font-size:.92em;color:#c9bbd8;line-height:1.8;">Dvadashashringa&rsquo;s ceremonial weapon &mdash; a six-foot twelve-pronged ironwood staff with twelve solar-gold prong-tips &mdash; breaks during the court-dissolution. He swings it twelve times. It cracks on the eighth strike, splits on the eleventh, ends in three pieces by the twelfth. He does not have it repaired. He carries the three pieces wrapped in saffron cloth into every subsequent assembly.</p>
+      <div class="staff-row">
+        <div class="staff-card">
+          <div class="sc-label">Before the Dissolution</div>
+          <div class="sc-state">The Whole Dwadash</div>
+          <div class="sc-desc">Six feet of central Indian ironwood, twelve prongs in solar-gold, ceremonial weight only. Used as a procedural-opening tool at every assembly: the king strikes the floor once to open session, once to close. Cared for by a single master craftsman of the Bhopal court since 2003.</div>
+        </div>
+        <div class="staff-card">
+          <div class="sc-label">After the Dissolution</div>
+          <div class="sc-state">The Three-Piece Saffron Bundle</div>
+          <div class="sc-desc">Three pieces. The upper third with five prong-tips. The middle third with four prong-tips. The lower third with three prong-tips. Wrapped in saffron cloth in their broken arrangement. Carried into every Council session into Chapters Three and Four. The bundle becomes the saga&rsquo;s loudest reminder that late action is paid in bodies.</div>
+        </div>
+      </div>
+      <p style="margin-top:14px;font-size:.82em;color:#9a8db0;line-height:1.6;">The twelve solar-gold prong-tips that scattered across the assembly floor during the dissolution are collected by Sutrakara that evening. She keeps them in a small box on her writing-desk. She has, by Chapter Four, given eleven of them away &mdash; one to each of the eleven chief justices, as a private remembering-gift. She keeps the twelfth for herself.</p>
+    </div>
+
+    <!-- ====== SACRED WEAPONS ====== -->
+    <div class="k-card">
+      <h3>Sacred Weapons &mdash; Pre- and Post-Dissolution</h3>
+      <div class="k-two">
+        <div>
+          <span class="weapon-label">Ancient Weapon &bull; Broken</span>
+          <div class="weapon-name">Dwadash &mdash; The Twelve-Pronged Staff</div>
+          <img src="media/weapons/mp-ch2-dwadash-broken.png" alt="Dwadash broken" class="weapon-img" onerror="this.style.display='none'">
+          <div class="id-label">Status</div><div class="id-value">Broken in three pieces during the court-dissolution. Not repaired. Carried in saffron cloth.</div>
+          <div class="id-label">Symbolism (Now)</div><div class="id-value">The staff broke at the eighth, eleventh, and twelfth strikes &mdash; the breaks correspond to the moments at which the act of dissolution crossed the threshold of irreversibility. The break-pattern is read by later scholars as a dharmic-correctness signal: the bond signed off on the dissolution by allowing the staff to break exactly at its acts of completion.</div>
+        </div>
+        <div>
+          <span class="weapon-label">Modern Weapon &bull; New This Chapter</span>
+          <div class="weapon-name">Bhopal-Tantra &mdash; The Emergency Court Network</div>
+          <img src="media/weapons/mp-ch2-bhopal-tantra.png" alt="Bhopal-Tantra" class="weapon-img" onerror="this.style.display='none'">
+          <div class="id-label">Type</div><div class="id-value">A single-court administration network replacing the twelve-court system. Aranya-Devi runs it operationally. Sutrakara&rsquo;s arithmetic department keeps the running death-curve and decision-cycle metrics.</div>
+          <div class="id-label">Ability</div><div class="id-value">Resolves disaster-relief cases in days rather than weeks. Federates with UP&rsquo;s Sangam-Tantra (Vidura-Babu&rsquo;s network) on the third day of operation. Two Awadhi administrators sent by Vidura-Babu become the network&rsquo;s permanent liaison-officers.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== SAGA RULE ====== -->
+    <div class="k-card">
+      <h3>The Saga-Rule This Chapter Established</h3>
+      <div class="saga-rule">
+        <div class="sr-label">Saga-Rule &bull; The Internally-Modified Mark</div>
+        <div class="sr-text">A bond may complete a Stage mark <strong>with a permanent internal modification</strong> if and only if: (1) the bearer earned the mark through an act that was dharmically correct AND violated the bearer&rsquo;s own founding principle, (2) the violation was acknowledged publicly at the moment of the earning, (3) the bearer accepts the cost as part of the mark rather than seeking to obscure it. The cracked-mark mechanic is distinct from death-transfer (Karnataka), bond-transit (Goa), double-bond (Maharashtra), and split-bond (UP). It is the saga&rsquo;s fifth bond-mechanic, and the only one in which the cost of the choice is inscribed on the bearer&rsquo;s body forever.</div>
+      </div>
+    </div>
+
+    <!-- ====== VOID MAW SIGN ====== -->
+    <div class="void-callout">
+      <div class="vc-label">Void Maw Sign &bull; Catalogue Entry &bull; Madhya Pradesh</div>
+      <div class="vc-text">The Motionless Herd. Sixty barasingha in Kanha National Park stand motionless in a clearing for eleven days, facing east, not grazing, not in distress. On the twelfth day they begin grazing again. None of them remember the eleven days. <strong>Mechanism (read through the bond):</strong> the herd was caught in the gap between knowing-the-question and answering-it. The Maw lives in deliberation that does not end. The herd&rsquo;s collective behavioural memory was wiped of the eleven days &mdash; not a removal of a creature (Maharashtra&rsquo;s burnt nest) or a removal of substance-memory (UP&rsquo;s clear Ganga), but a removal of <em>elapsed time</em>. The Karnataka rule holds. Dvadashashringa marks the clearing with a small sandstone shrine; Kanha forest guards become its keepers. <strong>Significance (for the catalogue):</strong> MP&rsquo;s sign is the chapter&rsquo;s first <em>multi-creature</em> event &mdash; sixty animals at once, eleven days of vanished behavioural-memory. The escalation continues:</div>
+      <div style="margin:12px 0 4px;padding-left:12px;font-size:.78em;color:#dfd8f0;line-height:1.7;">
+        <strong style="color:#fff5d4;">Person</strong> (Karnataka 3rd Herald, Goa 2nd Herald) &rarr; <strong style="color:#fff5d4;">single place</strong> (Maharashtra burnt nest) &rarr; <strong style="color:#fff5d4;">landscape</strong> (UP clear Ganga) &rarr; <strong style="color:#fff5d4;">multi-creature</strong> (MP motionless herd) &rarr; <em>next signs climb further still.</em>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;margin-top:24px;flex-wrap:wrap;gap:10px;">
+      <a href="story.html" style="color:#c9a04a;text-decoration:none;font-size:.85em;">&larr; Kingdom Story</a>
+      <a href="../../../../index.html" style="color:#c9a04a;text-decoration:none;font-size:.85em;">All Civil War Stories &rarr;</a>
+    </div>
+  </div>
+
+  <footer style="text-align:center;padding:28px 20px;border-top:1px solid rgba(196,77,170,.12);color:#9a8db0;font-size:.75em;">
+    <p>Hridaya-Sthana Rules &amp; Weapons &bull; Civil War &bull; Chapter 2</p>
+  </footer>
+</body>
+</html>

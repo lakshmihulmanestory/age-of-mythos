@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vajra-Bhumi &mdash; Identity &mdash; Civil War</title>
+  <link rel="stylesheet" href="../../../../../chapter-1-rise-of-legends/css/style.css">
+  <style>
+    body { background:#0a0a12; color:#f0e8f8; }
+    .k-banner { text-align:center; padding:78px 20px 36px; border-bottom:1px solid rgba(196,77,170,.16); }
+    .k-banner .badge { font-size:.55em; letter-spacing:4px; text-transform:uppercase; color:#c44daa; opacity:.85; margin-bottom:12px; }
+    .k-banner h1 { font-size:2em; color:#d05030; margin-bottom:.1em; }
+    .k-banner .state-label { font-size:.72em; color:#c9bbd8; opacity:.6; margin-bottom:.4em; }
+    .k-nav { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:14px 20px; background:rgba(0,0,0,.5); border-bottom:1px solid rgba(196,77,170,.1); }
+    .k-nav a { padding:5px 16px; border-radius:20px; border:1px solid rgba(196,77,170,.25); color:#d4c5e8; font-size:.72em; letter-spacing:1px; text-decoration:none; transition:all .15s; }
+    .k-nav a:hover, .k-nav a.active { background:rgba(196,77,170,.12); border-color:#c44daa; color:#fff; }
+    .k-section { max-width:1100px; margin:0 auto; padding:40px 20px 60px; }
+    .k-card { background:rgba(255,255,255,.025); border:1px solid rgba(196,77,170,.15); border-radius:10px; padding:24px; margin-bottom:20px; }
+    .k-card h3 { font-size:.72em; letter-spacing:2px; text-transform:uppercase; color:#d05030; margin-bottom:14px; opacity:.9; }
+
+    .charter-card { padding:18px 22px; border-radius:12px; background:linear-gradient(135deg,rgba(208,80,48,.10),rgba(30,12,8,.04)); border:1px solid rgba(208,80,48,.32); margin:14px 0; }
+    .charter-card .cc-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#d05030; margin-bottom:8px; }
+    .charter-card .cc-text { color:#e88068; font-size:.95em; line-height:1.75; font-style:italic; white-space:pre-line; }
+    .charter-card .cc-attr { font-size:.78em; color:#9a8db0; margin-top:8px; }
+
+    .ccard { padding:20px; border-radius:10px; border:1px solid rgba(255,255,255,.08); margin-bottom:14px; }
+    .ccard.hero      { background:linear-gradient(135deg,rgba(208,80,48,.10),rgba(30,12,8,.03));   border-color:rgba(208,80,48,.32); }
+    .ccard.villain   { background:linear-gradient(135deg,rgba(255,68,68,.08),rgba(60,0,0,.03));   border-color:rgba(255,68,68,.25); }
+    .ccard.mind      { background:linear-gradient(135deg,rgba(240,216,168,.10),rgba(36,28,12,.03));border-color:rgba(232,201,138,.32); }
+    .ccard.deceased  { background:linear-gradient(135deg,rgba(196,184,168,.08),rgba(40,30,16,.03));border-color:rgba(196,184,168,.28); }
+    .ccard.warrior   { background:linear-gradient(135deg,rgba(168,128,80,.08),rgba(40,28,16,.03));border-color:rgba(168,128,80,.28); }
+    .ccard.middle    { background:linear-gradient(135deg,rgba(224,212,192,.08),rgba(40,30,16,.03));border-color:rgba(196,184,168,.28); }
+    .ccard.cross     { background:linear-gradient(135deg,rgba(93,163,200,.08),rgba(8,20,30,.03));border-color:rgba(93,163,200,.28); }
+    .ccard.ranger    { background:linear-gradient(135deg,rgba(132,164,108,.08),rgba(12,22,8,.03));border-color:rgba(132,164,108,.28); }
+    .ccard.medic     { background:linear-gradient(135deg,rgba(160,140,255,.08),rgba(20,10,40,.04));border-color:rgba(160,140,255,.25); }
+    .ccard.gaur      { background:linear-gradient(135deg,rgba(60,60,60,.18),rgba(8,8,8,.04));   border-color:rgba(120,120,120,.28); }
+    .ccard .role-tag { display:inline-block; font-size:.55em; letter-spacing:2px; text-transform:uppercase; padding:3px 10px; border-radius:10px; margin-bottom:8px; }
+    .ccard.hero .role-tag    { background:rgba(208,80,48,.20); color:#e88068; }
+    .ccard.villain .role-tag { background:rgba(255,68,68,.15); color:#ff8888; }
+    .ccard.mind .role-tag    { background:rgba(232,201,138,.20); color:#f0d8a8; }
+    .ccard.deceased .role-tag{ background:rgba(196,184,168,.20); color:#e0d4c0; }
+    .ccard.warrior .role-tag { background:rgba(168,128,80,.20); color:#d8b890; }
+    .ccard.middle .role-tag  { background:rgba(196,184,168,.20); color:#e0d4c0; }
+    .ccard.cross .role-tag   { background:rgba(93,163,200,.20); color:#a8d0e8; }
+    .ccard.ranger .role-tag  { background:rgba(132,164,108,.20); color:#bcd49a; }
+    .ccard.medic .role-tag   { background:rgba(160,140,255,.20); color:#c4b8ff; }
+    .ccard.gaur .role-tag    { background:rgba(120,120,120,.22); color:#bcbcbc; }
+    .ccard h4 { font-size:1.15em; margin-bottom:4px; color:#fff5d4; font-family:Georgia,serif; }
+    .ccard .ctitle { font-size:.85em; font-style:italic; color:#9a8db0; margin-bottom:12px; }
+    .ccard p { color:#c9bbd8; font-size:.88em; line-height:1.75; }
+  </style>
+</head>
+<body>
+  <div class="k-banner">
+    <div class="badge">Civil War &bull; Kingdom Identity (Chapter 2)</div>
+    <h1>Vajra-Bhumi</h1>
+    <div class="state-label">Bihar &mdash; The Mind-Body Schism, the Burnt Library, the Foundation Laid by Hand</div>
+  </div>
+  <div class="k-nav">
+    <a href="../../../../index.html">&larr; Chapter 2</a>
+    <a href="index.html">Overview</a>
+    <a href="identity.html" class="active">Identity</a>
+    <a href="story.html">Story</a>
+    <a href="rules.html">Rules &amp; Weapons</a>
+  </div>
+
+  <div class="k-section">
+
+    <div class="k-card">
+      <h3>What Changed Since Chapter One</h3>
+      <p style="font-size:.92em;color:#c9bbd8;line-height:1.8;">In Chapter One Vajramukha defeated Tamasa-the-Ashoka-Chaya-administrator at the standing-Pataliputra confrontation and healed the standing-gaur-rage&rsquo;s standing-overflow through the kingdom-council&rsquo;s standing-Magadhi-Prakrit poetry-discipline. Tamasa was spared at the Ch 1 climax under the kingdom-council&rsquo;s standing-administrative-rehabilitation clause and spent the intervening years studying the Nalanda Reconstructed University&rsquo;s standing-faculty-appointment protocols. Returns in autumn 2024 as Acharya Ghora with a forged Nalanda-University-faculty appointment-letter (forged at the standing-Bhopal-printing-press by the same Singapore-funded forgery-cell that produced Naga-Rakshasa&rsquo;s sixteen DNA-rite kits in Sikkim and Tri-Yantra-Bheda&rsquo;s civil-engineering-vulnerability doctorate in Sangam-Tamilakam; the kingdom-council&rsquo;s standing-forgery-cell-investigation confirms the cross-network identity at week eleven by cross-referencing the standing-Singapore source-account&rsquo;s standing-wire-record at the standing-Reserve-Bank-Patna-Branch). Holds private audiences with the standing-Nalanda-Order&rsquo;s standing-Mahasthavira Acharya Vasudha-of-the-Manuscript and the standing-Vajra-Sangha&rsquo;s standing-Senapati Bhima-of-the-Plains across the chapter&rsquo;s first six weeks. Funds the standing-Nalanda-Order printing-press at three-point-two crore rupees from the standing-Singapore funding-line; funds the standing-Vajra-Sangha weapon-procurement at three-point-five crore rupees from the same standing-line; each order believes the standing-fund is from the other order&rsquo;s standing-treasury. The standing-orchestrated-inflammations across weeks 4-6 produce the standing-seventh-week-riot at the standing-Nalanda Reconstructed Library&rsquo;s standing-northern-courtyard at 1:38 a.m. The standing-library catches fire at 1:54 a.m. Acharya Vasudha-of-the-Manuscript remains inside the manuscript-vault attempting to retrieve the standing-Atisha-Dipankara 1042 CE palm-leaf bundle (the standing-permanent-foundation of the kingdom&rsquo;s standing-Magadhi-Buddhist-archive since the 1193 CE Bakhtiyar-Khilji Nalanda burning). Vajramukha runs the standing-twenty-three-kilometre distance from the Patna State Hero&rsquo;s residence in three hours and eleven minutes. Arrives at the standing-northern-skylight at 2:47 a.m. The standing-northern-skylight glass is broken by Maitreyi-the-Younger&rsquo;s standing-fire-emergency-protocol&rsquo;s standing-secondary-exit at 2:53 a.m. Vajramukha enters the manuscript-vault at 2:58 a.m. The standing-roof-section above the central manuscript-vault collapses at 3:03:18 a.m. Vajramukha deflects the falling roof-section away from Maitreyi-the-Younger at 3:03:24, fractures his standing-right-clavicle and standing-left-femur. Acharya Vasudha is found at 3:03:31 a.m. at the standing-Atisha-Dipankara shelf-position with the standing-palm-leaf-bundle in her standing-right-hand. The standing-secondary-fire-front reaches the shelf-position at 3:03:31 a.m. Death is recorded at 3:03:31 a.m. Vajramukha cannot move under the standing-roof-section. Maitreyi-the-Younger drags him from the standing-vault at 3:08 a.m. through the standing-northern-skylight. The standing-library structure-collapse completes at 3:11 a.m. Acharya Ghora is observed at the standing-northern-courtyard at 1:43 a.m. by V. Singh; disappears toward the standing-Patna-Gaya road by 4:11 a.m. The kingdom-council&rsquo;s standing-State-Police standing-warrant is issued at the standing-amended-charter&rsquo;s ratification-day; Acharya Ghora reaches the standing-Bhutan-border by Friday week 8. Vajramukha is hospitalised at the standing-Patna-Medical-College&rsquo;s standing-orthopaedic-ward across Monday-week-7 to Friday-week-7 (five days). Discharges against medical-advice on Saturday week 7 at 5:11 a.m. Walks back to the standing-burnt Nalanda library&rsquo;s standing-northern-wing foundation on Monday week 8 at 6:11 a.m. with the standing-clay-brick at his standing-left-hand and the standing-mortar-trowel at his standing-right-hand. Lays his first standing-foundation-brick at 6:23 a.m. Monday week 8 at the standing-northeast-corner-position. Maitreyi-the-Younger arrives at 6:31 a.m. with the standing-architectural-blueprint and reads the standing-eleventh-century-Nalanda load-bearing-pattern aloud. The standing-brick-laying continues across ninety-three days. The Stage III gaur-foreleg-first-stroke completes on day ninety-three at 4:11 p.m. at the standing-northern-wing roof-tile placement&rsquo;s standing-keystone-tile placement. The standing-amended-charter (six core provisions including the standing-Madhyama integration, the standing-Sixth-Clause criminalising standing-faculty-appointment-forgery, the standing-living-archive seat for Maitreyi-the-Younger, the standing-foundation-by-hand discipline-recognition for Vajramukha, and the standing-East-Dominant-successor seat) is ratified by 47 to 3 on the day ninety-four after the standing-Stage-III completion (also the day the standing-hollow-gaur is found at the standing-Valmiki-Tiger-Reserve&rsquo;s standing-northern-grazing-meadow).</p>
+    </div>
+
+    <!-- ====== THE CHARTER ====== -->
+    <div class="k-card">
+      <h3>The Amended Vajra-Bhumi Charter &mdash; Six Core Provisions, Ratified 47-3 Day 94 Post-Riot</h3>
+      <div class="charter-card">
+        <div class="cc-label">The Six Core Provisions &bull; Ratified by Kingdom-Council 47-3</div>
+        <div class="cc-text">First. The standing-mind-body Madhyama-integration is codified: the standing-state-hero&rsquo;s standing-discipline-requirement is dual &mdash; both the standing-Nalanda-mind-tradition&rsquo;s standing-Magadhi-Prakrit poetry-discipline and the standing-Vajra-Sangha body-tradition&rsquo;s standing-gauntlets-and-mace combat-discipline. The standing-charter&rsquo;s standing-Fifth-Clause Madhyama-provision retires the standing-two-thousand-five-hundred-year mind-body division.
+
+Second. The standing-Nalanda-University-faculty-appointment standing-verification-protocol is established: every standing-appointment-letter must be counter-signed by both the standing-Mahasthavira and the standing-Bihar-State-Police standing-academic-credentialing cell within seven days of issue; standing-uncounter-signed appointments are standing-void.
+
+Third. The standing-Sixth-Clause criminalising standing-faculty-appointment-forgery and standing-religious-tradition-impersonation under the 1972 Religious-Identity-Verification statute and the 2014 Forgery-of-Academic-Credentials statute is codified.
+
+Fourth. The standing-living-archive seat (modelled on the Sangam-Tamilakam Fifth Clause and the Kalinga-Chakra Fourth Provision) is established for the kingdom&rsquo;s standing-Atisha-Dipankara palm-leaf-tradition-memory. Maitreyi-the-Younger is conferred the seat at the ratification-day at the standing-acting-Mahasthavira position.
+
+Fifth. The standing-foundation-by-hand discipline-recognition is codified: the standing-state-hero&rsquo;s standing-Stage-III bond-mark requires standing-manual-labour at a standing-kingdom-property in the standing-ninety-day-minimum continuous-period. The standing-clause is the kingdom-council&rsquo;s standing-recognition that combat-victory alone cannot heal the standing-mind-body schism &mdash; the standing-bond grows through the standing-brick that the standing-fist cannot punch.
+
+Sixth. Vajramukha is conferred the standing-East-Dominant-successor seat at the ratification-day under the southern-bloc federation arrangement&rsquo;s standing-East-Dominant designation. (The standing-Kalinga-Chakra East-Dominant seat held by Jagannath-Bandhu and the standing-Vajra-Bhumi East-Dominant seat held by Vajramukha share the standing-rotating-Eastern-Federation-chairmanship at six-month intervals beginning Ch 3.)</div>
+        <div class="cc-attr">&mdash; Drafted by the kingdom-council&rsquo;s standing-emergency-session across eleven continuous-hour sessions following the standing-Stage-III completion. Ratified by 47-3 on the day ninety-four after the riot &mdash; also the day the standing-hollow-gaur is found at the standing-Valmiki-Reserve. Effective immediately. The standing-three-faction senior-delegates and the standing-Kalinga-Chakra cross-region observation cohort all counter-sign.</div>
+      </div>
+    </div>
+
+    <!-- ====== KEY CHARACTERS ====== -->
+    <div class="k-card">
+      <h3>Key Characters &mdash; This Chapter</h3>
+
+      <div class="ccard hero">
+        <span class="role-tag">Hero &bull; Survives, Stage III by Rebuilding-Bond, East-Dominant Successor</span>
+        <h4>Vajramukha</h4>
+        <div class="ctitle">The Warrior-Poet Who Laid the Foundation by Hand &bull; Bloodline D &bull; gaur-line, the body that learns to build what the fist cannot punch</div>
+        <p>Thirty-five. Kingdom-council&rsquo;s standing-state-hero of Bihar since 2019; standing two-men-in-one-body since the standing-Ch-1-Pataliputra confrontation &mdash; the gaur-rage in his standing-right-fist; the Magadhi-Prakrit poetry in his standing-left-hand. Runs the standing-twenty-three-kilometre distance from the Patna State Hero&rsquo;s residence to the Nalanda library in three hours and eleven minutes on the seventh-week-riot night; arrives at the standing-northern-skylight at 2:47 a.m.; enters the manuscript-vault at 2:58 a.m.; cannot reach Acharya Vasudha-of-the-Manuscript before her standing-3:03:31 death at the Atisha-Dipankara shelf. Deflects the standing-falling roof-section at 3:03:24, fractures standing-right-clavicle and standing-left-femur. Discharges against medical-advice on day-six. Walks back to the standing-burnt-northern-wing foundation on Monday week 8 at 6:11 a.m. Lays the first foundation-brick at 6:23 a.m. at the northeast-corner-position. Continues the standing-brick-laying every dawn-through-dusk across ninety-three days. The Stage III gaur-foreleg-first-stroke completes at the standing-keystone-tile placement on day ninety-three at 4:11 p.m. Survives the chapter. Conferred the standing-East-Dominant-successor seat at the standing-amended-charter&rsquo;s ratification-day. Per Ch 3 plan he marries Maitreyi-the-Younger at the standing-Magadhi spring wedding-festival in week 8 of Chapter Three &mdash; the saga&rsquo;s Bloodline-mixing event (Bloodline-D gaur-line + Bloodline-A Nalanda-scholar-line). The marriage produces the standing-Bihar-throne&rsquo;s standing-Ch-3 heir in late Chapter Three.</p>
+      </div>
+
+      <div class="ccard villain">
+        <span class="role-tag">Catalyst Villain &bull; Survives via Bhutan-Border Escape, Eastern Field-Operative Ch 3</span>
+        <h4>Acharya Ghora</h4>
+        <div class="ctitle">Tamasa in the Scholar&rsquo;s Saffron-Shawl &bull; The Forged Faculty-Appointment That Burned the Library</div>
+        <p>Fifty-four. Was Tamasa-the-Ashoka-Chaya-administrator at the Ch 1 Pataliputra confrontation; spared under the kingdom-council&rsquo;s standing-administrative-rehabilitation clause. Studied the Nalanda-University-faculty-appointment standing-protocols across 2020-2024 at the standing-public-library&rsquo;s standing-academic-record reading-room. Returns in autumn 2024 with a standing-forged Nalanda-faculty-appointment-letter (Department of Magadhi-Prakrit Comparative-Philology; designation &ldquo;Visiting Acharya&rdquo;; appointment-period three years; forged at the standing-Bhopal-printing-press by the same Singapore-funded forgery-cell that produced Naga-Rakshasa&rsquo;s sixteen DNA-rite kits in Sikkim and Tri-Yantra-Bheda&rsquo;s civil-engineering-vulnerability doctorate in Sangam-Tamilakam). The kingdom-council&rsquo;s standing-forgery-cell-investigation confirms the cross-network identity at week eleven by cross-referencing the standing-Singapore source-account&rsquo;s standing-wire-record at the standing-Reserve-Bank-Patna-Branch. Holds private audiences with the standing-Nalanda-Order Mahasthavira Acharya Vasudha and the standing-Vajra-Sangha Senapati Bhima across weeks 1-6. Funds both orders from the standing-Singapore source-account: ₹3.2 crore to the Nalanda printing-press; ₹3.5 crore to the Vajra-Sangha weapon-procurement; each order believes the standing-fund is from the other order&rsquo;s standing-treasury. Engineers the standing-seventh-week-riot at the standing-Nalanda Reconstructed Library&rsquo;s standing-northern-courtyard via standing-coordinated provocation through standing-twelve-paid student-agents (six Nalanda-aligned, six Vajra-Sangha-aligned). Observed at the standing-northern-courtyard at 1:43 a.m. by V. Singh (the standing-Forest-Department ranger present at the standing-overnight-administrative-duty rotation). Disappears toward the standing-Patna-Gaya road by 4:11 a.m. The standing-State-Police standing-warrant is issued at the standing-amended-charter&rsquo;s ratification-day. Reaches the standing-Bhutan-border on Friday week 8. Per Ch 3 plan he is one of the standing-villain-network&rsquo;s Eastern field-operatives alongside Adharma-Kendra&rsquo;s standing-network and Vinasha-Garbha&rsquo;s standing-Patkai-corridor cell.</p>
+      </div>
+
+      <div class="ccard deceased">
+        <span class="role-tag">Deceased &bull; Mahasthavira, Standing-Atisha-Dipankara Bundle Retriever</span>
+        <h4>Acharya Vasudha-of-the-Manuscript (deceased)</h4>
+        <div class="ctitle">The Sixty-Eight-Year-Old Mahasthavira Who Died Inside the Burning Vault for a Single Palm-Leaf Bundle</div>
+        <p>Sixty-eight at death. Kingdom-council&rsquo;s standing-Nalanda-Order Mahasthavira since 2012. Standing-Magadhi-Buddhist-scholar lineage descendant of the seventeenth-century Bodhgaya-Vihara Mahasthavira-line. Standing-Atisha-Dipankara 1042 CE palm-leaf bundle&rsquo;s standing-keeper since the 1995 standing-Nalanda Reconstructed Library opening. Holds the standing-private-audience with Acharya Ghora across weeks 1-6; receives the standing-Nalanda printing-press funding-line through the standing-back-channel; does not initially question the standing-source-of-fund. Remains in the standing-manuscript-vault on the riot-night at 1:58 a.m. to attempt the standing-Atisha-Dipankara palm-leaf bundle retrieval. The standing-secondary-fire-front reaches the standing-Atisha-Dipankara shelf-position at 3:03:31 a.m. Death is recorded at 3:03:31 a.m. The standing-palm-leaf bundle is recovered at her standing-right-hand at 6:11 a.m. on the riot-morning by the standing-Bihar-State-Fire-Service cadaver-recovery cohort; the standing-bundle is intact (the standing-Mahasthavira&rsquo;s standing-body had shielded the bundle from the standing-fire&rsquo;s direct contact). The standing-bundle is conferred to Maitreyi-the-Younger at the standing-living-archive seat conferral on the ratification-day. The kingdom-council&rsquo;s standing-state-funeral is administered at the standing-Bodhgaya-Vihara cremation-ghat on day-three at 4:11 a.m. The standing-cremation is administered by Maitreyi-the-Younger alone.</p>
+      </div>
+
+      <div class="ccard mind">
+        <span class="role-tag">Acting-Mahasthavira &bull; Living-Archive Seat-Holder, Ch 3 Wife of Vajramukha</span>
+        <h4>Maitreyi-the-Younger</h4>
+        <div class="ctitle">The Twenty-Nine-Year-Old Nalanda Librarian Who Survived the Burning Through the Northern-Skylight</div>
+        <p>Twenty-nine. Standing-junior-librarian at the Nalanda Reconstructed Library since 2021. Standing-Bodhgaya-Vihara-tradition Nalanda-graduate (Magadhi-Prakrit Comparative-Philology, 2019). Standing-fire-emergency-protocol&rsquo;s standing-secondary-exit officer at the standing-night-of-the-riot. Reaches the standing-northern-skylight at 2:49 a.m. Breaks the standing-skylight-glass with the standing-mortar-pestle from the standing-restoration-room at 2:53 a.m. (the standing-glass-fracture-pattern is preserved in the kingdom-council&rsquo;s standing-emergency-record). Survives the standing-roof-collapse by approximately eleven minutes (the standing-northern-skylight&rsquo;s standing-roof-section collapses at 3:04 a.m.; she is at the standing-fifteen-metre-distance from the collapse-zone at 3:04:18). Drags Vajramukha from the standing-manuscript-vault at 3:08 a.m. through the standing-northern-skylight (Vajramukha&rsquo;s standing-fractured-femur prevents standing-self-extraction). Walks the standing-architectural-blueprint with Vajramukha every dawn for ninety-three days reading the standing-eleventh-century-Nalanda load-bearing-pattern aloud. Conferred the kingdom-council&rsquo;s standing-living-archive seat and the standing-acting-Mahasthavira position at the amended-charter&rsquo;s ratification-day. Per Ch 3 plan she marries Vajramukha at the standing-Magadhi spring wedding-festival in week 8 of Chapter Three &mdash; the saga&rsquo;s Bloodline-mixing event (Bloodline-A Nalanda-scholar-line + Bloodline-D gaur-line). The marriage produces the standing-Bihar-throne&rsquo;s standing-Ch-3 heir in late Chapter Three.</p>
+      </div>
+
+      <div class="ccard warrior">
+        <span class="role-tag">Senapati &bull; Retired After the Riot, Standing-Investigation-Witness</span>
+        <h4>Senapati Bhima-of-the-Plains</h4>
+        <div class="ctitle">The Fifty-Nine-Year-Old Vajra-Sangha Commander Who Held the Standing-Private-Audience With Acharya Ghora</div>
+        <p>Fifty-nine. Kingdom-council&rsquo;s standing-Vajra-Sangha Senapati since 2009. Standing-Magadhi warrior-clans&rsquo; standing-most-senior commander of the Patna-Gaya-Nalanda-Rajgir corridor. Holds the standing-private-audience with Acharya Ghora across weeks 1-6; receives the standing-Vajra-Sangha weapon-procurement funding-line through the standing-back-channel; does not initially question the standing-source-of-fund. After the standing-seventh-week-riot files the standing-resignation at 11:11 a.m. on day-three to the kingdom-council&rsquo;s standing-State-Civil-Service standing-administrative-coordination cell. The standing-resignation is accepted at the standing-Sixth-Clause-criminalisation-day. Stands as the kingdom-council&rsquo;s standing-cooperating-witness throughout the standing-forgery-cell-investigation; provides the standing-back-channel record of the Acharya-Ghora-funding correspondence. The standing-State-Police standing-protocol records no charge against him under the standing-good-faith provision. Retires to the standing-Rajgir-hill cottage on day-twelve. The standing-Vajra-Sangha is led by his standing-second-in-command Senapati-Junior Rakta-Eyed Surya from day-three. Per Ch 3 plan he returns from retirement at the standing-first-Beast-Rising as the kingdom-council&rsquo;s standing-emergency-tactical-advisor.</p>
+      </div>
+
+      <div class="ccard warrior">
+        <span class="role-tag">Senapati-Junior &bull; New Vajra-Sangha Commander Post-Riot</span>
+        <h4>Senapati-Junior Rakta-Eyed Surya</h4>
+        <div class="ctitle">The Thirty-Six-Year-Old Vajra-Sangha Second-in-Command Who Inherited the Order After Bhima&rsquo;s Resignation</div>
+        <p>Thirty-six. Standing-Vajra-Sangha standing-second-in-command since 2018. Standing-Patna-Gaya-corridor warrior-clan&rsquo;s standing-senior-trainer. The honorific &ldquo;Rakta-Eyed&rdquo; (Red-Eyed) refers to his standing-overnight-combat-vigilance discipline &mdash; he sleeps standing-three-hours-only across the standing-active-training rotation. Assumes the standing-Vajra-Sangha command at 11:14 a.m. on day-three following Bhima&rsquo;s resignation. Restructures the standing-weapon-procurement chain across days 3-21; cancels the standing-Singapore-tied procurement-orders; refunds the standing-Singapore source-account&rsquo;s standing-tendered-amount through the standing-Reserve-Bank-Patna-Branch (the standing-refund-transaction is the kingdom-council&rsquo;s standing-Singapore-cross-network-investigation&rsquo;s standing-evidence-document E-47). Counter-signs the amended charter at the ratification-day. Per Ch 3 plan he commands the standing-Vajra-Sangha standing-Beast-Rising response cohort and inherits the standing-tactical-coordination seat at the standing-Eastern-Federation council.</p>
+      </div>
+
+      <div class="ccard middle">
+        <span class="role-tag">Madhyama Senior-Bhikshu &bull; Middle-Path Provision Drafter</span>
+        <h4>Acharya Buddha-mitra</h4>
+        <div class="ctitle">The Seventy-Two-Year-Old Bodhgaya-Vihara Bhikshu Who Drafted the Standing-Fifth-Clause Madhyama-Provision</div>
+        <p>Seventy-two. Standing-Bodhgaya-Vihara standing-most-senior Bhikshu since 2003. Standing-Madhyama-tradition&rsquo;s standing-mind-body-integration discipline-holder. Standing-Magadhi-Prakrit poetry-discipline teacher (Vajramukha&rsquo;s standing-childhood poetry-tutor at the standing-Bodhgaya-Vihara&rsquo;s standing-youth-instruction wing across 1998-2006). Walks the standing-mediating-procession across the standing-three-faction weekly Wednesday-noon Senate-Hall sessions throughout weeks 1-7. Drafts the standing-Fifth-Clause Madhyama-provision integrating the standing-mind-tradition and the standing-body-tradition into a standing-single-state-hero discipline-requirement. Files the standing-draft at the kingdom-council&rsquo;s standing-emergency-session at 11:11 a.m. on day-ninety-four after the standing-Stage-III completion. The standing-draft is ratified at 4:14 p.m. on the standing-same-day. Conferred the standing-Madhyama-permanent-seat at the kingdom-council&rsquo;s standing-Bihar-State-Council. Per Ch 3 plan he attends the Sanctuary as the kingdom-council&rsquo;s standing-Madhyama-permanent-seat representative; his standing-mind-body-integration discipline informs the kingdom-council&rsquo;s standing-state-hero-discipline-protocol across Chapter Three and Four.</p>
+      </div>
+
+      <div class="ccard cross">
+        <span class="role-tag">Cross-Region &bull; Standing-Maw-Sign-Recognition Cell Senior-Investigator</span>
+        <h4>Dr. Pratap Mohanty</h4>
+        <div class="ctitle">The Fifty-Three-Year-Old Kalinga-Chakra Cross-Region Maw-Sign Investigator (Returning Cross-Kingdom)</div>
+        <p>Fifty-three. Kalinga-Chakra&rsquo;s standing-Maw-sign-recognition cell&rsquo;s senior-investigator since the standing-eighteenth-Maw-sign (Konark counterclockwise-wheels-turning) recognition-day. Arrives at the standing-Patna-Medical-College&rsquo;s standing-orthopaedic-ward on Wednesday week 7 at 11:11 a.m. (forty-three hours after the standing-library-burning). Performs the standing-cross-region cross-reference reading at Vajramukha&rsquo;s standing-bedside across one hour fourteen minutes; reads the standing-Konark southern-face counterclockwise-wheels-turning evidence aloud; identifies the standing-cross-region pattern-link between the standing-eighteenth Maw-sign and the standing-imminent-nineteenth-Maw-sign. Walks the standing-burnt Nalanda library&rsquo;s standing-northern-wing foundation with Vajramukha on day-one (Monday week 8) at 11:43 a.m.; identifies the standing-northeast-corner-position as the standing-Stage-III foundation-anchor-position. Returns to Bhubaneswar on day-three at 4:11 p.m. Arrives back at the standing-Valmiki-Tiger-Reserve&rsquo;s standing-northern-grazing-meadow on day ninety-four at 11:43 a.m. (five hours after V. Singh&rsquo;s standing-six-fourteen-a.m. arrival); cross-references the standing-hollow-gaur sign with the standing-Maharashtra burnt-squirrel-nest sign; files the standing-fifth-cross-region paired-sign-naming document at the kingdom-council&rsquo;s standing-amended-charter ratification-day at 4:14 p.m. Per Ch 3 plan he attends the Sanctuary as the standing-East-cross-region Maw-sign-recognition senior-investigator.</p>
+      </div>
+
+      <div class="ccard ranger">
+        <span class="role-tag">Forest-Department Ranger &bull; Standing-Hollow-Gaur First-Discoverer</span>
+        <h4>V. Singh</h4>
+        <div class="ctitle">The Forty-Three-Year-Old Valmiki-Tiger-Reserve Saturday-Morning Ranger Who Found the Hollow Gaur</div>
+        <p>Forty-three. Standing-Forest-Department Valmiki-Tiger-Reserve standing-Saturday-morning ranger since 2017. Standing-overnight-administrative-duty rotation officer at the standing-Patna-Gaya-Nalanda-Rajgir corridor on the standing-night-of-the-riot; observes Acharya Ghora at the standing-northern-courtyard at 1:43 a.m.; files the standing-witness-statement at the kingdom-council&rsquo;s standing-State-Police-station at 9:11 a.m. on day-one. Returns to the standing-Valmiki-Tiger-Reserve duty rotation on day-seven. Arrives at the standing-northern-grazing-meadow at 6:14 a.m. on day ninety-four. Performs the standing-visual-inspection at 6:14-6:21; touches the standing-gaur-shoulder-flank at 6:21; recognises the standing-body&rsquo;s standing-light-mass (approximately one-twentieth of the standing-living-mass); calls Dr. K. Bhardwaj at 6:23 a.m. Files the standing-Forest-Department incident-report at 9:43 a.m. The standing-incident-report is the kingdom-council&rsquo;s standing-Maw-sign-recognition cell&rsquo;s standing-evidence-document M-19A.</p>
+      </div>
+
+      <div class="ccard medic">
+        <span class="role-tag">Veterinary-Cell On-Call &bull; Standing-Hollow-Gaur Incision-Cross-Reference Investigator</span>
+        <h4>Dr. K. Bhardwaj</h4>
+        <div class="ctitle">The Fifty-Seven-Year-Old Forest-Department On-Call Veterinarian Who Conducted the Standing-Incision-Cross-Reference</div>
+        <p>Fifty-seven. Standing-Forest-Department standing-veterinary-cell&rsquo;s standing-on-call veterinarian since 2009. Standing-Patna-University Veterinary-Pathology faculty across 1998-2009. Arrives at the standing-Valmiki-Tiger-Reserve&rsquo;s standing-northern-grazing-meadow at 8:11 a.m. on day ninety-four. Performs the standing-veterinary-emergency assessment at 8:11-8:23; conducts the standing-incision-cross-reference at the standing-abdominal-position at 8:23. Documents the standing-internal-organ-cavity&rsquo;s standing-empty-state; documents the standing-no-incision-evidence and the standing-no-decomposition-evidence; documents the standing-fresh-grass and standing-rain-water smell at the standing-cavity-interior. Files the standing-veterinary-pathology report at 4:11 p.m. on day ninety-four (concurrent with the standing-amended-charter ratification). The standing-report is the kingdom-council&rsquo;s standing-Maw-sign-recognition cell&rsquo;s standing-evidence-document M-19B. Counter-signs the standing-fifth-cross-region paired-sign-naming document with Dr. Pratap Mohanty at the standing-ratification-day at 4:14 p.m.</p>
+      </div>
+
+      <div class="ccard gaur">
+        <span class="role-tag">The Maw Sign &bull; Pair Five-A (with Maharashtra Burnt-Squirrel-Nest) &bull; Hollow-From-Within</span>
+        <h4>The Hollow Gaur</h4>
+        <div class="ctitle">The Standing-Valmiki-Tiger-Reserve Male-Gaur Without Wound, Without Predator-Print, Without Interior</div>
+        <p>The standing-male-gaur is found at the standing-Valmiki-Tiger-Reserve&rsquo;s standing-northern-grazing-meadow at 6:11 a.m. on day ninety-four (the standing-day-after Vajramukha&rsquo;s Stage-III completion). The standing-body is in the standing-grazing-pose with the head lowered toward the standing-grass-surface and the four standing-legs at the standing-stationary-position. No wound. No predator-print. No incision-evidence. The standing-body weighs approximately one-twentieth of the standing-gaur&rsquo;s standing-living-mass (approximately forty-five kilograms; the standing-living-mass would be approximately nine-hundred kilograms). The standing-incision-cross-reference at the standing-abdominal-position confirms the standing-internal-organ-cavity is empty: no heart, no lungs, no liver, no stomach, no intestines, no skeletal-internals; the standing-rib-cage, the standing-skull, the standing-spinal-cord, and the standing-musculature are in place at the standing-shell-pattern (approximately three centimetres of standing-muscle-tissue lining the standing-internal-surfaces of the standing-skeletal cage). The standing-cavity-interior smells of standing-fresh-grass and standing-rain-water (the standing-Valmiki-Reserve&rsquo;s standing-night-rain at 3:11 a.m. on day ninety-three had passed through the standing-meadow; the standing-rain-water has apparently entered the standing-cavity at some point during the standing-night). The Maw has demonstrated the capacity to <strong>remove the entire interior of a sacred bonded-species body without external wound or incision-evidence</strong>. Per the cross-region paired-sign-naming protocol the standing-hollow-gaur pairs with <strong>Maharashtra&rsquo;s Burnt Squirrel-Nest</strong> (the standing-nest whose carbonisation occurred from inside outward); both signs are interiors-removed-from-within without external evidence. The pair is the saga&rsquo;s fifth formally-recognised cross-region Maw-sign pair: <em>hollow-from-within</em>.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <footer style="text-align:center;padding:28px 20px;border-top:1px solid rgba(196,77,170,.12);color:#9a8db0;font-size:.75em;">
+    <p>Vajra-Bhumi &bull; Civil War &bull; Chapter 2 &bull; Maha Parva &bull; Age of Mythos Volume I</p>
+    <p style="margin-top:6px;"><a href="../../../../index.html" style="color:#c9a04a;text-decoration:none;">&larr; Chapter 2 Index</a></p>
+  </footer>
+</body>
+</html>

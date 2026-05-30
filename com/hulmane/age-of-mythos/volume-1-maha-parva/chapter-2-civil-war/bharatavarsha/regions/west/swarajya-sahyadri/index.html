@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swarajya Sahyadri &mdash; Civil War &mdash; Age of Mythos</title>
+  <link rel="stylesheet" href="../../../../../chapter-1-rise-of-legends/css/style.css">
+  <style>
+    body { background:#0a0610; color:#f0e8f8; min-height:100vh; }
+    .k-banner { text-align:center; padding:78px 20px 40px; background:linear-gradient(180deg,#0a0610 0%,#1c1006 60%,#0a0610 100%); border-bottom:1px solid rgba(196,77,170,.16); position:relative; }
+    .k-banner .badge { font-size:.55em; letter-spacing:4px; text-transform:uppercase; color:#c44daa; opacity:.85; margin-bottom:14px; }
+    .k-banner .badge .double { color:#f7c860; font-weight:bold; }
+    .k-banner h1 { font-size:2.6em; color:#f7c860; margin-bottom:.15em; letter-spacing:2px; }
+    .k-banner .state-label { font-size:.78em; color:#c9bbd8; opacity:.7; letter-spacing:1px; margin-bottom:.6em; }
+    .k-banner .tagline { color:#d4c5e8; font-size:.92em; max-width:660px; margin:0 auto; line-height:1.75; font-style:italic; }
+    .crest-line { display:block; margin:24px auto 0; width:220px; height:1px; background:linear-gradient(90deg,transparent,#f7c860,transparent); position:relative; }
+    .crest-line::before, .crest-line::after { content:""; position:absolute; top:-3px; width:6px; height:7px; background:#f7c860; transform:rotate(45deg); }
+    .crest-line::before { left:42%; }
+    .crest-line::after  { left:55%; }
+    .k-nav { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:14px 20px; background:rgba(0,0,0,.5); border-bottom:1px solid rgba(196,77,170,.1); }
+    .k-nav a { padding:5px 16px; border-radius:20px; border:1px solid rgba(196,77,170,.25); color:#d4c5e8; font-size:.72em; letter-spacing:1px; text-decoration:none; transition:all .15s; }
+    .k-nav a:hover, .k-nav a.active { background:rgba(196,77,170,.12); border-color:#c44daa; color:#fff; }
+    .k-section { max-width:1100px; margin:0 auto; padding:40px 20px 60px; }
+    .k-two { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    @media(max-width:640px){ .k-two { grid-template-columns:1fr; } }
+    .k-card { background:rgba(255,255,255,.025); border:1px solid rgba(196,77,170,.15); border-radius:10px; padding:22px; margin-bottom:16px; }
+    .k-card h3 { font-size:.72em; letter-spacing:2px; text-transform:uppercase; color:#f7c860; margin-bottom:12px; opacity:.9; }
+    .k-card p { font-size:.88em; color:#c9bbd8; line-height:1.75; }
+    .hero-portrait { width:100%; border-radius:10px; border:1px solid rgba(247,200,96,.22); display:block; }
+
+    .faction-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:14px; }
+    @media(max-width:720px){ .faction-grid { grid-template-columns:1fr; } }
+    .fac { padding:14px 16px; border-radius:10px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.02); }
+    .fac .fac-tag { font-size:.55em; letter-spacing:2px; text-transform:uppercase; margin-bottom:6px; }
+    .fac .fac-name { font-size:.9em; margin-bottom:6px; font-family:Georgia,serif; }
+    .fac .fac-count { font-size:.65em; color:#9a8db0; margin-bottom:6px; }
+    .fac .fac-desc { font-size:.74em; color:#c9bbd8; line-height:1.55; opacity:.85; }
+    .fac.gaur    { border-color:rgba(247,200,96,.35); }
+    .fac.gaur .fac-tag  { color:#f7c860; }
+    .fac.gaur .fac-name { color:#fff5d4; }
+    .fac.blood   { border-color:rgba(255,68,68,.28); }
+    .fac.blood .fac-tag { color:#ff7766; }
+    .fac.blood .fac-name { color:#f0d8d0; }
+    .fac.indep   { border-color:rgba(160,140,255,.3); }
+    .fac.indep .fac-tag { color:#c4b8ff; }
+    .fac.indep .fac-name { color:#dfd8f0; }
+
+    .k-quick-links { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-top:32px; }
+    .k-quick-link { display:block; padding:18px 20px; border-radius:10px; border:1px solid rgba(247,200,96,.22); background:rgba(28,16,6,.5); text-decoration:none; text-align:center; transition:border-color .15s; }
+    .k-quick-link:hover { border-color:#f7c860; }
+    .k-quick-link .ql-title { font-size:.85em; color:#f7c860; display:block; margin-bottom:4px; }
+    .k-quick-link .ql-sub { font-size:.7em; color:#9a8db0; opacity:.75; }
+
+    .alert-banner { background:linear-gradient(135deg,rgba(247,200,96,.10),rgba(60,40,0,.04)); border:1px solid rgba(247,200,96,.3); padding:16px 20px; border-radius:10px; margin-bottom:18px; }
+    .alert-banner .alert-label { font-size:.55em; letter-spacing:2px; text-transform:uppercase; color:#f7c860; margin-bottom:6px; }
+    .alert-banner .alert-text { color:#f0e0c0; font-size:.88em; line-height:1.7; }
+
+    .stat-chip { font-size:.65em; padding:3px 10px; border-radius:12px; background:rgba(247,200,96,.07); border:1px solid rgba(247,200,96,.22); color:#f7d99a; display:inline-block; margin:2px; }
+  </style>
+</head>
+<body>
+  <div class="k-banner">
+    <div class="badge"><span class="double">Double-Bond Earned</span> &bull; Chapter Two &bull; Civil War</div>
+    <h1>Swarajya Sahyadri</h1>
+    <div class="state-label">Maharashtra &bull; West Region</div>
+    <p class="tagline">Forty-seven forts. Two animal-bonds. One elder brother filing paperwork in the old-law court. The mountains begin to choose &mdash; not by blood, but by who climbs the wall.</p>
+    <span class="crest-line"></span>
+  </div>
+
+  <div class="k-nav">
+    <a href="../../../../index.html">&larr; Chapter 2</a>
+    <a href="index.html" class="active">Overview</a>
+    <a href="identity.html">Identity</a>
+    <a href="story.html">Story</a>
+    <a href="rules.html">Rules &amp; Weapons</a>
+  </div>
+
+  <div class="k-section">
+
+    <div class="alert-banner">
+      <div class="alert-label">Saga First &bull; This Chapter</div>
+      <div class="alert-text">Shivagati becomes the first <strong>double-bonded</strong> hero in the saga &mdash; the Indian Giant Squirrel of the Sahyadri and the Indian Gaur of Goa. The gaur arrives three nights after Sagaradeva&rsquo;s death, walking up from the Konkan forest with the black-crested bulbul above her. Half the kingdom calls it blessing. Half calls it curse. Shivagati survives Ch 2 with the double-bond settled &mdash; but her brother Vanaraksha is not finished, and the gaur came to her for a reason that has not yet been explained.</div>
+    </div>
+
+    <div class="k-two">
+      <div>
+        <img src="media/portraits/maharashtra-ch2-shivagati-double-bond.png"
+             alt="Shivagati at the moment the gaur kneels"
+             class="hero-portrait"
+             onerror="this.style.display='none'">
+        <p style="font-size:.7em;color:#9a8db0;text-align:center;margin-top:8px;opacity:.7;">Shivagati at the moment the gaur kneels &mdash; squirrel on her shoulder, hoofprint forming on her back</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div class="k-card">
+          <h3>The Hero (Survives Ch 2)</h3>
+          <p><strong style="color:#f7c860">Shivagati</strong> &mdash; The Wall-Climber Queen</p>
+          <p style="margin-top:8px;">Thirty-one. Mountain-fighter. Carries Vanara (the staff her grandfather forged from a single piece of Sahyadri rock-iron). Earns her Stage III mark by climbing a fort wall and asking its commander to choose her on character, not blood.</p>
+          <div style="margin-top:10px;">
+            <span class="stat-chip">Survives Ch 2</span>
+            <span class="stat-chip">Double-Bonded</span>
+            <span class="stat-chip">Bloodline E</span>
+          </div>
+        </div>
+        <div class="k-card">
+          <h3>The Catalyst Villain</h3>
+          <p><strong style="color:#ff7766">Vanaraksha</strong> &mdash; The Elder Brother With the Old-Law</p>
+          <p style="margin-top:8px;">Her elder brother. Files a formal primogeniture claim in the Maharashtra Heritage Court. Technically correct under the old Bloodline-E succession law. Does not raise an army. Hires lawyers. Twenty-four of the forty-seven fort-commanders find the paperwork persuasive enough to swear nominal allegiance to him.</p>
+        </div>
+        <div class="k-card">
+          <h3>The First Voluntary Follower</h3>
+          <p><strong style="color:#88e8ad">Tanaji-the-Second</strong> &mdash; The Silent Veteran</p>
+          <p style="margin-top:8px;">Fifty. Fort-commander of the silent garrison nobody had counted in the arithmetic. Believes in neither old-law nor new-blessing. Kneels for Shivagati after she climbs his fort wall personally and presents herself unarmed at his command-room door. The first follower in the saga chosen by skill alone.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="k-card" style="margin-top:24px;">
+      <h3>The Three-Way Faction Split &mdash; The Forty-Seven Forts</h3>
+      <p style="margin-bottom:14px;">Maharashtra&rsquo;s Sahyadri ridge has 47 hill-forts in active use. Most are crumbling. Most are small. All of them are in someone&rsquo;s line of sight. They have been the Sahyadri&rsquo;s parliament for three hundred years &mdash; not Mumbai, not Pune, the <em>forts</em>. Chapter Two is the season they fail to agree.</p>
+      <div class="faction-grid">
+        <div class="fac gaur">
+          <div class="fac-tag">Faction One &bull; 27 forts</div>
+          <div class="fac-name">The Gaur-Blessing</div>
+          <div class="fac-count">27 forts &bull; ends Ch 2 here</div>
+          <div class="fac-desc">Forts that take the gaur&rsquo;s arrival as the bond&rsquo;s own answer &mdash; the Sagaravamsha-line chose Shivagati and they will not contradict the line. Skilled, dispersed, mountain-tough. Tanaji-the-Second&rsquo;s example moves three more forts here in his first fortnight.</div>
+        </div>
+        <div class="fac blood">
+          <div class="fac-tag">Faction Two &bull; 20 forts</div>
+          <div class="fac-name">The Blood-Claim</div>
+          <div class="fac-count">20 forts &bull; ends Ch 2 here</div>
+          <div class="fac-desc">Forts that follow Vanaraksha because the old-law is comforting. Many do not love him. They love the predictability of primogeniture. Includes the coastal fort that defects mid-chapter and seizes Shivagati&rsquo;s elder cousin&rsquo;s grave.</div>
+        </div>
+        <div class="fac indep">
+          <div class="fac-tag">Independents</div>
+          <div class="fac-name">The Watchers</div>
+          <div class="fac-count">~3-5 forts moving constantly</div>
+          <div class="fac-desc">Forts that refuse to choose between the two siblings and declare their own command. Most return to the federation by chapter&rsquo;s end &mdash; gravity pulls them back &mdash; but two stay out as permanent dissidents into Chapter Three.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="k-card">
+      <h3>The Void Maw Sign</h3>
+      <p>An Indian Giant Squirrel&rsquo;s nest at the top of a Sahyadri tree is found burned. The tree below is untouched. There is no fire-line, no scorched grass, no smoke-stain on the bark. The nest itself is ash. The squirrel that lived in it is gone &mdash; no body, no feathers, no claws. Only the upper canopy carbonised, and the open air below it untouched. Shivagati reads what the sign means through her squirrel-bond: <em>the Void Maw has taken one of her squirrels.</em> She does not raise a weapon. She marks the spot. Tanaji-the-Second builds a small shrine. The shrine becomes a pilgrimage site by the end of the season.</p>
+    </div>
+
+    <div class="k-quick-links">
+      <a href="identity.html" class="k-quick-link">
+        <span class="ql-title">Faction &amp; Cast</span>
+        <span class="ql-sub">Three factions, the brother, the wall-climb follower</span>
+      </a>
+      <a href="story.html" class="k-quick-link">
+        <span class="ql-title">Full Story</span>
+        <span class="ql-sub">The Forty-Seven Forts &mdash; a film in two halves</span>
+      </a>
+      <a href="rules.html" class="k-quick-link">
+        <span class="ql-title">Rules &amp; Weapons</span>
+        <span class="ql-sub">Two tattoos, Vanara staff, the burnt squirrel-nest</span>
+      </a>
+      <a href="../../../index.html" class="k-quick-link" style="border-color:rgba(247,217,106,.15);">
+        <span class="ql-title" style="color:#c9a04a;">All Civil War Stories</span>
+        <span class="ql-sub">Back to Chapter 2</span>
+      </a>
+    </div>
+  </div>
+
+  <footer style="text-align:center;padding:28px 20px;border-top:1px solid rgba(196,77,170,.12);color:#9a8db0;font-size:.75em;">
+    <p>Swarajya Sahyadri &bull; Civil War &bull; Chapter 2 &bull; Maha Parva &bull; Age of Mythos Volume I</p>
+    <p style="margin-top:6px;"><a href="../../../index.html" style="color:#c9a04a;text-decoration:none;">&larr; Chapter 2 Index</a></p>
+  </footer>
+</body>
+</html>

@@ -3,27 +3,353 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Civil War — Maha Parva — Age of Mythos</title>
+  <title>Civil War &mdash; Maha Parva &mdash; Age of Mythos</title>
+  <link rel="stylesheet" href="../chapter-1-rise-of-legends/css/style.css">
   <style>
-    :root{--bg:#0d0a14;--ac:#c44daa;--text:#f0e8f8;--dim:#b8a8cc;}
-    *{box-sizing:border-box;margin:0;padding:0;}
-    body{font-family:Georgia,serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;
-    background-image:radial-gradient(ellipse at center,rgba(0,0,0,.3) 0%,transparent 70%);}
-    .badge{font-size:.55em;letter-spacing:4px;text-transform:uppercase;color:var(--ac);opacity:.8;margin-bottom:16px;}
-    h1{font-size:clamp(1.8em,4vw,3.2em);letter-spacing:4px;margin-bottom:10px;text-shadow:0 0 30px rgba(255,255,255,.08);}
-    .sub{font-size:.75em;color:var(--dim);letter-spacing:2px;margin-bottom:30px;opacity:.8;}
-    .desc{max-width:480px;font-size:.8em;color:var(--dim);line-height:1.7;margin:0 auto 32px;opacity:.75;}
-    .tag{display:inline-block;font-size:.55em;letter-spacing:2px;text-transform:uppercase;padding:6px 20px;border-radius:24px;border:1px solid var(--ac);color:var(--ac);margin-bottom:24px;}
-    a.back{font-size:.6em;letter-spacing:2px;text-transform:uppercase;color:var(--dim);text-decoration:none;opacity:.6;}
-    a.back:hover{opacity:1;}
+    :root { --ac:#c44daa; --crack:#9a3d8a; --pilot:#b8760a; }
+    body { background:#0d0a14; color:#f0e8f8; min-height:100vh; }
+    .ch-banner { text-align:center; padding:80px 20px 50px; background:linear-gradient(180deg,#0d0a14 0%,#1a0a1c 60%,#0d0a14 100%); border-bottom:1px solid rgba(196,77,170,.18); position:relative; }
+    .ch-banner::after { content:""; position:absolute; inset:0; background:radial-gradient(ellipse at center,transparent 30%,rgba(0,0,0,.4) 100%); pointer-events:none; }
+    .ch-banner .badge { font-size:.55em; letter-spacing:4px; text-transform:uppercase; color:var(--ac); opacity:.85; margin-bottom:18px; position:relative; }
+    .ch-banner h1 { font-size:clamp(2em,5vw,3.6em); letter-spacing:4px; margin-bottom:14px; color:#fff5d4; text-shadow:0 0 40px rgba(196,77,170,.25); position:relative; }
+    .ch-banner .sub { font-size:.8em; color:#d4c5e8; letter-spacing:3px; margin-bottom:24px; opacity:.85; position:relative; }
+    .ch-banner .desc { max-width:680px; font-size:.92em; color:#c9bbd8; line-height:1.85; margin:0 auto 28px; opacity:.85; position:relative; font-style:italic; }
+    .ch-nav { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:14px 20px; background:rgba(0,0,0,.45); border-bottom:1px solid rgba(196,77,170,.12); }
+    .ch-nav a { padding:6px 18px; border-radius:20px; border:1px solid rgba(196,77,170,.25); color:#d4c5e8; font-size:.72em; letter-spacing:1.5px; text-decoration:none; transition:all .15s; }
+    .ch-nav a:hover, .ch-nav a.active { background:rgba(196,77,170,.12); border-color:var(--ac); color:#fff; }
+    .ch-section { max-width:1200px; margin:0 auto; padding:48px 20px 80px; }
+    .stage-pill { display:inline-block; padding:4px 14px; border-radius:18px; font-size:.62em; letter-spacing:2px; text-transform:uppercase; }
+    .stage-pill.pilot   { background:rgba(184,118,10,.16); color:var(--pilot); border:1px solid rgba(184,118,10,.4); }
+    .stage-pill.dev     { background:rgba(196,77,170,.08); color:var(--ac); border:1px solid rgba(196,77,170,.25); }
+    .stage-pill.dead    { background:rgba(255,68,68,.12); color:#ff8888; border:1px solid rgba(255,68,68,.3); }
+    .stage-pill.regent  { background:rgba(255,170,0,.10); color:#ffcc66; border:1px solid rgba(255,170,0,.3); }
+    .arc-card { background:rgba(255,255,255,.025); border:1px solid rgba(196,77,170,.15); border-radius:12px; padding:24px; margin-bottom:18px; }
+    .arc-card h2 { color:#f0d8f8; font-size:1.25em; margin-bottom:10px; letter-spacing:1px; }
+    .arc-card p { color:#c9bbd8; line-height:1.75; font-size:.92em; }
+    .three-beats { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:14px; margin-top:18px; }
+    .beat { padding:14px 16px; border-radius:10px; border:1px solid rgba(196,77,170,.18); background:rgba(196,77,170,.04); }
+    .beat .beat-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:var(--ac); margin-bottom:6px; opacity:.8; }
+    .beat .beat-name { font-size:.95em; color:#fff5d4; margin-bottom:6px; font-family:Georgia,serif; }
+    .beat .beat-desc { font-size:.78em; color:#c9bbd8; line-height:1.55; opacity:.85; }
+
+    .kingdoms-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:14px; margin-top:18px; }
+    .k-tile { display:block; padding:18px 18px 16px; border-radius:10px; background:rgba(0,0,0,.25); border:1px solid rgba(196,77,170,.15); text-decoration:none; transition:border-color .15s, transform .12s; position:relative; }
+    .k-tile.linkable:hover { border-color:var(--pilot); transform:translateY(-1px); }
+    .k-tile .k-region { font-size:.55em; letter-spacing:2px; text-transform:uppercase; color:#9a8db0; opacity:.75; margin-bottom:6px; }
+    .k-tile .k-state { font-size:.7em; color:#9a8db0; margin-bottom:3px; }
+    .k-tile .k-name { font-size:1.05em; color:#fff5d4; margin-bottom:5px; font-family:Georgia,serif; }
+    .k-tile .k-arc-name { font-size:.75em; color:var(--ac); font-style:italic; margin-bottom:10px; opacity:.85; line-height:1.4; }
+    .k-tile .k-status { position:absolute; top:14px; right:14px; }
+    .region-heading { display:flex; align-items:center; gap:12px; margin:42px 0 12px; }
+    .region-heading .r-name { font-size:.85em; letter-spacing:2px; text-transform:uppercase; color:var(--ac); opacity:.85; }
+    .region-heading .r-line { flex:1; height:1px; background:linear-gradient(90deg,rgba(196,77,170,.4),transparent); }
+
+    .back-nav { margin-top:50px; text-align:center; }
+    .back-nav a { padding:10px 22px; border:1px solid rgba(196,77,170,.3); border-radius:20px; color:#d4c5e8; text-decoration:none; font-size:.8em; letter-spacing:1px; }
+    .back-nav a:hover { background:rgba(196,77,170,.08); border-color:var(--ac); }
+
+    .footer { text-align:center; padding:32px 20px; border-top:1px solid rgba(196,77,170,.12); color:#9a8db0; font-size:.75em; }
   </style>
 </head>
 <body>
-  <div class="badge">Maha Parva &bull; Chapter Two</div>
-  <h1>Civil War</h1>
-  <div class="sub">Coming Soon</div>
-  <p class="desc">The kingdoms of Bharatavarsha turn on each other. Legends forged in Chapter 1 now bleed against each other. In the shadows, the first ancient beasts begin to stir.</p>
-  <span class="tag">In Development</span><br>
-  <a href="../index.html" class="back">&#8592; Back to Maha Parva</a>
+  <div class="ch-banner">
+    <div class="badge">Maha Parva &bull; Chapter Two &bull; Volume I</div>
+    <h1>Civil War</h1>
+    <div class="sub">Thirty Kingdoms. Thirty Cracks. The Wound Was Always Inside.</div>
+    <p class="desc">The Chapter-1 villains do not return as attackers. They return as catalysts &mdash; each one exploiting the defining flaw of the hero who beat them. The kingdoms of Bharatavarsha splinter from within. Heroes who survive earn the right to attempt tattoo-3. Many fall. By the chapter&rsquo;s end, the Grand Council cannot convene &mdash; there is no peace to convene in.</p>
+  </div>
+
+  <div class="ch-nav">
+    <a href="../index.html">Volume I</a>
+    <a href="index.html" class="active">Chapter 2 &bull; Civil War</a>
+    <a href="../chapter-3-rise-of-beasts/index.html">Chapter 3 &bull; Rise of Beasts</a>
+    <a href="../chapter-4-the-great-epic/index.html">Chapter 4 &bull; The Great Epic</a>
+    <a href="../chapter-1-rise-of-legends/index.html">&larr; Chapter 1</a>
+  </div>
+
+  <div class="ch-section">
+
+    <div class="arc-card">
+      <h2>The Three-Beat Structure</h2>
+      <p>Every kingdom in Chapter Two splits along the same shape &mdash; then deviates wherever its culture demands. The shape is named so the saga&rsquo;s thirty civil wars feel like one chapter and not thirty disconnected vignettes.</p>
+      <div class="three-beats">
+        <div class="beat">
+          <div class="beat-label">Beat 1</div>
+          <div class="beat-name">The Crack</div>
+          <div class="beat-desc">The kingdom&rsquo;s Chapter-1 flaw becomes public. The hero refuses to see it. The villain reappears wearing a new face &mdash; not attacker, but the leader of one faction inside the kingdom.</div>
+        </div>
+        <div class="beat">
+          <div class="beat-label">Beat 2</div>
+          <div class="beat-name">The Loss</div>
+          <div class="beat-desc">Something irreplaceable is lost &mdash; a city, a guru, a child, a sacred site, a faction&rsquo;s loyalty. The old solution fails. The tattoo flickers. The bond is straining.</div>
+        </div>
+        <div class="beat">
+          <div class="beat-label">Beat 3</div>
+          <div class="beat-name">The Tattoo Trial</div>
+          <div class="beat-desc">The hero attempts tattoo-3. Some earn a partial mark and survive. Some fall. Some die earning it. The kingdom passes to the next hand.</div>
+        </div>
+        <div class="beat">
+          <div class="beat-label">Epilogue</div>
+          <div class="beat-name">The Maw Sign</div>
+          <div class="beat-desc">The Void Maw leaves a sign in every kingdom &mdash; an unnatural animal, a returning ghost, a herald with no shadow. A bird relays the news to a neighbour.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="arc-card">
+      <h2>What the Chapter Ends With</h2>
+      <p>A hawk-relay across all six regions, carrying one sentence: <em style="color:#f0d8f8;">"The mouth has opened. The Council must sit."</em> None of the heroes who read it understand. That is the Void Maw&rsquo;s first audible declaration. Chapter Three begins with the Six who survive realising the message is real.</p>
+    </div>
+
+    <!-- ====== SOUTH ====== -->
+    <div class="region-heading"><span class="r-name">Dakshinapatha &bull; South</span><span class="r-line"></span></div>
+    <div class="kingdoms-grid">
+      <a href="bharatavarsha/regions/south/vijayanagara-reborn/index.html" class="k-tile linkable">
+        <span class="stage-pill pilot k-status">Pilot &bull; Complete</span>
+        <div class="k-region">South Region</div>
+        <div class="k-state">Karnataka</div>
+        <div class="k-name">Vijayanagara Reborn</div>
+        <div class="k-arc-name">The Restoration vs Reform Schism</div>
+      </a>
+      <a href="bharatavarsha/regions/south/parashurama-kshetra/index.html" class="k-tile linkable">
+        <span class="stage-pill regent k-status">Transmission-Stage III &bull; Complete</span>
+        <div class="k-region">South Region</div>
+        <div class="k-state">Kerala</div>
+        <div class="k-name">Parashurama-Kshetra</div>
+        <div class="k-arc-name">The 109th Form Public Lesson</div>
+      </a>
+      <a href="bharatavarsha/regions/south/dharmakshetra-amaravati/index.html" class="k-tile linkable">
+        <span class="stage-pill regent k-status">Mercy-Stage III &bull; Complete</span>
+        <div class="k-region">South Region</div>
+        <div class="k-state">Andhra Pradesh</div>
+        <div class="k-name">Dharmakshetra Amaravati</div>
+        <div class="k-arc-name">The Spared Twin Returns</div>
+      </a>
+      <a href="bharatavarsha/regions/south/sangam-tamilakam/index.html" class="k-tile linkable">
+        <span class="stage-pill regent k-status">Unauthorised-Speech-Stage III &bull; Complete</span>
+        <div class="k-region">South Region</div>
+        <div class="k-state">Tamil Nadu</div>
+        <div class="k-name">Sangam Tamilakam</div>
+        <div class="k-arc-name">The Silenced Assembly</div>
+      </a>
+      <a href="bharatavarsha/regions/south/chaya-golkonda/index.html" class="k-tile linkable">
+        <span class="stage-pill regent k-status">Open-Trust-Stage III &bull; Complete</span>
+        <div class="k-region">South Region</div>
+        <div class="k-state">Telangana</div>
+        <div class="k-name">Chaya-Golkonda</div>
+        <div class="k-arc-name">The Thousand-Faced City</div>
+      </a>
+    </div>
+
+    <!-- ====== WEST ====== -->
+    <div class="region-heading"><span class="r-name">Paschimapatha &bull; West</span><span class="r-line"></span></div>
+    <div class="kingdoms-grid">
+      <a href="bharatavarsha/regions/west/swarajya-sahyadri/index.html" class="k-tile linkable">
+        <span class="stage-pill pilot k-status">Double Bond &bull; Complete</span>
+        <div class="k-region">West Region</div>
+        <div class="k-state">Maharashtra</div>
+        <div class="k-name">Swarajya Sahyadri</div>
+        <div class="k-arc-name">The Forty-Seven Forts</div>
+      </a>
+      <a href="bharatavarsha/regions/west/samudra-dvipa/index.html" class="k-tile linkable">
+        <span class="stage-pill dead k-status">Hero Death &bull; Complete</span>
+        <div class="k-region">West Region</div>
+        <div class="k-state">Goa</div>
+        <div class="k-name">Samudra-Dvipa</div>
+        <div class="k-arc-name">The Foreign Sea</div>
+      </a>
+      <div class="k-tile">
+        <span class="stage-pill dev k-status">In Development</span>
+        <div class="k-region">West Region</div>
+        <div class="k-state">Gujarat</div>
+        <div class="k-name">Simha-Dwara</div>
+        <div class="k-arc-name">The Pride Vote</div>
+      </div>
+      <div class="k-tile">
+        <span class="stage-pill dev k-status">In Development</span>
+        <div class="k-region">West Region</div>
+        <div class="k-state">Rajasthan</div>
+        <div class="k-name">Maru-Maya</div>
+        <div class="k-arc-name">The Forged Fates</div>
+      </div>
+    </div>
+
+    <!-- ====== EAST ====== -->
+    <div class="region-heading"><span class="r-name">Purvapatha &bull; East</span><span class="r-line"></span></div>
+    <div class="kingdoms-grid">
+      <a href="bharatavarsha/regions/east/kalinga-chakra/index.html" class="k-tile linkable">
+        <span class="stage-pill regent k-status">Solitary-Pull-Stage III &bull; Complete</span>
+        <div class="k-region">East Region</div>
+        <div class="k-state">Odisha</div>
+        <div class="k-name">Kalinga-Chakra</div>
+        <div class="k-arc-name">The Three Jagannaths</div>
+      </a>
+      <a href="bharatavarsha/regions/east/vajra-bhumi/index.html" class="k-tile linkable">
+        <span class="stage-pill regent k-status">Rebuilding-Stage III &bull; Complete</span>
+        <div class="k-region">East Region</div>
+        <div class="k-state">Bihar</div>
+        <div class="k-name">Vajra-Bhumi</div>
+        <div class="k-arc-name">The Mind-Body Schism</div>
+      </a>
+      <a href="bharatavarsha/regions/east/vana-agni/index.html" class="k-tile linkable">
+        <span class="stage-pill regent k-status">Refused-Mark &bull; Stage III Failed &bull; Complete</span>
+        <div class="k-region">East Region</div>
+        <div class="k-state">Jharkhand</div>
+        <div class="k-name">Vana-Agni</div>
+        <div class="k-arc-name">The Coal Heart</div>
+      </a>
+      <a href="bharatavarsha/regions/east/sundara-vana/index.html" class="k-tile linkable">
+        <span class="stage-pill regent k-status">Accepted-Loss Stage III &bull; Complete</span>
+        <div class="k-region">East Region</div>
+        <div class="k-state">West Bengal</div>
+        <div class="k-name">Sundara-Vana</div>
+        <div class="k-arc-name">The Twin Delta</div>
+      </a>
+      <div class="k-tile">
+        <span class="stage-pill dev k-status">In Development</span>
+        <div class="k-region">East Region</div>
+        <div class="k-state">Andaman &amp; Nicobar</div>
+        <div class="k-name">Sagara-Ratna</div>
+        <div class="k-arc-name">The Second Locking (TBD)</div>
+      </div>
+    </div>
+
+    <!-- ====== NORTH ====== -->
+    <div class="region-heading"><span class="r-name">Uttarapatha &bull; North</span><span class="r-line"></span></div>
+    <div class="kingdoms-grid">
+      <a href="bharatavarsha/regions/north/ganga-simhasana/index.html" class="k-tile linkable">
+        <span class="stage-pill regent k-status">Step Back &bull; Complete</span>
+        <div class="k-region">North Region</div>
+        <div class="k-state">Uttar Pradesh</div>
+        <div class="k-name">Ganga-Simhasana</div>
+        <div class="k-arc-name">The Two Lives of Gangaputra</div>
+      </a>
+      <div class="k-tile">
+        <span class="stage-pill regent k-status">Regent</span>
+        <div class="k-region">North Region</div>
+        <div class="k-state">Haryana</div>
+        <div class="k-name">Kurukshetra-Bhoomi</div>
+        <div class="k-arc-name">The Marriage Fire</div>
+      </div>
+      <div class="k-tile">
+        <span class="stage-pill dev k-status">In Development</span>
+        <div class="k-region">North Region</div>
+        <div class="k-state">Punjab</div>
+        <div class="k-name">Panch-Nada</div>
+        <div class="k-arc-name">The Poisoned River</div>
+      </div>
+      <div class="k-tile">
+        <span class="stage-pill dev k-status">In Development</span>
+        <div class="k-region">North Region</div>
+        <div class="k-state">Uttarakhand</div>
+        <div class="k-name">Deva-Bhumi</div>
+        <div class="k-arc-name">The Pilgrim&rsquo;s Tax</div>
+      </div>
+      <div class="k-tile">
+        <span class="stage-pill dead k-status">Hero Falls</span>
+        <div class="k-region">North Region</div>
+        <div class="k-state">Himachal Pradesh</div>
+        <div class="k-name">Hima-Chhaya</div>
+        <div class="k-arc-name">The Avalanche of Names</div>
+      </div>
+      <div class="k-tile">
+        <span class="stage-pill dev k-status">In Development</span>
+        <div class="k-region">North Region</div>
+        <div class="k-state">Kashmir</div>
+        <div class="k-name">Sharada-Pitha</div>
+        <div class="k-arc-name">The Second Burning (TBD)</div>
+      </div>
+    </div>
+
+    <!-- ====== NORTHEAST ====== -->
+    <div class="region-heading"><span class="r-name">Pragjyotisha &bull; Northeast</span><span class="r-line"></span></div>
+    <div class="kingdoms-grid">
+      <a href="bharatavarsha/regions/northeast/ganda-kshetra/index.html" class="k-tile linkable">
+        <span class="stage-pill regent k-status">Mirror-Bond &bull; Complete</span>
+        <div class="k-region">Northeast Region</div>
+        <div class="k-state">Assam</div>
+        <div class="k-name">Ganda-Kshetra</div>
+        <div class="k-arc-name">The Suppressed Coven</div>
+      </a>
+      <a href="bharatavarsha/regions/northeast/sangai-nata/index.html" class="k-tile linkable">
+        <span class="stage-pill pilot k-status">Stage III &bull; Complete</span>
+        <div class="k-region">Northeast Region</div>
+        <div class="k-state">Manipur</div>
+        <div class="k-name">Sangai-Nata</div>
+        <div class="k-arc-name">The Raw Dance Rebellion</div>
+      </a>
+      <a href="bharatavarsha/regions/northeast/megha-maata/index.html" class="k-tile linkable">
+        <span class="stage-pill dead k-status">Hero Death &bull; Complete</span>
+        <div class="k-region">Northeast Region</div>
+        <div class="k-state">Meghalaya</div>
+        <div class="k-name">Megha-Maata</div>
+        <div class="k-arc-name">The Patrilineal Storm</div>
+      </a>
+      <a href="bharatavarsha/regions/northeast/tlawmngaihna-desh/index.html" class="k-tile linkable">
+        <span class="stage-pill dead k-status">Hero Death &bull; Stage III on Mountain</span>
+        <div class="k-region">Northeast Region</div>
+        <div class="k-state">Mizoram</div>
+        <div class="k-name">Tlawmngaihna-Desh</div>
+        <div class="k-arc-name">The Self-Sacrifice Wound</div>
+      </a>
+      <a href="bharatavarsha/regions/northeast/dzukou-rashtra/index.html" class="k-tile linkable">
+        <span class="stage-pill regent k-status">Refusal-Stage III &bull; Complete</span>
+        <div class="k-region">Northeast Region</div>
+        <div class="k-state">Nagaland</div>
+        <div class="k-name">Dzukou-Rashtra</div>
+        <div class="k-arc-name">The Pure-Lineage Wars</div>
+      </a>
+      <a href="bharatavarsha/regions/northeast/beyul-kshetra/index.html" class="k-tile linkable">
+        <span class="stage-pill regent k-status">Boundary-Stage III &bull; Complete</span>
+        <div class="k-region">Northeast Region</div>
+        <div class="k-state">Sikkim</div>
+        <div class="k-name">Beyul-Kshetra</div>
+        <div class="k-arc-name">The Refugee Council</div>
+      </a>
+      <a href="bharatavarsha/regions/northeast/tri-pura/index.html" class="k-tile linkable">
+        <span class="stage-pill dead k-status">Hero Fall &bull; Tattoo-3 Failed</span>
+        <div class="k-region">Northeast Region</div>
+        <div class="k-state">Tripura</div>
+        <div class="k-name">Tri-Pura</div>
+        <div class="k-arc-name">The Three Cities Fall</div>
+      </a>
+      <a href="bharatavarsha/regions/northeast/arunodaya-kshetra/index.html" class="k-tile linkable">
+        <span class="stage-pill regent k-status">Concession-Stage III &bull; Complete</span>
+        <div class="k-region">Northeast Region</div>
+        <div class="k-state">Arunachal Pradesh</div>
+        <div class="k-name">Arunodaya-Kshetra</div>
+        <div class="k-arc-name">The Night-Cultists</div>
+      </a>
+    </div>
+
+    <!-- ====== CENTRAL ====== -->
+    <div class="region-heading"><span class="r-name">Madhyadesa &bull; Central</span><span class="r-line"></span></div>
+    <div class="kingdoms-grid">
+      <a href="bharatavarsha/regions/central/hridaya-sthana/index.html" class="k-tile linkable">
+        <span class="stage-pill pilot k-status">Cracked Stage III &bull; Complete</span>
+        <div class="k-region">Central Region</div>
+        <div class="k-state">Madhya Pradesh</div>
+        <div class="k-name">Hridaya-Sthana</div>
+        <div class="k-arc-name">The Twelve-Sided Throne</div>
+      </a>
+      <div class="k-tile">
+        <span class="stage-pill regent k-status">Step Back</span>
+        <div class="k-region">Central Region</div>
+        <div class="k-state">Chhattisgarh</div>
+        <div class="k-name">Dandakaranya</div>
+        <div class="k-arc-name">The Forest Schism</div>
+      </div>
+    </div>
+
+    <div class="back-nav">
+      <a href="../index.html">&larr; Back to Maha Parva</a>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <p>Civil War &bull; Chapter 2 &bull; Maha Parva &bull; Age of Mythos Volume I</p>
+    <p style="margin-top:6px;"><a href="../index.html" style="color:#9a8db0;text-decoration:none;">&larr; Volume I</a></p>
+  </footer>
 </body>
 </html>
