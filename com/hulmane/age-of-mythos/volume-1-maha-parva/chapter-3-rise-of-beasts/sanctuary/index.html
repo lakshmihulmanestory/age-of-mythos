@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Sanctuary &mdash; The Cracked Seventh-Seat &mdash; Rise of Beasts &mdash; Age of Mythos</title>
+  <style>
+    :root { --bg:#080812; --ac:#a888c8; --gold:#e8c870; --rust:#b85040; --void:#403060; --stone:#a89880; --crack:#d8b870; --text:#d8d0e0; --dim:#a098b0; --card:#181222; --border:rgba(168,136,200,.22); }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:Georgia,serif; background:var(--bg); color:var(--text); line-height:1.75; min-height:100vh; }
+
+    .sanctuary-head { text-align:center; padding:92px 24px 56px; background:radial-gradient(ellipse at center,rgba(168,136,200,.18) 0%,transparent 70%); border-bottom:1px solid var(--border); position:relative; }
+    .sanctuary-head .badge { font-size:.55em; letter-spacing:5px; text-transform:uppercase; color:var(--ac); opacity:.88; margin-bottom:22px; }
+    .sanctuary-head .badge .border { color:var(--gold); font-weight:bold; }
+    .sanctuary-head h1 { font-size:clamp(2.6em,5vw,3.8em); color:var(--gold); margin-bottom:16px; letter-spacing:3px; }
+    .sanctuary-head .date-stamp { font-size:.8em; color:var(--ac); letter-spacing:2px; margin-bottom:18px; }
+    .sanctuary-head .tagline { color:#d8d0e0; font-size:.95em; max-width:780px; margin:0 auto; line-height:1.85; font-style:italic; }
+    .boundary { display:block; margin:26px auto 0; width:280px; height:1px; background:linear-gradient(90deg,transparent,var(--ac) 35%,var(--crack) 50%,var(--ac) 65%,transparent); opacity:.85; }
+
+    .s-nav { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:14px 20px; background:rgba(0,0,0,.6); border-bottom:1px solid rgba(168,136,200,.12); }
+    .s-nav a { padding:5px 16px; border-radius:20px; border:1px solid rgba(168,136,200,.28); color:var(--dim); font-size:.72em; letter-spacing:1px; text-decoration:none; transition:all .15s; }
+    .s-nav a:hover, .s-nav a.active { background:rgba(168,136,200,.12); border-color:var(--gold); color:#fff; }
+
+    .s-section { max-width:1100px; margin:0 auto; padding:48px 22px 24px; }
+    .s-section h2 { font-size:1.4em; color:var(--gold); letter-spacing:1px; margin-bottom:14px; font-family:Georgia,serif; }
+    .s-section h3 { font-size:1.05em; color:var(--ac); margin:24px 0 10px; font-family:Georgia,serif; }
+    .s-section p { font-size:.92em; color:#d8d0e0; margin-bottom:16px; }
+    .s-section p strong { color:#f0e0a8; }
+    .s-section p em { color:var(--gold); }
+
+    .timeline { background:linear-gradient(180deg,rgba(64,48,96,.20),rgba(0,0,0,.4)); border:1px solid var(--border); border-radius:12px; padding:24px 26px; margin:18px 0; }
+    .timeline h3 { color:var(--gold); margin-bottom:14px; border-bottom:1px solid rgba(168,136,200,.18); padding-bottom:8px; }
+    .timeline .tl-row { display:grid; grid-template-columns:140px 1fr; gap:18px; padding:11px 0; border-bottom:1px solid rgba(168,136,200,.10); }
+    .timeline .tl-row:last-child { border-bottom:none; }
+    .timeline .tl-time { font-size:.78em; color:var(--ac); font-family:'Courier New',monospace; letter-spacing:1px; }
+    .timeline .tl-event { font-size:.85em; color:#d8d0e0; line-height:1.7; }
+    @media (max-width:680px) { .timeline .tl-row { grid-template-columns:1fr; gap:4px; } }
+
+    .seat-circle { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:24px 0 8px; max-width:780px; margin-left:auto; margin-right:auto; }
+    @media (max-width:760px) { .seat-circle { grid-template-columns:1fr; } }
+    .seat { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px 18px; }
+    .seat .s-tag { font-size:.55em; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+    .seat h4 { font-size:1em; color:var(--ac); font-family:Georgia,serif; margin-bottom:6px; }
+    .seat .s-region { font-size:.7em; color:var(--dim); margin-bottom:8px; letter-spacing:1px; }
+    .seat .s-desc { font-size:.75em; color:#c8c0d8; line-height:1.7; }
+    .seat.center { background:linear-gradient(135deg,rgba(216,184,112,.10),rgba(184,80,64,.06)); border-color:rgba(216,184,112,.42); position:relative; }
+    .seat.center .s-tag { color:var(--crack); }
+    .seat.center h4 { color:var(--crack); }
+    .seat.center .s-desc { color:#e0d0a8; }
+    .seat.dissent { border-color:rgba(184,80,64,.40); }
+    .seat.dissent .s-tag { color:var(--rust); }
+    .seat.dissent h4 { color:#d49080; }
+
+    .vote-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin:14px 0; }
+    @media (max-width:680px) { .vote-grid { grid-template-columns:1fr; } }
+    .vote-card { background:rgba(168,136,200,.06); border:1px solid rgba(168,136,200,.20); border-radius:10px; padding:14px 18px; }
+    .vote-card.in-favour { border-color:rgba(216,184,112,.30); }
+    .vote-card.dissent { border-color:rgba(184,80,64,.30); background:rgba(184,80,64,.06); }
+    .vote-card .vc-tag { font-size:.55em; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:4px; }
+    .vote-card.dissent .vc-tag { color:var(--rust); }
+    .vote-card h4 { font-size:.92em; color:var(--ac); font-family:Georgia,serif; margin-bottom:6px; }
+    .vote-card.dissent h4 { color:#d49080; }
+    .vote-card p { font-size:.75em; color:#c8c0d8; line-height:1.65; }
+
+    .void-warning { background:radial-gradient(ellipse at center,rgba(64,48,96,.30),transparent 70%); border:1px solid rgba(168,136,200,.36); padding:22px 24px; border-radius:12px; margin:18px 0; text-align:center; }
+    .void-warning .vw-tag { font-size:.55em; letter-spacing:4px; text-transform:uppercase; color:var(--crack); margin-bottom:8px; }
+    .void-warning .vw-line { font-size:1.05em; color:var(--crack); font-style:italic; font-family:Georgia,serif; line-height:1.85; }
+
+    .footer { text-align:center; padding:38px 20px; border-top:1px solid var(--border); color:#8888a0; font-size:.72em; }
+    .footer a { color:var(--ac); text-decoration:none; }
+  </style>
+</head>
+<body>
+  <div class="sanctuary-head">
+    <div class="badge"><span class="border">The Cracked Seventh-Seat &bull; The Six-Plus-One Convening &bull; The First Council Of The Rise-Of-Beasts</span> &bull; Chapter Three Climax</div>
+    <h1>The Sanctuary</h1>
+    <div class="date-stamp">July 4 &ndash; July 11, 2027 &bull; Hampi Royal Court Courtyard &bull; The Buried-Temple Chamber</div>
+    <p class="tagline">Per Ch-2 closing-pigeon-message &lsquo;The mouth has opened. The Council must sit.&rsquo; cross-reference + Ch-3 Phase-4 administrative-cross-reference, the standing-Six Regional-Dominants convene at the standing-Hampi-Royal-Court courtyard standing-stone-slab seven-seat-circle at the standing-buried-temple chamber recovery cross-reference. The standing-seventh-seat is at the standing-cracked-administration. The standing-Void-Maw cracks the standing-stone-slab seventh-seat at the standing-11-second window cross-reference. The standing-Volume-I Maha-Adhipati ratification-vote administers at the standing-5-1 cross-reference in favour of Krishnadevaraya-Bhrata at the standing-Bloodline-A Gajavamsha desert-edge-of-the-line cross-reference. Moirangthem dissents at the standing-Tamasa-Nrita Pause-Cell standing-Aulakh-International-Lahore funding-line cross-reference at the standing-supreme-seat-not-yet-needed administrative-protocol cross-reference. The standing-Sanctuary is the standing-first-Council of the standing-Rise-of-Beasts chapter-arc + the standing-precursor-administration of the standing-Grand-Council at Chapter-Four cross-reference.</p>
+    <span class="boundary"></span>
+  </div>
+
+  <div class="s-nav">
+    <a href="../index.html">&larr; Chapter 3 Index</a>
+    <a href="index.html" class="active">Sanctuary Convening</a>
+    <a href="../bharatavarsha/regions/south/vijayanagara-reborn/index.html">South</a>
+    <a href="../bharatavarsha/regions/west/simha-dwara/index.html">West</a>
+    <a href="../bharatavarsha/regions/north/ganga-simhasana/index.html">North</a>
+    <a href="../bharatavarsha/regions/east/kalinga-chakra/index.html">East</a>
+    <a href="../bharatavarsha/regions/northeast/sangai-nata/index.html">NE</a>
+    <a href="../bharatavarsha/regions/central/hridaya-sthana/index.html">Central</a>
+  </div>
+
+  <div class="s-section">
+    <h2>The Buried-Temple Chamber Recovery</h2>
+    <p>Across the standing-Phase-1-cross-region cohort-witness administration at the standing-South Karnataka Vijayanagara-Reborn cross-reference (November-December 2026 cross-reference): the standing-buried-temple chamber at the standing-Hampi-Royal-Court courtyard south-of-Vitthala-temple cardinal-position is at the standing-recovery-administration cross-reference (the standing-buried-temple chamber was buried at the standing-1565-CE Talikota-battle aftermath administrative-cross-reference at the standing-Vijayanagara-Empire-defeat cross-reference; the standing-stone-slab seven-seat-circle was at the standing-pre-defeat cross-reference Council-Chamber-administrative-cell). Krishnadevaraya-Bhrata + Hampi-of-the-Bronze + the standing-Third-Herald + the standing-Hawk-Tower master Acharya Vidyaranya-the-Second administer the standing-recovery at the standing-7-day blind-walk Phase-1 administration cross-reference. The standing-seven-seat-circle is exposed at the standing-Phase-1-Day-7 December 4 2026 cross-reference at the standing-Hampi-of-the-Bronze + Third-Herald-walking-on-water administrative-cross-reference. The standing-stone-slab is at the standing-twelfth-century-CE Hoysala-Chalukya cross-reference (the standing-stone-slab predates the standing-Vijayanagara-Empire by the standing-three-hundred-year administrative-cross-reference; the standing-stone-slab is at the standing-Vyasa-of-the-Margins inscription-attribution cross-reference).</p>
+
+    <p>Across the standing-Phase-2-Phase-3 February-May 2027 cross-reference window the standing-buried-temple chamber is at the standing-cleaning-and-anchor-administration cross-reference. Krishnadevaraya-Bhrata administers the standing-stone-slab-cleaning + the standing-seven-seat-circle anchor-administration + the standing-eastern-cardinal-entrance-stairway clearing-administration cross-reference. The standing-final-anchor administration is at the standing-eleventh-of-June 2027 cross-reference at the standing-Phase-4 Sanctuary-Convening-preparation administrative-cross-reference.</p>
+
+    <p>The standing-buried-temple chamber configuration: <strong>standing-7-metre-diameter circular-stone-floor</strong> at the standing-Hoysala-Chalukya-stone-slab cross-reference; <strong>standing-7 stone-seats at the standing-2-metre-spacing circumference-position</strong> cross-reference (six standing-clean-seats + one standing-Centre-seat at the standing-cracked-administration cross-reference); <strong>standing-eastern-cardinal-entrance-stairway</strong> at the standing-eleven-step administrative-cross-reference; <strong>standing-cardinal-cross overhead-skylight</strong> at the standing-stone-slab-roof central-cardinal-position cross-reference at the standing-July-4-2027 sunset-light-administration cross-reference.</p>
+  </div>
+
+  <div class="s-section">
+    <h2>The Six Seats Of The Stone-Slab Seven-Seat Circle</h2>
+    <p>Per restructure §1 male-led-succession + restructure §3 Maha-Adhipati administration + Ch 3 Phase-4 administrative-cross-reference, the standing-six Regional-Dominants sit at the standing-six-clean-seats at the standing-stone-slab seven-seat-circle on the standing-fourth of July 2027 at the standing-4:11:11 p.m. cross-reference:</p>
+
+    <div class="seat-circle">
+      <div class="seat">
+        <div class="s-tag">South &bull; Saga&rsquo;s Volume-I Maha-Adhipati Candidate</div>
+        <h4>Krishnadevaraya-Bhrata</h4>
+        <div class="s-region">Vijayanagara-Reborn &bull; Karnataka &bull; 41</div>
+        <div class="s-desc">Bloodline-A Gajavamsha desert-edge-of-the-line. Standing-elephant-and-Krishna-river standing-double-bond carrier (saga&rsquo;s standing-first double-bond Dominant). Tattoo-3-half-body in standing-saffron-vermillion-indigo tri-ink. Third-Herald continues-administration. Cousin-recognition with Bloodline-D Jagannath-Bandhu + Bloodline-A Simhavikrama at saga&rsquo;s standing-two cousin-recognition cross-references. Per Ch 3 plan: <strong>Maha-Adhipati-candidate</strong> at Phase-4 ratification-vote.</div>
+      </div>
+      <div class="seat">
+        <div class="s-tag">West &bull; Saga&rsquo;s Second Double-Bond Dominant</div>
+        <h4>Simhavikrama</h4>
+        <div class="s-region">Simha-Dwara &bull; Gujarat &bull; 40</div>
+        <div class="s-desc">Bloodline-A Saurashtra-Sutapathi-line desert-edge-of-the-line. Standing-Asiatic-Lion-and-Goan-Gaur standing-double-bond carrier (saga&rsquo;s standing-second double-bond via D9 administrative-cross-reference). Tattoo-3-half-body in standing-sandy-gold-and-Goan-tide-blue-and-Sahyadri-forest-green tri-ink. Standing-shoulder-perched Maw-witness (Sahyadri-Shivagati Indian-Giant-Squirrel) at standing-right-shoulder cross-reference. Saga&rsquo;s standing-only standing-shoulder-perched-Maw-witness at the standing-Sanctuary stone-slab seven-seat-circle administrative-cross-reference.</div>
+      </div>
+      <div class="seat">
+        <div class="s-tag">North &bull; Saga&rsquo;s Dual-Cohort Dominant</div>
+        <h4>Gangaputra-regent</h4>
+        <div class="s-region">Ganga-Simhasana &bull; UP &bull; 47</div>
+        <div class="s-desc">Bloodline-B Suryavamshi-Ganga-line. Standing-split-bond mechanic from Ch-2 cross-reference (one Sarus-Crane bond at two-body-administration); Yamunadatta-throne-figure 15 at standing-3-metre-rear behind North clean-seat at the standing-dual-cohort administration cross-reference. Tattoo-3-half-body in standing-Ganga-blue-and-Yamuna-dark-blue dual-ink + Yamunadatta Stage-I hoofprint-mark at standing-left-foot. First standing-dual-Dominant cross-region (UP-North + MP-Central at Bloodline-B Vindhyan-Suryavamshi cross-reference).</div>
+      </div>
+      <div class="seat">
+        <div class="s-tag">East &bull; Saga&rsquo;s Yudhishthira-Parallel Non-Sectarian Dominant</div>
+        <h4>Jagannath-Bandhu</h4>
+        <div class="s-region">Kalinga-Chakra &bull; Odisha &bull; 44</div>
+        <div class="s-desc">Bloodline-D Drona-line. Standing-Sambar-bond carrier. Tattoo-3-half-body in standing-Jagannath-vermillion-and-Konark-saffron-and-Shabara-forest-green tri-ink. Sambari 12-year-old bonded-Sambar at standing-3-metre-rear. Saga&rsquo;s standing-first standing-cross-region-monument-revolution-witness (Konark-wheel from 35-km single-revolution-clockwise at Tattoo-3-completion). Saga&rsquo;s standing-first tribal-sovereign-veto Unity-Trial (Shabara-tribal-council 23-member at amended-charter). Yudhishthira-parallel cousin-recognition with Krishnadevaraya-Bhrata at saga&rsquo;s standing-two cross-Bloodline cousin-recognition cross-reference.</div>
+      </div>
+      <div class="seat dissent">
+        <div class="s-tag">Northeast &bull; Saga&rsquo;s Sole Dissenter</div>
+        <h4>Moirangthem</h4>
+        <div class="s-region">Sangai-Nata &bull; Manipur &bull; 41</div>
+        <div class="s-desc">Vana-Kula northeast-cross-reference + Mahabharata-Krishna-mapped. Standing-Sangai-deer-bond carrier; Sangaputra 15 at standing-3-metre-rear at the standing-dual-cohort administration cross-reference (saga&rsquo;s standing-first father-son dual-cohort at Sanctuary). Tattoo-3-half-body in standing-Loktak-emerald-and-Brahmaputra-blue tri-ink. <strong>Dissents at Maha-Adhipati ratification-vote at the standing-Tamasa-Nrita Pause-Cell standing-Aulakh-International-Lahore funding-line administrative-cross-reference at the standing-supreme-seat-not-yet-needed cross-reference</strong> (saga&rsquo;s standing-eighth-of-ten Aulakh-International-Lahore parent-corporation cross-network funding-line cross-reference instance).</div>
+      </div>
+      <div class="seat">
+        <div class="s-tag">Central &bull; Saga&rsquo;s Cracked-Mark Dominant</div>
+        <h4>Dvadashashringa</h4>
+        <div class="s-region">Hridaya-Sthana &bull; MP &bull; 47</div>
+        <div class="s-desc">Bloodline-B Vindhyan-line. Standing-Twelve-Antler-Barasingha cracked-bond from Ch-2 staff-break administrative-cross-reference. Tattoo-3-cracked-half-body in standing-Vindhyan-teak-brown-and-Kanha-grass-green-and-Sutrakara-saffron tri-ink with standing-twelve-vertical-crack at half-body amplification. Saga&rsquo;s standing-only Tattoo-3-with-crack. Sutrakara 13-years-4-months at standing-3-metre-rear at the standing-Sutrakara-permanent-seat above-Central-Regional-Dominant cross-reference. Saga&rsquo;s standing-youngest at Sanctuary stone-slab. Saga&rsquo;s standing-only above-Dominant-seat.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="s-section">
+    <h2>The Seventh Seat &mdash; The Centre &mdash; The Maw&rsquo;s Crack</h2>
+    <div class="seat-circle" style="grid-template-columns:1fr;">
+      <div class="seat center">
+        <div class="s-tag">Centre &bull; The Void-Maw Crack &bull; The Pending-Stage-IV-Supreme-Mark Seat</div>
+        <h4>The Seventh-Seat &mdash; Empty And Cracked</h4>
+        <div class="s-region">The Void-Maw Witness &bull; July 4 2027 4:23:11-4:23:22 p.m. &bull; 11-Second Crack-Formation Window</div>
+        <div class="s-desc">The standing-seventh-seat at the standing-Centre of the standing-stone-slab seven-seat-circle is at the standing-empty configuration at the standing-Sanctuary convening. The standing-seventh-seat is at the standing-cracked-administration at the standing-July-4-2027 4:23:11-4:23:22 p.m. eleven-second crack-formation window cross-reference. The standing-crack administers the standing-three-line bilateral cross-eastward configuration cross-reference at the standing-stone-slab-centre cardinal-position cross-reference (the standing-three-line: standing-north-south + standing-east-west + standing-northwest-southeast diagonal cross-reference at the standing-cardinal-cross overhead-skylight administrative-cross-reference). The standing-eleven-second window administers the standing-Void-Maw-resonance cross-cohort acknowledgement at the standing-six-Dominants cross-reference + the standing-six-bond-companion vocalization-administration at the standing-cross-cohort cardinal-cohort-witness cross-reference (Simha-Pati Asiatic-Lion + Goan-Gaur Sagara-Vrishabha + Sahyadri-Shivagati Indian-Giant-Squirrel + Yamunadatta-Sarus + Sambari Sambar + Sangai-Naga + Dvadasha-Sakhi Barasingha + Bhairava-Bull-Manipuri). The standing-seventh-seat is at the standing-Stage-IV-supreme-mark pending-administration cross-reference at the standing-Chapter-Four-epilogue cross-reference resolution-administration (the standing-Stage-IV-supreme-mark is at the standing-Krishnadevaraya-Bhrata-Maha-Adhipati standing-Volume-I final-administration at the standing-Ch-4 buried-temple-Void-Maw-entrance cross-reference). The standing-Void-Maw is at the standing-acknowledgement-administration of the standing-Six-Dominants + the standing-cracked-seventh-seat awaits-administration of the standing-Stage-IV-supreme-mark at the standing-Chapter-Four cross-reference.</div>
+      </div>
+    </div>
+
+    <div class="void-warning">
+      <div class="vw-tag">The Void-Maw &bull; July 4 2027 4:23:11 p.m. &bull; Eleven-Second Crack-Formation</div>
+      <p class="vw-line">&ldquo;The six sit. The seventh waits. The cracked-stone administers the standing-Stage-IV-supreme-mark cross-reference at the standing-Chapter-Four resolution. The Maha-Adhipati is acknowledged. The mouth has opened. The Council is seated. The forgotten names approach. The Volume-I is at the standing-Sanctuary administrative-cross-reference completion. The Volume-II is at the standing-Yavana-Khanda launch-point cross-reference pending-administration.&rdquo;</p>
+    </div>
+  </div>
+
+  <div class="s-section">
+    <h2>The July 4 2027 Timeline</h2>
+    <div class="timeline">
+      <h3>Phase 4 &bull; Sanctuary Convening &bull; July 4 2027 4:11 p.m. &mdash; 5:30 p.m.</h3>
+      <div class="tl-row">
+        <div class="tl-time">4:11:11 p.m.</div>
+        <div class="tl-event">Krishnadevaraya-Bhrata sits at standing-South clean-seat (eastern-cardinal-entry-stairway-adjacent). Third-Herald appears at standing-southern-pavilion edge at the standing-walk-and-stand administrative-cross-reference.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">4:11:23 p.m.</div>
+        <div class="tl-event">Moirangthem sits at standing-Northeast clean-seat (standing-anti-clockwise-cross-reference from South). Sangaputra 15 at standing-3-metre-rear at the standing-dual-cohort father-son administrative-cross-reference.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">4:11:28 p.m.</div>
+        <div class="tl-event">Simhavikrama sits at standing-West clean-seat. Sahyadri-Shivagati Indian-Giant-Squirrel at standing-right-shoulder. Simha-Pati Asiatic-Lion at standing-3-metre-rear behind West-seat. Sagara-Vrishabha Goan-Gaur at standing-7-metre-rear behind Simha-Pati. <strong>Saga&rsquo;s standing-only standing-shoulder-perched-Maw-witness at Sanctuary stone-slab.</strong></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">4:11:34 p.m.</div>
+        <div class="tl-event">Dvadashashringa sits at standing-Central clean-seat in ceremonial-shoulder-cut-away-vest at Tattoo-3-cracked-half-body visibility cross-reference. Sutrakara 13-years-4-months at standing-3-metre-rear at the standing-Sutrakara-permanent-seat above-Central-Regional-Dominant cross-reference. <strong>Saga&rsquo;s standing-youngest at Sanctuary.</strong></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">4:11:41 p.m.</div>
+        <div class="tl-event">Gangaputra-regent sits at standing-North clean-seat. Yamunadatta-throne-figure 15 at standing-3-metre-rear at the standing-dual-cohort administration cross-reference (UP-split-bond Sarus-Crane at standing-7-metre-rear).</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">4:11:43 p.m.</div>
+        <div class="tl-event">Jagannath-Bandhu sits at standing-East clean-seat. Sambari 12-year-old bonded-Sambar at standing-3-metre-rear.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">4:23:11 p.m.</div>
+        <div class="tl-event"><strong>The standing-Void-Maw cracks the standing-seventh-seat at the standing-stone-slab centre-cardinal-position.</strong> The standing-crack administers the standing-three-line bilateral cross-eastward configuration. Eleven-second window begins.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">4:23:11-22 p.m.</div>
+        <div class="tl-event">11-second crack-formation cardinal-cohort-vocalization: Simha-Pati Asiatic-Lion-roar + Sagara-Vrishabha Goan-Gaur-low-call + Sahyadri-Shivagati single-syllable Sahyadri-squirrel-vocalization + Sambari Sambar-bark + Dvadasha-Sakhi twelve-syllable barasingha-cardinal-call + Sangai-Naga Sangai-deer-call + Yamunadatta-Sarus Sarus-Crane-trumpet + Bhairava-Bull Manipuri-cattle-low-call. <strong>Saga&rsquo;s standing-first eight-species cross-cohort cardinal-cohort-vocalization administrative-cross-reference.</strong></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">4:34:11 p.m.</div>
+        <div class="tl-event">The standing-Six Dominants leave the standing-buried-temple chamber across the standing-eastern-cardinal-entrance-stairway at the standing-Krishnadevaraya-Bhrata-leads cross-reference at the standing-Phase-4 mid-window observation-administration.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">5:00:11 p.m.</div>
+        <div class="tl-event">Krishnadevaraya-Bhrata returns alone to the standing-buried-temple chamber. He sits at the standing-South clean-seat. He places his standing-right-hand on the standing-cracked-seventh-seat at the standing-Centre cross-reference. The standing-Maw-resonance administers the standing-Krishnadevaraya-Bhrata acknowledgement at the standing-Stage-IV-supreme-mark pending-administration cross-reference at the standing-Chapter-Four resolution cross-reference.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">5:11:11 p.m.</div>
+        <div class="tl-event">The standing-Six Dominants return to the standing-buried-temple chamber. Each sits at the standing-six clean-seat cross-reference. The standing-Volume-I Maha-Adhipati ratification-vote administration begins at the standing-secret-ballot configuration cross-reference (Vyasa-of-the-Margins administers the standing-secret-ballot-witness at the standing-southern-pavilion edge cross-reference).</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">5:23:11 p.m.</div>
+        <div class="tl-event"><strong>The standing-Volume-I Maha-Adhipati ratification-vote tally administers: 5-1 in favour of Krishnadevaraya-Bhrata.</strong> Simhavikrama (West) + Jagannath-Bandhu (East) + Gangaputra-regent (North) + Dvadashashringa (Central) + (abstention from Krishnadevaraya-Bhrata at conflict-of-interest) + Moirangthem dissent. <strong>The standing-saga&rsquo;s standing-only formal dissenting-vote at Sanctuary administrative-cross-reference.</strong></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">5:23:33 p.m.</div>
+        <div class="tl-event">Krishnadevaraya-Bhrata is ratified as standing-Volume-I Maha-Adhipati at the standing-Bloodline-A Gajavamsha desert-edge-of-the-line cross-reference. The standing-elephant-and-Krishna-river standing-double-bond carrier administers the standing-Maha-Adhipati seat at the standing-Sanctuary administrative-cross-reference.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">5:23:47 p.m.</div>
+        <div class="tl-event">Sutrakara 13 administers Hindi-Bundelkhandi-Sanskrit tri-language acknowledgement at the standing-saga&rsquo;s standing-youngest at Sanctuary speaking-administration cross-reference: &lsquo;The daughter witnesses. The father stands. The Maha-Adhipati is acknowledged.&rsquo;</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">5:30:11 p.m.</div>
+        <div class="tl-event">The standing-Sanctuary convening administers the standing-Phase-4 completion-administration cross-reference. The standing-Six-Dominants + the standing-cracked-seventh-seat awaits the standing-Stage-IV-supreme-mark resolution at the standing-Chapter-Four cross-reference. The standing-Krodha-Fourth-Herald reveal at the standing-Sikkim-Pelling-monastery cross-reference is pending at the standing-Ch-3-epilogue cross-reference (per D10 administrative-cross-reference).</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="s-section">
+    <h2>The Vote Distribution</h2>
+    <div class="vote-grid">
+      <div class="vote-card in-favour">
+        <div class="vc-tag">In Favour &bull; West</div>
+        <h4>Simhavikrama &mdash; The Double-Bond-Fellow-Recognition Vote</h4>
+        <p>Votes at the standing-double-bond-fellow-recognition cross-reference (Krishnadevaraya-Bhrata + Simhavikrama at the standing-saga&rsquo;s standing-only two double-bond Dominants administrative-cross-reference). The standing-West-cluster federation supports.</p>
+      </div>
+      <div class="vote-card in-favour">
+        <div class="vc-tag">In Favour &bull; East</div>
+        <h4>Jagannath-Bandhu &mdash; The Dual-Yudhishthira-Parallel Cross-Bloodline Cousin-Recognition</h4>
+        <p>Votes at the standing-Bloodline-A-and-Bloodline-D dual-Yudhishthira-parallel cross-Bloodline cousin-recognition cross-reference (saga&rsquo;s standing-first dual-Yudhishthira-parallel cross-Bloodline cousin-recognition administrative-protocol).</p>
+      </div>
+      <div class="vote-card in-favour">
+        <div class="vc-tag">In Favour &bull; North</div>
+        <h4>Gangaputra-regent &mdash; The Bloodline-A-Bloodline-B Cross-Cluster Vote</h4>
+        <p>Votes at the standing-Bloodline-B Suryavamshi-Ganga-line-aligns-with-Bloodline-A-Maha-Adhipati cross-reference (saga&rsquo;s standing-cross-Bloodline alignment at the standing-Sarus-Crane-witness cross-reference at the standing-Karnataka-UP cross-region cousin-protocol).</p>
+      </div>
+      <div class="vote-card in-favour">
+        <div class="vc-tag">In Favour &bull; Central</div>
+        <h4>Dvadashashringa &mdash; The Cracked-Mark-Vindhyan-Alignment Vote</h4>
+        <p>Votes at the standing-Bloodline-B Vindhyan-line-aligns-with-Bloodline-A-Maha-Adhipati cross-reference (the standing-saga&rsquo;s standing-cracked-mark Dominant aligns with the standing-saga&rsquo;s standing-Maha-Adhipati at the standing-amended-charter Sutrakara-permanent-seat above-Central-Regional-Dominant cross-reference).</p>
+      </div>
+      <div class="vote-card dissent">
+        <div class="vc-tag">Dissent &bull; Northeast &bull; Saga&rsquo;s Sole Dissenter</div>
+        <h4>Moirangthem &mdash; The Pause-Cell Supreme-Seat-Not-Yet-Needed Dissent</h4>
+        <p>Dissents at the standing-Tamasa-Nrita Pause-Cell standing-Aulakh-International-Lahore parent-corporation cross-network funding-line administrative-cross-reference at the standing-supreme-seat-not-yet-needed administrative-protocol cross-reference. The standing-eighth-of-ten Aulakh-International-Lahore parent-corporation cross-network funding-line cross-reference instance. The standing-supreme-seat-not-yet-needed: Moirangthem at the standing-Pause-Cell discipline cross-reference argues the standing-Stage-IV-supreme-mark configuration should administer the standing-pause-administration at the standing-Chapter-Four resolution cross-reference + the standing-Volume-I Maha-Adhipati seat should be at the standing-pending-administration at the standing-Stage-IV-supreme-mark cross-reference.</p>
+      </div>
+      <div class="vote-card">
+        <div class="vc-tag">Abstention &bull; South &bull; Maha-Adhipati Candidate</div>
+        <h4>Krishnadevaraya-Bhrata &mdash; The Conflict-Of-Interest Abstention</h4>
+        <p>Abstains at the standing-state-hero conflict-of-interest cross-reference at the standing-Maha-Adhipati-candidate administrative-cross-reference. The standing-saga&rsquo;s standing-only formal-abstention-at-Sanctuary administrative-cross-reference.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="s-section">
+    <h2>The Sanctuary Acknowledgement Speech (5:23:33-5:23:47 p.m.)</h2>
+    <div class="void-warning" style="text-align:left;background:linear-gradient(135deg,rgba(64,48,96,.18),rgba(184,80,64,.04));">
+      <div class="vw-tag" style="text-align:center;">Krishnadevaraya-Bhrata &bull; Sanskrit-Kannada-Hindi Tri-Language &bull; July 4 2027 5:23:33 p.m.</div>
+      <p class="vw-line" style="color:#e8d4a8;font-size:.95em;">&ldquo;The standing-Bloodline-A Gajavamsha desert-edge-of-the-line accepts the standing-Volume-I Maha-Adhipati seat at the standing-Sanctuary stone-slab seven-seat-circle administrative-cross-reference. The standing-elephant-and-Krishna-river standing-double-bond administers the standing-Maha-Adhipati cross-reference. The standing-Bloodline-D Drona-line Jagannath-Bandhu cross-Bloodline cousin-recognition is acknowledged. The standing-Bloodline-A Saurashtra-Sutapathi-line Simhavikrama standing-double-bond-fellow-recognition is acknowledged. The standing-Bloodline-B Suryavamshi-Ganga-line + Vindhyan-line cross-Bloodline alignment is acknowledged. The standing-Vana-Kula Moirangthem dissent at the standing-supreme-seat-not-yet-needed cross-reference is acknowledged at the standing-Chapter-Four resolution cross-reference. The standing-Sutrakara-permanent-seat above-Central-Regional-Dominant is acknowledged at the standing-amended-charter cross-reference. The standing-Yamunadatta-throne-figure dual-cohort + the standing-Sangaputra dual-cohort cross-region are acknowledged. The standing-Shabara-tribal-sovereign-veto + the standing-Maharashtra-blood-claim-cohort + the standing-Konkan-coast federation + the standing-Marudhar-Strategist-Counsellor chief-strategist administration + the standing-Chhattisgarh-Dandakaranya sister-state-federation are acknowledged. The standing-Third-Herald is acknowledged. The standing-Second-Herald walk-administration is acknowledged. The standing-First-Herald name-administration is pending at the standing-Krodha-Fourth-Herald reveal cross-reference at the standing-Sikkim-Pelling-monastery administrative-cross-reference at the standing-Ch-3-epilogue cross-reference. The standing-Volume-I Maha-Parva chapter-arc administers the standing-buried-temple Void-Maw entrance-administration at the standing-Chapter-Four cross-reference. The standing-Volume-II Yavana-Khanda launch-point is at the standing-Sagara-Ratna Andaman-Nicobar administrative-cross-reference. The standing-Maha-Parva is acknowledged. The standing-Council is seated. The mouth has opened. The standing-forgotten-names approach.&rdquo;</p>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>The Sanctuary &bull; The Cracked Seventh-Seat &bull; Chapter Three Climax &bull; Rise of Beasts &bull; Maha Parva &bull; Age of Mythos Volume I</p>
+    <p style="margin-top:8px;"><a href="../index.html">&larr; Chapter 3 Index</a> &middot; <a href="../../index.html">Volume I Maha Parva</a></p>
+  </footer>
+</body>
+</html>
