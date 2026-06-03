@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sangam Tamilakam &mdash; Identity &mdash; Civil War</title>
+  <link rel="stylesheet" href="../../../../../chapter-1-rise-of-legends/css/style.css">
+  <style>
+    body { background:#0a0a0e; color:#f0e8f8; }
+    .k-banner { text-align:center; padding:78px 20px 36px; border-bottom:1px solid rgba(196,77,170,.16); }
+    .k-banner .badge { font-size:.55em; letter-spacing:4px; text-transform:uppercase; color:#c44daa; opacity:.85; margin-bottom:12px; }
+    .k-banner h1 { font-size:2em; color:#b890e0; margin-bottom:.1em; }
+    .k-banner .state-label { font-size:.72em; color:#c9bbd8; opacity:.6; margin-bottom:.4em; }
+    .k-nav { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:14px 20px; background:rgba(0,0,0,.5); border-bottom:1px solid rgba(196,77,170,.1); }
+    .k-nav a { padding:5px 16px; border-radius:20px; border:1px solid rgba(196,77,170,.25); color:#d4c5e8; font-size:.72em; letter-spacing:1px; text-decoration:none; transition:all .15s; }
+    .k-nav a:hover, .k-nav a.active { background:rgba(196,77,170,.12); border-color:#c44daa; color:#fff; }
+    .k-section { max-width:1100px; margin:0 auto; padding:40px 20px 60px; }
+    .k-card { background:rgba(255,255,255,.025); border:1px solid rgba(196,77,170,.15); border-radius:10px; padding:24px; margin-bottom:20px; }
+    .k-card h3 { font-size:.72em; letter-spacing:2px; text-transform:uppercase; color:#b890e0; margin-bottom:14px; opacity:.9; }
+    .k-two { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    @media(max-width:640px){ .k-two { grid-template-columns:1fr; } }
+    .id-label { font-size:.62em; text-transform:uppercase; letter-spacing:2px; color:#9a8db0; opacity:.6; margin-bottom:3px; }
+    .id-value { font-size:.88em; color:#c9bbd8; margin-bottom:14px; line-height:1.65; }
+    .id-value strong { color:#fff5d4; }
+
+    .charter-card { padding:18px 22px; border-radius:12px; background:linear-gradient(135deg,rgba(184,144,224,.10),rgba(20,15,30,.04)); border:1px solid rgba(184,144,224,.32); margin:14px 0; }
+    .charter-card .cc-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#b890e0; margin-bottom:8px; }
+    .charter-card .cc-text { color:#d4b8ec; font-size:.95em; line-height:1.75; font-style:italic; white-space:pre-line; }
+    .charter-card .cc-attr { font-size:.78em; color:#9a8db0; margin-top:8px; }
+
+    .ccard { padding:20px; border-radius:10px; border:1px solid rgba(255,255,255,.08); margin-bottom:14px; }
+    .ccard.hero    { background:linear-gradient(135deg,rgba(184,144,224,.10),rgba(20,15,30,.03)); border-color:rgba(184,144,224,.32); }
+    .ccard.villain { background:linear-gradient(135deg,rgba(255,68,68,.08),rgba(60,0,0,.03)); border-color:rgba(255,68,68,.25); }
+    .ccard.archive { background:linear-gradient(135deg,rgba(232,201,138,.08),rgba(40,30,10,.03)); border-color:rgba(232,201,138,.28); }
+    .ccard.warrior { background:linear-gradient(135deg,rgba(255,128,80,.10),rgba(40,15,10,.03)); border-color:rgba(255,128,80,.30); }
+    .ccard.mentor  { background:linear-gradient(135deg,rgba(170,102,255,.10),rgba(20,10,40,.03)); border-color:rgba(170,102,255,.25); }
+    .ccard.elder   { background:linear-gradient(135deg,rgba(196,184,168,.08),rgba(40,30,16,.03)); border-color:rgba(196,184,168,.28); }
+    .ccard.acharya { background:linear-gradient(135deg,rgba(123,158,255,.08),rgba(0,10,40,.03)); border-color:rgba(123,158,255,.25); }
+    .ccard.page    { background:linear-gradient(135deg,rgba(100,90,160,.10),rgba(20,10,40,.04)); border-color:rgba(160,140,255,.25); }
+    .ccard .role-tag { display:inline-block; font-size:.55em; letter-spacing:2px; text-transform:uppercase; padding:3px 10px; border-radius:10px; margin-bottom:8px; }
+    .ccard.hero .role-tag    { background:rgba(184,144,224,.18); color:#d4b8ec; }
+    .ccard.villain .role-tag { background:rgba(255,68,68,.15); color:#ff8888; }
+    .ccard.archive .role-tag { background:rgba(232,201,138,.18); color:#e8c98a; }
+    .ccard.warrior .role-tag { background:rgba(255,128,80,.20); color:#ffaa88; }
+    .ccard.mentor .role-tag  { background:rgba(170,102,255,.20); color:#cc99ff; }
+    .ccard.elder .role-tag   { background:rgba(196,184,168,.20); color:#e0d4c0; }
+    .ccard.acharya .role-tag { background:rgba(123,158,255,.18); color:#a8c0ff; }
+    .ccard.page .role-tag    { background:rgba(160,140,255,.18); color:#c4b8ff; }
+    .ccard h4 { font-size:1.15em; margin-bottom:4px; color:#fff5d4; font-family:Georgia,serif; }
+    .ccard .ctitle { font-size:.85em; font-style:italic; color:#9a8db0; margin-bottom:12px; }
+    .ccard p { color:#c9bbd8; font-size:.88em; line-height:1.75; }
+  </style>
+</head>
+<body>
+  <div class="k-banner">
+    <div class="badge">Civil War &bull; Kingdom Identity (Chapter 2)</div>
+    <h1>Sangam Tamilakam</h1>
+    <div class="state-label">Tamil Nadu &mdash; The Authorisation-Clerk, the Living Archive, the Manuscript That Wrote Itself</div>
+  </div>
+  <div class="k-nav">
+    <a href="../../../../index.html">&larr; Chapter 2</a>
+    <a href="index.html">Overview</a>
+    <a href="identity.html" class="active">Identity</a>
+    <a href="story.html">Story</a>
+    <a href="rules.html">Rules &amp; Weapons</a>
+  </div>
+
+  <div class="k-section">
+
+    <div class="k-card">
+      <h3>What Changed Since Chapter One</h3>
+      <p style="font-size:.92em;color:#c9bbd8;line-height:1.8;">In Chapter One Kurinjiselvi defeated Ravana-Vadham at the Madurai temple confrontation; the ten-stringed veena was sealed at the kingdom-council's standing-archive vault. Palinisi (Ravana-Vadham's senior administrative-disciple) was spared at the Ch 1 climax under the kingdom-council's standing-administrative-rehabilitation clause. She took the junior-clerk seat at the Madurai Sangam Hall's authorisation-clerk office at the kingdom-council's autumn 2023 administrative-reassignment session. Across the intervening eighteen months she rose to the standing authorisation-clerk seat (the office's senior administrative-control position). She rebuilt the authorisation-clerk office's standing pre-clearance-protocol into a procedural-control instrument: the standard 48-hour speech-pre-clearance window was extended through 'clarification-queries' that took weeks to resolve; the standing-handbook's standard-secondary-response was weaponised against any uninvited-speaker who approached the speaker's-mark stone; the standing rota-removal protocol's thirty-second clause's rotation-and-refreshment provision was invoked against ninety-three registered Sangam-poets across eighteen months. By the chapter's opening Monday a hundred and forty-seven poets had been silenced. The Sangam debate had paused. Acharya Bharati (Sage Agastya's eleventh-direct-apprentice; Kurinjiselvi's eighty-three-year-old mentor) was struck from the rota on the chapter's opening Monday and found dead at his Kanyakumari residence on Thursday morning (cause of death: 'natural causes'). The Acharya's leaf-letter to Kurinjiselvi predicted the kingdom-council's required response: an unauthorised speech in the council chamber to break the procedure's authorisation-rule. Kurinjiselvi walked down from the Nilgiris on Tuesday the second of February; arrived at the Madurai Meenakshi temple-city on Friday the fifteenth; entered the Sangam Hall at 10:47 a.m.; spoke the eleven syllables of the Acharya's 1989 composition's opening line at 11:02:18 a.m. before Palinisi's authorisation-clerk office had called her name on the rota-page. The Stage III Nilgiri-tahr-foreleg-first-stroke appeared across her left side at the eleventh syllable's completion. The kingdom-council's emergency-session amended the Sangam-charter across the next twelve days; the amendment was ratified 38-4 on day twelve at 3:37 p.m. The post-amendment open-assembly evening on day sixty-two ran from 7 p.m. to 4:11 a.m.: Avvaiyar-the-Younger recited the 147 silenced poems from memory across 6 hours; Tholkappiyan-the-Younger was introduced as the kingdom's standing succession-candidate; Kurinjiselvi formally stepped back to the standing-elder seat. The Madurai Manimekalai manuscript's leaf 247 showed fourteen content-original lines from day fifty-two onward; the paleographic-dating confirmed the lines as approximately 1,700 years old; the lines describe the chapter's chamber-event in standard Sangam-tradition allegorical register. The Kurinji flowers bloomed a year early at the Nilgiri Mountains' southern slope on day twelve of the chapter (the night before the charter-amendment's ratification).</p>
+    </div>
+
+    <!-- ====== THE CHARTER ====== -->
+    <div class="k-card">
+      <h3>The Amended Sangam-Charter &mdash; Seven Core Provisions, Ratified 38-4 on Day 12</h3>
+      <p style="font-size:.92em;color:#c9bbd8;line-height:1.8;">The kingdom-council's emergency-session draft, led by standing-poetry sub-committee chair Iyer-Periya across twelve continuous-hours sessions (~14 hours per day), ratified by 38 to 4 with the four dissenting votes from senior administrative-tradition seats whose objections were procedural (they argued for abolition rather than reform):</p>
+      <div class="charter-card">
+        <div class="cc-label">The Seven Core Provisions &bull; Ratified Day 12 of Chapter 2</div>
+        <div class="cc-text">First. Authorisation-clerk office dissolved as procedural-control institution. The 48-hour pre-clearance window is replaced by an open-registration protocol; any Sangam-poet-roll-registered poet may speak at any council session by signing the open-registration roll at the session's opening.
+
+Second. Public-objection-protocol's 24-hour-clarification-query window amended to one-hour-clarification-query window with mandatory resolution within 24 hours.
+
+Third. Rota-removal protocol amended to require: (a) 75% senior-mentor seat-vote; (b) affected poet's response-right within 7 days; (c) standing-procedural-review cell's independent assessment within 14 days.
+
+Fourth. Standing-poet-children's gallery granted observer-and-recitation rights at open-assembly evenings.
+
+Fifth. The Sangam-tradition's standing living-archive seat established. Non-rotational; held by the senior-mentor seat-vote-recognised living-archive holder. Standing-duty: attend every council session; be the kingdom's standing-recourse for unrecorded silencings, retrieved voices, and reconstructed-from-memory un-written poems.
+
+Sixth. Standing post-amendment open-assembly evening at the Sangam Hall on day 12. Open to all registered poets and the children's gallery. Living-archive seat's candidate-recognition-recitation at the opening hour.
+
+Seventh. Palinisi's authorisation-clerk seat dissolved. Standing-employment preserved through transfer to the Sangam-archives wing's junior-archivist seat under standing-mentor supervision.</div>
+        <div class="cc-attr">&mdash; Drafted by Iyer-Periya (standing-poetry sub-committee acting-chair) with the kingdom-council's senior-mentor seat-rota (12 mentors including Avvaiyar-Periya the elder). Ratified by emergency-session 38-4 on day 12 at 3:37 p.m. Counter-signed by the Tamil Sahitya Akademi's standing-fellows and the Madurai Kamaraj University's Sangam-studies department.</div>
+      </div>
+    </div>
+
+    <!-- ====== KEY CHARACTERS ====== -->
+    <div class="k-card">
+      <h3>Key Characters &mdash; This Chapter</h3>
+
+      <div class="ccard hero">
+        <span class="role-tag">Hero &bull; Survives, Stage III by Unauthorised Speech, Steps Back to Sangam Elder</span>
+        <h4>Kurinjiselvi</h4>
+        <div class="ctitle">The Mountain-Bloom Who Spoke Before the Bloom &bull; Bloodline D &bull; Draupadi-mapped</div>
+        <p>Thirty-seven. The Nilgiri mountain-warrior with the half-body Nilgiri-tahr-tattoo climbing her spine; bearer of the crescent-bladed Kurinji-staff. The Kurinji flower has another year before its standard twelve-year bloom; her power is at the standard year-eleven attenuated state through the chapter (the flowers bloom a year early on the night before the charter-amendment's ratification). Walks down from the Nilgiris on Tuesday 2 February when she learns of her mentor's 'natural-causes' death three days after his removal from the council rota. Arrives at the Madurai Meenakshi temple-city on Friday the 15th. Walks into the Sangam Hall at 10:47 a.m. Speaks the eleven syllables of the Acharya's 1989 composition's opening line at 11:02:18 a.m. before Palinisi's authorisation-clerk office has called her name. Stage III Nilgiri-tahr-foreleg-first-stroke appears across her left side at the eleventh syllable's completion. Per restructure §4 she steps back to the kingdom-council's standing-elder seat at the day-62 open-assembly evening; the formal-retirement investiture is administered by the senior-mentor seat-rota chair Manimekalai-Periya at 3:18 a.m. Travels to the Sanctuary at the Manipur convening as the standing-elder representative. Returns to the Nilgiri Mountains on the 22nd of February at her residence's standing-elder seat's eastern-tea room.</p>
+      </div>
+
+      <div class="ccard villain">
+        <span class="role-tag">Catalyst Villain &bull; Demoted, Reassigned, Survives</span>
+        <h4>Palinisi &bull; The Authorisation-Clerk Who Silenced Through Procedure</h4>
+        <div class="ctitle">Ravana-Vadham's Ch 1 Senior Administrative-Disciple Who Weaponised the Pre-Clearance Window</div>
+        <p>Fifty-three. Was Ravana-Vadham's senior administrative-disciple at the Madurai temple confrontation in Chapter One; spared at the Ch 1 climax under the kingdom-council's standing-administrative-rehabilitation clause. Took the junior-clerk seat at the Madurai Sangam Hall's authorisation-clerk office at the autumn 2023 administrative-reassignment. Rose to the standing authorisation-clerk seat across 18 months. Rebuilt the office's standing pre-clearance-protocol into a procedural-control instrument: the 48-hour speech-pre-clearance window extended through 'clarification-queries'; the standing rota-removal protocol's thirty-second clause's rotation-and-refreshment provision invoked against 147 poets across 18 months. Pushed the rota-removal letter for Acharya Bharati under the standing pre-1972 charter's thirty-second clause's rotation-and-refreshment provision at the chapter's opening Monday at 4:03 a.m. (the letter was delivered to the Acharya's Kanyakumari residence between 4:03 and 4:11 a.m.). Did not directly cause the Acharya's death; the cause of death is recorded as 'natural causes; cardiac arrhythmia consistent with the patient's age and medical history.' Issued the standing procedural-response statement at the chamber on Friday 15 February at 10:59 a.m., which crossed the session-start threshold at 11:01:43 and became procedurally invalid. Began the standing-secondary-response at 11:02:18 (the same moment as the Stage III bond-mark formation); stopped reading at the third sentence. Survives Ch 2 demoted from the authorisation-clerk seat to the Sangam-archives wing's junior-archivist seat under standing-mentor supervision. Accepts the transfer at the day-12 administrative-session. The transfer is not a punishment; it is the kingdom-council's acknowledgement that her administrative-capacity is real and should be repurposed.</p>
+      </div>
+
+      <div class="ccard archive">
+        <span class="role-tag">Standing Living-Archive Seat &bull; Twelve-Year-Old Poet</span>
+        <h4>Avvaiyar-the-Younger</h4>
+        <div class="ctitle">The Sangam Poet-Child Who Memorised Every Silenced Voice &bull; Living-Archive Seat-Holder</div>
+        <p>Twelve. Named after the ancient Tamil poet-saint Avvaiyar in the manner of the Sangam-tradition's standing rename-of-the-poet-child protocol. Has been attending Sangam council sessions since age seven under her grandmother's senior-mentor seat. Has memorised every poem ever recited in her presence &mdash; the standard-curriculum five thousand classical Sangam works plus approximately eighteen thousand additional poems from the eighteen-month silencings (the 147 silenced poems plus their authors' entire registered Sangam-poet-roll backlog). At the day-62 post-amendment open-assembly evening she recites the 147 silenced poems in full across six hours and three minutes without notes from memory. The kingdom-council's standing living-archive seat is conferred by the senior-mentor seat-vote 12-0 on day 11; the formal-investiture is at the open-assembly evening's recitation-conclusion at 1:03 a.m. Per Ch 3 plan she travels to the Sanctuary as the southern federation's youngest formally-recognised cross-region delegate. Per Ch 4 plan she serves at the federation's standing pairing-protocol-cell as the standing voices-archive recogniser.</p>
+      </div>
+
+      <div class="ccard warrior">
+        <span class="role-tag">New Visible Seat-Holder &bull; Standing Succession-Candidate</span>
+        <h4>Tholkappiyan-the-Younger</h4>
+        <div class="ctitle">The Twenty-Seven-Year-Old Sangam Poet-Warrior Named After the Ancient Grammarian</div>
+        <p>Twenty-seven. Named after the ancient Tamil grammarian Tholkappiyan in the Sangam-tradition's standing succession-candidate-naming protocol. Trained at the Sangam Hall's standing poet-warrior gymnasium since age fourteen. Holds the kingdom-council's standing succession-candidate seat since the spring 2024 senior-mentor seat-vote. Carries the kingdom-council's standing succession-candidate's bronze-spear at his right side (the Sangam-tradition's standing succession-candidate's weapon since 1873). Walks onto the speaker's-mark stone at 1:38 a.m. on the day-62 open-assembly evening. Recites his maiden Sangam-charter-praising composition (the standing-protocol's required-form for any new succession-candidate's first speaker's-mark-stone appearance) across 10 minutes; subject is the amended Sangam-charter's Fifth Clause (the living-archive seat). The senior-mentor seat-vote 12-0 grants the standing succession-candidate's recognition at 1:53 a.m. The standing visible-seat investiture is administered by the senior-mentor seat-rota across 43 minutes, completing at 4:01 a.m. Per restructure §5 he holds Tamil Nadu's visible seat as the kingdom's standing visible representative. Per Ch 3 plan he travels to the Sanctuary as the kingdom-council's standing visible-seat representative; per Ch 4 plan he is the southern federation's standing poet-warrior voice at the Kurukshetra Council.</p>
+      </div>
+
+      <div class="ccard acharya">
+        <span class="role-tag">The Mentor's Death &bull; Sage Agastya's 11th-Direct-Apprentice</span>
+        <h4>Acharya Bharati (deceased)</h4>
+        <div class="ctitle">The Eighty-Three-Year-Old Sangam-Tradition Senior-Mentor at the Kanyakumari Residence</div>
+        <p>Eighty-three at death. Sage Agastya's eleventh-direct-apprentice through the standing Sangam-tradition apprenticeship-lineage that connects to Agastya Muni's original southern-civilisation-mission via the temple-elder line. Kingdom-council's standing Sangam-tradition senior-mentor for forty-one years. Chair of the Madurai Sangam Hall's standing-poetry sub-committee for nineteen years (1997-2026). Kurinjiselvi's personal mentor since her seventeenth year. Composed the 1989 Thirukkural-couplet ('Vaay-pakka adai-ppoo varum-mun moli-yaa nukkindra varai') that predicted the standing kingdom-council's standing-charter-amendment by 37 years; the composition has been preserved at the standing-Sangam-archive vault since its composition-day. Struck from the council rota on the chapter's opening Monday (1 February) at 4:03 a.m. via Palinisi's rice-paper envelope under the standing thirty-second clause's rotation-and-refreshment provision. Wrote the leaf-letter to Kurinjiselvi the same morning at the Kanyakumari residence's kitchen-table writing-desk across 43 minutes, completing at 5:06 a.m. Released the leaf-letter via parakeet-courier Pavalam westward at 5:14 a.m. Died at 5:48 a.m. on Thursday 4 February at the Kanyakumari residence's kitchen-table with the second tea cup still one-third full. Cause of death: 'natural causes; cardiac arrhythmia consistent with the patient's age and medical history.' Buried at the kingdom's standing senior-mentor cremation-ghat at the Kanyakumari southernmost shore on Thursday afternoon. His ashes were scattered at the standing-Sangam-tradition senior-mentor sea-ghat per the standing-protocol's senior-mentor at-the-southernmost-shore-of-Bharatavarsha disposition.</p>
+      </div>
+
+      <div class="ccard mentor">
+        <span class="role-tag">Senior-Mentor Seat &bull; The Grandmother Who Held the Memory for Fifty-Seven Years</span>
+        <h4>Avvaiyar-Periya</h4>
+        <div class="ctitle">The Sangam-Tradition Standing-Mentor Who Has Attended Every Council Session for 57 Consecutive Years</div>
+        <p>Sixty-eight. The grandmother of Avvaiyar-the-Younger. The kingdom-council's standing senior-mentor seat-holder for thirty-one years (since 1995). Has attended every Sangam Hall council session for fifty-seven consecutive years (since 1969). Has been at every session where a silencing occurred across the eighteen-month preceding-period. Her standing public-objection-protocol's standing-objection submissions have been absorbed into the same procedure-incomplete status as the silenced poets' rota-entries three times. She has brought her granddaughter to every session since the child was seven. She has confirmed the child's evening-recitation discipline against her own memory of the originals across the five-year period at 100% confirmation-rate. She has known what the child is. She has been waiting for the right council session. At Kurinjiselvi's entry on Friday 15 February at 10:57 a.m. she places her right palm on her granddaughter's left forearm at the standing-poet-children's gallery's third row. The contact is the kingdom's only signal that this council session is the one she has been waiting for. The child understands. The grandmother walks onto the speaker's-mark stone's western edge at approximately 12:30 a.m. on the open-assembly evening with the standing-respect bowl of warm rice-and-tamarind broth for her granddaughter. She survives Volume I as the kingdom-council's standing senior-mentor seat's mentor-grandmother of the kingdom's youngest living-archive seat-holder.</p>
+      </div>
+
+      <div class="ccard elder">
+        <span class="role-tag">Standing-Poetry Sub-Committee Chair &bull; The Standing Acting-Chair After the Acharya's Death</span>
+        <h4>Iyer-Periya</h4>
+        <div class="ctitle">The 61-Year-Old Sangam-Tradition Senior-Administrator Who Drafted the Amended Charter</div>
+        <p>Sixty-one. The kingdom-council's standing-poetry sub-committee acting-chair after the Acharya Bharati's death (no relation to Iyer-Mama at the Nilgiri residence-keeper seat; the two Iyer-Periyas are distinct Sangam-tradition senior-administrators from different family-lines). Drafts the kingdom-council's amended Sangam-charter across the twelve-day emergency-session under the kingdom-council's standing-amendment-protocol with the senior-mentor seat-rota's 12 mentors. Performs the standing-acknowledgement gesture (palms together at the chest) at Kurinjiselvi's approach to the speaker's-mark stone on Friday 15 February at 11:02:01 a.m. &mdash; the gesture the kingdom-council had not performed in the Sangam Hall in three centuries. Recognises the Stage III bond-mark's chamber-formation as the kingdom-council's standing-charter's highest-procedural-authority recognition-event at 11:02:29. Announces the kingdom-council's emergency-session under the standing-charter's seventh clause at 11:02:33. Administers the post-amendment open-assembly evening's standing-protocol from 7 p.m. to 4:11 a.m. on day 62. Survives Volume I as the kingdom-council's standing-poetry sub-committee chair.</p>
+      </div>
+
+      <div class="ccard page">
+        <span class="role-tag">Cosmic Sign &bull; First Textual-Emergence Maw Event</span>
+        <h4>The Fourteen Lines on Manimekalai Leaf 247</h4>
+        <div class="ctitle">Tamil Nadu's Void Maw Sign &bull; The Saga's First Manuscript-Inscription Experiment</div>
+        <p>Discovered at 6:18 a.m. on day 52 (the morning after the kingdom-council's amended Sangam-charter's day-12 ratification) by the Madurai Maraimalai Adigal Tamil-Language Public Library's vault-keeper V. Sundara-Rajan (58, 16-year vault-keeper seat-holder). The Sangam-tradition's only complete copy of the second-century-CE Buddhist epic <em>Manimekalai</em> by Sittalai Sattanar &mdash; a palm-leaf bundle of 2,743 leaves, sealed in a glass case at the manuscript-vault's central display-table &mdash; shows fourteen new lines of text on leaf 247 that were not on the leaf at the day-49 maintenance-check. The new lines are in the standard Tamil-Brahmi script and the standard <em>Manimekalai</em> Tamil-classical-Sangam akaval-meter. The ink is the standard palm-leaf iron-gall blend; mass-spectrometric analysis confirms a composition consistent with the rest of the manuscript and a paleographic dating of approximately 1,700 years. The lines are content-original &mdash; not in any of the world's extant <em>Manimekalai</em> partial-copies, commentaries, or scholarly-reconstructions. The lines describe the chapter's chamber-event in standard Sangam-tradition allegorical register (the rota-page's shadow, the children's tongues, the mountain's flower a year early, the unauthorised word as the assembly's charter, the manuscript that wrote itself). The lines do not change, fade, or multiply across the 8-month observation period. Catalogued at the kingdom-council's standing-cataloguing register under the amended Sangam-charter's Fifth Clause's standing living-archive provision. The Maw has demonstrated the capacity to <strong>write into a sealed historical manuscript across the 1,700-year-old ink-and-leaf threshold</strong>. Paired with Mizoram's two-headed serow as the saga's second formally-recognised cross-region Maw-sign pair: both signs are the Maw producing language no one made (Mizoram = voice from a creature that should not have spoken; TN = text on a page no one wrote).</p>
+      </div>
+
+    </div>
+
+    <div style="display:flex;justify-content:space-between;margin-top:24px;flex-wrap:wrap;gap:10px;">
+      <a href="index.html" style="color:#c9a04a;text-decoration:none;font-size:.85em;">&larr; Overview</a>
+      <a href="story.html" style="color:#c9a04a;text-decoration:none;font-size:.85em;">Story &rarr;</a>
+    </div>
+  </div>
+
+  <footer style="text-align:center;padding:28px 20px;border-top:1px solid rgba(196,77,170,.12);color:#9a8db0;font-size:.75em;">
+    <p>Sangam Tamilakam Identity &bull; Civil War &bull; Chapter 2</p>
+  </footer>
+</body>
+</html>

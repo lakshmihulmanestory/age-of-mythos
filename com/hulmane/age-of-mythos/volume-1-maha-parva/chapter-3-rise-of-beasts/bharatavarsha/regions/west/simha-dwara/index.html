@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simha-Dwara &mdash; West Dominant &mdash; Rise of Beasts &mdash; Age of Mythos</title>
+  <style>
+    :root { --bg:#1a1208; --ac:#d4a050; --gold:#e8c870; --sahyadri:#50806a; --rust:#b85040; --text:#e8d4a8; --dim:#c8b890; --card:#24180c; --border:rgba(212,160,80,.22); }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:Georgia,serif; background:var(--bg); color:var(--text); line-height:1.75; min-height:100vh; }
+
+    .k-banner { text-align:center; padding:82px 24px 44px; background:radial-gradient(ellipse at center,rgba(212,160,80,.14) 0%,transparent 70%); border-bottom:1px solid var(--border); }
+    .k-banner .badge { font-size:.55em; letter-spacing:5px; text-transform:uppercase; color:var(--ac); opacity:.88; margin-bottom:18px; }
+    .k-banner .badge .border { color:var(--gold); font-weight:bold; }
+    .k-banner h1 { font-size:clamp(2.4em,5vw,3.4em); color:var(--gold); margin-bottom:14px; letter-spacing:2px; }
+    .k-banner .state-label { font-size:.78em; color:var(--dim); opacity:.7; letter-spacing:1px; margin-bottom:.6em; }
+    .k-banner .tagline { color:#e0d4a8; font-size:.95em; max-width:740px; margin:0 auto; line-height:1.85; font-style:italic; }
+    .boundary { display:block; margin:24px auto 0; width:280px; height:1px; background:linear-gradient(90deg,transparent,var(--ac) 35%,transparent 50%,var(--sahyadri) 65%,transparent); opacity:.75; }
+
+    .k-nav { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:14px 20px; background:rgba(0,0,0,.5); border-bottom:1px solid rgba(212,160,80,.12); }
+    .k-nav a { padding:5px 16px; border-radius:20px; border:1px solid rgba(212,160,80,.28); color:var(--dim); font-size:.72em; letter-spacing:1px; text-decoration:none; transition:all .15s; }
+    .k-nav a:hover, .k-nav a.active { background:rgba(212,160,80,.12); border-color:var(--gold); color:#fff; }
+
+    .k-section { max-width:1080px; margin:0 auto; padding:48px 22px 24px; }
+    .k-section h2 { font-size:1.4em; color:var(--gold); letter-spacing:1px; margin-bottom:14px; font-family:Georgia,serif; }
+    .k-section h3 { font-size:1.05em; color:var(--ac); margin:24px 0 10px; font-family:Georgia,serif; }
+    .k-section p { font-size:.9em; color:#e0d4a8; margin-bottom:16px; }
+    .k-section p strong { color:#f0e0a8; }
+    .k-section p em { color:var(--gold); }
+
+    .alert-banner { background:linear-gradient(135deg,rgba(212,160,80,.10),rgba(80,128,106,.06)); border:1px solid rgba(212,160,80,.32); padding:18px 22px; border-radius:11px; margin-bottom:22px; }
+    .alert-banner .alert-label { font-size:.55em; letter-spacing:2px; text-transform:uppercase; color:var(--ac); margin-bottom:6px; }
+    .alert-banner .alert-text { color:var(--gold); font-size:.88em; line-height:1.75; }
+
+    .four-phase { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:24px 0 8px; }
+    @media (max-width:760px) { .four-phase { grid-template-columns:repeat(2,1fr); } }
+    .phase-card { background:var(--card); border:1px solid var(--border); border-radius:11px; padding:18px 16px; }
+    .phase-card .ph-tag { font-size:.55em; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+    .phase-card h4 { font-size:.86em; color:var(--ac); font-family:Georgia,serif; margin-bottom:8px; }
+    .phase-card p { font-size:.75em; color:#d8c8a0; line-height:1.7; }
+
+    .absorbed-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin:18px 0 0; }
+    @media (max-width:680px) { .absorbed-grid { grid-template-columns:1fr; } }
+    .abs-card { background:rgba(212,160,80,.04); border:1px solid rgba(212,160,80,.20); border-radius:10px; padding:16px 18px; }
+    .abs-card .abs-tag { font-size:.55em; letter-spacing:2px; text-transform:uppercase; color:var(--ac); margin-bottom:6px; }
+    .abs-card h4 { font-size:.92em; color:var(--gold); font-family:Georgia,serif; margin-bottom:6px; }
+    .abs-card p { font-size:.78em; color:#d8c8a0; line-height:1.7; }
+
+    .cast-card { background:var(--card); border:1px solid var(--border); border-radius:11px; padding:20px 22px; margin-bottom:14px; }
+    .cast-card .cast-tag { font-size:.55em; letter-spacing:2px; text-transform:uppercase; color:var(--ac); margin-bottom:5px; }
+    .cast-card .cast-name { font-size:1em; color:var(--gold); font-family:Georgia,serif; margin-bottom:7px; }
+    .cast-card .cast-desc { font-size:.8em; color:#d8c8a0; line-height:1.7; }
+    .cast-card.dominant { border-color:rgba(232,200,112,.40); background:rgba(28,18,8,.6); }
+    .cast-card.dominant .cast-tag { color:var(--gold); }
+    .cast-card.dominant .cast-name { color:var(--gold); }
+    .cast-card.unity { border-color:rgba(184,80,64,.40); background:rgba(28,16,12,.55); }
+    .cast-card.unity .cast-tag { color:var(--rust); }
+    .cast-card.unity .cast-name { color:#d8807a; }
+    .cast-card.deceased { border-color:rgba(112,80,80,.36); background:rgba(20,12,12,.6); }
+    .cast-card.deceased .cast-tag { color:#a08080; }
+    .cast-card.deceased .cast-name { color:#b08888; }
+    .cast-card.counsellor { border-color:rgba(80,128,106,.40); }
+    .cast-card.counsellor .cast-tag { color:var(--sahyadri); }
+    .cast-card.counsellor .cast-name { color:#80a890; }
+
+    .footer { text-align:center; padding:36px 20px; border-top:1px solid var(--border); color:#a0908c; font-size:.72em; }
+    .footer a { color:var(--ac); text-decoration:none; }
+    .k-quick-links { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:32px; }
+    .k-quick-link { display:block; padding:18px 20px; border-radius:11px; border:1px solid rgba(212,160,80,.22); background:rgba(24,18,10,.5); text-decoration:none; text-align:center; transition:border-color .15s; }
+    .k-quick-link:hover { border-color:var(--gold); }
+    .k-quick-link .ql-title { font-size:.85em; color:var(--gold); display:block; margin-bottom:4px; }
+    .k-quick-link .ql-sub { font-size:.7em; color:var(--dim); opacity:.75; }
+  </style>
+</head>
+<body>
+  <div class="k-banner">
+    <div class="badge"><span class="border">West Dominant &bull; Saga&rsquo;s Second Double-Bond Carrier &bull; Maharashtra Absorbed Under Gujarat &bull; The Brother-Who-Killed-The-Sister Unity-Trial</span> &bull; Chapter Three &bull; Rise of Beasts</div>
+    <h1>Simha-Dwara</h1>
+    <div class="state-label">Gujarat &bull; West Region &bull; Bloodline-A Desert-Edge-of-the-Line + Goan-Gaur D9 Double-Bond</div>
+    <p class="tagline">Per restructure §1 male-led-succession + D9 double-bond-mechanic cross-reference, the standing-West Regional-Dominant is Simhavikrama (40 in Ch 3) at the standing-Bloodline-A desert-edge-of-the-line standing-Junagadh-Sasan-Gir warrior-administration cross-reference. He carries the standing-Asiatic-Lion bond (from Ch-2 cousin-inheritance at Saraswati standing-step-back-Simha-Mata-the-First June-24-2026 dawn-window cross-reference at saga&rsquo;s first standing-cousin-inheritance-at-mark-formation administrative-protocol). In Ch 3 Phase-2 he inherits the standing-Goan-Gaur bond from Sagaradeva post-Ch-2 standing-Mormugao-Bay storm-death cross-reference at the standing-D9 double-bond-mechanic administrative-cross-reference; per restructure §4 table cross-reference the standing-Goan-Gaur transfers to Simhavikrama at the standing-Mormugao-coast standing-charter-foundational transfer-administration April 2027. Simhavikrama becomes the standing-saga&rsquo;s standing-second double-bond carrier (after Krishnadevaraya-Bhrata standing-elephant + Krishna-river double-bond at the standing-Karnataka South-Dominant cross-reference). Per restructure §4 table cross-reference Shivagati (Maharashtra Ch-2 double-bonded standing-state-hero at standing-squirrel + Goan-gaur double-bond) dies in Ch 3 in a duel with her standing-brother Vanaraksha; the standing-squirrel-bond dies with her; the standing-Goan-gaur transfers to Simhavikrama at the standing-D9 double-bond-mechanic administrative-cross-reference; Maharashtra is absorbed under Gujarat with Tanaji-the-Second holding Maharashtra as Gujarat&rsquo;s loyal vassal. Per master plan §6 cross-reference: in Ch 3 Phase-1 the standing-Sahyadri-Indian-Giant-Squirrel population triples in a season at the standing-Sahyadri-ghats standing-Maw-witness fertility-administration cross-reference; a single standing-Indian-Giant-Squirrel sits on Simhavikrama&rsquo;s standing-right-shoulder for 4 standing-consecutive-days during the standing-Phase-1 cross-region beast-witness administrative-cross-reference (the standing-Sahyadri-squirrel-bond is dead at the standing-Shivagati-duel-death; the standing-squirrel-cohort administers at the standing-Maw-witness configuration not at the standing-bond-transfer configuration; the standing-Sahyadri-squirrel-population-tripling is at the standing-charter-foundational Maw-witness-of-Sister-State-Hero-Death administrative-cross-reference). Phase-3 (Unity Trial) administers the standing-saga&rsquo;s standing-most-morally-compromised Unity-Trial: Simhavikrama must accept Vanaraksha (his standing-cousin-by-the-Sahyadri-line; the standing-brother-who-killed-Shivagati at the standing-Ch-3 duel-death cross-reference) into the standing-Gujarat inner-council at the standing-blood-claim-cohort standing-charter-foundational recognition. Phase-4 (Sanctuary Convening) administers the standing-Simhavikrama Sanctuary-arrival at Hampi with the standing-triple-animal-cohort (Asiatic-Lion + Goan-Gaur + Sahyadri-squirrel-witness) + Saraswati-Simha-Mata-the-First salt-queen-counsellor + Asha-Ben Karsanbhai Modhwadia (Maldhari-Samaj co-chair) + Mrigatrishna-Marudhar-Strategist-Counsellor-Elder (Rajasthan chief-strategist).</p>
+    <span class="boundary"></span>
+  </div>
+
+  <div class="k-nav">
+    <a href="../../../../index.html">&larr; Chapter 3</a>
+    <a href="index.html" class="active">Overview</a>
+    <a href="identity.html">Identity</a>
+    <a href="story.html">Story</a>
+    <a href="rules.html">Rules &amp; Weapons</a>
+  </div>
+
+  <div class="k-section">
+    <div class="alert-banner">
+      <div class="alert-label">West Dominant &bull; This Chapter</div>
+      <div class="alert-text">Simha-Dwara is the standing-West Regional-Dominant kingdom per restructure §1 male-led-succession + D9 double-bond-mechanic cross-reference. Across the standing-twelve-month chapter-arc (October 2026 &mdash; September 2027) the standing-West-cluster federates under Simhavikrama at the standing-Junagadh-Sasan-Gir administrative-cell. <strong>Phase 1 (Animal Chooses):</strong> across the standing-November 23 2026-December 23 2026 4-week standing-Sahyadri-squirrel-tripling-window the standing-Sahyadri-Indian-Giant-Squirrel (<em>Ratufa indica</em>) population at the standing-Sahyadri-ghats from Mahabaleshwar-to-Goa-corridor triples from baseline ~7,400 individuals to ~22,200 individuals (cumulative ~3.0x population-tripling at the standing-Sahyadri-corridor cross-reference at the standing-Maw-witness fertility-administration category cross-reference); BNHS-Pune-cell standing-Sahyadri-squirrel-census senior-zoologist Dr. M. Joshi (53) December-28 expertise-report M3-4A confirms no standing-natural-population-mechanism-identification at the standing-Maw-attribution cross-reference. Simultaneously across the standing-November 23-26 4-consecutive-day window a standing-single Indian-Giant-Squirrel (a standing-11-year-old standing-Sahyadri-female; standing-bonded-companion-of-Shivagati-since-2014 at the standing-Shivagati-Mahabaleshwar standing-charter-foundational pastoral-companion cross-reference) sits on Simhavikrama&rsquo;s standing-right-shoulder at the standing-Junagadh-Sasan-Gir standing-Bilakha-residence standing-eastern-cardinal-courtyard at the standing-Maw-witness configuration cross-reference. The standing-Indian-Giant-Squirrel does not eat across the standing-4-consecutive-day Phase-1 witness-window. She names herself in the standing-Sahyadri-squirrel-vocalization at the standing-acoustic-23-syllable signature administrative-cross-reference as <em>Sahyadri-Shivagati</em> (the standing-self-named-cross-region standing-Sister-State-Hero-acknowledgement at the standing-Sahyadri-squirrel-witness-of-Shivagati-Sahyadri-line standing-charter-foundational acknowledgement-administrative-cross-reference). <strong>Phase 2 (Bargain or Battle):</strong> 3 absorbed/federated kingdoms across 5-month December 2026-April 2027 window. <strong>Maharashtra absorption via Shivagati-Vanaraksha duel-death</strong> (January 11 2027 11:43 a.m. at the standing-Tanaji-the-Second standing-Raigad-Fort eastern-cardinal-courtyard standing-Maharashtra-Maratha-charter-foundational duel-position; Shivagati 47 confronts Vanaraksha 43 her standing-elder-brother at the standing-Maharashtra-Bloodline-Sahyadri-line standing-blood-claim cross-reference; the standing-duel administered at the standing-Vanara-staff cross-reference at the standing-Bloodline-Sahyadri-line standing-charter-foundational dual-implement cross-reference; Shivagati struck-down at 11:43:23 a.m. at the standing-cervical-vertebrae-cross-section single-stroke administrative-cross-reference; Vanaraksha did-not-die at the standing-survives-the-duel configuration; the standing-Sahyadri-squirrel-bond died with Shivagati at the standing-charter-foundational bond-death administrative-cross-reference; the standing-Goan-gaur bond transferred to Simhavikrama at 4:11 a.m. January 12 2027 at the standing-Sasan-Gir standing-Bilakha-residence courtyard standing-D9 double-bond-mechanic administrative-cross-reference. Maharashtra absorbed under Gujarat at the standing-Tanaji-the-Second standing-loyal-vassal cross-reference at the standing-Raigad-Fort standing-Maharashtra-throne held-as-Gujarat-vassal administrative-cross-reference. Standing-saga&rsquo;s standing-fourth Ch-2-state-hero death (after Sundarvani Bengal + Himavati HP + Sundarvani-now-deceased Bengal Ch-3 cross-reference)). <strong>Goa absorption via Ferreira-de-Sangam federation</strong> (February 23 2027 11:11 a.m. at the standing-Mormugao-coast standing-charter-foundational federation-ceremony; Ferreira-de-Sangam 47 federates Goa under Simhavikrama at the standing-Goan-Gaur transferred-bond standing-charter-foundational federation-administration cross-reference at the standing-pre-Phase-3-completion administrative-cross-reference; Vasco-without-a-ship Second-Herald walks openly at the standing-Mormugao-coast standing-charter-foundational Second-Herald walking-administration cross-reference). <strong>Rajasthan strategy-advisor pledge</strong> (March 23 2027 Mrigatrishna-Marudhar-Strategist-Counsellor-Elder 49 + Ratan-Singh-of-the-Ledger standing-formal-Rajasthan-governor pledge at the standing-Chittorgarh-Vijay-Stambh standing-permanent-rotated-configuration Maw-sign #28 administrative-continuity cross-reference; the standing-Rajasthan-primary-federation remains under Gujarat-West-Dominant administrative-cross-reference at the standing-Mrigatrishna-Marudhar-Counsellor standing-Simhavikrama-chief-strategist administrative-cross-reference). <strong>Phase 3 (Unity Trial):</strong> Simhavikrama must accept Vanaraksha (his standing-cousin-by-the-Sahyadri-line via the standing-Sasan-Gir-Sahyadri standing-charter-foundational cousin-cross-reference; the standing-brother-who-killed-Shivagati at the standing-Ch-3 duel-death January-11-2027 cross-reference) into the standing-Gujarat inner-council at the standing-blood-claim-cohort standing-charter-foundational recognition cross-reference at the standing-Phase-3 Unity-Trial dawn-window May 11 2027. The standing-cost: half the standing-West&rsquo;s standing-council-veto becomes standing-shared with the standing-blood-claim-cohort at the standing-amended-charter administrative-cross-reference. Vanaraksha walks the standing-Maharashtra-Raigad-Fort-to-Junagadh-Sasan-Gir 1,011-km standing-pre-dawn-pilgrimage at the standing-31-day standing-pilgrimage-walking-window April 11-May 11 2027 at the standing-blood-claim-cohort standing-charter-foundational pilgrimage administrative-cross-reference. May 11 2027 4:11 a.m. at the standing-Junagadh-Sasan-Gir standing-Bilakha-residence standing-eastern-cardinal-courtyard, Vanaraksha kneels at the standing-Simhavikrama-foot-stool position; Simhavikrama places his standing-right-hand on Vanaraksha&rsquo;s standing-bowed-head; Vanaraksha accepts the standing-blood-claim-cohort council-seat at the standing-Gujarat inner-council standing-7-metre-rear seat-of-honour position. The standing-Tattoo-3-half-body mark forms at Simhavikrama&rsquo;s standing-right-and-left-upper-back-and-shoulders-and-chest-and-sides across the standing-47-minute mark-formation window 4:11:11-4:58:11 a.m. May 11 2027 in standing-sandy-gold-and-Goan-tide-blue-and-Sahyadri-forest-green standing-tri-ink at the standing-Bloodline-A desert-edge-of-the-line + Goan-Gaur-D9 + Maharashtra-blood-claim combined visual-anchor cross-reference. Saga&rsquo;s standing-most-morally-compromised Unity-Trial completion-administration. The standing-Sahyadri-Shivagati Indian-Giant-Squirrel returns to Simhavikrama&rsquo;s standing-right-shoulder at 4:58:11 a.m. May 11 (after 4-month-absence since Phase-1 4-consecutive-day window). She speaks the standing-23-syllable Sahyadri-squirrel-vocalization-at-acoustic-administration cross-reference: <em>&ldquo;The brother stands. The sister witnesses. The squirrel acknowledges.&rdquo;</em> at the standing-cross-region Sister-State-Hero-acknowledgement-administration cross-reference completion. <strong>Phase 4 (Sanctuary Convening):</strong> Simhavikrama rides to Hampi June 11 2027 with the standing-West-cluster delegation: Saraswati-Simha-Mata-the-First (50; salt-queen-counsellor at Dwarka-Madhavi-line) + Asha-Ben Karsanbhai Modhwadia (48; Maldhari-Samaj-Sasan-Gir-State-Forest-Service Joint-Pastoral-Administration co-chair) + Mrigatrishna-Marudhar-Strategist-Counsellor-Elder (49; standing-chief-strategist) + Ratan-Singh-of-the-Ledger (formal-Rajasthan-governor) + Tanaji-the-Second (Maharashtra-as-Gujarat-vassal standing-Raigad-Fort holder) + Vanaraksha (blood-claim-cohort senior-administrative-officer) + Ferreira-de-Sangam (Goa federation senior-administrative-officer) + Simha-Pati (12-year-old standing-Sasan-Gir Asiatic-Lion pride-male-lead) + the standing-Goan-Gaur cohort (Sagara-Vrishabha standing-Goan-Gaur lead-male; transferred from Sagaradeva-bond-line at Ch-2 death + Shivagati-Ch-2-double-bond + Ch-3-Shivagati-duel-death standing-D9 administrative-cross-reference) + Sahyadri-Shivagati Indian-Giant-Squirrel at Simhavikrama&rsquo;s standing-right-shoulder. June 14 2027 4:11 p.m. arrival at Hampi-Royal-Court courtyard standing-eastern-cardinal-position. July 4 2027 4:11:28 a.m. Simhavikrama sits at standing-West clean-seat at stone-slab seven-seat-circle; Simha-Pati at 3-metre-rear behind West-seat; Goan-Gaur Sagara-Vrishabha at 7-metre-rear; Sahyadri-Shivagati on standing-right-shoulder (the standing-saga&rsquo;s standing-only standing-shoulder-perched-Maw-witness at the standing-Sanctuary stone-slab seven-seat-circle administrative-cross-reference). 4:23:11-4:23:22 a.m. Void-Maw cracks seventh-seat. Simhavikrama votes in favour of Krishnadevaraya-Bhrata at standing-Volume-I Maha-Adhipati ratification-vote at the standing-double-bond-fellow-recognition cross-reference (Krishnadevaraya-Bhrata + Simhavikrama at the standing-saga&rsquo;s only two double-bond Dominants); vote-result 5-1 in favour with Moirangthem dissent. The standing-West-cluster federation supports.</div>
+    </div>
+
+    <h2>The Four-Phase Structure</h2>
+    <div class="four-phase">
+      <div class="phase-card">
+        <div class="ph-tag">Phase 1 &bull; Cosmic</div>
+        <h4>The Sahyadri-Squirrel Triples + The Self-Named Shoulder-Witness</h4>
+        <p>November 23-December 23 2026 4-week window. Sahyadri-Indian-Giant-Squirrel population at Sahyadri-ghats Mahabaleshwar-to-Goa-corridor triples from ~7,400 to ~22,200 (3.0x population-tripling). November 23-26 standing-Sahyadri-Shivagati 11-year-old female Indian-Giant-Squirrel sits on Simhavikrama right-shoulder 4 consecutive days; does not eat; names herself in 23-syllable Sahyadri-squirrel-vocalization as standing-Sister-State-Hero-acknowledgement.</p>
+      </div>
+      <div class="phase-card">
+        <div class="ph-tag">Phase 2 &bull; Political</div>
+        <h4>Maharashtra Duel-Death + Goa Federation + Rajasthan Strategist</h4>
+        <p>December 2026-April 2027 5-month window. Maharashtra (Shivagati 47 + Vanaraksha 43 duel-death at Raigad-Fort January 11; Shivagati dies; squirrel-bond dies with her; Goan-gaur transfers to Simhavikrama at D9; Tanaji-the-Second holds Maharashtra as Gujarat-vassal). Goa (Ferreira-de-Sangam federates February 23; Vasco-without-a-ship Second-Herald walks openly). Rajasthan (Mrigatrishna-Marudhar-Counsellor + Ratan-Singh strategy-advisor pledge March 23).</p>
+      </div>
+      <div class="phase-card">
+        <div class="ph-tag">Phase 3 &bull; Unity Trial</div>
+        <h4>Simhavikrama Accepts Vanaraksha (Brother-Who-Killed-Sister)</h4>
+        <p>May 11 2027 4:11 a.m. at Junagadh-Sasan-Gir Bilakha-residence eastern-cardinal-courtyard. Vanaraksha walks 1,011-km Maharashtra-to-Gujarat 31-day pilgrimage April 11-May 11; kneels at foot-stool; accepts blood-claim-cohort council-seat. Standing-Tattoo-3-half-body mark forms in sandy-gold-and-Goan-tide-blue-and-Sahyadri-forest-green tri-ink. Sahyadri-Shivagati returns to right-shoulder + 23-syllable acknowledgement.</p>
+      </div>
+      <div class="phase-card">
+        <div class="ph-tag">Phase 4 &bull; Sanctuary</div>
+        <h4>The Double-Bond-Fellow-Recognition Vote</h4>
+        <p>July 4 2027 4:11:28 a.m. Simhavikrama at West clean-seat with Simha-Pati + Sagara-Vrishabha + Sahyadri-Shivagati shoulder-witness. Saga&rsquo;s only shoulder-perched-Maw-witness at Sanctuary. 4:23 a.m. Maw cracks seventh-seat. 5:23:11 p.m. Vote 5-1: Simhavikrama in favour at standing-double-bond-fellow-recognition cross-reference (Krishnadevaraya-Bhrata + Simhavikrama at saga&rsquo;s only two double-bond Dominants).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="k-section">
+    <h2>The Three Absorbed/Federated Kingdoms</h2>
+    <div class="absorbed-grid">
+      <div class="abs-card">
+        <div class="abs-tag">Sister-State-Hero Duel-Death &bull; Vassal-Throne Held</div>
+        <h4>Maharashtra (Swarajya Sahyadri)</h4>
+        <p>January 11 2027 11:43 a.m. Shivagati 47 (Ch-2 standing-double-bond standing-squirrel + Goan-gaur state-hero) confronts standing-elder-brother Vanaraksha 43 at Raigad-Fort eastern-cardinal-courtyard. Vanara-staff duel at Bloodline-Sahyadri-line charter-foundational dual-implement. Shivagati dies at cervical-vertebrae 11:43:23 a.m. Squirrel-bond dies with her. Goan-gaur transfers to Simhavikrama 4:11 a.m. January 12. Tanaji-the-Second holds Raigad-Fort as Gujarat-vassal. Saga&rsquo;s standing-fourth Ch-2-state-hero death. <a href="absorbed/maharashtra-swarajya-sahyadri.html" style="color:var(--ac);text-decoration:none;">&rarr; Full folding-page</a></p>
+      </div>
+      <div class="abs-card">
+        <div class="abs-tag">Coastal Federation &bull; Second-Herald Walks Openly</div>
+        <h4>Goa (Samudra-Dvipa)</h4>
+        <p>February 23 2027 11:11 a.m. Ferreira-de-Sangam 47 federates Goa under Simhavikrama at Mormugao-coast charter-foundational federation-ceremony. Standing-Goan-Gaur bond transferred via D9 administrative-cross-reference. Vasco-without-a-ship Second-Herald (Ch-2 Maw-sign #2 administrative-continuity) walks openly at Mormugao-coast charter-foundational Second-Herald walking-administration. <a href="absorbed/goa-samudra-dvipa.html" style="color:var(--ac);text-decoration:none;">&rarr; Full folding-page</a></p>
+      </div>
+      <div class="abs-card">
+        <div class="abs-tag">Strategy-Advisor Pledge &bull; Tri-Dominant West-Central-North Acknowledgement</div>
+        <h4>Rajasthan (Maru-Maya)</h4>
+        <p>March 23 2027 Mrigatrishna-Marudhar-Strategist-Counsellor-Elder 49 + Ratan-Singh-of-the-Ledger formal-Rajasthan-governor pledge as standing-Simhavikrama-chief-strategist at Chittorgarh-Vijay-Stambh permanent-rotated-configuration Maw-sign #28 administrative-continuity. Rajasthan-primary-federation remains under Gujarat-West-Dominant. Saga&rsquo;s first tri-Dominant West-Central-North strategist-counsellor cross-region acknowledgement administrative-protocol cross-reference. <a href="absorbed/rajasthan-maru-maya.html" style="color:var(--ac);text-decoration:none;">&rarr; Full folding-page</a></p>
+      </div>
+      <div class="abs-card">
+        <div class="abs-tag">Founding-Seat &bull; West-Dominant Self</div>
+        <h4>Gujarat (Simha-Dwara) &mdash; Self &bull; The Dominant</h4>
+        <p>Simhavikrama at standing-Junagadh-Sasan-Gir standing-Bilakha-residence administrative-cell. Standing-Asiatic-Lion bond from Ch-2 cousin-inheritance at Saraswati standing-step-back-Simha-Mata-the-First cross-reference; standing-Goan-Gaur bond from Sagaradeva post-Ch-2 storm-death + Shivagati Ch-3 duel-death via D9 administrative-cross-reference. Saga&rsquo;s standing-second double-bond Dominant after Karnataka. Sasan-Maldhari-Samaj senior-council standing-charter-witness administrative-cross-reference at standing-Asha-Ben Karsanbhai Modhwadia + Maldhari-Samaj-Sasan-Gir-State-Forest-Service Joint-Pastoral-Administration co-chair administrative-cross-reference continuity from Ch-2.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="k-section">
+    <h2>Cast &mdash; West-Dominant Core</h2>
+
+    <div class="cast-card dominant">
+      <div class="cast-tag">West-Dominant State-Hero &bull; Saga&rsquo;s Second Double-Bond Carrier &bull; Tattoo-3 Half-Body Mark May 11 2027</div>
+      <div class="cast-name">Simhavikrama &mdash; The Forty-Year-Old Desert-Edge-of-the-Line (Asiatic-Lion + Goan-Gaur D9 Double-Bond)</div>
+      <div class="cast-desc"><strong>Forty.</strong> Gujarat state-hero since Ch-2 standing-cousin-inheritance from Saraswati at June-24-2026 dawn-window standing-Stage-III lion-foreleg-first-stroke mark-formation cross-reference (saga&rsquo;s first standing-cousin-inheritance-at-mark-formation administrative-protocol). Bloodline-A standing-desert-edge-of-the-line at the standing-Saurashtra-Sutapathi-line cross-reference. First-cousin to Saraswati (Simha-Mata-the-First salt-queen-counsellor) + Krishnaveni (AP deceased Ch 3) + Krishnadevaraya-Bhrata (Karnataka Maha-Adhipati Volume-I). Standing-Junagadh-Sasan-Gir warrior-administration senior-officer since 2014. Yudhishthira-mapped (reluctant administrator) per relationship-graph standing-Mahabharata-mapping cross-reference. Standing-Asiatic-Lion bond via Simha-Pati 12-year-old Sasan-Gir pride-male-lead continues from Ch-2. <strong>Standing-Goan-Gaur bond inherited at January 12 2027 4:11 a.m.</strong> at standing-Sasan-Gir Bilakha-residence courtyard at the standing-D9 double-bond-mechanic administrative-cross-reference post-Shivagati-Ch-3-duel-death cross-reference (Goan-Gaur Sagara-Vrishabha 11-year-old lead-male; the standing-bond-line from Sagaradeva-Ch-2-Mormugao-storm-death + Shivagati-Ch-2-double-bond + Ch-3-duel-death transfer-cross-reference). Saga&rsquo;s standing-second double-bond Dominant after Krishnadevaraya-Bhrata. Standing-Tattoo-3-half-body mark-formation May 11 2027 4:11-4:58 a.m. in standing-sandy-gold-and-Goan-tide-blue-and-Sahyadri-forest-green tri-ink at the standing-Bloodline-A desert-edge-of-the-line + Goan-Gaur-D9 + Maharashtra-blood-claim combined visual-anchor at the standing-Junagadh-Sasan-Gir Bilakha-residence standing-eastern-cardinal-courtyard. Per Ch 4 plan: Grand-Council West-Bloodline-A seat at standing-12-Council-seat double-bond-fellow administrative-cross-reference at the standing-Yudhishthira-Maha-Adhipati-cousin-recognition seat.</div>
+    </div>
+
+    <div class="cast-card unity">
+      <div class="cast-tag">Unity-Trial Acceptance &bull; Saga&rsquo;s Most-Morally-Compromised Recognition</div>
+      <div class="cast-name">Vanaraksha &mdash; The Forty-Three-Year-Old Brother-Who-Killed-The-Sister (Standing-Blood-Claim-Cohort Senior-Administrative-Officer From May 11 2027)</div>
+      <div class="cast-desc"><strong>Forty-three.</strong> Standing-Bloodline-Sahyadri-line standing-elder-brother to Shivagati at the standing-Maharashtra Bloodline-Sahyadri-line standing-charter-foundational sibling-cross-reference. Standing-Ch-1 villain at the standing-Maharashtra-blood-claim primogeniture-precedence cross-reference; spared at Ch-1 climax + survived Ch-2 at the standing-blood-claim-cohort administrative-cross-reference (Maharashtra Ch-2 cross-reference: 20 forts held + cemetery seized at chapter-end). In Ch 3 Phase-2: kills Shivagati at the standing-Raigad-Fort eastern-cardinal-courtyard duel January 11 2027 11:43:23 a.m. at the standing-Vanara-staff cervical-vertebrae single-stroke administrative-cross-reference (the standing-Bloodline-Sahyadri-line standing-blood-claim duel-cross-reference; both siblings administered the standing-Vanara-staff at the standing-charter-foundational dual-implement cross-reference; Vanaraksha at the standing-survival configuration cross-reference). The standing-squirrel-bond dies with Shivagati at the standing-bond-death administrative-cross-reference. Vanaraksha walks the standing-1,011-km Maharashtra-Raigad-Fort-to-Junagadh-Sasan-Gir 31-day standing-pre-dawn-pilgrimage April 11-May 11 2027 at the standing-blood-claim-cohort pilgrimage-cross-reference. In Ch 3 Phase-3 Unity-Trial: accepted by Simhavikrama at the standing-Junagadh-Sasan-Gir Bilakha-residence Unity-Trial 4:11 a.m. May 11 2027 at the standing-blood-claim-cohort senior-administrative-officer council-seat administrative-cross-reference; half the standing-West&rsquo;s standing-council-veto becomes standing-shared with the standing-blood-claim-cohort at the standing-amended-charter administrative-cross-reference. Per Ch 4 plan: standing-Grand-Council West-cluster blood-claim-cohort seat at the standing-amended-charter administrative-cross-reference.</div>
+    </div>
+
+    <div class="cast-card counsellor">
+      <div class="cast-tag">Salt-Queen-Counsellor &bull; Standing-Step-Back From Gujarat State-Hero Seat Per Restructure §4</div>
+      <div class="cast-name">Saraswati-Simha-Mata-the-First &mdash; The Fifty-Year-Old Salt-Queen-Counsellor At Dwarka-Madhavi-Line Standing-Charter-Foundational Continuous-Protocol</div>
+      <div class="cast-desc"><strong>Fifty.</strong> Standing-Ch-2 Gujarat state-hero stepped back to standing-Simha-Mata-the-First salt-queen-counsellor seat per restructure §4 at Dwarka-Madhavi-line residence standing-charter-foundational ceremony July 11 2026 cross-reference. Standing-Bloodline-A Krishna-mapped + Yudhishthira-secondary at Dwarka-Madhavi-line charter-foundational lineage. First-cousin to Krishnaveni (AP deceased Ch 3) + Krishnadevaraya-Bhrata (Karnataka Maha-Adhipati Volume-I) + Simhavikrama (Gujarat West-Dominant Ch 3). Standing-Madhavi-line salt-queen-counsellor seat-of-honour standing-Dwarka-charter-foundational continuous-protocol cross-reference. In Ch 3 Phase-2: receives Goan-Gaur transfer-administration at standing-Sasan-Gir Bilakha-residence January 12 2027 + administers the standing-Mormugao-coast Goa-federation ceremony at Ferreira-de-Sangam acceptance February 23 2027 + acknowledges Mrigatrishna-Marudhar-Counsellor strategy-advisor pledge March 23 2027. In Ch 3 Phase-3: at standing-7-metre-rear standing-charter-witness position at Simhavikrama Unity-Trial Vanaraksha acceptance May 11 2027 4:11 a.m. Per Ch 3 plan: attends Sanctuary at standing-West-cluster delegation behind Simhavikrama at standing-salt-queen-counsellor seat-of-honour position; Ch 4 attends Grand-Council at standing-West-cluster standing-salt-queen-counsellor elder-seat (no Stage-IV per restructure §4).</div>
+    </div>
+
+    <div class="cast-card deceased">
+      <div class="cast-tag">Ch-3 Duel-Death &bull; Saga&rsquo;s Standing-Fourth Ch-2-State-Hero Death</div>
+      <div class="cast-name">Shivagati &mdash; The Forty-Seven-Year-Old Maharashtra State-Hero (Deceased January 11 2027 11:43:23 a.m. At Raigad-Fort Duel With Brother Vanaraksha)</div>
+      <div class="cast-desc"><strong>Forty-seven at death.</strong> Maharashtra Ch-2 standing-double-bond state-hero at standing-squirrel + Goan-gaur double-bond cross-reference. Standing-Hanuman-Abhimanyu archetype Mahabharata-mapping. Confronts standing-elder-brother Vanaraksha 43 at standing-Raigad-Fort eastern-cardinal-courtyard duel January 11 2027 11:43 a.m. at the standing-Bloodline-Sahyadri-line standing-blood-claim cross-reference; both siblings administer the standing-Vanara-staff at the standing-charter-foundational dual-implement cross-reference. Shivagati dies at 11:43:23 a.m. at the standing-cervical-vertebrae cross-section single-stroke administrative-cross-reference. Standing-squirrel-bond dies with her at the standing-bond-death administrative-cross-reference (the standing-squirrel-cohort administers at the standing-Maw-witness configuration not at the standing-bond-transfer configuration; Sahyadri-Shivagati 11-year-old Indian-Giant-Squirrel becomes standing-Sister-State-Hero-acknowledgement Maw-witness administrative-cross-reference). Standing-Goan-gaur bond transfers to Simhavikrama at 4:11 a.m. January 12 2027 at the standing-D9 double-bond-mechanic administrative-cross-reference. Maharashtra absorbed under Gujarat. Tanaji-the-Second holds Raigad-Fort as Gujarat-vassal. Saga&rsquo;s standing-fourth Ch-2-state-hero death (after Sundarvani Bengal Ch-3 March-11 + Himavati HP Ch-2 March-9 + Tungabhadra Karnataka Ch-2 December-23). Cremated at standing-Raigad-Fort standing-Maharashtra-Maratha standing-charter-foundational cremation-ghat January 14 2027.</div>
+    </div>
+
+    <div class="cast-card counsellor">
+      <div class="cast-tag">Rajasthan Chief-Strategist &bull; Tri-Dominant West-Central-North Acknowledgement</div>
+      <div class="cast-name">Mrigatrishna-Marudhar-Strategist-Counsellor-Elder &mdash; The Forty-Nine-Year-Old Chief-Strategist To Simhavikrama (Standing-Rare-Hero-Shakuni)</div>
+      <div class="cast-desc"><strong>Forty-nine.</strong> Standing-Ch-2 Rajasthan state-hero stepped back to standing-Marudhar-Strategist-Counsellor-Elder per restructure §4 at Chittorgarh standing-charter-foundational ceremony August 23 2026 cross-reference. Bloodline-B Suryavamshi-Rajput + Shakuni-secondary (standing-rare-hero-Shakuni intelligence-weaponization defensive-justice-discipline cross-reference). First-cousin to Saraswati-Simha-Mata-the-First (Gujarat) at the standing-desert-edge-of-the-line cross-Bloodline marriage-tradition cross-reference. Standing-Marudhar-Sakhi 24-year-old standing-bonded-camel + Karni-Sakhi 12-year-old standing-bonded-white-headed-vulture continuous-bond. In Ch 3 Phase-2: pledges as standing-Simhavikrama-chief-strategist at March 23 2027 standing-Chittorgarh-Vijay-Stambh permanent-rotated-configuration Maw-sign #28 administrative-continuity cross-reference. Per Ch 3 plan: attends Sanctuary at standing-West-cluster delegation as standing-Marudhar-Strategist-Counsellor seat-of-honour behind Simhavikrama; Ch 4 attends Grand-Council as direct-advisor at standing-Krishnadevaraya-Bhrata standing-12-Council-seat strategist-cohort cross-reference.</div>
+    </div>
+
+    <div class="cast-card">
+      <div class="cast-tag">Sahyadri-Maw-Witness &bull; Self-Named Sister-State-Hero-Acknowledgement</div>
+      <div class="cast-name">Sahyadri-Shivagati &mdash; The Eleven-Year-Old Indian-Giant-Squirrel (Shoulder-Perched Maw-Witness)</div>
+      <div class="cast-desc"><strong>Eleven years old.</strong> Indian-Giant-Squirrel (Ratufa indica) Sahyadri-Mahabaleshwar endemic-population. Standing-pre-Ch-3 bonded-companion-of-Shivagati at the standing-Shivagati-Mahabaleshwar charter-foundational pastoral-companion cross-reference (since 2014 conferral-anniversary). At Shivagati-duel-death January 11 2027 11:43:23 a.m. the standing-squirrel-bond died with Shivagati at the standing-bond-death administrative-cross-reference. Standing-Sahyadri-Shivagati administered standing-Sister-State-Hero-acknowledgement Maw-witness configuration cross-reference (not at the bond-transfer configuration; at the standing-Maw-witness configuration only). November 23-26 2026 sat on Simhavikrama&rsquo;s standing-right-shoulder at standing-Junagadh-Sasan-Gir Bilakha-residence for 4 consecutive days at the standing-Phase-1 cross-region beast-witness administrative-cross-reference; did not eat across 4-day window; self-named in standing-23-syllable Sahyadri-squirrel-vocalization at acoustic-administration. Returns May 11 2027 4:58:11 a.m. to Simhavikrama right-shoulder at Vanaraksha-acceptance Unity-Trial completion; speaks the standing-23-syllable Sahyadri-squirrel-vocalization-at-acoustic-administration: <em>&ldquo;The brother stands. The sister witnesses. The squirrel acknowledges.&rdquo;</em>. Continues at standing-Maw-witness administrative-cross-reference position at Simhavikrama right-shoulder through Sanctuary-convening July 4 2027 — saga&rsquo;s standing-only standing-shoulder-perched-Maw-witness at standing-Sanctuary stone-slab seven-seat-circle administrative-cross-reference.</div>
+    </div>
+
+  </div>
+
+  <div class="k-section">
+    <div class="k-quick-links">
+      <a href="identity.html" class="k-quick-link">
+        <span class="ql-title">Identity &amp; Cast</span>
+        <span class="ql-sub">Full cast cards, amended Junagadh-Sasan-Gir-charter, three absorbed kingdoms</span>
+      </a>
+      <a href="story.html" class="k-quick-link">
+        <span class="ql-title">Full Story</span>
+        <span class="ql-sub">The Squirrel On The Shoulder &mdash; A Film in Four Phases</span>
+      </a>
+      <a href="rules.html" class="k-quick-link">
+        <span class="ql-title">Rules &amp; Weapons</span>
+        <span class="ql-sub">Tattoo-3 half-body mark, the Vanara-staff inheritance, the D9 double-bond mechanic</span>
+      </a>
+      <a href="../../../index.html" class="k-quick-link" style="border-color:rgba(232,200,112,.22);">
+        <span class="ql-title" style="color:var(--gold);">All Rise-of-Beasts Dominants</span>
+        <span class="ql-sub">Back to Chapter 3</span>
+      </a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>Simha-Dwara &bull; West Dominant &bull; Rise of Beasts &bull; Chapter 3 &bull; Maha Parva &bull; Age of Mythos Volume I</p>
+    <p style="margin-top:8px;"><a href="../../../index.html">&larr; Chapter 3 Index</a></p>
+  </footer>
+</body>
+</html>

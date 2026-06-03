@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chaya-Golkonda &mdash; Rules &amp; Weapons &mdash; Civil War</title>
+  <link rel="stylesheet" href="../../../../../chapter-1-rise-of-legends/css/style.css">
+  <style>
+    body { background:#0a0a0e; color:#f0e8f8; }
+    .k-banner { text-align:center; padding:78px 20px 36px; border-bottom:1px solid rgba(196,77,170,.16); }
+    .k-banner .badge { font-size:.55em; letter-spacing:4px; text-transform:uppercase; color:#c44daa; opacity:.85; margin-bottom:12px; }
+    .k-banner h1 { font-size:2em; color:#d4a060; margin-bottom:.1em; }
+    .k-banner .state-label { font-size:.72em; color:#c9bbd8; opacity:.6; margin-bottom:.4em; }
+    .k-nav { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:14px 20px; background:rgba(0,0,0,.5); border-bottom:1px solid rgba(196,77,170,.1); }
+    .k-nav a { padding:5px 16px; border-radius:20px; border:1px solid rgba(196,77,170,.25); color:#d4c5e8; font-size:.72em; letter-spacing:1px; text-decoration:none; transition:all .15s; }
+    .k-nav a:hover, .k-nav a.active { background:rgba(196,77,170,.12); border-color:#c44daa; color:#fff; }
+    .k-section { max-width:1000px; margin:0 auto; padding:40px 20px 60px; }
+    .k-card { background:rgba(255,255,255,.025); border:1px solid rgba(196,77,170,.15); border-radius:10px; padding:24px; margin-bottom:20px; }
+    .k-card h3 { font-size:.72em; letter-spacing:2px; text-transform:uppercase; color:#d4a060; margin-bottom:14px; opacity:.9; }
+    .k-two { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    @media(max-width:640px){ .k-two { grid-template-columns:1fr; } }
+    .id-label { font-size:.62em; text-transform:uppercase; letter-spacing:2px; color:#9a8db0; opacity:.6; margin-bottom:3px; }
+    .id-value { font-size:.88em; color:#c9bbd8; margin-bottom:14px; line-height:1.65; }
+    .id-value strong { color:#fff5d4; }
+
+    .trust-mech { padding:18px 22px; border-radius:12px; background:linear-gradient(135deg,rgba(212,160,96,.10),rgba(30,20,16,.04)); border:1px solid rgba(212,160,96,.32); margin:14px 0; }
+    .trust-mech .tm-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#d4a060; margin-bottom:8px; }
+    .trust-mech .tm-text { color:#e8c898; font-size:.9em; line-height:1.75; }
+    .trust-mech .tm-text strong { color:#fff5d4; }
+
+    .tattoo-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    @media(max-width:600px){ .tattoo-grid { grid-template-columns:repeat(2,1fr); } }
+    .tattoo-stage { text-align:center; }
+    .tattoo-img { width:100%; border-radius:8px; border:1px solid rgba(212,160,96,.22); display:block; aspect-ratio:1; object-fit:cover; margin-bottom:8px; background:rgba(212,160,96,.06); }
+    .tattoo-stage.done .tattoo-img    { border-color:rgba(212,160,96,.40); background:rgba(30,20,16,.15); }
+    .tattoo-stage.new  .tattoo-img    { border-color:rgba(212,160,96,.50); background:rgba(40,30,20,.20); }
+    .tattoo-stage.future .tattoo-img  { border-color:rgba(196,77,170,.18); background:rgba(196,77,170,.04); opacity:.5; }
+    .tattoo-stage-label { font-size:.58em; letter-spacing:2px; text-transform:uppercase; color:#d4a060; opacity:.85; display:block; margin-bottom:2px; }
+    .tattoo-stage.new .tattoo-stage-label { color:#e8c898; }
+    .tattoo-stage.future .tattoo-stage-label { color:#c44daa; }
+    .tattoo-stage-name { font-size:.78em; color:#fff5d4; display:block; margin-bottom:4px; }
+    .tattoo-stage-desc { font-size:.7em; color:#9a8db0; opacity:.85; line-height:1.55; }
+
+    .weapon-img { width:100%; border-radius:10px; border:1px solid rgba(212,160,96,.22); display:block; margin-bottom:10px; background:rgba(212,160,96,.04); }
+    .weapon-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#d4a060; opacity:.85; margin-bottom:4px; display:block; }
+    .weapon-name { font-size:.95em; color:#fff5d4; margin-bottom:8px; }
+
+    .saga-rule { padding:18px 22px; border-radius:12px; background:linear-gradient(135deg,rgba(212,160,96,.07),rgba(30,20,16,.03)); border:1px solid rgba(212,160,96,.28); margin:14px 0; }
+    .saga-rule .sr-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#d4a060; margin-bottom:6px; }
+    .saga-rule .sr-text { color:#e8c898; font-size:.9em; line-height:1.75; font-style:italic; }
+    .saga-rule .sr-text strong { color:#fff5d4; font-style:normal; }
+
+    .void-callout { padding:20px 22px; border-radius:12px; background:linear-gradient(135deg,rgba(100,90,160,.12),rgba(20,10,40,.04)); border:1px solid rgba(160,140,255,.25); margin-bottom:16px; }
+    .void-callout .vc-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#c4b8ff; margin-bottom:6px; }
+    .void-callout .vc-text { color:#dfd8f0; font-size:.9em; line-height:1.75; }
+    .void-callout .vc-text strong { color:#fff5d4; }
+  </style>
+</head>
+<body>
+  <div class="k-banner">
+    <div class="badge">Civil War &bull; Rules &amp; Weapons (Chapter 2)</div>
+    <h1>Chaya-Golkonda</h1>
+    <div class="state-label">Telangana &mdash; The Open-Trust Bond, the Dual Discs, the Five-Shadow Noon</div>
+  </div>
+  <div class="k-nav">
+    <a href="../../../../index.html">&larr; Chapter 2</a>
+    <a href="index.html">Overview</a>
+    <a href="identity.html">Identity</a>
+    <a href="story.html">Story</a>
+    <a href="rules.html" class="active">Rules &amp; Weapons</a>
+  </div>
+
+  <div class="k-section">
+
+    <!-- ====== THE OPEN-TRUST BOND ====== -->
+    <div class="k-card">
+      <h3>The Spotted-Deer-Bond &mdash; Stage III by Open Trust</h3>
+      <p style="font-size:.92em;color:#c9bbd8;line-height:1.8;">Chittaranga earns the Stage III spotted-deer-foreleg-first-stroke not by combat-victory (he wins many combats but no bond-mark forms), not by surrender, not by refusal, not by concession, not by transmission, not by mercy, not by unauthorised-speech. He earns it by <strong>declaring open trust in a stranger publicly, in the Mecca Masjid courtyard, knowing the stranger could be a Chitrabheda face, with the standing-charter explicitly forbidding the standing-grey-eye&rsquo;s standing-pre-check</strong>. The mark appears across his left side at the standing-seventh-sentence&rsquo;s standing-completion at 11:30 a.m. on Friday week eleven. The bond grows through risk, not certainty. This is the saga&rsquo;s seventeenth bond-mechanic: the <strong>open-trust bond</strong>.</p>
+      <div class="trust-mech">
+        <div class="tm-label">Saga-Rule &bull; The Open-Trust Bond Mechanic</div>
+        <div class="tm-text">A hero whose Chapter One charter-flaw was paranoia (the warrior who trusts no one completely; the kingdom-council&rsquo;s standing-perception-discipline holder) may earn the Stage III bond-stroke in Chapter Two by <strong>publicly declaring open trust in a stranger whom the hero&rsquo;s standing-perception-discipline could pre-check but which the kingdom-council&rsquo;s amended-charter explicitly forbids pre-checking</strong>. The mechanic requires: (1) the hero possesses a standing-perception-discipline (the grey eye; the standing-secret-sense; the kingdom-council&rsquo;s standing-intelligence-reading), (2) the standing-perception-discipline has been the hero&rsquo;s Ch 1 charter-strength weaponised across Ch 2 into the hero&rsquo;s charter-flaw (paranoia validates itself; everyone is suspect; even the brother), (3) the chapter has demanded one prior catastrophic killing where the standing-perception-discipline confirmed the kill (Chittaranga&rsquo;s killing of Lalithanga in the mirror-vault basement is the kingdom&rsquo;s standing-confirmation that the discipline reads true; the killing cannot be un-killed), (4) the kingdom-council&rsquo;s amended-charter explicitly forbids the standing-perception-discipline&rsquo;s pre-check for the public-declaration, (5) the declaration is performed in standing-public form at a standing-kingdom-council standing-recognised public-assembly site with a standing-Sufi-line elder as standing-witness, (6) the subject of the declaration is a stranger who could be a standing-overlay/standing-shadow-copy/standing-Chitrabheda-residence at unknown saturation. <strong>The open-trust bond is distinct from the mercy-bond (AP) in that the mercy-bond rejects an action (not killing); the open-trust bond performs an action (declaring trust). The mercy-bond is restraint; the open-trust bond is commitment.</strong> The saga&rsquo;s registry of open-trust-bond instances opens with Chittaranga as the first entry.</div>
+      </div>
+    </div>
+
+    <!-- ====== TATTOO LADDER ====== -->
+    <div class="k-card">
+      <h3>The Tattoo Ladder &mdash; Chittaranga</h3>
+      <p style="color:#c9bbd8;font-size:.85em;line-height:1.7;margin-bottom:24px;">Four stages. Stage III completes at 11:30 a.m. on Friday week eleven at the Mecca Masjid courtyard. Stage IV is deferred to Chapter Three&rsquo;s Sanctuary trial.</p>
+
+      <div class="tattoo-grid">
+        <div class="tattoo-stage done">
+          <img src="media/tattoo/telangana-ch2-stage-1.png" alt="Stage I" class="tattoo-img" onerror="this.style.background='rgba(212,160,96,.06)'">
+          <span class="tattoo-stage-label">Stage I &bull; Pre-Ch 1</span><span class="tattoo-stage-name">The Spotted-Deer Hoofprint</span>
+          <div class="tattoo-stage-desc">Earned at age nineteen at the standing-Golkonda Fort ordination-ceremony. Single spotted-deer-hoofprint at the left collarbone.</div>
+        </div>
+        <div class="tattoo-stage done">
+          <img src="media/tattoo/telangana-ch2-stage-2.png" alt="Stage II" class="tattoo-img" onerror="this.style.background='rgba(212,160,96,.06)'">
+          <span class="tattoo-stage-label">Stage II &bull; Ch 1 Finale</span><span class="tattoo-stage-name">The Half-Body Spotted-Deer</span>
+          <div class="tattoo-stage-desc">Earned at the Ch 1 Hall of Diamonds confrontation in 2023. The spotted-deer climbing across the left torso. Half-body mark with the left side&rsquo;s foreleg lighter than the right.</div>
+        </div>
+        <div class="tattoo-stage new">
+          <img src="media/tattoo/telangana-ch2-stage-3.png" alt="Stage III by Open Trust" class="tattoo-img" onerror="this.style.background='rgba(40,30,20,.20)'">
+          <span class="tattoo-stage-label">Stage III &bull; This Chapter &bull; By Open Trust</span><span class="tattoo-stage-name">The Left Foreleg Completion-Stroke</span>
+          <div class="tattoo-stage-desc">Forms at 11:30 a.m. on Friday week eleven at the standing-seventh-sentence&rsquo;s standing-completion of the open-trust declaration. The foreleg is now inked to the same density as the right side; the spotted-deer&rsquo;s posture is anchored by both forelegs.</div>
+        </div>
+        <div class="tattoo-stage future">
+          <img src="media/tattoo/telangana-ch2-stage-4.png" alt="Stage IV" class="tattoo-img" onerror="this.style.background='rgba(196,77,170,.04)'">
+          <span class="tattoo-stage-label">Stage IV &bull; Ch 3 Sanctuary</span><span class="tattoo-stage-name">Full Body Spotted-Deer</span>
+          <div class="tattoo-stage-desc">Will be earned at the Sanctuary at Manipur convening. The full-body spotted-deer in standing-running posture across his back &mdash; the kingdom&rsquo;s formal voice into the southern-bloc federation under Krishnadevaraya-Bhrata&rsquo;s Karnataka Dominant seat.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== SACRED WEAPONS ====== -->
+    <div class="k-card">
+      <h3>Sacred Weapons &mdash; The Dual Discs</h3>
+      <p style="font-size:.92em;color:#c9bbd8;line-height:1.8;">The chapter&rsquo;s two implements are the standing dual discs Chitra (Illusion, silver) and Ranga (Truth, shadow-dark). The Ranga disc killed the brother. The Chitra disc has not been thrown across the chapter. Both return to the standing-disc-rack at the residence&rsquo;s southern entrance after the open-trust declaration; the kingdom-council&rsquo;s amended Chaya-Golkonda charter&rsquo;s standing-throwing-restriction clause limits the discs&rsquo; standing-throwing-protocol to the standing-state-hero&rsquo;s explicit-kingdom-council-authorisation-required combat-events.</p>
+      <div class="k-two" style="margin-top:14px;">
+        <div>
+          <span class="weapon-label">Truth-Disc &bull; Threw the Killing-Stroke</span>
+          <div class="weapon-name">Ranga &mdash; The Shadow-Dark Truth-Disc</div>
+          <img src="media/weapons/telangana-ch2-ranga-disc.png" alt="The Ranga Disc" class="weapon-img" onerror="this.style.display='none'">
+          <div class="id-label">Type</div><div class="id-value">A 23 cm circular throwing-disc of forged shadow-blackened iron from the standing-Golkonda metallurgical-tradition. The standing-Truth-disc of the dual-pair. Carries the standing-killing-edge at all 360 degrees of the circumference. Throwing-range up to ~30 metres at standing-killing-velocity (~52 m/s at release). Inherited from Chittaranga&rsquo;s father&rsquo;s gem-cutter-and-informant line.</div>
+          <div class="id-label">Status This Chapter</div><div class="id-value">Thrown at the standing-killing-velocity at 3:10:11 a.m. Wednesday week six over the six-metre range in the Hall of Diamonds. Embedded in the standing southern-wall mirror-fragment at 3:10:11:3 after passing through Lalithanga&rsquo;s chest. Recovered by the standing-State-Police standing-protocol at 10:30 a.m. same Wednesday with the body&rsquo;s removal. Returned to the standing-disc-rack at the residence&rsquo;s southern entrance the same evening. Not thrown again across the chapter. The standing-blade-edge is dulled approximately three per cent by the standing-mirror-fragment impact; the standing-blade-restoration is deferred to autumn under the amended-charter&rsquo;s throwing-restriction clause.</div>
+        </div>
+        <div>
+          <span class="weapon-label">Illusion-Disc &bull; Not Thrown This Chapter</span>
+          <div class="weapon-name">Chitra &mdash; The Silver Illusion-Disc</div>
+          <img src="media/weapons/telangana-ch2-chitra-disc.png" alt="The Chitra Disc" class="weapon-img" onerror="this.style.display='none'">
+          <div class="id-label">Type</div><div class="id-value">A 23 cm circular throwing-disc of polished silver from the standing-Golkonda metallurgical-tradition. The standing-Illusion-disc of the dual-pair. The standing-Illusion-disc&rsquo;s standing-property: the disc&rsquo;s standing-flight-arc creates a standing-after-image illusion at the standing-eight-metre-mid-flight position; opponents see a phantom-disc at the standing-after-image while the real disc continues on its true trajectory. Inherited alongside the Ranga.</div>
+          <div class="id-label">Status This Chapter</div><div class="id-value">Held at Chittaranga&rsquo;s left forearm at the Hall of Diamonds duel but not thrown. The brother-killing required the standing-Truth-disc, not the standing-Illusion-disc; the standing-trajectory had to be true. Held at the standing-disc-rack across the rest of the chapter. Worn at the Mecca Masjid courtyard at the open-trust declaration as the standing-state-hero charter-required dual-disc-bearing; not raised. Returned to the standing-disc-rack at 5 p.m. Friday week eleven after the declaration. Per Ch 3 plan it remains at the standing-disc-rack across the autumn.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== SAGA RULES ====== -->
+    <div class="k-card">
+      <h3>The Saga-Rules This Chapter Established</h3>
+      <div class="saga-rule">
+        <div class="sr-label">Saga-Rule &bull; The Bond Grows Through Risk, Not Certainty</div>
+        <div class="sr-text">A hero whose standing-perception-discipline has been the kingdom&rsquo;s Ch 1 charter-strength must, in Chapter Two, accept that <strong>the kingdom&rsquo;s growth requires the discipline&rsquo;s explicit suspension at a public moment under the kingdom-council&rsquo;s amended-charter&rsquo;s explicit-forbiddance</strong>. The bond does not grow through the discipline&rsquo;s correct-readings; the bond grows through the discipline&rsquo;s suspended-trust. The kingdom-council&rsquo;s amended-charter must include a standing-suspension provision &mdash; a standing-public-declaration moment where the discipline is forbidden and the trust is required. The provision&rsquo;s standing-witnesses are the standing-Sufi-line elder (or the kingdom-council&rsquo;s standing-tradition-equivalent) and the standing-public-assembly congregation. The trust&rsquo;s standing-subject is a stranger who could be the kingdom&rsquo;s next betrayer or the kingdom&rsquo;s next loyal-citizen; the discipline cannot pre-check; the trust is granted regardless. The rule applies to every kingdom whose Chapter Two crisis involves a paranoid-discipline-weaponised-against-itself pattern.</div>
+      </div>
+      <div class="saga-rule" style="margin-top:10px;">
+        <div class="sr-label">Saga-Rule &bull; The Killing Cannot Be Un-Killed; the Mother&rsquo;s Cadence Carries the Grief</div>
+        <div class="sr-text">A hero forced by the kingdom-council&rsquo;s standing-charter to kill a family-line member &mdash; even with the family-member&rsquo;s explicit-permission and the kingdom-council&rsquo;s standing-charter-required-form &mdash; cannot un-kill the killing. The standing-grief is the kingdom-council&rsquo;s standing-permanent-record. <strong>The kingdom-council&rsquo;s standing-charter requires the standing-Sufi-line elder (or the kingdom&rsquo;s standing-tradition-equivalent vessel-of-voice) to carry the deceased mother&rsquo;s (or father&rsquo;s, or standing-elder&rsquo;s) standing-cadence across the hero&rsquo;s standing-grief-vigil for the standing-eight-night cycle followed by the standing-eight-additional-night cycle.</strong> The standing-cadence is the kingdom-council&rsquo;s standing-vessel-protocol&rsquo;s standing-purpose: the standing-preservation of the standing-cadence-of-a-deceased-teacher across the standing-line&rsquo;s next generation. The standing-vessel may be a Sufi-line elder, a kalari-line grandmaster, a Sangam-tradition living-archive seat-holder, or the kingdom-council&rsquo;s standing-tradition-recognised standing-cadence-carrier. The standing-cadence-recitation breaks the grief at the standing-third-line; the standing-tears at the standing-seventh-line; the standing-shoulder-shaking at the standing-eleventh-line; the standing-vocal-grief at the standing-twenty-third-line. The standing-sleep returns at the standing-three-forty-seven a.m. moment. The rule applies to every kingdom whose Chapter Two crisis involves a family-killing under the standing-charter.</div>
+      </div>
+      <div class="saga-rule" style="margin-top:10px;">
+        <div class="sr-label">Saga-Rule &bull; Integration-by-Architecture (Saga&rsquo;s Fifth Integrated Catalyst-Villain Mode)</div>
+        <div class="sr-text">A kingdom whose catalyst-villain&rsquo;s standing-capability is the standing-residence-overlay across the kingdom&rsquo;s reflective-surfaces (or the kingdom-council&rsquo;s standing-tradition-equivalent distributed-presence) may integrate the catalyst-villain through <strong>institutional-architecture rather than through personal-reconciliation or shadow-twin-recognition or pedagogical-method</strong>. The kingdom-council&rsquo;s amended-charter installs the standing-monitoring registry, the standing-classification protocol, and the standing-medical-cell&rsquo;s standing-disruption protocols that identify, monitor, and disrupt the catalyst-villain&rsquo;s standing-residence-overlays without killing the host-citizens. The catalyst-villain survives integrated-by-architecture. The kingdom-council&rsquo;s standing-architecture is the kingdom&rsquo;s standing-evidence that the kingdom can hold the catalyst-villain&rsquo;s standing-presence without the kingdom-council&rsquo;s standing-killing-protocol. The rule applies to every kingdom whose Chapter Two crisis involves distributed-presence catalyst-villains (saga&rsquo;s five integrated catalyst-villains: Kama-Mara/Assam by personal-reconciliation; Asta-Asura/Arunachal by shadow-twin-recognition; Kala-Hasta/Kerala by pedagogical-method; the Karnataka rule&rsquo;s implicit-integration-pattern; Chitrabheda/Telangana by institutional-architecture).</div>
+      </div>
+    </div>
+
+    <!-- ====== VOID MAW SIGN ====== -->
+    <div class="void-callout">
+      <div class="vc-label">Void Maw Sign &bull; Catalogue Entry &bull; Telangana &bull; The Charminar&rsquo;s Five Shadows (First Shadow-Surplus Maw Event)</div>
+      <div class="vc-text">Friday week eleven at twelve noon. The Charminar quadrangle in Hyderabad Old City. The four-minareted 1591 monument has cast four shadows at every solar-noon for 435 years (53-year continuous Archaeological Survey of India standing-Charminar-monitoring cell daily-noon-image-record). On this Friday at noon the Charminar casts <strong>five shadows</strong>. The fifth shadow is centred at the quadrangle&rsquo;s exact geometric centre and extends north-east at the standard noon-radial angle (the geometric-centre cannot cast a shadow; only the four edge-vertices can). The shadow is approximately adult-human height; the shape is the standing-Hyderabadi-dancer-pose with arms slightly extended at the hips&rsquo; level. The shadow holds for <strong>thirteen minutes</strong> from 12:00 to 12:13. Captured at 12:01, 12:07, and 12:11 on the standing-noon-image-record. Dissolves at 12:13:14 exactly. The kingdom-council&rsquo;s standing-Maw-sign-recognition cell&rsquo;s preliminary report at 3:11 p.m. same Friday identifies the pose as Chittaranga&rsquo;s deceased mother Lakshmi-Akka&rsquo;s standing-twelve-noon-prayer-pose, cross-referenced against the 123 standing-pose-photographs (1997-2008) in the kingdom-council&rsquo;s standing-Lakshmi-Akka archive. The thirteen-minute duration corresponds to Lakshmi-Akka&rsquo;s standing-thirteen-minute prayer-cycle. The fifth shadow is the kingdom-council&rsquo;s standing-Maw-recognised standing-mother-presence at the standing-courtyard during the standing-state-hero&rsquo;s open-trust declaration at the Mecca Masjid (which is approximately one kilometre north-west of the Charminar; the Charminar&rsquo;s noon-shadow and the Mecca Masjid&rsquo;s courtyard share the same Old City quadrant-airspace; the standing-Maw&rsquo;s recognition crosses the kilometre at the standing-twelve-noon moment). Paired with <strong>Arunachal&rsquo;s First Herald (Sahodara-Aapun)</strong>: the First Herald casts no shadow; the Charminar casts an extra shadow. The pair is the saga&rsquo;s third formally-recognised cross-region Maw-sign pair: <strong>shadow-deficit (Arunachal) and shadow-surplus (Telangana)</strong>. Significance: TLN&rsquo;s sign is the seventeenth rung of the escalation pattern &mdash; the <em>first shadow-surplus experiment</em>. The Maw has shifted from experimenting on textual-presence (TN&rsquo;s 14 lines on the Manimekalai leaf) to experimenting on shadow-presence itself. The Maw can now both subtract a shadow from a person (Arunachal) and add a shadow to a monument (Telangana).</div>
+      <div style="margin:12px 0 4px;padding-left:12px;font-size:.78em;color:#dfd8f0;line-height:1.7;">
+        <strong style="color:#fff5d4;">Person</strong> &times; 2 &rarr; <strong style="color:#fff5d4;">Place</strong> &rarr; <strong style="color:#fff5d4;">Landscape</strong> &rarr; <strong style="color:#fff5d4;">Multi-creature</strong> &rarr; <strong style="color:#fff5d4;">Landscape + Multi-creature</strong> &rarr; <strong style="color:#fff5d4;">Anti-weather</strong> &rarr; <strong style="color:#fff5d4;">Self-signing form-making</strong> &rarr; <strong style="color:#fff5d4;">Self-cancelling form</strong> &rarr; <strong style="color:#fff5d4;">Species-lethal-altitude experiment</strong> &rarr; <strong style="color:#fff5d4;">Face-erasure (First Herald)</strong> &rarr; <strong style="color:#fff5d4;">Future-naming</strong> &rarr; <strong style="color:#fff5d4;">Stuck-behaviour</strong> &rarr; <strong style="color:#fff5d4;">Material-permanence</strong> &rarr; <strong style="color:#fff5d4;">Land-erasure</strong> &rarr; <strong style="color:#fff5d4;">Manuscript-inscription</strong> &rarr; <strong style="color:#fff5d4;">Shadow-surplus (Charminar five shadows)</strong> (Telangana).
+      </div>
+      <div style="margin-top:14px;padding:12px 16px;border-radius:8px;background:rgba(212,160,96,.06);border-left:3px solid rgba(212,160,96,.5);">
+        <div style="font-size:.62em;letter-spacing:2px;text-transform:uppercase;color:#e8c898;margin-bottom:6px;">The Saga&rsquo;s Three Formally-Recognised Cross-Region Maw-Sign Pairs</div>
+        <div style="font-size:.85em;color:#dfd8f0;line-height:1.75;">First pair (material-experiment): <strong>Kerala (material-permanence) &harr; Andhra Pradesh (material-erasure)</strong>. The black coconut preserves what should rot; the delta-metre erases what should remain.<br/>Second pair (Maw-language): <strong>Mizoram (Maw-voice from a creature) &harr; Tamil Nadu (Maw-text on a page)</strong>. The two-headed serow speaks aloud; the Manimekalai leaf gains 14 lines no one wrote.<br/>Third pair (shadow): <strong>Arunachal (shadow-deficit, the First Herald) &harr; Telangana (shadow-surplus, the Charminar&rsquo;s fifth shadow)</strong>. The man with no shadow walks through Roing; the four-minareted monument casts a fifth shadow at the Mecca Masjid&rsquo;s noon. The pairing-protocol is the saga&rsquo;s standing catalogue-pattern-recognition method.</div>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;margin-top:24px;flex-wrap:wrap;gap:10px;">
+      <a href="story.html" style="color:#c9a04a;text-decoration:none;font-size:.85em;">&larr; Kingdom Story</a>
+      <a href="../../../../index.html" style="color:#c9a04a;text-decoration:none;font-size:.85em;">All Civil War Stories &rarr;</a>
+    </div>
+  </div>
+
+  <footer style="text-align:center;padding:28px 20px;border-top:1px solid rgba(196,77,170,.12);color:#9a8db0;font-size:.75em;">
+    <p>Chaya-Golkonda Rules &amp; Weapons &bull; Civil War &bull; Chapter 2</p>
+  </footer>
+</body>
+</html>

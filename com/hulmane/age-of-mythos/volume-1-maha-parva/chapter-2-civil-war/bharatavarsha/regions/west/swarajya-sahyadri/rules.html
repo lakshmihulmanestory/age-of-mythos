@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swarajya Sahyadri &mdash; Rules &amp; Weapons &mdash; Civil War</title>
+  <link rel="stylesheet" href="../../../../../chapter-1-rise-of-legends/css/style.css">
+  <style>
+    body { background:#0a0610; color:#f0e8f8; }
+    .k-banner { text-align:center; padding:78px 20px 36px; border-bottom:1px solid rgba(196,77,170,.16); }
+    .k-banner .badge { font-size:.55em; letter-spacing:4px; text-transform:uppercase; color:#c44daa; opacity:.85; margin-bottom:12px; }
+    .k-banner h1 { font-size:2em; color:#f7c860; margin-bottom:.1em; }
+    .k-banner .state-label { font-size:.72em; color:#c9bbd8; opacity:.6; margin-bottom:.4em; }
+    .k-nav { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:14px 20px; background:rgba(0,0,0,.5); border-bottom:1px solid rgba(196,77,170,.1); }
+    .k-nav a { padding:5px 16px; border-radius:20px; border:1px solid rgba(196,77,170,.25); color:#d4c5e8; font-size:.72em; letter-spacing:1px; text-decoration:none; transition:all .15s; }
+    .k-nav a:hover, .k-nav a.active { background:rgba(196,77,170,.12); border-color:#c44daa; color:#fff; }
+    .k-section { max-width:1000px; margin:0 auto; padding:40px 20px 60px; }
+    .k-card { background:rgba(255,255,255,.025); border:1px solid rgba(196,77,170,.15); border-radius:10px; padding:24px; margin-bottom:20px; }
+    .k-card h3 { font-size:.72em; letter-spacing:2px; text-transform:uppercase; color:#f7c860; margin-bottom:14px; opacity:.9; }
+    .k-two { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    @media(max-width:640px){ .k-two { grid-template-columns:1fr; } }
+    .id-label { font-size:.62em; text-transform:uppercase; letter-spacing:2px; color:#9a8db0; opacity:.6; margin-bottom:3px; }
+    .id-value { font-size:.88em; color:#c9bbd8; margin-bottom:14px; line-height:1.65; }
+    .id-value strong { color:#fff5d4; }
+
+    /* Double-bond layout */
+    .double-bond { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:18px 0 8px; }
+    @media(max-width:680px){ .double-bond { grid-template-columns:1fr; } }
+    .bond-side { padding:18px; border-radius:12px; }
+    .bond-side.squirrel { background:rgba(247,200,96,.07); border:1px solid rgba(247,200,96,.28); }
+    .bond-side.gaur     { background:rgba(255,140,0,.07); border:1px solid rgba(255,140,0,.30); }
+    .bond-side .b-name { font-size:1.1em; color:#fff5d4; margin-bottom:4px; font-family:Georgia,serif; }
+    .bond-side .b-status { font-size:.6em; letter-spacing:2px; text-transform:uppercase; margin-bottom:10px; }
+    .bond-side.squirrel .b-status { color:#f7c860; }
+    .bond-side.gaur .b-status { color:#ffb066; }
+    .bond-side .b-desc { font-size:.82em; color:#c9bbd8; line-height:1.7; }
+
+    .tattoo-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    @media(max-width:600px){ .tattoo-grid { grid-template-columns:repeat(2,1fr); } }
+    .tattoo-stage { text-align:center; }
+    .tattoo-img { width:100%; border-radius:8px; border:1px solid rgba(247,200,96,.2); display:block; aspect-ratio:1; object-fit:cover; margin-bottom:8px; background:rgba(247,200,96,.06); }
+    .tattoo-stage.done .tattoo-img    { border-color:rgba(247,200,96,.35); background:rgba(40,30,0,.15); }
+    .tattoo-stage.starts .tattoo-img  { border-color:rgba(255,140,0,.32); background:rgba(40,16,0,.12); }
+    .tattoo-stage.future .tattoo-img  { border-color:rgba(196,77,170,.18); background:rgba(196,77,170,.04); opacity:.5; }
+    .tattoo-stage-label { font-size:.58em; letter-spacing:2px; text-transform:uppercase; color:#f7c860; opacity:.85; display:block; margin-bottom:2px; }
+    .tattoo-stage.starts .tattoo-stage-label { color:#ffb066; }
+    .tattoo-stage.future .tattoo-stage-label { color:#c44daa; }
+    .tattoo-stage-name { font-size:.78em; color:#fff5d4; display:block; margin-bottom:4px; }
+    .tattoo-stage-desc { font-size:.7em; color:#9a8db0; opacity:.85; line-height:1.55; }
+
+    .weapon-img { width:100%; border-radius:10px; border:1px solid rgba(247,200,96,.2); display:block; margin-bottom:10px; background:rgba(247,200,96,.04); }
+    .weapon-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#f7c860; opacity:.85; margin-bottom:4px; display:block; }
+    .weapon-name { font-size:.95em; color:#fff5d4; margin-bottom:8px; }
+    .weapon-desc { font-size:.82em; color:#c9bbd8; line-height:1.7; }
+
+    .saga-rule { padding:18px 22px; border-radius:12px; background:linear-gradient(135deg,rgba(247,200,96,.07),rgba(40,28,0,.03)); border:1px solid rgba(247,200,96,.25); margin:14px 0; }
+    .saga-rule .sr-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#f7c860; margin-bottom:6px; }
+    .saga-rule .sr-text { color:#f0e0c0; font-size:.9em; line-height:1.75; font-style:italic; }
+    .saga-rule .sr-text strong { color:#fff5d4; font-style:normal; }
+
+    .void-callout { padding:20px 22px; border-radius:12px; background:linear-gradient(135deg,rgba(100,90,160,.12),rgba(20,10,40,.04)); border:1px solid rgba(160,140,255,.25); margin-bottom:16px; }
+    .void-callout .vc-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#c4b8ff; margin-bottom:6px; }
+    .void-callout .vc-text { color:#dfd8f0; font-size:.9em; line-height:1.75; }
+    .void-callout .vc-text strong { color:#fff5d4; }
+  </style>
+</head>
+<body>
+  <div class="k-banner">
+    <div class="badge">Civil War &bull; Rules &amp; Weapons (Chapter 2)</div>
+    <h1>Swarajya Sahyadri</h1>
+    <div class="state-label">Maharashtra &mdash; The Double Bond, the Wall-Climb Rite, the Burnt Nest</div>
+  </div>
+  <div class="k-nav">
+    <a href="../../../../index.html">&larr; Chapter 2</a>
+    <a href="index.html">Overview</a>
+    <a href="identity.html">Identity</a>
+    <a href="story.html">Story</a>
+    <a href="rules.html" class="active">Rules &amp; Weapons</a>
+  </div>
+
+  <div class="k-section">
+
+    <!-- ====== THE DOUBLE BOND ====== -->
+    <div class="k-card">
+      <h3>The Double Bond &mdash; A Saga First</h3>
+      <p style="font-size:.92em;color:#c9bbd8;line-height:1.8;">Shivagati is the first hero in Bharatavarsha to carry two living animal-bonds at the same time. The bonds do not contest each other &mdash; they share the body the way two languages share a fluent speaker. Each bond has its own tattoo, its own power, its own animal. They cannot be separated except by the death of the bearer.</p>
+      <div class="double-bond">
+        <div class="bond-side squirrel">
+          <div class="b-status">Native &bull; Earned Ch 1 &bull; Stage II.5 at chapter end</div>
+          <div class="b-name">Shvet &mdash; The Indian Giant Squirrel</div>
+          <div class="b-desc">Native bond of her grandfather&rsquo;s line. Reads the friction of bark with body weight. Grants Shivagati impossible balance &mdash; the wall-climb is its expression. Shvet himself dies in the burnt-nest event mid-chapter; a new young squirrel arrives on her shoulder within a week (the species moves to fill the bond-vacancy automatically &mdash; this is a property of Sahyadri Giant Squirrels recorded in her grandfather&rsquo;s bond-commentary). Foreleg-mark completes at the wall-climb.</div>
+        </div>
+        <div class="bond-side gaur">
+          <div class="b-status">Inherited &bull; Arrives mid-Ch 2 &bull; Stage I at chapter end</div>
+          <div class="b-name">The Goan Gaur &mdash; Sagaradeva&rsquo;s Inheritance</div>
+          <div class="b-desc">Walked north from the Konkan forest after Sagaradeva&rsquo;s death. Grants seismic-pulse reading of the ground for kilometres &mdash; the bovine equivalent of the squirrel-balance reading, but tuned to <em>ground</em> instead of <em>bark</em>. Hoofprint-mark begins on Shivagati&rsquo;s upper back when the gaur kneels at her outpost. Stage I completes within a fortnight. Will transfer to Simhavikrama of Gujarat at the end of Ch 3.</div>
+        </div>
+      </div>
+      <div class="saga-rule">
+        <div class="sr-label">Saga-Rule Established This Chapter &bull; The Double-Bond Mechanic</div>
+        <div class="sr-text">A hero may carry two animal-bonds <strong>only if</strong>: (1) one bond is native by lineage at birth, (2) the second bond is walked-in from a dying Bloodline-related heir, (3) the bearer&rsquo;s body has the bond-fluency to hold both without one drowning the other. The squirrel-bond&rsquo;s balance and the gaur-bond&rsquo;s seismic-read are <em>complementary</em> &mdash; small-frame, fine-detail vs large-frame, coarse-ground. They share fluency. Shivagati is the saga&rsquo;s example. Per restructure D9 the only other double-bonded hero in Volume I will be Simhavikrama (lion + gaur, Chapter 3).</div>
+      </div>
+    </div>
+
+    <!-- ====== THE TWO TATTOO LADDERS ====== -->
+    <div class="k-card">
+      <h3>The Two Tattoo Ladders &mdash; Squirrel &amp; Gaur</h3>
+      <p style="color:#c9bbd8;font-size:.85em;line-height:1.7;margin-bottom:24px;">Each bond has its own four-stage ladder. Shivagati ends Ch 2 with the squirrel-ladder at Stage II.5 and the gaur-ladder at Stage I. The two ladders climb in parallel but at different rates &mdash; the squirrel is older in her body and climbs faster. Both are interrupted in Chapter Three. The squirrel-ladder dies with her. The gaur-ladder transfers and continues with Simhavikrama, beginning again at his Stage I.</p>
+
+      <div style="margin-bottom:8px;font-size:.62em;letter-spacing:2px;text-transform:uppercase;color:#f7c860;opacity:.85;">Squirrel Ladder &mdash; right shoulder</div>
+      <div class="tattoo-grid">
+        <div class="tattoo-stage done">
+          <img src="media/tattoo/maharashtra-ch2-sq-stage-1.png" alt="Squirrel Stage I" class="tattoo-img">
+          <span class="tattoo-stage-label">Sq Stage I &bull; Ch 1</span><span class="tattoo-stage-name">The Footpad</span>
+          <div class="tattoo-stage-desc">Single squirrel footpad print, earned at age seventeen when she first held Pratapgad against a raid.</div>
+        </div>
+        <div class="tattoo-stage done">
+          <img src="media/tattoo/maharashtra-ch2-sq-stage-2.png" alt="Squirrel Stage II" class="tattoo-img">
+          <span class="tattoo-stage-label">Sq Stage II &bull; Ch 1 Finale</span><span class="tattoo-stage-name">The Tail-Curl</span>
+          <div class="tattoo-stage-desc">Long curling tail across her shoulder, earned when she defeated Vanaraksha in the spring battle of Chapter One.</div>
+        </div>
+        <div class="tattoo-stage starts">
+          <img src="media/tattoo/maharashtra-ch2-sq-stage-3.png" alt="Squirrel Stage III" class="tattoo-img">
+          <span class="tattoo-stage-label">Sq Stage III &bull; This Chapter</span><span class="tattoo-stage-name">The Foreleg</span>
+          <div class="tattoo-stage-desc">Down her right arm. Completes at the moment Tanaji-the-Second kneels. Stage of <em>follower-by-skill</em>, not stage-of-victory.</div>
+        </div>
+        <div class="tattoo-stage future">
+          <img src="media/tattoo/maharashtra-ch2-sq-stage-4.png" alt="Squirrel Stage IV" class="tattoo-img">
+          <span class="tattoo-stage-label">Sq Stage IV &bull; Never Earned</span><span class="tattoo-stage-name">Full Body &bull; Lost</span>
+          <div class="tattoo-stage-desc">Will never be earned. Dies with her in Ch 3 at her brother&rsquo;s hand. The squirrel-bond ends with her body. The species moves on, but the lineage-bond closes.</div>
+        </div>
+      </div>
+
+      <div style="margin:24px 0 8px;font-size:.62em;letter-spacing:2px;text-transform:uppercase;color:#ffb066;opacity:.85;">Gaur Ladder &mdash; mid-back</div>
+      <div class="tattoo-grid">
+        <div class="tattoo-stage starts">
+          <img src="media/tattoo/maharashtra-ch2-gr-stage-1.png" alt="Gaur Stage I" class="tattoo-img">
+          <span class="tattoo-stage-label">Gr Stage I &bull; This Chapter</span><span class="tattoo-stage-name">The Hoofprint</span>
+          <div class="tattoo-stage-desc">Single left-fore hoofprint, mid-back. Forms when the gaur kneels at her outpost. Completes within a fortnight. The mark walked here from Sagaradeva&rsquo;s grave-grove.</div>
+        </div>
+        <div class="tattoo-stage future">
+          <img src="media/tattoo/maharashtra-ch2-gr-stage-2.png" alt="Gaur Stage II" class="tattoo-img">
+          <span class="tattoo-stage-label">Gr Stage II &bull; Lost in Ch 3</span><span class="tattoo-stage-name">The Charging Foreleg</span>
+          <div class="tattoo-stage-desc">Would have grown down her back. Interrupted by her death. The mark walks again &mdash; to Simhavikrama&rsquo;s body in Gujarat.</div>
+        </div>
+        <div class="tattoo-stage future">
+          <img src="media/tattoo/maharashtra-ch2-gr-stage-3.png" alt="Gaur Stage III" class="tattoo-img">
+          <span class="tattoo-stage-label">Gr Stage III &bull; Earned on Simhavikrama</span><span class="tattoo-stage-name">Half Body (next host)</span>
+          <div class="tattoo-stage-desc">Earned by Simhavikrama in Chapter Three&rsquo;s Beast-Rising. The gaur is the only mark in Volume I that climbs two ladders on two bodies.</div>
+        </div>
+        <div class="tattoo-stage future">
+          <img src="media/tattoo/maharashtra-ch2-gr-stage-4.png" alt="Gaur Stage IV" class="tattoo-img">
+          <span class="tattoo-stage-label">Gr Stage IV &bull; Chapter 4</span><span class="tattoo-stage-name">Full Body &bull; The Lion-Gaur Crest</span>
+          <div class="tattoo-stage-desc">Completed on Simhavikrama at the Kurukshetra convergence. The mark integrates with his existing lion-bond &mdash; the saga&rsquo;s only fully-realised double-bonded tattoo at chapter end.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== SACRED WEAPONS ====== -->
+    <div class="k-card">
+      <h3>Sacred Weapons &mdash; Vanara &amp; Its Modern Echo</h3>
+      <div class="k-two">
+        <div>
+          <span class="weapon-label">Ancient Weapon &bull; Earned in Ch 1, Used Mid-Ch 2</span>
+          <div class="weapon-name">Vanara &mdash; The Rock-Iron Staff</div>
+          <img src="media/weapons/maharashtra-ch2-vanara-staff.png" alt="Vanara staff" class="weapon-img" onerror="this.style.display='none'">
+          <div class="id-label">Type</div><div class="id-value">Six-foot quarterstaff of meteoric Sahyadri rock-iron, forged in 1893 from the meteorite that fell on Pratapgad&rsquo;s western slope.</div>
+          <div class="id-label">Ability</div><div class="id-value">Carries the seismic memory of the meteorite&rsquo;s impact &mdash; when grounded firmly and struck against rock, it transmits a low-frequency pulse through the mountain that her gaur can hear from kilometres away. The squirrel-bond&rsquo;s balance lets her wield it one-handed on cliff faces no climber could weight a staff on.</div>
+          <div class="id-label">Chapter Two Use</div><div class="id-value">She does <em>not</em> raise it in the command-room scene with Tanaji-the-Second &mdash; the staff is left leaning against the wall. The non-use is the rule. Vanara is for the moment after the choice, never the moment of the choice.</div>
+        </div>
+        <div>
+          <span class="weapon-label">Modern Weapon &bull; The Fort-Net</span>
+          <div class="weapon-name">Hariyal-Net &mdash; The Pigeon Mesh</div>
+          <img src="media/weapons/maharashtra-ch2-hariyal-net.png" alt="Hariyal-Net" class="weapon-img" onerror="this.style.display='none'">
+          <div class="id-label">Type</div><div class="id-value">Encrypted radio-and-pigeon hybrid relay connecting all forty-seven Sahyadri forts.</div>
+          <div class="id-label">Ability</div><div class="id-value">Two-channel redundancy: encrypted VHF radio for daily traffic, Yellow-footed Green Pigeon for messages too sensitive to send by radio. The pigeons fly the same routes their ancestors flew under Shivaji&rsquo;s scouts. The mesh survived the Murud-Janjira defection because each fort holds its own keys.</div>
+          <div class="id-label">Custodian</div><div class="id-value">Operationally run by Bhausaheb at Sinhagad. Strategically Shivagati&rsquo;s. Will pass to Tanaji-the-Second in Ch 3 after Shivagati&rsquo;s death and to Simhavikrama-via-federation in late Ch 3 when Maharashtra is absorbed.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== THE WALL-CLIMB RITE ====== -->
+    <div class="k-card">
+      <h3>The Wall-Climb Rite &mdash; New Recruitment Form</h3>
+      <p style="font-size:.92em;color:#c9bbd8;line-height:1.8;">Tanaji-the-Second&rsquo;s acceptance of Shivagati establishes a new form for follower-recruitment in the saga &mdash; one that becomes a model for later kingdoms in Chapter Three.</p>
+      <ol style="color:#c9bbd8;font-size:.88em;line-height:1.95;margin-top:10px;padding-left:22px;">
+        <li><strong style="color:#fff5d4;">The hero arrives alone</strong> at the follower&rsquo;s threshold &mdash; not with army, not with retinue.</li>
+        <li><strong style="color:#fff5d4;">The hero arrives by the difficult route</strong> &mdash; up the wall, not down the road. The route is the credential.</li>
+        <li><strong style="color:#fff5d4;">The hero leaves the weapon at the door</strong> &mdash; Vanara is set down before the command-room is entered.</li>
+        <li><strong style="color:#fff5d4;">The hero asks to be chosen on character</strong>, not on inheritance or contract. Specifically: <em>&ldquo;Choose me by what I did, not by who my father was.&rdquo;</em></li>
+        <li><strong style="color:#fff5d4;">The follower studies the body</strong> &mdash; the cuts on the hands, the marks of the climb. The body is the certificate.</li>
+        <li><strong style="color:#fff5d4;">The follower kneels in half-recognition</strong>, not full subjugation. This is fort-commander custom &mdash; never the full bow.</li>
+        <li><strong style="color:#fff5d4;">The follower returns the weapon</strong> with a remark about its next use, not the current one.</li>
+        <li><strong style="color:#fff5d4;">Tea is poured.</strong></li>
+      </ol>
+      <p style="margin-top:12px;font-size:.82em;color:#9a8db0;font-style:italic;line-height:1.6;">The rite has no documented source older than this chapter. It is observed once, then becomes lore. By Chapter Three at least three other heroes attempt their own variants: Jagannath-Bandhu (Odisha) pulls the chariot alone; Moirangthem (Manipur) dances the disqualification dance; Krishnadevaraya-Bhrata (Karnataka, in retrospect) climbs the buried-temple sublevel three blueprints rather than a wall. The wall is the original.</p>
+    </div>
+
+    <!-- ====== VOID MAW SIGN ====== -->
+    <div class="void-callout">
+      <div class="vc-label">Void Maw Sign &bull; Catalogue Entry &bull; Maharashtra</div>
+      <div class="vc-text">The Burnt Squirrel-Nest. An Indian Giant Squirrel&rsquo;s nest at the top of a Sahyadri ironwood tree, four kilometres from a failed-fire sabotage attempt &mdash; <em>but unrelated to it</em>. The nest is ash. The tree below is untouched. The squirrel is gone. No body, no feathers, no claws, no drag-marks. The carbonisation is upper-canopy only, room-temperature when found. <strong>Mechanism inferred (through the squirrel-bond):</strong> the Void Maw has read the Sahyadri and removed one squirrel from the record. The carbonisation is what remains when a creature&rsquo;s presence is erased without anything ever having been there to remove. The Karnataka rule holds &mdash; Shivagati does not retaliate. Tanaji-the-Second builds a small shrine at the tree&rsquo;s base from Sahyadri rock and packed clay. The shrine becomes a pilgrimage site within the season. <strong>Maharashtra&rsquo;s Maw sign is the first <em>place-based</em> sign in the chapter</strong>, where Karnataka and Goa&rsquo;s signs were person-based (Heralds). The Maw appears in three forms across Chapter Two: people, places, and absence-of-things.</div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;margin-top:24px;flex-wrap:wrap;gap:10px;">
+      <a href="story.html" style="color:#c9a04a;text-decoration:none;font-size:.85em;">&larr; Kingdom Story</a>
+      <a href="../../../../index.html" style="color:#c9a04a;text-decoration:none;font-size:.85em;">All Civil War Stories &rarr;</a>
+    </div>
+  </div>
+
+  <footer style="text-align:center;padding:28px 20px;border-top:1px solid rgba(196,77,170,.12);color:#9a8db0;font-size:.75em;">
+    <p>Swarajya Sahyadri Rules &amp; Weapons &bull; Civil War &bull; Chapter 2</p>
+  </footer>
+</body>
+</html>

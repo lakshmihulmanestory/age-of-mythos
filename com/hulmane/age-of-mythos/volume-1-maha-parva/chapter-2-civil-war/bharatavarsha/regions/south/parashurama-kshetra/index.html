@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parashurama-Kshetra &mdash; Civil War &mdash; Age of Mythos</title>
+  <link rel="stylesheet" href="../../../../../chapter-1-rise-of-legends/css/style.css">
+  <style>
+    body { background:#0a0a12; color:#f0e8f8; min-height:100vh; }
+    .k-banner { text-align:center; padding:78px 20px 40px; background:linear-gradient(180deg,#0a0a12 0%,#161a14 60%,#0a0a12 100%); border-bottom:1px solid rgba(196,77,170,.16); position:relative; }
+    .k-banner .badge { font-size:.55em; letter-spacing:4px; text-transform:uppercase; color:#c44daa; opacity:.85; margin-bottom:14px; }
+    .k-banner .badge .border { color:#a8c060; font-weight:bold; }
+    .k-banner h1 { font-size:2.6em; color:#a8c060; margin-bottom:.15em; letter-spacing:2px; }
+    .k-banner .state-label { font-size:.78em; color:#c9bbd8; opacity:.7; letter-spacing:1px; margin-bottom:.6em; }
+    .k-banner .tagline { color:#d4c5e8; font-size:.92em; max-width:660px; margin:0 auto; line-height:1.75; font-style:italic; }
+    .boundary-line { display:block; margin:24px auto 0; width:280px; height:1px; background:linear-gradient(90deg,transparent 0%,#a8c060 35%,transparent 50%,#a8c060 65%,transparent 100%); position:relative; opacity:.75; }
+    .k-nav { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:14px 20px; background:rgba(0,0,0,.5); border-bottom:1px solid rgba(196,77,170,.1); }
+    .k-nav a { padding:5px 16px; border-radius:20px; border:1px solid rgba(196,77,170,.25); color:#d4c5e8; font-size:.72em; letter-spacing:1px; text-decoration:none; transition:all .15s; }
+    .k-nav a:hover, .k-nav a.active { background:rgba(196,77,170,.12); border-color:#c44daa; color:#fff; }
+    .k-section { max-width:1100px; margin:0 auto; padding:40px 20px 60px; }
+    .k-two { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    @media(max-width:640px){ .k-two { grid-template-columns:1fr; } }
+    .k-card { background:rgba(255,255,255,.025); border:1px solid rgba(196,77,170,.15); border-radius:10px; padding:22px; margin-bottom:16px; }
+    .k-card h3 { font-size:.72em; letter-spacing:2px; text-transform:uppercase; color:#a8c060; margin-bottom:12px; opacity:.9; }
+    .k-card p { font-size:.88em; color:#c9bbd8; line-height:1.75; }
+    .hero-portrait { width:100%; border-radius:10px; border:1px solid rgba(168,192,96,.22); display:block; }
+
+    .faction-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:14px; }
+    @media(max-width:720px){ .faction-grid { grid-template-columns:1fr; } }
+    .fac { padding:14px 16px; border-radius:10px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.02); }
+    .fac .fac-tag { font-size:.55em; letter-spacing:2px; text-transform:uppercase; margin-bottom:6px; }
+    .fac .fac-name { font-size:.9em; margin-bottom:6px; font-family:Georgia,serif; }
+    .fac .fac-desc { font-size:.74em; color:#c9bbd8; line-height:1.55; opacity:.85; }
+    .fac.eight { border-color:rgba(168,192,96,.34); }
+    .fac.eight .fac-tag  { color:#a8c060; }
+    .fac.eight .fac-name { color:#cce098; }
+    .fac.nine  { border-color:rgba(255,68,68,.30); }
+    .fac.nine .fac-tag  { color:#ff8888; }
+    .fac.nine .fac-name { color:#ffb0b0; }
+    .fac.both  { border-color:rgba(196,77,170,.32); }
+    .fac.both .fac-tag  { color:#c44daa; }
+    .fac.both .fac-name { color:#e7b2dd; }
+
+    .k-quick-links { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-top:32px; }
+    .k-quick-link { display:block; padding:18px 20px; border-radius:10px; border:1px solid rgba(168,192,96,.22); background:rgba(16,22,14,.5); text-decoration:none; text-align:center; transition:border-color .15s; }
+    .k-quick-link:hover { border-color:#a8c060; }
+    .k-quick-link .ql-title { font-size:.85em; color:#a8c060; display:block; margin-bottom:4px; }
+    .k-quick-link .ql-sub { font-size:.7em; color:#9a8db0; opacity:.75; }
+
+    .alert-banner { background:linear-gradient(135deg,rgba(168,192,96,.10),rgba(16,40,10,.04)); border:1px solid rgba(168,192,96,.32); padding:16px 20px; border-radius:10px; margin-bottom:18px; }
+    .alert-banner .alert-label { font-size:.55em; letter-spacing:2px; text-transform:uppercase; color:#a8c060; margin-bottom:6px; }
+    .alert-banner .alert-text { color:#cce098; font-size:.88em; line-height:1.7; }
+
+    .stat-chip { font-size:.65em; padding:3px 10px; border-radius:12px; background:rgba(168,192,96,.07); border:1px solid rgba(168,192,96,.22); color:#b8d480; display:inline-block; margin:2px; }
+  </style>
+</head>
+<body>
+  <div class="k-banner">
+    <div class="badge"><span class="border">Transmission-Trial &bull; Stage III on a Student</span> &bull; Chapter Two &bull; Civil War</div>
+    <h1>Parashurama-Kshetra</h1>
+    <div class="state-label">Kerala &bull; South Region</div>
+    <p class="tagline">For eight hundred years the kalari sealed the 109th form behind chains inscribed in old Malayalam. Kala-Hasta unsealed it in plain sight at a Kochi waterfront amphitheatre and taught it to four hundred paying students. The axe-bearer&rsquo;s oldest disciple defected and died practising it within a week. The axe-bearer is fifty-nine and cannot perform what he must now pass. A Karnataka cousin walks south through the Western Ghats with a bird-letter in his sleeve. The teaching is the trial.</p>
+    <span class="boundary-line"></span>
+  </div>
+
+  <div class="k-nav">
+    <a href="../../../../index.html">&larr; Chapter 2</a>
+    <a href="index.html" class="active">Overview</a>
+    <a href="identity.html">Identity</a>
+    <a href="story.html">Story</a>
+    <a href="rules.html">Rules &amp; Weapons</a>
+  </div>
+
+  <div class="k-section">
+
+    <div class="alert-banner">
+      <div class="alert-label">Transmission-Trial &bull; This Chapter</div>
+      <div class="alert-text">Parashurama-Kshetra survives Chapter Two and the seventh Parashurama earns his Stage III elephant-foreleg-first-stroke not by personal performance but by <strong>faithful transmission</strong>. He cannot perform the 109th form himself &mdash; the form requires a young man&rsquo;s heart-and-spine pliancy and his own is fifty-nine years old &mdash; but he can teach it. The chosen student is Krishnadevaraya-Bhrata of Karnataka, arrived via the bird-letter Old Parashurama had sent on the closing day of the Karnataka pilot. The transmission takes thirty-one days. Parashurama ages forward visibly across those thirty-one days; the Stage III stroke appears on his already-full-body tattoo as a single new ink-line drawn across the elephant&rsquo;s right foreleg the moment Krishnadevaraya-Bhrata completes the first private execution of the form in the unsealed inner chamber. Sivakami-Acharyini, Parashurama&rsquo;s grand-niece, becomes the 108-form&rsquo;s first female grandmaster and fills his daily-teaching seat when he steps back. Per restructure §1 Kerala joins the NE-South-Federation under Krishnadevaraya-Bhrata&rsquo;s Karnataka Dominant seat in Ch 3 as the federation&rsquo;s kalari-tradition root.</div>
+    </div>
+
+    <div class="k-two">
+      <div>
+        <img src="media/portraits/kerala-ch2-parashurama-aged.png"
+             alt="Parashurama at the unsealed chamber door teaching Krishnadevaraya-Bhrata"
+             class="hero-portrait"
+             onerror="this.style.display='none'">
+        <p style="font-size:.7em;color:#9a8db0;text-align:center;margin-top:8px;opacity:.7;">Parashurama at the unsealed-chamber door with Krishnadevaraya-Bhrata at his right side &mdash; the axe Parashu set against the lintel, the meteorite-iron blade catching the kalari pit&rsquo;s low dawn-light, the elephant-tattoo&rsquo;s right foreleg blank on his torso awaiting the new ink</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div class="k-card">
+          <h3>The Hero (Survives, Stage III by Transmission)</h3>
+          <p><strong style="color:#a8c060">Parashurama VII</strong> &mdash; The Axe-Bearer Who Could Not Perform What He Had to Pass</p>
+          <p style="margin-top:8px;">Fifty-nine. The seventh to bear the axe Parashu, forged from meteorite iron, reforged seven times across eight centuries. Has held the axe since age nineteen; has mastered all 108 forms of Kalaripayattu; has buried three students; has survived two assassination attempts by his own family. Across thirty-one days of teaching Krishnadevaraya-Bhrata the sealed 109th form, he ages forward visibly &mdash; the seventh year of teaching arrives in the first week, the eighth in the second week, the ninth in the third. His Stage III stroke completes on the elephant-tattoo&rsquo;s right foreleg in the unsealed chamber the moment Krishnadevaraya-Bhrata executes the form alone for the first time. Sivakami-Acharyini fills the daily-teaching seat from day twenty-three onward.</p>
+          <div style="margin-top:10px;">
+            <span class="stat-chip">Survives &bull; Stage III by Transmission</span>
+            <span class="stat-chip">Bloodline D &bull; elephant + axe</span>
+            <span class="stat-chip">Becomes Karnataka-Federation&rsquo;s standing kalari-elder</span>
+          </div>
+        </div>
+        <div class="k-card">
+          <h3>The Catalyst Villain</h3>
+          <p><strong style="color:#ff8888">Kala-Hasta</strong> &mdash; The Public 109th-Form Teacher</p>
+          <p style="margin-top:8px;">Forty-seven. Maya-Sura&rsquo;s star pupil from Chapter One (the senior coiled-cobra disciple of the Naga-Padma cell who had escaped the Ch 1 climax confrontation with the urumi-and-cobra-venom training intact). Returns in spring 2025 not in hiding but as the proprietor of a public Kochi waterfront amphitheatre &mdash; the Sea-Front Kalari, advertised in plain Malayalam newspapers and on a single Hindi-and-English banner across the amphitheatre&rsquo;s western entrance. Charges tuition. Refuses no qualified applicant. Has four hundred and twenty-three paying students by the second week of the chapter. <em>He does not hide.</em> He is the public fact Parashurama&rsquo;s tradition refused to acknowledge. Survives Ch 2; the Sea-Front Kalari is not closed; Kerala&rsquo;s state-government&rsquo;s formal religious-and-cultural-practice registry has admitted the 109th-form school as a recognised tradition under the same kalari-charter that protects the 108-form schools.</p>
+        </div>
+        <div class="k-card">
+          <h3>The Loss</h3>
+          <p><strong style="color:#e7b2dd">Achyutan-the-Nephew</strong> &mdash; Parashurama&rsquo;s Oldest Disciple, Defected and Dead</p>
+          <p style="margin-top:8px;">Thirty-seven. Parashurama&rsquo;s elder sister&rsquo;s son; Bloodline-A by his mother&rsquo;s line; the oldest of Parashurama&rsquo;s active disciples. Had been at the kalari since age twelve. Mastered all 108 forms by age thirty-three (the second-fastest in the kalari&rsquo;s recorded history, second only to Parashurama himself). Walked away from his uncle&rsquo;s kalari on the second Friday of the chapter without explanation. Enrolled at Kala-Hasta&rsquo;s Sea-Front Kalari the same afternoon under his birth-name (Achyutan Menon, no kalari-title). Practised the 109th form&rsquo;s opening seven movements for six days. Died on the seventh day at the public amphitheatre&rsquo;s morning class &mdash; vascular rupture in the basilar artery during the form&rsquo;s seventh transition. Body retrieved by Sivakami-Acharyini at noon the same day. Cremation performed by Parashurama himself in the kalari&rsquo;s western grove at sunset. The death is the chapter&rsquo;s pivot.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="k-card" style="margin-top:24px;">
+      <h3>The Three-Way Faction Split</h3>
+      <p style="margin-bottom:14px;">Kerala has answered the kalari question one way for eight centuries: the 108 forms are the tradition; the 109th is sealed. Chapter Two splits the answer into three. The third faction is the most dangerous and the chapter&rsquo;s pedagogical case-study.</p>
+      <div class="faction-grid">
+        <div class="fac eight">
+          <div class="fac-tag">Faction One &bull; ~40%</div>
+          <div class="fac-name">The 108-Form Schools &bull; Parashurama&rsquo;s Tradition</div>
+          <div class="fac-desc">The thirty-seven 108-form schools across Kerala, plus the diaspora-kalari network across Bangalore, Chennai, and the Gulf. Approximately seventeen thousand active practitioners. Hold that the seal Agastya Muni placed on the 109th form is the tradition; the seal is the form; the form&rsquo;s teaching is the seal. Parashurama&rsquo;s base for forty years. After Achyutan&rsquo;s death the schools accept the kingdom-council&rsquo;s amended Kerala-Kalari Charter under Sivakami-Acharyini&rsquo;s new grandmaster seat.</div>
+        </div>
+        <div class="fac nine">
+          <div class="fac-tag">Faction Two &bull; ~30%</div>
+          <div class="fac-name">The 109-Form School &bull; Kala-Hasta&rsquo;s Sea-Front Kalari</div>
+          <div class="fac-desc">The single 109-form school at the Kochi waterfront amphitheatre. Four hundred and twenty-three paying students at chapter opening; six hundred and seventy by week eleven (Achyutan&rsquo;s death produced a brief decline of about sixty students but new enrolment recovered the count within nine days). Recognised by the Kerala state-government&rsquo;s religious-and-cultural-practice registry on day thirty-seven under the kingdom-council&rsquo;s amended Kerala-Kalari Charter. Kala-Hasta&rsquo;s pedagogical innovation: the 109th form is taught in seven phased classes (opening four movements; opening seven; first transition; full opening sequence; closing transitions; integration; private mastery). The phased structure is what makes the form survivable for students past the opening-seven threshold; Achyutan died at the seventh-transition class because he had skipped phases two through four under his self-taught discipline.</div>
+        </div>
+        <div class="fac both">
+          <div class="fac-tag">Faction Three &bull; ~30%</div>
+          <div class="fac-name">The Unaligned &bull; Studying Both, Most Dangerous</div>
+          <div class="fac-desc">Approximately thirteen thousand practitioners across the kingdom who have enrolled at both 108-form and 109-form schools concurrently. The most dangerous faction because the cross-pollination of the two systems produces neither system&rsquo;s safety. Many of the unaligned share Achyutan&rsquo;s skip-the-phases impatience. The kingdom-council&rsquo;s Day-37 amendment establishes the cross-school enrolment protocol: any student studying at both schools must be registered with the kingdom-council&rsquo;s kalari-medical-clearance cell and must complete each school&rsquo;s phased classes in sequence; the protocol is the kingdom&rsquo;s evidence that the third position is dangerous but not forbidden, and that it must be administered, not driven underground.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="k-card">
+      <h3>The Void Maw Sign &mdash; The Black Coconut That Does Not Rot</h3>
+      <p>The morning after Achyutan&rsquo;s cremation in the kalari&rsquo;s western grove. A single coconut on a single palm in the same grove turns black overnight. The blackness is uniform across the husk &mdash; not the patchy darkening of normal coconut-rot; not the brown of overripe; not the white-speckled mould of monsoon-spoilage. The colour is the matte black of charred wood. The husk is, however, not charred. The flesh inside (when Sivakami-Acharyini opens it on day four for the standard kalari coconut-water-test) is also black but is not putrid; the texture is firm; the smell is faintly sweet. The water inside is clear. <strong>Across the next eight months the coconut does not rot.</strong> The husk does not soften; the flesh does not putrefy; the water does not develop bacterial cultures. The kingdom-council&rsquo;s wildlife-rehabilitation and agricultural-research cells run the standard decomposition-monitoring protocols across the eight months. The coconut remains stable. Its black is the same black on day one and on day two hundred and forty. The Maw has demonstrated the capacity to <strong>suspend the natural decomposition process at the threshold of an inheritance-transmission</strong> &mdash; the saga&rsquo;s first material-permanence experiment. Mechanism (read through the elephant-bond by Parashurama on day six): the Maw is testing whether a sealed inheritance can be made permanent against time. The kingdom-council&rsquo;s reading: the coconut is the inverse of the broken-bond pigeon at Tripura; Tripura&rsquo;s pigeon performed the action whose object was removed; Kerala&rsquo;s coconut preserves the object whose action has stopped. The two signs are paired across the South-and-Northeast boundary.</p>
+    </div>
+
+    <div class="k-quick-links">
+      <a href="identity.html" class="k-quick-link">
+        <span class="ql-title">Faction &amp; Cast</span>
+        <span class="ql-sub">Three factions, the nephew, the grand-niece, the Karnataka student</span>
+      </a>
+      <a href="story.html" class="k-quick-link">
+        <span class="ql-title">Full Story</span>
+        <span class="ql-sub">The 109th Form Public Lesson &mdash; A Film in Two Halves</span>
+      </a>
+      <a href="rules.html" class="k-quick-link">
+        <span class="ql-title">Rules &amp; Weapons</span>
+        <span class="ql-sub">Transmission-bond mechanic, the unsealed chamber, the black coconut</span>
+      </a>
+      <a href="../../../index.html" class="k-quick-link" style="border-color:rgba(247,217,106,.15);">
+        <span class="ql-title" style="color:#c9a04a;">All Civil War Stories</span>
+        <span class="ql-sub">Back to Chapter 2</span>
+      </a>
+    </div>
+  </div>
+
+  <footer style="text-align:center;padding:28px 20px;border-top:1px solid rgba(196,77,170,.12);color:#9a8db0;font-size:.75em;">
+    <p>Parashurama-Kshetra &bull; Civil War &bull; Chapter 2 &bull; Maha Parva &bull; Age of Mythos Volume I</p>
+    <p style="margin-top:6px;"><a href="../../../index.html" style="color:#c9a04a;text-decoration:none;">&larr; Chapter 2 Index</a></p>
+  </footer>
+</body>
+</html>

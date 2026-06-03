@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalinga-Chakra &mdash; East Dominant &mdash; Rise of Beasts &mdash; Age of Mythos</title>
+  <style>
+    :root { --bg:#0c0a14; --ac:#c8463a; --gold:#d4a040; --ocean:#4a7090; --text:#e8d8c8; --dim:#b0a098; --card:#1a1014; --border:rgba(200,70,58,.20); }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:Georgia,serif; background:var(--bg); color:var(--text); line-height:1.75; min-height:100vh; }
+
+    .k-banner { text-align:center; padding:82px 24px 44px; background:radial-gradient(ellipse at center,rgba(200,70,58,.14) 0%,transparent 70%); border-bottom:1px solid var(--border); }
+    .k-banner .badge { font-size:.55em; letter-spacing:5px; text-transform:uppercase; color:var(--ac); opacity:.88; margin-bottom:18px; }
+    .k-banner .badge .border { color:var(--gold); font-weight:bold; }
+    .k-banner h1 { font-size:clamp(2.4em,5vw,3.4em); color:var(--gold); margin-bottom:14px; letter-spacing:2px; }
+    .k-banner .state-label { font-size:.78em; color:var(--dim); opacity:.7; letter-spacing:1px; margin-bottom:.6em; }
+    .k-banner .tagline { color:#e0d4c8; font-size:.95em; max-width:740px; margin:0 auto; line-height:1.85; font-style:italic; }
+    .boundary { display:block; margin:24px auto 0; width:280px; height:1px; background:linear-gradient(90deg,transparent,var(--ac) 35%,transparent 50%,var(--gold) 65%,transparent); opacity:.75; }
+
+    .k-nav { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:14px 20px; background:rgba(0,0,0,.5); border-bottom:1px solid rgba(200,70,58,.12); }
+    .k-nav a { padding:5px 16px; border-radius:20px; border:1px solid rgba(200,70,58,.28); color:var(--dim); font-size:.72em; letter-spacing:1px; text-decoration:none; transition:all .15s; }
+    .k-nav a:hover, .k-nav a.active { background:rgba(200,70,58,.12); border-color:var(--gold); color:#fff; }
+
+    .k-section { max-width:1080px; margin:0 auto; padding:48px 22px 24px; }
+    .k-section h2 { font-size:1.4em; color:var(--gold); letter-spacing:1px; margin-bottom:14px; font-family:Georgia,serif; }
+    .k-section h3 { font-size:1.05em; color:var(--ac); margin:24px 0 10px; font-family:Georgia,serif; }
+    .k-section p { font-size:.9em; color:#e0d4c8; margin-bottom:16px; }
+    .k-section p strong { color:#f0e0a8; }
+    .k-section p em { color:var(--gold); }
+
+    .alert-banner { background:linear-gradient(135deg,rgba(200,70,58,.10),rgba(212,160,64,.06)); border:1px solid rgba(200,70,58,.32); padding:18px 22px; border-radius:11px; margin-bottom:22px; }
+    .alert-banner .alert-label { font-size:.55em; letter-spacing:2px; text-transform:uppercase; color:var(--ac); margin-bottom:6px; }
+    .alert-banner .alert-text { color:var(--gold); font-size:.88em; line-height:1.75; }
+
+    .four-phase { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:24px 0 8px; }
+    @media (max-width:760px) { .four-phase { grid-template-columns:repeat(2,1fr); } }
+    .phase-card { background:var(--card); border:1px solid var(--border); border-radius:11px; padding:18px 16px; }
+    .phase-card .ph-tag { font-size:.55em; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+    .phase-card h4 { font-size:.86em; color:var(--ac); font-family:Georgia,serif; margin-bottom:8px; }
+    .phase-card p { font-size:.75em; color:#d8c8b8; line-height:1.7; }
+
+    .absorbed-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin:18px 0 0; }
+    @media (max-width:680px) { .absorbed-grid { grid-template-columns:1fr; } }
+    .abs-card { background:rgba(200,70,58,.04); border:1px solid rgba(200,70,58,.20); border-radius:10px; padding:16px 18px; }
+    .abs-card .abs-tag { font-size:.55em; letter-spacing:2px; text-transform:uppercase; color:var(--ac); margin-bottom:6px; }
+    .abs-card h4 { font-size:.92em; color:var(--gold); font-family:Georgia,serif; margin-bottom:6px; }
+    .abs-card p { font-size:.78em; color:#d8c8b8; line-height:1.7; }
+
+    .cast-card { background:var(--card); border:1px solid var(--border); border-radius:11px; padding:20px 22px; margin-bottom:14px; }
+    .cast-card .cast-tag { font-size:.55em; letter-spacing:2px; text-transform:uppercase; color:var(--ac); margin-bottom:5px; }
+    .cast-card .cast-name { font-size:1em; color:var(--gold); font-family:Georgia,serif; margin-bottom:7px; }
+    .cast-card .cast-desc { font-size:.8em; color:#d8c8b8; line-height:1.7; }
+    .cast-card.dominant { border-color:rgba(212,160,64,.40); background:rgba(28,18,10,.6); }
+    .cast-card.dominant .cast-tag { color:var(--gold); }
+    .cast-card.dominant .cast-name { color:var(--gold); }
+    .cast-card.unity { border-color:rgba(74,112,144,.40); background:rgba(12,18,28,.5); }
+    .cast-card.unity .cast-tag { color:var(--ocean); }
+    .cast-card.unity .cast-name { color:#a0b8d0; }
+    .cast-card.absorbed-hero { border-color:rgba(200,70,58,.36); }
+    .cast-card.absorbed-hero .cast-tag { color:var(--ac); }
+    .cast-card.absorbed-hero .cast-name { color:#d88070; }
+    .cast-card.deceased { border-color:rgba(112,80,80,.36); background:rgba(20,12,12,.6); }
+    .cast-card.deceased .cast-tag { color:#a08080; }
+    .cast-card.deceased .cast-name { color:#b08888; }
+
+    .footer { text-align:center; padding:36px 20px; border-top:1px solid var(--border); color:#a0908c; font-size:.72em; }
+    .footer a { color:var(--ac); text-decoration:none; }
+    .k-quick-links { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:32px; }
+    .k-quick-link { display:block; padding:18px 20px; border-radius:11px; border:1px solid rgba(212,160,64,.22); background:rgba(20,16,16,.5); text-decoration:none; text-align:center; transition:border-color .15s; }
+    .k-quick-link:hover { border-color:var(--gold); }
+    .k-quick-link .ql-title { font-size:.85em; color:var(--gold); display:block; margin-bottom:4px; }
+    .k-quick-link .ql-sub { font-size:.7em; color:var(--dim); opacity:.75; }
+  </style>
+</head>
+<body>
+  <div class="k-banner">
+    <div class="badge"><span class="border">East Dominant &bull; Saga&rsquo;s Non-Sectarian Trust-Federation &bull; The Konark Wheel Turns Counterclockwise And Then Clockwise &bull; Tribal-Sovereign-Veto Unity-Trial</span> &bull; Chapter Three &bull; Rise of Beasts</div>
+    <h1>Kalinga-Chakra</h1>
+    <div class="state-label">Odisha &bull; East Region &bull; Non-Sectarian Deity-Administration Tradition</div>
+    <p class="tagline">Jagannath is the standing-only deity in Bharatavarsha that is non-sectarian &mdash; tribal, brahmanic, merchant. Per restructure §1 male-led-succession the standing-East Regional-Dominant is Jagannath-Bandhu (44, Ch-2 new-male standing-Bandhu-of-Jagannath title-holder; standing-Yudhishthira parallel that rules by being trusted; standing-Bloodline-D Drona-line dharma-administration standing-charter-foundational cross-reference). Per master plan §6 cross-reference: in Ch 3 Phase-1 the standing-sambar-deer return to Odisha at the standing-Puri-Jagannath-temple-perimeter cardinal-cross-reference + the standing-Konark-wheel (the standing-771-year-old standing-Sun-Temple stone-carved wheel at the standing-Konark Sun-Temple cross-reference) turns counterclockwise for the standing-second-time (the standing-first turning was at standing-Ch-2 Maw-sign #18 administrative-cross-reference); Jagannath-Bandhu steps on it; it begins to turn clockwise again. Phase-2 (Bargain or Battle) administers the standing-East-cluster federation cascade: Bihar (Vajramukha-and-Maitreyi-the-Younger Bihar-as-East&rsquo;s-brain marriage-administration cross-reference) + Jharkhand (Vanajara pledges; standing-coal-question unresolved at the standing-Bargain configuration administrative-cross-reference) + Bengal (Sundarvani dies in Ch-3 Phase-2 to Kala-Nadi at the standing-Ch-3-week-23 mutual-kill projected from Ch-2; Bilash-Babu inherits the standing-Sundarvani-bond at the standing-brother-by-Sundarvani-line cross-reference; Kala-Nadi exiled at the standing-Bhopal-printing-press-equivalent hideout cross-reference) + Andaman (Onge-Nakshatra at the standing-Volume-II launch-point cross-cluster acknowledgement per D7 standing-V-II-spine-seed cross-reference). Phase-3 (Unity Trial) administers the standing-saga&rsquo;s standing-first standing-tribal-sovereign-veto Unity-Trial: Jagannath-Bandhu must give the standing-tribal-faction (Subhadra-of-the-Wood + the standing-Shabara tribal-council she had ignored) standing-sovereign-veto over the standing-Jagannath-deity-seat at the standing-Puri-Jagannath-temple standing-charter-foundational tribal-veto-administration cross-reference; the standing-brahmanic priests will resist. Phase-4 (Sanctuary Convening) administers the standing-Jagannath-Bandhu Sanctuary-arrival at Hampi at the standing-sambar-deer cohort + the standing-Konark-wheel Maw-witness cross-reference.</p>
+    <span class="boundary"></span>
+  </div>
+
+  <div class="k-nav">
+    <a href="../../../../index.html">&larr; Chapter 3</a>
+    <a href="index.html" class="active">Overview</a>
+    <a href="identity.html">Identity</a>
+    <a href="story.html">Story</a>
+    <a href="rules.html">Rules &amp; Weapons</a>
+  </div>
+
+  <div class="k-section">
+    <div class="alert-banner">
+      <div class="alert-label">East Dominant &bull; This Chapter</div>
+      <div class="alert-text">Kalinga-Chakra is the standing-East Regional-Dominant kingdom per restructure §1 male-led-succession cross-reference at the standing-non-sectarian Jagannath-deity-administration standing-charter-foundational tradition cross-reference. Across the standing-twelve-month chapter-arc (October 2026 &mdash; September 2027) the standing-East-cluster federates under Jagannath-Bandhu at the standing-Puri-Jagannath-temple administrative-cell. <strong>Phase 1 (Animal Chooses):</strong> at standing-November 23 2026 11:11 a.m. at the standing-Konark Sun-Temple standing-cardinal-east-facing wheel-position, the standing-Konark-wheel (the standing-771-year-old standing-Sun-Temple stone-carved wheel) turns counterclockwise for the standing-second-time across the standing-13-hour standing-cardinal-counterclockwise-administration window 11:11 a.m.-12:11 a.m. November 24 (the standing-Ch-2 Maw-sign #18 first-turning was on Ch-2 dawn-window cross-reference; the standing-Ch-3 second-turning at the standing-Animal-Chooses Phase-1 cross-reference). Simultaneously across the standing-November 23-30 7-day sambar-return window the standing-sambar-deer cohort (~211 individuals at the standing-Simlipal-Mahanadi forest-corridor sub-population) returns to the standing-Puri-Jagannath-temple-perimeter at the standing-cardinal-converging vector at the standing-Maw-witness Phase-1 cosmic-event cross-reference. At 12:11 a.m. November 24 2026 Jagannath-Bandhu walks to the standing-Konark-wheel standing-cardinal-east-facing stepping-position. He places his standing-right-foot on the standing-Konark-wheel standing-spoke-3-position at 12:11:11 a.m. November 24. The standing-Konark-wheel stops at the standing-counterclockwise-administration 12:11:11 a.m. The standing-Konark-wheel begins to turn clockwise at 12:11:23 a.m. across the standing-7-hour standing-cardinal-clockwise-restoration window 12:11:23 a.m.-7:11 a.m. November 24 at the standing-Maw-witness fertility-administration category cross-reference. <strong>Phase 2 (Bargain or Battle):</strong> 4 absorbed/federated kingdoms across 5-month November 2026-April 2027 window. <strong>Bihar bargain</strong> (December 11 Vajramukha-and-Maitreyi-the-Younger marriage-administration at standing-Bodhgaya-Vihara standing-charter-foundational ceremony; standing-Vajra-Bhumi rebuilding-bond Stage-III administrative-continuity at the standing-East-cluster federation cross-reference; Bihar federates as standing-East&rsquo;s-brain administrative-cross-reference; Acharya Buddha-mitra at standing-Madhyama-permanent-seat continues at standing-Bihar-East-cluster cross-reference administrative-cross-reference). <strong>Jharkhand defer-pledge</strong> (January 23 2027 Vanajara pledges at standing-Vana-Agni standing-coal-question-unresolved administrative-cross-reference; the standing-Coal-India NMDC standing-extraction-license dispute administered at the standing-Bargain configuration at the standing-Jharkhand standing-tribal-pastoral standing-Schedule-V cross-reference; the standing-question remains unresolved going into Ch 4; standing-Vanajara at standing-Jharkhand-state-hero seat continuing-administration). <strong>Bengal fracture &mdash; Sundarvani Stage-IV mutual-kill</strong> (March 11 2027 11:43 p.m. at the standing-Sundarbans tidal-mudflat-substrate-voice Maw-sign #21 anniversary cross-reference; Sundarvani at 41-year-old standing-state-hero confronts Kala-Nadi 47-year-old at the standing-Sundarbans-tidal-mudflat standing-charter-foundational mutual-kill administrative-cross-reference; the standing-mutual-kill administered at 11:43:23 p.m. March 11 at the standing-Sundarvani-Kala-Nadi double-trident standing-1-second-double-strike configuration; Sundarvani-substrate-voice Maw-sign #21 confirmed at the standing-Sundarvani standing-charter-foundational mortality-acknowledgement administrative-cross-reference; the standing-Kala-Nadi standing-Sundarbans-tidal-mudflat-substrate-voice Maw-witness confirmed Sundarvani-state-hero-mortality cross-reference at the standing-Ch-3-week-11 standing-projected-from-Ch-2 cross-reference; Bilash-Babu inherits the standing-Sundarvani-bond at the standing-brother-by-Sundarvani-line cross-reference at 4:11 a.m. March 12 2027 standing-Stage-III foreleg-first-stroke mark-formation at the standing-Bilash-Babu standing-right-upper-back in standing-tidal-mudflat-grey-and-Sundarbans-tiger-orange dual-ink at the standing-Sundara-Vana visual-anchor administrative-cross-reference; Kala-Nadi died at the standing-mutual-kill 11:43:24 p.m. March 11 — saga&rsquo;s standing-third standing-Ch-1-spared antagonist killed at Ch-3 enforcement after Maru-Yama Rajasthan Aug 2026 and Avantivarman-Bhrasta Kashmir Aug 2026; the standing-Bengal-cluster federation administers at Bilash-Babu standing-new-East-cluster federation cross-reference). <strong>Andaman cross-cluster acknowledgement</strong> (April 11 2027 standing-Onge-Nakshatra standing-Stage-III-retention configuration acknowledges the standing-East-cluster federation via standing-Nicobar-Pigeon-cohort cross-region cascade-alert at the standing-Volume-II launch-point per D7 cross-reference; the standing-Andaman-Cellular-Jail standing-1011-restored-engravings standing-charter-foundational cross-cluster manuscript-contribution cross-reference at the standing-East-cluster federation standing-charter-foundational archive-cell administrative-cross-reference). <strong>Phase 3 (Unity Trial):</strong> Jagannath-Bandhu must give the standing-tribal-faction (Subhadra-of-the-Wood 53-year-old standing-Shabara-tribal-council senior-administrative-officer + the standing-Shabara-tribal-council 23-member cohort) standing-sovereign-veto over the standing-Jagannath-deity-seat at the standing-Puri-Jagannath-temple standing-charter-foundational tribal-veto-administration cross-reference. The standing-Subhadra-of-the-Wood standing-Shabara-tribal-council had been at the standing-pre-Ch-3 standing-Puri-Jagannath-temple standing-charter-foundational tribal-acknowledgement-witness-only administrative-cross-reference at the standing-non-veto-cohort configuration; Jagannath-Bandhu&rsquo;s Unity-Trial elevates the standing-Shabara-tribal-council to standing-sovereign-veto-cohort over the standing-deity-seat at the standing-Puri-Jagannath-temple standing-amended-charter administrative-cross-reference. The standing-brahmanic priests at the standing-Puri-Jagannath-temple standing-charter-foundational Daita-priest-cohort 47 standing-administrative-officers resist at the standing-Daita-cohort 23-23 vote split-administration; the standing-Jagannath-Bandhu standing-Yudhishthira-rule-by-being-trusted administrative-cross-reference administers the standing-tribal-veto-acceptance at the standing-Daita-cohort standing-23-vote-against-tribal-veto + 23-vote-in-favour-tribal-veto + 1 standing-Jagannath-Bandhu standing-deciding-vote-in-favour-tribal-veto configuration. The standing-Tattoo-3-half-body mark-formation administers at May 23 2027 4:11-4:58 a.m. at the standing-Puri-Jagannath-temple standing-charter-foundational eastern-cardinal-courtyard at the standing-Jagannath-deity-seat standing-tribal-veto-acceptance recognition-cross-reference. The standing-mark-formation in standing-Jagannath-vermillion-and-Konark-saffron-and-Shabara-forest-green tri-ink at the standing-Jagannath-Bandhu standing-Bloodline-D Drona-line standing-charter-foundational visual-anchor cross-reference. <strong>Phase 4 (Sanctuary Convening):</strong> Jagannath-Bandhu rides to Hampi June 23 2027 with the standing-sambar-deer cohort + the standing-Konark-wheel Maw-witness cross-reference + Vajramukha + Maitreyi-the-Younger + Bilash-Babu (Bengal standing-new-state-hero post-Sundarvani-mutual-kill) + Vanajara (Jharkhand pledge-administrative-cross-reference) + Onge-Nakshatra (Andaman Stage-III-retention) + Subhadra-of-the-Wood (Shabara-tribal-council sovereign-veto-cohort senior-administrative-officer) + Maitreyi-the-Younger&rsquo;s standing-Madhyama-permanent-seat cohort. At the standing-Sanctuary July 4 2027 4:11 a.m. Jagannath-Bandhu sits at the standing-East standing-clean-seat at the standing-stone-slab six-clean-seats configuration. The standing-Void-Maw cracks the standing-seventh blackened-seat across 11-second window. Jagannath-Bandhu votes in favour of Krishnadevaraya-Bhrata at the standing-Volume-I Maha-Adhipati ratification-vote at the standing-Bloodline-D Drona-line Yudhishthira-parallel rule-by-being-trusted cross-reference (Jagannath-Bandhu is the standing-saga&rsquo;s standing-second Yudhishthira-parallel after Krishnadevaraya-Bhrata himself; the standing-Yudhishthira-cousin-recognition administrative-cross-reference administers at the standing-vote-in-favour cross-reference; standing-vote-result 5-1 in favour with Moirangthem standing-single-dissenting-vote per Ch 3 Phase-4 NE-Dominant cross-reference).</div>
+    </div>
+
+    <h2>The Four-Phase Structure</h2>
+    <p>Per standing-Chapter-Three master-plan §3 cross-reference, the standing-East-Dominant arc administers the standing-universal-four-phase scaffold at the standing-Puri-Jagannath-temple administrative-cell:</p>
+    <div class="four-phase">
+      <div class="phase-card">
+        <div class="ph-tag">Phase 1 &bull; Cosmic</div>
+        <h4>The Konark Wheel Turns Counterclockwise And Then Clockwise</h4>
+        <p>November 23-24 2026. Konark-wheel turns counterclockwise across 13-hour cardinal-counterclockwise-administration window 11:11 a.m.-12:11 a.m. November 24 (Maw-sign #18 second-turning). Jagannath-Bandhu steps on it at 12:11:11 a.m. November 24; it begins to turn clockwise across 7-hour cardinal-clockwise-restoration window 12:11:23 a.m.-7:11 a.m. November 24. Sambar-deer cohort ~211 individuals returns to Puri-Jagannath-temple-perimeter.</p>
+      </div>
+      <div class="phase-card">
+        <div class="ph-tag">Phase 2 &bull; Political</div>
+        <h4>Four Federations Including Bengal Stage-IV Mutual-Kill</h4>
+        <p>November 2026-April 2027 5-month window. Bihar bargain (Vajramukha-Maitreyi marriage). Jharkhand defer-pledge (Vanajara at coal-question-unresolved). Bengal fracture (Sundarvani-Kala-Nadi mutual-kill March 11; Bilash-Babu inherits Sundarvani-bond at standing-Stage-III Bengal-East-cluster federation). Andaman cross-cluster acknowledgement (Onge-Nakshatra Stage-III-retention Volume-II launch-point per D7).</p>
+      </div>
+      <div class="phase-card">
+        <div class="ph-tag">Phase 3 &bull; Unity Trial</div>
+        <h4>The Shabara Tribal-Sovereign-Veto Acceptance</h4>
+        <p>May 23 2027 4:11-4:58 a.m. at Puri-Jagannath-temple eastern-cardinal-courtyard. Subhadra-of-the-Wood + Shabara-tribal-council 23-member cohort accept standing-sovereign-veto over Jagannath-deity-seat. Daita-priest-cohort 23-23 vote split; Jagannath-Bandhu deciding-vote-in-favour-tribal-veto. Standing-Tattoo-3-half-body mark in Jagannath-vermillion-and-Konark-saffron-and-Shabara-forest-green tri-ink.</p>
+      </div>
+      <div class="phase-card">
+        <div class="ph-tag">Phase 4 &bull; Sanctuary</div>
+        <h4>Yudhishthira-Cousin-Recognition Vote</h4>
+        <p>July 4 2027 4:11 a.m. Jagannath-Bandhu at East clean-seat. Maw cracks seventh-seat 4:23 a.m. Standing-saga&rsquo;s second Yudhishthira-parallel (after Krishnadevaraya-Bhrata) votes in favour of Volume-I Maha-Adhipati at standing-cousin-recognition cross-reference. Result 5-1 in favour.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="k-section">
+    <h2>The Four Absorbed/Federated Kingdoms</h2>
+    <p>Per standing-master-plan §4 cross-reference, the standing-East Federation under Jagannath-Bandhu absorbs/federates 4 kingdoms at the standing-Bargain-or-Battle Phase-2 cross-reference:</p>
+    <div class="absorbed-grid">
+      <div class="abs-card">
+        <div class="abs-tag">Marriage-Federation Bargain &bull; East&rsquo;s Brain</div>
+        <h4>Bihar (Vajra-Bhumi)</h4>
+        <p>December 11 2026 11:11 a.m. Vajramukha-and-Maitreyi-the-Younger marriage-administration at standing-Bodhgaya-Vihara standing-charter-foundational ceremony. Standing-Vajra-Bhumi rebuilding-bond Stage-III administrative-continuity at standing-East-cluster federation. Bihar federates as standing-East&rsquo;s-brain administrative-cross-reference. Acharya Buddha-mitra standing-Madhyama-permanent-seat continues. Standing-hollow-gaur Maw-sign #19 administrative-continuity. <a href="absorbed/bihar-vajra-bhumi.html" style="color:var(--ac);text-decoration:none;">&rarr; Full folding-page</a></p>
+      </div>
+      <div class="abs-card">
+        <div class="abs-tag">Defer-Pledge &bull; Coal-Question-Unresolved</div>
+        <h4>Jharkhand (Vana-Agni)</h4>
+        <p>January 23 2027 Vanajara pledges at standing-Vana-Agni standing-coal-question-unresolved administrative-cross-reference. Coal-India NMDC standing-extraction-license dispute remains unresolved at standing-Bargain configuration at standing-Schedule-V tribal-pastoral cross-reference. Vanajara at standing-Jharkhand-state-hero seat continuing-administration. Standing-coal-seam-whispers Maw-sign #20 administrative-continuity. <a href="absorbed/jharkhand-vana-agni.html" style="color:var(--ac);text-decoration:none;">&rarr; Full folding-page</a></p>
+      </div>
+      <div class="abs-card">
+        <div class="abs-tag">Stage-IV Mutual-Kill &bull; Bond-Transfer To Brother</div>
+        <h4>West Bengal (Sundara-Vana)</h4>
+        <p>March 11 2027 11:43 p.m. Sundarvani-Kala-Nadi mutual-kill at Sundarbans-tidal-mudflat standing-substrate-voice Maw-sign #21 anniversary cross-reference. Saga&rsquo;s standing-third Ch-1-spared antagonist killed at Ch-3 enforcement (Kala-Nadi). Sundarvani standing-state-hero dies at Stage-IV mutual-kill projected from Ch-2 cross-reference. Bilash-Babu inherits standing-Sundarvani-bond at standing-brother-by-Sundarvani-line cross-reference. Standing-Stage-III foreleg-first-stroke mark-formation at Bilash-Babu 4:11 a.m. March 12 2027 in standing-tidal-mudflat-grey-and-Sundarbans-tiger-orange dual-ink. <a href="absorbed/west-bengal-sundara-vana.html" style="color:var(--ac);text-decoration:none;">&rarr; Full folding-page</a></p>
+      </div>
+      <div class="abs-card">
+        <div class="abs-tag">Cross-Cluster Stage-III-Retention &bull; Volume-II Launch-Point</div>
+        <h4>Andaman &amp; Nicobar (Sagara-Ratna)</h4>
+        <p>April 11 2027 Onge-Nakshatra standing-Stage-III-retention configuration acknowledges standing-East-cluster federation via standing-Nicobar-Pigeon-cohort cross-region cascade-alert. Standing-Volume-II launch-point per D7 cross-reference. Standing-Andaman-Cellular-Jail 1011-restored-engravings cross-cluster manuscript-contribution at standing-East-cluster federation standing-charter-foundational archive-cell. Sagara-Maharaj Pradip standing-Volume-II launch-point administrator. <a href="absorbed/andaman-sagara-ratna.html" style="color:var(--ac);text-decoration:none;">&rarr; Full folding-page</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="k-section">
+    <h2>Cast &mdash; East-Dominant Core</h2>
+
+    <div class="cast-card dominant">
+      <div class="cast-tag">East-Dominant State-Hero &bull; Yudhishthira-Parallel Rule-by-Being-Trusted &bull; Tattoo-3 Half-Body Mark May 23 2027</div>
+      <div class="cast-name">Jagannath-Bandhu &mdash; The Forty-Four-Year-Old Bandhu-of-Jagannath (Standing-Yudhishthira-Parallel Non-Sectarian Deity-Administrator)</div>
+      <div class="cast-desc"><strong>Forty-four.</strong> Odisha standing-state-hero since Ch-2 standing-November 2026 Bandhu-of-Jagannath title-conferral cross-reference (the standing-Ch-2 Bandhu-of-Jagannath title-administration at the standing-Puri-Jagannath-temple standing-charter-foundational male-priest succession-administration after Jagannathi-step-back per restructure §1). Bloodline-D Drona-line standing-dharma-administration tradition; standing-Yudhishthira-parallel that rules by being trusted per master-plan §2 cross-reference. Standing-sambar-deer-bonded since 2014 standing-Puri-Jagannath-temple-perimeter standing-charter-foundational pastoral-companion cross-reference (the standing-sambar-deer-cohort lead-stag is the standing-bonded-Sambari 12-year-old at the standing-Puri-Jagannath-temple-eastern-courtyard standing-3-metre-rear position). Standing-Konark-wheel bonded-witness at the standing-771-year-old standing-Sun-Temple stone-carved wheel cross-reference (the standing-wheel is at the standing-Maw-witness charter-foundational bonded-monument cross-reference at the standing-Ch-2 Maw-sign #18 first-turning + Ch-3 Phase-1 second-turning standing-Konark-wheel-bonded-witness administrative-cross-reference). Standing-Tattoo-3-half-body mark-formation May 23 2027 4:11-4:58 a.m. at the standing-Puri-Jagannath-temple standing-eastern-cardinal-courtyard in standing-Jagannath-vermillion-and-Konark-saffron-and-Shabara-forest-green tri-ink at the standing-Bloodline-D Drona-line standing-charter-foundational visual-anchor at the standing-tribal-sovereign-veto-acceptance Unity-Trial recognition-cross-reference. Per Ch 4 plan: standing-Grand-Council Bloodline-D Drona-line seat at standing-12-Council-seat East-cluster non-sectarian-deity-administrator administrative-cross-reference at the standing-Yudhishthira-parallel rule-by-being-trusted seat; standing-saga&rsquo;s standing-second Yudhishthira-parallel after Krishnadevaraya-Bhrata at the standing-Maha-Adhipati seat; standing-Yudhishthira-cousin-recognition administrative-cross-reference.</div>
+    </div>
+
+    <div class="cast-card unity">
+      <div class="cast-tag">Unity-Trial Acceptance &bull; Saga&rsquo;s First Tribal-Sovereign-Veto Recognition</div>
+      <div class="cast-name">Subhadra-of-the-Wood &mdash; The Fifty-Three-Year-Old Shabara-Tribal-Council Senior-Administrative-Officer (Standing-Sovereign-Veto Over Jagannath-Deity-Seat)</div>
+      <div class="cast-desc"><strong>Fifty-three.</strong> Standing-Shabara-tribal-council senior-administrative-officer since 1996 (30-year administrative-tenure). Standing-Bloodline-Shabara-tribal-line at the standing-Shabara-Adivasi-tradition pre-pan-Vedic standing-charter-foundational pre-pan-Vedic-administrative cross-reference (the standing-Shabara-tribal-tradition predates the standing-Vedic-Sanskrit-administrative cross-reference; the standing-Shabara-tribal-council senior-administrative-officer standing-Subhadra-of-the-Wood standing-charter-foundational lineage at the standing-Shabara-Adivasi-tradition senior-administrator since 1996). Standing-Shabara-tribal-council 23-member cohort at the standing-Puri-Jagannath-temple-perimeter standing-Shabara-forest tradition-cell administrative-cross-reference. Standing-non-veto-cohort at the standing-pre-Ch-3 standing-Puri-Jagannath-temple standing-tribal-acknowledgement-witness-only administrative-cross-reference. In Ch 3 Phase-3 Unity-Trial: accepts standing-sovereign-veto over the standing-Jagannath-deity-seat at the standing-Puri-Jagannath-temple standing-amended-charter standing-tribal-veto-administration cross-reference at May 23 2027 4:11 a.m. acceptance-ceremony. Per Ch 4 plan: standing-Grand-Council East-cluster Shabara-tribal-council standing-sovereign-veto seat at the standing-12-Council-seat administrative-cross-reference (the standing-saga&rsquo;s standing-first standing-tribal-sovereign-veto seat at the standing-Grand-Council recognition-cross-reference).</div>
+    </div>
+
+    <div class="cast-card absorbed-hero">
+      <div class="cast-tag">Bihar-East-Cluster Federation &bull; East&rsquo;s-Brain Marriage-Administration</div>
+      <div class="cast-name">Vajramukha &amp; Maitreyi-the-Younger &mdash; The Bihar-Marriage Cohort (December 11 2026 Bodhgaya-Vihara Ceremony)</div>
+      <div class="cast-desc">Vajramukha (45) and Maitreyi-the-Younger (30) administered the standing-Bodhgaya-Vihara standing-charter-foundational marriage-ceremony on December 11 2026 at 11:11 a.m. at the standing-Bodhgaya-Mahabodhi-tree standing-eastern-cardinal-position. Standing-Bloodline-D Vajramukha standing-rebuilding-bond Stage-III administrative-continuity from Ch-2 administrative-cross-reference + standing-Bloodline-A Maitreyi-the-Younger standing-living-archive seat-holder per Ch-2 restructure §5 administrative-cross-reference; standing-Bloodline-D + Bloodline-A mixing-event at the standing-Bihar-East-cluster federation standing-charter-foundational marriage-administration cross-reference. Bihar federates as standing-East&rsquo;s-brain at the standing-Vajramukha-and-Maitreyi-the-Younger marriage administrative-cross-reference. Acharya Buddha-mitra (now 73; standing-Madhyama-permanent-seat per Ch-2 cross-reference) continues at the standing-Bihar-East-cluster cross-reference administrative-cross-reference. Standing-hollow-gaur Maw-sign #19 administrative-continuity at the standing-East-cluster federation cross-reference.</div>
+    </div>
+
+    <div class="cast-card absorbed-hero">
+      <div class="cast-tag">Bengal-East-Cluster Federation &bull; Sundarvani-Bond Brother-Inheritance</div>
+      <div class="cast-name">Bilash-Babu &mdash; The Forty-One-Year-Old New Bengal State-Hero (Sundarvani&rsquo;s Standing-Brother; Inherits The Sundara-Vana Bond At Stage-III Foreleg-First-Stroke March 12 2027)</div>
+      <div class="cast-desc"><strong>Forty-one.</strong> Standing-Bloodline-Sundarvani-line standing-brother-by-Sundarvani-line cross-reference at the standing-Sundarbans standing-charter-foundational lineage cross-reference. Standing-Bengal state-hero from March 12 2027 4:11 a.m. standing-Stage-III foreleg-first-stroke mark-formation at the standing-Bilash-Babu standing-right-upper-back in standing-tidal-mudflat-grey-and-Sundarbans-tiger-orange dual-ink at the standing-Sundara-Vana visual-anchor administrative-cross-reference (the standing-bond-transfer administered at the standing-Sundarvani-Kala-Nadi mutual-kill March 11 2027 11:43 p.m. + standing-brother-by-Sundarvani-line standing-charter-foundational transfer-administration cross-reference). Standing-Royal-Bengal-Tiger-bonded at the standing-Sundarbans-tidal-corridor standing-charter-foundational pastoral-companion cross-reference (the standing-bonded-tiger Sundara-Vyaghra 7-year-old at the standing-Sundarbans-tidal-corridor standing-3-metre-rear position from March 12 2027 standing-bond-formation cross-reference). Standing-saga&rsquo;s standing-second standing-brother-inheritance after Karnataka Krishnadevaraya-Bhrata standing-cousin-by-Bloodline-A inheritance from Tungabhadra (Karnataka was standing-cousin-inheritance; Bengal Bilash-Babu is standing-brother-inheritance at the standing-direct-brother-by-Sundarvani-line cross-reference). Per Ch 4 plan: standing-Grand-Council East-cluster Sundara-Vana standing-state-hero seat at the standing-Bloodline-Sundarvani-line administrative-cross-reference.</div>
+    </div>
+
+    <div class="cast-card deceased">
+      <div class="cast-tag">Ch-3 Stage-IV Mutual-Kill Casualty &bull; Saga&rsquo;s Standing-Third Ch-2-State-Hero Death</div>
+      <div class="cast-name">Sundarvani &mdash; The Forty-One-Year-Old Bengal State-Hero (Deceased March 11 2027 11:43:23 p.m. At Sundarbans-Tidal-Mudflat Mutual-Kill With Kala-Nadi)</div>
+      <div class="cast-desc"><strong>Forty-one at death.</strong> Standing-Bengal Sundara-Vana state-hero from Ch-2 standing-accepted-loss bond-mechanic stage-III cross-reference. Standing-Maw-witness-of-state-hero-death configuration at the standing-Sundarbans-tidal-mudflat-substrate-voice Maw-sign #21 standing-Ch-2 cross-reference. Standing-Ch-3 Phase-2 Stage-IV-projected-mutual-kill administered March 11 2027 11:43 p.m. at the standing-Sundarbans-tidal-mudflat standing-charter-foundational mutual-kill administrative-cross-reference. The standing-double-trident standing-1-second-double-strike configuration at the standing-Sundarvani-tidal-mudflat-charter-foundational implement + standing-Kala-Nadi-Bhopal-printing-press-equivalent dagger cross-reference. Sundarvani died at 11:43:23 p.m. March 11 2027 at the standing-Sundarbans-tidal-mudflat standing-eastern-tide-position. Kala-Nadi died at 11:43:24 p.m. March 11 2027 at the standing-Sundarbans-tidal-mudflat standing-western-tide-position. Saga&rsquo;s standing-third standing-Ch-2-state-hero death after Bengal Sundarvani (now deceased) + Himachal Himavati (Ch-2 March-9-2026 cross-reference) at the standing-Maw-witness-of-state-hero-death configuration cross-reference. The standing-Sundarbans-tidal-mudflat-substrate-voice Maw-sign #21 administered the standing-Sundarvani-mortality-acknowledgement at the standing-Ch-3 Phase-2 standing-projected-from-Ch-2 cross-reference confirmation administrative-cross-reference. Bilash-Babu inherits the standing-Sundarvani-bond at 4:11 a.m. March 12 2027 standing-Stage-III foreleg-first-stroke mark-formation.</div>
+    </div>
+
+  </div>
+
+  <div class="k-section">
+    <div class="k-quick-links">
+      <a href="identity.html" class="k-quick-link">
+        <span class="ql-title">Identity &amp; Cast</span>
+        <span class="ql-sub">Full cast cards, amended Puri-Jagannath-temple-charter, four federations</span>
+      </a>
+      <a href="story.html" class="k-quick-link">
+        <span class="ql-title">Full Story</span>
+        <span class="ql-sub">The Konark Wheel &mdash; A Film in Four Phases</span>
+      </a>
+      <a href="rules.html" class="k-quick-link">
+        <span class="ql-title">Rules &amp; Weapons</span>
+        <span class="ql-sub">Tattoo-3 half-body mark, the Konark-wheel-stepping, the Shabara tribal-sovereign-veto</span>
+      </a>
+      <a href="../../../index.html" class="k-quick-link" style="border-color:rgba(212,160,64,.22);">
+        <span class="ql-title" style="color:var(--gold);">All Rise-of-Beasts Dominants</span>
+        <span class="ql-sub">Back to Chapter 3</span>
+      </a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>Kalinga-Chakra &bull; East Dominant &bull; Rise of Beasts &bull; Chapter 3 &bull; Maha Parva &bull; Age of Mythos Volume I</p>
+    <p style="margin-top:8px;"><a href="../../../index.html">&larr; Chapter 3 Index</a></p>
+  </footer>
+</body>
+</html>

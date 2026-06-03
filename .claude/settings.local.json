@@ -66,7 +66,10 @@
       "Bash(python3 -c \"from PIL import Image, ImageDraw, ImageFont; print\\('PIL OK'\\)\")",
       "Bash(python3 generate_images.py)",
       "Bash(mkdir -p /Users/smk/repos/age-of-mythos/com/hulmane/age-of-mythos/volume-1-maha-parva/_planning && ls /Users/smk/repos/age-of-mythos/com/hulmane/age-of-mythos/volume-1-maha-parva/)",
-      "Bash(awk 'NR==1 || NR==2' /Users/smk/repos/age-of-mythos/com/hulmane/age-of-mythos/volume-1-maha-parva/chapter-1-rise-of-legends/data/villains.csv)"
+      "Bash(awk 'NR==1 || NR==2' /Users/smk/repos/age-of-mythos/com/hulmane/age-of-mythos/volume-1-maha-parva/chapter-1-rise-of-legends/data/villains.csv)",
+      "Bash(awk 'NR>=73 && NR<=290 {print NR\": \"substr\\($0,1,140\\)}' 06-resumable-tasks.md)",
+      "Bash(awk ' *)",
+      "Bash(git -C /Users/smk/repos/age-of-mythos status --short -- com/hulmane/age-of-mythos/volume-1-maha-parva/chapter-3-rise-of-beasts/)"
     ],
     "additionalDirectories": [
       "/Users/smk/repos/MahaHulmane/images",

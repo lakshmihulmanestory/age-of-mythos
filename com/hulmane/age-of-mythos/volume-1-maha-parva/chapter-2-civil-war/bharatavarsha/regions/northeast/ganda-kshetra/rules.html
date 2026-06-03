@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ganda-Kshetra &mdash; Rules &amp; Weapons &mdash; Civil War</title>
+  <link rel="stylesheet" href="../../../../../chapter-1-rise-of-legends/css/style.css">
+  <style>
+    body { background:#100614; color:#f0e8f8; }
+    .k-banner { text-align:center; padding:78px 20px 36px; border-bottom:1px solid rgba(196,77,170,.16); }
+    .k-banner .badge { font-size:.55em; letter-spacing:4px; text-transform:uppercase; color:#c44daa; opacity:.85; margin-bottom:12px; }
+    .k-banner h1 { font-size:2em; color:#e89cc8; margin-bottom:.1em; }
+    .k-banner .state-label { font-size:.72em; color:#c9bbd8; opacity:.6; margin-bottom:.4em; }
+    .k-nav { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:14px 20px; background:rgba(0,0,0,.5); border-bottom:1px solid rgba(196,77,170,.1); }
+    .k-nav a { padding:5px 16px; border-radius:20px; border:1px solid rgba(196,77,170,.25); color:#d4c5e8; font-size:.72em; letter-spacing:1px; text-decoration:none; transition:all .15s; }
+    .k-nav a:hover, .k-nav a.active { background:rgba(196,77,170,.12); border-color:#c44daa; color:#fff; }
+    .k-section { max-width:1000px; margin:0 auto; padding:40px 20px 60px; }
+    .k-card { background:rgba(255,255,255,.025); border:1px solid rgba(196,77,170,.15); border-radius:10px; padding:24px; margin-bottom:20px; }
+    .k-card h3 { font-size:.72em; letter-spacing:2px; text-transform:uppercase; color:#e89cc8; margin-bottom:14px; opacity:.9; }
+    .k-two { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    @media(max-width:640px){ .k-two { grid-template-columns:1fr; } }
+    .id-label { font-size:.62em; text-transform:uppercase; letter-spacing:2px; color:#9a8db0; opacity:.6; margin-bottom:3px; }
+    .id-value { font-size:.88em; color:#c9bbd8; margin-bottom:14px; line-height:1.65; }
+    .id-value strong { color:#fff5d4; }
+
+    .mirror-pair { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:18px 0 8px; }
+    @media(max-width:680px){ .mirror-pair { grid-template-columns:1fr; } }
+    .mirror-side { padding:18px; border-radius:12px; }
+    .mirror-side.left  { background:rgba(214,95,163,.08); border:1px solid rgba(214,95,163,.30); }
+    .mirror-side.right { background:rgba(196,77,170,.08); border:1px solid rgba(196,77,170,.30); }
+    .mirror-side .m-name { font-size:1.1em; color:#fff5d4; margin-bottom:4px; font-family:Georgia,serif; }
+    .mirror-side .m-status { font-size:.6em; letter-spacing:2px; text-transform:uppercase; margin-bottom:10px; }
+    .mirror-side.left .m-status { color:#d65fa3; }
+    .mirror-side.right .m-status { color:#c44daa; }
+    .mirror-side .m-desc { font-size:.82em; color:#c9bbd8; line-height:1.7; }
+
+    .tattoo-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    @media(max-width:600px){ .tattoo-grid { grid-template-columns:repeat(2,1fr); } }
+    .tattoo-stage { text-align:center; }
+    .tattoo-img { width:100%; border-radius:8px; border:1px solid rgba(214,95,163,.22); display:block; aspect-ratio:1; object-fit:cover; margin-bottom:8px; background:rgba(214,95,163,.06); }
+    .tattoo-stage.done .tattoo-img    { border-color:rgba(214,95,163,.40); background:rgba(40,16,28,.15); }
+    .tattoo-stage.mirror .tattoo-img  { border-color:rgba(214,95,163,.50); background:rgba(60,20,40,.20); }
+    .tattoo-stage.future .tattoo-img  { border-color:rgba(196,77,170,.18); background:rgba(196,77,170,.04); opacity:.5; }
+    .tattoo-stage-label { font-size:.58em; letter-spacing:2px; text-transform:uppercase; color:#d65fa3; opacity:.85; display:block; margin-bottom:2px; }
+    .tattoo-stage.mirror .tattoo-stage-label { color:#e89cc8; }
+    .tattoo-stage.future .tattoo-stage-label { color:#c44daa; }
+    .tattoo-stage-name { font-size:.78em; color:#fff5d4; display:block; margin-bottom:4px; }
+    .tattoo-stage-desc { font-size:.7em; color:#9a8db0; opacity:.85; line-height:1.55; }
+
+    .weapon-img { width:100%; border-radius:10px; border:1px solid rgba(214,95,163,.22); display:block; margin-bottom:10px; background:rgba(214,95,163,.04); }
+    .weapon-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#e89cc8; opacity:.85; margin-bottom:4px; display:block; }
+    .weapon-name { font-size:.95em; color:#fff5d4; margin-bottom:8px; }
+    .weapon-desc { font-size:.82em; color:#c9bbd8; line-height:1.7; }
+
+    .saga-rule { padding:18px 22px; border-radius:12px; background:linear-gradient(135deg,rgba(214,95,163,.07),rgba(40,16,28,.03)); border:1px solid rgba(214,95,163,.28); margin:14px 0; }
+    .saga-rule .sr-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#e89cc8; margin-bottom:6px; }
+    .saga-rule .sr-text { color:#f0d4e0; font-size:.9em; line-height:1.75; font-style:italic; }
+    .saga-rule .sr-text strong { color:#fff5d4; font-style:normal; }
+
+    .void-callout { padding:20px 22px; border-radius:12px; background:linear-gradient(135deg,rgba(100,90,160,.12),rgba(20,10,40,.04)); border:1px solid rgba(160,140,255,.25); margin-bottom:16px; }
+    .void-callout .vc-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#c4b8ff; margin-bottom:6px; }
+    .void-callout .vc-text { color:#dfd8f0; font-size:.9em; line-height:1.75; }
+    .void-callout .vc-text strong { color:#fff5d4; }
+  </style>
+</head>
+<body>
+  <div class="k-banner">
+    <div class="badge">Civil War &bull; Rules &amp; Weapons (Chapter 2)</div>
+    <h1>Ganda-Kshetra</h1>
+    <div class="state-label">Assam &mdash; The Mirror-Bond, the Mahavidya Rite, the Double Maw Sign</div>
+  </div>
+  <div class="k-nav">
+    <a href="../../../../index.html">&larr; Chapter 2</a>
+    <a href="index.html">Overview</a>
+    <a href="identity.html">Identity</a>
+    <a href="story.html">Story</a>
+    <a href="rules.html" class="active">Rules &amp; Weapons</a>
+  </div>
+
+  <div class="k-section">
+
+    <!-- ====== THE MIRROR-BOND ====== -->
+    <div class="k-card">
+      <h3>The Rhinoceros-Bond &mdash; The Mirror Stage III</h3>
+      <p style="font-size:.92em;color:#c9bbd8;line-height:1.8;">Kamalavarna and Kama-Mara end Chapter Two with <strong>identical Stage III rhinoceros-foreleg marks in mirror-position</strong>. Same animal. Same stage. Same hour of earning. Two bodies. The bond does not split (UP&rsquo;s mechanic) or double (Maharashtra&rsquo;s) or crack (MP&rsquo;s). It <em>mirrors</em>. The sisters now carry the same bond at the same strength &mdash; the rhinoceros-head and shoulder across the upper torso, the single horn pointing toward the opposite clavicle on each sister&rsquo;s body. This is the saga&rsquo;s sixth bond-mechanic.</p>
+      <div class="mirror-pair">
+        <div class="mirror-side left">
+          <div class="m-status">Kamalavarna &bull; Right Clavicle Horn</div>
+          <div class="m-name">The Temple-Order Mirror</div>
+          <div class="m-desc">Rhinoceros head and shoulder across the upper chest. Single horn pointing toward the <strong>right clavicle</strong>. Earned at the seventh hour of the Mahavidya rite during the tenth goddess-mantra (Kamala). The mark is the bond&rsquo;s acknowledgement that the suppression has ended. Stage IV will be earned at the Sanctuary convening in Ch 3 &mdash; she is yielding the political throne but holding the cosmic seat.</div>
+        </div>
+        <div class="mirror-side right">
+          <div class="m-status">Kama-Mara &bull; Left Clavicle Horn</div>
+          <div class="m-name">The Open-Coven Mirror</div>
+          <div class="m-desc">Rhinoceros head and shoulder across the upper chest. Single horn pointing toward the <strong>left clavicle</strong>. Forms in the same instant as her sister&rsquo;s &mdash; the bond&rsquo;s acknowledgement that the two are sisters by blood and by rite. Her first Stage III mark (she had no formal bond previously &mdash; her dark-cult initiate status in Ch 1 was bond-adjacent but not bond-recognised). She earns four ladder-stages&rsquo; worth in one rite.</div>
+        </div>
+      </div>
+      <div class="saga-rule">
+        <div class="sr-label">Saga-Rule &bull; The Mirror-Bond Mechanic</div>
+        <div class="sr-text">A bond may form mirror Stage III marks on two living humans simultaneously if and only if: (1) the two humans share a matrilineal-line bond-eligibility (same-mother siblings of different fathers, per the Mahavidya footnote in the Kalika Purana), (2) the two perform the central rite of the bond&rsquo;s animal-tradition together within the prescribed cycle-window, (3) one has previously borne the bond at Stage II or higher (the &ldquo;mature partner&rdquo; rule), (4) the other has been bond-adjacent (the &ldquo;preparing partner&rdquo; rule). <strong>Mirror-bonds settle in mirror-position only.</strong> The two marks are always opposite-handed, opposite-clavicled, opposite-shouldered. The bond knows which sister is which.</div>
+      </div>
+    </div>
+
+    <!-- ====== THE MAHAVIDYA RITE ====== -->
+    <div class="k-card">
+      <h3>The Mahavidya Rite &mdash; First Performance in 47 Years</h3>
+      <p style="font-size:.92em;color:#c9bbd8;line-height:1.8;">The forbidden-then-performed rite at the heart of this chapter. Documented in the third manuscript of the Kalika Purana&rsquo;s locked-case set. Specifies the invocation of the ten Mahavidya goddesses simultaneously by two same-mother-different-father sisters of the Chandravamsha matrilineal line.</p>
+      <ul style="color:#c9bbd8;font-size:.85em;line-height:1.95;margin-top:10px;padding-left:22px;">
+        <li><strong style="color:#fff5d4;">Setting:</strong> the Kamakhya temple inner altar chamber. New moon. No moonlight. 108 lamps in the dome, 12 at the outer altar, 3 at the inner altar.</li>
+        <li><strong style="color:#fff5d4;">Participants (inner altar):</strong> two same-mother-different-father sisters of the proper line, seated on opposing cushions across a low stone slab carved with the ten yantras.</li>
+        <li><strong style="color:#fff5d4;">Participants (mandala):</strong> 24 supporting priestesses in alternating temple-order and coven configuration (12 + 12).</li>
+        <li><strong style="color:#fff5d4;">Witness (doorway):</strong> the wandering ascetic of the proper line, if alive. (Bhairavi-Aaee fills this role.)</li>
+        <li><strong style="color:#fff5d4;">Duration:</strong> seven hours. Begins at sunset, completes at first light.</li>
+        <li><strong style="color:#fff5d4;">Mantra sequence:</strong> ten goddesses, alternating between the two sisters (Kamalavarna takes Kali, Tara, Tripura-Sundari, Bhuvaneshvari, Chinnamasta; Kama-Mara takes Bhairavi, Dhumavati, Bagalamukhi, Matangi, Kamala). Nine repetitions per mantra. Nine breath-cycles per repetition. 900 repetitions total in the central sequence.</li>
+        <li><strong style="color:#fff5d4;">Cycle-window:</strong> opens at the death of a senior matriarch of the proper line. Stays open for 30 days. The next window would not open for another 47 years.</li>
+        <li><strong style="color:#fff5d4;">Effect on river:</strong> the local sacred river reverses its flow for the seventh hour. Brahmaputra at Saraighat in this case.</li>
+        <li><strong style="color:#fff5d4;">Effect on bonded animals:</strong> all bonded-species individuals within a region kneel for the rite&rsquo;s duration and do not remember the kneeling. 114 rhinos at Kaziranga in this case.</li>
+        <li><strong style="color:#fff5d4;">Tantric-power effect:</strong> the central invocation grants the two sisters full access to the line&rsquo;s tantric tradition for the rest of their lives. The power is real, large, non-destructive, and only accessible together. Neither sister can use the rite&rsquo;s full power alone.</li>
+      </ul>
+    </div>
+
+    <!-- ====== TATTOO LADDER ====== -->
+    <div class="k-card">
+      <h3>The Tattoo Ladder &mdash; Kamalavarna &amp; Kama-Mara</h3>
+      <p style="color:#c9bbd8;font-size:.85em;line-height:1.7;margin-bottom:24px;">Two ladders, one chapter. Kamalavarna&rsquo;s climbs from her existing Stage II (Ch 1) to Stage III at the rite. Kama-Mara&rsquo;s begins at Stage III directly &mdash; she has no prior stage because her Ch 1 alignment was dark-cult and bond-adjacent, not bond-formed. The mirror-bond gives her four stages&rsquo; worth in one rite.</p>
+
+      <div style="margin-bottom:8px;font-size:.62em;letter-spacing:2px;text-transform:uppercase;color:#d65fa3;opacity:.85;">Kamalavarna&rsquo;s Ladder</div>
+      <div class="tattoo-grid">
+        <div class="tattoo-stage done">
+          <img src="media/tattoo/assam-ch2-k1.png" alt="K Stage I" class="tattoo-img">
+          <span class="tattoo-stage-label">K-Stage I &bull; Ch 1</span><span class="tattoo-stage-name">The Hoofprint</span>
+          <div class="tattoo-stage-desc">Rhino hoof on right shoulder-blade, earned at age 26 when she first invoked the Kalika mantra-cycle correctly.</div>
+        </div>
+        <div class="tattoo-stage done">
+          <img src="media/tattoo/assam-ch2-k2.png" alt="K Stage II" class="tattoo-img">
+          <span class="tattoo-stage-label">K-Stage II &bull; Ch 1 Finale</span><span class="tattoo-stage-name">The Rhino Shoulder</span>
+          <div class="tattoo-stage-desc">Across the collarbone, earned when she defeated Kama-Mara and the dark-cult initiates in Ch 1.</div>
+        </div>
+        <div class="tattoo-stage mirror">
+          <img src="media/tattoo/assam-ch2-k3.png" alt="K Stage III" class="tattoo-img">
+          <span class="tattoo-stage-label">K-Stage III &bull; This Chapter</span><span class="tattoo-stage-name">Mirror, Right-Clavicle Horn</span>
+          <div class="tattoo-stage-desc">Rhinoceros head and shoulder across upper chest. Single horn pointing toward right clavicle. Earned at the seventh hour of the Mahavidya rite.</div>
+        </div>
+        <div class="tattoo-stage future">
+          <img src="media/tattoo/assam-ch2-k4.png" alt="K Stage IV" class="tattoo-img">
+          <span class="tattoo-stage-label">K-Stage IV &bull; Ch 3 Sanctuary</span><span class="tattoo-stage-name">Full Body &bull; Cosmic Priestess</span>
+          <div class="tattoo-stage-desc">Will be earned at the Sanctuary convening. She holds the cosmic seat. Moirangthem holds the political seat.</div>
+        </div>
+      </div>
+
+      <div style="margin:24px 0 8px;font-size:.62em;letter-spacing:2px;text-transform:uppercase;color:#c44daa;opacity:.85;">Kama-Mara&rsquo;s Ladder &mdash; Begins at Stage III</div>
+      <div class="tattoo-grid">
+        <div class="tattoo-stage future">
+          <img src="media/tattoo/assam-ch2-km1.png" alt="KM Stage I" class="tattoo-img">
+          <span class="tattoo-stage-label">KM-Stage I &bull; Skipped</span><span class="tattoo-stage-name">Not Earned</span>
+          <div class="tattoo-stage-desc">Bond-adjacent in Ch 1 (dark-cult initiate). No formal Stage I mark. The bond skipped this stage entirely when the mirror-bond formed.</div>
+        </div>
+        <div class="tattoo-stage future">
+          <img src="media/tattoo/assam-ch2-km2.png" alt="KM Stage II" class="tattoo-img">
+          <span class="tattoo-stage-label">KM-Stage II &bull; Skipped</span><span class="tattoo-stage-name">Not Earned</span>
+          <div class="tattoo-stage-desc">Also skipped. The mirror-bond mechanic compresses Stages I&ndash;III into the rite-moment for the &ldquo;preparing partner&rdquo;.</div>
+        </div>
+        <div class="tattoo-stage mirror">
+          <img src="media/tattoo/assam-ch2-km3.png" alt="KM Stage III" class="tattoo-img">
+          <span class="tattoo-stage-label">KM-Stage III &bull; This Chapter</span><span class="tattoo-stage-name">Mirror, Left-Clavicle Horn</span>
+          <div class="tattoo-stage-desc">Mirror of Kamalavarna&rsquo;s. Forms in the same instant as her sister&rsquo;s during the tenth goddess-mantra (Kamala). Her first formal bond-mark.</div>
+        </div>
+        <div class="tattoo-stage future">
+          <img src="media/tattoo/assam-ch2-km4.png" alt="KM Stage IV" class="tattoo-img">
+          <span class="tattoo-stage-label">KM-Stage IV &bull; Ch 3</span><span class="tattoo-stage-name">Full Body &bull; Mirror</span>
+          <div class="tattoo-stage-desc">Will be earned alongside Kamalavarna&rsquo;s at the Sanctuary convening. The mirror persists across all subsequent stages &mdash; the two sisters&rsquo; ladders climb together forever.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== SACRED WEAPONS ====== -->
+    <div class="k-card">
+      <h3>Sacred Weapons &mdash; Twin Daggers, Now Mirror-Pair</h3>
+      <div class="k-two">
+        <div>
+          <span class="weapon-label">Kamalavarna&rsquo;s Ancient</span>
+          <div class="weapon-name">Kavach-Khanda &mdash; The Mantra-Blade</div>
+          <img src="media/weapons/assam-ch2-kavach-khanda.png" alt="Kavach-Khanda" class="weapon-img" onerror="this.style.display='none'">
+          <div class="id-label">Type</div><div class="id-value">A short tantric-ritual blade with a yantra-engraved hilt and Kamakhya temple-bronze blade. Carried by every High Priestess since 1247.</div>
+          <div class="id-label">Ability</div><div class="id-value">Used in the rite&rsquo;s self-marking gestures (the priestess marks her own forearms at the third and seventh hours with vermillion drawn from a small reservoir in the hilt). The blade also serves as a defensive weapon when needed &mdash; its tantric resonance interferes with any non-bond-aware spell or weapon directed at the bearer.</div>
+        </div>
+        <div>
+          <span class="weapon-label">Kama-Mara&rsquo;s Modern Mirror</span>
+          <div class="weapon-name">Khanda-Mara &mdash; The Coven-Blade</div>
+          <img src="media/weapons/assam-ch2-khanda-mara.png" alt="Khanda-Mara" class="weapon-img" onerror="this.style.display='none'">
+          <div class="id-label">Type</div><div class="id-value">A modern blade Kama-Mara forged at her Open Coven site &mdash; same proportions as Kavach-Khanda, opposite-handed grip. The yantra is mirror-engraved.</div>
+          <div class="id-label">Ability</div><div class="id-value">After the mirror-bond rite, the two blades function as a paired set. Each blade is more effective when its mate is held within ten metres &mdash; the resonance reinforces. Apart, each blade is a competent tantric-ritual weapon. Together, they are the only weapon-pair in Bharatavarsha that can be used to perform the abbreviated Mahavidya rite outside the cycle-window.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== VOID MAW SIGN ====== -->
+    <div class="void-callout">
+      <div class="vc-label">Void Maw Sign &bull; Catalogue Entry &bull; Assam &bull; Double Sign</div>
+      <div class="vc-text">The Reversed Brahmaputra and the Kneeling Rhinos. During the seventh hour of the Mahavidya rite, the Brahmaputra at Saraighat reverses its direction of flow for exactly one hour (recorded by ferry-crews, news-channel boats, and the Geological Survey of India monitoring station). Simultaneously, every one-horned rhinoceros in Kaziranga National Park &mdash; 114 animals across the recorded census &mdash; is found kneeling, heads lowered, facing west toward Kamakhya. They kneel for the full seven hours of the rite. None of them remember the seven hours. <strong>This is the chapter&rsquo;s first double-mode Maw sign &mdash; a landscape-scale event (the river, 45 million years of geological precedent reversed for one hour) and a multi-creature event (the herd, 114 animals at once) at the same hour.</strong> The Karnataka rule holds. Shrines built at both: Saraighat reversal-point and Kaziranga kneeling-meadow. The escalation pattern is now six rungs:</div>
+      <div style="margin:12px 0 4px;padding-left:12px;font-size:.78em;color:#dfd8f0;line-height:1.7;">
+        <strong style="color:#fff5d4;">Person</strong> &times; 2 (Karnataka, Goa) &rarr; <strong style="color:#fff5d4;">Place</strong> (Maharashtra) &rarr; <strong style="color:#fff5d4;">Landscape</strong> (UP) &rarr; <strong style="color:#fff5d4;">Multi-creature</strong> (MP) &rarr; <strong style="color:#fff5d4;">Landscape + Multi-creature, simultaneous</strong> (Assam).
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;margin-top:24px;flex-wrap:wrap;gap:10px;">
+      <a href="story.html" style="color:#c9a04a;text-decoration:none;font-size:.85em;">&larr; Kingdom Story</a>
+      <a href="../../../../index.html" style="color:#c9a04a;text-decoration:none;font-size:.85em;">All Civil War Stories &rarr;</a>
+    </div>
+  </div>
+
+  <footer style="text-align:center;padding:28px 20px;border-top:1px solid rgba(196,77,170,.12);color:#9a8db0;font-size:.75em;">
+    <p>Ganda-Kshetra Rules &amp; Weapons &bull; Civil War &bull; Chapter 2</p>
+  </footer>
+</body>
+</html>

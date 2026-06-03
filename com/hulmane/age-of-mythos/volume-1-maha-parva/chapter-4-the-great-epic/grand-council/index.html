@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Grand-Council &mdash; The Seven-Equal Body &mdash; Chapter Four &mdash; Age of Mythos</title>
+  <style>
+    :root { --bg:#0a0810; --ac:#d4a040; --gold:#e8c870; --crown:#e8b840; --keeper:#a888c8; --equal:#80a878; --text:#f0e8d8; --dim:#b8a890; --card:#1a1420; --border:rgba(212,160,64,.22); }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:Georgia,serif; background:var(--bg); color:var(--text); line-height:1.82; min-height:100vh; }
+
+    .gc-head { text-align:center; padding:94px 24px 54px; background:radial-gradient(ellipse at center,rgba(212,160,64,.18) 0%,transparent 70%); border-bottom:1px solid var(--border); position:relative; }
+    .gc-head::before { content:""; position:absolute; top:24px; left:50%; transform:translateX(-50%); width:56px; height:56px; border-radius:50%; background:radial-gradient(circle,rgba(232,200,112,.45),transparent 70%); }
+    .gc-head .badge { font-size:.55em; letter-spacing:5px; text-transform:uppercase; color:var(--ac); opacity:.9; margin-bottom:22px; position:relative; }
+    .gc-head .badge .border { color:var(--gold); font-weight:bold; }
+    .gc-head h1 { font-size:clamp(2.6em,5vw,3.6em); color:var(--gold); margin-bottom:12px; letter-spacing:2.5px; position:relative; }
+    .gc-head .date-stamp { font-size:.85em; color:var(--ac); letter-spacing:2px; margin-bottom:18px; position:relative; font-style:italic; }
+    .gc-head .tagline { color:#f0e8d8; font-size:.95em; max-width:780px; margin:0 auto; line-height:1.85; font-style:italic; position:relative; }
+    .boundary { display:block; margin:26px auto 0; width:300px; height:1px; background:linear-gradient(90deg,transparent,var(--ac) 30%,var(--crown) 50%,var(--ac) 70%,transparent); opacity:.85; }
+
+    .gc-nav { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:14px 20px; background:rgba(0,0,0,.6); border-bottom:1px solid rgba(212,160,64,.12); }
+    .gc-nav a { padding:5px 16px; border-radius:20px; border:1px solid rgba(212,160,64,.28); color:var(--dim); font-size:.72em; letter-spacing:1px; text-decoration:none; transition:all .15s; }
+    .gc-nav a:hover, .gc-nav a.active { background:rgba(212,160,64,.12); border-color:var(--gold); color:#fff; }
+
+    .gc-section { max-width:1080px; margin:0 auto; padding:48px 22px 24px; }
+    .gc-section h2 { font-size:1.5em; color:var(--gold); letter-spacing:1px; margin-bottom:16px; font-family:Georgia,serif; }
+    .gc-section h3 { font-size:1.1em; color:var(--ac); margin:24px 0 12px; font-family:Georgia,serif; }
+    .gc-section p { font-size:.93em; color:#f0e8d8; margin-bottom:16px; }
+    .gc-section p strong { color:#f8e8b8; }
+    .gc-section p em { color:var(--gold); }
+    .gc-section .lead { font-size:1em; color:#f0e8d8; margin-bottom:18px; line-height:1.9; }
+
+    .opening-banner { background:linear-gradient(135deg,rgba(212,160,64,.14),rgba(0,0,0,.4)); border:1px solid rgba(212,160,64,.34); border-left:4px solid var(--crown); padding:24px 26px; border-radius:11px; margin:18px 0 26px; }
+    .opening-banner .ob-label { font-size:.55em; letter-spacing:3px; text-transform:uppercase; color:var(--crown); margin-bottom:8px; }
+    .opening-banner h3 { color:var(--gold); margin:0 0 10px; }
+    .opening-banner p { font-size:.92em; line-height:1.88; }
+
+    .seven-seats { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:24px 0 8px; }
+    @media (max-width:880px) { .seven-seats { grid-template-columns:1fr; } }
+    .seat-card { background:var(--card); border:1px solid var(--border); border-radius:13px; padding:22px 20px; }
+    .seat-card .s-tag { font-size:.55em; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+    .seat-card h4 { font-size:1em; color:var(--ac); font-family:Georgia,serif; margin-bottom:6px; }
+    .seat-card .s-region { font-size:.7em; color:var(--dim); margin-bottom:9px; letter-spacing:1px; }
+    .seat-card .s-desc { font-size:.78em; color:#d8c8a8; line-height:1.75; }
+    .seat-card.seventh { grid-column:1/-1; background:linear-gradient(135deg,rgba(232,184,64,.16),rgba(0,0,0,.4)); border:2px solid rgba(232,184,64,.42); }
+    .seat-card.seventh .s-tag { color:var(--crown); }
+    .seat-card.seventh h4 { color:var(--crown); font-size:1.2em; }
+    .seat-card.seventh .s-desc { color:#e8d8b0; font-size:.85em; }
+
+    .keeper-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin:18px 0; }
+    @media (max-width:680px) { .keeper-grid { grid-template-columns:1fr; } }
+    .keeper-card { background:rgba(168,136,200,.06); border:1px solid rgba(168,136,200,.28); border-left:3px solid var(--keeper); border-radius:10px; padding:16px 20px; }
+    .keeper-card .kc-tag { font-size:.55em; letter-spacing:2px; text-transform:uppercase; color:var(--keeper); margin-bottom:5px; }
+    .keeper-card h4 { font-size:.92em; color:#c8b0e0; font-family:Georgia,serif; margin-bottom:6px; }
+    .keeper-card p { font-size:.78em; color:#d8c8e0; line-height:1.75; }
+
+    .declaration { background:radial-gradient(ellipse at center,rgba(232,184,64,.10),transparent 70%); border:1px solid rgba(232,184,64,.32); border-left:4px solid var(--crown); padding:24px 26px; border-radius:11px; margin:24px 0; }
+    .declaration .dec-tag { font-size:.55em; letter-spacing:3px; text-transform:uppercase; color:var(--crown); margin-bottom:8px; }
+    .declaration .dec-text { color:var(--gold); font-size:1em; font-style:italic; line-height:1.92; font-family:Georgia,serif; }
+    .declaration .dec-attrib { display:block; margin-top:12px; font-size:.74em; font-style:normal; color:var(--dim); letter-spacing:.5px; }
+
+    .timeline { background:linear-gradient(180deg,rgba(212,160,64,.08),rgba(0,0,0,.4)); border:1px solid var(--border); border-radius:12px; padding:24px 26px; margin:18px 0; }
+    .timeline h3 { color:var(--gold); margin-bottom:14px; border-bottom:1px solid rgba(212,160,64,.18); padding-bottom:8px; }
+    .timeline .tl-row { display:grid; grid-template-columns:170px 1fr; gap:18px; padding:11px 0; border-bottom:1px solid rgba(212,160,64,.10); }
+    .timeline .tl-row:last-child { border-bottom:none; }
+    .timeline .tl-time { font-size:.78em; color:var(--ac); font-family:'Courier New',monospace; letter-spacing:1px; }
+    .timeline .tl-event { font-size:.85em; color:#f0e8d8; line-height:1.75; }
+    @media (max-width:680px) { .timeline .tl-row { grid-template-columns:1fr; gap:4px; } }
+
+    .footer { text-align:center; padding:42px 20px; border-top:1px solid var(--border); color:#88806c; font-size:.72em; }
+    .footer a { color:var(--ac); text-decoration:none; }
+  </style>
+</head>
+<body>
+  <div class="gc-head">
+    <div class="badge"><span class="border">The Seven-Equal Body Convened &bull; The Cracked-Seventh-Seat Re-Forged &bull; The Heralds Become Keepers Of Forgotten Things &bull; Maha-Adhipati Declaration</span> &bull; October 11 2028</div>
+    <h1>The Grand-Council</h1>
+    <div class="date-stamp">October 11 2028 &bull; 4:11:11 p.m. &bull; Hampi-Royal-Court &bull; The Buried-Temple Chamber Stone-Slab Seven-Seat-Circle</div>
+    <p class="tagline">Twenty-nine days after the standing-Maw seal at Kurukshetra. The standing-Six Dominants ride back to Hampi. The standing-stone-slab seven-seat-circle waits. The standing-seventh-seat is no longer cracked. The standing-Maha-Adhipati sits at the standing-seventh-seat wearing the standing-Stage-IV-supreme-mark full-body crown. He declares the standing-Council a standing-seven-equal body, not a top-down throne. The standing-Heralds become standing-keepers-of-forgotten-things, scattered to the six clusters. The standing-Volume-I Maha-Parva closes here. This is the standing-institutional resolution. This is what the standing-naming bought.</p>
+    <span class="boundary"></span>
+  </div>
+
+  <div class="gc-nav">
+    <a href="../index.html">&larr; Chapter 4 Index</a>
+    <a href="../maha-adhipati/index.html">The Maha-Adhipati Spine</a>
+    <a href="../bharatavarsha/maw.html">The Void-Maw</a>
+    <a href="../bharatavarsha/kurukshetra.html">Kurukshetra</a>
+    <a href="index.html" class="active">Grand-Council</a>
+  </div>
+
+  <div class="gc-section">
+    <div class="opening-banner">
+      <div class="ob-label">The Seventh-Seat Re-Forged &bull; Per Cast-Forging Trial + Maha-Adhipati Crown Cross-Reference</div>
+      <h3>From Cracked-Seat To Equal-Seat &mdash; The Architectural Pivot Of Volume I</h3>
+      <p>The standing-stone-slab seven-seat-circle at the standing-buried-temple chamber South-cluster cross-reference administered the standing-cracked-seventh-seat configuration from the standing-Ch-3 Sanctuary July 4 2027 4:23:11 p.m. cross-reference through the standing-Ch-4 Maw War five-month cost-administration. The standing-Cast-Forging Trial October 11 2027 administered the standing-five-of-six contribution rite with Moirangthem refusing at Pause-Cell discipline. The standing-Maw War invaded through that gap. The standing-Maha-Adhipati entered the standing-Maw alone September 12 2028. He returned with the standing-Stage-IV-supreme-mark full-body crown at the standing-saga&rsquo;s standing-only Stage-IV cosmic-administration cross-reference. The standing-crown <em>is</em> the standing-re-forged seventh-seat &mdash; it is the standing-faceless-figure of the standing-Great-Ancestor of the Five Bloodlines shaped from the standing-Maha-Adhipati&rsquo;s memory of every face he has known + worn on his head. At the standing-Grand-Council convening October 11 2028 the standing-crown returns to the standing-stone-slab seventh-seat in the standing-form of the standing-Maha-Adhipati sitting in it.</p>
+    </div>
+
+    <h2>The Seven Seats</h2>
+    <p class="lead">The standing-stone-slab seven-seat-circle administers the standing-cardinal-cross configuration at the standing-buried-temple chamber cardinal-cross-Centre cross-reference. Six standing-clean-seats at the standing-cardinal-perimeter-positions. One standing-seventh-seat at the standing-Centre, no longer cracked, now administering the standing-Maha-Adhipati Stage-IV-supreme-mark crown configuration cross-reference:</p>
+
+    <div class="seven-seats">
+      <div class="seat-card">
+        <div class="s-tag">South Seat &bull; Bloodline-A &bull; Originating-cluster</div>
+        <h4>Hampi-Of-The-Bronze (Heir-Apparent) + Krishnadevaraya-Bhrata Visiting</h4>
+        <div class="s-region">South-cluster &bull; Karnataka-Vijayanagara-Reborn &bull; Sixteen-years-eleven-months</div>
+        <div class="s-desc">Per Ch-4 spine cross-reference: Hampi-of-the-Bronze at sixteen-and-eleven-months sits at the standing-3-metre-rear behind the standing-South-clean-seat at the standing-South-cluster heir-apparent administrative-cross-reference. He has returned from the standing-Maw September 12 2028 at the standing-11:11:23 a.m. cross-reference (twelve seconds after Krishnadevaraya-Bhrata sat on the standing-Great-Ancestor seat). He carries the standing-bronze-dust pouch at the standing-fifty-three-gram-and-eleven-milligram administration in his right-pocket. The standing-Third-Herald sits at the standing-cardinal-east-position of the South-clean-seat at the standing-saga&rsquo;s first Herald-bonded-to-the-living acknowledgement-cross-reference. The standing-South-clean-seat itself is occupied by the standing-Maha-Adhipati when he is not at the standing-seventh-seat (he is at the standing-seventh-seat for cosmic-administrations and the standing-South-clean-seat for cluster-administrations at the standing-dual-seat administrative-cross-reference cross-reference).</div>
+      </div>
+
+      <div class="seat-card">
+        <div class="s-tag">West Seat &bull; Bloodline-A &bull; Saga&rsquo;s Second Double-Bond</div>
+        <h4>Simhavikrama With Vanaraksha + Sahyadri-Shivagati Shoulder-Witness</h4>
+        <div class="s-region">West-cluster &bull; Gujarat-Simha-Dwara + Maharashtra-vassal + Goa-federation + Rajasthan-strategist &bull; Forty-two</div>
+        <div class="s-desc">Simhavikrama at forty-two sits at the standing-West clean-seat. The standing-Asiatic-Lion-and-Goan-Gaur D9 double-bond is at the standing-Stage-IV-secondary administration cross-reference (the standing-bilateral-half-body Tattoo-3 is augmented post-Maw at the standing-Maha-Adhipati ratification-witness administrative-cross-reference). Vanaraksha at forty-five at the standing-blood-claim-cohort 3-metre-rear administrative-cross-reference. Saraswati-Simha-Mata-the-First at 7-metre-east at the standing-Madhavi-line salt-queen-counsellor seat-of-honour. Sahyadri-Shivagati Indian-Giant-Squirrel on Simhavikrama&rsquo;s standing-right-shoulder &mdash; she has gained back twelve grams since the standing-Maw seal cross-reference and continues at the standing-Maw-witness administrative-cross-reference. Mrigatrishna-Marudhar-Strategist-Counsellor-Elder + Asha-Ben Karsanbhai Modhwadia at 11-metre-east at the standing-West-cluster delegation cross-reference.</div>
+      </div>
+
+      <div class="seat-card">
+        <div class="s-tag">North Seat &bull; Bloodline-B &bull; Saga&rsquo;s Dual-Cohort</div>
+        <h4>Gangaputra-Regent With Yamunadatta + The Sarus On The Boy&rsquo;s Shoulder</h4>
+        <div class="s-region">North-cluster &bull; UP-Ganga-Simhasana + HP + Uttarakhand + Punjab + Haryana + Delhi + Kashmir &bull; Fifty-seven-and-eleven-months</div>
+        <div class="s-desc">Gangaputra-regent at fifty-seven-and-eleven-months sits at the standing-North clean-seat. Yamunadatta at sixteen-and-eleven-months at the standing-3-metre-rear at the standing-dual-cohort administration cross-reference. The standing-Sarus-Crane lands on Yamunadatta&rsquo;s standing-left-shoulder at the standing-Grand-Council opening cross-reference at the standing-saga&rsquo;s standing-first Sarus-at-Grand-Council acknowledgement administrative-cross-reference. Vidura-Babu the standing-chief-minister at 7-metre-east. The standing-Mahaguru Drona-of-the-Plain&rsquo;s standing-half-portion-of-cremation-ash in the standing-eleven-centimetre brass-pot is at the standing-North-cluster cardinal-position cross-reference at the standing-cross-Bloodline guru-mourning permanent-administration cross-reference. Yamunadatta&rsquo;s standing-Stage-II hoofprint-mark at the standing-left-foot completed at the standing-Sept-15 2028 cross-reference (three days after the standing-Maw seal at the standing-cosmic-resonance administrative-cross-reference).</div>
+      </div>
+
+      <div class="seat-card">
+        <div class="s-tag">East Seat &bull; Bloodline-D &bull; Saga&rsquo;s Yudhishthira-Parallel Non-Sectarian</div>
+        <h4>Jagannath-Bandhu With Sambari + Subhadra-Of-The-Wood Tribal-Sovereign-Veto</h4>
+        <div class="s-region">East-cluster &bull; Odisha-Kalinga-Chakra + Bihar + Jharkhand + Bengal + Andaman &bull; Forty-five</div>
+        <div class="s-desc">Jagannath-Bandhu at forty-five sits at the standing-East clean-seat. Sambari 13-year-old bonded-Sambar at 3-metre-rear. Subhadra-of-the-Wood at fifty-four at 7-metre-rear at the standing-Shabara-tribal-sovereign-veto senior-administrative-officer cross-reference. Bilash-Babu of Bengal at 11-metre-east at the standing-Bengal-East-cluster sister-state administrative-cross-reference + Sundara-Vyaghra Royal-Bengal-Tiger at the standing-perimeter-administration. Vajramukha + Maitreyi-the-Younger of Bihar at the standing-Bodhgaya-Vihara seat-of-honour. Vanajara of Jharkhand at the standing-defer-pledge continuation cross-reference. Onge-Nakshatra of Andaman attends at the standing-Volume-II Yavana-Khanda launch-point pre-administration witness cross-reference. The standing-Konark-wheel administers a standing-single-revolution-clockwise at the standing-East-cluster cardinal-position cross-reference at the standing-Grand-Council opening cross-reference at the standing-saga&rsquo;s standing-second cross-region-monument-revolution-witness administrative-cross-reference.</div>
+      </div>
+
+      <div class="seat-card">
+        <div class="s-tag">Northeast Seat &bull; Vana-Kula &bull; The Pause Holds</div>
+        <h4>Moirangthem With Sangaputra + Kamalavarna By Written Acknowledgement</h4>
+        <div class="s-region">Northeast-cluster &bull; Manipur-Sangai-Nata + Assam + Meghalaya + Nagaland + Mizoram + Arunachal + Tripura + Sikkim &bull; Forty-two</div>
+        <div class="s-desc">Moirangthem at forty-two sits at the standing-Northeast clean-seat. Sangaputra at sixteen-and-three-months at 3-metre-rear at the standing-father-son dual-cohort administrative-cross-reference (saga&rsquo;s first father-son dual-cohort at Grand-Council). Ka-Inocha bridge-cousin at 7-metre-rear at the standing-Manipur-Naga twin-blade administrative-cross-reference. Kamalavarna at Guwahati administers the standing-Grand-Council attendance in writing at the standing-Kamakhya-Devi co-High-Priestess seat cross-reference (Sangaputra delivers the standing-written-acknowledgement at the standing-Vana-Kula northeast tradition cross-reference; the standing-Kamakhya-Devi seat does not enter Grand-Council in person at the standing-non-political High-Priestess discipline cross-reference). Kama-Mara at Guwahati administers the co-High-Priestess witness. Hima-Naga of Sikkim attends at the standing-Pemayangtse-prayer-bell after-administration cross-reference. <strong>Moirangthem does not dissent.</strong> The standing-Pause-Cell pauses at the standing-acknowledgement cross-reference. The standing-Aulakh-International-Lahore parent-corporation cross-network funding-line is at the standing-ten-of-ten administrative-completion + the standing-cosmic-resonance configuration cross-reference (no longer active-funding at the standing-Maw-seal-administration cross-reference).</div>
+      </div>
+
+      <div class="seat-card">
+        <div class="s-tag">Central Seat &bull; Bloodline-B &bull; Saga&rsquo;s Daughter-Above-Father + Cracked-Mark</div>
+        <h4>Dvadashashringa With Sutrakara At Three-Metre-Rear (Voice-Lost But Still Writing)</h4>
+        <div class="s-region">Central-cluster &bull; MP-Hridaya-Sthana + Chhattisgarh-Dandakaranya &bull; Forty-eight</div>
+        <div class="s-desc">Dvadashashringa at forty-eight sits at the standing-Central clean-seat in ceremonial-shoulder-cut-away-vest at the standing-Tattoo-3-cracked-half-body visibility cross-reference. Sutrakara at fourteen-and-five-months sits at the standing-3-metre-rear at the standing-Sutrakara-permanent-seat above-Central-Regional-Dominant cross-reference. She does not speak (post-poisoning Front-Six cross-reference). She holds the standing-Four-Cardinal-Court Reconvening Charter at the standing-amended-Bhojpur-Sutrakara-administrative-cell ledger page-forty-seven cross-reference (drafted across the standing-five-month Maw-War window). Dvadasha-Sakhi twelve-antler-barasingha at 7-metre-rear. Aranya-Devi-the-Younger Chhattisgarh-Dandakaranya-state-administrator at 7-metre-east at the standing-sister-state federation cross-reference. Sutrakara&rsquo;s standing-Charter is read aloud by Aranya-Devi-the-Younger at the standing-Grand-Council opening cross-reference at the standing-cross-region reading-administration cross-reference.</div>
+      </div>
+
+      <div class="seat-card seventh">
+        <div class="s-tag">The Seventh Seat &bull; The Centre &bull; The Crown That Was A Seat That Was A Faceless Figure That Was The Maw</div>
+        <h4>Krishnadevaraya-Bhrata &mdash; Maha-Adhipati &mdash; The Mouth That Holds The Name</h4>
+        <div class="s-region">Volume-I Maha-Adhipati &bull; Bloodline-A Gajavamsha desert-edge-of-the-line &bull; Forty-two</div>
+        <div class="s-desc">Krishnadevaraya-Bhrata at forty-two sits at the standing-seventh-seat at the standing-cardinal-cross-Centre cross-reference of the standing-stone-slab seven-seat-circle. He wears the standing-Stage-IV-supreme-mark full-body tetra-ink tattoo in standing-saffron-vermillion-indigo-and-Bhoomi-Takshaka-twin-bronze-and-Tungabhadra-elephant-grey-and-Krishnaveni-river-blue at the standing-saga&rsquo;s standing-only Stage-IV-supreme-mark administrative-cross-reference. The standing-crown sits on his head at the standing-permanent-cosmic-administration cross-reference at the standing-cosmic-record-administration cross-reference. He carries the standing-Maha-Adhipati staff at the standing-saffron-vermillion-indigo tri-wrap. The standing-Karnataka-elephant-bond Indra-Gaja + standing-Krishna-river-bond residual cross-reference are both at the standing-Stage-IV elevated administration cross-reference. <strong>The standing-Maha-Adhipati declares the Grand-Council a standing-seven-equal body, not a top-down throne.</strong></div>
+      </div>
+    </div>
+
+    <h2>The Seven-Equal Declaration (4:11:11 p.m.)</h2>
+    <div class="declaration">
+      <div class="dec-tag">Krishnadevaraya-Bhrata &bull; Sanskrit-Kannada-Hindi Tri-Language &bull; October 11 2028 4:11:11 p.m.</div>
+      <p class="dec-text">&ldquo;Brothers and sisters of the standing-Grand-Council. The standing-seventh-seat at the standing-stone-slab cardinal-cross-Centre is at the standing-re-forged administration cross-reference. The standing-seat that holds your standing-six is not above your standing-six. The standing-seat that holds your standing-six is the standing-seat that holds your standing-six. I am the standing-mouth that holds the standing-name. I am not your standing-king. I am your standing-mouth-that-holds-the-name. The standing-Council is not a standing-throne with a standing-court. The standing-Council is a standing-cardinal-cross with a standing-mouth. We are seven. We are equal. The standing-Maha-Adhipati seat administers the standing-cosmic-record-administration only. The standing-six cluster-seats administer the standing-cluster-administration. The standing-Council convenes at the standing-buried-temple chamber Hampi every standing-eleventh-of-October at the standing-pre-dawn 4:11 a.m. window cross-reference + every standing-eleventh-of-July at the standing-Sanctuary-anniversary cross-reference. The standing-other days each Dominant administers their standing-cluster at their standing-administrative-cell. The standing-Maha-Adhipati visits each cluster annually at the standing-cardinal-rotation administrative-cross-reference. The standing-Heralds become standing-keepers-of-forgotten-things. They walk Bharatavarsha. They collect standing-forgotten-names. They speak them aloud at the standing-pre-dawn windows at the standing-cardinal-cross-positions of every administrative-cell. The standing-Maw is sealed. The standing-Maw is now your standing-scar. The standing-scar holds. The standing-Bharatavarsha-rule is the standing-Heralds-Rule expanded: name first, then judge. The standing-revenge-completed ledger is closed. The standing-revenge-unresolved ledger is closed. All five drawers close not at the standing-blade but at the standing-named-mouth. The standing-Volume-I Maha-Parva is at the standing-completion. The standing-Volume-II Yavana-Khanda awaits at the standing-Sagara-Ratna Andaman launch-point. The standing-First-Herald walks ahead. Walk well.&rdquo;
+        <span class="dec-attrib">— Krishnadevaraya-Bhrata, Grand-Council convening at Hampi, October 11 2028 4:11:11 p.m. (recorded by Achuta the standing-junior-administrative-cell senior-attendant-administrator at the standing-Maha-Adhipati daily-ledger page-three-hundred-and-eleven cross-reference)</span>
+      </p>
+    </div>
+
+    <h2>The Acceptance &bull; Cardinal Order</h2>
+    <div class="timeline">
+      <h3>October 11 2028 &bull; 4:22:11-4:47:11 p.m. &bull; Twenty-Five Minutes Of Acceptance Administration</h3>
+      <div class="tl-row">
+        <div class="tl-time">4:22:11 p.m.</div>
+        <div class="tl-event"><strong>Simhavikrama (West)</strong> stands. He says one phrase in standing-Gujarati-Sanskrit-Hindi tri-language at the standing-Bloodline-A desert-edge-of-the-line speaking-register: <em>&ldquo;Cousin-Maha-Adhipati. The standing-West-cluster accepts the standing-seven-equal Council at the standing-double-bond-fellow administrative-cross-reference. Sahyadri-Shivagati witnesses. The standing-Bilakha-residence eastern-cardinal-courtyard will administer the standing-cardinal-rotation visit at the standing-March-23-anniversary cross-reference.&rdquo;</em> He sits. Sahyadri-Shivagati does not vocalize.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">4:25:11 p.m.</div>
+        <div class="tl-event"><strong>Jagannath-Bandhu (East)</strong> stands. He says one phrase in standing-Odia-Sanskrit-Kannada-Hindi tetra-language at the standing-Bloodline-D Drona-line speaking-register: <em>&ldquo;Cousin-Maha-Adhipati. The standing-East-cluster accepts the standing-seven-equal Council at the standing-Yudhishthira-parallel cross-Bloodline cousin-recognition cross-reference. The standing-Puri-Jagannath-temple eastern-cardinal-courtyard will administer the standing-cardinal-rotation visit at the standing-May-23-anniversary cross-reference.&rdquo;</em> Sambari Sambar at 3-metre-rear bows. He sits.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">4:28:11 p.m.</div>
+        <div class="tl-event"><strong>Gangaputra-regent (North)</strong> stands. He says one phrase in standing-Sanskrit-Awadhi-Hindi tri-language at the standing-Bloodline-B Suryavamshi-Ganga-line speaking-register: <em>&ldquo;Cousin-Maha-Adhipati. The standing-North-cluster accepts the standing-seven-equal Council. The standing-Bara-Imambara assembly will administer the standing-cardinal-rotation visit at the standing-January-11-anniversary cross-reference. Yamunadatta at the standing-North heir-apparent + standing-throne-figure dual-cohort will administer the standing-cluster-cross-reference at my standing-cremation cross-reference when it administers.&rdquo;</em> The standing-Sarus-Crane on Yamunadatta&rsquo;s standing-left-shoulder lifts one standing-foot at the standing-acknowledgement-gesture cross-reference. He sits.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">4:31:11 p.m.</div>
+        <div class="tl-event"><strong>Dvadashashringa (Central)</strong> stands. He does not speak. Sutrakara at 3-metre-rear opens the standing-Four-Cardinal-Court Reconvening Charter at the standing-amended-charter ledger page-forty-seven cross-reference. Aranya-Devi-the-Younger reads aloud in standing-Hindi-Bundelkhandi-Sanskrit tri-language at the standing-cross-region reading-administration: <em>&ldquo;The standing-Central-cluster accepts the standing-seven-equal Council at the standing-Sutrakara-permanent-seat above-Central-Regional-Dominant cross-reference. The standing-Bhojpur-Sutrakara-administrative-cell Twelve-Court-Dissolved-Hall will administer the standing-cardinal-rotation visit at the standing-May-23-anniversary cross-reference. The standing-Four-Cardinal-Court Reconvening completes at the standing-Bhojpur + Indore + Jabalpur + Dandakaranya cross-reference. The standing-broken-Dwadash-staff remains at the standing-three-pieces. The standing-cracked-mark holds.&rdquo;</em> Dvadashashringa sits. Sutrakara nods.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">4:34:11 p.m.</div>
+        <div class="tl-event"><strong>Moirangthem (Northeast)</strong> stands. He pauses for the standing-eleven-second window at the standing-Pause-Cell discipline cross-reference. He says one phrase in standing-Manipuri-Sanskrit-Hindi tri-language at the standing-Pause-Cell senior-officer speaking-register: <em>&ldquo;Cousin-Maha-Adhipati. The standing-Northeast-cluster accepts the standing-seven-equal Council at the standing-Pause-Cell acknowledgement cross-reference. The standing-Sangai-Nata Loktak-central-phumdi will administer the standing-cardinal-rotation visit at the standing-November-23-anniversary cross-reference. The standing-Pause was needed. The standing-Pause is at the standing-completion. The standing-Pause continues at the standing-Council-equal discipline cross-reference. Kamalavarna at Guwahati accepts in writing.&rdquo;</em> He pauses another standing-eleven-second window. He sits. <strong>The standing-saga&rsquo;s standing-only Sanctuary-dissent acceptance-administration is at the standing-completion cross-reference.</strong></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">4:37:11 p.m.</div>
+        <div class="tl-event">Hampi-of-the-Bronze at 3-metre-rear behind South-clean-seat stands. He is sixteen years and eleven months old. He has not been asked to speak. He speaks anyway at the standing-South-cluster heir-apparent acknowledgement-administration cross-reference. He says one phrase in standing-Kannada-Sanskrit-Hindi tri-language at the standing-junior-administrative-cell speaking-register: <em>&ldquo;Cousin-Maha-Adhipati uncle. The standing-South-cluster heir-apparent acknowledges the standing-seven-equal Council. I will administer the standing-South-cluster at the standing-2058-CE cross-reference if the standing-cosmic-record administers. I will name you first when I enter the standing-cosmic-record. The Third Herald will witness. The standing-bronze-dust will be warm. The standing-Maldhari-Samaj-coffee-pot will have a standing-third-cup permanently.&rdquo;</em> He sits. The Third Herald at the standing-cardinal-east-position of the South-clean-seat does not move.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">4:40:11 p.m.</div>
+        <div class="tl-event">Vanaraksha at 3-metre-rear behind West-clean-seat stands. He has not been asked to speak. He speaks anyway at the standing-blood-claim-cohort senior-administrative-officer cross-reference. He says one phrase in standing-Marathi-Sanskrit dual-language at the standing-Bilakha-residence speaking-register: <em>&ldquo;Cousin-Maha-Adhipati. The standing-blood-claim-cohort acknowledges the standing-seven-equal Council. I will drink the standing-Wednesday-Kutchi-coffee at the standing-Bilakha-residence eastern-cardinal-courtyard for the standing-rest of my standing-life-administration. I will not return to Maharashtra. The standing-Raigad-Fort flies the standing-Sasan-Gir lion-banner. The standing-sister was named in the standing-Maw. The standing-brother stands at the standing-Council-perimeter.&rdquo;</em> He sits. Saraswati-Simha-Mata-the-First at 7-metre-east makes a small dot in the standing-Madhavi-line ledger margin. She does not look at him.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">4:43:11 p.m.</div>
+        <div class="tl-event">Achuta the standing-junior-administrative-cell senior-attendant-administrator at the standing-perimeter-administration cross-reference records all standing-acceptances in the standing-Maha-Adhipati daily-ledger page-three-hundred-and-twelve cross-reference. The standing-Volume-I Maha-Parva Grand-Council convening is at the standing-institutional-acknowledgement administrative-cross-reference at the standing-saga&rsquo;s standing-first standing-Maha-Parva Grand-Council acknowledgement cross-reference.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">4:47:11 p.m.</div>
+        <div class="tl-event">Krishnadevaraya-Bhrata stands at the standing-seventh-seat. The standing-Stage-IV-supreme-mark full-body crown is at the standing-permanent-cosmic-administration. He says one final phrase in standing-Sanskrit-Kannada-Hindi tri-language at the standing-Grand-Council closing-administration cross-reference: <em>&ldquo;Walk well. The standing-scar holds. The standing-Volume-I closes. The horizon opens.&rdquo;</em> He sits. The standing-Grand-Council convening is at the standing-completion-administration. The standing-Six rise. They walk to the standing-eastern-cardinal-entrance-stairway. The standing-Maha-Adhipati remains at the standing-seventh-seat for the standing-eleven-minute window cross-reference. The standing-Third-Herald walks beside Hampi-of-the-Bronze at the standing-South-cluster departure. The standing-buried-temple chamber empties slowly.</div>
+      </div>
+    </div>
+
+    <h2>The Four Heralds Become Keepers-Of-Forgotten-Things</h2>
+    <p class="lead">Per the standing-Maha-Adhipati declaration cross-reference: the standing-four-Herald walking-cohort is at the standing-named-administration cross-reference at the standing-Kurukshetra Naming-Rite September 4-7 2028 cross-reference. They are no longer Heralds-of-the-Maw. They are standing-keepers-of-forgotten-things at the standing-Heralds-Rule expansion cross-reference. They scatter to the standing-six-clusters at the standing-walking-administration cross-reference. They walk Bharatavarsha. They collect standing-forgotten-names. They speak them aloud at the standing-pre-dawn windows at the standing-cardinal-cross-positions of every standing-administrative-cell they pass:</p>
+
+    <div class="keeper-grid">
+      <div class="keeper-card">
+        <div class="kc-tag">First Keeper &bull; Andaman &bull; Volume-II Pre-Launch-Point</div>
+        <h4>The First-Keeper (Formerly Kalapani-Asura) &mdash; Walks Toward Yavana-Khanda</h4>
+        <p>Named by Onge-Nakshatra at the standing-Kurukshetra September 4 2028 dawn-window cross-reference. After Grand-Council the standing-First-Keeper walks from the standing-Sagara-Ratna Andaman cardinal-east-position cross-reference toward the standing-Volume-II Yavana-Khanda launch-point pre-administration cross-reference. He carries the standing-Sentinelese-Pact clay-tablet (1,011-restored-engravings cross-reference). He will administer the standing-pre-launch witness at the standing-Andaman-Nicobar pre-dawn windows + the standing-Sagara-Ratna acknowledgement cross-reference. He is the standing-bridge between Volume-I and Volume-II.</p>
+      </div>
+      <div class="keeper-card">
+        <div class="kc-tag">Second Keeper &bull; Goa &bull; The Mormugao-Coast Sea-Administration</div>
+        <h4>The Second-Keeper (Formerly Vasco-Without-A-Ship) &mdash; Dissolves Into The Sea November 11 2028</h4>
+        <p>Named by Ferreira-de-Sangam at Kurukshetra September 5 2028 dawn-window cross-reference. He walks the standing-Mormugao-coast standing-sea-administration completion cross-reference between September and November 2028. On the standing-eleventh of November 2028 at the standing-eleven-eleven-eleven a.m. window he walks into the standing-Mormugao-Bay at the standing-southern-pavilion edge cross-reference. He dissolves into the standing-sea at the standing-Goan-tide-completion administrative-cross-reference. His standing-Aulakh-International-Lahore tag washes ashore at the standing-Mormugao-coast eastern-cardinal-position cross-reference. Ferreira-de-Sangam buries the standing-tag at the standing-eastern-cardinal-courtyard at the standing-charter-foundational dissolution-administration cross-reference. The standing-Second-Keeper is at the standing-cosmic-record-administration cross-reference.</p>
+      </div>
+      <div class="keeper-card">
+        <div class="kc-tag">Third Keeper &bull; Karnataka &bull; Bonded-To-The-Living</div>
+        <h4>The Third-Keeper (Formerly Bronze-Dust Child) &mdash; Sits At The Foot Of The Boy&rsquo;s Bed Permanently</h4>
+        <p>Named by Krishnadevaraya-Bhrata at Kurukshetra September 6 2028 dawn-window cross-reference. He does not walk Bharatavarsha. He is at the standing-saga&rsquo;s first Herald-bonded-to-the-living administrative-cross-reference cross-reference. He sits at the foot of Hampi-of-the-Bronze&rsquo;s bed at the standing-junior-administrative-cell southern-wing second-room cross-reference permanently. He walks at the standing-three-metre-southwest of any standing-courtyard the boy enters at the standing-day-windows cross-reference. He will administer the standing-walk-witness for the standing-rest of the boy&rsquo;s life-administration. He will administer the standing-cremation-witness at the standing-2058-CE cross-reference if the standing-cosmic-record administers. The standing-bronze-dust pouch at the standing-boy&rsquo;s right-pocket warms at the standing-Third-Keeper presence-administration cross-reference.</p>
+      </div>
+      <div class="keeper-card">
+        <div class="kc-tag">Fourth Keeper &bull; Sikkim &bull; Inside The Maw Still Naming</div>
+        <h4>The Fourth-Keeper (Formerly Krodha) &mdash; Walks Back Into The Maw Of His Own Will</h4>
+        <p>Named by Hima-Naga at Kurukshetra September 7 2028 dawn-window cross-reference. The standing-Pemayangtse-prayer-bell rang once. Krodha wept. He walked back into the standing-Maw of his own will to name standing-others from inside. He is at the standing-saga&rsquo;s standing-first Herald-walks-back-into-the-Maw administrative-cross-reference cross-reference. He is now the standing-inside-keeper. He names the standing-forgotten from inside the standing-sealed-Maw at the standing-cosmic-administration cross-reference. Hima-Naga at Pelling-Pemayangtse-monastery rings the standing-prayer-bell once a year at the standing-twenty-third of August dawn-window cross-reference at the standing-Krodha-anniversary cross-reference. The standing-Maw hums in acknowledgement. The standing-Fourth-Keeper continues at the standing-inside-administration cross-reference.</p>
+      </div>
+    </div>
+
+    <h2>The Saga-Rule Pivot &mdash; What The Grand-Council Locked In</h2>
+    <p>Per the standing-Heralds-Rule expansion at the standing-Bharatavarsha-rule cross-reference + the standing-seven-equal Council declaration cross-reference + the standing-revenge-completed and revenge-unresolved ledger closure cross-reference, the standing-Grand-Council October 11 2028 administered the standing-Volume-I Maha-Parva architectural-pivot at four levels:</p>
+
+    <p><strong>1. Constitutional.</strong> The standing-seventh-seat is no longer above the standing-six. The standing-Maha-Adhipati is no longer king. He is the standing-mouth-that-holds-the-name. The standing-Council is a standing-cardinal-cross with a standing-mouth, not a standing-throne with a standing-court. This is the standing-saga&rsquo;s standing-first non-monarchical sovereign-administration cross-reference.</p>
+
+    <p><strong>2. Moral.</strong> The standing-Heralds-Rule (D6: remember-do-not-kill) expanded to the standing-Bharatavarsha-rule (name-first-then-judge). No standing-revenge-killing across Chapter Four. Five standing-revenge-unresolved drawers close not at the standing-blade but at the standing-named-mouth. This is the standing-saga&rsquo;s standing-first explicit-justice-overhaul cross-reference.</p>
+
+    <p><strong>3. Cosmic.</strong> The standing-Maw is sealed but not extinguished. It is at the standing-scar configuration cross-reference. It hums. It does not invade. It administers the standing-cosmic-resonance only. The standing-Stage-IV-supreme-mark on Krishnadevaraya-Bhrata is the standing-permanent administrative-cross-reference at the standing-cosmic-record administration. This is the standing-saga&rsquo;s standing-first sealed-cosmic-wound-with-living-mouth cross-reference.</p>
+
+    <p><strong>4. Institutional.</strong> The standing-Council convenes annually at the standing-eleventh-of-October at the standing-pre-dawn 4:11 a.m. window cross-reference (the standing-Grand-Council convening anniversary) + at the standing-eleventh-of-July at the standing-pre-dawn 4:11 a.m. window cross-reference (the standing-Sanctuary-convening anniversary). The standing-Maha-Adhipati visits each cluster annually at the standing-cardinal-rotation cross-reference at the standing-cluster-anniversary windows (West March 23 + East May 23 + Central May 23 + North January 11 + Northeast November 23 + South always-resident). The standing-Heralds-as-Keepers walk Bharatavarsha collecting standing-forgotten-names at the standing-pre-dawn windows at the standing-cardinal-cross-positions of every standing-administrative-cell.</p>
+
+    <p>This is what the standing-naming bought. This is the standing-institutional resolution. The standing-Volume-I Maha-Parva closes here.</p>
+  </div>
+
+  <footer class="footer">
+    <p>The Grand-Council &bull; The Seven-Equal Body &bull; Chapter Four &bull; The Great Epic &bull; Maha Parva &bull; Age of Mythos Volume I</p>
+    <p style="margin-top:8px;"><a href="../index.html">&larr; Chapter 4 Index</a> &middot; <a href="../maha-adhipati/index.html">The Maha-Adhipati Spine</a> &middot; <a href="../epilogue/index.html">Volume I Epilogue &rarr;</a></p>
+  </footer>
+</body>
+</html>

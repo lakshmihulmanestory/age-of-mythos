@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tlawmngaihna-Desh &mdash; Identity &mdash; Civil War</title>
+  <link rel="stylesheet" href="../../../../../chapter-1-rise-of-legends/css/style.css">
+  <style>
+    body { background:#0a0a0e; color:#f0e8f8; }
+    .k-banner { text-align:center; padding:78px 20px 36px; border-bottom:1px solid rgba(196,77,170,.16); }
+    .k-banner .badge { font-size:.55em; letter-spacing:4px; text-transform:uppercase; color:#c44daa; opacity:.85; margin-bottom:12px; }
+    .k-banner h1 { font-size:2em; color:#a0c060; margin-bottom:.1em; }
+    .k-banner .state-label { font-size:.72em; color:#c9bbd8; opacity:.6; margin-bottom:.4em; }
+    .k-nav { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:14px 20px; background:rgba(0,0,0,.5); border-bottom:1px solid rgba(196,77,170,.1); }
+    .k-nav a { padding:5px 16px; border-radius:20px; border:1px solid rgba(196,77,170,.25); color:#d4c5e8; font-size:.72em; letter-spacing:1px; text-decoration:none; transition:all .15s; }
+    .k-nav a:hover, .k-nav a.active { background:rgba(196,77,170,.12); border-color:#c44daa; color:#fff; }
+    .k-section { max-width:1100px; margin:0 auto; padding:40px 20px 60px; }
+    .k-card { background:rgba(255,255,255,.025); border:1px solid rgba(196,77,170,.15); border-radius:10px; padding:24px; margin-bottom:20px; }
+    .k-card h3 { font-size:.72em; letter-spacing:2px; text-transform:uppercase; color:#a0c060; margin-bottom:14px; opacity:.9; }
+    .k-two { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    @media(max-width:640px){ .k-two { grid-template-columns:1fr; } }
+    .id-label { font-size:.62em; text-transform:uppercase; letter-spacing:2px; color:#9a8db0; opacity:.6; margin-bottom:3px; }
+    .id-value { font-size:.88em; color:#c9bbd8; margin-bottom:14px; line-height:1.65; }
+    .id-value strong { color:#fff5d4; }
+
+    .manifesto-card { padding:18px 22px; border-radius:12px; background:linear-gradient(135deg,rgba(160,192,96,.10),rgba(20,40,10,.04)); border:1px solid rgba(160,192,96,.32); margin:14px 0; }
+    .manifesto-card .mc-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#a0c060; margin-bottom:8px; }
+    .manifesto-card .mc-text { color:#cce098; font-size:.95em; line-height:1.75; font-style:italic; white-space:pre-line; }
+    .manifesto-card .mc-attr { font-size:.78em; color:#9a8db0; margin-top:8px; }
+
+    .ccard { padding:20px; border-radius:10px; border:1px solid rgba(255,255,255,.08); margin-bottom:14px; }
+    .ccard.father    { background:linear-gradient(135deg,rgba(160,192,96,.10),rgba(20,40,10,.03)); border-color:rgba(160,192,96,.32); }
+    .ccard.son       { background:linear-gradient(135deg,rgba(232,168,80,.08),rgba(40,30,10,.03)); border-color:rgba(232,168,80,.28); }
+    .ccard.niece     { background:linear-gradient(135deg,rgba(196,77,170,.10),rgba(40,0,30,.03)); border-color:rgba(196,77,170,.32); }
+    .ccard.asura     { background:linear-gradient(135deg,rgba(123,98,180,.10),rgba(20,10,40,.03)); border-color:rgba(123,98,180,.32); }
+    .ccard.elder     { background:linear-gradient(135deg,rgba(196,184,168,.08),rgba(40,30,16,.03)); border-color:rgba(196,184,168,.28); }
+    .ccard.moderator { background:linear-gradient(135deg,rgba(123,158,255,.08),rgba(0,10,40,.03)); border-color:rgba(123,158,255,.25); }
+    .ccard.ranger    { background:linear-gradient(135deg,rgba(232,201,138,.08),rgba(40,30,10,.03)); border-color:rgba(232,201,138,.28); }
+    .ccard.serow     { background:linear-gradient(135deg,rgba(100,90,160,.10),rgba(20,10,40,.04)); border-color:rgba(160,140,255,.25); }
+    .ccard .role-tag { display:inline-block; font-size:.55em; letter-spacing:2px; text-transform:uppercase; padding:3px 10px; border-radius:10px; margin-bottom:8px; }
+    .ccard.father .role-tag    { background:rgba(160,192,96,.18); color:#cce098; }
+    .ccard.son .role-tag       { background:rgba(232,168,80,.18); color:#f0c490; }
+    .ccard.niece .role-tag     { background:rgba(196,77,170,.22); color:#e7b2dd; }
+    .ccard.asura .role-tag     { background:rgba(123,98,180,.20); color:#c8bcf0; }
+    .ccard.elder .role-tag     { background:rgba(196,184,168,.20); color:#e0d4c0; }
+    .ccard.moderator .role-tag { background:rgba(123,158,255,.18); color:#a8c0ff; }
+    .ccard.ranger .role-tag    { background:rgba(232,201,138,.18); color:#e8c98a; }
+    .ccard.serow .role-tag     { background:rgba(160,140,255,.18); color:#c4b8ff; }
+    .ccard h4 { font-size:1.15em; margin-bottom:4px; color:#fff5d4; font-family:Georgia,serif; }
+    .ccard .ctitle { font-size:.85em; font-style:italic; color:#9a8db0; margin-bottom:12px; }
+    .ccard p { color:#c9bbd8; font-size:.88em; line-height:1.75; }
+  </style>
+</head>
+<body>
+  <div class="k-banner">
+    <div class="badge">Civil War &bull; Kingdom Identity (Chapter 2)</div>
+    <h1>Tlawmngaihna-Desh</h1>
+    <div class="state-label">Mizoram &mdash; The Refusing Youth Manifesto, the Mountain that Wore the Mark, the Two-Headed Serow</div>
+  </div>
+  <div class="k-nav">
+    <a href="../../../../index.html">&larr; Chapter 2</a>
+    <a href="index.html">Overview</a>
+    <a href="identity.html" class="active">Identity</a>
+    <a href="story.html">Story</a>
+    <a href="rules.html">Rules &amp; Weapons</a>
+  </div>
+
+  <div class="k-section">
+
+    <div class="k-card">
+      <h3>What Changed Since Chapter One</h3>
+      <p style="font-size:.92em;color:#c9bbd8;line-height:1.8;">In Chapter One Tlangvala had fought Chhinlung-Naag the cave-serpent at the Chhinlung cave-mouth and had not won &mdash; the serpent had asked for mercy and Tlangvala had been unable to refuse. Pu Vangchhia&rsquo;s bamboo-pattern prophecy had warned that the next time mercy was asked the correct answer was the bamboo&rsquo;s answer: bend, absorb, spring back. Across the intervening years the kingdom had carried the warning without resolving it. In spring 2025 Tlangvala&rsquo;s twenty-two-year-old son Lalruatpuia published the first draft of the Refusing Youth Manifesto, the kingdom&rsquo;s first formal generational dissent against the inheritance-logic of <em>tlawmngaihna</em>. The December 2025 Aizawl Synod hall sit-in (eleven days) had hardened the senior tribal-elders&rsquo; position by twenty per cent. Tlangvala had publicly criticised the sit-in; he and his son had not spoken since. In the same spring, Parvata-Asura &mdash; Chhinlung-Naag&rsquo;s mountain-form, the asura who had retreated to the Lushai Hills&rsquo; southern range in Chapter One &mdash; had returned, no longer subordinate. Across summer 2026 he visited all eight district-headquarters and offered <em>&ldquo;refuge from the inheritance&rdquo;</em> inside Phawngpui Mountain. Six hundred and twenty-nine Mizos aged 15-22 accepted. The fissure closed at the new-moon week of week four. Parvata-Asura demanded one perfect sacrifice. The kingdom-council voted twenty-to-two on day seven of deliberation to deliver Tlangvala; then voted fifteen-to-seven to formally request that he not return. Tlangvala accepted both votes. He walked into the eastern face at first light on day three of week eleven.</p>
+    </div>
+
+    <!-- ====== THE MANIFESTO ====== -->
+    <div class="k-card">
+      <h3>The Refusing Youth Manifesto &mdash; Reformed Joint-Signature Clauses (Ratified 18-6)</h3>
+      <p style="font-size:.92em;color:#c9bbd8;line-height:1.8;">The Manifesto&rsquo;s three first-draft clauses (Lalruatpuia&rsquo;s spring 2025 publication, ratified by no body, foundation of the December 2025 sit-in) were softened in tone and sharpened in mechanism by Hmangaihi and Lalruatpuia jointly at the aunt&rsquo;s kitchen table across the two days following the funeral procession. The ratified joint-signature clauses are:</p>
+      <div class="manifesto-card">
+        <div class="mc-label">The Three Reformed Clauses &bull; Ratified by Kingdom-Council 18-6</div>
+        <div class="mc-text">Clause One: Tlawmngaihna is the kingdom&rsquo;s gift. The gift is freely received and freely given. The gift is not the inheritance. The kingdom-council shall administer the distinction.
+
+Clause Two: Service from incapacity is not service. The Mizo who has nothing left to give is excused from the giving by formal application to the kingdom-council. The kingdom-council shall grant the excuse without prejudice.
+
+Clause Three: The kingdom may not require self-destruction as proof of citizenship. The kingdom may, by formal vote, accept a citizen&rsquo;s self-sacrifice when the citizen has volunteered the sacrifice with full knowledge of the alternatives. The kingdom shall maintain a public registry of all such acceptances. The kingdom shall provide care for the citizen&rsquo;s family for ten years following the acceptance.</div>
+        <div class="mc-attr">&mdash; Drafted by Hmangaihi (17, bond-bearer) and Lalruatpuia (22, political seat) jointly at the aunt&rsquo;s kitchen table across two days after the funeral procession. Ratified by the kingdom-council on the Friday following the funeral by an 18-6 vote. Ramdinmawia (former senior chair) voted in favour; resigned the chair immediately after the vote. Lalrinpuii of the Synod succeeded as senior chair. First registry entry is Tlangvala. First ten-year-care recipients are Hmangaihi and Lalruatpuia (both decline the financial component; both accept the recognition).</div>
+      </div>
+    </div>
+
+    <!-- ====== KEY CHARACTERS ====== -->
+    <div class="k-card">
+      <h3>Key Characters &mdash; This Chapter</h3>
+
+      <div class="ccard father">
+        <span class="role-tag">Hero &bull; Dies, Stage III on the Mountain</span>
+        <h4>Tlangvala (deceased)</h4>
+        <div class="ctitle">The Man Who Cannot Refuse &bull; Bloodline D &bull; Karna-mapped</div>
+        <p>Forty-three. The Mountain Guardian of Mizoram for twenty-one years. Embodied <em>tlawmngaihna</em> &mdash; the Mizo creed of the inability to refuse help. His wife died in the Mautam bamboo-famine when their children were small; she had given away her own food rations to neighbours and strangers under his tlawmngaihna inheritance. He carried the creed for twenty-one more years after her death. Walked into the eastern granite face of Phawngpui Mountain at five-thirty-one a.m. on the third day of week eleven, in plain Mizo wool (in his son&rsquo;s Manifesto-style; he had dressed for the entry without his family-mark), carrying the bamboo staff-spear Hnam-Tuk in his right hand and nothing else. The fissure opened at the moment of first-light and closed twelve seconds after his entry. The Stage III serow-foreleg mark formed on the eastern face over the following forty-three minutes &mdash; a forty-seven-metre living-rock relief visible from twenty-three kilometres away, structurally part of the granite&rsquo;s recomposed mineral state, expected to remain visible for at least eight hundred years per the Forest Department&rsquo;s geological assessment. The southern fissure opened at six-thirty-two and the six hundred and twenty-nine locked youth emerged across the next eleven minutes. None of them died inside; none required hospitalisation. The kingdom&rsquo;s funeral procession three days later carried a symbolic empty bamboo bier with its upper-third bent to thirty-five degrees in the standard Mizo bamboo-bend; the bier was left at the base of the mark as a permanent memorial. The bamboo staff-spear Hnam-Tuk passed to Lalruatpuia (his son) by Ramdinmawia&rsquo;s spoken declaration at the procession. The serow-bond passed to Hmangaihi (his niece) by the wild serow that walked down from the southern ridge to her right side at seven-fifty-three a.m. on the same morning the mark formed. Per restructure §1 Mizoram joins the NE Federation under Moirangthem in Chapter Three.</p>
+      </div>
+
+      <div class="ccard son">
+        <span class="role-tag">Non-Bonded Political Inheritor &bull; Refusing Youth Author</span>
+        <h4>Lalruatpuia</h4>
+        <div class="ctitle">The Twenty-Two-Year-Old Who Wrote the Refusing Youth Manifesto</div>
+        <p>Twenty-two. Tlangvala&rsquo;s son. Drafted the first version of the Refusing Youth Manifesto in spring 2025; published it on the kingdom&rsquo;s public registry the morning of the August Youth Council; received four-minute applause from the assembled fourteen hundred Refusing Youth at the Aizawl Presbyterian Synod hall. His December 2025 sit-in had hardened the senior tribal-elders&rsquo; position by twenty per cent &mdash; the political failure he carries through Chapter Two. Has not spoken to his father since the December sit-in. Reconciles with his father across a single kitchen-conversation on the Sunday evening before the Tuesday entry. Inherits the bamboo staff-spear Hnam-Tuk at the funeral procession. Inherits the kingdom-council&rsquo;s northern-end political seat at the emergency ratification session on the Friday following the funeral. Co-drafts the reformed three-clause Manifesto with Hmangaihi at the aunt&rsquo;s kitchen table across two days. Casts the joint-signature with her on the ratified document. The 22-year-old non-bonded male political inheritor pattern matches the Meghalaya pattern of U-Khrawkmen (the 28-year-old non-bonded male inheritor of a matrilineal kingdom by Meghanadi&rsquo;s explicit-wish), but with one key difference: U-Khrawkmen&rsquo;s authority was Meghanadi&rsquo;s written wish; Lalruatpuia&rsquo;s authority is the kingdom-council&rsquo;s emergency vote following his father&rsquo;s death. Per Ch 3 plan he attends the Sanctuary as Mizoram&rsquo;s joint political voice with Hmangaihi.</p>
+      </div>
+
+      <div class="ccard niece">
+        <span class="role-tag">Bond-Bearer &bull; Stage I Serow-Hoofprint</span>
+        <h4>Hmangaihi</h4>
+        <div class="ctitle">The Seventeen-Year-Old Niece Whose Name the Mountain Spoke Through the Two-Headed Serow</div>
+        <p>Seventeen. Tlangvala&rsquo;s eldest sister&rsquo;s daughter. Raised at Tlangvala&rsquo;s household from age nine (after her mother&rsquo;s 2018 landslide death) until the December 2025 sit-in. Stayed with her uncle during the sit-in&rsquo;s family-fracture; refused to take sides between father and son; understood both. Was at the western trailhead with Lalruatpuia from four a.m. on the entry-morning; watched the mark form through her late father&rsquo;s Forest Department binoculars. Received the serow-bond at seven-fifty-three a.m. when a wild serow walked down from Phawngpui&rsquo;s southern ridge and stopped at her right side. Stage I serow-hoofprint formed on her right shoulder over the following forty-eight hours. The two-headed serow kid born four days later on the Phawngpui southern slope &mdash; observed by the Mizoram Forest Department&rsquo;s Vanlalruati and two junior rangers &mdash; spoke her name in plain Mizo with both heads in synchrony at twenty-three hours&rsquo; age, four minutes before its death. Drafts the cross-kingdom Sarus-pigeon cascade-alert about the two-headed serow at three p.m. on the day of the kid&rsquo;s death; the alert is sent to all nine bonded-kingdom senior guardians by sunset. Per Ch 3 plan she attends the Sanctuary as Mizoram&rsquo;s bond-bearer alongside Lalruatpuia and Lalrinpuii. The Mizoram pattern matches the Meghalaya pattern (non-bonded male political seat + female bond-bearer) but the bond-bearer here is older (17 vs Meghalaya&rsquo;s Ka-Sienlyngdoh at 12) and the bond has already settled (vs Meghalaya&rsquo;s dormant clouded-leopard waiting for Ka-Sienlyngdoh&rsquo;s threshold).</p>
+      </div>
+
+      <div class="ccard asura">
+        <span class="role-tag">Catalyst Villain &bull; Partially Dissolved, Depleted Survival</span>
+        <h4>Parvata-Asura &bull; The Mountain-Asura</h4>
+        <div class="ctitle">Chhinlung-Naag&rsquo;s Mountain-Form Returned as Standalone Successor</div>
+        <p>Forty-nine. Was Chhinlung-Naag&rsquo;s subordinate mountain-form in Chapter One; retreated to the Lushai Hills&rsquo; southern range when Tlangvala fought the serpent at the Chhinlung cave-mouth; spent two years rebuilding his own form. Returned in spring 2025, no longer subordinate, now a standalone mountain-asura in his own right. Visited all eight Mizoram district-headquarters across spring-summer 2026, offering <em>&ldquo;refuge from the inheritance&rdquo;</em> inside Phawngpui Mountain to households with sons or daughters in the 15-22 age bracket. His pitch was articulate, his rations were genuine, his offer was strategically perfect &mdash; he had read the Refusing Youth Manifesto&rsquo;s first-draft clauses three weeks before publication and calibrated the offer to attract the exact cohort the Manifesto would politicise. Locked the six hundred and twenty-nine accepting youth at the new-moon week of week four. Demanded one perfect sacrifice as ransom. Received Tlangvala&rsquo;s entry at first light on day three of week eleven. Was partially dissolved by the same dissolution that formed the eastern mark &mdash; some of his mountain-body became the mark&rsquo;s granite, some retreated into the deep southern range. The Forest Department&rsquo;s thermal survey detects faint residual mountain-asura presence in the Lushai Hills&rsquo; southern range over the following month. Per Ch 3 plan he becomes Adharma-Kendra&rsquo;s fourth NE field-operative, coordinating with Tamasa-Nrita (Burmese border), Naga-Rakshasa (Chin-state), and Megha-Daitya&rsquo;s captured Kong-Bah (Aizawl detention).</p>
+      </div>
+
+      <div class="ccard elder">
+        <span class="role-tag">Senior Chair &bull; Retired After Ratification</span>
+        <h4>Ramdinmawia (retired)</h4>
+        <div class="ctitle">The Eighty-One-Year-Old Tribal-Council Senior Chair Whose Last Act Was the Joint-Signature Ratification</div>
+        <p>Eighty-one. The most senior Tlawmngaihna-Desh tribal-elder, senior chair of the kingdom-council since 1996. Attended every biennium of the Youth Council since 1971. Had not seen four-minute applause for a Youth Council statement in his lifetime before the August 2026 Manifesto address. Recognised at the time, in his elder-side commentary to Lalrinpuii of the Synod, that the boy was right (about the creed&rsquo;s misuse) and also wrong (about the kingdom&rsquo;s readiness to administer it). Moved the kingdom-council&rsquo;s emergency vote to formally request that Tlangvala not return (the unprecedented vote that had not been taken in any Mizo tribal-council in recorded history; passed 15-7). Voted in favour of the reformed Manifesto&rsquo;s ratification at the Friday session (vote 18-6). Resigned the senior chair effective the moment of the ratification vote. Passed the senior-chair&rsquo;s ceremonial bamboo gavel to Lalrinpuii at six-twenty-eight p.m. Survives Volume I in private retirement at his Aizawl home, attended by his three children and seven grandchildren. Becomes the kingdom&rsquo;s standing elder-advisor through Ch 3 and Ch 4 without formal council seat.</p>
+      </div>
+
+      <div class="ccard moderator">
+        <span class="role-tag">New Senior Chair &bull; Synod Moderator</span>
+        <h4>Lalrinpuii</h4>
+        <div class="ctitle">The Sixty-Six-Year-Old Aizawl Presbyterian Synod Moderator Who Drafted the Sacrifice-Geography</div>
+        <p>Sixty-six. Senior moderator of the Aizawl Presbyterian Synod for eleven years. Drafted the geography of the Tuesday-morning entry the night before &mdash; the kingdom watches from the west, the asura takes the east, the bond walks down between the two &mdash; that the kingdom-council ratified by unanimous vote. Succeeds Ramdinmawia as the kingdom-council&rsquo;s senior chair at six-twenty-eight p.m. on the ratification Friday. Will attend the Sanctuary as the kingdom&rsquo;s administrative voice alongside Hmangaihi and Lalruatpuia. The first Synod-moderator to hold the senior-chair position in the kingdom&rsquo;s post-1972 history (previous senior chairs have all been from the tribal-council&rsquo;s senior delegate ring; the Synod has been an advisory voice only). Her elevation is the kingdom&rsquo;s evidence that the new administration of the creed will draw from both the tribal-council and the Synod institutional traditions.</p>
+      </div>
+
+      <div class="ccard ranger">
+        <span class="role-tag">Shrine-Keeper &bull; Two-Headed Serow Witness</span>
+        <h4>Vanlalruati</h4>
+        <div class="ctitle">The Mizoram Forest Department Senior Ranger Who Observed the Speech-Event</div>
+        <p>Forty-one. Senior shrine-keeper for the Phawngpui Mountain Sanctuary. Observed the two-headed serow kid&rsquo;s birth on the Phawngpui southern slope at three-oh-two a.m. on day four after Tlangvala&rsquo;s death, alongside two junior rangers. Maintained the six-metre observation distance through the kid&rsquo;s twenty-three-hour lifespan. Recorded the speech-event on her body-camera audio at one-fifty-eight a.m. on the death day; subsequent audio analysis confirmed the two heads&rsquo; voices were sharply distinct (one slightly higher-pitched, one slightly lower), neither resembling a standard serow vocalisation, with sub-fifty-millisecond synchrony consistent with two distinct vocal-tracts producing the single word in coordinated production. Appointed by the kingdom-council&rsquo;s emergency vote three weeks after the funeral as the shrine-keeper for both the eastern-face mark&rsquo;s bier-base (counts daily pilgrim-arrivals, refreshes the bamboo&rsquo;s upper-third bend with a small saffron cord at the standard thirty-five degrees each morning) and the two-headed serow&rsquo;s zoological-museum sub-collection at the Aizawl District Forest Department (authorised to display the preserved kid&rsquo;s body to family-members of the locked-six-hundred-and-twenty-nine on request).</p>
+      </div>
+
+      <div class="ccard serow">
+        <span class="role-tag">Cosmic Sign &bull; First Future-Naming Event</span>
+        <h4>The Two-Headed Serow Kid</h4>
+        <div class="ctitle">Mizoram&rsquo;s Void Maw Sign &bull; The Saga&rsquo;s First Future-Naming Experiment</div>
+        <p>Born at three-oh-two a.m. on day four after Tlangvala&rsquo;s death to a wild doe at the southern Phawngpui meadow. Two fully-formed heads on a single body, branching at approximately the level of the shoulder-blades. Both heads breathed independently, opened eyes independently, looked in different directions, blinked in synchrony, nursed simultaneously from the mother. The body was otherwise normal &mdash; one set of four legs, one torso, one tail, standard serow-kid colouring and proportions. Lived approximately twenty-three hours. At one-fifty-eight a.m. on the death-day, both heads spoke together in plain Mizo, a single word, the niece&rsquo;s name: <em>&ldquo;Hmangaihi.&rdquo;</em> Both voices distinct, sub-fifty-millisecond synchrony, audible to all five observers (Vanlalruati, two junior rangers, Hmangaihi, Lalruatpuia) at the six-metre observation distance. Died four minutes after speaking. Body preserved in formaldehyde at the Aizawl District Forest Department&rsquo;s zoological-museum sub-collection in the configuration in which it died. Logged as <em>&ldquo;Two-headed serow kid, Phawngpui southern slope, post-natal death at 23 hours, observed speech at 23 hours minus 4 minutes, single word, &lsquo;Hmangaihi.&rsquo;&rdquo;</em> Mother stayed at the village outskirts for three days after the kid&rsquo;s death; villagers left food and water; she did not eat or drink; on day four she walked back up to the meadow and was not seen again. The Maw has demonstrated the capacity to <strong>name the next bond-bearer aloud through a creature that should not have existed and should not have spoken</strong>. The sign is the saga&rsquo;s first future-naming Maw event.</p>
+      </div>
+
+    </div>
+
+    <div style="display:flex;justify-content:space-between;margin-top:24px;flex-wrap:wrap;gap:10px;">
+      <a href="index.html" style="color:#c9a04a;text-decoration:none;font-size:.85em;">&larr; Overview</a>
+      <a href="story.html" style="color:#c9a04a;text-decoration:none;font-size:.85em;">Story &rarr;</a>
+    </div>
+  </div>
+
+  <footer style="text-align:center;padding:28px 20px;border-top:1px solid rgba(196,77,170,.12);color:#9a8db0;font-size:.75em;">
+    <p>Tlawmngaihna-Desh Identity &bull; Civil War &bull; Chapter 2</p>
+  </footer>
+</body>
+</html>

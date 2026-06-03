@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Void-Maw &mdash; Chapter Four &mdash; The Great Epic &mdash; Age of Mythos</title>
+  <style>
+    :root { --bg:#06040c; --ac:#7048a8; --gold:#e8c870; --abyss:#1a1024; --crack:#d8b870; --shrink:#80a878; --text:#d8d0e0; --dim:#a098b0; --card:#0e0a18; --border:rgba(112,72,168,.24); }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:Georgia,serif; background:var(--bg); color:var(--text); line-height:1.85; min-height:100vh; }
+
+    .m-head { text-align:center; padding:96px 24px 56px; background:radial-gradient(ellipse at center,rgba(112,72,168,.20) 0%,transparent 70%); border-bottom:1px solid var(--border); position:relative; }
+    .m-head::before { content:""; position:absolute; top:30px; left:50%; transform:translateX(-50%); width:60px; height:60px; border-radius:50%; background:radial-gradient(circle,rgba(112,72,168,.6),transparent 70%); opacity:.6; }
+    .m-head .badge { font-size:.55em; letter-spacing:5px; text-transform:uppercase; color:var(--ac); opacity:.88; margin-bottom:22px; position:relative; }
+    .m-head .badge .border { color:var(--gold); font-weight:bold; }
+    .m-head h1 { font-size:clamp(2.6em,5vw,3.8em); color:var(--gold); margin-bottom:14px; letter-spacing:3px; position:relative; }
+    .m-head .epithet { font-size:.85em; color:var(--ac); letter-spacing:2px; margin-bottom:18px; font-style:italic; position:relative; }
+    .m-head .tagline { color:#d8d0e0; font-size:.95em; max-width:780px; margin:0 auto; line-height:1.85; font-style:italic; position:relative; }
+    .boundary { display:block; margin:26px auto 0; width:280px; height:1px; background:linear-gradient(90deg,transparent,var(--ac) 35%,var(--gold) 50%,var(--ac) 65%,transparent); opacity:.85; }
+
+    .m-nav { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:14px 20px; background:rgba(0,0,0,.7); border-bottom:1px solid rgba(112,72,168,.16); }
+    .m-nav a { padding:5px 16px; border-radius:20px; border:1px solid rgba(112,72,168,.28); color:var(--dim); font-size:.72em; letter-spacing:1px; text-decoration:none; transition:all .15s; }
+    .m-nav a:hover, .m-nav a.active { background:rgba(112,72,168,.14); border-color:var(--gold); color:#fff; }
+
+    .m-section { max-width:920px; margin:0 auto; padding:48px 22px 24px; }
+    .m-section h2 { font-size:1.5em; color:var(--gold); letter-spacing:1px; margin-bottom:18px; font-family:Georgia,serif; }
+    .m-section h3 { font-size:1.1em; color:var(--ac); margin:24px 0 12px; font-family:Georgia,serif; }
+    .m-section p { font-size:.94em; color:#d8d0e0; margin-bottom:16px; }
+    .m-section p strong { color:#f0e0b8; }
+    .m-section p em { color:var(--gold); }
+
+    .definition-banner { background:linear-gradient(135deg,rgba(112,72,168,.16),rgba(0,0,0,.4)); border:1px solid rgba(112,72,168,.40); border-left:4px solid var(--ac); padding:24px 26px; border-radius:11px; margin:18px 0 24px; }
+    .definition-banner .db-label { font-size:.55em; letter-spacing:3px; text-transform:uppercase; color:var(--ac); margin-bottom:8px; }
+    .definition-banner .db-line { color:var(--gold); font-size:1em; line-height:1.9; font-style:italic; }
+
+    .timeline { background:linear-gradient(180deg,rgba(112,72,168,.10),rgba(0,0,0,.4)); border:1px solid var(--border); border-radius:12px; padding:24px 26px; margin:18px 0; }
+    .timeline h3 { color:var(--gold); margin-bottom:14px; border-bottom:1px solid rgba(112,72,168,.18); padding-bottom:8px; }
+    .timeline .tl-row { display:grid; grid-template-columns:170px 1fr; gap:18px; padding:11px 0; border-bottom:1px solid rgba(112,72,168,.10); }
+    .timeline .tl-row:last-child { border-bottom:none; }
+    .timeline .tl-time { font-size:.78em; color:var(--ac); font-family:'Courier New',monospace; letter-spacing:1px; }
+    .timeline .tl-event { font-size:.85em; color:#d8d0e0; line-height:1.75; }
+    @media (max-width:680px) { .timeline .tl-row { grid-template-columns:1fr; gap:4px; } }
+
+    .mechanic-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin:18px 0; }
+    @media (max-width:680px) { .mechanic-grid { grid-template-columns:1fr; } }
+    .mech-card { background:var(--card); border:1px solid var(--border); border-radius:11px; padding:18px 20px; }
+    .mech-card .mc-tag { font-size:.55em; letter-spacing:2px; text-transform:uppercase; color:var(--ac); margin-bottom:6px; }
+    .mech-card h4 { font-size:.92em; color:var(--gold); font-family:Georgia,serif; margin-bottom:8px; }
+    .mech-card p { font-size:.78em; color:#c8c0d8; line-height:1.75; }
+    .mech-card.shrink { border-left:3px solid var(--shrink); }
+    .mech-card.shrink .mc-tag { color:var(--shrink); }
+    .mech-card.grow { border-left:3px solid #c84838; }
+    .mech-card.grow .mc-tag { color:#c84838; }
+
+    .pull-quote { border-left:3px solid var(--ac); background:rgba(112,72,168,.08); padding:18px 24px; margin:24px 0; font-style:italic; color:var(--gold); font-size:1em; line-height:1.85; }
+    .pull-quote .attrib { display:block; margin-top:10px; font-size:.74em; font-style:normal; color:var(--dim); letter-spacing:.5px; }
+
+    .footer { text-align:center; padding:38px 20px; border-top:1px solid var(--border); color:#888098; font-size:.72em; }
+    .footer a { color:var(--ac); text-decoration:none; }
+  </style>
+</head>
+<body>
+  <div class="m-head">
+    <div class="badge"><span class="border">Per D4 Administrative-Cross-Reference &bull; The Cosmic-Definition + The Mechanic + The History + The Seal-Administration</span> &bull; The Great Epic &bull; Chapter Four</div>
+    <h1>The Void-Maw</h1>
+    <div class="epithet">Absence With Intent &bull; The Wound In The Cosmic Order &bull; The Forgotten That Wants To Forget Itself</div>
+    <p class="tagline">The standing-Void-Maw is not a being. It is not an enemy. It is the standing-cosmic-absence that has accumulated enough negation to act. It does not want to destroy Bharatavarsha. It wants Bharatavarsha to forget itself. Its goal is not blood &mdash; it is amnesia. It cannot be killed. It can only be remembered into shape. Once shaped, it can be sealed. Only a hero whose tattoo holds the full memory of all six regions can shape it. That hero is Krishnadevaraya-Bhrata. This page is its definition.</p>
+    <span class="boundary"></span>
+  </div>
+
+  <div class="m-nav">
+    <a href="../index.html">&larr; Chapter 4 Index</a>
+    <a href="maw.html" class="active">The Void-Maw</a>
+    <a href="kurukshetra.html">Kurukshetra</a>
+  </div>
+
+  <div class="m-section">
+    <h2>The Definition</h2>
+    <div class="definition-banner">
+      <div class="db-label">Per D4 Administrative-Cross-Reference &bull; The Standing-Canonical Void-Maw Definition</div>
+      <p class="db-line">The standing-Void-Maw is a standing-tear in the standing-cosmic order &mdash; the standing-wound left when the standing-great-ancestor of the standing-Five Bloodlines (mythic, unnamed) was standing-forgotten by all standing-five lineages simultaneously. It is not a being. It is an standing-absence-with-intent &mdash; an absence that has accumulated enough negation to act. Its goal is not destruction. Its goal is to make Bharatavarsha forget itself completely &mdash; to erase the standing-Bloodlines, the standing-heroes, the standing-kingdoms, until the standing-continent is one undifferentiated absence. A standing-cosmic-forgetting. It cannot be killed. It can be standing-remembered into shape &mdash; given form by an act of total memory &mdash; and once given form, it can be sealed. Only a hero whose standing-tattoo holds the standing-full memory of all six regions can give the Maw a form.</p>
+    </div>
+
+    <h2>The History &mdash; How The Maw Came To Be</h2>
+    <p>Per the standing-Vyasa-of-the-Margins cosmic-record + the standing-Hampi-buried-temple inscription cross-reference, the standing-Five Bloodlines (A: Gajavamsha-Krishna-line + B: Suryavamshi-Vindhyan-line + C: Bhairavi-Chandravamsha-line + D: Drona-Madhyama-line + Vana-Kula northeast-cross-reference) emerged from a standing-single-great-ancestor at the standing-Indus-Sarasvati-Yamuna confluence-administration cross-reference at the standing-mythic pre-dawn-of-Bharatavarsha cross-reference. The standing-great-ancestor had a standing-name. The standing-name was administered across the standing-Five Bloodlines at the standing-charter-foundational lineage-cross-reference.</p>
+
+    <p>Over the standing-millennia the standing-name was passed down. Then it was simplified. Then it was administered in standing-fragments. Then it was administered in standing-references. Then it was administered as standing-the-great-ancestor without specification. Then it was forgotten. Each Bloodline forgot it independently. The standing-Bloodline-A forgot it at the standing-1565-CE Vijayanagara-Empire defeat cross-reference at the standing-Talikota-battle administrative cross-reference. The standing-Bloodline-B forgot it at the standing-1857-CE Awadh-revolt cross-reference. The standing-Bloodline-C forgot it at the standing-1947-CE Bengal-partition cross-reference. The standing-Bloodline-D forgot it at the standing-1990-CE post-Mandal cross-reference. The standing-Vana-Kula forgot it at the standing-1962-CE Sino-Indian-war cross-reference at the standing-Arunachal-McMahon-Line administrative-cross-reference.</p>
+
+    <p>By the standing-1992-CE Bhopal-printing-press cross-reference all five Bloodlines had simultaneously administered the standing-name-forgotten administrative-cross-reference. The standing-cosmic-record at the standing-Vyasa-of-the-Margins record-cell administered the standing-name-absent configuration. The standing-Maw began to administer at the standing-1992-CE cross-reference. It was small at first. It administered as a standing-Bhopal-printing-press scratch-on-the-pavement administrative-cross-reference at the standing-Vidya-Bhavan road. It grew. It administered as a standing-Bengal-Bhopal cross-region Bloodline-C debt-ledger. It administered as the standing-Sukma-Bastar destroyed-town. It administered as the standing-Karnataka-temple-earthquake-1565 retrospective re-administration cross-reference. It administered as the standing-Sahyadri-squirrel-bond death at Shivagati-duel-death cross-reference. Each forgetting fed it. Each remembering shrank it.</p>
+
+    <p>By the standing-Chapter-Three Sanctuary-cracked-seventh-seat July 4 2027 cross-reference the standing-Maw is at the standing-cosmic-scale administration. It can crack stone. It can swallow children. It can erase bonds. It walks behind its standing-Four-Heralds. It speaks in absences. By Chapter Four it administers as a standing-sky-wound over Bharatavarsha at the standing-mid-cosmic-altitude cross-reference.</p>
+
+    <h2>The Mechanic &mdash; How The Maw Grows And Shrinks</h2>
+    <div class="mechanic-grid">
+      <div class="mech-card grow">
+        <div class="mc-tag">Grows &bull; Each Act Of Forgetting</div>
+        <h4>Killing A Herald</h4>
+        <p>Killing a standing-Herald is the standing-most-direct way to grow the Maw. The standing-Herald was administered by the standing-Maw at the standing-released-from-pain configuration. Killing them re-administers the standing-loss-of-memory at the standing-charter-foundational cross-reference. The Maw doubles. Per D6 administrative-cross-reference: <strong>never kill a Herald.</strong></p>
+      </div>
+      <div class="mech-card grow">
+        <div class="mc-tag">Grows &bull; Each Act Of Forgetting</div>
+        <h4>Killing An Ally In Forgetfulness</h4>
+        <p>Killing an enemy without naming them grows the Maw at the standing-quarter-administration cross-reference. Killing an enemy after naming them grows the Maw not-at-all. Per the standing-Heralds-Rule expansion at Chapter Four: <strong>name first, then judge. Naming-without-killing closes the standing-debt-ledger at the standing-Bharatavarsha-rule cross-reference.</strong></p>
+      </div>
+      <div class="mech-card grow">
+        <div class="mc-tag">Grows &bull; Each Act Of Forgetting</div>
+        <h4>Breaking A Bond</h4>
+        <p>When a standing-bonded-animal forgets its standing-host, the Maw grows. The standing-Goan-Gaur forgetting Simhavikrama at Ch 4 Front Three administers the standing-half-power-for-two-months administrative-cross-reference and grows the Maw at the standing-Mormugao-coast cross-reference. The standing-cure is the standing-re-remembering at the standing-bond-host-acknowledgement cross-reference + the standing-animal-host-acknowledgement cross-reference at the standing-dawn-window.</p>
+      </div>
+      <div class="mech-card shrink">
+        <div class="mc-tag">Shrinks &bull; Each Act Of Remembering</div>
+        <h4>Speaking A Forgotten Name Aloud</h4>
+        <p>The standing-primary-mechanic of Maw-shrinkage. Speaking a standing-forgotten-name aloud at the standing-cardinal-cross-position cross-reference administers a standing-Maw-shrinkage at the standing-name-weight administrative-cross-reference. The standing-name-weight is at the standing-how-many-people-knew-the-name + how-recently-it-was-forgotten configuration. Old names weigh more. Long-forgotten names weigh most.</p>
+      </div>
+      <div class="mech-card shrink">
+        <div class="mc-tag">Shrinks &bull; Each Act Of Remembering</div>
+        <h4>The Standing-Naming-Cohort Reading Aloud</h4>
+        <p>The standing-Ch-3-Aftermath-interlude established the standing-cross-region nine-name reading-aloud administrative-cross-reference. When the standing-Six Dominants read the standing-nine-names aloud at the standing-six eastern-cardinal-courtyards simultaneously at the standing-4:11:11 a.m. window August 23 2027 cross-reference the Maw shrank by the standing-eleven-percent administrative cross-reference. The standing-Naming-Cohort multiplies the shrinkage at the standing-simultaneous-cardinal-cross cross-reference.</p>
+      </div>
+      <div class="mech-card shrink">
+        <div class="mc-tag">Shrinks &bull; Each Act Of Remembering</div>
+        <h4>The Standing-Tattoo-IV-Supreme-Mark Full-Body Administration</h4>
+        <p>Only a hero whose standing-tattoo holds the standing-full memory of all six regions can give the Maw a form. Krishnadevaraya-Bhrata at the standing-Stage-IV-supreme-mark full-body administration cross-reference administers the standing-final-shaping at the standing-Maw-faceless-seat configuration cross-reference. The standing-Stage-IV is the only mark-level that scales to the standing-Maw. Stages I + II + III are at the standing-regional cross-reference. Stage IV is at the standing-cosmic cross-reference.</p>
+      </div>
+    </div>
+
+    <h2>The Heralds-Rule Expansion At Chapter Four</h2>
+    <p>Per D6 administrative-cross-reference + the standing-Chapter-Four amended-Maha-Adhipati charter cross-reference: the standing-Heralds-Rule (remember, do not kill) is the standing-original administrative-cross-reference for the four standing-Maw-Heralds. At Chapter Four it expands to the standing-Bharatavarsha-rule:</p>
+
+    <div class="pull-quote">Name first, then judge. To name an enemy is to acknowledge their place in the standing-cosmic-record. To kill them without naming is to feed the standing-Maw. To name them and then choose mercy is to shrink the standing-Maw. To name them and then choose imprisonment is also to shrink the standing-Maw. To name them and then choose nothing &mdash; to let them walk &mdash; is to shrink the standing-Maw most of all. The standing-Heralds-Rule is the standing-Bharatavarsha-rule. The standing-revenge-completed ledger and the standing-revenge-unresolved ledger close not at the standing-blade but at the standing-named-mouth.
+      <span class="attrib">— Krishnadevaraya-Bhrata, Grand-Council convening at Hampi, October 11 2028, Sanskrit-Kannada-Hindi tri-language</span>
+    </div>
+
+    <h2>The Seal-Administration &mdash; September 12 2028</h2>
+    <div class="timeline">
+      <h3>Inside The Maw &bull; The Naming-Rite Of Krishnadevaraya-Bhrata</h3>
+      <div class="tl-row">
+        <div class="tl-time">9:11:11 a.m.</div>
+        <div class="tl-event">Krishnadevaraya-Bhrata enters the standing-Void-Maw alone at the standing-Kurukshetra-bhoomi cardinal-cross-Centre cross-reference. He carries no weapon. He carries the standing-Twelve-Piece Memorial bronze-dust from his twin&rsquo;s broken throne-stone in his right-pocket. He carries the standing-Hampi-of-the-Bronze pouch in his left-pocket.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">9:11:23 a.m.</div>
+        <div class="tl-event">He meets his standing-twin Bhoomi-Takshaka. He names him: <em>&ldquo;Bhoomi-Takshaka of Bloodline-A Gajavamsha desert-edge-of-the-line, my standing-twin-brother, born 1984 at Hampi-Royal-Court eastern-cardinal-ward, died 2025 at the standing-buried-temple chamber. I have not forgotten you. I will not.&rdquo;</em> The Maw shrinks by 1/9.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">9:12:11 a.m.</div>
+        <div class="tl-event">He meets Tungabhadra. He names her: <em>&ldquo;Tungabhadra of Bloodline-A Madhavi-Karnataka-line, my cousin, my predecessor, born 1976 at Hampi, died 2025 with my twin. I carry your elephant-bond. I carry it well.&rdquo;</em> The Maw shrinks by 1/9.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">9:13-9:23 a.m.</div>
+        <div class="tl-event">He names Krishnaveni + Sundarvani + Jagannathi + Shivagati + Sagaradeva + Tlangvala + Meghanadi + Himavati. The Maw shrinks by 8/9 across the standing-ten-minute window.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">9:23-10:23 a.m.</div>
+        <div class="tl-event">He names the standing-eleven Bhoomi-Takshaka fifth-cousin-administrators + the standing-Madhya-Pradesh forty-seven-thousand famine-dead + the standing-Karnataka-Hadali one-thousand-and-fifty-one + the standing-Sukma-Bastar eleven-hundred + the standing-Loktak central-phumdi nine + the standing-Nongriat-Ka-Sngi + the standing-Bhopal-1992 two-thousand-two-hundred-and-fifty-nine + the standing-Bengal-partition + the standing-Awadh-revolt + the standing-Talikota-battle administrative-cross-references. The Maw shrinks to the standing-size of a standing-single-figure.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">10:23-11:00 a.m.</div>
+        <div class="tl-event">He meets the standing-Great-Ancestor at the standing-faceless-figure configuration. He shapes its face from his memory of every face he has known: his mother + his father + his twin + Tungabhadra + Hampi-of-the-Bronze + every Dominant + every state-administrator + every bond-companion. The figure&rsquo;s face becomes the standing-composite-face of the standing-Six-Cluster cardinal-cross administrative-cross-reference. The figure becomes a standing-seat.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">11:11:11 a.m.</div>
+        <div class="tl-event"><strong>Krishnadevaraya-Bhrata sits on the standing-Great-Ancestor seat. The standing-seat becomes a standing-crown on his head. The standing-Maw seals at the standing-eleven-eleven-eleven a.m. September 12 2028 cross-reference. The standing-sky-wound closes. The standing-Heralds become standing-keepers-of-forgotten-things. He returns to Kurukshetra-bhoomi wearing the standing-Stage-IV-supreme-mark full-body tattoo at the standing-saga&rsquo;s standing-only Stage-IV-supreme-mark administrative-cross-reference.</strong></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">11:11:23 a.m.</div>
+        <div class="tl-event">Hampi-of-the-Bronze at sixteen returns from the standing-Maw at the standing-Hampi-buried-temple chamber South-cluster cross-reference. The standing-bronze-dust pouch on the floor opens itself. The boy is whole. He carries the standing-Third-Herald at the foot of his bed permanently at the standing-saga&rsquo;s first Herald-bonded-to-the-living administrative-cross-reference.</div>
+      </div>
+    </div>
+
+    <h2>The Sealed-Maw After September 12 2028</h2>
+    <p>The standing-Void-Maw is sealed under the standing-Hampi-buried-temple chamber at the standing-cardinal-cross-Centre cross-reference. It hums. It does not crack. It does not invade. It administers the standing-pending-administration at the standing-Volume-II Yavana-Khanda launch-point cross-reference (per D7 administrative-cross-reference): the standing-Maw is at the standing-seal-but-not-extinguished configuration. It will be present in Volume II at the standing-pre-launch-point cross-reference but as the standing-sealed-cosmic-resonance cross-reference rather than the standing-active-invader cross-reference.</p>
+
+    <p>The standing-Stage-IV-supreme-mark on Krishnadevaraya-Bhrata is the standing-permanent administrative-cross-reference. He wears it for the rest of his standing-life-administration. The standing-crown that was a seat is at the standing-cosmic-record-administration cross-reference. He visits the standing-Hampi-buried-temple chamber every standing-eleventh-of-September dawn-window. He places his standing-right-hand on the standing-cardinal-cross-Centre. The standing-Maw hums in acknowledgement. He does not need to speak.</p>
+
+    <div class="pull-quote">The Maw does not die. The Maw is named. A named thing has a place. A placed thing does not need to invade. The standing-Maha-Adhipati is the standing-mouth that holds the name. The standing-Six Dominants are the standing-council that holds the mouth. Bharatavarsha holds the council. The standing-cosmic-record holds Bharatavarsha. The forgetting was a wound. The remembering is the standing-scar. The standing-scar holds.
+      <span class="attrib">— Krishnadevaraya-Bhrata, the standing-first standing-eleventh-of-September Hampi-buried-temple dawn-window visit, September 11 2029</span>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>The Void-Maw &bull; Chapter Four &bull; The Great Epic &bull; Maha Parva &bull; Age of Mythos Volume I</p>
+    <p style="margin-top:8px;"><a href="../index.html">&larr; Chapter 4 Index</a> &middot; <a href="kurukshetra.html">Kurukshetra &rarr;</a></p>
+  </footer>
+</body>
+</html>

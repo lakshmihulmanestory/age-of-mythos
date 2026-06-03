@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ganga-Simhasana &mdash; Rules &amp; Weapons &mdash; Civil War</title>
+  <link rel="stylesheet" href="../../../../../chapter-1-rise-of-legends/css/style.css">
+  <style>
+    body { background:#070914; color:#f0e8f8; }
+    .k-banner { text-align:center; padding:78px 20px 36px; border-bottom:1px solid rgba(196,77,170,.16); }
+    .k-banner .badge { font-size:.55em; letter-spacing:4px; text-transform:uppercase; color:#c44daa; opacity:.85; margin-bottom:12px; }
+    .k-banner h1 { font-size:2em; color:#cfd8ff; margin-bottom:.1em; }
+    .k-banner .state-label { font-size:.72em; color:#c9bbd8; opacity:.6; margin-bottom:.4em; }
+    .k-nav { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:14px 20px; background:rgba(0,0,0,.5); border-bottom:1px solid rgba(196,77,170,.1); }
+    .k-nav a { padding:5px 16px; border-radius:20px; border:1px solid rgba(196,77,170,.25); color:#d4c5e8; font-size:.72em; letter-spacing:1px; text-decoration:none; transition:all .15s; }
+    .k-nav a:hover, .k-nav a.active { background:rgba(196,77,170,.12); border-color:#c44daa; color:#fff; }
+    .k-section { max-width:1000px; margin:0 auto; padding:40px 20px 60px; }
+    .k-card { background:rgba(255,255,255,.025); border:1px solid rgba(196,77,170,.15); border-radius:10px; padding:24px; margin-bottom:20px; }
+    .k-card h3 { font-size:.72em; letter-spacing:2px; text-transform:uppercase; color:#cfd8ff; margin-bottom:14px; opacity:.9; }
+    .k-two { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    @media(max-width:640px){ .k-two { grid-template-columns:1fr; } }
+    .id-label { font-size:.62em; text-transform:uppercase; letter-spacing:2px; color:#9a8db0; opacity:.6; margin-bottom:3px; }
+    .id-value { font-size:.88em; color:#c9bbd8; margin-bottom:14px; line-height:1.65; }
+    .id-value strong { color:#fff5d4; }
+
+    .bond-pair { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:18px 0 8px; }
+    @media(max-width:680px){ .bond-pair { grid-template-columns:1fr; } }
+    .bond-side { padding:18px; border-radius:12px; }
+    .bond-side.regent { background:rgba(123,158,255,.08); border:1px solid rgba(123,158,255,.30); }
+    .bond-side.king   { background:rgba(255,215,0,.08); border:1px solid rgba(255,215,0,.30); }
+    .bond-side .b-name { font-size:1.1em; color:#fff5d4; margin-bottom:4px; font-family:Georgia,serif; }
+    .bond-side .b-status { font-size:.6em; letter-spacing:2px; text-transform:uppercase; margin-bottom:10px; }
+    .bond-side.regent .b-status { color:#7b9eff; }
+    .bond-side.king .b-status { color:#ffd700; }
+    .bond-side .b-desc { font-size:.82em; color:#c9bbd8; line-height:1.7; }
+
+    .tattoo-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    @media(max-width:600px){ .tattoo-grid { grid-template-columns:repeat(2,1fr); } }
+    .tattoo-stage { text-align:center; }
+    .tattoo-img { width:100%; border-radius:8px; border:1px solid rgba(123,158,255,.22); display:block; aspect-ratio:1; object-fit:cover; margin-bottom:8px; background:rgba(123,158,255,.06); }
+    .tattoo-stage.done .tattoo-img    { border-color:rgba(123,158,255,.40); background:rgba(20,30,60,.15); }
+    .tattoo-stage.first .tattoo-img   { border-color:rgba(255,215,0,.32); background:rgba(40,30,0,.15); }
+    .tattoo-stage.future .tattoo-img  { border-color:rgba(196,77,170,.18); background:rgba(196,77,170,.04); opacity:.5; }
+    .tattoo-stage-label { font-size:.58em; letter-spacing:2px; text-transform:uppercase; color:#7b9eff; opacity:.85; display:block; margin-bottom:2px; }
+    .tattoo-stage.first .tattoo-stage-label  { color:#ffd700; }
+    .tattoo-stage.future .tattoo-stage-label { color:#c44daa; }
+    .tattoo-stage-name { font-size:.78em; color:#fff5d4; display:block; margin-bottom:4px; }
+    .tattoo-stage-desc { font-size:.7em; color:#9a8db0; opacity:.85; line-height:1.55; }
+
+    .weapon-img { width:100%; border-radius:10px; border:1px solid rgba(123,158,255,.22); display:block; margin-bottom:10px; background:rgba(123,158,255,.04); }
+    .weapon-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#cfd8ff; opacity:.85; margin-bottom:4px; display:block; }
+    .weapon-name { font-size:.95em; color:#fff5d4; margin-bottom:8px; }
+    .weapon-desc { font-size:.82em; color:#c9bbd8; line-height:1.7; }
+
+    .crown-row { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:8px; }
+    @media(max-width:640px){ .crown-row { grid-template-columns:1fr; } }
+    .crown-card { padding:18px; border-radius:10px; background:rgba(255,255,255,.02); border:1px solid rgba(123,158,255,.16); }
+    .crown-card .cc-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#7b9eff; margin-bottom:6px; }
+    .crown-card .cc-state { font-size:1em; color:#cfd8ff; margin-bottom:8px; font-family:Georgia,serif; }
+    .crown-card .cc-desc { font-size:.84em; color:#c9bbd8; line-height:1.7; }
+
+    .saga-rule { padding:18px 22px; border-radius:12px; background:linear-gradient(135deg,rgba(123,158,255,.07),rgba(20,30,60,.03)); border:1px solid rgba(123,158,255,.28); margin:14px 0; }
+    .saga-rule .sr-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#7b9eff; margin-bottom:6px; }
+    .saga-rule .sr-text { color:#d4dfff; font-size:.9em; line-height:1.75; font-style:italic; }
+    .saga-rule .sr-text strong { color:#fff5d4; font-style:normal; }
+
+    .void-callout { padding:20px 22px; border-radius:12px; background:linear-gradient(135deg,rgba(100,90,160,.12),rgba(20,10,40,.04)); border:1px solid rgba(160,140,255,.25); margin-bottom:16px; }
+    .void-callout .vc-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#c4b8ff; margin-bottom:6px; }
+    .void-callout .vc-text { color:#dfd8f0; font-size:.9em; line-height:1.75; }
+    .void-callout .vc-text strong { color:#fff5d4; }
+  </style>
+</head>
+<body>
+  <div class="k-banner">
+    <div class="badge">Civil War &bull; Rules &amp; Weapons (Chapter 2)</div>
+    <h1>Ganga-Simhasana</h1>
+    <div class="state-label">Uttar Pradesh &mdash; The Crown Set Down, the Half-Body by Surrender, the Boy-King&rsquo;s First Mark</div>
+  </div>
+  <div class="k-nav">
+    <a href="../../../../index.html">&larr; Chapter 2</a>
+    <a href="index.html">Overview</a>
+    <a href="identity.html">Identity</a>
+    <a href="story.html">Story</a>
+    <a href="rules.html" class="active">Rules &amp; Weapons</a>
+  </div>
+
+  <div class="k-section">
+
+    <!-- ====== THE BARASINGHA-BOND ====== -->
+    <div class="k-card">
+      <h3>The Barasingha-Bond &mdash; Held in Both Hands</h3>
+      <p style="font-size:.92em;color:#c9bbd8;line-height:1.8;">The barasingha-bond of Ganga-Simhasana does not transfer at the Imambara assembly. It splits its <em>attention</em> &mdash; the same bond, now visible on two bodies. Gangaputra keeps the bond he has carried since Stage I; Yamunadatta receives his own first-stroke when the Sarus Crane lands on his shoulder. The bond is the kingdom&rsquo;s, not the king&rsquo;s. The kingdom now has two living bond-bearers. This is the first split-bond in the saga.</p>
+      <div class="bond-pair">
+        <div class="bond-side regent">
+          <div class="b-status">Father &bull; Stage III Complete &bull; Regent</div>
+          <div class="b-name">Gangaputra &mdash; The Barasingha-Foreleg</div>
+          <div class="b-desc">Carried since Ch 1 Stage I. Stage II completed at the Triveni Sangam victory. Stage II.5 stalled for twelve months. <strong>Completes to half-body Stage III at the Imambara half-kneel</strong> &mdash; the foreleg extends from his sternum across to his right shoulder, the antler-tip just touching the curve of his neck. The mark is earned by surrender, not victory. Will hold this stage through Chapters Three and Four; the Stage IV full-body mark waits for the Maha-Adhipati seat at Kurukshetra, which Yamunadatta will eventually carry.</div>
+        </div>
+        <div class="bond-side king">
+          <div class="b-status">Son &bull; Stage I Begun &bull; Maharaj</div>
+          <div class="b-name">Yamunadatta &mdash; The Barasingha-Hoofprint</div>
+          <div class="b-desc">No prior bond &mdash; the boy has lived in Vrindavan for fourteen years with no animal-bond contact. The Sarus Crane&rsquo;s landing on his shoulder at the Imambara is the bond&rsquo;s announcement; the hoofprint forms on his upper-back over the following week. Stage I &mdash; The Hoofprint. Stages II, III, IV await Chapters Three and Four. The bond does not contest his father&rsquo;s claim &mdash; the same barasingha-line in central UP has held twelve generations of dual-bonded heir-and-regent pairs; the precedent is old and quiet.</div>
+        </div>
+      </div>
+      <div class="saga-rule">
+        <div class="sr-label">Saga-Rule Established This Chapter &bull; The Split-Bond Mechanic</div>
+        <div class="sr-text">A bond may bear <strong>two living humans at the same time</strong> if and only if: (1) one is the active regent or protector, (2) the other is the named-and-acknowledged throne-holder, (3) both are of the bond&rsquo;s native bloodline, (4) one (the regent) has already passed Stage II of the ladder, (5) the other (the throne-holder) is beginning the ladder freshly. The bond does not split its <em>power</em>; it splits its <em>attention</em>. The barasingha now reads the battlefield through Gangaputra&rsquo;s feet and listens to court through Yamunadatta&rsquo;s ears. This is distinct from the Maharashtra <em>double-bond</em> (two different animals on one body); it is one animal across two bodies. Both mechanics will be relevant at the Sanctuary convening in Chapter Three.</div>
+      </div>
+    </div>
+
+    <!-- ====== TATTOO LADDERS ====== -->
+    <div class="k-card">
+      <h3>The Two Tattoo Paths &mdash; Father&rsquo;s Completion, Son&rsquo;s Beginning</h3>
+      <p style="color:#c9bbd8;font-size:.85em;line-height:1.7;margin-bottom:24px;">The same animal. Two ladders. The father&rsquo;s climbs sideways &mdash; he does not need the Stage IV mark, because the regent&rsquo;s role does not require it. The son&rsquo;s climbs forward &mdash; he is the throne-holder, and his Stage IV is the kingdom&rsquo;s future.</p>
+
+      <div style="margin-bottom:8px;font-size:.62em;letter-spacing:2px;text-transform:uppercase;color:#7b9eff;opacity:.85;">Father Ladder &mdash; Gangaputra, chest-and-shoulder</div>
+      <div class="tattoo-grid">
+        <div class="tattoo-stage done">
+          <img src="media/tattoo/up-ch2-fa-stage-1.png" alt="Stage I" class="tattoo-img">
+          <span class="tattoo-stage-label">F-Stage I &bull; Ch 1</span><span class="tattoo-stage-name">The Hoofprint</span>
+          <div class="tattoo-stage-desc">Earned at age nineteen when he led the Awadh garrison against a border raid. Single barasingha hoofprint on the sternum.</div>
+        </div>
+        <div class="tattoo-stage done">
+          <img src="media/tattoo/up-ch2-fa-stage-2.png" alt="Stage II" class="tattoo-img">
+          <span class="tattoo-stage-label">F-Stage II &bull; Ch 1 Finale</span><span class="tattoo-stage-name">The Lower Foreleg</span>
+          <div class="tattoo-stage-desc">Down the sternum to the lower ribcage. Earned at the Triveni Sangam victory in the Ch 1 spring campaign.</div>
+        </div>
+        <div class="tattoo-stage done">
+          <img src="media/tattoo/up-ch2-fa-stage-3.png" alt="Stage III" class="tattoo-img">
+          <span class="tattoo-stage-label">F-Stage III &bull; This Chapter</span><span class="tattoo-stage-name">Half-Body by Surrender</span>
+          <div class="tattoo-stage-desc">The foreleg extends across the chest to the right shoulder, antler-tip touching the neck. Completes at the Imambara half-kneel. Earned by the act of setting down the crown.</div>
+        </div>
+        <div class="tattoo-stage future">
+          <img src="media/tattoo/up-ch2-fa-stage-4.png" alt="Stage IV" class="tattoo-img">
+          <span class="tattoo-stage-label">F-Stage IV &bull; Not Pursued</span><span class="tattoo-stage-name">Full Body &mdash; Released</span>
+          <div class="tattoo-stage-desc">Gangaputra will never earn this stage. The full-body mark waits for the throne-holder. He has explicitly released the claim. The mark instead becomes Yamunadatta&rsquo;s eventual ladder-end.</div>
+        </div>
+      </div>
+
+      <div style="margin:24px 0 8px;font-size:.62em;letter-spacing:2px;text-transform:uppercase;color:#ffd700;opacity:.85;">Son Ladder &mdash; Yamunadatta, upper-back</div>
+      <div class="tattoo-grid">
+        <div class="tattoo-stage first">
+          <img src="media/tattoo/up-ch2-so-stage-1.png" alt="Stage I" class="tattoo-img">
+          <span class="tattoo-stage-label">S-Stage I &bull; This Chapter</span><span class="tattoo-stage-name">The Hoofprint of the Maharaj</span>
+          <div class="tattoo-stage-desc">Single hoofprint between the shoulder-blades. Forms when the Sarus Crane lands on his shoulder at the Imambara. Completes over a week. The boy&rsquo;s first mark.</div>
+        </div>
+        <div class="tattoo-stage future">
+          <img src="media/tattoo/up-ch2-so-stage-2.png" alt="Stage II" class="tattoo-img">
+          <span class="tattoo-stage-label">S-Stage II &bull; Ch 3 Beast-Rising</span><span class="tattoo-stage-name">The Upper Foreleg</span>
+          <div class="tattoo-stage-desc">Earned during Chapter Three&rsquo;s North Beast-Rising &mdash; the moment ten thousand barasingha gather at his coronation second-cycle.</div>
+        </div>
+        <div class="tattoo-stage future">
+          <img src="media/tattoo/up-ch2-so-stage-3.png" alt="Stage III" class="tattoo-img">
+          <span class="tattoo-stage-label">S-Stage III &bull; Ch 3 Unity Trial</span><span class="tattoo-stage-name">Half Body</span>
+          <div class="tattoo-stage-desc">Earned when he accepts his uncle Adharma into a council seat &mdash; the Unity Trial of the North Dominant.</div>
+        </div>
+        <div class="tattoo-stage future">
+          <img src="media/tattoo/up-ch2-so-stage-4.png" alt="Stage IV" class="tattoo-img">
+          <span class="tattoo-stage-label">S-Stage IV &bull; Ch 4 Kurukshetra</span><span class="tattoo-stage-name">Full Body &bull; The North&rsquo;s Maharaj</span>
+          <div class="tattoo-stage-desc">Earned at the Kurukshetra convergence when he holds the North&rsquo;s frontline against the Maw. The Stage IV that his father released to him.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== THE CROWN ====== -->
+    <div class="k-card">
+      <h3>The Dwadash-Mukut &mdash; What It Was, What It Is Now</h3>
+      <div class="crown-row">
+        <div class="crown-card">
+          <div class="cc-label">Before the Imambara</div>
+          <div class="cc-state">The Twelve-Sun Crown of Bloodline B</div>
+          <div class="cc-desc">A circlet of twelve solar-gold filigree spokes mounted on a band of carbon-steel inlaid with twelve gold-leaf surya-discs &mdash; one per sun-king of the Bloodline-B line back to Sagar. Carried by every reigning Maharaj of Ganga-Simhasana since 1947. Worn at all formal state occasions. Gangaputra has worn it for two years.</div>
+        </div>
+        <div class="crown-card">
+          <div class="cc-label">After the Imambara</div>
+          <div class="cc-state">The Maharaj&rsquo;s Crown, Held by Yamunadatta</div>
+          <div class="cc-desc">Now on Yamunadatta&rsquo;s head, placed there by his father in the half-kneel of dharmic transfer. The boy does not wear it daily &mdash; it is too heavy for fourteen-year-old shoulders and his mother explicitly forbids the daily wear. It sits on a side-table in his bedchamber, and he wears it only at council openings and at the four state-occasions of the year. The kingdom approves of the restraint.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== SACRED WEAPONS ====== -->
+    <div class="k-card">
+      <h3>Sacred Weapons &mdash; Inherited Differently</h3>
+      <div class="k-two">
+        <div>
+          <span class="weapon-label">Ancient Weapon &bull; Now the Regent&rsquo;s</span>
+          <div class="weapon-name">Dvadasha-Ratha &mdash; The Chariot-Staff</div>
+          <img src="media/weapons/up-ch2-dvadasha-ratha.png" alt="Dvadasha-Ratha" class="weapon-img" onerror="this.style.display='none'">
+          <div class="id-label">Type</div><div class="id-value">A twelve-pronged ceremonial staff in Gangetic-plain ironwood &mdash; the chariot-driver&rsquo;s tool, traditionally carried by the regent or protector rather than the throne-holder. Twelve prongs for the twelve sun-kings the Dwadash-Mukut commemorates.</div>
+          <div class="id-label">Ability</div><div class="id-value">Functions as a battle-staff in combat, a flag-pole in ceremony, and a chariot-driver&rsquo;s steering-pole in actual driving. The Krishna-shadow weapon &mdash; the tool of the one who guides, not the one who is guided.</div>
+          <div class="id-label">Now Carried By</div><div class="id-value">Gangaputra. He picked it up the morning after the Imambara from the regent&rsquo;s armoury &mdash; a chamber that has not been used in seventy years. The staff was waiting.</div>
+        </div>
+        <div>
+          <span class="weapon-label">Modern Weapon &bull; The Court Tool</span>
+          <div class="weapon-name">Sangam-Tantra &mdash; The Confluence-Net</div>
+          <img src="media/weapons/up-ch2-sangam-tantra.png" alt="Sangam-Tantra" class="weapon-img" onerror="this.style.display='none'">
+          <div class="id-label">Type</div><div class="id-value">A state-administered information network connecting Lucknow, Banaras, and Mathura through encrypted satellite, fiber, and (in three cases of high-sensitivity counsel) Sarus Crane carrier-pairs.</div>
+          <div class="id-label">Ability</div><div class="id-value">Routes around any single point of failure. Vidura-Babu&rsquo;s instrument &mdash; he uses it through the chapter to keep Lucknow administration intact even as the Banaras religious order and the Mathura Krishna-cult publish conflicting positions. The network survives the chapter without compromise.</div>
+          <div class="id-label">Now Operated By</div><div class="id-value">Vidura-Babu (administratively) and the new Mathura-Vrindavan third-party arbitration seat (dharmically). Yamunadatta has the operating credentials &mdash; he is the throne-holder &mdash; but he does not use them in Chapter Two. The boy is learning, not yet operating.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== VOID MAW SIGN ====== -->
+    <div class="void-callout">
+      <div class="vc-label">Void Maw Sign &bull; Catalogue Entry &bull; Uttar Pradesh</div>
+      <div class="vc-text">The Clear Ganga. On the morning after the Imambara assembly, the Ganga at Varanasi runs glass-clear from Assi Ghat to Manikarnika Ghat &mdash; the full length of the principal Varanasi waterfront. The river-bottom is visible from boat to bank for the entire day. The river that has carried Himalayan silt for two hundred thousand years runs without suspension for one day. Pundits panic. Tourists film. Scientists scramble. <strong>Mechanism inferred (through the barasingha-bond):</strong> the Void Maw has read the Ganga and erased her silt-memory for one day. The carbonisation-of-absence pattern that began at Maharashtra&rsquo;s burnt squirrel-nest extends to UP&rsquo;s river-silt &mdash; the Maw can take history out of a substance and the substance becomes visible-without-memory. The Karnataka rule holds. Gangaputra orders a small shrine built at Assi Ghat by the boatmen-guild &mdash; stone and packed earth, a single barasingha-hoof print carved on the riverside face. The water returns to muddy at sunset. The shrine remains. <strong>Significance (for the catalogue):</strong> UP&rsquo;s Maw sign is the first <em>landscape-scale</em> sign &mdash; a river, not a tree, not a person. The chapter&rsquo;s Maw signs are escalating in size: people (Karnataka, Goa) &rarr; place (Maharashtra) &rarr; landscape (UP). The next sign will be larger still.</div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;margin-top:24px;flex-wrap:wrap;gap:10px;">
+      <a href="story.html" style="color:#c9a04a;text-decoration:none;font-size:.85em;">&larr; Kingdom Story</a>
+      <a href="../../../../index.html" style="color:#c9a04a;text-decoration:none;font-size:.85em;">All Civil War Stories &rarr;</a>
+    </div>
+  </div>
+
+  <footer style="text-align:center;padding:28px 20px;border-top:1px solid rgba(196,77,170,.12);color:#9a8db0;font-size:.75em;">
+    <p>Ganga-Simhasana Rules &amp; Weapons &bull; Civil War &bull; Chapter 2</p>
+  </footer>
+</body>
+</html>
