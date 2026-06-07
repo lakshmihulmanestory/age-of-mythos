@@ -18,7 +18,7 @@ import html
 import re
 from pathlib import Path
 
-CHAPTER = "com/hulmane/age-of-mythos/volume-1-maha-parva/chapter-1-rise-of-legends"
+CHAPTER = "content/volume-1-maha-parva/chapter-1-rise-of-legends"
 DATA_FILE = f"{CHAPTER}/js/state-stories-data.js"
 REGIONS_ROOT = f"{CHAPTER}/bharatavarsha/regions"
 

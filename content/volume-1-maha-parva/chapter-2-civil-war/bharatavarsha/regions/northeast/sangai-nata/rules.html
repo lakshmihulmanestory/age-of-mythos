@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sangai-Nata &mdash; Rules &amp; Weapons &mdash; Civil War</title>
+  <link rel="stylesheet" href="../../../../../chapter-1-rise-of-legends/css/style.css">
+  <style>
+    body { background:#0c0810; color:#f0e8f8; }
+    .k-banner { text-align:center; padding:78px 20px 36px; border-bottom:1px solid rgba(196,77,170,.16); }
+    .k-banner .badge { font-size:.55em; letter-spacing:4px; text-transform:uppercase; color:#c44daa; opacity:.85; margin-bottom:12px; }
+    .k-banner h1 { font-size:2em; color:#d4a55c; margin-bottom:.1em; }
+    .k-banner .state-label { font-size:.72em; color:#c9bbd8; opacity:.6; margin-bottom:.4em; }
+    .k-nav { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:14px 20px; background:rgba(0,0,0,.5); border-bottom:1px solid rgba(196,77,170,.1); }
+    .k-nav a { padding:5px 16px; border-radius:20px; border:1px solid rgba(196,77,170,.25); color:#d4c5e8; font-size:.72em; letter-spacing:1px; text-decoration:none; transition:all .15s; }
+    .k-nav a:hover, .k-nav a.active { background:rgba(196,77,170,.12); border-color:#c44daa; color:#fff; }
+    .k-section { max-width:1000px; margin:0 auto; padding:40px 20px 60px; }
+    .k-card { background:rgba(255,255,255,.025); border:1px solid rgba(196,77,170,.15); border-radius:10px; padding:24px; margin-bottom:20px; }
+    .k-card h3 { font-size:.72em; letter-spacing:2px; text-transform:uppercase; color:#d4a55c; margin-bottom:14px; opacity:.9; }
+    .k-two { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    @media(max-width:640px){ .k-two { grid-template-columns:1fr; } }
+    .id-label { font-size:.62em; text-transform:uppercase; letter-spacing:2px; color:#9a8db0; opacity:.6; margin-bottom:3px; }
+    .id-value { font-size:.88em; color:#c9bbd8; margin-bottom:14px; line-height:1.65; }
+    .id-value strong { color:#fff5d4; }
+
+    .pause-mech { padding:18px 22px; border-radius:12px; background:linear-gradient(135deg,rgba(212,165,92,.10),rgba(40,30,0,.04)); border:1px solid rgba(212,165,92,.32); margin:14px 0; }
+    .pause-mech .pm-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#d4a55c; margin-bottom:8px; }
+    .pause-mech .pm-text { color:#f0d8a8; font-size:.9em; line-height:1.75; }
+    .pause-mech .pm-text strong { color:#fff5d4; }
+
+    .tattoo-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    @media(max-width:600px){ .tattoo-grid { grid-template-columns:repeat(2,1fr); } }
+    .tattoo-stage { text-align:center; }
+    .tattoo-img { width:100%; border-radius:8px; border:1px solid rgba(212,165,92,.22); display:block; aspect-ratio:1; object-fit:cover; margin-bottom:8px; background:rgba(212,165,92,.06); }
+    .tattoo-stage.done .tattoo-img    { border-color:rgba(212,165,92,.40); background:rgba(40,30,0,.15); }
+    .tattoo-stage.new  .tattoo-img    { border-color:rgba(212,165,92,.50); background:rgba(60,40,10,.20); }
+    .tattoo-stage.future .tattoo-img  { border-color:rgba(196,77,170,.18); background:rgba(196,77,170,.04); opacity:.5; }
+    .tattoo-stage-label { font-size:.58em; letter-spacing:2px; text-transform:uppercase; color:#d4a55c; opacity:.85; display:block; margin-bottom:2px; }
+    .tattoo-stage.new .tattoo-stage-label { color:#e8c98a; }
+    .tattoo-stage.future .tattoo-stage-label { color:#c44daa; }
+    .tattoo-stage-name { font-size:.78em; color:#fff5d4; display:block; margin-bottom:4px; }
+    .tattoo-stage-desc { font-size:.7em; color:#9a8db0; opacity:.85; line-height:1.55; }
+
+    .weapon-img { width:100%; border-radius:10px; border:1px solid rgba(212,165,92,.22); display:block; margin-bottom:10px; background:rgba(212,165,92,.04); }
+    .weapon-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#d4a55c; opacity:.85; margin-bottom:4px; display:block; }
+    .weapon-name { font-size:.95em; color:#fff5d4; margin-bottom:8px; }
+    .weapon-desc { font-size:.82em; color:#c9bbd8; line-height:1.7; }
+
+    .saga-rule { padding:18px 22px; border-radius:12px; background:linear-gradient(135deg,rgba(212,165,92,.07),rgba(40,28,0,.03)); border:1px solid rgba(212,165,92,.28); margin:14px 0; }
+    .saga-rule .sr-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#d4a55c; margin-bottom:6px; }
+    .saga-rule .sr-text { color:#f0d8a8; font-size:.9em; line-height:1.75; font-style:italic; }
+    .saga-rule .sr-text strong { color:#fff5d4; font-style:normal; }
+
+    .void-callout { padding:20px 22px; border-radius:12px; background:linear-gradient(135deg,rgba(100,90,160,.12),rgba(20,10,40,.04)); border:1px solid rgba(160,140,255,.25); margin-bottom:16px; }
+    .void-callout .vc-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#c4b8ff; margin-bottom:6px; }
+    .void-callout .vc-text { color:#dfd8f0; font-size:.9em; line-height:1.75; }
+    .void-callout .vc-text strong { color:#fff5d4; }
+  </style>
+  <link rel="stylesheet" href="../../../../../../../assets/aom.css"> <!-- aom:injected -->
+</head>
+<body class="aom" data-aom-type="kingdom-sub" >
+  <div class="k-banner">
+    <div class="badge">Civil War &bull; Rules &amp; Weapons (Chapter 2)</div>
+    <h1>Sangai-Nata</h1>
+    <div class="state-label">Manipur &mdash; The Pause-Strike Mechanic, Moirang-Tandava, the Loktak Mouth</div>
+  </div>
+  <div class="k-nav">
+    <a href="../../../../index.html">&larr; Chapter 2</a>
+    <a href="index.html">Overview</a>
+    <a href="identity.html">Identity</a>
+    <a href="story.html">Story</a>
+    <a href="rules.html" class="active">Rules &amp; Weapons</a>
+  </div>
+
+  <div class="k-section">
+
+    <!-- ====== THE PAUSE MECHANIC ====== -->
+    <div class="k-card">
+      <h3>The Pause-Strike Mechanic &mdash; Saga&rsquo;s Eighth Bond Mechanic</h3>
+      <p style="font-size:.92em;color:#c9bbd8;line-height:1.8;">Moirangthem invents the pause-strike during the eleven-day grief-period after the Loktak massacre, refined by his eight-year-old son&rsquo;s observation of the Sangai-deer dance. The pause-strike is the saga&rsquo;s eighth bond-mechanic. It is the first mechanic that is also a <strong>combat technique</strong> rather than a transmission-mechanism &mdash; that is, the pause-strike is something the bond <em>does</em>, not something it <em>becomes</em>. The bond reads the dancer&rsquo;s pause as a held question, and the answer-strike that follows is delivered with the full force of the held intent.</p>
+      <div class="pause-mech">
+        <div class="pm-label">Saga-Rule &bull; The Pause-Strike</div>
+        <div class="pm-text">A dancer-warrior bearing the Sangai-deer bond may execute a pause-strike if and only if: (1) the dancer completes a classical-precision opening sequence (eight steps minimum), (2) holds the closing-position in absolute stillness for a duration measurable in whole seconds (minimum four; effective length scales with the bond-stage), (3) the bearer&rsquo;s breath, muscles, and attention are loaded during the pause &mdash; not relaxed, not reset; the body is at maximum readiness with no external sign, (4) the release is a single committed motion from closing-position to strike-target without intermediate positioning. <strong>The strike does not telegraph because the body has been still.</strong> The opponent loses the rhythm-reading by which they were tracking the dancer&rsquo;s next move. At Stage III, effective pause-duration extends to nineteen seconds. At Stage IV (forthcoming in Ch 3/4), it extends to forty-seven seconds &mdash; the duration of the Sangai-deer breath-cycle&rsquo;s longest known pause in the wild.</div>
+      </div>
+    </div>
+
+    <!-- ====== TATTOO LADDER ====== -->
+    <div class="k-card">
+      <h3>The Tattoo Ladder &mdash; Moirangthem</h3>
+      <p style="color:#c9bbd8;font-size:.85em;line-height:1.7;margin-bottom:24px;">Four stages. Stage III completes during the temple courtyard public demonstration at minute nineteen of the new form&rsquo;s first performance. Stage IV waits for the Sanctuary convening in Chapter Three.</p>
+
+      <div class="tattoo-grid">
+        <div class="tattoo-stage done">
+          <img src="media/tattoo/manipur-ch2-stage-1.png" alt="Stage I" class="tattoo-img">
+          <span class="tattoo-stage-label">Stage I &bull; Ch 1</span><span class="tattoo-stage-name">The Hoofprint</span>
+          <div class="tattoo-stage-desc">Earned at age nineteen at his first Govindaji temple senior performance. Single Sangai-deer hoofprint on right shoulder-blade.</div>
+        </div>
+        <div class="tattoo-stage done">
+          <img src="media/tattoo/manipur-ch2-stage-2.png" alt="Stage II" class="tattoo-img">
+          <span class="tattoo-stage-label">Stage II &bull; Ch 1 Finale</span><span class="tattoo-stage-name">The Foreleg-Forward</span>
+          <div class="tattoo-stage-desc">Foreleg extending down the shoulder, earned when he defeated Tamasa-Nrita in the Ch 1 dance-duel.</div>
+        </div>
+        <div class="tattoo-stage new">
+          <img src="media/tattoo/manipur-ch2-stage-3.png" alt="Stage III at the Public Demonstration" class="tattoo-img">
+          <span class="tattoo-stage-label">Stage III &bull; This Chapter</span><span class="tattoo-stage-name">The Foreleg &amp; Head &mdash; New Form</span>
+          <div class="tattoo-stage-desc">Sangai-deer right foreleg arching down the right pectoral, head turned in profile across the sternum, antlers cresting at the collarbone. Completes at minute nineteen of the public demonstration of Moirang-Tandava at the Govindaji temple courtyard. The mark&rsquo;s ink is clean &mdash; no crack, no mirror.</div>
+        </div>
+        <div class="tattoo-stage future">
+          <img src="media/tattoo/manipur-ch2-stage-4.png" alt="Stage IV" class="tattoo-img">
+          <span class="tattoo-stage-label">Stage IV &bull; Ch 3 Sanctuary</span><span class="tattoo-stage-name">Full Body &bull; NE Dominant</span>
+          <div class="tattoo-stage-desc">Will be earned at the Sanctuary convening as Northeast Dominant. The full-body mark will extend the antler-crown to a full Sangai-deer silhouette &mdash; the kingdom&rsquo;s visible political voice.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== SACRED WEAPONS ====== -->
+    <div class="k-card">
+      <h3>Sacred Weapons &mdash; Thang and Ta, Reformed</h3>
+      <div class="k-two">
+        <div>
+          <span class="weapon-label">Ancient Weapon &bull; Both Reformed by New School</span>
+          <div class="weapon-name">Thang &mdash; The Meitei Sword</div>
+          <img src="media/weapons/manipur-ch2-thang.png" alt="Thang" class="weapon-img" onerror="this.style.display='none'">
+          <div class="id-label">Type</div><div class="id-value">The curved single-edged Meitei sword. 28-32 inches blade-length. Hilt of buffalo-horn with brass guard. The classical Thang-Ta martial-art&rsquo;s primary weapon for at least seven centuries.</div>
+          <div class="id-label">New Use</div><div class="id-value">In Moirang-Tandava the Thang is the pause-strike instrument. The classical Thang-Ta sequences are preserved exactly. The pause is inserted at the closing-position of each sequence. The Thang releases from the pause with the full force of the held intent. At Stage III the strike clears the sheath, traces a perfect Meitei-curve, and arrives at target before the opponent has registered the shift from pause to motion &mdash; a strike-time of approximately 240 milliseconds from pause-release to impact.</div>
+        </div>
+        <div>
+          <span class="weapon-label">Ancient Weapon &bull; The Counter-Tempo</span>
+          <div class="weapon-name">Ta &mdash; The Meitei Spear</div>
+          <img src="media/weapons/manipur-ch2-ta.png" alt="Ta" class="weapon-img" onerror="this.style.display='none'">
+          <div class="id-label">Type</div><div class="id-value">The seven-foot Meitei spear. Bamboo shaft with iron leaf-head. Used in classical Thang-Ta for distance-control, formation-anchoring, and ceremonial-marking.</div>
+          <div class="id-label">New Use</div><div class="id-value">In Moirang-Tandava the Ta carries the body of the pause &mdash; held vertically against the body during the still-moment, then released at the same instant as the Thang-strike to create a two-weapon strike-pattern that occupies both close range (Thang) and middle range (Ta). At the Loktak final duel Moirangthem uses the Ta in the non-killing pinning-role: pinning Tamasa-Nrita at the phumdi-edge through the chest-armour without entering the chest itself.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== SAGA-RULE ====== -->
+    <div class="k-card">
+      <h3>The Saga-Rule This Chapter Established</h3>
+      <div class="saga-rule">
+        <div class="sr-label">Saga-Rule &bull; The Form-as-Combat-Mechanic</div>
+        <div class="sr-text">A bond may modulate a kingdom&rsquo;s entire combat-tradition through the bearer&rsquo;s active discovery rather than through inheritance or rite. <strong>The discovery must come from outside the bearer&rsquo;s lifetime of training</strong> &mdash; from an observer who has been studying what the trained body cannot any longer see. In Manipur this observer was eight years old; in future kingdoms it may be a foreigner, a child, a non-bonded outsider, the bearer&rsquo;s blind grandmother, or the kingdom&rsquo;s sacred animal itself observed without preconception. The bond rewards <em>seeing-from-outside-the-form</em>. This is distinct from the previous seven bond-mechanics in that it does not produce a new mark-form or transmission-pattern. It produces a new <em>technique</em> &mdash; and the technique becomes a school.</div>
+      </div>
+    </div>
+
+    <!-- ====== VOID MAW SIGN ====== -->
+    <div class="void-callout">
+      <div class="vc-label">Void Maw Sign &bull; Catalogue Entry &bull; Manipur &bull; The First Self-Signing</div>
+      <div class="vc-text">The Loktak Mouth. The night after the final duel. Captain Tomthing&rsquo;s Pawan Hans tourist-helicopter at 2,400 feet over Loktak Lake. The floating phumdis of the lake arrange themselves into the recognisable shape of a closing mouth &mdash; four-kilometre arc of biomass forming the lower mandible-curve, a second four-kilometre arc forming the upper lip, two rows of dense phumdi-clusters arrayed inside the arc that the pilot describes as &ldquo;teeth-like.&rdquo; The arrangement holds for seven minutes. The mouth closes &mdash; the two arcs touch at the centre. The closed configuration holds for ninety seconds. The phumdis then drift back to their normal scatter-pattern. Captured on cockpit-video. Eleven million views within twelve hours. <strong>Mechanism (through the Sangai-bond):</strong> the Maw lives in the gap between forms; the Maw is now able to MAKE its own form on the surface of a lake. The previous six Maw signs were the Maw signing the gaps in dharma. This one is the Maw signing its own mouth &mdash; the FIRST SELF-SIGNING. <strong>Significance (for the catalogue):</strong> Manipur&rsquo;s sign is the eighth rung of the escalation pattern. The Maw is no longer reacting. The Maw is initiating.</div>
+      <div style="margin:12px 0 4px;padding-left:12px;font-size:.78em;color:#dfd8f0;line-height:1.7;">
+        <strong style="color:#fff5d4;">Person</strong> &times; 2 (Karnataka, Goa) &rarr; <strong style="color:#fff5d4;">Place</strong> (Maharashtra) &rarr; <strong style="color:#fff5d4;">Landscape</strong> (UP) &rarr; <strong style="color:#fff5d4;">Multi-creature</strong> (MP) &rarr; <strong style="color:#fff5d4;">Landscape + Multi-creature</strong> (Assam) &rarr; <strong style="color:#fff5d4;">Anti-weather</strong> (Meghalaya) &rarr; <strong style="color:#fff5d4;">Self-signing form-making</strong> (Manipur).
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;margin-top:24px;flex-wrap:wrap;gap:10px;">
+      <a href="story.html" style="color:#c9a04a;text-decoration:none;font-size:.85em;">&larr; Kingdom Story</a>
+      <a href="../../../../index.html" style="color:#c9a04a;text-decoration:none;font-size:.85em;">All Civil War Stories &rarr;</a>
+    </div>
+  </div>
+
+  <footer style="text-align:center;padding:28px 20px;border-top:1px solid rgba(196,77,170,.12);color:#9a8db0;font-size:.75em;">
+    <p>Sangai-Nata Rules &amp; Weapons &bull; Civil War &bull; Chapter 2</p>
+  </footer>
+  <script src="../../../../../../../assets/manifest.js"></script>
+  <script src="../../../../../../../assets/aom.js"></script> <!-- aom:injected -->
+</body>
+</html>

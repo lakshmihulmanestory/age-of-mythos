@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bharat Shanshant Map &mdash; Age of Mythos Volume I</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    /* Hero */
+    .map-hero {
+      text-align:center; padding:82px 20px 28px;
+      border-bottom:1px solid var(--border-dim);
+    }
+    .map-hero .eyebrow {
+      font-size:.6em; letter-spacing:3px; text-transform:uppercase;
+      color:var(--gold-dim); opacity:.6; margin-bottom:10px;
+    }
+    .map-hero h1 { font-size:2em; color:var(--gold); margin-bottom:.25em; }
+    .map-hero .sub { font-size:.85em; color:var(--text-dim); font-style:italic; }
+
+    /* Map image block */
+    .map-image-block {
+      max-width:1100px; margin:32px auto 0; padding:0 20px;
+    }
+    .map-image-block img {
+      width:100%; border-radius:16px;
+      border:1px solid rgba(255,215,0,.18);
+      box-shadow:0 0 60px rgba(255,215,0,.07), 0 0 120px rgba(0,0,0,.6);
+      display:block;
+    }
+    .map-caption {
+      text-align:center; margin-top:10px;
+      font-size:.68em; color:var(--text-dim); opacity:.55;
+      letter-spacing:1px; font-style:italic;
+    }
+
+    /* Region colour legend */
+    .region-legend {
+      display:flex; flex-wrap:wrap; gap:10px; justify-content:center;
+      padding:20px 20px 16px;
+      border-bottom:1px solid var(--border-dim);
+    }
+    .legend-item {
+      display:flex; align-items:center; gap:7px;
+      font-size:.68em; color:var(--text-dim);
+      letter-spacing:1px; text-transform:uppercase;
+    }
+    .legend-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+
+    /* Region cards grid */
+    .regions-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+      gap:20px;
+      max-width:1100px;
+      margin:32px auto;
+      padding:0 20px 60px;
+    }
+    .region-card {
+      background:var(--bg-card);
+      border:1px solid var(--border-dim);
+      border-radius:12px; padding:22px;
+      color:inherit; display:block;
+      transition:border-color .18s;
+    }
+    .region-card:hover { border-color:var(--rc, var(--gold-dim)); }
+    .region-card::before {
+      content:''; display:block; height:3px; border-radius:3px;
+      background:var(--rc, var(--gold-dim));
+      margin-bottom:16px; opacity:.7;
+    }
+    .rc-label { font-size:.58em; letter-spacing:3px; text-transform:uppercase; color:var(--text-dim); opacity:.5; margin-bottom:6px; }
+    .rc-name  { font-size:1.05em; color:var(--gold); margin-bottom:8px; font-family:Georgia,serif; }
+    .rc-count { font-size:.7em; color:var(--text-dim); margin-bottom:12px; opacity:.65; }
+    .rc-kingdoms { display:flex; flex-wrap:wrap; gap:6px; }
+    .rc-chip {
+      font-size:.62em; padding:3px 9px; border-radius:10px;
+      background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1);
+      color:var(--text-dim); text-decoration:none;
+      transition:border-color .12s, color .12s;
+    }
+    .rc-chip:hover { color:var(--gold); border-color:var(--gold-dim); }
+  </style>
+  <link rel="stylesheet" href="../../../../assets/aom.css"> <!-- aom:injected -->
+</head>
+<body class="aom" data-aom-type="page" >
+
+  <nav class="maha-nav">
+    <a href="../../../../../../index.html" class="nav-logo">Age of Mythos</a>
+    <div class="nav-links">
+      <a href="../index.html">Volume I</a>
+      <a href="../kingdoms.html">Kingdoms</a>
+      <a href="../identity.html">Identities</a>
+      <a href="../characters.html">Heroes</a>
+      <a href="../tattoo-system.html">Tattoos</a>
+      <a href="../council.html">Council</a>
+      <a href="global-map.html" class="active">Map</a>
+    </div>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('nav-open')">&#9776;</button>
+  </nav>
+
+  <!-- Header -->
+  <div class="map-hero">
+    <div class="eyebrow">Volume I &bull; Bharat Varsha</div>
+    <h1>Bharat Shanshant</h1>
+    <p class="sub">The Eternal Peace Map of Bharatavarsha &mdash; 30 Kingdoms, 6 Regions</p>
+  </div>
+
+  <!-- Map image -->
+  <div class="map-image-block">
+    <img src="../../media/maps/bharatavarsha.png"
+         alt="Bharatavarsha — The World of Age of Mythos Volume I">
+    <p class="map-caption">Bharatavarsha &mdash; the ancient land of 30 kingdoms &bull; Volume I of Age of Mythos</p>
+  </div>
+
+  <!-- Region colour legend -->
+  <div class="region-legend" style="margin-top:28px;">
+    <div class="legend-item"><div class="legend-dot" style="background:#44ff88"></div>South (5)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#ff8c00"></div>West (4)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#44aaff"></div>East (4)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#ff66cc"></div>North (5)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#aa66ff"></div>Northeast (8)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#ffaa00"></div>Central (2)</div>
+  </div>
+
+  <!-- Region cards -->
+  <div class="regions-grid">
+
+    <div class="region-card" style="--rc:#44ff88;">
+      <div class="rc-label">Region</div>
+      <div class="rc-name" style="color:#44ff88;">South Bharatavarsha</div>
+      <div class="rc-count">5 Kingdoms</div>
+      <div class="rc-kingdoms">
+        <a class="rc-chip" href="regions/south/vijayanagara-reborn/index.html">Vijayanagara Reborn</a>
+        <a class="rc-chip" href="regions/south/parashurama-kshetra/index.html">Parashurama-Kshetra</a>
+        <a class="rc-chip" href="regions/south/sangam-tamilakam/index.html">Sangam Tamilakam</a>
+        <a class="rc-chip" href="regions/south/dharmakshetra-amaravati/index.html">Dharmakshetra Amaravati</a>
+        <a class="rc-chip" href="regions/south/chaya-golkonda/index.html">Chaya-Golkonda</a>
+      </div>
+    </div>
+
+    <div class="region-card" style="--rc:#ff8c00;">
+      <div class="rc-label">Region</div>
+      <div class="rc-name" style="color:#ff8c00;">West Bharatavarsha</div>
+      <div class="rc-count">4 Kingdoms</div>
+      <div class="rc-kingdoms">
+        <a class="rc-chip" href="regions/west/swarajya-sahyadri/index.html">Swarajya Sahyadri</a>
+        <a class="rc-chip" href="regions/west/simha-dwara/index.html">Simha-Dwara</a>
+        <a class="rc-chip" href="regions/west/samudra-dvipa/index.html">Samudra-Dvipa</a>
+        <a class="rc-chip" href="regions/west/maru-maya/index.html">Maru-Maya</a>
+      </div>
+    </div>
+
+    <div class="region-card" style="--rc:#44aaff;">
+      <div class="rc-label">Region</div>
+      <div class="rc-name" style="color:#44aaff;">East Bharatavarsha</div>
+      <div class="rc-count">4 Kingdoms</div>
+      <div class="rc-kingdoms">
+        <a class="rc-chip" href="regions/east/sundara-vana/index.html">Sundara-Vana</a>
+        <a class="rc-chip" href="regions/east/kalinga-chakra/index.html">Kalinga-Chakra</a>
+        <a class="rc-chip" href="regions/east/vajra-bhumi/index.html">Vajra-Bhumi</a>
+        <a class="rc-chip" href="regions/east/vana-agni/index.html">Vana-Agni</a>
+      </div>
+    </div>
+
+    <div class="region-card" style="--rc:#ff66cc;">
+      <div class="rc-label">Region</div>
+      <div class="rc-name" style="color:#ff66cc;">North Bharatavarsha</div>
+      <div class="rc-count">5 Kingdoms</div>
+      <div class="rc-kingdoms">
+        <a class="rc-chip" href="regions/north/ganga-simhasana/index.html">Ganga-Simhasana</a>
+        <a class="rc-chip" href="regions/north/deva-bhumi/index.html">Deva-Bhumi</a>
+        <a class="rc-chip" href="regions/north/hima-chhaya/index.html">Hima-Chhaya</a>
+        <a class="rc-chip" href="regions/north/panch-nada/index.html">Panch-Nada</a>
+        <a class="rc-chip" href="regions/north/kurukshetra-bhoomi/index.html">Kurukshetra-Bhoomi</a>
+      </div>
+    </div>
+
+    <div class="region-card" style="--rc:#aa66ff;">
+      <div class="rc-label">Region</div>
+      <div class="rc-name" style="color:#aa66ff;">Northeast Bharatavarsha</div>
+      <div class="rc-count">8 Kingdoms</div>
+      <div class="rc-kingdoms">
+        <a class="rc-chip" href="regions/northeast/ganda-kshetra/index.html">Ganda-Kshetra</a>
+        <a class="rc-chip" href="regions/northeast/arunodaya-kshetra/index.html">Arunodaya-Kshetra</a>
+        <a class="rc-chip" href="regions/northeast/sangai-nata/index.html">Sangai-Nata</a>
+        <a class="rc-chip" href="regions/northeast/megha-maata/index.html">Megha-Maata</a>
+        <a class="rc-chip" href="regions/northeast/tlawmngaihna-desh/index.html">Tlawmngaihna-Desh</a>
+        <a class="rc-chip" href="regions/northeast/dzukou-rashtra/index.html">Dzukou-Rashtra</a>
+        <a class="rc-chip" href="regions/northeast/beyul-kshetra/index.html">Beyul-Kshetra</a>
+        <a class="rc-chip" href="regions/northeast/tri-pura/index.html">Tri-Pura</a>
+      </div>
+    </div>
+
+    <div class="region-card" style="--rc:#ffaa00;">
+      <div class="rc-label">Region</div>
+      <div class="rc-name" style="color:#ffaa00;">Central Bharatavarsha</div>
+      <div class="rc-count">2 Kingdoms</div>
+      <div class="rc-kingdoms">
+        <a class="rc-chip" href="regions/central/hridaya-sthana/index.html">Hridaya-Sthana</a>
+        <a class="rc-chip" href="regions/central/dandakaranya/index.html">Dandakaranya</a>
+      </div>
+    </div>
+
+  </div>
+
+  <footer style="text-align:center; padding:28px 20px; border-top:1px solid var(--border-dim); color:var(--text-dim); font-size:.75em;">
+    <p>Bharat Shanshant &bull; Age of Mythos Volume I</p>
+    <p style="margin-top:6px;"><a href="../index.html" style="color:var(--gold-dim); text-decoration:none;">&larr; Volume I Home</a></p>
+  </footer>
+
+  <script src="../../../../assets/manifest.js"></script>
+  <script src="../../../../assets/aom.js"></script> <!-- aom:injected -->
+</body>
+</html>

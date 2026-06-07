@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Samudra-Dvipa &mdash; Civil War &mdash; Age of Mythos</title>
+  <link rel="stylesheet" href="../../../../../chapter-1-rise-of-legends/css/style.css">
+  <style>
+    body { background:#080612; color:#f0e8f8; min-height:100vh; }
+    .k-banner { text-align:center; padding:78px 20px 40px; background:linear-gradient(180deg,#080612 0%,#180a08 60%,#080612 100%); border-bottom:1px solid rgba(196,77,170,.16); position:relative; }
+    .k-banner .badge { font-size:.55em; letter-spacing:4px; text-transform:uppercase; color:#c44daa; opacity:.85; margin-bottom:14px; }
+    .k-banner .badge .dead { color:#ff7766; font-weight:bold; }
+    .k-banner h1 { font-size:2.6em; color:#ffb066; margin-bottom:.15em; letter-spacing:2px; }
+    .k-banner .state-label { font-size:.78em; color:#c9bbd8; opacity:.7; letter-spacing:1px; margin-bottom:.6em; }
+    .k-banner .tagline { color:#d4c5e8; font-size:.92em; max-width:660px; margin:0 auto; line-height:1.75; font-style:italic; }
+    .storm-line { display:block; margin:24px auto 0; width:200px; height:1px; background:linear-gradient(90deg,transparent,#ff8c00,transparent); position:relative; opacity:.6; }
+    .storm-line::after { content:""; position:absolute; left:48%; top:-3px; width:6px; height:7px; background:#ff8c00; transform:rotate(45deg); }
+    .k-nav { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:14px 20px; background:rgba(0,0,0,.5); border-bottom:1px solid rgba(196,77,170,.1); }
+    .k-nav a { padding:5px 16px; border-radius:20px; border:1px solid rgba(196,77,170,.25); color:#d4c5e8; font-size:.72em; letter-spacing:1px; text-decoration:none; transition:all .15s; }
+    .k-nav a:hover, .k-nav a.active { background:rgba(196,77,170,.12); border-color:#c44daa; color:#fff; }
+    .k-section { max-width:1100px; margin:0 auto; padding:40px 20px 60px; }
+    .k-two { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    @media(max-width:640px){ .k-two { grid-template-columns:1fr; } }
+    .k-card { background:rgba(255,255,255,.025); border:1px solid rgba(196,77,170,.15); border-radius:10px; padding:22px; margin-bottom:16px; }
+    .k-card h3 { font-size:.72em; letter-spacing:2px; text-transform:uppercase; color:#ff8c00; margin-bottom:12px; opacity:.85; }
+    .k-card p { font-size:.88em; color:#c9bbd8; line-height:1.75; }
+    .hero-portrait { width:100%; border-radius:10px; border:1px solid rgba(255,140,0,.2); display:block; }
+
+    .faction-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:14px; }
+    @media(max-width:720px){ .faction-grid { grid-template-columns:1fr; } }
+    .fac { padding:14px 16px; border-radius:10px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.02); }
+    .fac .fac-tag { font-size:.55em; letter-spacing:2px; text-transform:uppercase; margin-bottom:6px; }
+    .fac .fac-name { font-size:.9em; margin-bottom:6px; font-family:Georgia,serif; }
+    .fac .fac-desc { font-size:.74em; color:#c9bbd8; line-height:1.55; opacity:.85; }
+    .fac.fisher  { border-color:rgba(68,255,136,.28); }
+    .fac.fisher .fac-tag { color:#88e8ad; }
+    .fac.fisher .fac-name { color:#c7f0d8; }
+    .fac.port    { border-color:rgba(196,77,170,.35); }
+    .fac.port .fac-tag { color:#c44daa; }
+    .fac.port .fac-name { color:#e7b2dd; }
+    .fac.foreign { border-color:rgba(160,140,255,.3); }
+    .fac.foreign .fac-tag { color:#c4b8ff; }
+    .fac.foreign .fac-name { color:#dfd8f0; }
+
+    .k-quick-links { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-top:32px; }
+    .k-quick-link { display:block; padding:18px 20px; border-radius:10px; border:1px solid rgba(255,140,0,.22); background:rgba(24,10,8,.5); text-decoration:none; text-align:center; transition:border-color .15s; }
+    .k-quick-link:hover { border-color:#ff8c00; }
+    .k-quick-link .ql-title { font-size:.85em; color:#ffb066; display:block; margin-bottom:4px; }
+    .k-quick-link .ql-sub { font-size:.7em; color:#9a8db0; opacity:.75; }
+
+    .alert-banner { background:linear-gradient(135deg,rgba(255,68,68,.10),rgba(60,0,0,.04)); border:1px solid rgba(255,68,68,.3); padding:16px 20px; border-radius:10px; margin-bottom:18px; }
+    .alert-banner .alert-label { font-size:.55em; letter-spacing:2px; text-transform:uppercase; color:#ff7766; margin-bottom:6px; }
+    .alert-banner .alert-text { color:#f0d8d0; font-size:.88em; line-height:1.7; }
+
+    .stat-chip { font-size:.65em; padding:3px 10px; border-radius:12px; background:rgba(255,140,0,.07); border:1px solid rgba(255,140,0,.22); color:#ffcc99; display:inline-block; margin:2px; }
+  </style>
+  <link rel="stylesheet" href="../../../../../../../assets/aom.css"> <!-- aom:injected -->
+</head>
+<body class="aom" data-aom-type="kingdom" >
+  <div class="k-banner">
+    <div class="badge"><span class="dead">Hero Death</span> &bull; Chapter Two &bull; Civil War</div>
+    <h1>Samudra-Dvipa</h1>
+    <div class="state-label">Goa &bull; West Region</div>
+    <p class="tagline">The tide-keeper made a promise the world no longer keeps. The storm he raises to honor it is the storm that takes him.</p>
+    <span class="storm-line"></span>
+  </div>
+
+  <div class="k-nav">
+    <a href="../../../../index.html">&larr; Chapter 2</a>
+    <a href="index.html" class="active">Overview</a>
+    <a href="identity.html">Identity</a>
+    <a href="story.html">Story</a>
+    <a href="rules.html">Rules &amp; Weapons</a>
+  </div>
+
+  <div class="k-section">
+
+    <div class="alert-banner">
+      <div class="alert-label">Hero Death &bull; This Chapter</div>
+      <div class="alert-text">Sagaradeva dies in Mormugao Bay holding a cyclone he raised himself &mdash; the storm sinks the foreign flagship and Maha-Vega both, but Sagaradeva cannot release the storm without dying. The Gaur of Goa walks inland through the Konkan night-forest, looking for a new bond. The kingdom is occupied. Resistance now lives with <strong style="color:#ffb066;">Ferreira-de-Sangam</strong>, the half-Portuguese, half-Goan woman Sagaradeva refused.</div>
+    </div>
+
+    <div class="k-two">
+      <div>
+        <img src="media/portraits/goa-ch2-sagaradeva-final-portrait.png"
+             alt="Sagaradeva at the moment he raises the storm"
+             class="hero-portrait"
+             onerror="this.style.display='none'">
+        <p style="font-size:.7em;color:#9a8db0;text-align:center;margin-top:8px;opacity:.7;">Sagaradeva at the moment he raises the storm &mdash; both tridents lifted, the cyclone gathering</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div class="k-card">
+          <h3>The Hero (Final Act)</h3>
+          <p><strong style="color:#ffb066">Sagaradeva</strong> &mdash; The Tide-Keeper Who Honored the Old Promise</p>
+          <p style="margin-top:8px;">Forty-two. Karna-shadow. Made a promise to defend the Goan coast as a pure tide-keeper &mdash; refused to accept that Goa was never pure. The promise drove the choice. The choice drove the storm. The storm drove the death.</p>
+          <div style="margin-top:10px;">
+            <span class="stat-chip">Hero Death</span>
+            <span class="stat-chip">Bond Departs</span>
+            <span class="stat-chip">Bloodline E</span>
+          </div>
+        </div>
+        <div class="k-card">
+          <h3>The Catalyst Villain</h3>
+          <p><strong style="color:#e7b2dd">Maha-Vega</strong> &mdash; Now in Foreign Service</p>
+          <p style="margin-top:8px;">Sagaradeva&rsquo;s storm-cursed half-brother. Returns allied with a multinational naval fleet. Tries to recruit Sagaradeva to the foreign side as &ldquo;brothers protecting Goa together.&rdquo; Killed by Sagaradeva in the bay moments before Sagaradeva himself falls.</p>
+        </div>
+        <div class="k-card">
+          <h3>The Inheritor of Resistance</h3>
+          <p><strong style="color:#88e8ad">Ferreira-de-Sangam</strong> &mdash; The Daughter of the Mixed Tide</p>
+          <p style="margin-top:8px;">Half-Portuguese (Pernem-line), half-Goan. Thirty-three. Walked into Sagaradeva&rsquo;s hut three nights before the storm and offered to help. He refused. After his death, she begins the work he would not begin. The Goan resistance into Ch 3 is hers.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="k-card" style="margin-top:24px;">
+      <h3>The Three-Way Faction Split</h3>
+      <p style="margin-bottom:14px;">Goa fractures along the foreign tide. The fishermen want their coast back. The port consortium wants modernization money. The foreign fleet wants both.</p>
+      <div class="faction-grid">
+        <div class="fac fisher">
+          <div class="fac-tag">Faction One &bull; ~30%</div>
+          <div class="fac-name">The Old Fishermen</div>
+          <div class="fac-desc">The Tendulkar-led coastal villages who have fished the Konkan since before Vijayanagara. Sagaradeva&rsquo;s base. Lose their fishing rights when Mormugao port is leased to the consortium. Lose their patriarch Bhau Tendulkar to a corporate &ldquo;accident.&rdquo;</div>
+        </div>
+        <div class="fac port">
+          <div class="fac-tag">Faction Two &bull; ~40%</div>
+          <div class="fac-name">The Port Consortium</div>
+          <div class="fac-desc">A multinational corporation that has bought the Mormugao port lease and surrounding land &mdash; partly Indian, partly foreign-funded. Builds a deepwater facility designed to harbor military-grade vessels. Faces of dignity. Hands of erasure.</div>
+        </div>
+        <div class="fac foreign">
+          <div class="fac-tag">Faction Three &bull; ~30%</div>
+          <div class="fac-name">The Foreign Heritage Fleet</div>
+          <div class="fac-desc">A multinational naval force sailing into Mormugao under a &ldquo;heritage exchange&rdquo; pretext. Their flagship carries Maha-Vega in some unholy concord. They claim cultural continuity with seventeenth-century colonial powers; their cargo holds twenty-first-century missiles.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="k-card">
+      <h3>The Void Maw Sign</h3>
+      <p>The <strong style="color:#ffb066;">Second Herald</strong> walks out of the surf at Old Goa at dawn the day after the storm. He wears the clothes of a seventeenth-century sailor. He is wet but no fishermen recognize him. He cannot remember his name, his ship, or the sea that brought him. Ferreira-de-Sangam takes him in. She gives him a name: <em>Vasco-without-a-ship</em>. The Karnataka rule holds: the Herald is named, not killed.</p>
+    </div>
+
+    <div class="k-quick-links">
+      <a href="identity.html" class="k-quick-link">
+        <span class="ql-title">Faction &amp; Cast</span>
+        <span class="ql-sub">Three factions, Sagaradeva&rsquo;s Karna-arc, the inheritor</span>
+      </a>
+      <a href="story.html" class="k-quick-link">
+        <span class="ql-title">Full Story</span>
+        <span class="ql-sub">The Foreign Sea &mdash; a film in two halves</span>
+      </a>
+      <a href="rules.html" class="k-quick-link">
+        <span class="ql-title">Rules &amp; Weapons</span>
+        <span class="ql-sub">Broken tridents, the Gaur&rsquo;s walk, the Second Herald</span>
+      </a>
+      <a href="../../../index.html" class="k-quick-link" style="border-color:rgba(247,217,106,.15);">
+        <span class="ql-title" style="color:#c9a04a;">All Civil War Stories</span>
+        <span class="ql-sub">Back to Chapter 2</span>
+      </a>
+    </div>
+  </div>
+
+  <footer style="text-align:center;padding:28px 20px;border-top:1px solid rgba(196,77,170,.12);color:#9a8db0;font-size:.75em;">
+    <p>Samudra-Dvipa &bull; Civil War &bull; Chapter 2 &bull; Maha Parva &bull; Age of Mythos Volume I</p>
+    <p style="margin-top:6px;"><a href="../../../index.html" style="color:#c9a04a;text-decoration:none;">&larr; Chapter 2 Index</a></p>
+  </footer>
+  <script src="../../../../../../../assets/manifest.js"></script>
+  <script src="../../../../../../../assets/aom.js"></script> <!-- aom:injected -->
+</body>
+</html>

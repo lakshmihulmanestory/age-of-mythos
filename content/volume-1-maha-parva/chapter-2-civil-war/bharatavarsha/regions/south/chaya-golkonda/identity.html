@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chaya-Golkonda &mdash; Identity &mdash; Civil War</title>
+  <link rel="stylesheet" href="../../../../../chapter-1-rise-of-legends/css/style.css">
+  <style>
+    body { background:#0a0a0e; color:#f0e8f8; }
+    .k-banner { text-align:center; padding:78px 20px 36px; border-bottom:1px solid rgba(196,77,170,.16); }
+    .k-banner .badge { font-size:.55em; letter-spacing:4px; text-transform:uppercase; color:#c44daa; opacity:.85; margin-bottom:12px; }
+    .k-banner h1 { font-size:2em; color:#d4a060; margin-bottom:.1em; }
+    .k-banner .state-label { font-size:.72em; color:#c9bbd8; opacity:.6; margin-bottom:.4em; }
+    .k-nav { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:14px 20px; background:rgba(0,0,0,.5); border-bottom:1px solid rgba(196,77,170,.1); }
+    .k-nav a { padding:5px 16px; border-radius:20px; border:1px solid rgba(196,77,170,.25); color:#d4c5e8; font-size:.72em; letter-spacing:1px; text-decoration:none; transition:all .15s; }
+    .k-nav a:hover, .k-nav a.active { background:rgba(196,77,170,.12); border-color:#c44daa; color:#fff; }
+    .k-section { max-width:1100px; margin:0 auto; padding:40px 20px 60px; }
+    .k-card { background:rgba(255,255,255,.025); border:1px solid rgba(196,77,170,.15); border-radius:10px; padding:24px; margin-bottom:20px; }
+    .k-card h3 { font-size:.72em; letter-spacing:2px; text-transform:uppercase; color:#d4a060; margin-bottom:14px; opacity:.9; }
+    .k-two { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    @media(max-width:640px){ .k-two { grid-template-columns:1fr; } }
+    .id-label { font-size:.62em; text-transform:uppercase; letter-spacing:2px; color:#9a8db0; opacity:.6; margin-bottom:3px; }
+    .id-value { font-size:.88em; color:#c9bbd8; margin-bottom:14px; line-height:1.65; }
+    .id-value strong { color:#fff5d4; }
+
+    .prayer-card { padding:18px 22px; border-radius:12px; background:linear-gradient(135deg,rgba(170,102,255,.10),rgba(20,10,40,.04)); border:1px solid rgba(170,102,255,.32); margin:14px 0; }
+    .prayer-card .pc-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#cc99ff; margin-bottom:8px; }
+    .prayer-card .pc-text { color:#d4b8ec; font-size:.95em; line-height:1.75; font-style:italic; white-space:pre-line; }
+    .prayer-card .pc-attr { font-size:.78em; color:#9a8db0; margin-top:8px; }
+
+    .ccard { padding:20px; border-radius:10px; border:1px solid rgba(255,255,255,.08); margin-bottom:14px; }
+    .ccard.hero    { background:linear-gradient(135deg,rgba(212,160,96,.10),rgba(30,20,16,.03)); border-color:rgba(212,160,96,.32); }
+    .ccard.brother { background:linear-gradient(135deg,rgba(255,68,68,.08),rgba(60,0,0,.03)); border-color:rgba(255,68,68,.25); }
+    .ccard.villain { background:linear-gradient(135deg,rgba(123,158,255,.08),rgba(0,10,40,.03)); border-color:rgba(123,158,255,.30); }
+    .ccard.sufi    { background:linear-gradient(135deg,rgba(170,102,255,.10),rgba(20,10,40,.03)); border-color:rgba(170,102,255,.32); }
+    .ccard.coder   { background:linear-gradient(135deg,rgba(93,163,200,.10),rgba(8,20,30,.03)); border-color:rgba(93,163,200,.30); }
+    .ccard.imam    { background:linear-gradient(135deg,rgba(232,201,138,.08),rgba(40,30,10,.03)); border-color:rgba(232,201,138,.28); }
+    .ccard.archive { background:linear-gradient(135deg,rgba(196,184,168,.08),rgba(40,30,16,.03)); border-color:rgba(196,184,168,.28); }
+    .ccard.mother  { background:linear-gradient(135deg,rgba(255,128,170,.08),rgba(40,8,30,.03)); border-color:rgba(255,128,170,.30); }
+    .ccard.shadow  { background:linear-gradient(135deg,rgba(100,90,160,.10),rgba(20,10,40,.04)); border-color:rgba(160,140,255,.25); }
+    .ccard .role-tag { display:inline-block; font-size:.55em; letter-spacing:2px; text-transform:uppercase; padding:3px 10px; border-radius:10px; margin-bottom:8px; }
+    .ccard.hero .role-tag    { background:rgba(212,160,96,.18); color:#e8c898; }
+    .ccard.brother .role-tag { background:rgba(255,68,68,.15); color:#ff8888; }
+    .ccard.villain .role-tag { background:rgba(123,158,255,.20); color:#a8c0ff; }
+    .ccard.sufi .role-tag    { background:rgba(170,102,255,.20); color:#cc99ff; }
+    .ccard.coder .role-tag   { background:rgba(93,163,200,.20); color:#a8d0e8; }
+    .ccard.imam .role-tag    { background:rgba(232,201,138,.18); color:#e8c98a; }
+    .ccard.archive .role-tag { background:rgba(196,184,168,.20); color:#e0d4c0; }
+    .ccard.mother .role-tag  { background:rgba(255,128,170,.20); color:#ffa0c0; }
+    .ccard.shadow .role-tag  { background:rgba(160,140,255,.18); color:#c4b8ff; }
+    .ccard h4 { font-size:1.15em; margin-bottom:4px; color:#fff5d4; font-family:Georgia,serif; }
+    .ccard .ctitle { font-size:.85em; font-style:italic; color:#9a8db0; margin-bottom:12px; }
+    .ccard p { color:#c9bbd8; font-size:.88em; line-height:1.75; }
+  </style>
+  <link rel="stylesheet" href="../../../../../../../assets/aom.css"> <!-- aom:injected -->
+</head>
+<body class="aom" data-aom-type="kingdom-sub" >
+  <div class="k-banner">
+    <div class="badge">Civil War &bull; Kingdom Identity (Chapter 2)</div>
+    <h1>Chaya-Golkonda</h1>
+    <div class="state-label">Telangana &mdash; The Mirror-City, the Dead Brother, the Mother's Cadence, the Fifth Shadow</div>
+  </div>
+  <div class="k-nav">
+    <a href="../../../../index.html">&larr; Chapter 2</a>
+    <a href="index.html">Overview</a>
+    <a href="identity.html" class="active">Identity</a>
+    <a href="story.html">Story</a>
+    <a href="rules.html">Rules &amp; Weapons</a>
+  </div>
+
+  <div class="k-section">
+
+    <div class="k-card">
+      <h3>What Changed Since Chapter One</h3>
+      <p style="font-size:.92em;color:#c9bbd8;line-height:1.8;">In Chapter One Chittaranga defeated Qutb-Chaaya at the Golkonda Fort mirror-vault basement Hall of Diamonds confrontation. Qutb-Chaaya's senior shadow-copy disciple Chitrabheda survived under the kingdom-council's standing-shadow-copy-rehabilitation-protocol clause and spent the intervening years studying the kingdom's reflective surfaces. At eight-forty-three a.m. on the chapter's opening Tuesday, Chitrabheda's standing-reflective-residence protocol activates: approximately three thousand simultaneous reflective-residence installations occur across Hyderabad's reflective surfaces that have crossed the fourteen-month minimum-daily-presence threshold for any specific citizen. Chittaranga's elder brother Lalithanga (35; kingdom-council's standing Cyber-Hyderabad cell-administrator; standing reflective-grid sub-administrator at the Gachibowli west-tower since 2018) is among the three thousand &mdash; his daily 8:43 a.m. tea-break at the east-facing reflective-glass window has crossed the threshold on the 414th consecutive day. The grey eye reads the standing-double-reflection at the state hero's residence's eastern-courtyard window at 9:11 a.m. that same Tuesday. Chittaranga visits Lalithanga at the HITEC City office at 10:30 a.m. and confirms the standing-overlay at the brother's office east-window. The brothers establish the standing Wednesday morning brother-to-brother breakfast monitoring-protocol. Across weeks three through six the overlay progresses (week 3: day 23; week 4: day 30; week 5: day 37 with first cadence-deviations; week 6: day 44 at ~50% saturation). On Tuesday evening of week six Lalithanga telephones Chittaranga at 11:18 p.m. and grants the standing-killing-permission ahead of the standing twelve-week-cycle. The mirror-vault basement duel at 3:10:11 a.m. on Wednesday week six: Lalithanga arrives at the Hall of Diamonds via the standing-fort-trail at 3 a.m.; at 3:08 a.m. he speaks the standing brother-words ('I am still here. Wait.'); at 3:10:11 a.m. Chittaranga throws the Ranga (Truth, shadow-dark) disc at the standing-killing-velocity over the six-metre range; the disc passes through the brother's chest at the standing-killing-trajectory and embeds in the southern-wall mirror-fragment's standing-residence-position; the standing-mirror-fragment shatters at 3:10:11:3 a.m.; the standing-residence-anchor is destroyed at the same moment; the Chitrabheda-overlay-link severs; the brother's body falls at 3:10:11:8; the standing-cerebral-spinal axis stops responding at 3:10:12. Chittaranga remains at the body's right side for ~7 hours. Cremation at the standing-Banjara-Hills cremation-ghat at 3 p.m. Wednesday. Ashes scattered at the standing-Musi-river-mouth at 5:11 p.m. Chittaranga does not sleep Wednesday/Thursday/Friday nights. Bhagmati-Saheba arrives at the state hero's residence at 12:11 a.m. Saturday of week six; recites the standing-Lakshmi-Akka cadence-prayer at the eastern-courtyard meditation-mat. Chittaranga weeps at the third/seventh/eleventh/twenty-third lines; sleeps at 3:47 a.m. for the first time since Tuesday. Eight-night cycle through week seven. Ninth night Monday week eight: Chittaranga speaks; commits to the week-eleven open-trust declaration. Thirty-four-day standing-mirror-monitoring registry built across weeks 6-11 (final count: 7,417 confirmed Chitrabheda-resident citizens; classification by week-of-overlay; standing-disruption protocols administered by the standing-Cantonment medical-cell). Open-trust declaration at the Mecca Masjid courtyard at 11:00-11:30 a.m. Friday week eleven (14,000 attendees; subject Krishna-Bhat at 51% Chitrabheda-saturation). Stage III spotted-deer-foreleg-first-stroke completes at 11:30 a.m. at the standing-seventh-sentence's completion. Charminar's five-shadow Maw-sign appears at the same Friday noon for 13 minutes &mdash; the fifth shadow is Lakshmi-Akka's standing-twelve-noon-prayer dancer-pose.</p>
+    </div>
+
+    <!-- ====== THE MOTHER'S PRAYER ====== -->
+    <div class="k-card">
+      <h3>The Lakshmi-Akka Standing-Cadence-Prayer &mdash; Composed 1987 at the Charminar Sufi Dargah</h3>
+      <p style="font-size:.92em;color:#c9bbd8;line-height:1.8;">Chittaranga's late mother Lakshmi-Akka (deceased 12 December 2008) composed the standing-cadence-prayer in 1987 at the Charminar Sufi dargah's standing-northern-courtyard women's circle. The prayer is approximately 43 lines in three languages (Telugu, Urdu, Persian) at a standing-cadence-rhythm Lakshmi-Akka composed using her dancer's lip-reading-at-distance discipline. Bhagmati-Saheba (then in her early twenties; a 1985-1992 Sufi-line trainee at the same dargah) memorised the standing-cadence across 1987-1992. The prayer's opening seven lines, translated to English (the original is in the three-tongue interleaved register):</p>
+      <div class="prayer-card">
+        <div class="pc-label">The Standing-Cadence-Prayer &bull; Opening Seven Lines</div>
+        <div class="pc-text">Beta, listen with the brown eye closed and the grey eye closed.
+The prayer is the prayer. The cadence is the cadence.
+The mother is the cadence under the prayer.
+
+I am the dancer who reads lips at distance.
+I am the dancer whose lips read the kingdom's silences.
+The silences are the kingdom's longest sentence.
+The sentence is the kingdom's mother.</div>
+        <div class="pc-attr">&mdash; Composed by Lakshmi-Akka at the standing-Charminar-dargah northern-courtyard women's circle, late 1987. Memorised by Bhagmati-Saheba 1987-1992. Preserved at the kingdom-council's standing-Lakshmi-Akka archive's standing-prayer-collection. Recited at every standing-Saturday-night cycle at the state hero's residence eastern-courtyard from week 6 Saturday onward across the standing-eight-night vigil cycle plus the standing-eight-additional-night cycle. The cadence is the kingdom-council's standing-mother-presence registry's permanent record.</div>
+      </div>
+    </div>
+
+    <!-- ====== KEY CHARACTERS ====== -->
+    <div class="k-card">
+      <h3>Key Characters &mdash; This Chapter</h3>
+
+      <div class="ccard hero">
+        <span class="role-tag">Hero &bull; Survives, Stage III by Open Trust</span>
+        <h4>Chittaranga</h4>
+        <div class="ctitle">The Mismatched-Eyed Warrior Who Killed His Brother and Then Learned to Trust &bull; Bloodline D &bull; Arjuna-shadow-mapped</div>
+        <p>Thirty-three. Heterochromatic state hero of Telangana since 2023. Brown right eye sees the surface; grey left eye sees what lies beneath. Throws the Ranga disc at his elder brother Lalithanga in the mirror-vault basement at 3:10:11 a.m. on Wednesday week six. The throw is true. The throw cannot be un-thrown. Spends three nights without sleep at the eastern-courtyard meditation-mat. The Sufi-line elder Bhagmati-Saheba arrives Saturday night week six at 12:11 a.m. and recites the standing-Lakshmi-Akka cadence-prayer until he sleeps at 3:47 a.m. The eight-night vigil cycle plus the eight-additional-night cycle holds him through the chapter's remaining five weeks. Stage III spotted-deer-foreleg-first-stroke completes at the Mecca Masjid courtyard at 11:30 a.m. on Friday week eleven at the open-trust declaration's seventh sentence. Survives Ch 2. Per Ch 3 plan he travels to the Sanctuary as Telangana's state-hero representative.</p>
+      </div>
+
+      <div class="ccard brother">
+        <span class="role-tag">Elder Brother &bull; Killed by the Hero in Week 6</span>
+        <h4>Lalithanga (deceased)</h4>
+        <div class="ctitle">The 35-Year-Old Cyber-Hyderabad Cell-Administrator Who Granted the Standing-Killing-Permission</div>
+        <p>Thirty-five at death. Chittaranga's elder brother by two years. Kingdom-council's standing Cyber-Hyderabad cell-administrator since 2022. Standing reflective-grid sub-administrator at the Gachibowli west-tower since 2018. Standing 414-consecutive-day daily 8:43 a.m. tea-break at the east-facing reflective-glass window crossed the standing fourteen-month-minimum-daily-presence threshold on the chapter's opening Tuesday. Took the standing-Chitrabheda-residence-overlay-installation at 8:43:11 a.m. that same Tuesday. The overlay progressed across weeks 3-6 from day 23 to day 44 (~50% saturation by week six). Granted the standing-killing-permission via brother-to-brother secure-line telephone call at 11:18 p.m. on Tuesday week six. Walked the standing-fort-trail from the eastern entrance to the Golkonda Fort mirror-vault basement at midnight on Wednesday week six. Stood at the chamber's southern-wall mirror-fragment from 3:00 a.m. Spoke the standing brother-words ('I am still here. Wait.') at 3:08 a.m. Was struck by the Ranga disc at 3:10:11 a.m. at the standing-killing-velocity. Body fell at 3:10:11:8 a.m. Standing-cerebral-spinal axis stopped responding at 3:10:12. Body cremated at the standing-Banjara-Hills cremation-ghat at 3 p.m. Wednesday. Ashes scattered at the standing-Musi-river-mouth at 5:11 p.m. by Chittaranga himself as the standing brother's eldest-surviving-male.</p>
+      </div>
+
+      <div class="ccard villain">
+        <span class="role-tag">Catalyst Villain &bull; Integrated by Architecture (Saga's Fifth Integrated)</span>
+        <h4>Chitrabheda</h4>
+        <div class="ctitle">The Thousand-Faced Form Who Lived as Citizens Across Hyderabad's Reflective Surfaces</div>
+        <p>Forty-six. Qutb-Chaaya's Ch 1 senior shadow-copy disciple; took the kingdom-council's standing-shadow-copy-rehabilitation-protocol clause at his Ch 1 sparing in 2023. Activates standing-reflective-residence protocol at 8:43 a.m. on the chapter's opening Tuesday: approximately 3,000 simultaneous reflective-residence installations across Hyderabad. By week 10 the kingdom-council's standing-mirror-monitoring registry confirms 7,417 Chitrabheda-resident citizens. Killing the citizen kills the Chitrabheda-residence in that citizen and kills the citizen; killing the standing-residence-anchor (the reflective surface) without killing the citizen severs the link non-violently. The kingdom-council's amended Chaya-Golkonda charter installs the standing-mirror-monitoring registry, the standing-classification protocol, and the standing-Cantonment medical-cell's standing-anti-mirror-meditation cadence-recitation-and-mirror-fragment-destruction combined protocols for week-1-through-week-11 overlay-positions. Chitrabheda survives the chapter integrated-by-architecture &mdash; he continues to live as residence across the kingdom's reflective surfaces, but the kingdom-council's standing-architecture now identifies, monitors, and disrupts his residence-overlays without killing the host-citizens. The saga's fifth integrated catalyst-villain after Kama-Mara, Asta-Asura, Kala-Hasta, and the Karnataka rule's implicit-integration-pattern. The first integrated catalyst-villain to be integrated through institutional-architecture rather than through personal-reconciliation (Kama-Mara), shadow-twin-recognition (Asta-Asura), or pedagogical-method (Kala-Hasta).</p>
+      </div>
+
+      <div class="ccard sufi">
+        <span class="role-tag">Sufi-Line Elder &bull; The Mother's Vessel-of-Voice</span>
+        <h4>Bhagmati-Saheba</h4>
+        <div class="ctitle">The 1985-1992 Charminar-Dargah Trainee Who Carried Chittaranga's Mother's Cadence</div>
+        <p>Sixty-one. Trained at the Charminar Sufi dargah 1985-1992 under Hazrat Quli Qutb Shah-line senior Sufi-poet Pir-Saheb Anwar. Was at the dargah's standing-northern-courtyard women's circle when Lakshmi-Akka attended the 1987-1992 evening lip-reading-and-prayer sessions. Memorised the standing-Lakshmi-Akka cadence-prayer across 1987-1992. The standing-cadence is Lakshmi-Akka's Telugu-Urdu-Persian three-tongue rhythm composition. After Lakshmi-Akka's 2008 death Bhagmati-Saheba withdrew to standing-dargah-retreat for 18 years. Lakshmi-Akka had arranged the standing-Sufi-line elder's standing-return-protocol with Pir-Saheb Anwar before her 2008 death; the standing-protocol was filed at the kingdom-council's standing-archive vault in autumn 2024 by the late Lakshmi-Akka's standing-survivor-correspondence cell. Returns to public Sufi-line standing at the chapter's opening week. Arrives at the state hero's residence at 12:11 a.m. Saturday of week six. Recites the standing-cadence-prayer at the eastern-courtyard meditation-mat from midnight to 4 a.m. for the standing-eight-night cycle from week 6 Saturday through week 7 Sunday, plus the standing-eight-additional-night cycle from week 8 Monday through week 9 Monday. The standing-vessel-protocol's standing-purpose: the standing-preservation of the standing-cadence-of-a-deceased-teacher across the standing-line's next generation. Per Ch 3 plan she becomes Telangana's standing Sufi-line federation-liaison at the Sanctuary.</p>
+      </div>
+
+      <div class="ccard coder">
+        <span class="role-tag">The Loyal Coder &bull; Subject of the Open-Trust Declaration</span>
+        <h4>Krishna-Bhat</h4>
+        <div class="ctitle">The 26-Year-Old Cyber-Hyderabad Sub-Administrator at 51% Chitrabheda-Saturation Who Held His Kingdom-Loyalty</div>
+        <p>Twenty-six. Standing reflective-grid sub-administrator at the Gachibowli west-tower since 2023. Standing fourteen-month-minimum-daily-presence threshold crossed many times over for his standing-tower-position. Took the standing-Chitrabheda-residence-overlay-installation at 8:43 a.m. on the chapter's opening Tuesday. Standing-overlay-position week-9; standing-saturation 51% by week 10's standing-mirror-monitoring registry classification (filed Thursday week 10 at 6 p.m. by the standing-Cyber-Hyderabad cell's standing-administrative-coordination cell under standing-entry-number CH-2026-7,394). Performed the standing-anti-mirror-meditation protocol's standing-disruption-recitation at every standing-decision-point across weeks 6-11. Bhagmati-Saheba's standing-training-cell at the Cyber-Hyderabad standing-IT-Park administered the standing-recitation across the same period. Holds his standing-kingdom-loyalty against the standing-residence-pull through the standing-cadence-protocol. Subject of Chittaranga's open-trust declaration at the Mecca Masjid courtyard on Friday week eleven. Confirms his standing-overlay-position publicly after the declaration. Performs the standing-thirty-eight-day standing-disruption-protocol at the standing-Cantonment medical-cell starting same day. Returns to the standing reflective-grid sub-administrator's seat at the standing-protocol's standing-completion. Per Ch 3 plan he serves as the kingdom-council's standing Cyber-Hyderabad cell-administrator (the seat Lalithanga had held before his death).</p>
+      </div>
+
+      <div class="ccard imam">
+        <span class="role-tag">Standing Imam &bull; Mecca Masjid Courtyard Opening-Statement</span>
+        <h4>Hazrat Mohammed-Ali Qadri</h4>
+        <div class="ctitle">The 68-Year-Old Hyderabadi Imam Who Opened the Standing-Pre-Prayer-Public-Assembly for the Declaration</div>
+        <p>Sixty-eight. Standing Mecca Masjid Imam-Saheb since 2009. Hazrat Quli Qutb Shah-line senior Imam-Saheb (the same standing-Sufi-line that trained Bhagmati-Saheba at the Charminar dargah). Performs the standing-pre-prayer-public-assembly opening-statement at the Mecca Masjid courtyard at 11 a.m. on Friday week eleven. The standing-statement is the standing-charter-required opening for the standing open-trust declaration; the standing-statement references the kingdom-council's amended Chaya-Golkonda charter's Eighth Clause (the standing-open-trust-declaration provision). Returns to the standing-mihrab after Chittaranga's declaration. Begins the standing-Friday-prayer at 12:30 p.m. per the standing-Hyderabadi mosque-tradition. Survives Volume I as the kingdom-council's standing Mecca Masjid Imam-Saheb. Per Ch 3 plan he attends the Sanctuary as Telangana's standing Sufi-line representative alongside Bhagmati-Saheba.</p>
+      </div>
+
+      <div class="ccard archive">
+        <span class="role-tag">Standing Archive &bull; Standing Cantonment Coordination</span>
+        <h4>Padmavathi-garu</h4>
+        <div class="ctitle">The 54-Year-Old Kingdom-Council Standing-Archive Senior-Officer at the Cantonment</div>
+        <p>Fifty-four. Standing-archive senior-officer at the Secunderabad Cantonment State Civil Service compound since 2018. Receives Chittaranga's 9:14 a.m. telephone call on the chapter's opening Tuesday with the standing-reflective-grid-breach observation. Initiates the standing-emergency-mirror-monitoring cell's standing-drafting at 10 a.m. Tuesday. Holds the kingdom-council's standing-administrative-coordination seat for the standing-thirty-four-day-registry-build (weeks 6-11). Coordinates with the standing-Cantonment medical-cell, the standing-State-Police, the standing-Cyber-Hyderabad cell-administrator (Lalithanga through week 6; Krishna-Bhat from week 11 onward), and the standing-Sufi-line training-cell (Bhagmati-Saheba). Filed the standing-Lakshmi-Akka standing-survivor-correspondence cell's standing-return-protocol in autumn 2024 under the late Lakshmi-Akka's standing-pre-2008 arrangement. Survives Volume I. Per Ch 3 plan she attends the Sanctuary as Telangana's standing-administrative-coordination representative.</p>
+      </div>
+
+      <div class="ccard mother">
+        <span class="role-tag">The Mother &bull; Deceased 2008 &bull; Standing-Maw-Recognised at Noon Friday Week 11</span>
+        <h4>Lakshmi-Akka (deceased 2008)</h4>
+        <div class="ctitle">Chittaranga and Lalithanga's Mother &bull; Dancer Who Read Lips at Distance &bull; Composer of the Standing-Cadence-Prayer</div>
+        <p>Died 12 December 2008, age 56. Dancer at the standing-Hyderabad-temple-court traditions 1972-2008. Could read lips from across a crowded court at distances up to forty metres (the standing-Hyderabadi-dancer lip-reading discipline at the highest level). Married the standing gem-cutter-and-informant Veera-Rao in 1986; mother of Lalithanga (1990) and Chittaranga (1992) and an unnamed twin-sister born 2 minutes after Chittaranga. Composed the standing-cadence-prayer in 1987 at the Charminar Sufi dargah's standing-northern-courtyard women's circle. Taught the standing-cadence to Bhagmati-Saheba across 1987-1992. Taught the standing-grey-eye-discipline to Chittaranga from his 3rd year. Taught the standing-lip-reading-at-distance discipline to Lalithanga from his 5th year. Performed the standing-twelve-noon-prayer-pose at the Mecca Masjid courtyard daily at noon across 1997-2008 (eleven years). Final recitation 12 December 2008 at 6:11 a.m. at her standing-death-bed east-window in the standing-cadence-prayer; completed at 6:53 a.m.; died at 6:58 a.m. Standing-Maw-recognised at noon on Friday week 11 of Ch 2 in the Charminar's standing-fifth-shadow in the standing-twelve-noon-prayer-pose. The kingdom-council's standing-Maw-sign-recognition cell's preliminary report (3:11 p.m. same Friday) confirms the standing-shadow's standing-Lakshmi-Akka-pose identity. The kingdom-council's standing-Lakshmi-Akka archive's standing-pose-photographs collection (123 photographs, 1997-2008) is the standing-cross-reference standing-record.</p>
+      </div>
+
+      <div class="ccard shadow">
+        <span class="role-tag">Cosmic Sign &bull; First Shadow-Surplus Maw Event</span>
+        <h4>The Charminar's Fifth Shadow</h4>
+        <div class="ctitle">Telangana's Void Maw Sign &bull; The Mother's Noon-Prayer-Pose Recognised at the Quadrangle's Geometric Centre</div>
+        <p>Friday week eleven at twelve noon. The Charminar quadrangle in Hyderabad Old City. The four-minareted seventeenth-century arch-monument has cast four shadows at every solar-noon since its 1591 completion (53-year continuous Archaeological Survey of India standing-Charminar-monitoring cell daily-noon-image-record). On Friday week 11 at noon the Charminar casts <strong>five shadows</strong>. The fifth shadow is centred at the quadrangle's exact geometric centre and extends north-east at the standard noon-radial angle. The shadow is approximately the height of an adult human; the shape is the standing-Hyderabadi-dancer-pose with arms slightly extended at the hips' level. The shadow holds for thirteen minutes from 12:00 to 12:13. The standing-noon-image-record at 12:01, 12:07, and 12:11 capture the five-shadow configuration. The fifth shadow dissolves at 12:13:14 exactly. Dr. P. Sumathi (62, ASI senior fellow) confirms the standing-shadow has no precedent in the standing-53-year-record. The kingdom-council's standing-Maw-sign-recognition cell's preliminary report (3:11 p.m. same Friday) identifies the standing-pose as Lakshmi-Akka's standing-twelve-noon-prayer-pose (cross-referenced against the 123 standing-pose-photographs 1997-2008). The standing-thirteen-minute duration corresponds to Lakshmi-Akka's standing-thirteen-minute prayer-cycle at the standing-noon-prayer-session. Paired with Arunachal's First Herald (Sahodara-Aapun): the First Herald casts no shadow; the Charminar casts an extra shadow. The pair is the saga's third formally-recognised cross-region Maw-sign pair: shadow-deficit (Arunachal) and shadow-surplus (Telangana).</p>
+      </div>
+
+    </div>
+
+    <div style="display:flex;justify-content:space-between;margin-top:24px;flex-wrap:wrap;gap:10px;">
+      <a href="index.html" style="color:#c9a04a;text-decoration:none;font-size:.85em;">&larr; Overview</a>
+      <a href="story.html" style="color:#c9a04a;text-decoration:none;font-size:.85em;">Story &rarr;</a>
+    </div>
+  </div>
+
+  <footer style="text-align:center;padding:28px 20px;border-top:1px solid rgba(196,77,170,.12);color:#9a8db0;font-size:.75em;">
+    <p>Chaya-Golkonda Identity &bull; Civil War &bull; Chapter 2</p>
+  </footer>
+  <script src="../../../../../../../assets/manifest.js"></script>
+  <script src="../../../../../../../assets/aom.js"></script> <!-- aom:injected -->
+</body>
+</html>

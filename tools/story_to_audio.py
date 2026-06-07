@@ -33,7 +33,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 
 # Repo-relative default scan root. Override with --root.
-DEFAULT_ROOT = "com/hulmane/age-of-mythos/volume-1-maha-parva"
+DEFAULT_ROOT = "content/volume-1-maha-parva"
 
 # Block-level tags after which we want a paragraph break (and a spoken pause).
 BLOCK_TAGS = {"h1", "h2", "h3", "h4", "p", "div", "li", "blockquote", "br"}

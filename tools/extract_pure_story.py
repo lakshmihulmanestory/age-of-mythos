@@ -37,7 +37,7 @@ import sys
 from html.parser import HTMLParser
 from pathlib import Path
 
-DEFAULT_ROOT = "com/hulmane/age-of-mythos/volume-1-maha-parva"
+DEFAULT_ROOT = "content/volume-1-maha-parva"
 
 # Subtrees ignored entirely: scripts/styles, headings (titles + scene labels),
 # and any "chrome" container matched by these class-name keywords. Templates

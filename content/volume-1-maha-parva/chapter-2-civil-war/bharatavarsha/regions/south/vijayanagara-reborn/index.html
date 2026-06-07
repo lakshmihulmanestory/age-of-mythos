@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vijayanagara Reborn &mdash; Civil War &mdash; Age of Mythos</title>
+  <link rel="stylesheet" href="../../../../../chapter-1-rise-of-legends/css/style.css">
+  <style>
+    body { background:#0a0610; color:#f0e8f8; min-height:100vh; }
+    .k-banner { text-align:center; padding:78px 20px 40px; background:linear-gradient(180deg,#0a0610 0%,#1c0810 60%,#0a0610 100%); border-bottom:1px solid rgba(196,77,170,.16); position:relative; }
+    .k-banner .badge { font-size:.55em; letter-spacing:4px; text-transform:uppercase; color:#c44daa; opacity:.85; margin-bottom:14px; }
+    .k-banner .badge .pilot { color:#b8760a; font-weight:bold; }
+    .k-banner h1 { font-size:2.6em; color:#f7d96a; margin-bottom:.15em; letter-spacing:2px; }
+    .k-banner .state-label { font-size:.78em; color:#c9bbd8; opacity:.7; letter-spacing:1px; margin-bottom:.6em; }
+    .k-banner .tagline { color:#d4c5e8; font-size:.92em; max-width:660px; margin:0 auto; line-height:1.75; font-style:italic; }
+    .crack-line { display:block; margin:24px auto 0; width:200px; height:1px; background:linear-gradient(90deg,transparent,#c44daa,transparent); position:relative; }
+    .crack-line::after { content:""; position:absolute; left:48%; top:-3px; width:6px; height:7px; background:#c44daa; transform:rotate(45deg); }
+    .k-nav { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:14px 20px; background:rgba(0,0,0,.5); border-bottom:1px solid rgba(196,77,170,.1); }
+    .k-nav a { padding:5px 16px; border-radius:20px; border:1px solid rgba(196,77,170,.25); color:#d4c5e8; font-size:.72em; letter-spacing:1px; text-decoration:none; transition:all .15s; }
+    .k-nav a:hover, .k-nav a.active { background:rgba(196,77,170,.12); border-color:#c44daa; color:#fff; }
+    .k-section { max-width:1100px; margin:0 auto; padding:40px 20px 60px; }
+    .k-two { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    @media(max-width:640px){ .k-two { grid-template-columns:1fr; } }
+    .k-card { background:rgba(255,255,255,.025); border:1px solid rgba(196,77,170,.15); border-radius:10px; padding:22px; margin-bottom:16px; }
+    .k-card h3 { font-size:.72em; letter-spacing:2px; text-transform:uppercase; color:#c44daa; margin-bottom:12px; opacity:.85; }
+    .k-card p { font-size:.88em; color:#c9bbd8; line-height:1.75; }
+    .hero-portrait { width:100%; border-radius:10px; border:1px solid rgba(196,77,170,.2); display:block; }
+
+    /* Faction breakdown */
+    .faction-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:14px; }
+    @media(max-width:720px){ .faction-grid { grid-template-columns:1fr; } }
+    .fac { padding:14px 16px; border-radius:10px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.02); }
+    .fac .fac-tag { font-size:.55em; letter-spacing:2px; text-transform:uppercase; margin-bottom:6px; }
+    .fac .fac-name { font-size:.9em; margin-bottom:6px; font-family:Georgia,serif; }
+    .fac .fac-desc { font-size:.74em; color:#c9bbd8; line-height:1.55; opacity:.85; }
+    .fac.restore { border-color:rgba(196,77,170,.4); }
+    .fac.restore .fac-tag { color:#c44daa; }
+    .fac.restore .fac-name { color:#e7b2dd; }
+    .fac.reform { border-color:rgba(247,217,106,.35); }
+    .fac.reform .fac-tag { color:#f7d96a; }
+    .fac.reform .fac-name { color:#fff5d4; }
+    .fac.hadali { border-color:rgba(68,255,136,.3); }
+    .fac.hadali .fac-tag { color:#88e8ad; }
+    .fac.hadali .fac-name { color:#c7f0d8; }
+
+    .k-quick-links { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-top:32px; }
+    .k-quick-link { display:block; padding:18px 20px; border-radius:10px; border:1px solid rgba(196,77,170,.2); background:rgba(28,8,16,.5); text-decoration:none; text-align:center; transition:border-color .15s; }
+    .k-quick-link:hover { border-color:#c44daa; }
+    .k-quick-link .ql-title { font-size:.85em; color:#f7d96a; display:block; margin-bottom:4px; }
+    .k-quick-link .ql-sub { font-size:.7em; color:#9a8db0; opacity:.75; }
+
+    .alert-banner { background:linear-gradient(135deg,rgba(255,68,68,.10),rgba(60,0,0,.04)); border:1px solid rgba(255,68,68,.3); padding:16px 20px; border-radius:10px; margin-bottom:18px; }
+    .alert-banner .alert-label { font-size:.55em; letter-spacing:2px; text-transform:uppercase; color:#ff7766; margin-bottom:6px; }
+    .alert-banner .alert-text { color:#f0d8d0; font-size:.88em; line-height:1.7; }
+
+    .stat-chip { font-size:.65em; padding:3px 10px; border-radius:12px; background:rgba(196,77,170,.08); border:1px solid rgba(196,77,170,.2); color:#e7b2dd; display:inline-block; margin:2px; }
+  </style>
+  <link rel="stylesheet" href="../../../../../../../assets/aom.css"> <!-- aom:injected -->
+</head>
+<body class="aom" data-aom-type="kingdom" >
+  <div class="k-banner">
+    <div class="badge"><span class="pilot">Pilot Story</span> &bull; Chapter Two &bull; Civil War</div>
+    <h1>Vijayanagara Reborn</h1>
+    <div class="state-label">Karnataka &bull; South Region</div>
+    <p class="tagline">The Restorationists want the empire back. The Reformers want to build something new on Hampi&rsquo;s ruins. The Hadali never agreed to be forgotten.</p>
+    <span class="crack-line"></span>
+  </div>
+
+  <div class="k-nav">
+    <a href="../../../../index.html">&larr; Chapter 2</a>
+    <a href="index.html" class="active">Overview</a>
+    <a href="identity.html">Identity</a>
+    <a href="story.html">Story</a>
+    <a href="rules.html">Rules &amp; Weapons</a>
+  </div>
+
+  <div class="k-section">
+
+    <div class="alert-banner">
+      <div class="alert-label">Hero Death &bull; This Chapter</div>
+      <div class="alert-text">Tungabhadra dies at the climax of this story, destroying the imperial throne-stone with her own hands. The elephant-bond transfers to <strong style="color:#f7d96a;">Krishnadevaraya-Bhrata</strong> &mdash; Bhoomi-Takshaka&rsquo;s redeemed twin brother. He becomes the new Hero of Karnataka for Chapters Three and Four.</div>
+    </div>
+
+    <div class="k-two">
+      <div>
+        <img src="media/portraits/karnataka-ch2-tungabhadra-final-portrait.png"
+             alt="Tungabhadra in her final hour"
+             class="hero-portrait"
+             onerror="this.style.display='none'">
+        <p style="font-size:.7em;color:#9a8db0;text-align:center;margin-top:8px;opacity:.7;">Tungabhadra in her final hour &mdash; the throne-stone half-broken behind her</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div class="k-card">
+          <h3>The Hero (Final Act)</h3>
+          <p><strong style="color:#f7d96a">Tungabhadra</strong> &mdash; The River Queen Who Broke Her Own Throne</p>
+          <p style="margin-top:8px;">Caught between honoring her predecessors and breaking violence-cycles. Her ward is taken legally. Her sister-villain rises with dignity rather than rage. She chooses the only act that cannot be undone &mdash; she destroys the throne-stone publicly and dies with it.</p>
+          <div style="margin-top:10px;">
+            <span class="stat-chip">Hero Death</span>
+            <span class="stat-chip">Bond Transfers</span>
+            <span class="stat-chip">Bloodline A</span>
+          </div>
+        </div>
+        <div class="k-card">
+          <h3>The Inheritor</h3>
+          <p><strong style="color:#88e8ad">Krishnadevaraya-Bhrata</strong> &mdash; The Quiet Architect</p>
+          <p style="margin-top:8px;">Bhoomi-Takshaka&rsquo;s twin brother. Lived in his sister&rsquo;s court for thirty-six years saying nothing. Defects to Tungabhadra mid-civil-war. Inherits the elephant-bond at the throne-stone&rsquo;s fall. Becomes the Maha-Adhipati-in-waiting.</p>
+        </div>
+        <div class="k-card">
+          <h3>The Catalyst Villain</h3>
+          <p><strong style="color:#e7b2dd">Bhoomi-Takshaka</strong> &mdash; The Restoration Architect</p>
+          <p style="margin-top:8px;">Returns not as attacker but as the publicly-respected leader of the Imperial Restoration. Claims the serpent-network is original Vijayanagara security infrastructure. Many believe her. Dies alongside Tungabhadra at the throne-stone.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="k-card" style="margin-top:24px;">
+      <h3>The Three-Way Faction Split</h3>
+      <p style="margin-bottom:14px;">Where Chapter One had hero vs villain, Chapter Two has three factions tearing the kingdom apart from within. None of them is entirely wrong.</p>
+      <div class="faction-grid">
+        <div class="fac restore">
+          <div class="fac-tag">Faction One</div>
+          <div class="fac-name">Restorationists</div>
+          <div class="fac-desc">Rebuild the Vijayanagara Empire as it was. Bhoomi-Takshaka&rsquo;s base. Bloodline-A dispossessed branch plus the old nobility. About forty percent of the kingdom.</div>
+        </div>
+        <div class="fac reform">
+          <div class="fac-tag">Faction Two</div>
+          <div class="fac-name">Reformers</div>
+          <div class="fac-desc">Build something new on Hampi&rsquo;s ruins. Tungabhadra&rsquo;s base. Sage Vidyaranya&rsquo;s spirit. Krishnadevaraya-Bhrata defects to this side. Roughly forty percent.</div>
+        </div>
+        <div class="fac hadali">
+          <div class="fac-tag">Faction Three</div>
+          <div class="fac-name">Tribal Hadali / Lambani</div>
+          <div class="fac-desc">Karnataka&rsquo;s pre-imperial inhabitants, displaced when Vijayanagara rose. Tungabhadra had previously ignored them. They hold the dharmic deciding vote. About twenty percent, and finally listened to.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="k-card">
+      <h3>The Void Maw Sign</h3>
+      <p>The <strong style="color:#f7d96a;">Third Herald</strong> &mdash; a child born during the temple-earthquake &mdash; appears in Hampi at the chapter&rsquo;s end. He stands in the rubble of the throne-stone, untouched and unspeaking. He is the third Herald of the Void Maw to walk Bharatavarsha. Hampi-of-the-Bronze takes his hand. Krishnadevaraya-Bhrata recognises &mdash; though he has never met one &mdash; what the child is.</p>
+    </div>
+
+    <div class="k-quick-links">
+      <a href="identity.html" class="k-quick-link">
+        <span class="ql-title">Faction &amp; Cast</span>
+        <span class="ql-sub">Three factions, new characters, the inheritor</span>
+      </a>
+      <a href="story.html" class="k-quick-link">
+        <span class="ql-title">Full Story</span>
+        <span class="ql-sub">The Restoration vs Reform Schism</span>
+      </a>
+      <a href="rules.html" class="k-quick-link">
+        <span class="ql-title">Rules &amp; Weapons</span>
+        <span class="ql-sub">Cracked throne-stone, bond-transfer, new mark</span>
+      </a>
+      <a href="../../../index.html" class="k-quick-link" style="border-color:rgba(247,217,106,.15);">
+        <span class="ql-title" style="color:#c9a04a;">All Civil War Stories</span>
+        <span class="ql-sub">Back to Chapter 2</span>
+      </a>
+    </div>
+  </div>
+
+  <footer style="text-align:center;padding:28px 20px;border-top:1px solid rgba(196,77,170,.12);color:#9a8db0;font-size:.75em;">
+    <p>Vijayanagara Reborn &bull; Civil War &bull; Chapter 2 &bull; Maha Parva &bull; Age of Mythos Volume I</p>
+    <p style="margin-top:6px;"><a href="../../../index.html" style="color:#c9a04a;text-decoration:none;">&larr; Chapter 2 Index</a></p>
+  </footer>
+  <script src="../../../../../../../assets/manifest.js"></script>
+  <script src="../../../../../../../assets/aom.js"></script> <!-- aom:injected -->
+</body>
+</html>

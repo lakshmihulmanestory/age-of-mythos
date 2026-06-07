@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Rhino Knight of Kaziranga | Hulmane-The-Saga</title>
+  <link rel="stylesheet" href="../../../../../css/style.css">
+  <style>
+    .ne-story-card {
+      background: rgba(42, 26, 58, 0.7);
+      border: 1px solid rgba(170, 102, 255, 0.25);
+      border-radius: var(--block-radius);
+      padding: 2.5rem;
+      margin-bottom: 2.5rem;
+      line-height: 1.9;
+      font-size: 0.95rem;
+    }
+    .ne-story-card h3 {
+      color: #aa66ff;
+      font-size: 1.5rem;
+      margin-bottom: 0.3em;
+    }
+    .ne-story-card .chapter-subtitle {
+      color: #ddaaff;
+      font-style: italic;
+      font-size: 0.9rem;
+      margin-bottom: 1.5em;
+      display: block;
+    }
+    .ne-story-card p {
+      margin-bottom: 1.2em;
+      color: var(--text);
+    }
+    .ne-story-card blockquote {
+      border-left-color: #aa66ff;
+      background: rgba(170, 102, 255, 0.06);
+    }
+    .ne-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #aa66ff, transparent);
+      margin: 2rem 0;
+    }
+    .ne-phase-card {
+      background: rgba(42, 26, 58, 0.6);
+      border: 1px solid rgba(170, 102, 255, 0.3);
+      border-radius: var(--card-radius);
+      padding: 1.5rem;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .ne-phase-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(170, 102, 255, 0.15);
+    }
+    .ne-phase-card h4 {
+      color: #aa66ff;
+      margin-bottom: 0.2em;
+    }
+    .ne-phase-card .phase-ages {
+      color: #ffd700;
+      font-size: 0.85rem;
+      margin-bottom: 0.6em;
+    }
+    .ne-phase-card p {
+      font-size: 0.88rem;
+      color: var(--text-dim);
+      margin-bottom: 0;
+    }
+    .ne-chapter-num {
+      display: inline-block;
+      background: rgba(170, 102, 255, 0.15);
+      border: 1px solid rgba(170, 102, 255, 0.3);
+      border-radius: 20px;
+      padding: 0.2em 0.8em;
+      font-size: 0.75rem;
+      color: #ddaaff;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 0.8em;
+    }
+    .ne-hero-intro {
+      background: linear-gradient(160deg, #2a1a3a 0%, #1a0a2a 100%);
+      border: 1px solid #aa66ff;
+      border-radius: var(--block-radius);
+      padding: 2.5rem;
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+    .ne-hero-intro .hero-portrait-area {
+      flex: 0 0 280px;
+      text-align: center;
+    }
+    .ne-hero-intro .hero-details {
+      flex: 1;
+      min-width: 280px;
+    }
+    .ne-hero-intro .detail-row {
+      display: flex;
+      gap: 0.5em;
+      margin-bottom: 0.6em;
+      font-size: 0.92rem;
+    }
+    .ne-hero-intro .detail-label {
+      color: #aa66ff;
+      font-weight: 600;
+      min-width: 110px;
+    }
+    .ne-hero-intro .detail-value {
+      color: var(--text);
+    }
+    .ne-back-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .ne-back-links a {
+      display: inline-block;
+      padding: 0.5em 1.5em;
+      border: 1px solid #aa66ff;
+      border-radius: 20px;
+      color: #ddaaff;
+      font-size: 0.9rem;
+      transition: background 0.25s ease, color 0.25s ease;
+    }
+    .ne-back-links a:hover {
+      background: rgba(170, 102, 255, 0.15);
+      color: #ffd700;
+    }
+    @media (max-width: 600px) {
+      .ne-hero-intro {
+        padding: 1.5rem;
+      }
+      .ne-hero-intro .hero-portrait-area {
+        flex: 0 0 100%;
+      }
+      .ne-story-card {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="../../../../../../../../assets/aom.css"> <!-- aom:injected -->
+</head>
+<body class="aom" data-aom-type="story" >
+
+  <!-- ===== NAVIGATION BAR ===== -->
+    <nav class="maha-nav">
+    <a href="../../../../../../index.html" class="nav-logo">Age of Mythos</a>
+    <div class="nav-links">
+      <a href="../../../../../../../../../index.html">Volume I</a>
+      <a href="../../../../../kingdoms.html">Kingdoms</a>
+      <a href="../../../../../identity.html">Identities</a>
+      <a href="../../../../../characters.html">Heroes</a>
+      <a href="../../../../../systems.html">Systems</a>
+      <a href="../../../../../council.html">Council</a>
+      <a href="../../../../../bharatavarsha/global-map.html">Map</a>
+    </div>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('nav-open')">&#9776;</button>
+  </nav>
+  <!-- Back to kingdom story -->
+  <div style="max-width:1100px;margin:12px auto 0;padding:0 20px;">
+    <a href="../story.html" style="color:var(--gold-dim);text-decoration:none;font-size:.8em;">&larr; Back to Kingdom Story</a>
+    &nbsp;&nbsp;
+    <a href="../index.html" style="color:var(--gold-dim);text-decoration:none;font-size:.8em;">&larr; Kingdom Overview</a>
+  </div>
+
+  <div style="padding:70px 20px 0;max-width:1200px;margin:0 auto;font-size:0.8rem;">
+    <a href="../../../../../kingdoms.html" style="color:var(--gold-dim);text-decoration:none;">All Kingdoms</a>
+    <span style="color:var(--text-dim);margin:0 6px;">&rsaquo;</span>
+    <a href="../../../../../kingdoms.html" style="color:var(--gold-dim);text-decoration:none;">India</a>
+    <span style="color:var(--text-dim);margin:0 6px;">&rsaquo;</span>
+    <a href="../index.html" style="color:var(--gold-dim);text-decoration:none;">Pragjyotisha (Northeast)</a>
+    <span style="color:var(--text-dim);margin:0 6px;">&rsaquo;</span>
+    <a href="index.html" style="color:var(--gold-dim);text-decoration:none;">Assam</a>
+    <span style="color:var(--text-dim);margin:0 6px;">&rsaquo;</span>
+    <span style="color:var(--gold);font-weight:bold;">The Rhino Knight</span>
+  </div>
+
+  <!-- ===== 1. EPIC HEADER ===== -->
+  <section class="section" style="text-align:center; padding-top:80px;">
+    <div style="margin-bottom:20px;">
+      <svg viewBox="0 0 800 150" style="width:100%; max-width:900px; border-radius:12px;">
+        <defs>
+          <linearGradient id="neBg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#2a1a3a"/>
+            <stop offset="50%" stop-color="#3a2a5a"/>
+            <stop offset="100%" stop-color="#2a1a3a"/>
+          </linearGradient>
+        </defs>
+        <rect width="800" height="150" fill="url(#neBg)"/>
+        <path d="M0,130 L50,120 L100,130 L150,115 L200,130 L250,118 L300,130 L350,122 L400,130 L450,115 L500,128 L550,120 L600,130 L650,118 L700,128 L750,115 L800,130 L800,150 L0,150 Z" fill="#aa66ff" opacity="0.1"/>
+        <text x="400" y="50" fill="#aa66ff" text-anchor="middle" font-size="14" font-family="Georgia" letter-spacing="3">ASSAM &mdash; THE NORTHEAST KINGDOM</text>
+        <text x="400" y="85" fill="#ffd700" text-anchor="middle" font-size="32" font-family="Georgia" font-weight="bold">The Rhino Knight of Kaziranga</text>
+        <text x="400" y="115" fill="#ddaaff" text-anchor="middle" font-size="14" font-family="Georgia" font-style="italic">The Story of Kamalavarna, the Lotus Shield</text>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ===== 2. HERO INTRODUCTION CARD ===== -->
+  <section class="section" style="padding-top:0;">
+    <div class="container" style="max-width:960px;">
+      <div class="ne-hero-intro">
+        <div class="hero-portrait-area">
+          <svg viewBox="0 0 240 300" style="width:100%; max-width:240px; border-radius:8px;">
+            <defs>
+              <linearGradient id="portraitBg" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#1a0a2a"/>
+                <stop offset="100%" stop-color="#2a1a3a"/>
+              </linearGradient>
+            </defs>
+            <rect width="240" height="300" fill="url(#portraitBg)" rx="8"/>
+            <!-- Rhino silhouette -->
+            <ellipse cx="120" cy="200" rx="80" ry="45" fill="#aa66ff" opacity="0.08"/>
+            <path d="M70,210 Q80,170 100,165 Q110,160 120,155 Q140,160 150,170 Q165,180 170,210 Q160,220 120,225 Q80,220 70,210 Z" fill="#aa66ff" opacity="0.12"/>
+            <path d="M118,155 L115,135 L122,130 L125,155 Z" fill="#aa66ff" opacity="0.15"/>
+            <!-- Shield icon -->
+            <path d="M120,50 L150,65 L150,100 Q150,130 120,145 Q90,130 90,100 L90,65 Z" fill="none" stroke="#aa66ff" stroke-width="2" opacity="0.5"/>
+            <path d="M120,70 L135,78 L135,100 Q135,118 120,128 Q105,118 105,100 L105,78 Z" fill="#aa66ff" opacity="0.1"/>
+            <!-- Lotus in hair -->
+            <circle cx="120" cy="30" r="12" fill="none" stroke="#ffd700" stroke-width="1" opacity="0.4"/>
+            <path d="M120,22 Q126,30 120,38 Q114,30 120,22 Z" fill="#ffd700" opacity="0.3"/>
+            <path d="M113,26 Q120,32 127,26" fill="none" stroke="#ffd700" stroke-width="0.8" opacity="0.3"/>
+            <text x="120" y="270" fill="#ddaaff" text-anchor="middle" font-size="14" font-family="Georgia" font-weight="bold">Kamalavarna</text>
+            <text x="120" y="288" fill="#aa66ff" text-anchor="middle" font-size="10" font-family="Georgia" font-style="italic">The Lotus Shield</text>
+          </svg>
+          <!-- Tattoo indicator -->
+          <div style="margin-top:12px; display:flex; align-items:center; justify-content:center; gap:6px;">
+            <span style="font-size:0.75rem; color:#ddaaff; margin-right:4px;">Tattoo:</span>
+            <span style="width:12px; height:12px; border-radius:50%; background:#ffd700; border:1px solid #ffd700; box-shadow:0 0 8px rgba(255,215,0,0.6); display:inline-block;"></span>
+            <span style="width:12px; height:12px; border-radius:50%; background:#ffd700; border:1px solid #ffd700; box-shadow:0 0 8px rgba(255,215,0,0.6); display:inline-block;"></span>
+            <span style="width:12px; height:12px; border-radius:50%; background:#ffd700; border:1px solid #ffd700; box-shadow:0 0 8px rgba(255,215,0,0.6); display:inline-block;"></span>
+            <span style="width:12px; height:12px; border-radius:50%; background:#ffd700; border:1px solid #ffd700; box-shadow:0 0 8px rgba(255,215,0,0.6); display:inline-block;"></span>
+            <span style="font-size:0.7rem; color:#ffd700; margin-left:4px;">Full Body</span>
+          </div>
+        </div>
+        <div class="hero-details">
+          <h2 style="color:#ffd700; margin-bottom:0.1em;">Kamalavarna</h2>
+          <p style="color:#ddaaff; font-style:italic; margin-bottom:1em;">The Lotus Shield &mdash; Horn of the Brahmaputra</p>
+          <div class="detail-row"><span class="detail-label">State:</span><span class="detail-value">Assam</span></div>
+          <div class="detail-row"><span class="detail-label">Region:</span><span class="detail-value">Northeast India (Pragjyotisha)</span></div>
+          <div class="detail-row"><span class="detail-label">Sacred Animal:</span><span class="detail-value">Indian One-horned Rhinoceros</span></div>
+          <div class="detail-row"><span class="detail-label">Companion:</span><span class="detail-value">Vajrakavacha (Diamond Armor)</span></div>
+          <div class="detail-row"><span class="detail-label">Weapon:</span><span class="detail-value">Tower shield Kavach (Armor) &amp; rhino-horn mace</span></div>
+          <div class="detail-row"><span class="detail-label">Tattoo Stage:</span><span class="detail-value">Stage 4 &mdash; Full Body</span></div>
+          <div class="ne-divider"></div>
+          <p style="font-size:0.9rem; color:var(--text-dim); line-height:1.7;">
+            Tall and solidly built with skin the color of lotus petals &mdash; a soft brown with pinkish
+            undertones that gave her family name. Her face is broad and kind, with the strength of the
+            Brahmaputra Valley in her features. She wears layered armor inspired by rhino hide &mdash;
+            overlapping plates that deflect blades. A single lotus is always woven into her hair.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 3. THE STORY: FULL NARRATIVE ===== -->
+  <section class="section" style="padding-top:0;">
+    <div class="container" style="max-width:820px;">
+      <h2 class="section-title" style="border-bottom-color:rgba(170,102,255,0.3);">The Story of the Lotus Shield</h2>
+
+      <!-- Chapter 1: First Touch -->
+      <div class="ne-story-card animate-on-scroll">
+        <span class="ne-chapter-num">Chapter I</span>
+        <h3>First Touch</h3>
+        <span class="chapter-subtitle">Kaziranga, the Golden Grass &mdash; Age 3</span>
+
+        <p>
+          The elephant grass of Kaziranga grows taller than a grown man. In the early monsoon it turns
+          the color of old gold, and when the wind moves through it the entire floodplain ripples like a
+          living sea. It was into this sea of gold that Padmavati Kamalavarna carried her three-year-old
+          daughter one dawn in the month of Bohag, when the Brahmaputra ran high and the air tasted of
+          river clay and wild jasmine.
+        </p>
+        <p>
+          The elders had forbidden it. Vajrakavacha &mdash; the great bull rhinoceros, three thousand
+          kilograms of armored fury &mdash; had killed two poachers that season and gored a forest guard
+          who had ventured too close. He was the undisputed lord of the eastern marshes, a creature so
+          ancient and so fearsome that even the other rhinos gave him wide berth. His horn was nearly
+          two feet long, stained dark at the base, and his hide bore the scars of a hundred territorial
+          battles. No one approached Vajrakavacha. No one.
+        </p>
+        <p>
+          But Padmavati had seen the mark. On her daughter's right shoulder blade, glowing faintly in
+          the lamplight of their bamboo home, was the unmistakable imprint of a rhinoceros footprint.
+          Three toes, broad and deep, etched into the child's skin as though the earth itself had pressed
+          its seal upon her. The Kamalavarna clan had carried the rhino mark for four hundred years, but
+          never had it appeared so early, and never had it pulsed with its own faint violet light.
+        </p>
+        <p>
+          They found him at the edge of the marsh where the elephant grass thinned into mud flats. He
+          was standing perfectly still, his enormous head lowered toward the water, his small keen eyes
+          catching the first light of day. The ground trembled faintly with each of his breaths. Padmavati
+          set the child down in the grass twenty paces away and stepped back, every instinct screaming
+          at her to snatch her daughter up and run.
+        </p>
+        <p>
+          The little girl did not cry. She did not run. She walked forward on unsteady legs, her bare feet
+          sinking into the warm mud, her tiny hands reaching out toward the grey mountain before her.
+          Vajrakavacha raised his head. His ears swiveled forward. A low rumble rolled from his chest &mdash;
+          a sound that carried through the ground and up through the child's feet and into her bones.
+        </p>
+        <p>
+          He lowered his massive head until his horn nearly touched the earth, and the child placed both
+          her small hands on his snout. His skin was warm and rough, like sun-heated stone. His breath
+          washed over her in great hot gusts. And the mark on her shoulder flared once, brilliant violet,
+          and then settled into a steady glow that would never fully fade again. The bond was made. Not
+          chosen by either party, not forced, not earned. Simply recognized, the way the river recognizes
+          the sea.
+        </p>
+        <blockquote>
+          &ldquo;She touched the unkillable thing, and the unkillable thing was gentle. That was the first
+          miracle. Everything after was just consequence.&rdquo;<br>
+          &mdash; Padmavati Kamalavarna, mother of the Lotus Shield
+        </blockquote>
+      </div>
+
+      <!-- Chapter 2: The Wild Training -->
+      <div class="ne-story-card animate-on-scroll">
+        <span class="ne-chapter-num">Chapter II</span>
+        <h3>The Wild Training</h3>
+        <span class="chapter-subtitle">The Grasslands of Kaziranga &mdash; Ages 6 to 12</span>
+
+        <p>
+          She ran barefoot. Always barefoot. The soles of her feet hardened until they were nearly as
+          tough as the rhino hide she would later model her armor upon, and beneath that leather-thick
+          skin her nerves remained exquisitely sensitive. She could feel a herd of wild buffalo shifting
+          direction two hundred meters away. She could feel the distinctive three-toed compression of a
+          rhinoceros footfall and know, without looking, whether it was Vajrakavacha or one of the
+          younger bulls. The earth spoke to her, and she listened with her feet.
+        </p>
+        <p>
+          Each morning before the sun crested the Karbi hills, she rose from whatever patch of ground
+          she had slept on and found the herd. The rhinos of Kaziranga move at dawn &mdash; slow, deliberate
+          migrations from sleeping grounds to grazing meadows, following paths worn into the landscape
+          over generations. She matched their pace exactly. Not ahead, never behind, always alongside.
+          She learned to breathe as they breathed &mdash; deep, slow, rhythmic inhalations that filled the
+          belly before the chest. She learned to move as they moved &mdash; with an economy of motion that
+          wasted nothing, every step placed with the precision of a creature that weighs as much as a
+          small truck and cannot afford to stumble.
+        </p>
+        <p>
+          The training was brutal in the way that nature is brutal: without malice, without mercy, without
+          explanation. She broke three toes in her first year when she misjudged the soft edge of a
+          wallowing pit and a young rhino stepped on her foot. She set the toes herself, using river clay
+          as a splint, and was running again in two weeks. She contracted leeches, tick fever, and a skin
+          infection from sleeping in damp grass that left a constellation of pale scars across her left
+          forearm. She was charged by a wild boar, treed by a water buffalo, and once spent an entire
+          night chest-deep in marsh water hiding from a Bengal tiger that had wandered into rhino
+          territory.
+        </p>
+        <p>
+          But the mornings. The mornings made everything worth enduring. The mist rising off the Brahmaputra
+          like the breath of a sleeping god. The elephant grass catching the first gold of dawn and holding
+          it, trembling, as if the light were too precious to release. The sound of Vajrakavacha's
+          breathing beside her &mdash; that deep, resonant bellows-sound, steady as a heartbeat, ancient as the
+          river itself. The smell of wet earth and crushed grass and the warm, musky, strangely comforting
+          scent of rhinoceros hide. She would run through that golden world with the great grey beast
+          beside her and feel, in those moments, that she had never been born into a human body at all.
+        </p>
+        <p>
+          She ate what the land provided. Wild herbs &mdash; brahmi for clarity, ashwagandha for endurance,
+          tulsi for immunity &mdash; supplemented with the river fish she caught with her bare hands using
+          techniques she learned by watching the fishing cats at the water's edge. She slept under the
+          stars or in the hollow between Vajrakavacha's legs, curled against his warm belly, listening to
+          the gurgling machinery of his digestion as it processed forty kilograms of grass. She grew
+          tall, broad-shouldered, solid. Her muscles developed not the sculpted definition of a gymnasium
+          athlete but the dense, functional power of someone who had spent six years moving with animals
+          through rough terrain. She was thirteen years old, and she could run for four hours without
+          stopping, stand motionless for six, and sense a human footstep at three hundred meters through
+          vibrations in the earth.
+        </p>
+        <blockquote>
+          &ldquo;The dojo teaches you to fight. The grassland teaches you to live. One of these lessons
+          outlasts the other.&rdquo;<br>
+          &mdash; Kamalavarna, on why she never trained indoors
+        </blockquote>
+      </div>
+
+      <!-- Chapter 3: The Combat Lessons -->
+      <div class="ne-story-card animate-on-scroll">
+        <span class="ne-chapter-num">Chapter III</span>
+        <h3>The Combat Lessons</h3>
+        <span class="chapter-subtitle">The Open Floodplain &mdash; Ages 12 to 18</span>
+
+        <p>
+          The first time she charged at Vajrakavacha, she woke up face-down in a mud wallow forty feet
+          from where she had started. Her left arm was numb. Two of her ribs made a clicking sound when
+          she breathed. The great rhinoceros stood exactly where she had left him, chewing grass, utterly
+          indifferent to the fact that he had just launched a sixty-kilogram girl through the air with a
+          casual flick of his armored head.
+        </p>
+        <p>
+          She charged him again the next day. And the day after. And the day after that. For six years.
+        </p>
+        <p>
+          The exercises would have seemed insane to anyone watching. A teenage girl sprinting directly at
+          a three-ton animal, planting her feet at the last possible moment, and trying to redirect his
+          charge by pressing against his shoulder and using his own momentum to pivot his path. It was
+          like trying to redirect a landslide with your hands. For the first two years, the result was
+          always the same: Kamalavarna sailing through the air, landing hard, getting up, and doing it
+          again. She broke her collarbone. She cracked her sternum. She dislocated her right shoulder so
+          many times that the joint eventually developed a permanent looseness that she later learned to
+          weaponize, whipping her shield arm through angles that would have torn a normal shoulder apart.
+        </p>
+        <p>
+          But slowly &mdash; so slowly that the progress was measured in millimeters and seconds &mdash; she began
+          to learn. Not how to stop the unstoppable, because Vajrakavacha could not be stopped. But how
+          to read the signals that preceded his charge: the slight flattening of his ears, the shift of
+          weight onto his back legs, the particular snort that meant he was about to move rather than
+          merely breathe. She learned the geometry of momentum &mdash; that two tons moving in a straight
+          line could be nudged, if you timed it perfectly, into a gentle curve. She learned to plant
+          her shield at the precise angle where his force flowed around her rather than through her.
+        </p>
+        <p>
+          By fifteen, she could redirect his charge by forty-five degrees. By sixteen, she could spin
+          him completely. By seventeen, she performed the act that no warrior in the Kamalavarna lineage
+          had ever achieved: she stood directly in the path of Vajrakavacha's full charge &mdash; the ground
+          shaking, the air splitting, three thousand kilograms of prehistoric armor bearing down on her
+          at thirty-five kilometers per hour &mdash; and brought him to a stop. Not by overpowering him.
+          By reading the rhythm of his stride, planting her shield at the exact moment his front feet
+          left the ground, and absorbing his momentum through her knees, her hips, and the deep muscles
+          of her core, dispersing the force into the earth beneath her feet.
+        </p>
+        <p>
+          The shield technique she developed during those years had no name in any martial tradition,
+          because no martial tradition had ever required a human being to fight like a rhinoceros. It
+          was entirely defensive &mdash; a system of angles and timing and immovable patience designed to
+          absorb any force the world could deliver and remain standing. She called it nothing. It needed
+          no name. It was simply how she stood.
+        </p>
+        <blockquote>
+          &ldquo;Everyone wants to know how to deliver an unstoppable blow. No one asks how to become
+          the thing that cannot be moved. That second question is harder. And more useful.&rdquo;<br>
+          &mdash; Kamalavarna, when asked about her fighting style
+        </blockquote>
+      </div>
+
+      <!-- Chapter 4: The Gentle Giant -->
+      <div class="ne-story-card animate-on-scroll">
+        <span class="ne-chapter-num">Chapter IV</span>
+        <h3>The Gentle Giant</h3>
+        <span class="chapter-subtitle">The Bond Between Two Souls</span>
+
+        <p>
+          Warriors tell stories of power. Poets tell stories of love. This chapter belongs to the poets.
+        </p>
+        <p>
+          Vajrakavacha recognized her footsteps from a mile away. The forest guards of Kaziranga
+          documented this with scientific precision: whenever Kamalavarna approached from any direction,
+          the great bull would raise his head, rotate his ears toward the sound, and begin walking to
+          meet her before she was even visible. He did not do this for any other human. He did not do
+          this for any other rhino. The vibration of her particular gait &mdash; left foot landing slightly
+          harder than the right, a legacy of the broken toes that never healed quite straight &mdash; was
+          as distinctive to him as a name spoken aloud.
+        </p>
+        <p>
+          He bellowed when she was sad. Not the aggressive territorial roar that sent other animals
+          scattering, but a low, sustained vocalization from deep in his chest &mdash; a sound so low that
+          it was felt rather than heard, a vibration that traveled through the ground and up through her
+          bones and settled somewhere in her ribcage like a second heartbeat. The Assamese biologists
+          who studied the pair called it a &ldquo;contact call&rdquo; and published papers about interspecies
+          emotional bonding. Kamalavarna called it his way of saying <em>I am here</em>.
+        </p>
+        <p>
+          She learned his language in return. The quick double-snort that meant <em>something is wrong</em>.
+          The long exhale through flared nostrils that meant <em>I am content</em>. The way he would press
+          his horn gently &mdash; gently, despite the fact that this horn had gored tigers and shattered
+          tree trunks &mdash; against her shoulder to say <em>move with me</em>. The rumbling purr, felt through
+          the ground rather than heard through the air, that meant he was deeply at peace. She could
+          hold entire conversations with him in a language that no other human being understood, a
+          private vocabulary of snorts and huffs and silences that said more than words ever could.
+        </p>
+        <p>
+          There was the time the quicksand caught her. The floodplain of the Brahmaputra is treacherous
+          after the monsoon &mdash; patches of earth that look solid but are in fact liquid mud over ancient
+          silt, ready to swallow a human being to the waist in seconds and to the chest in minutes. She
+          went in up to her hips before she realized what had happened. The more she struggled, the
+          deeper she sank. Cold mud closed around her thighs, her waist, pressing the air from her lungs
+          with the slow, patient pressure of the earth reclaiming what walked upon it.
+        </p>
+        <p>
+          Vajrakavacha came at her distress call &mdash; not her voice, which the mud had stolen, but the
+          frantic pounding of her fists against the surface, transmitted through the ground in a pattern
+          he had never heard from her before. He circled the quicksand patch, reading the ground with
+          his own ancient instincts, and then did something that no observer could explain: he lay down
+          at the edge of the solid ground and stretched his enormous head toward her. She grabbed his
+          horn with both hands, and he stood &mdash; slowly, patiently, his massive neck muscles flexing
+          against her sixty kilograms plus the suction of the mud &mdash; and pulled her free. She lay on
+          solid ground gasping, covered in grey silt, and he stood over her, snorting his <em>something
+          is wrong</em> call, nudging her with his horn until she laughed and pushed his ridiculous
+          worried face away.
+        </p>
+        <p>
+          And there was the thunderstorm. Rhinos, despite their armor, are afraid of thunder. Not the
+          rain &mdash; they love the rain, wallowing in the mud it creates with obvious pleasure. But the
+          crack of lightning and the bone-deep percussion of close thunder sends them into a panic
+          that is terrifying to witness in an animal of that size. On the night of the great Bohag
+          storm, when the sky split open and the rain fell in sheets and the Brahmaputra rose four
+          feet in an hour, Vajrakavacha paced and bellowed, his massive body trembling, his eyes
+          rolling white.
+        </p>
+        <p>
+          Kamalavarna sat in the mud beside him. She pressed her forehead against his neck, wrapped
+          her arms as far around his massive body as they would go &mdash; which was not far &mdash; and sang.
+          An old Assamese lullaby her mother had sung to her, about a river that carried its children
+          safely to the sea. She sang it over and over, her voice barely audible above the storm, her
+          breath warm against his hide. His trembling slowed. His breathing deepened. By the third
+          repetition, he had folded his legs beneath him and lowered his head to the ground. By the
+          fifth, he was asleep. She sang until the storm passed, soaked to the bone, cradling the head
+          of a three-ton animal in her lap, and she would later say it was the most important thing
+          she had ever done.
+        </p>
+        <blockquote>
+          &ldquo;People ask me what makes me strong. I tell them: I am not strong. I am anchored. There
+          is a difference. A strong person can be broken. An anchored person has something that holds
+          them to the earth. My anchor weighs three thousand kilograms and snores.&rdquo;<br>
+          &mdash; Kamalavarna, at the Council of Northeast Heroes
+        </blockquote>
+      </div>
+
+      <!-- Chapter 5: The Poachers' Night -->
+      <div class="ne-story-card animate-on-scroll">
+        <span class="ne-chapter-num">Chapter V</span>
+        <h3>The Poachers&rsquo; Night</h3>
+        <span class="chapter-subtitle">Kaziranga, the Darkest Dawn</span>
+
+        <p>
+          They came with military precision. Fifteen men, armed with suppressed rifles, night-vision
+          equipment, and a tranquilizer strong enough to drop an elephant. They had satellite imagery
+          of the rhino grazing patterns. They had bribed a forest guard for the patrol schedules. They
+          had a helicopter waiting at a cleared field eleven kilometers east of the park boundary. They
+          were not poachers in any traditional sense. They were a special operations unit employed by a
+          transnational syndicate that moved rhinoceros horn across borders with the efficiency of a
+          logistics corporation.
+        </p>
+        <p>
+          They killed seven rhinos in four hours. Each animal was dropped with a combination of tranquilizer
+          and a high-caliber round to the skull. The horns were removed with electric saws &mdash; the sound
+          masked by the monsoon rains that the syndicate had timed their operation to coincide with. Seven
+          horns, worth more per gram than gold or cocaine, packaged in climate-controlled cases and moving
+          toward the extraction point before the last body had finished cooling.
+        </p>
+        <p>
+          They should have left then. But someone wanted Vajrakavacha.
+        </p>
+        <p>
+          The great bull's horn was legendary &mdash; the longest of any living rhinoceros in Kaziranga, and
+          the syndicate's buyer had specified it by name. They found him at the eastern marsh, and the
+          tranquilizer dart hit him in the neck. He staggered but did not fall. A second dart. He swayed.
+          And then the shooter, impatient, used the rifle. The bullet entered below his left shoulder blade,
+          traveled through muscle and fat, and came to rest against his lower spine. Vajrakavacha crashed
+          to his knees. He tried to rise and could not. His back legs had stopped working.
+        </p>
+        <p>
+          Kamalavarna felt it through the earth.
+        </p>
+        <p>
+          She was three kilometers away, sleeping in a ranger's outpost, when the vibration hit her feet
+          like an electric shock. Not the rhythmic tremor of a rhino moving, not the sharp percussion of
+          a territorial stomp. This was something she had never felt before &mdash; a massive body hitting the
+          ground and not getting up. Her eyes flew open in the darkness. She was running before she was
+          fully awake, barefoot, wearing only her sleeping clothes, the tower shield Kavach left behind
+          because there was no time. There was no time for anything.
+        </p>
+        <p>
+          She found him at dawn. The poachers had fled when Vajrakavacha refused to die &mdash; even paralyzed,
+          he had swung his horn at anyone who approached, and the team leader had decided the risk was
+          not worth the reward. They left him bleeding in the tall grass, the rain washing his blood into
+          the mud in pink rivers, his breathing a terrible wet rasp that Kamalavarna heard from fifty
+          meters away and that stopped her heart.
+        </p>
+        <p>
+          She knelt in the mud beside him. She lifted his head &mdash; that enormous head, eighty kilograms
+          of bone and horn and the gentlest soul she had ever known &mdash; and placed it in her lap. His
+          eyes found hers. They were clouded with pain but steady. His breathing came in shallow, labored
+          gasps. The bullet was pressing against his spinal cord. Every breath was a battle.
+        </p>
+        <p>
+          She did not cry. She did not scream. She pressed her forehead against his horn and closed her
+          eyes and felt something inside her shatter like a dam hit by a wall of water. And what poured
+          through the break was not grief. It was something older, hotter, and infinitely more dangerous.
+        </p>
+        <p>
+          Her tattoo erupted.
+        </p>
+        <p>
+          The rhinoceros footprint on her shoulder blade, which had grown over the years to cover her
+          shoulder and upper arm &mdash; Stage Two of the Chihnachakra &mdash; began to move. The ink writhed
+          beneath her skin like a living thing, flowing down her arm, across her ribs, over her back.
+          She could feel it spreading: a burning that was not quite pain, a pressure that was not quite
+          weight. The full rhino form was emerging &mdash; legs, body, the armored plates, the great horn
+          rising from the mark's forehead to point at the sky. By the time the sun cleared the eastern
+          hills, her entire right side was covered. Stage Three. Achieved not through a trial of combat
+          or a test of endurance, but through the purest form of anguish a human heart can contain &mdash;
+          the knowledge that the thing you love most in the world is dying, and you cannot stop it.
+        </p>
+        <blockquote>
+          &ldquo;The tattoo does not measure power. It measures truth. And there is no truth deeper
+          than what you feel when you hold the dying.&rdquo;<br>
+          &mdash; Regional Scholar Bhupen Kalikota, on the Kaziranga Awakening
+        </blockquote>
+      </div>
+
+      <!-- Chapter 6: The Seven-Day Hunt -->
+      <div class="ne-story-card animate-on-scroll">
+        <span class="ne-chapter-num">Chapter VI</span>
+        <h3>The Seven-Day Hunt</h3>
+        <span class="chapter-subtitle">Across Three States &mdash; Seven Days of Reckoning</span>
+
+        <p>
+          She left Vajrakavacha in the care of the Kaziranga veterinary team and walked back to the
+          ranger outpost. She put on her armor. She picked up Kavach. And then she followed the tracks.
+        </p>
+        <p>
+          The poachers had been professional enough to cover their trail from any normal tracker. But
+          Kamalavarna did not track like a normal human. She tracked like a rhinoceros. She read the
+          earth through her feet &mdash; the compressed soil where vehicles had passed, the disturbed root
+          patterns where boots had crushed undergrowth, the faint chemical residue of tranquilizer
+          leaking from improperly sealed cases. She followed the trail at a dead run, and the tattoo
+          on her body pulsed with each step, feeding her strength she did not know she possessed.
+        </p>
+        <p>
+          Day one: she found the helicopter landing site. The pilot had stayed behind to sanitize the
+          scene. He saw a woman emerge from the elephant grass and had exactly enough time to register
+          the glowing purple tattoo covering half her body before Kavach hit his helicopter's tail
+          rotor. The machine would never fly again. Neither would the pilot, who woke up three hours
+          later with both arms zip-tied to a tree and a broken jaw that would require surgical
+          reconstruction. She took his radio and his phone.
+        </p>
+        <p>
+          Day two: Meghalaya. The horn transport team had crossed the state border using logging roads.
+          She found their truck at a refueling stop in the Garo Hills. Three armed men. She came through
+          the truck's windshield shield-first. The sound of safety glass exploding inward, followed
+          immediately by the concussion of Kavach slamming into the dashboard, was the last clear memory
+          any of the three men retained. She recovered two horns and left the men for the Meghalaya
+          police, who found them unconscious and neatly bound in the truck's cargo area.
+        </p>
+        <p>
+          Day three and four: the syndicate realized they were being hunted. They split into cells and
+          scattered. It did not help. Kamalavarna moved with the relentless patience of her namesake
+          animal &mdash; she did not hurry, she did not tire, she did not stop. She slept two hours a night,
+          ate what she found, and ran. Through the Khasi Hills, across the Jaintia Plateau, into the
+          river valleys of southern Assam. She found them in ones and twos, in safe houses and roadside
+          motels, in the back rooms of shops that fronted for the horn trade. Each confrontation was
+          brief and decisive. She fought like the thing she was becoming: a rhinoceros in human form.
+          She charged through doors. She shrugged off blows that would have felled any other fighter.
+          When a man emptied a pistol clip at her from ten feet, the bullets sparked off Kavach and
+          she kept coming.
+        </p>
+        <p>
+          Day five: Nagaland border. The syndicate's regional commander, a man who had organized the
+          killing of over a hundred rhinoceros across three countries, had barricaded himself in a
+          compound with twelve armed guards. He had heard the reports. He had heard that something
+          was coming &mdash; something that moved through the jungle like a ghost and hit like a freight
+          train. He doubled his guard. He activated his emergency extraction plan.
+        </p>
+        <p>
+          She came through the compound wall. Not around it. Not over it. Through it. Kavach hit the
+          concrete block at a dead run, and the wall exploded inward in a shower of dust and rubble.
+          She emerged from the debris cloud like something from a myth &mdash; armor scored, tattoo blazing
+          violet in the dust-choked air, eyes utterly calm. The guards opened fire. She raised Kavach
+          and walked forward into the storm of bullets with the slow, deliberate pace of a rhino
+          crossing its territory. Unstoppable. Unhurried. Inevitable.
+        </p>
+        <p>
+          Day six and seven: the final cells. The couriers, the middlemen, the money handlers. She
+          found them all. Every horn was recovered. Every member of the syndicate's operational chain,
+          from the pilot to the field commander, was delivered to the authorities &mdash; bruised, terrified,
+          but alive. All alive. Because Kamalavarna, even in her deepest fury, was still the girl who
+          had sung a rhinoceros to sleep in a thunderstorm. She would not kill. She would break, bend,
+          shatter, and terrify. But she would not take a life.
+        </p>
+        <blockquote>
+          &ldquo;I have fought warriors from six continents. I have sparred with beings that are not
+          human. I have never, in my entire career, been as frightened as I was watching the footage
+          of her coming through that wall.&rdquo;<br>
+          &mdash; Simhavikrama of Gujarat, on viewing the Nagaland compound raid
+        </blockquote>
+      </div>
+
+      <!-- Chapter 7: The Reckoning -->
+      <div class="ne-story-card animate-on-scroll">
+        <span class="ne-chapter-num">Chapter VII</span>
+        <h3>The Reckoning</h3>
+        <span class="chapter-subtitle">A Choice That Reveals Character</span>
+
+        <p>
+          The trail led upward. Past the foot soldiers and the field commanders, past the logistics
+          networks and the bribed officials, to a name that everyone in Assam knew. Bhuvaneshwar Deka.
+          Member of the regional development council. Patron of three orphanages, four schools, and the
+          very wildlife conservation trust that funded Kaziranga's ranger patrols. The man who gave
+          speeches about protecting the rhinoceros while secretly owning the corporation that sold their
+          horns to the highest bidder.
+        </p>
+        <p>
+          Kamalavarna found him in his Guwahati penthouse, packing for a flight to Dubai. He was not
+          afraid. He was a man who had purchased fear all his life and considered himself immune to it.
+          He looked at her &mdash; battered, exhausted, her tattoo pulsing with diminished but steady light,
+          Kavach dented and scarred from seven days of continuous combat &mdash; and he smiled.
+        </p>
+        <p>
+          &ldquo;You can't touch me,&rdquo; he said. &ldquo;I fund half the institutions in this state.
+          Arrest me, and a hundred projects collapse. Schools close. Hospitals lose their donors. The
+          very rangers who protect your precious rhinos lose their salaries. I am the system,
+          girl. Kill me, and you kill the things you love.&rdquo;
+        </p>
+        <p>
+          She stood in his doorway for a long time. The rage was still there &mdash; the rhino's rage, vast
+          and hot and simple. Charge. Crush. End the threat. It would have been so easy. One swing of
+          Kavach. One step forward with the momentum she had carried across three states and seven days.
+          The rhino in her blood screamed for it.
+        </p>
+        <p>
+          But the lotus in her hair whispered something different.
+        </p>
+        <p>
+          She planted Kavach's base on the marble floor of his penthouse with a crack that split the
+          tile and echoed through the building. She stood there, immovable, and spoke three words that
+          would reshape the politics of northeast India for a generation: &ldquo;Then the system changes.&rdquo;
+        </p>
+        <p>
+          She did not kill him. She did not even strike him. She recorded everything &mdash; every document
+          in his office, every communication on his phone, every financial record that connected his
+          conservation trust to the syndicate's accounts. She walked out of his penthouse carrying the
+          truth, and she delivered it not to the police (whom he owned) or to the courts (which he
+          influenced) but to the people. To every village, every tea garden, every fishing community
+          along the Brahmaputra. She let the people decide.
+        </p>
+        <p>
+          Bhuvaneshwar Deka fled the state within seventy-two hours. His assets were frozen by a court
+          order obtained by a coalition of tribal leaders, tea workers' unions, and wildlife activists
+          who had been fighting him for decades but had never had the evidence. The institutions he
+          funded were rebuilt under transparent governance. The system did not collapse. It was rebuilt.
+          Stronger, cleaner, and no longer built on the bones of dead rhinoceros.
+        </p>
+        <blockquote>
+          &ldquo;The rhinoceros charges. It is in its nature. But Kamalavarna chose not to charge. She
+          chose to stand. And standing, she changed more than any charge could have.&rdquo;<br>
+          &mdash; Meghanadi of Meghalaya, on the Deka Affair
+        </blockquote>
+      </div>
+
+      <!-- Chapter 8: The Healing -->
+      <div class="ne-story-card animate-on-scroll">
+        <span class="ne-chapter-num">Chapter VIII</span>
+        <h3>The Healing</h3>
+        <span class="chapter-subtitle">Kaziranga Veterinary Centre &mdash; Forty-Three Days</span>
+
+        <p>
+          The bullet had lodged two millimeters from Vajrakavacha's spinal cord. The veterinary team
+          &mdash; three surgeons, two wildlife veterinarians, and a trauma specialist flown in from
+          Kolkata &mdash; spent eleven hours in surgery. They worked under canvas in the field, because
+          moving a three-thousand-kilogram patient to a hospital was not possible. They used equipment
+          designed for elephants, modified on the fly. They nearly lost him twice &mdash; once when his
+          heart rate dropped below twenty beats per minute, and once when an abscess from the tranquilizer
+          injection site ruptured mid-surgery and filled the chest cavity with fluid.
+        </p>
+        <p>
+          Kamalavarna sat outside the surgical tent for the entire eleven hours. She did not eat. She
+          did not drink. She sat cross-legged in the mud with Kavach across her knees and her bare feet
+          pressed flat against the earth, feeling &mdash; she was certain she could feel &mdash; the rhythm of his
+          heartbeat through the ground. When the surgeons came out, grey-faced and exhausted, and told
+          her he had survived the operation, she nodded once and asked when she could see him.
+        </p>
+        <p>
+          She did not leave his side for forty-three days. She slept beside his enclosure on a cot that
+          the rangers brought her, though she rarely used it, preferring to sit with her back against the
+          fence where she could reach through and rest her hand on his flank. She monitored his breathing
+          through the night. She changed his dressings with a gentleness that astonished the veterinary
+          staff, her enormous, calloused, shield-scarred hands moving with the delicacy of a surgeon
+          as she cleaned the wounds and applied the poultices she prepared from herbs she gathered in
+          the grasslands.
+        </p>
+        <p>
+          He could not stand for three weeks. The bullet's proximity to his spine had caused swelling
+          that compressed the nerves to his hind legs, and for those three weeks he lay on his side,
+          breathing, eating the grass and fruit she hand-fed him, watching her with his small, dark,
+          patient eyes. She talked to him constantly &mdash; not in the language of snorts and huffs they
+          had developed together, but in Assamese, in Bodo, in Hindi, in whatever words came to her.
+          She told him about the hunt. She told him about Deka. She told him about the schools that
+          would be rebuilt and the rhinos that would be safer. She told him that she needed him to
+          stand up.
+        </p>
+        <p>
+          On the twenty-second day, he tried. His front legs folded beneath him, and he levered his
+          massive forequarters up, his muscles trembling with effort. His hind legs twitched. He
+          strained. And he collapsed. The sound of three thousand kilograms hitting the ground shook
+          the enclosure and brought the veterinary team running. Kamalavarna waved them away. She
+          pressed her forehead against his horn and whispered something that no one else could hear.
+        </p>
+        <p>
+          He tried again on the twenty-third day. And the twenty-fourth. Each time, his hind legs
+          held a fraction longer before failing. Each time, Kamalavarna was there, her hands on his
+          flank, her voice steady, her presence as immovable as the shield she carried.
+        </p>
+        <p>
+          On the thirty-ninth day, he stood.
+        </p>
+        <p>
+          It was not graceful. His hind legs shook violently. He swayed. His breathing came in
+          great bellowing gasps. But he was upright, his four feet on the earth, his horn pointed
+          at the sky, and he let out a sound that the rangers would later describe as the loudest
+          vocalization they had ever recorded from a rhinoceros &mdash; a roar that echoed across the
+          floodplain and brought every rhino within earshot to their feet in response. A call of
+          the living. An answer to the earth.
+        </p>
+        <p>
+          Kamalavarna's tattoo completed itself in that moment. The final stage &mdash; the full-body
+          rhinoceros, covering her from shoulder to ankle, from spine to sternum &mdash; emerged not in
+          battle fury or grief-stricken power, but in quiet, steady, stubborn love. Stage Four.
+          Full Body. Not earned through victory, but through forty-three days of refusing to leave.
+        </p>
+        <blockquote>
+          &ldquo;Her full mark came not when she fought. Not when she raged. It came when she waited.
+          The Chihnachakra measures the depth of the bond, and there is no bond deeper than the
+          one tested by patience and proven by presence.&rdquo;<br>
+          &mdash; Dakshinamurthi Archive, Commentary on the Kamalavarna Ascension
+        </blockquote>
+      </div>
+
+      <!-- Chapter 9: Dawn Patrol -->
+      <div class="ne-story-card animate-on-scroll">
+        <span class="ne-chapter-num">Chapter IX</span>
+        <h3>Dawn Patrol</h3>
+        <span class="chapter-subtitle">Kaziranga, Every Morning</span>
+
+        <p>
+          The mist rises from the Brahmaputra before the sun does. It crawls across the floodplain
+          in soft grey rivers, pooling in the low places, threading through the elephant grass like
+          the ghosts of old waters. In the minutes before dawn, the world is entirely grey &mdash; grey
+          sky, grey mist, grey grass, grey earth &mdash; and the only sounds are the drip of condensation
+          from the leaves and the slow, deep breathing of the largest animal in the park.
+        </p>
+        <p>
+          She emerges from the ranger station at the same time every morning: twenty minutes before
+          sunrise, when the eastern sky is just beginning to soften from black to charcoal. She wears
+          her armor. She carries Kavach. The full-body tattoo, visible on her arms and throat above
+          the armor's neckline, gives off a faint purple luminescence in the pre-dawn darkness, like
+          foxfire in the marshes, like something that belongs to the earth itself.
+        </p>
+        <p>
+          He is always waiting. At the edge of the compound, where the maintained ground gives way to
+          wild grass, Vajrakavacha stands in the mist like a boulder that has learned to breathe. He
+          is scarred now. A long silver line runs along his left flank where the bullet's damage healed
+          but left its record. He walks with a barely perceptible limp in his right hind leg &mdash;
+          noticeable only if you watch him closely, and Kamalavarna always watches him closely. His horn
+          is as long and dark and magnificent as ever. His eyes, small and deep-set in their folds of
+          armored skin, are bright and steady.
+        </p>
+        <p>
+          She places her hand on his snout. He exhales. The warm breath washes over her palm, carrying
+          the smell of wet grass and crushed reeds and the deep, animal warmth that has been her compass
+          since she was three years old. She leans forward and presses her forehead to his horn for a
+          single breath. He rumbles. She steps back.
+        </p>
+        <p>
+          They walk. Side by side, at the rhino's pace &mdash; deliberate, unhurried, each step placed with
+          the weight of absolute certainty. Her footsteps match his. Left, right, left, right, the
+          four-beat rhythm of a rhinoceros walk interlocked with the two-beat rhythm of a human stride,
+          creating a pattern that the earth itself has memorized. Her breathing matches his. Deep, slow,
+          measured, filling the belly before the chest, the exhalation longer than the inhalation,
+          the way she learned to breathe when she was six years old and first ran alongside the herd
+          in the morning light.
+        </p>
+        <p>
+          The sun breaches the eastern hills. Gold light floods the floodplain. The elephant grass
+          catches fire &mdash; not flame but color, the stalks turning from grey to amber to pure shining
+          gold as the light moves across them in a wave. Birds erupt from the reeds: egrets, herons,
+          cormorants, rising in white and grey clouds against the newborn blue of the sky. The river
+          glitters. The mist burns away. And two figures move through the golden world, one enormous
+          and grey and armored in the hide that evolution spent fifty million years perfecting, one
+          tall and broad and armored in steel and leather and a tattoo that tells the story of a love
+          that not even bullets could end.
+        </p>
+        <p>
+          They patrol the eastern perimeter first, then the southern marsh, then the central grasslands.
+          Six kilometers in two hours. She checks for tracks &mdash; human tracks, vehicle tracks, anything
+          that does not belong. He checks with his nose, lifting his head to sample the air with the
+          olfactory equipment of a creature whose sense of smell is thirty times more sensitive than
+          a human's. Between them, nothing enters Kaziranga without their knowledge.
+        </p>
+        <p>
+          At the end of the patrol, they return to the eastern marsh where they first met. She sits on
+          the bank. He wades into the shallows, lowering his massive body into the cool water with a
+          sigh of contentment that vibrates through the ground. She watches him wallow, grey hide
+          glistening, and somewhere in her chest the anchor holds, steady and warm and heavier than
+          any shield.
+        </p>
+        <blockquote>
+          &ldquo;Every dawn is a promise that the world survived the night. Every patrol is a promise
+          that we will make sure it survives the next one.&rdquo;<br>
+          &mdash; Kamalavarna, in a letter to the Regional Leader Arunodaya
+        </blockquote>
+      </div>
+
+      <!-- Chapter 10: The Larger Threat -->
+      <div class="ne-story-card animate-on-scroll" style="border-color:rgba(255,68,68,0.3); background:linear-gradient(160deg, rgba(42,26,58,0.7), rgba(58,0,0,0.3));">
+        <span class="ne-chapter-num" style="border-color:rgba(255,68,68,0.3); color:#ffaaaa;">The Darkness Beyond</span>
+        <h3 style="color:#ff6666;">The Larger Threat</h3>
+        <span class="chapter-subtitle" style="color:#ffaaaa;">A Shadow Behind the Syndicate</span>
+
+        <p>
+          It was Sundarvani of West Bengal who noticed the discrepancy. The Fishing Cat champion,
+          whose patience and eye for detail rivaled any intelligence analyst, had been reviewing the
+          financial records Kamalavarna had recovered from Bhuvaneshwar Deka's office. The money
+          trail made no sense. The syndicate was profitable &mdash; rhinoceros horn fetched astronomical
+          prices on the black market &mdash; but the profit margins did not justify the military-grade
+          equipment, the satellite imagery, or the operational sophistication of the Kaziranga raid.
+          Someone was subsidizing the operation. Someone was paying far more for the horns than the
+          medical market warranted.
+        </p>
+        <p>
+          The deeper she dug, the stranger it became. The rhino horns were not entering the traditional
+          supply chain. They were not being ground into powder for folk remedies or carved into status
+          objects for collectors. They were being shipped to a location that appeared on no map &mdash; a
+          facility in the mountains of central Asia, disguised as a mining operation, that consumed
+          animal parts of very specific types: rhinoceros horn, tiger bone, elephant ivory, bear bile.
+          All from bonded animals. All from creatures that had formed the spirit bridge with their
+          human counterparts.
+        </p>
+        <p>
+          The facility was not harvesting medicine. It was harvesting the bond itself &mdash; the spiritual
+          residue that accumulated in the bones and horns and tusks of animals who had shared the
+          Chihnachakra connection with human warriors for generations. Whatever they were building
+          in that mountain, it required the essence of the covenant between human and beast. And they
+          needed a great deal of it.
+        </p>
+        <p>
+          When Kamalavarna received Sundarvani's report, she read it three times. Then she walked
+          to the eastern marsh where Vajrakavacha was wallowing in the morning light, and she sat
+          beside him and pressed her hand against his scarred flank and felt the steady rhythm of
+          his ancient heart. The poachers had not come for money. They had come for something far
+          worse. And whatever ritual or weapon or abomination was being assembled in that mountain,
+          it was powered by the very thing she loved most: the bond between a human and her beast.
+        </p>
+        <p>
+          She stood. She collected Kavach. She looked east, toward the mountains that rose beyond
+          the floodplain, beyond the hills, beyond the borders of the lands she knew. Something was
+          stirring in those mountains. Something that fed on the oldest magic in the world. And
+          Kamalavarna, the Lotus Shield, the Horn of the Brahmaputra, the girl who had once placed
+          her tiny hands on the snout of an unkillable thing and found the only gentleness it had
+          to give &mdash; this woman understood, with the same deep certainty that had guided her feet
+          through the grasslands since she was six years old, that defending Kaziranga would no
+          longer be enough.
+        </p>
+        <p>
+          The Void Maw approaches. The stars are disappearing. And someone, somewhere, is trying to
+          accelerate its arrival using the stolen souls of sacred beasts.
+        </p>
+        <p style="text-align:center; color:var(--gold); font-size:1.1em; font-weight:bold; margin-top:2em; margin-bottom:0.5em;">
+          The story continues in the Hulmane-The-Saga Saga...
+        </p>
+        <p style="text-align:center; color:var(--text-dim); font-style:italic; margin-bottom:0;">
+          When the shield must defend more than one park, one herd, one bond &mdash; can it hold?
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== 4. THE BOND SYSTEM ===== -->
+  <section class="section">
+    <div class="container" style="max-width:960px;">
+      <h2 class="section-title" style="border-bottom-color:rgba(170,102,255,0.3);">The Bond System &mdash; Training Stages</h2>
+      <p style="text-align:center; color:var(--text-dim); max-width:700px; margin:0 auto 2rem; line-height:1.7;">
+        Kamalavarna&rsquo;s journey with Vajrakavacha follows the four-phase bonding process
+        that all tattoo-bearers undergo &mdash; but few complete with such depth or devotion.
+      </p>
+      <div class="grid-4" style="gap:1.2rem;">
+        <!-- Phase 1 -->
+        <div class="ne-phase-card">
+          <svg viewBox="0 0 60 60" style="width:50px; height:50px; margin:0 auto 10px;">
+            <circle cx="30" cy="30" r="28" fill="none" stroke="#aa66ff" stroke-width="1.5" opacity="0.4"/>
+            <circle cx="30" cy="30" r="6" fill="#aa66ff" opacity="0.6"/>
+            <circle cx="30" cy="18" r="3" fill="#ddaaff" opacity="0.4"/>
+            <circle cx="42" cy="30" r="3" fill="#ddaaff" opacity="0.4"/>
+            <circle cx="30" cy="42" r="3" fill="#ddaaff" opacity="0.4"/>
+            <circle cx="18" cy="30" r="3" fill="#ddaaff" opacity="0.4"/>
+          </svg>
+          <h4>Phase 1: Observation</h4>
+          <div class="phase-ages">Ages 3 &ndash; 6</div>
+          <p>Watching, touching, learning. The child absorbs the animal's rhythms through pure, unfiltered presence. No training &mdash; only wonder.</p>
+        </div>
+        <!-- Phase 2 -->
+        <div class="ne-phase-card">
+          <svg viewBox="0 0 60 60" style="width:50px; height:50px; margin:0 auto 10px;">
+            <circle cx="30" cy="30" r="28" fill="none" stroke="#aa66ff" stroke-width="1.5" opacity="0.4"/>
+            <path d="M15,35 Q22,20 30,30 Q38,40 45,25" fill="none" stroke="#aa66ff" stroke-width="2" opacity="0.7"/>
+            <circle cx="15" cy="35" r="3" fill="#ddaaff" opacity="0.5"/>
+            <circle cx="45" cy="25" r="3" fill="#ddaaff" opacity="0.5"/>
+          </svg>
+          <h4>Phase 2: Movement</h4>
+          <div class="phase-ages">Ages 6 &ndash; 12</div>
+          <p>Running alongside, matching rhythm. The body learns the animal's pace, its breathing, its way of reading the earth. Feet become sensors.</p>
+        </div>
+        <!-- Phase 3 -->
+        <div class="ne-phase-card">
+          <svg viewBox="0 0 60 60" style="width:50px; height:50px; margin:0 auto 10px;">
+            <circle cx="30" cy="30" r="28" fill="none" stroke="#aa66ff" stroke-width="1.5" opacity="0.4"/>
+            <path d="M20,40 L30,20 L40,40" fill="none" stroke="#aa66ff" stroke-width="2" opacity="0.7"/>
+            <line x1="24" y1="33" x2="36" y2="33" stroke="#aa66ff" stroke-width="1.5" opacity="0.5"/>
+            <circle cx="30" cy="20" r="3" fill="#ffd700" opacity="0.6"/>
+          </svg>
+          <h4>Phase 3: Combat</h4>
+          <div class="phase-ages">Ages 12 &ndash; 18</div>
+          <p>Charging, redirecting, becoming. The warrior learns to absorb the animal's unstoppable force and channel it into a personal fighting style.</p>
+        </div>
+        <!-- Phase 4 -->
+        <div class="ne-phase-card">
+          <svg viewBox="0 0 60 60" style="width:50px; height:50px; margin:0 auto 10px;">
+            <circle cx="30" cy="30" r="28" fill="none" stroke="#ffd700" stroke-width="1.5" opacity="0.5"/>
+            <circle cx="30" cy="30" r="16" fill="none" stroke="#aa66ff" stroke-width="1" opacity="0.3"/>
+            <circle cx="24" cy="30" r="6" fill="#aa66ff" opacity="0.3"/>
+            <circle cx="36" cy="30" r="6" fill="#ffd700" opacity="0.3"/>
+            <path d="M28,26 Q30,22 32,26" fill="none" stroke="#ffd700" stroke-width="1" opacity="0.6"/>
+            <path d="M28,34 Q30,38 32,34" fill="none" stroke="#ffd700" stroke-width="1" opacity="0.6"/>
+          </svg>
+          <h4>Phase 4: Unity</h4>
+          <div class="phase-ages">Ages 18+</div>
+          <p>Two beings, one purpose. The bond transcends training. Human and animal move, breathe, and sense as a single entity. Separation becomes unthinkable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 5. CONNECTION TO THE MAHAHLMANE SAGA ===== -->
+  <section class="section">
+    <div class="container" style="max-width:820px;">
+      <h2 class="section-title" style="border-bottom-color:rgba(170,102,255,0.3);">The Lotus Shield in the Greater Saga</h2>
+      <div class="ne-story-card" style="text-align:center; padding:2rem;">
+        <svg viewBox="0 0 600 80" style="width:100%; max-width:600px; margin-bottom:1.5rem;">
+          <defs>
+            <linearGradient id="sagaBg" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="transparent"/>
+              <stop offset="50%" stop-color="rgba(170,102,255,0.15)"/>
+              <stop offset="100%" stop-color="transparent"/>
+            </linearGradient>
+          </defs>
+          <rect width="600" height="80" fill="url(#sagaBg)" rx="8"/>
+          <text x="300" y="35" fill="#aa66ff" text-anchor="middle" font-size="11" font-family="Georgia" letter-spacing="2">NORTHEAST REGION &bull; PRAGJYOTISHA</text>
+          <text x="300" y="60" fill="#ffd700" text-anchor="middle" font-size="16" font-family="Georgia" font-weight="bold">One of Eight Northeastern Champions</text>
+        </svg>
+        <p style="max-width:650px; margin:0 auto 1em; color:var(--text); line-height:1.8;">
+          Kamalavarna serves as the anchor of the Northeast coalition under Regional Leader
+          <strong style="color:#ffd700;">Arunodaya, the Dawn Commander</strong>. While Arunodaya leads with diplomacy
+          and his unprecedented understanding of all eight northeastern cultures, it is Kamalavarna
+          who holds the line. Literally. When the northeast heroes stand together, she stands at the
+          front with Kavach raised, and nothing passes.
+        </p>
+        <p style="max-width:650px; margin:0 auto 1em; color:var(--text); line-height:1.8;">
+          Her discovery of the dark ritual behind the poaching syndicate places her at the center
+          of one of the saga&rsquo;s most dangerous threads. The stolen bond-essence, the mountain facility,
+          and its connection to the approaching Void Maw represent a threat that goes beyond any
+          single region or kingdom. Kamalavarna must now carry her shield beyond Kaziranga &mdash; into the
+          Grand Council chambers, onto the world stage, and perhaps into the stars themselves.
+        </p>
+        <p style="max-width:650px; margin:0 auto 0; color:var(--text-dim); line-height:1.8; font-style:italic;">
+          The girl who touched the unkillable thing may be the only one who can stand before the
+          force that kills everything. The Void Maw is unstoppable. Kamalavarna has spent her
+          entire life learning what to do when faced with the unstoppable. She does not move.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 6. BACK NAVIGATION ===== -->
+  <section class="section" style="padding-top:0;">
+    <div class="container" style="max-width:820px; text-align:center;">
+      <div class="ne-back-links">
+        <a href="index.html">&#8592; Assam Kingdom</a>
+        <a href="../../../../../characters.html#assam">View Kamalavarna&rsquo;s Hero Card</a>
+        <a href="../index.html">&#8592; Northeastern Kingdoms</a>
+        <a href="../../../../../story.html">Return to the Full Saga</a>
+        <a href="../../../../../../../../../index.html">&#8592; Home</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer style="text-align:center; padding:40px 20px; border-top:1px solid var(--border-dim); color:var(--text-dim); font-size:0.85em;">
+    <p style="color:var(--gold); margin-bottom:10px;">Hulmane-The-Saga &mdash; The Great Assembly of Warriors</p>
+    <p>Inspired by the Mahabharata &bull; A World of Twenty-Eight Kingdoms</p>
+    <p style="margin-top:15px;">
+      Reference: <a href="../../../../../mahabharata_family_tree.html" style="color:var(--gold-dim);">Mahabharata Family Tree</a> &bull;
+      <a href="../../../../../mahabharata_family_tree_kannada.html" style="color:var(--gold-dim);">&#x0C8E;&#x0CB9;&#x0CBE;&#x0CAD;&#x0CBE;&#x0CB0;&#x0CA4; &#x0CB5;&#x0C82;&#x0CB6;&#x0CB5;&#x0CC3;&#x0C95;&#x0CCD;&#x0CB7; (Kannada)</a>
+    </p>
+  </footer>
+
+  <!-- ===== EXTERNAL SCRIPTS ===== -->
+  <script src="../../../../../js/characters-data.js"></script>
+  <script src="../../../../../js/app.js"></script>
+
+  <script src="../../../../../../../../assets/manifest.js"></script>
+  <script src="../../../../../../../../assets/aom.js"></script> <!-- aom:injected -->
+</body>
+</html>

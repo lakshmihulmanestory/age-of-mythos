@@ -18,7 +18,7 @@ Run:  python3 tools/build_site.py
 import os, re, json, html, glob, colorsys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-AOM  = "com/hulmane/age-of-mythos"
+AOM  = "content"
 KDATA_JS = os.path.join(ROOT, AOM,
     "volume-1-maha-parva/chapter-1-rise-of-legends/js/kingdom-identity-data.js")
 
@@ -348,6 +348,23 @@ def set_body_attrs(txt, meta):
     new, n = re.subn(r"<body([^>]*)>", repl, txt, count=1)
     return new
 
+def refresh_assets(relpath):
+    """Recompute the relative `../` depth of the three shared-asset URLs so the
+    site survives being moved to a different folder depth. Runs on every build,
+    independent of the injection marker."""
+    abspath = os.path.join(ROOT, relpath)
+    txt = read(abspath)
+    if "assets/aom.css" not in txt and "assets/aom.js" not in txt:
+        return False
+    pre = prefix_for(relpath)
+    new = re.sub(
+        r'(href|src)="(?:\.\./)*assets/(aom\.css|manifest\.js|aom\.js)"',
+        lambda m: '%s="%sassets/%s"' % (m.group(1), pre, m.group(2)), txt)
+    if new != txt:
+        write(abspath, new)
+        return True
+    return False
+
 def inject(relpath, meta):
     abspath = os.path.join(ROOT, relpath)
     txt = read(abspath)
@@ -462,6 +479,10 @@ for relpath, meta in pages.items():
             report["injected"].append(relpath)
         else:
             report["skipped"].append(relpath)
+
+# ---- move-safe: refresh asset-link depth on every content page ----
+for f in glob.glob(os.path.join(ROOT, AOM, "**", "*.html"), recursive=True):
+    refresh_assets(rel_of(f))
 
 # ===========================================================================
 # themed stub shells for Volumes 2-6

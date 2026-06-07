@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kurukshetra &mdash; The Convergence &mdash; Chapter Four &mdash; Age of Mythos</title>
+  <style>
+    :root { --bg:#0c0a08; --ac:#b85040; --gold:#e8c870; --dust:#a89880; --soil:#8a6840; --blood:#a83830; --memory:#80a878; --text:#e8dcc8; --dim:#b8a890; --card:#1a1410; --border:rgba(184,80,64,.24); }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:Georgia,serif; background:var(--bg); color:var(--text); line-height:1.85; min-height:100vh; }
+
+    .k-head { text-align:center; padding:90px 24px 54px; background:radial-gradient(ellipse at center,rgba(184,80,64,.16) 0%,transparent 70%); border-bottom:1px solid var(--border); }
+    .k-head .badge { font-size:.55em; letter-spacing:5px; text-transform:uppercase; color:var(--ac); opacity:.88; margin-bottom:22px; }
+    .k-head .badge .border { color:var(--gold); font-weight:bold; }
+    .k-head h1 { font-size:clamp(2.6em,5vw,3.8em); color:var(--gold); margin-bottom:14px; letter-spacing:3px; }
+    .k-head .epithet { font-size:.85em; color:var(--ac); letter-spacing:2px; margin-bottom:18px; font-style:italic; }
+    .k-head .tagline { color:#e8dcc8; font-size:.95em; max-width:780px; margin:0 auto; line-height:1.85; font-style:italic; }
+    .boundary { display:block; margin:26px auto 0; width:280px; height:1px; background:linear-gradient(90deg,transparent,var(--ac) 35%,var(--gold) 50%,var(--memory) 65%,transparent); opacity:.85; }
+
+    .k-nav { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:14px 20px; background:rgba(0,0,0,.6); border-bottom:1px solid rgba(184,80,64,.16); }
+    .k-nav a { padding:5px 16px; border-radius:20px; border:1px solid rgba(184,80,64,.28); color:var(--dim); font-size:.72em; letter-spacing:1px; text-decoration:none; transition:all .15s; }
+    .k-nav a:hover, .k-nav a.active { background:rgba(184,80,64,.14); border-color:var(--gold); color:#fff; }
+
+    .k-section { max-width:960px; margin:0 auto; padding:48px 22px 24px; }
+    .k-section h2 { font-size:1.5em; color:var(--gold); letter-spacing:1px; margin-bottom:18px; font-family:Georgia,serif; }
+    .k-section h3 { font-size:1.1em; color:var(--ac); margin:24px 0 12px; font-family:Georgia,serif; }
+    .k-section p { font-size:.94em; color:#e8dcc8; margin-bottom:16px; }
+    .k-section p strong { color:#f8e8b8; }
+    .k-section p em { color:var(--gold); }
+
+    .formation-banner { background:linear-gradient(135deg,rgba(184,80,64,.10),rgba(168,152,128,.04)); border:1px solid rgba(184,80,64,.32); border-left:4px solid var(--ac); padding:22px 26px; border-radius:11px; margin:18px 0 24px; }
+    .formation-banner .fb-label { font-size:.55em; letter-spacing:3px; text-transform:uppercase; color:var(--ac); margin-bottom:8px; }
+    .formation-banner h3 { color:var(--gold); margin:0 0 10px; }
+    .formation-banner p { font-size:.9em; line-height:1.85; }
+
+    .six-fronts { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:22px 0; }
+    @media (max-width:880px) { .six-fronts { grid-template-columns:1fr; } }
+    .front-card { background:var(--card); border:1px solid var(--border); border-radius:11px; padding:18px 18px; }
+    .front-card .fc-tag { font-size:.55em; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+    .front-card h4 { font-size:.92em; color:var(--ac); font-family:Georgia,serif; margin-bottom:8px; }
+    .front-card p { font-size:.76em; color:#d8cab0; line-height:1.7; }
+
+    .timeline { background:linear-gradient(180deg,rgba(184,80,64,.10),rgba(0,0,0,.4)); border:1px solid var(--border); border-radius:12px; padding:24px 26px; margin:18px 0; }
+    .timeline h3 { color:var(--gold); margin-bottom:14px; border-bottom:1px solid rgba(184,80,64,.18); padding-bottom:8px; }
+    .timeline .tl-row { display:grid; grid-template-columns:160px 1fr; gap:18px; padding:11px 0; border-bottom:1px solid rgba(184,80,64,.10); }
+    .timeline .tl-row:last-child { border-bottom:none; }
+    .timeline .tl-time { font-size:.78em; color:var(--ac); font-family:'Courier New',monospace; letter-spacing:1px; }
+    .timeline .tl-event { font-size:.85em; color:#e8dcc8; line-height:1.75; }
+    @media (max-width:680px) { .timeline .tl-row { grid-template-columns:1fr; gap:4px; } }
+
+    .pull-quote { border-left:3px solid var(--gold); background:rgba(232,200,112,.06); padding:18px 24px; margin:24px 0; font-style:italic; color:var(--gold); font-size:1em; line-height:1.85; }
+    .pull-quote .attrib { display:block; margin-top:10px; font-size:.74em; font-style:normal; color:var(--dim); letter-spacing:.5px; }
+
+    .footer { text-align:center; padding:38px 20px; border-top:1px solid var(--border); color:#88806c; font-size:.72em; }
+    .footer a { color:var(--ac); text-decoration:none; }
+  </style>
+  <link rel="stylesheet" href="../../../../assets/aom.css"> <!-- aom:injected -->
+</head>
+<body class="aom" data-aom-type="page" >
+  <div class="k-head">
+    <div class="badge"><span class="border">The Convergence Of The Six Dominants &bull; The Twenty-Thousand Beast-Cohort Arrival &bull; The Heralds-Naming-Rite &bull; The Maha-Adhipati Enters The Maw Alone</span> &bull; Chapter Four Climax</div>
+    <h1>Kurukshetra</h1>
+    <div class="epithet">The Standing-Sacred-Battlefield Cardinal-Cross-Position &bull; Haryana &bull; The Mahabharata-BCE-3137 Cross-Reference Re-Convening</div>
+    <p class="tagline">The standing-Six Dominants ride to the standing-Kurukshetra-bhoomi cardinal-cross-position cross-reference at the standing-Haryana plains administrative-cross-reference. Kurukshetraa (Haryana state-administrator, 49) hosts them. The standing-blackbuck herds gather. The standing-Sahyadri-squirrel-cohort + standing-Bengal-tiger-cohort + standing-Sambar-cohort + standing-Barasingha-cohort + standing-Sangai-deer-cohort + standing-Asiatic-Lion-cohort + standing-Goan-Gaur-cohort + standing-Sarus-Crane-cohort + standing-Karnataka-elephant-cohort + standing-eleven other sacred-animal-cohorts converge across all six clusters. Twenty thousand beasts surround the plain. The standing-sky-wound Maw appears overhead. The standing-Four-Heralds stand at its front. This is where the saga ends. This is where the Maw is named.</p>
+    <span class="boundary"></span>
+  </div>
+
+  <div class="k-nav">
+    <a href="../index.html">&larr; Chapter 4 Index</a>
+    <a href="maw.html">The Void-Maw</a>
+    <a href="kurukshetra.html" class="active">Kurukshetra</a>
+  </div>
+
+  <div class="k-section">
+    <h2>The Battlefield</h2>
+    <div class="formation-banner">
+      <div class="fb-label">Per Master-Plan §6 Cross-Reference &bull; The Sacred-Battlefield Cardinal-Cross-Position</div>
+      <h3>Kurukshetra-Bhoomi &bull; Haryana &bull; The Mahabharata-Original-Battlefield</h3>
+      <p>The standing-Kurukshetra-bhoomi at Haryana is the standing-original Mahabharata-battlefield from the standing-BCE-3137 administrative-cross-reference. The standing-48-kilometre-radius sacred-precinct administered the standing-eighteen-day Kuru-Pandava war cross-reference. In the standing-Age-of-Mythos cross-reference the standing-precinct administers the standing-Volume-I Maha-Parva chapter-arc final-administration at the standing-cardinal-cross convergence-cross-reference. The standing-Brahma-Sarovar lake at the standing-precinct-Centre administers the standing-cardinal-cross-position cross-reference. Kurukshetraa (49) administers the standing-Haryana state-administration since the standing-Ch-2 standing-Kuru-Pandava-Adharma villain-defeat cross-reference + the standing-Ch-3 standing-Aulakh-International-Lahore-second-of-ten dissolved-cross-reference. He is at the standing-Bloodline-B Suryavamshi-Haryana-line cross-reference. He hosts the standing-convergence at the standing-Brahma-Sarovar lake eastern-cardinal-shore cross-reference.</p>
+    </div>
+
+    <h2>The Six Approach &bull; July 23 &mdash; August 23 2028</h2>
+    <p>After the standing-Maw-War five-month cost-administration each Dominant rides to Kurukshetra-bhoomi at the standing-thirty-day approach-administration cross-reference. They do not arrive together. They arrive in standing-cardinal-order:</p>
+
+    <div class="six-fronts">
+      <div class="front-card">
+        <div class="fc-tag">South &bull; First To Arrive</div>
+        <h4>Krishnadevaraya-Bhrata</h4>
+        <p>Arrives July 23 2028 at 4:11 a.m. with the standing-Karnataka-elephant-cohort (eleven adult elephants led by Indra-Gaja the standing-elephant-bond companion). He carries the standing-Twelve-Piece Memorial bronze-dust pouch. He brings Hampi-of-the-Bronze&rsquo;s standing-bronze-dust pouch (Hampi-of-the-Bronze is still missing from the standing-Hampi-buried-temple chamber cross-reference). The Third-Herald walks at the standing-southern-pavilion edge of his camp. He does not speak. He waits.</p>
+      </div>
+      <div class="front-card">
+        <div class="fc-tag">East &bull; Second To Arrive</div>
+        <h4>Jagannath-Bandhu</h4>
+        <p>Arrives July 28 2028 at 4:11 a.m. with the standing-Sambar-cohort (twenty-three Simlipal sambar led by Sambari + Sundara-Vyaghra Royal-Bengal-Tiger from Bengal sister-cluster) + Bilash-Babu of Bengal at the standing-bilateral-cohort cross-reference + Subhadra-of-the-Wood at the standing-Shabara-tribal-council senior-administrative-officer cross-reference + 23 Shabara-tribal-elders.</p>
+      </div>
+      <div class="front-card">
+        <div class="fc-tag">Central &bull; Third To Arrive</div>
+        <h4>Dvadashashringa</h4>
+        <p>Arrives August 1 2028 at 4:11 a.m. with the standing-twelve-barasingha cohort led by Dvadasha-Sakhi at the standing-twelve-antler-rack cross-reference. Sutrakara at fourteen rides beside him. She does not speak (post-poisoning at Front Six). She carries the standing-Four-Cardinal-Court Reconvening Charter and the standing-amended-Bhojpur ledger. Aranya-Devi-the-Younger administers the standing-Chhattisgarh-Dandakaranya cross-cluster-witness.</p>
+      </div>
+      <div class="front-card">
+        <div class="fc-tag">West &bull; Fourth To Arrive</div>
+        <h4>Simhavikrama</h4>
+        <p>Arrives August 11 2028 at 4:11 a.m. with the standing-Asiatic-Lion Simha-Pati + Sahyadri-Shivagati Indian-Giant-Squirrel at right-shoulder. The standing-Goan-Gaur Sagara-Vrishabha is absent (the standing-bond-temporary-amnesia at Front Three has not resolved). Vanaraksha rides beside him as the standing-blood-claim-cohort senior-administrative-officer. Saraswati-Simha-Mata-the-First administers the standing-Madhavi-line counsellor-witness. Mrigatrishna-Marudhar-Strategist-Counsellor-Elder administers the standing-chief-strategist cross-reference.</p>
+      </div>
+      <div class="front-card">
+        <div class="fc-tag">North &bull; Fifth To Arrive</div>
+        <h4>Gangaputra-Regent</h4>
+        <p>Arrives August 18 2028 at 4:11 a.m. with Yamunadatta-throne-figure at sixteen + the standing-Sarus-Crane cohort. Vidura-Babu the standing-chief-minister rides beside them. Drona-of-the-Plain&rsquo;s standing-saffron-and-white shoulder-cloth (cremation ash + cloth-fragment from Front Four at Vrindavan-Yamuna-bank) is carried at standing-Yamunadatta&rsquo;s right-hand at the standing-cross-Bloodline guru-mourning cross-reference.</p>
+      </div>
+      <div class="front-card">
+        <div class="fc-tag">Northeast &bull; Last To Arrive</div>
+        <h4>Moirangthem</h4>
+        <p>Arrives August 22 2028 at 4:11 p.m. at the standing-dusk-window cross-reference (the standing-saga&rsquo;s standing-only dusk-window arrival cross-reference). Sangaputra at sixteen rides beside him. Ka-Inocha bridge-cousin holds the standing-Manipur-Naga twin-blade. Kamalavarna High-Priestess + Kama-Mara co-High-Priestess do not ride; they administer the standing-Kamakhya-Devi cardinal-east-witness at the standing-Brahmaputra-Kaziranga-rhino-cohort daily-witness cross-reference. The standing-cross-region Maw-resonance at the standing-Northeast-gap continues at the standing-Pause-Cell completion. Moirangthem brings nothing from his region. He brings only himself + his standing-fifteen-year-old son. The standing-contribution-refusal becomes the standing-personal-arrival cross-reference.</p>
+      </div>
+    </div>
+
+    <h2>The Twenty-Thousand Beast-Cohort</h2>
+    <p>Across the standing-thirty-day approach-window the standing-sacred-animal-cohorts from all six clusters converge at Kurukshetra-bhoomi at the standing-perimeter-administration cross-reference. The standing-beasts do not fight. The standing-beasts witness. The standing-Brahma-Sarovar lake eastern-cardinal-shore administers the standing-cohort-cardinal-cross configuration cross-reference:</p>
+
+    <p>The standing-Karnataka-elephant-cohort (eleven adults + three calves) at the standing-South cardinal-position. The standing-Sambar-cohort (twenty-three) at the standing-East-by-South cardinal-position. The standing-Sundarbans Royal-Bengal-Tiger-cohort (seven tigers led by Sundara-Vyaghra) at the standing-East cardinal-position. The standing-Barasingha-cohort (twelve at standing-twelve-antler-rack uniform-administration) at the standing-South-Central cardinal-position. The standing-Asiatic-Lion-cohort (eleven; Simha-Pati lead) at the standing-West cardinal-position. The standing-Goan-Gaur-cohort (eleven; Sagara-Vrishabha lead, present-but-bond-forgotten) at the standing-West-by-South cardinal-position. The standing-Sahyadri-Indian-Giant-Squirrel-cohort (eleven thousand at the standing-Phase-1 tripling-residual cross-reference) at the standing-West-canopy cardinal-position. The standing-Sarus-Crane-cohort (sixty-seven; saga&rsquo;s standing-largest crane-cohort) at the standing-North cardinal-position. The standing-Sangai-deer-cohort (one-hundred-and-eleven; Manipur Loktak sub-population) at the standing-Northeast cardinal-position. The standing-Manipuri-cattle Bhairava-Bull cohort + standing-Brahmaputra Kaziranga rhino-cohort (one-hundred-and-fourteen kneeling from Ch-2 Maw-sign #6 administrative-continuity) + standing-Mawlynnong-clouded-leopard Ka-Sienlyngdoh&rsquo;s standing-six-month-old cub matured to Stage-I bond-mark at the standing-Phase-IV witness-cross-reference. <strong>Twenty thousand beasts surround the plain at the standing-cardinal-cross configuration cross-reference.</strong></p>
+
+    <p>The standing-Brahma-Sarovar lake administers the standing-mid-stream-still-water at the standing-eleven-hour window cross-reference across August 23 2028. The standing-still-water is at the standing-Maw-witness fertility-administration category cross-reference. The standing-water does not ripple. The standing-cohorts drink at the standing-cardinal-rotation administration cross-reference. The standing-Karnataka-elephant-cohort drinks first at the standing-eleven-eleven a.m. window. The standing-Sangai-deer-cohort drinks last at the standing-three-eleven p.m. window. The standing-water does not deplete.</p>
+
+    <h2>The Naming-Rite &bull; September 4 &mdash; 11 2028</h2>
+    <div class="timeline">
+      <h3>The Standing-Seven-Day Naming-Rite Of The Four Heralds</h3>
+      <div class="tl-row">
+        <div class="tl-time">September 4 dawn</div>
+        <div class="tl-event"><strong>Day One &bull; First Herald named.</strong> Onge-Nakshatra arrives from Sagara-Ratna Andaman at the standing-Kurukshetra-bhoomi cardinal-cross-Centre cross-reference. He carries the standing-Sentinelese-Pact clay-tablet (1,011-restored-engravings cross-reference). The standing-First-Herald walks to him at the standing-Brahma-Sarovar lake eastern-cardinal-shore cross-reference. Onge-Nakshatra names him in standing-Onge-Sanskrit-Andamani tri-language: <em>&ldquo;You were the standing-firstborn-of-the-Sentinelese-Pact line, abandoned at the standing-1857-CE penal-colony administrative-cross-reference, forgotten by your line when the standing-British-administration-replaced-the-Pact cross-reference. You are not forgotten now. Walk free.&rdquo;</em> The First Herald weeps. He removes his standing-Kalapani-Asura bound-form cloth. He walks to the standing-Sagara-Ratna direction. He will administer the standing-Volume-II Yavana-Khanda launch-point pre-administration cross-reference.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">September 5 dawn</div>
+        <div class="tl-event"><strong>Day Two &bull; Second Herald named.</strong> Ferreira-de-Sangam arrives from Mormugao-coast. He names Vasco-without-a-ship in standing-Konkani-Portuguese-Sanskrit tri-language: <em>&ldquo;You were the standing-Sagaravamsha-1957 heir, lost at the standing-Mormugao-Bay 1957 cyclone administrative-cross-reference, forgotten by your line when the standing-State-of-Goa replaced the standing-Portuguese-administration cross-reference. You are not forgotten now. Walk free.&rdquo;</em> The Second Herald removes his standing-Aulakh-International-Lahore tag at the standing-knee-shin position. He walks toward the standing-Mormugao-coast standing-sea-administration completion-cross-reference. He will dissolve into the standing-sea on the standing-eleventh of November 2028 cross-reference.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">September 6 dawn</div>
+        <div class="tl-event"><strong>Day Three &bull; Third Herald named.</strong> Krishnadevaraya-Bhrata names the standing-Bronze-Dust Child in standing-Sanskrit-Kannada-Hindi tri-language: <em>&ldquo;You were the standing-Bloodline-A infant-cousin, swallowed at the standing-Vijayanagara-temple-earthquake-1565 administrative-cross-reference, the standing-cousin my standing-line forgot before the standing-Talikota-battle cross-reference. You are the standing-Bronze-Dust because you were the standing-bronze-dust on the floor of the standing-original-throne-room. You are not forgotten now. You are my cousin. Walk free.&rdquo;</em> The Third Herald does not weep. He bows. He walks to Krishnadevaraya-Bhrata + sits at his standing-right-side at the standing-Brahma-Sarovar lake eastern-cardinal-shore cross-reference. He will sit at the foot of Hampi-of-the-Bronze&rsquo;s bed permanently after the standing-boy returns from the Maw at the standing-saga&rsquo;s first standing-Herald-bonded-to-the-living acknowledgement-cross-reference.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">September 7 dawn</div>
+        <div class="tl-event"><strong>Day Four &bull; Fourth Herald named.</strong> Hima-Naga arrives from Khangchendzonga-Rashtra Sikkim. He brings the standing-Pemayangtse-prayer-bell that Krodha left at the standing-monastery-courtyard-Centre August 23 2027 cross-reference. He names Krodha in standing-Bhutia-Tibetan-Sanskrit-Hindi tetra-language: <em>&ldquo;You were the standing-Krodha-of-Khangchendzonga, the standing-1995-Pemayangtse-student, the standing-2014-Sikkim-Maharaja-third-son, the standing-2024-spared-not-killed at the standing-monastery-rooftop. You were not forgotten by your line. Your line forgot itself when it forgot to administer compassion to you. The standing-Pause comes for you. Walk free.&rdquo;</em> Hima-Naga rings the standing-Pemayangtse-prayer-bell once. The Fourth Herald weeps. He returns to himself. He walks back into the standing-Maw of his own will. He will name standing-others from inside.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">September 11 dawn</div>
+        <div class="tl-event"><strong>Day Eight &bull; The standing-cross-region Naming-Cohort reads the standing-nine names aloud at the standing-Brahma-Sarovar lake cardinal-cross-Centre cross-reference simultaneously with the standing-six eastern-cardinal-courtyards back home.</strong> Hampi-of-the-Bronze (still missing) is named in absentia by Krishnadevaraya-Bhrata: <em>&ldquo;You are not forgotten. Come back.&rdquo;</em> The standing-Maw shrinks by the standing-eleven-percent administrative-cross-reference. The standing-sky-wound is now standing-eleven-percent smaller.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">September 12 9:11 a.m.</div>
+        <div class="tl-event"><strong>Day Nine &bull; Krishnadevaraya-Bhrata enters the Maw alone.</strong> The standing-Maha-Adhipati walks into the standing-sky-wound at the standing-Brahma-Sarovar lake cardinal-cross-Centre cross-reference. The standing-Six Dominants watch from the standing-perimeter cardinal-positions. The standing-twenty-thousand beasts are silent. The standing-Brahma-Sarovar water does not move.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">September 12 11:11:11 a.m.</div>
+        <div class="tl-event"><strong>The Maw seals.</strong> Krishnadevaraya-Bhrata returns wearing the standing-Stage-IV-supreme-mark full-body tetra-ink tattoo. The standing-sky-wound closes. The standing-Heralds become standing-keepers-of-forgotten-things. Hampi-of-the-Bronze returns at the standing-Hampi-buried-temple chamber South-cluster cross-reference at the standing-same eleven-eleven-eleven a.m. window cross-reference. The standing-Brahma-Sarovar water ripples for the standing-first-time at the standing-cardinal-cross Centre cross-reference. The standing-twenty-thousand beasts vocalize at the standing-cross-cohort cardinal-cohort-vocalization at the standing-largest cross-cohort vocalization in the standing-saga administrative-cross-reference.</div>
+      </div>
+    </div>
+
+    <h2>The After-Convergence &mdash; September 13 &mdash; October 11 2028</h2>
+    <p>The standing-Six Dominants do not leave Kurukshetra-bhoomi immediately. They stay for the standing-twenty-nine-day rest-administration cross-reference. They walk the standing-perimeter together at the standing-pre-dawn 4:11 a.m. windows. They drink the standing-Brahma-Sarovar water. They watch the standing-beasts return to their respective clusters at the standing-cardinal-rotation administration cross-reference. The standing-Karnataka-elephant-cohort leaves first on the standing-September 13 dawn-window. The standing-Sangai-deer-cohort leaves last on the standing-October 4 dusk-window.</p>
+
+    <p>Krishnadevaraya-Bhrata visits Hampi-of-the-Bronze at the standing-Hampi-Royal-Court junior-administrative-cell on the standing-September 15 cross-reference. They drink standing-bitter-Kannada-coffee. The standing-fifteen-now-sixteen-year-old is whole. He has grown an inch in the seven days he was inside the Maw. He carries the standing-bronze-dust pouch in his right-pocket still. He weighs it on Sundays still. It now weighs standing-fifty-three-grams-and-eleven-milligrams (the standing-Third-Herald&rsquo;s standing-weight-administration contribution cross-reference). It does not change weight after.</p>
+
+    <p>On the standing-October 11 2028 cross-reference the standing-Six Dominants ride to Hampi-Royal-Court. The standing-Grand-Council convenes at the standing-stone-slab seven-seat-circle at the standing-buried-temple chamber South-cluster cross-reference. The standing-seventh-seat is no longer cracked. The standing-Stage-IV-supreme-mark full-body crown is at the standing-seventh-seat administration cross-reference. The standing-Maha-Adhipati declares the standing-Council a standing-seven-equal body, not a top-down throne.</p>
+
+    <div class="pull-quote">The standing-seventh-seat is not above the standing-other-six. It is the standing-seat that holds the standing-other-six. The standing-Maha-Adhipati is not your king. He is your standing-mouth-that-holds-the-name. The standing-Council is not your ruler. The standing-Council is your standing-cardinal-cross. The standing-Heralds are not your enemies. They are your standing-keepers-of-forgotten-things. The standing-Maw is not your foe. The standing-Maw is your standing-scar. The standing-scar holds. The standing-Volume-I Maha-Parva is at the standing-completion. The standing-Volume-II Yavana-Khanda awaits at the standing-Sagara-Ratna Andaman launch-point. Walk well.
+      <span class="attrib">— Krishnadevaraya-Bhrata, Grand-Council convening at Hampi, October 11 2028 4:11:11 p.m., Sanskrit-Kannada-Hindi tri-language</span>
+    </div>
+
+    <p>Moirangthem nods. He does not dissent this time. The standing-Pause-Cell is at the standing-administrative-cross-reference but the standing-dissent is at the standing-completion. He accepts the standing-Council-equal cross-reference. The standing-five-other Dominants accept. Kamalavarna at Guwahati accepts in writing at the standing-eleventh-of-October dawn-window. The standing-Grand-Council convenes. The standing-Volume-I Maha-Parva closes. The horizon opens.</p>
+  </div>
+
+  <footer class="footer">
+    <p>Kurukshetra &bull; The Convergence &bull; Chapter Four &bull; The Great Epic &bull; Maha Parva &bull; Age of Mythos Volume I</p>
+    <p style="margin-top:8px;"><a href="../index.html">&larr; Chapter 4 Index</a> &middot; <a href="maw.html">&larr; The Void-Maw</a> &middot; <a href="../../index.html">Volume I Overview</a></p>
+  </footer>
+  <script src="../../../../assets/manifest.js"></script>
+  <script src="../../../../assets/aom.js"></script> <!-- aom:injected -->
+</body>
+</html>

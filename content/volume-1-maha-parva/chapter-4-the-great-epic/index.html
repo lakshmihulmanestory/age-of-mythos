@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Great Epic &mdash; Chapter Four &mdash; Maha Parva &mdash; Age of Mythos</title>
+  <style>
+    :root { --bg:#0a0813; --ac:#c44daa; --gold:#e8c870; --maw:#7048a8; --kuru:#b85040; --crown:#d4a040; --grief:#7088a0; --recover:#80a878; --text:#f0e8f8; --dim:#b8a8cc; --card:#1a1428; --border:rgba(196,77,170,.22); }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:Georgia,serif; background:var(--bg); color:var(--text); line-height:1.78; min-height:100vh; }
+
+    .ch-banner { text-align:center; padding:96px 24px 56px; background:radial-gradient(ellipse at center,rgba(196,77,170,.16) 0%,transparent 70%); border-bottom:1px solid var(--border); position:relative; }
+    .ch-banner::before { content:""; position:absolute; top:14px; left:50%; transform:translateX(-50%); width:36px; height:36px; border-radius:50%; background:radial-gradient(circle,rgba(112,72,168,.6),transparent 70%); }
+    .ch-banner .badge { font-size:.55em; letter-spacing:5px; text-transform:uppercase; color:var(--ac); opacity:.88; margin-bottom:20px; }
+    .ch-banner .badge .border { color:var(--gold); font-weight:bold; }
+    .ch-banner h1 { font-size:clamp(2.6em,5vw,3.8em); color:var(--gold); margin-bottom:14px; letter-spacing:3px; }
+    .ch-banner .roman { font-size:.85em; color:var(--ac); letter-spacing:4px; margin-bottom:18px; font-style:italic; }
+    .ch-banner .tagline { color:#e8d8f0; font-size:.95em; max-width:780px; margin:0 auto; line-height:1.85; font-style:italic; }
+    .boundary { display:block; margin:28px auto 0; width:300px; height:1px; background:linear-gradient(90deg,transparent,var(--ac) 30%,var(--gold) 50%,var(--ac) 70%,transparent); opacity:.85; }
+
+    .ch-nav { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:14px 20px; background:rgba(0,0,0,.6); border-bottom:1px solid rgba(196,77,170,.12); }
+    .ch-nav a { padding:5px 16px; border-radius:20px; border:1px solid rgba(196,77,170,.28); color:var(--dim); font-size:.72em; letter-spacing:1px; text-decoration:none; transition:all .15s; }
+    .ch-nav a:hover, .ch-nav a.active { background:rgba(196,77,170,.12); border-color:var(--gold); color:#fff; }
+
+    .ch-section { max-width:1080px; margin:0 auto; padding:48px 22px 24px; }
+    .ch-section h2 { font-size:1.5em; color:var(--gold); letter-spacing:1px; margin-bottom:14px; font-family:Georgia,serif; }
+    .ch-section h3 { font-size:1.1em; color:var(--ac); margin:24px 0 12px; font-family:Georgia,serif; }
+    .ch-section .lead { font-size:1em; color:#e8d8f0; margin-bottom:18px; line-height:1.9; }
+    .ch-section p { font-size:.92em; color:#e8d8f0; margin-bottom:16px; }
+    .ch-section p strong { color:#f8e8b8; }
+    .ch-section p em { color:var(--gold); }
+
+    .overlay-banner { background:linear-gradient(135deg,rgba(212,160,64,.10),rgba(112,72,168,.06)); border:1px solid rgba(212,160,64,.30); padding:18px 22px; border-radius:11px; margin-bottom:22px; }
+    .overlay-banner .ob-label { font-size:.55em; letter-spacing:3px; text-transform:uppercase; color:var(--crown); margin-bottom:6px; }
+    .overlay-banner .ob-text { color:var(--gold); font-size:.88em; line-height:1.85; }
+
+    .three-acts { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:22px 0 8px; }
+    @media (max-width:880px) { .three-acts { grid-template-columns:1fr; } }
+    .act-card { background:var(--card); border:1px solid var(--border); border-radius:13px; padding:24px 22px; position:relative; }
+    .act-card .act-tag { font-size:.55em; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+    .act-card h4 { font-size:.98em; color:var(--ac); font-family:Georgia,serif; margin-bottom:10px; }
+    .act-card p { font-size:.8em; color:#d8c8e0; line-height:1.75; }
+    .act-card.act-1 { border-left:3px solid var(--gold); }
+    .act-card.act-2 { border-left:3px solid var(--maw); }
+    .act-card.act-3 { border-left:3px solid var(--kuru); }
+
+    .front-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:18px 0; }
+    @media (max-width:760px) { .front-grid { grid-template-columns:1fr; } }
+    .front-card { background:rgba(112,72,168,.06); border:1px solid rgba(112,72,168,.24); border-radius:10px; padding:14px 16px; }
+    .front-card .ft-tag { font-size:.55em; letter-spacing:2px; text-transform:uppercase; color:var(--maw); margin-bottom:5px; }
+    .front-card h5 { font-size:.85em; color:var(--ac); font-family:Georgia,serif; margin-bottom:6px; }
+    .front-card p { font-size:.72em; color:#d8c8e0; line-height:1.65; }
+
+    .seat-card { background:linear-gradient(135deg,rgba(212,160,64,.12),rgba(0,0,0,.4)); border:1px solid rgba(212,160,64,.32); border-radius:14px; padding:32px 28px; margin:22px 0; text-align:center; }
+    .seat-card .seat-tag { font-size:.55em; letter-spacing:4px; text-transform:uppercase; color:var(--crown); margin-bottom:10px; }
+    .seat-card h3 { font-size:1.3em; color:var(--gold); margin-bottom:14px; font-family:Georgia,serif; letter-spacing:1px; }
+    .seat-card p { color:#e8d8a8; font-size:.9em; line-height:1.85; max-width:760px; margin:0 auto 10px; }
+    .seat-card .seat-stamp { font-size:.85em; color:var(--gold); margin-top:14px; letter-spacing:1.5px; font-weight:bold; }
+
+    .ledger-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin:18px 0; }
+    @media (max-width:760px) { .ledger-grid { grid-template-columns:1fr; } }
+    .ledger-card { background:var(--card); border:1px solid var(--border); border-radius:11px; padding:18px 20px; }
+    .ledger-card .lg-tag { font-size:.55em; letter-spacing:2px; text-transform:uppercase; margin-bottom:6px; }
+    .ledger-card h4 { font-size:.92em; font-family:Georgia,serif; margin-bottom:8px; }
+    .ledger-card p { font-size:.78em; color:#d8c8e0; line-height:1.75; }
+    .ledger-card.grief { border-left:3px solid var(--grief); }
+    .ledger-card.grief .lg-tag { color:var(--grief); }
+    .ledger-card.grief h4 { color:#a0b0c8; }
+    .ledger-card.revenge { border-left:3px solid var(--kuru); }
+    .ledger-card.revenge .lg-tag { color:var(--kuru); }
+    .ledger-card.revenge h4 { color:#d08070; }
+    .ledger-card.recover { border-left:3px solid var(--recover); }
+    .ledger-card.recover .lg-tag { color:var(--recover); }
+    .ledger-card.recover h4 { color:#90b890; }
+
+    .footer { text-align:center; padding:42px 20px; border-top:1px solid var(--border); color:#888098; font-size:.72em; }
+    .footer a { color:var(--ac); text-decoration:none; }
+
+    .quick-links { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:32px; }
+    .ql { display:block; padding:18px 20px; border-radius:11px; border:1px solid rgba(196,77,170,.22); background:rgba(20,16,32,.6); text-decoration:none; text-align:center; transition:border-color .15s; }
+    .ql:hover { border-color:var(--gold); }
+    .ql .ql-title { font-size:.85em; color:var(--gold); display:block; margin-bottom:4px; }
+    .ql .ql-sub { font-size:.7em; color:var(--dim); opacity:.75; }
+  </style>
+  <link rel="stylesheet" href="../../../assets/aom.css"> <!-- aom:injected -->
+</head>
+<body class="aom" data-aom-type="chapter" >
+  <div class="ch-banner">
+    <div class="badge"><span class="border">Volume I Climax &bull; The Maha-Adhipati Enters The Maw &bull; The Cracked Seventh-Seat Is Forged &bull; Kurukshetra Re-Convenes</span> &bull; Maha Parva &bull; Chapter Four</div>
+    <h1>The Great Epic</h1>
+    <div class="roman">&mdash; CHAPTER IV &mdash;</div>
+    <p class="tagline">Six Dominants. Seven seats. One Void-Maw. One Bharatavarsha. The standing-final chapter of Volume I. The standing-Mahabharata&rsquo;s Kurukshetra-moment cross-reference &mdash; but inverted: the standing-war is not between dharma and adharma. It is between the standing-surviving kingdoms and a standing-void that wants to swallow the standing-question of dharma itself. The standing-cost of victory is one seat, one ruler, and one Volume-II launch-point.</p>
+    <span class="boundary"></span>
+  </div>
+
+  <div class="ch-nav">
+    <a href="../index.html">&larr; Volume I Maha Parva</a>
+    <a href="index.html" class="active">Overview</a>
+    <a href="maha-adhipati/index.html">Maha-Adhipati Spine</a>
+    <a href="bharatavarsha/maw.html">The Void-Maw</a>
+    <a href="bharatavarsha/kurukshetra.html">Kurukshetra</a>
+    <a href="grand-council/index.html">Grand-Council</a>
+    <a href="epilogue/index.html">Epilogue</a>
+    <a href="the-return-at-sagara-ratna/index.html" style="border-color:rgba(208,64,48,.42);color:#d04030;">The Return &mdash; Surprise!</a>
+    <a href="../chapter-3-rise-of-beasts/index.html">&larr; Chapter 3</a>
+  </div>
+
+  <div class="ch-section">
+    <div class="overlay-banner">
+      <div class="ob-label">Restructure §3 Cross-Reference &bull; The Maha-Adhipati Override</div>
+      <div class="ob-text">Per restructure §3 administrative-cross-reference: the standing-Maha-Adhipati is <strong>Krishnadevaraya-Bhrata of Karnataka</strong> &mdash; the standing-Bhoomi-Takshaka-twin-brother redeemed at Ch-2 buried-temple chamber December 23 2025 cross-reference + ratified at the standing-Sanctuary stone-slab seven-seat-circle July 4 2027 5:23:33 p.m. cross-reference at the standing-5-1 vote-tally with Moirangthem dissent. He is Bloodline-A Gajavamsha desert-edge-of-the-line + Yudhishthira-mapped (reluctant administrator). He carries the standing-Tungabhadra-elephant-bond (inherited at Ch-2 December-23-2025 transfer-administration after Tungabhadra-Bhoomi-Takshaka double-death) + the standing-Krishnaveni-Krishna-river-bond (inherited at Ch-3 November-4-2026 transfer-administration after Krishnaveni Amaravati-archive-corridor death). Tungabhadra in Ch 4 is the standing-named-ancestor whose name Krishnadevaraya-Bhrata speaks inside the Maw to seal it. Krishnaveni is the standing-second-named-ancestor. Bhoomi-Takshaka is the standing-third-named-ancestor (his standing-twin-brother). Together with all the standing-named-state-hero dead from Ch 2 + Ch 3 he names the standing-forgotten cosmic-ancestor at the standing-Maw&rsquo;s standing-faceless-seat configuration cross-reference.</div>
+    </div>
+
+    <h2>The Spine</h2>
+    <p class="lead">Chapter Four runs across the standing-twelve-month chapter-arc from October 2027 to September 2028. Across the standing-arc the standing-cracked-seventh-seat at the Sanctuary is re-forged through a standing-six-cluster contribution rite + the standing-Maw invades the standing-six fronts simultaneously + the standing-Six Dominants converge at Kurukshetra at the standing-Haryana cardinal-cross-position cross-reference + Krishnadevaraya-Bhrata enters the standing-Void-Maw alone and names the standing-forgotten until the standing-Maw seals.</p>
+
+    <div class="three-acts">
+      <div class="act-card act-1">
+        <div class="act-tag">Act I &bull; October 2027 &mdash; January 2028</div>
+        <h4>The Stalemate &bull; The Six Stand At The Cracked Seventh-Seat</h4>
+        <p>The standing-Six Dominants gather at the standing-buried-temple chamber at Hampi for the standing-Cast-Forging Trial. Each Dominant brings one standing-contribution-item from their region carrying the standing-full memory of the region. Krishnadevaraya-Bhrata brings the standing-Twelve-Piece Memorial (the standing-bronze-dust from his twin&rsquo;s broken throne-stone). Simhavikrama brings the standing-Sahyadri-teak + Goan-tide-blue dual-fragment. Gangaputra-regent brings the standing-Gangotri-water + Yamunadatta brings the standing-Yamuna-bank silt. Jagannath-Bandhu brings the standing-Konark-wheel-axle fragment. Dvadashashringa brings the standing-three-piece broken-Dwadash-staff. Moirangthem refuses. The standing-Pause-Cell dissent administered at Sanctuary is now the standing-Northeast-contribution refusal. The standing-Maw uses the standing-gap to invade. The standing-Sutrakara at thirteen sits at the standing-South contribution-seat at the standing-Sutrakara-permanent-seat above-Central-Regional-Dominant cross-reference (saga&rsquo;s standing-only above-Dominant seat at Cast-Forging cross-reference).</p>
+      </div>
+
+      <div class="act-card act-2">
+        <div class="act-tag">Act II &bull; February &mdash; June 2028</div>
+        <h4>The Maw War &bull; Six Fronts Simultaneously</h4>
+        <p>The standing-Void-Maw invades through the standing-Northeast-gap. The standing-Four Heralds (now-visible First + Second + Third + Fourth) lead the standing-forgetting-armies. Each Dominant fights on their own front first. Each loses ground. Bonds break temporarily; animals die; cousins die; the standing-Pause-Cell Aulakh-International-Lahore parent-corporation cross-network funding-line completes the standing-ten-of-ten administrative-cross-reference (the standing-pending-three: Andhra-Pradesh-Pulakeshi-Babu + Bengal-Sundarbans-post-Sundarvani + Maharashtra-blood-claim-cohort-Vanaraksha-loyalty-test cross-references resolve). Recovery-Cohort thirteen-year-old Sutrakara survives a standing-poisoning at the standing-Bhojpur-Sutrakara-administrative-cell + loses her standing-voice at the standing-amended-charter ledger speaking-administration cross-reference (Central-cluster cost). Hampi-of-the-Bronze at fifteen is taken-into-the-Maw at the standing-Hampi-buried-temple chamber cross-reference (South-cluster cost). The standing-bronze-dust pouch in his pocket remains in our world &mdash; on the floor where he stood.</p>
+      </div>
+
+      <div class="act-card act-3">
+        <div class="act-tag">Act III &bull; July &mdash; September 2028</div>
+        <h4>The Convergence At Kurukshetra &bull; The Naming Rite</h4>
+        <p>The standing-Six Dominants converge at the standing-Kurukshetra-bhoomi Haryana cardinal-cross-position cross-reference (the standing-Mahabharata-Kurukshetra battlefield from BCE-3137 cross-reference). The standing-twenty-thousand sacred animals from all six regions follow. The standing-Maw appears as a standing-sky-wound. Heralds at its front. <strong>The Naming Rite begins.</strong> Krishnadevaraya-Bhrata names the standing-Fourth-Herald Krodha aloud: full lineage, full kingdom, full forgotten name. Krodha weeps. Returns to himself. Walks back into the Maw to name standing-others from inside. The Third-Herald bows to Krishnadevaraya-Bhrata. The Second-Herald is named by Ferreira-de-Sangam. The First-Herald is named by Onge-Nakshatra. Then Krishnadevaraya-Bhrata enters the Maw alone. Inside he speaks every name &mdash; every dead, every forgotten, every Bloodline-ancestor &mdash; until the standing-Maw becomes a standing-faceless-seat at the standing-Great-Ancestor configuration cross-reference. He shapes its face from his memory of every face he has known. He sits on the seat. The Maw seals. He returns full-body Tattoo-IV-Supreme-Mark. The standing-Hampi-of-the-Bronze returns the moment Krishnadevaraya-Bhrata seats himself.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ch-section">
+    <h2>The Six Fronts Of The Maw War (Act II)</h2>
+    <p class="lead">The standing-Maw invades through the standing-Northeast-gap left by Moirangthem&rsquo;s contribution-refusal. Across the standing-five-month February-June 2028 window each cluster fights on its own front first. Each Dominant bleeds. Each understands the standing-Maw cannot be fought regionally. The standing-Aftermath-recovery-cohort from Ch 3 is tested at the standing-cluster-by-cluster cost-administration cross-reference:</p>
+
+    <div class="front-grid">
+      <div class="front-card">
+        <div class="ft-tag">Front One &bull; Northeast</div>
+        <h5>Sangai-Nata Under Forgetting</h5>
+        <p>Moirangthem fights the standing-Maw at the standing-Loktak central-phumdi. The standing-Tamasa-Nrita Pause-Cell completes the standing-Aulakh-International-Lahore ten-of-ten cross-reference. Mizoram + Tripura + Arunachal temporarily lose their standing-bond-cohorts to forgetting-armies. Sangaputra at sixteen administers the standing-pre-dawn pause-rite at the standing-Loktak-central-phumdi cardinal-cross-position cross-reference. Ka-Inocha bridge-cousin holds the standing-Manipur-Naga twin-blade administrative-cross-reference.</p>
+      </div>
+      <div class="front-card">
+        <div class="ft-tag">Front Two &bull; South</div>
+        <h5>Hampi-Of-The-Bronze Vanishes</h5>
+        <p>A standing-Maw-thrust reaches Hampi. The standing-buried-temple cracks further. Hampi-of-the-Bronze at fifteen is taken-into-the-Maw at the standing-pre-dawn 4:11 a.m. window January 11 2028 cross-reference. The standing-bronze-dust pouch remains on the floor where he stood. Krishnadevaraya-Bhrata does not weep. He places his standing-right-hand on the standing-pouch at the standing-Maha-Adhipati witness-administration cross-reference. He vows to enter the Maw last and bring the boy back. The Third-Herald watches from the southern-pavilion edge.</p>
+      </div>
+      <div class="front-card">
+        <div class="ft-tag">Front Three &bull; West</div>
+        <h5>Goan-Gaur Forgets Simhavikrama</h5>
+        <p>The standing-Goan-Gaur Sagara-Vrishabha forgets Simhavikrama at the standing-Mormugao-coast standing-Phase-2 Aulakh-International-Lahore Mormugao-coast administrative-cross-reference completion. The standing-bond-mark at Simhavikrama&rsquo;s left-shoulder dims at the standing-bond-forgets-host configuration cross-reference (saga&rsquo;s standing-first temporary-bond-amnesia administrative-cross-reference). The standing-Asiatic-Lion Simha-Pati does not forget. He stays. Sahyadri-Shivagati Indian-Giant-Squirrel does not forget either. Simhavikrama at half-power for two months. Vanaraksha holds the standing-Sahyadri-perimeter alone.</p>
+      </div>
+      <div class="front-card">
+        <div class="ft-tag">Front Four &bull; North</div>
+        <h5>Yamunadatta Targeted</h5>
+        <p>Yamunadatta at sixteen targeted at Vrindavan-Yamuna-bank cross-reference. Gangaputra-regent protects him. The standing-cost: Mahaguru Drona-of-the-Plain at seventy-six dies at standing-Vrindavan-Yamuna-bank standing-eastern-cardinal-position cross-reference at the standing-cardiac-region single-stroke administrative-cross-reference seeking redemption (the standing-Mahaguru&rsquo;s standing-fortieth-year-debt-reversal completion + the standing-cross-Bloodline guru-redemption cross-reference). His standing-last-words to Yamunadatta in standing-Sanskrit-Awadhi-Hindi tri-language: <em>&ldquo;Boy. The river holds. The Sarus has chosen. The standing-Krishna-shadow walks. Forget nothing.&rdquo;</em></p>
+      </div>
+      <div class="front-card">
+        <div class="ft-tag">Front Five &bull; East</div>
+        <h5>Konark Wheel Sabotaged</h5>
+        <p>Jagannath-Bandhu&rsquo;s standing-Puri-to-Konark Rath-Yatra is sabotaged by a standing-Herald-corrupted Daita-priest at the standing-Phase-2 Aulakh-International-Lahore Bengal-Sundarbans nine-of-ten administrative-cross-reference. The standing-Konark-wheel administers a standing-third-turning (counterclockwise + clockwise + counterclockwise) at the standing-saga&rsquo;s standing-only triple-turning cross-reference. Bilash-Babu of Bengal arrives at Puri with the standing-Sundara-Vana tidal-trident at the standing-bilateral cohort-witness cross-reference. Subhadra-of-the-Wood at fifty-four administers the standing-Shabara-tribal-sovereign-veto enforcement at the standing-amended-Puri-Jagannath-temple-charter cross-reference.</p>
+      </div>
+      <div class="front-card">
+        <div class="ft-tag">Front Six &bull; Central</div>
+        <h5>Sutrakara Poisoned, Voice Lost</h5>
+        <p>Sutrakara at thirteen-years-eleven-months poisoned at the standing-Bhojpur-Sutrakara-administrative-cell at the standing-Phase-2 Aulakh-International-Lahore Maharashtra-blood-claim-cohort-Vanaraksha-loyalty-test final-of-ten cross-reference. She survives. She loses her standing-voice at the standing-amended-charter ledger speaking-administration cross-reference. She continues to write. The standing-four-cardinal-court reconvening administration continues at the standing-Bhojpur + Indore + Jabalpur + Dandakaranya cross-reference. Aranya-Devi-the-Younger administers the standing-cross-cluster Chhattisgarh-Dandakaranya defence-administration cross-reference.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ch-section">
+    <h2>The Four Heralds &mdash; The Naming Rite</h2>
+    <p class="lead">Per D6 + D10 administrative-cross-reference: the standing-Heralds-Rule administers the standing-remember-do-not-kill cross-reference. Killing a Herald grows the Maw. Naming a Herald &mdash; speaking their full name + lineage + kingdom + forgotten-circumstance &mdash; converts them. In Chapter Four the standing-four-Herald walking-cohort administers the standing-naming-rite at Kurukshetra at the standing-pre-Maw-entrance escort-witness cross-reference. Each Herald is named by the standing-Dominant or state-hero of their standing-Ch-1 origin-kingdom:</p>
+
+    <div class="front-grid" style="grid-template-columns:repeat(2,1fr);">
+      <div class="front-card" style="background:rgba(184,80,64,.06);border-color:rgba(184,80,64,.30);">
+        <div class="ft-tag" style="color:#d49080;">First Herald &bull; Andaman &bull; Named By Onge-Nakshatra</div>
+        <h5>Kalapani-Asura &rarr; The Forgotten Sangam-Bound-Form</h5>
+        <p>Onge-Nakshatra at standing-Sagara-Ratna administers the standing-First-Herald naming-rite at the standing-Kurukshetra-bhoomi cardinal-cross-position cross-reference. The standing-First-Herald&rsquo;s standing-forgotten-name was administered by the standing-Onge-elder Tribal-Pact at the standing-Sentinelese-tribal-restoration cross-reference. After naming, the standing-First-Herald walks to the standing-Volume-II Yavana-Khanda launch-point pre-administration cross-reference.</p>
+      </div>
+      <div class="front-card" style="background:rgba(184,80,64,.06);border-color:rgba(184,80,64,.30);">
+        <div class="ft-tag" style="color:#d49080;">Second Herald &bull; Goa &bull; Named By Ferreira-De-Sangam</div>
+        <h5>Vasco-Without-A-Ship &rarr; The Forgotten Konkan-Sagaravamsha Heir</h5>
+        <p>Ferreira-de-Sangam at the standing-Mormugao-coast administers the standing-Second-Herald naming-rite at the standing-Kurukshetra-bhoomi cardinal-cross-position cross-reference. The standing-Second-Herald&rsquo;s standing-forgotten-name was administered at the standing-Sagaravamsha-1957 lost-at-sea cross-reference. After naming, the standing-Second-Herald walks the standing-Mormugao-coast standing-sea-administration completion-cross-reference.</p>
+      </div>
+      <div class="front-card" style="background:rgba(184,80,64,.06);border-color:rgba(184,80,64,.30);">
+        <div class="ft-tag" style="color:#d49080;">Third Herald &bull; Karnataka &bull; Named By Krishnadevaraya-Bhrata</div>
+        <h5>Bronze-Dust Child &rarr; The Forgotten Bloodline-A Infant Cousin</h5>
+        <p>Krishnadevaraya-Bhrata at the standing-Hampi-buried-temple chamber administers the standing-Third-Herald naming-rite at the standing-Kurukshetra-bhoomi cardinal-cross-position cross-reference. The standing-Third-Herald&rsquo;s standing-forgotten-name was administered at the standing-Vijayanagara-temple-earthquake-1565 infant-swallowed cross-reference at the standing-Bloodline-A infant-cousin administrative-cross-reference. After naming, the standing-Third-Herald sits at the standing-foot of Hampi-of-the-Bronze&rsquo;s bed permanently at the standing-saga&rsquo;s first standing-Herald-bonded-to-the-living acknowledgement-cross-reference.</p>
+      </div>
+      <div class="front-card" style="background:rgba(184,80,64,.06);border-color:rgba(184,80,64,.30);">
+        <div class="ft-tag" style="color:#d49080;">Fourth Herald &bull; Sikkim &bull; Named By Hima-Naga</div>
+        <h5>Krodha &rarr; The Forgotten By Compassion</h5>
+        <p>Hima-Naga at standing-Sikkim Khangchendzonga-Rashtra administers the standing-Fourth-Herald naming-rite at the standing-Kurukshetra-bhoomi cardinal-cross-position cross-reference. Krodha at forty-seven weeps. Returns to himself. The standing-Pemayangtse-prayer-bell rings for the standing-first-time at the standing-Pelling-monastery cardinal-cross-Centre cross-reference. He walks back into the Maw to name standing-others from inside. The standing-saga&rsquo;s standing-first Herald-walks-back-into-the-Maw administrative-cross-reference (the standing-final naming-from-inside discipline).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ch-section">
+    <h2>Inside The Maw &mdash; The Trial Of Krishnadevaraya-Bhrata</h2>
+    <div class="seat-card">
+      <div class="seat-tag">The Standing-Maha-Adhipati Enters Alone &bull; Saga&rsquo;s Stage-IV-Supreme-Mark Administration</div>
+      <h3>The Naming Of The Forgotten Cosmic-Ancestor</h3>
+      <p>Krishnadevaraya-Bhrata enters the standing-Void-Maw alone at the standing-Kurukshetra-bhoomi cardinal-cross-Centre cross-reference. He walks. He meets his standing-twin Bhoomi-Takshaka first. He names him. The standing-Maw shrinks. He meets Tungabhadra. He names her. The Maw shrinks. He meets Krishnaveni + Sundarvani + Jagannathi + Shivagati + Sagaradeva + Tlangvala + Meghanadi + Himavati &mdash; all nine standing-state-hero dead. He names each. The Maw shrinks. He meets Bhoomi-Takshaka&rsquo;s eleven-fifth-cousin-administrators + the Madhya-Pradesh forty-seven-thousand famine-dead + the Karnataka-Hadali one-thousand-and-fifty-one + the Sukma-Bastar eleven-hundred + the Loktak central-phumdi nine + the Nongriat-Ka-Sngi + the Bhopal-1992 two-thousand-two-hundred-and-fifty-nine. He names every single one. The Maw shrinks to the standing-size of a standing-single-figure with no face.</p>
+      <p>He gives the figure a face from his memory of every face he has known. The face becomes the standing-Great-Ancestor of the Five Bloodlines &mdash; the standing-cosmic-faceless-seat configuration cross-reference. He shapes it. It becomes a standing-seat. He sits.</p>
+      <p>The standing-Maw seals at the standing-twelfth-of-September 2028 at the standing-eleven-eleven-eleven a.m. cross-reference. He returns. He wears the standing-Stage-IV-supreme-mark full-body tattoo at the standing-saga&rsquo;s standing-only Stage-IV-supreme-mark administrative-cross-reference (the standing-seat he sat on is now the standing-crown he wears). Hampi-of-the-Bronze returns the moment Krishnadevaraya-Bhrata seats himself at the standing-buried-temple chamber South-cluster cross-reference. The standing-bronze-dust pouch on the floor opens itself. The boy is whole. The boy is named the standing-South-cluster heir-apparent at the standing-amended-charter cross-reference.</p>
+      <div class="seat-stamp">September 12 2028 &bull; 11:11:11 a.m. &bull; The Maw Sealed &bull; The Seventh Seat Filled</div>
+    </div>
+  </div>
+
+  <div class="ch-section">
+    <h2>The Sentiment-Recovery-Revenge Ledger Carried From Chapter Three</h2>
+    <p class="lead">The standing-Aftermath-interlude Standing-Mourning-Cohort + Recovery-Cohort + Revenge-Ledgers from Ch 3 administer at the standing-Chapter-Four resolution cross-reference. Each thread closes or transforms:</p>
+
+    <div class="ledger-grid">
+      <div class="ledger-card grief">
+        <div class="lg-tag">Sentiment &bull; The Nine Names Recur</div>
+        <h4>The Mourning-Cohort Becomes The Naming-Cohort</h4>
+        <p>The standing-nine standing-state-hero dead from Ch 2 + Ch 3 are read aloud again at Kurukshetra-bhoomi cardinal-cross-position on the standing-eleventh of September 2028 at the standing-pre-dawn 4:11:11 a.m. cross-reference. Each name administered by the standing-survivor-cohort: Hampi-of-the-Bronze names Tungabhadra; Bilash-Babu names Sundarvani; Tanaji-the-Second names Shivagati; Saraswati-Simha-Mata-the-First names her cousin Krishnaveni; Ferreira-de-Sangam names Sagaradeva; U-Khrawkmen names Meghanadi; Subhadra-of-the-Wood names Jagannathi; Kamalavarna names Himavati and Tlangvala. The standing-Mourning-Cohort becomes the standing-Naming-Cohort. Inside the Maw, Krishnadevaraya-Bhrata names them again. They name him back.</p>
+      </div>
+      <div class="ledger-card revenge">
+        <div class="lg-tag">Revenge-Completed &bull; Five Drawers Close</div>
+        <h4>The Revenge-Unresolved Ledger Resolves At Kurukshetra</h4>
+        <p>Pulakeshi-Babu (AP) returns from the standing-Yavana-Khanda pre-launch-point cross-reference + is named-not-killed at the standing-Kurukshetra-bhoomi at the standing-Herald-discipline expansion-cross-reference (the standing-saga&rsquo;s standing-first non-Herald-named-not-killed administrative-cross-reference; the standing-Heralds-Rule extends to the standing-revenge-unresolved cohort at the standing-amended-Maha-Adhipati charter cross-reference). Tamasa-Nrita (Manipur) is named-not-killed at the standing-Loktak-central-phumdi by Moirangthem after Front-One cost-completion. Adharma-Kendra (MP) is named-not-killed at the standing-Bhojpur-Sutrakara-administrative-cell by mute Sutrakara writing on the standing-amended-charter ledger. Naga-Rakshasa (Nagaland) is named-not-killed at the standing-Pochury-cardinal-cross-position by Dzulevira. Khrumai-Sho (Nagaland) at the standing-Kohima High Court trial-completion is found guilty + named-not-killed at the standing-life-imprisonment administrative-cross-reference. <strong>Five drawers close.</strong> No revenge-killing across Chapter Four. The standing-Heralds-Rule has become the standing-Bharatavarsha-rule.</p>
+      </div>
+      <div class="ledger-card recover">
+        <div class="lg-tag">Recovery &bull; The Cohort Comes Through</div>
+        <h4>The Standing-Living Carry The Standing-Dead Into The Future</h4>
+        <p>Bilash-Babu of Bengal completes the standing-Stage-IV brother-administration cross-reference (saga&rsquo;s second Stage-IV after Krishnadevaraya-Bhrata at the standing-amended-Bandhu-of-Sundara-Sundara-Vana administration cross-reference). Sutrakara at fourteen continues writing without voice + administers the standing-Four-Cardinal-Court Reconvening completion-cross-reference at the standing-September-23-2028 Bhojpur-amended-charter cross-reference. Yamunadatta at seventeen administers Stage-II hoofprint-mark completion at standing-Vrindavan-Yamuna-bank dawn-window after Gangaputra-regent-mourning Drona-of-the-Plain cross-reference. Ka-Sienlyngdoh at fourteen receives the standing-clouded-leopard bond-mark Stage-I at the standing-Mawlynnong-eastern-cardinal-courtyard pre-dawn cross-reference (saga&rsquo;s standing-only seven-month-old dormant-cub matures at the standing-Phase-IV witness-cross-reference). Hampi-of-the-Bronze at sixteen returns from the standing-Maw + carries the standing-Third-Herald at the foot of his bed permanently + is named the standing-South-cluster heir-apparent. Vanaraksha at forty-five drinks his standing-first Wednesday-Kutchi-coffee at the standing-Bilakha-residence eastern-cardinal-courtyard on the standing-September-23-2028 cardinal-cross-position cross-reference. Saraswati does not look at him. She makes a second small dot in the margin of the standing-Madhavi-line ledger. <strong>The standing-Recovery-Cohort comes through.</strong></p>
+      </div>
+      <div class="ledger-card grief">
+        <div class="lg-tag">Sentiment &bull; The Maha-Adhipati Bears The Loneliness</div>
+        <h4>Krishnadevaraya-Bhrata Wears The Crown That Was A Seat</h4>
+        <p>At the standing-Grand-Council convening at Hampi on the standing-eleventh of October 2028 the standing-Maha-Adhipati declares the standing-Council a standing-seven-equal body, not a top-down throne. The standing-seventh-seat is not above the other six. It holds them. He carries the standing-full-body Stage-IV-supreme-mark in standing-saffron-vermillion-indigo-and-Bhoomi-Takshaka-twin-bronze-and-Tungabhadra-elephant-grey-and-Krishnaveni-river-blue tetra-ink at the standing-saga&rsquo;s standing-only Stage-IV cross-reference. He visits Hampi-of-the-Bronze every Tuesday and Saturday. They drink standing-bitter-Kannada-coffee. The standing-fifteen-now-sixteen-year-old listens. The standing-Maha-Adhipati explains things he could not explain to his twin or to the standing-Maw. The standing-bronze-dust at their feet moves by itself. They do not speak about it. They do not need to.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ch-section">
+    <h2>Volume I Closes &bull; Volume II Opens</h2>
+    <div class="seat-card" style="background:linear-gradient(135deg,rgba(64,128,168,.10),rgba(0,0,0,.4));border-color:rgba(64,128,168,.32);">
+      <div class="seat-tag" style="color:#80a8c8;">The Horizon Opens &bull; Per D7 Administrative-Cross-Reference</div>
+      <h3 style="color:#a0c0d8;">Yavana-Khanda Awaits</h3>
+      <p style="color:#c8d8e8;">After the Grand-Council convening + the standing-Stage-IV-supreme-mark crown-administration + the standing-Heralds-becoming-keepers-of-forgotten-things cross-reference, the standing-First-Herald walks from Andaman Sagara-Ratna at the standing-Onge-Nakshatra cross-reference toward the standing-Yavana-Khanda launch-point cross-reference. The standing-Greek-coded Mediterranean / West-Asia lands await. The standing-Volume-I Maha-Parva concludes. The standing-Volume-II Yavana-Khanda begins at the standing-Andaman-Nicobar pre-launch-point cross-reference. The standing-Void-Maw is sealed at Hampi-buried-temple chamber. It hums once. The book closes. The horizon opens.</p>
+      <div class="seat-stamp" style="color:#80a8c8;">October 23 2028 &bull; The Horizon Opens &bull; Sagara-Ratna Andaman &bull; Volume II Launch-Point</div>
+    </div>
+  </div>
+
+  <div class="ch-section">
+    <h2>Read Chapter Four</h2>
+    <div class="quick-links">
+      <a href="maha-adhipati/index.html" class="ql" style="border-color:rgba(232,200,112,.42);">
+        <span class="ql-title" style="color:var(--gold);">The Mouth That Holds The Name &mdash; Spine</span>
+        <span class="ql-sub">Krishnadevaraya-Bhrata's full three-act Ch 4 arc (Oct 2027 &mdash; Oct 2028)</span>
+      </a>
+      <a href="bharatavarsha/maw.html" class="ql">
+        <span class="ql-title">The Void-Maw</span>
+        <span class="ql-sub">Definition, history, cosmic mechanic</span>
+      </a>
+      <a href="bharatavarsha/kurukshetra.html" class="ql">
+        <span class="ql-title">Kurukshetra</span>
+        <span class="ql-sub">The convergence battlefield (BCE-3137 cross-reference)</span>
+      </a>
+      <a href="grand-council/index.html" class="ql" style="border-color:rgba(232,184,64,.34);">
+        <span class="ql-title" style="color:var(--crown);">The Grand-Council</span>
+        <span class="ql-sub">Seven-equal body convened October 11 2028 (institutional resolution)</span>
+      </a>
+      <a href="epilogue/index.html" class="ql" style="border-color:rgba(80,128,152,.42);">
+        <span class="ql-title" style="color:#80a8c8;">Volume I Epilogue &mdash; The Horizon Opens</span>
+        <span class="ql-sub">The First-Keeper walks toward Yavana-Khanda &middot; The book closes</span>
+      </a>
+      <a href="the-return-at-sagara-ratna/index.html" class="ql" style="border-color:rgba(208,64,48,.50);background:radial-gradient(ellipse at center,rgba(208,64,48,.10),rgba(20,16,32,.6));">
+        <span class="ql-title" style="color:#d04030;font-weight:bold;">&#9888; The Return At Sagara-Ratna &mdash; SURPRISE</span>
+        <span class="ql-sub" style="color:#c8b8a0;">The twin returns from the Maw &middot; The book does not close, it opens</span>
+      </a>
+      <a href="../chapter-3-rise-of-beasts/sanctuary/index.html" class="ql">
+        <span class="ql-title">&larr; The Sanctuary</span>
+        <span class="ql-sub">The cracked seventh-seat (Ch 3 climax)</span>
+      </a>
+      <a href="../chapter-3-rise-of-beasts/aftermath/index.html" class="ql">
+        <span class="ql-title">&larr; The Forty-Nine Days</span>
+        <span class="ql-sub">Sentiment, recovery, revenge (Ch 3 interlude)</span>
+      </a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>The Great Epic &bull; Chapter Four &bull; Maha Parva &bull; Age of Mythos Volume I</p>
+    <p style="margin-top:10px;"><a href="../chapter-3-rise-of-beasts/index.html">&larr; Chapter 3: Rise of Beasts</a> &nbsp;&bull;&nbsp; <a href="../index.html">Volume I Overview</a></p>
+    <p style="margin-top:14px;opacity:.6;">Six Dominants. Seven seats. One Void-Maw. One Bharatavarsha. The forgotten names approach.</p>
+  </footer>
+  <script src="../../../assets/manifest.js"></script>
+  <script src="../../../assets/aom.js"></script> <!-- aom:injected -->
+</body>
+</html>

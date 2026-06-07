@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kingdom &mdash; Hulmane-The-Saga</title>
+  <link rel="stylesheet" href="../../../../../css/style.css">
+  <style>
+    .root { --root: '../../../../../'; }
+    .breadcrumb { padding: 70px 20px 0; max-width: 1200px; margin: 0 auto; }
+    .breadcrumb a { color: var(--gold-dim); text-decoration: none; font-size: 0.8rem; }
+    .breadcrumb a:hover { color: var(--gold); }
+    .breadcrumb span { color: var(--text-dim); font-size: 0.8rem; margin: 0 6px; }
+    .breadcrumb .current { color: var(--gold); font-weight: bold; }
+
+    .kingdom-banner {
+      text-align: center;
+      padding: 30px 20px 50px;
+      position: relative;
+    }
+    .kingdom-banner h1 { font-size: 2.5rem; margin-bottom: 5px; }
+    .kingdom-banner .state-name-top { color: var(--text); font-size: 1.1rem; margin-bottom: 8px; }
+    .kingdom-banner .motto-top { color: var(--text-dim); font-style: italic; font-size: 1rem; max-width: 600px; margin: 0 auto; }
+
+    .content-area { max-width: 1100px; margin: 0 auto; padding: 0 20px 60px; }
+
+    .creatures-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    @media (max-width: 600px) { .creatures-panel { grid-template-columns: 1fr; } }
+    .creature-box {
+      padding: 20px;
+      border-radius: 10px;
+      background: rgba(0,0,0,0.25);
+      border: 1px solid var(--border-dim);
+    }
+    .creature-box .c-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-dim); margin-bottom: 4px; }
+    .creature-box .c-name { color: var(--gold); font-size: 1.2rem; font-weight: bold; margin-bottom: 4px; }
+    .creature-box .c-symbol { color: var(--text); font-style: italic; font-size: 0.85rem; line-height: 1.5; }
+
+    .section-title-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 40px 0 20px;
+    }
+    .section-title-bar h2 { font-size: 1.4rem; margin: 0; white-space: nowrap; }
+    .section-title-bar::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, var(--border-dim), transparent); }
+
+    .profile-full {
+      padding: 25px;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      position: relative;
+    }
+    .profile-full.hero-p {
+      background: linear-gradient(135deg, rgba(0, 60, 0, 0.15), rgba(0, 30, 0, 0.08));
+      border: 1px solid rgba(68, 255, 136, 0.2);
+    }
+    .profile-full.villain-p {
+      background: linear-gradient(135deg, rgba(60, 0, 0, 0.15), rgba(30, 0, 0, 0.08));
+      border: 1px solid rgba(255, 68, 68, 0.2);
+    }
+    .profile-full .p-tag {
+      display: inline-block;
+      padding: 3px 14px;
+      border-radius: 12px;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+    .hero-p .p-tag { background: #44ff88; color: #000; }
+    .villain-p .p-tag { background: #ff4444; color: #fff; }
+    .profile-full h3 { margin: 0 0 2px; font-size: 1.5rem; }
+    .hero-p h3 { color: #44ff88; }
+    .villain-p h3 { color: #ff4444; }
+    .profile-full .p-title { color: var(--text-dim); font-style: italic; font-size: 0.9rem; margin-bottom: 15px; }
+    .profile-full .p-desc { color: var(--text); font-size: 0.92rem; line-height: 1.8; margin-bottom: 15px; }
+    .p-detail { font-size: 0.88rem; line-height: 1.6; margin: 6px 0; }
+    .p-detail .dl { color: var(--gold-dim); font-weight: bold; min-width: 100px; display: inline-block; }
+    .hero-p .p-detail .dl { color: rgba(68, 255, 136, 0.7); }
+    .villain-p .p-detail .dl { color: rgba(255, 100, 100, 0.7); }
+    .p-detail .dv { color: var(--text); }
+    .battle-cry-full {
+      margin-top: 15px;
+      padding: 12px 18px;
+      font-style: italic;
+      font-size: 0.95rem;
+      border-radius: 6px;
+    }
+    .hero-p .battle-cry-full { color: #44ff88; background: rgba(68, 255, 136, 0.06); border-left: 3px solid rgba(68, 255, 136, 0.3); }
+    .villain-p .battle-cry-full { color: #ff6666; background: rgba(255, 68, 68, 0.06); border-left: 3px solid rgba(255, 68, 68, 0.3); }
+
+    .guru-panel {
+      background: linear-gradient(135deg, rgba(170, 102, 255, 0.1), rgba(100, 50, 200, 0.05));
+      border: 1px solid rgba(170, 102, 255, 0.2);
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 25px;
+    }
+    .guru-panel h3 { color: #aa66ff; margin: 0 0 2px; font-size: 1.3rem; }
+    .guru-panel .g-title { color: var(--text-dim); font-style: italic; font-size: 0.9rem; margin-bottom: 12px; }
+    .guru-panel .g-desc { color: var(--text); font-size: 0.92rem; line-height: 1.8; margin-bottom: 15px; }
+    .guru-panel .g-wisdom {
+      color: #cc99ff;
+      font-style: italic;
+      font-size: 1rem;
+      padding: 14px 20px;
+      background: rgba(170, 102, 255, 0.08);
+      border-left: 3px solid #aa66ff;
+      border-radius: 0 6px 6px 0;
+      line-height: 1.7;
+    }
+
+    .warriors-grid-full {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    .w-card {
+      padding: 16px;
+      border-radius: 10px;
+      background: rgba(0,0,0,0.2);
+      border: 1px solid var(--border-dim);
+    }
+    .w-card[data-loyalty="hero"] { border-left: 3px solid #44ff88; }
+    .w-card[data-loyalty="villain"] { border-left: 3px solid #ff4444; }
+    .w-card[data-loyalty="neutral"] { border-left: 3px solid #ffaa00; }
+    .w-card .wn { color: var(--gold); font-weight: bold; font-size: 0.95rem; }
+    .w-card .wt { color: var(--text-dim); font-style: italic; font-size: 0.8rem; margin-bottom: 6px; }
+    .w-card .ws { color: var(--text); font-size: 0.85rem; line-height: 1.5; }
+    .w-card .wl {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 2px 10px;
+      border-radius: 10px;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .w-card[data-loyalty="hero"] .wl { background: rgba(68, 255, 136, 0.15); color: #44ff88; }
+    .w-card[data-loyalty="villain"] .wl { background: rgba(255, 68, 68, 0.15); color: #ff4444; }
+    .w-card[data-loyalty="neutral"] .wl { background: rgba(255, 170, 0, 0.15); color: #ffaa00; }
+
+    .saga-full {
+      margin-top: 10px;
+    }
+    .saga-full .saga-title {
+      color: var(--gold);
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .saga-full .saga-body {
+      color: var(--text);
+      font-size: 0.95rem;
+      line-height: 2;
+      white-space: pre-line;
+      text-align: justify;
+    }
+    .saga-full .saga-body::first-letter {
+      font-size: 3rem;
+      color: var(--gold);
+      float: left;
+      line-height: 1;
+      margin-right: 8px;
+      margin-top: 4px;
+    }
+
+    .region-nav {
+      margin-top: 50px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border-dim);
+    }
+    .region-nav h3 { color: var(--gold-dim); font-size: 1rem; margin-bottom: 15px; text-align: center; }
+    .sibling-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    .sibling-links a {
+      padding: 8px 18px;
+      border: 1px solid var(--border-dim);
+      border-radius: 20px;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: all 0.3s;
+    }
+    .sibling-links a:hover, .sibling-links a.current {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(255, 215, 0, 0.06);
+    }
+    .sibling-links a.current { pointer-events: none; }
+
+    .back-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+    .back-links a {
+      padding: 10px 24px;
+      border: 1px solid var(--gold-dim);
+      border-radius: 20px;
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+    }
+    .back-links a:hover { background: rgba(255, 215, 0, 0.1); }
+
+    /* ── Story Image Gallery ── */
+    .story-img-section { margin-bottom: 40px; }
+    .story-img-group { margin-bottom: 32px; }
+    .story-img-group-title {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      color: var(--text-dim);
+      margin-bottom: 14px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border-dim);
+    }
+    .story-img-grid {
+      display: grid;
+      gap: 14px;
+    }
+    .story-img-grid.cols-1 { grid-template-columns: 1fr; }
+    .story-img-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+    .story-img-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+    @media (max-width: 700px) {
+      .story-img-grid.cols-2,
+      .story-img-grid.cols-3 { grid-template-columns: 1fr; }
+    }
+    .story-img-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-dim);
+      background: #0a0604;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+    .story-img-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 42px rgba(0,0,0,0.6);
+      border-color: var(--gold-dim);
+    }
+    .story-img-card img {
+      width: 100%;
+      display: block;
+      border-radius: 12px 12px 0 0;
+    }
+    .story-img-card .img-label {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(0,0,0,0.75);
+      color: var(--gold);
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 3px 10px;
+      border-radius: 10px;
+      backdrop-filter: blur(4px);
+    }
+    .story-img-card .img-caption {
+      padding: 10px 14px 12px;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+      background: rgba(0,0,0,0.3);
+    }
+    /* Lightbox */
+    .story-lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 9900;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      cursor: pointer;
+    }
+    .story-lightbox.open { display: flex; }
+    .story-lightbox img {
+      max-width: 90vw;
+      max-height: 88vh;
+      border-radius: 12px;
+      box-shadow: 0 0 80px rgba(0,0,0,0.8);
+    }
+    .story-lightbox-caption {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.85);
+      color: var(--text-dim);
+      font-size: 0.82rem;
+      padding: 8px 22px;
+      border-radius: 20px;
+      max-width: 80vw;
+      text-align: center;
+      line-height: 1.5;
+    }
+    .story-lightbox-close {
+      position: fixed;
+      top: 16px;
+      right: 20px;
+      background: none;
+      border: 1px solid var(--border-dim);
+      color: var(--gold);
+      font-size: 1.2rem;
+      padding: 5px 13px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .vs-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .vs-divider::before, .vs-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 68, 68, 0.3), transparent);
+    }
+    .vs-circle {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ff4444, #660000);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #fff;
+      font-size: 1rem;
+      box-shadow: 0 0 25px rgba(255, 68, 68, 0.3);
+    }
+  </style>
+  <link rel="stylesheet" href="../../../../../../../../assets/aom.css"> <!-- aom:injected -->
+</head>
+<body class="aom" data-aom-type="story" >
+
+  <!-- NAVIGATION -->
+    <nav class="maha-nav">
+    <a href="../../../../../../index.html" class="nav-logo">Age of Mythos</a>
+    <div class="nav-links">
+      <a href="../../../../../../../../../index.html">Volume I</a>
+      <a href="../../../../../kingdoms.html">Kingdoms</a>
+      <a href="../../../../../identity.html">Identities</a>
+      <a href="../../../../../characters.html">Heroes</a>
+      <a href="../../../../../systems.html">Systems</a>
+      <a href="../../../../../council.html">Council</a>
+      <a href="../../../../../bharatavarsha/global-map.html">Map</a>
+    </div>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('nav-open')">&#9776;</button>
+  </nav>
+  <!-- Back to kingdom story -->
+  <div style="max-width:1100px;margin:12px auto 0;padding:0 20px;">
+    <a href="../story.html" style="color:var(--gold-dim);text-decoration:none;font-size:.8em;">&larr; Back to Kingdom Story</a>
+    &nbsp;&nbsp;
+    <a href="../index.html" style="color:var(--gold-dim);text-decoration:none;font-size:.8em;">&larr; Kingdom Overview</a>
+  </div>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb" id="breadcrumb"></div>
+
+  <!-- KINGDOM BANNER -->
+  <section class="kingdom-banner" id="banner"></section>
+
+  <!-- CONTENT -->
+  <div class="content-area" id="content">
+    <p style="color:var(--text-dim); text-align:center; padding:60px 0;">Loading kingdom data...</p>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script>window.KINGDOM_ID = 'karnataka';</script>
+  <script src="../../../../../js/kingdom-identity-data.js"></script>
+  <script src="../../../../../js/kingdom-theme.js"></script>
+  <script src="../../../../../js/state-stories-data.js"></script>
+  <script>
+    (function() {
+      var stateId = 'karnataka';
+      var regionId = 'south';
+
+      var kingdom = STATE_KINGDOMS.find(function(k) { return k.stateId === stateId; });
+      if (!kingdom) {
+        document.getElementById('content').innerHTML = '<p style="color:#ff4444;text-align:center;padding:80px 20px;">Kingdom not found: ' + stateId + '</p>';
+        return;
+      }
+
+      var regionLabels = {
+        south: 'Dakshinapatha (South)',
+        west: 'Paschimapatha (West)',
+        east: 'Purvapatha (East)',
+        north: 'Uttarapatha (North)',
+        northeast: 'Pragjyotisha (Northeast)',
+        central: 'Madhyadesa (Central)'
+      };
+
+      var regionColors = {
+        south: '#44ff88', west: '#ff8c00', east: '#44aaff',
+        north: '#ff66cc', northeast: '#aa66ff', central: '#ffaa00'
+      };
+
+      var rc = regionColors[kingdom.region] || '#ffd700';
+
+      document.title = kingdom.kingdomName + ' \u2014 Hulmane-The-Saga';
+
+      // Breadcrumb
+      document.getElementById('breadcrumb').innerHTML =
+        '<a href="../../../../../kingdoms.html">All Kingdoms</a><span>&rsaquo;</span>' +
+        '<a href="../../../../../kingdoms.html">India</a><span>&rsaquo;</span>' +
+        '<a href="../index.html">' + (regionLabels[kingdom.region] || kingdom.region) + '</a><span>&rsaquo;</span>' +
+        '<a href="index.html">' + kingdom.stateName + '</a><span>&rsaquo;</span>' +
+        '<span class="current">' + kingdom.kingdomName + '</span>';
+
+      // Banner
+      document.getElementById('banner').innerHTML =
+        '<div class="state-name-top">' + kingdom.stateName + '</div>' +
+        '<h1 style="color:' + rc + ';">' + kingdom.kingdomName + '</h1>' +
+        '<div class="motto-top">&ldquo;' + kingdom.motto + '&rdquo;</div>';
+
+      // Build full content
+      var html = '';
+
+      // Creatures
+      html += '<div class="creatures-panel">' +
+        '<div class="creature-box">' +
+          '<div class="c-label">Sacred Animal</div>' +
+          '<div class="c-name">' + kingdom.animal.name + '</div>' +
+          '<div class="c-symbol">' + kingdom.animal.symbolism + '</div>' +
+        '</div>' +
+        '<div class="creature-box">' +
+          '<div class="c-label">Sacred Bird</div>' +
+          '<div class="c-name">' + kingdom.bird.name + '</div>' +
+          '<div class="c-symbol">' + kingdom.bird.symbolism + '</div>' +
+        '</div>' +
+      '</div>';
+
+      // Hero section
+      html += '<div class="section-title-bar"><h2 style="color:#44ff88;">The Hero</h2></div>';
+      html += '<div class="profile-full hero-p">' +
+        '<span class="p-tag">Hero of ' + kingdom.stateName + '</span>' +
+        '<h3>' + kingdom.hero.name + '</h3>' +
+        '<div class="p-title">' + kingdom.hero.title + ' &mdash; ' + kingdom.hero.epithet + '</div>' +
+        '<div class="p-desc">' + kingdom.hero.description + '</div>' +
+        '<div class="p-detail"><span class="dl">Gender: </span><span class="dv">' + kingdom.hero.gender + (kingdom.hero.age ? ', Age: ' + kingdom.hero.age : '') + '</span></div>' +
+        '<div class="p-detail"><span class="dl">Weapon: </span><span class="dv">' + kingdom.hero.weapon + '</span></div>' +
+        '<div class="p-detail"><span class="dl">Tattoo: </span><span class="dv">' + kingdom.hero.tattoo + '</span></div>' +
+        '<div class="battle-cry-full">&ldquo;' + kingdom.hero.battleCry + '&rdquo;</div>' +
+      '</div>';
+
+      // VS divider
+      html += '<div class="vs-divider"><div class="vs-circle">VS</div></div>';
+
+      // Villain section
+      html += '<div class="section-title-bar"><h2 style="color:#ff4444;">The Villain</h2></div>';
+      html += '<div class="profile-full villain-p">' +
+        '<span class="p-tag">Nemesis</span>' +
+        '<h3>' + kingdom.villain.name + '</h3>' +
+        '<div class="p-title">' + kingdom.villain.title + ' &mdash; ' + kingdom.villain.epithet + '</div>' +
+        '<div class="p-desc">' + kingdom.villain.description + '</div>' +
+        '<div class="p-detail"><span class="dl">Weapon: </span><span class="dv">' + kingdom.villain.weapon + '</span></div>' +
+        '<div class="p-detail"><span class="dl">Motivation: </span><span class="dv">' + kingdom.villain.motivation + '</span></div>' +
+        '<div class="battle-cry-full"><span class="dl" style="color:#ff6666;">Dark Power: </span>' + kingdom.villain.darkPower + '</div>' +
+      '</div>';
+
+      // Guru section
+      html += '<div class="section-title-bar"><h2 style="color:#aa66ff;">The Guru</h2></div>';
+      html += '<div class="guru-panel">' +
+        '<h3>' + kingdom.guru.name + '</h3>' +
+        '<div class="g-title">' + kingdom.guru.title + '</div>' +
+        '<div class="g-desc">' + kingdom.guru.description + '</div>' +
+        '<div class="g-wisdom">&ldquo;' + kingdom.guru.wisdom + '&rdquo;</div>' +
+      '</div>';
+
+      // ── STORY IMAGE GALLERY ──
+      if (kingdom.storyImages) {
+        var si = kingdom.storyImages;
+        var base = si.basePath || '';
+
+        function imgCard(img, labelColor, bgColor) {
+          var lc = labelColor || 'var(--gold)';
+          var bg = bgColor    || 'rgba(0,0,0,0.78)';
+          var cap = (img.caption || '').replace(/'/g, "&#39;");
+          return '<div class="story-img-card" onclick="openLightbox(\'' + base + img.file + '\',\'' + cap + '\')">' +
+            '<img src="' + base + img.file + '" alt="' + (img.label||'') + '" loading="lazy"/>' +
+            '<span class="img-label" style="color:' + lc + ';background:' + bg + ';">' + (img.label||'') + '</span>' +
+            '<div class="img-caption">' + (img.caption||'') + '</div>' +
+          '</div>';
+        }
+
+        function imgGroup(title, items, cols, labelColor, bgColor) {
+          if (!items || !items.length) return '';
+          var colClass = 'cols-' + Math.min(cols || 2, items.length);
+          return '<div class="story-img-group">' +
+            '<div class="story-img-group-title">' + title + '</div>' +
+            '<div class="story-img-grid ' + colClass + '">' +
+            items.map(function(img){ return imgCard(img, labelColor, bgColor); }).join('') +
+            '</div></div>';
+        }
+
+        html += '<div class="section-title-bar"><h2 style="color:var(--gold);">&#9670; Character Gallery &amp; Story Visuals</h2></div>';
+        html += '<div class="story-img-section">';
+
+        // ── HERO — feature portrait + action scenes
+        var heroImgs = si.hero || [];
+        if (heroImgs.length) {
+          html += '<div class="story-img-group">';
+          html += '<div class="story-img-group-title">&#9670; The Hero — Tungabhadra, The River Queen</div>';
+          // First image full-width feature
+          html += '<div class="story-img-grid cols-1" style="margin-bottom:10px;">' + imgCard(heroImgs[0], '#44ff88', 'rgba(0,50,0,0.85)') + '</div>';
+          // Remaining in 3-col
+          if (heroImgs.length > 1) {
+            html += '<div class="story-img-grid cols-3">';
+            heroImgs.slice(1).forEach(function(img){ html += imgCard(img, '#44ff88', 'rgba(0,40,0,0.82)'); });
+            html += '</div>';
+          }
+          html += '</div>';
+        }
+
+        // ── VILLAIN — 2-col
+        html += imgGroup('&#9760; The Villain — Ravana-Putra &amp; Dark Forces',
+          si.villain, 2, '#ff6666', 'rgba(70,0,0,0.82)');
+
+        // ── SACRED ANIMAL — 4-col for 4 images
+        html += imgGroup('&#9670; Sacred Animal — ' + kingdom.animal.name,
+          si.animal, 4, 'var(--gold)', 'rgba(60,40,0,0.82)');
+
+        // ── GURU — side by side
+        html += imgGroup('&#9670; The Guru — Sage Vidyaranya',
+          si.guru, 2, '#cc99ff', 'rgba(50,10,80,0.82)');
+
+        // ── STORY MOMENTS — 3-col
+        var storyImgs = si.story || [];
+        if (storyImgs.length) {
+          html += '<div class="story-img-group">';
+          html += '<div class="story-img-group-title">&#9670; Story Moments</div>';
+          // Divine Echo finale full-width
+          var finale = storyImgs.find(function(i){ return i.file.indexOf('finale') >= 0; });
+          if (finale) {
+            html += '<div class="story-img-grid cols-1" style="margin-bottom:10px;">' + imgCard(finale, '#ffd700', 'rgba(40,30,0,0.85)') + '</div>';
+          }
+          var rest = storyImgs.filter(function(i){ return i !== finale; });
+          if (rest.length) {
+            html += '<div class="story-img-grid cols-3">';
+            rest.forEach(function(img){ html += imgCard(img, '#ffd700', 'rgba(30,20,0,0.80)'); });
+            html += '</div>';
+          }
+          html += '</div>';
+        }
+
+        // ── CAST — 4-col grid of individual portraits
+        html += imgGroup('&#9670; Supporting Cast — Warriors of Vijayanagara',
+          si.cast, 4, 'var(--gold-dim)', 'rgba(0,0,0,0.78)');
+
+
+        html += '</div>'; // end story-img-section
+      }
+
+      // Warriors
+      html += '<div class="section-title-bar"><h2>Warriors &amp; Champions</h2></div>';
+      html += '<div class="warriors-grid-full">';
+      kingdom.warriors.forEach(function(w) {
+        html += '<div class="w-card" data-loyalty="' + w.loyalty + '">' +
+          '<div class="wn">' + w.name + '</div>' +
+          '<div class="wt">' + w.title + '</div>' +
+          '<div class="ws">' + w.specialty + '</div>' +
+          '<span class="wl">' + w.loyalty + '</span>' +
+        '</div>';
+      });
+      html += '</div>';
+
+      // Saga
+      html += '<div class="section-title-bar"><h2>The Epic Saga</h2></div>';
+      html += '<div class="saga-full">' +
+        '<div class="saga-title">' + kingdom.saga.title + '</div>' +
+        '<div class="saga-body">' + kingdom.saga.narrative + '</div>' +
+      '</div>';
+
+      // Modern Arsenal & Geopolitics
+      if (kingdom.modernArsenal || kingdom.geopolitics) {
+        html += '<div class="section-title-bar"><h2 style="color:#ffaa00;">Modern Arsenal &amp; Geopolitics (2026)</h2></div>';
+        html += '<div style="padding:20px;border-radius:12px;background:rgba(0,0,0,0.15);border:1px solid rgba(255,215,0,0.08);margin-bottom:30px;">';
+        if (kingdom.modernArsenal) {
+          html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">';
+          html += '<div style="padding:12px;border-radius:6px;background:rgba(0,60,0,0.15);border-left:2px solid #44ff88;color:#88ffaa;font-size:0.85rem;line-height:1.6;">' +
+            '<div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-dim);margin-bottom:3px;">Hero Arsenal</div>' + kingdom.modernArsenal.hero + '</div>';
+          html += '<div style="padding:12px;border-radius:6px;background:rgba(60,0,0,0.15);border-left:2px solid #ff4444;color:#ffaaaa;font-size:0.85rem;line-height:1.6;">' +
+            '<div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-dim);margin-bottom:3px;">Villain Arsenal</div>' + kingdom.modernArsenal.villain + '</div>';
+          html += '</div>';
+        }
+        if (kingdom.geopolitics) {
+          html += '<div style="padding:12px;border-radius:6px;background:rgba(100,100,0,0.08);border-left:2px solid #ffaa00;color:var(--text);font-size:0.85rem;line-height:1.6;font-style:italic;">' +
+            '<div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:1.5px;color:#ffaa00;margin-bottom:3px;">Geopolitical Context</div>' + kingdom.geopolitics + '</div>';
+        }
+        html += '</div>';
+      }
+
+      // Inspiration
+      if (kingdom.inspiration) {
+        html += '<div class="section-title-bar"><h2 style="color:var(--gold);">Mythological Inspiration</h2></div>';
+        html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-bottom:30px;">';
+
+        html += '<div style="padding:15px;border-radius:8px;background:rgba(0,0,0,0.2);border-left:3px solid var(--gold-dim);">' +
+          '<div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-dim);margin-bottom:4px;">Hero — Divine Inspiration</div>' +
+          '<div style="color:var(--gold);font-size:1rem;font-weight:bold;margin-bottom:2px;">' + kingdom.inspiration.heroGod.name + '</div>' +
+          '<div style="color:var(--text-dim);font-style:italic;font-size:0.8rem;margin-bottom:6px;">' + kingdom.inspiration.heroGod.domain + '</div>' +
+          '<div style="color:var(--text);font-size:0.85rem;line-height:1.6;">' + kingdom.inspiration.heroGod.parallel + '</div>' +
+        '</div>';
+
+        html += '<div style="padding:15px;border-radius:8px;background:rgba(0,0,0,0.2);border-left:3px solid var(--gold-dim);">' +
+          '<div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-dim);margin-bottom:4px;">Hero — Mahabharata Parallel</div>' +
+          '<div style="color:var(--gold);font-size:1rem;font-weight:bold;margin-bottom:2px;">' + kingdom.inspiration.heroMahabharata.name + '</div>' +
+          '<div style="color:var(--text);font-size:0.85rem;line-height:1.6;">' + kingdom.inspiration.heroMahabharata.parallel + '</div>' +
+        '</div>';
+
+        html += '<div style="padding:15px;border-radius:8px;background:rgba(0,0,0,0.2);border-left:3px solid #ff4444;">' +
+          '<div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-dim);margin-bottom:4px;">Villain — Demon Inspiration</div>' +
+          '<div style="color:#ff6666;font-size:1rem;font-weight:bold;margin-bottom:2px;">' + kingdom.inspiration.villainDemon.name + '</div>' +
+          '<div style="color:var(--text-dim);font-style:italic;font-size:0.8rem;margin-bottom:6px;">' + kingdom.inspiration.villainDemon.domain + '</div>' +
+          '<div style="color:var(--text);font-size:0.85rem;line-height:1.6;">' + kingdom.inspiration.villainDemon.parallel + '</div>' +
+        '</div>';
+
+        html += '<div style="padding:15px;border-radius:8px;background:rgba(0,0,0,0.2);border-left:3px solid #ff4444;">' +
+          '<div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-dim);margin-bottom:4px;">Villain — Mahabharata Parallel</div>' +
+          '<div style="color:#ff6666;font-size:1rem;font-weight:bold;margin-bottom:2px;">' + kingdom.inspiration.villainMahabharata.name + '</div>' +
+          '<div style="color:var(--text);font-size:0.85rem;line-height:1.6;">' + kingdom.inspiration.villainMahabharata.parallel + '</div>' +
+        '</div>';
+
+        html += '</div>';
+      }
+
+      // Additional Stories
+      if (window.ADDITIONAL_STORIES && ADDITIONAL_STORIES[stateId]) {
+        var stories = ADDITIONAL_STORIES[stateId];
+        html += '<div class="section-title-bar"><h2 style="color:var(--gold);">Additional Stories</h2></div>';
+        html += '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:15px;margin-bottom:30px;">';
+        stories.forEach(function(s) {
+          html += '<a href="' + s.file + '" style="display:block;padding:20px;border-radius:12px;background:linear-gradient(135deg,rgba(255,215,0,0.08),rgba(255,215,0,0.02));border:1px solid rgba(255,215,0,0.2);text-decoration:none;transition:all 0.3s;"' +
+            ' onmouseover="this.style.borderColor=\'var(--gold)\';this.style.transform=\'translateY(-3px)\'"' +
+            ' onmouseout="this.style.borderColor=\'rgba(255,215,0,0.2)\';this.style.transform=\'none\'">' +
+            '<div style="color:var(--gold);font-size:1.1rem;font-weight:bold;margin-bottom:4px;">' + s.title + '</div>' +
+            '<div style="color:var(--text-dim);font-size:0.8rem;margin-bottom:8px;">Featuring ' + s.hero + '</div>' +
+            '<div style="color:var(--text);font-size:0.85rem;line-height:1.6;">' + s.desc + '</div>' +
+            '<span style="color:var(--gold-dim);font-size:0.85rem;display:block;margin-top:10px;">Read the full story &rarr;</span>' +
+          '</a>';
+        });
+        html += '</div>';
+      }
+
+      // Region navigation
+      var siblings = STATE_KINGDOMS.filter(function(k) { return k.region === kingdom.region; });
+      html += '<div class="region-nav">';
+      html += '<h3>Other Kingdoms in ' + (regionLabels[kingdom.region] || kingdom.region) + '</h3>';
+      html += '<div class="sibling-links">';
+      siblings.forEach(function(s) {
+        var cls = s.stateId === kingdom.stateId ? ' class="current"' : '';
+        html += '<a href="../' + s.stateId + '/index.html"' + cls + '>' + s.stateName + '</a>';
+      });
+      html += '</div>';
+
+      html += '<div class="back-links">' +
+        '<a href="../index.html">&larr; ' + (regionLabels[kingdom.region] || kingdom.region) + '</a>' +
+        '<a href="../../../../../kingdoms.html">&larr; All Regions</a>' +
+        '<a href="../../../../../kingdoms.html">&larr; All Kingdoms</a>' +
+      '</div>';
+      html += '</div>';
+
+      document.getElementById('content').innerHTML = html;
+    })();
+  </script>
+
+  <!-- ── Lightbox ── -->
+  <div class="story-lightbox" id="storyLightbox" onclick="closeLightbox()">
+    <button class="story-lightbox-close" onclick="closeLightbox()">&#10005;</button>
+    <img id="storyLightboxImg" src="" alt="" onclick="event.stopPropagation()"/>
+    <div class="story-lightbox-caption" id="storyLightboxCaption"></div>
+  </div>
+  <script>
+    function openLightbox(src, caption) {
+      document.getElementById('storyLightboxImg').src = src;
+      document.getElementById('storyLightboxCaption').textContent = caption;
+      document.getElementById('storyLightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('storyLightbox').classList.remove('open');
+      document.getElementById('storyLightboxImg').src = '';
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+
+  <script src="../../../../../js/app.js"></script>
+  <script src="../../../../../../../../assets/manifest.js"></script>
+  <script src="../../../../../../../../assets/aom.js"></script> <!-- aom:injected -->
+</body>
+</html>

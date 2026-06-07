@@ -96,7 +96,10 @@
       "Bash(sed -n '1,35p' docs/MEDIA_GUIDE.md)",
       "Bash(sed -n '1,30p' tools/extract_pure_story.py)",
       "Bash(sed -n '1,30p' tools/story_to_audio.py)",
-      "Bash(git commit -q -m 'Unified navigation & theming layer across the site *)"
+      "Bash(git commit -q -m 'Unified navigation & theming layer across the site *)",
+      "Bash(perl -0pi -e 's{com/hulmane/age-of-mythos/volume-1-maha-parva}{content/volume-1-maha-parva}g' tools/extract_pure_story.py tools/story_to_audio.py tools/split_sagas_to_stories.py)",
+      "Bash(perl -0pi -e 's{com/hulmane/age-of-mythos}{content}g' generate_images.py)",
+      "Bash(git commit -q -m 'Stage A: move content out of com/hulmane/age-of-mythos to content/ *)"
     ],
     "additionalDirectories": [
       "/Users/smk/repos/MahaHulmane/images",
