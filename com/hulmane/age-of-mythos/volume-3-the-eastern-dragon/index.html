@@ -3,49 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Eastern Dragon — Volume III — Age of Mythos</title>
+  <title>THE EASTERN DRAGON — Age of Mythos</title>
+  <link rel="stylesheet" href="../../../../assets/aom.css"> <!-- aom:injected -->
   <style>
-    :root{--bg:#0d0a14;--ac:#d44a4a;--text:#f0e8f8;--dim:#b8a8cc;}
-    *{box-sizing:border-box;margin:0;padding:0;}
-    body{font-family:Georgia,serif;background:var(--bg);color:var(--text);min-height:100vh;
-    background-image:radial-gradient(ellipse at center top,rgba(0,0,0,.2) 0%,transparent 60%);}
-    nav{position:fixed;top:0;left:0;right:0;background:rgba(13,10,20,.93);border-bottom:1px solid rgba(255,255,255,.06);
-        display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:56px;backdrop-filter:blur(10px);}
-    .logo{font-size:.9em;letter-spacing:2px;color:var(--ac);text-decoration:none;font-weight:bold;text-transform:uppercase;}
-    .back{font-size:.6em;letter-spacing:2px;color:var(--dim);text-decoration:none;opacity:.7;}
-    .back:hover{opacity:1;}
-    .hero{padding:110px 24px 48px;text-align:center;}
-    .eyebrow{font-size:.58em;letter-spacing:5px;text-transform:uppercase;color:var(--ac);opacity:.8;margin-bottom:16px;}
-    h1{font-size:clamp(2em,5vw,4em);letter-spacing:6px;text-shadow:0 0 40px rgba(255,255,255,.1);margin-bottom:8px;}
-    .sub{font-size:.75em;color:var(--ac);letter-spacing:2px;margin-bottom:6px;}
-    .tagline{font-size:.65em;color:var(--dim);letter-spacing:2px;opacity:.75;}
-    .divider{width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--ac),transparent);margin:28px auto;}
-    .chapters{max-width:960px;margin:0 auto;padding:0 24px 80px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;}
-    .ch{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:24px 20px;opacity:.55;cursor:default;}
-    .ch-num{font-size:.52em;letter-spacing:3px;text-transform:uppercase;color:var(--ac);margin-bottom:8px;}
-    .ch-title{font-size:1em;letter-spacing:1px;margin-bottom:8px;}
-    .ch-tag{margin-top:14px;font-size:.5em;letter-spacing:2px;text-transform:uppercase;color:var(--dim);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:3px 12px;display:inline-block;}
-    footer{text-align:center;padding:24px;font-size:.6em;color:var(--dim);opacity:.5;letter-spacing:2px;text-transform:uppercase;border-top:1px solid rgba(255,255,255,.05);}
+    body { background:var(--aom-bg); color:var(--aom-text); font-family:Georgia,serif;
+            --ch-accent:#d44a4a; --k-accent:#d44a4a; --vol-accent:#d44a4a;
+            --aom-glow:rgba(212,74,74,0.22); }
+    .stub { max-width:720px; margin:0 auto; padding:90px 24px; text-align:center; }
+    .stub .eyebrow { font-size:.62rem; letter-spacing:5px; text-transform:uppercase;
+            color:#d44a4a; margin-bottom:18px; }
+    .stub h1 { font-size:clamp(2rem,6vw,3.4rem); letter-spacing:4px; margin-bottom:.3em;
+            text-shadow:0 0 60px rgba(212,74,74,0.22); }
+    .stub .sub { color:var(--aom-dim); font-style:italic; margin-bottom:30px; }
+    .stub .badge { display:inline-block; padding:8px 20px; border:1px solid #d44a4a;
+            border-radius:24px; color:#d44a4a; letter-spacing:2px; font-size:.7rem;
+            text-transform:uppercase; }
+    .stub .chips { margin-top:36px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+    .stub .chip { padding:8px 16px; border-radius:20px; border:1px solid rgba(255,255,255,.14);
+            color:var(--aom-dim); font-size:.66rem; letter-spacing:1px; }
   </style>
 </head>
-<body>
-  <nav>
-    <a href="../../../../../index.html" class="logo">Age of Mythos</a>
-    <a href="../../../../../index.html" class="back">&#8592; All Volumes</a>
-  </nav>
-  <div class="hero">
-    <p class="eyebrow">Age of Mythos &bull; Volume III &bull; East Asian Continent</p>
-    <h1>The Eastern Dragon</h1>
-    <p class="sub">Purva Dvipa — The Third Continent</p>
-    <p class="tagline">Four chapters &bull; 30 kingdoms &bull; One supreme warrior</p>
-    <div class="divider"></div>
+<body class="aom" data-aom-type="volume">
+  <div class="stub">
+    <div class="eyebrow">Age of Mythos · Volume III</div>
+    <h1>THE EASTERN DRAGON</h1>
+    <div class="sub">East Asia</div>
+    <span class="badge">Coming Soon</span>
+    <div class="chips"><span class="chip">Ch.1 Rise of Legends</span><span class="chip">Ch.2 Civil War</span><span class="chip">Ch.3 Rise of Beasts</span><span class="chip">Ch.4 The Great Epic</span></div>
   </div>
-  <div class="chapters">
-    <div class="ch"><div class="ch-num">Chapter One</div><div class="ch-title">Rise of Legends</div><span class="ch-tag">Coming Soon</span></div>
-    <div class="ch"><div class="ch-num">Chapter Two</div><div class="ch-title">Civil War</div><span class="ch-tag">Coming Soon</span></div>
-    <div class="ch"><div class="ch-num">Chapter Three</div><div class="ch-title">Rise of Beasts</div><span class="ch-tag">Coming Soon</span></div>
-    <div class="ch"><div class="ch-num">Chapter Four</div><div class="ch-title">The Great Epic</div><span class="ch-tag">Coming Soon</span></div>
-  </div>
-  <footer>&copy; Age of Mythos &mdash; Lakshmi Hulmane &bull; All Rights Reserved</footer>
+  <script src="../../../../assets/manifest.js"></script>
+  <script src="../../../../assets/aom.js"></script> <!-- aom:injected -->
 </body>
 </html>

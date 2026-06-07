@@ -3,27 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rise of Beasts — The New World — Age of Mythos</title>
+  <title>RISE OF BEASTS — Age of Mythos</title>
+  <link rel="stylesheet" href="../../../../../assets/aom.css"> <!-- aom:injected -->
   <style>
-    :root{--bg:#0d0a14;--ac:#3ab86e;--text:#f0e8f8;--dim:#b8a8cc;}
-    *{box-sizing:border-box;margin:0;padding:0;}
-    body{font-family:Georgia,serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;
-    background-image:radial-gradient(ellipse at center,rgba(0,0,0,.3) 0%,transparent 70%);}
-    .badge{font-size:.55em;letter-spacing:4px;text-transform:uppercase;color:var(--ac);opacity:.8;margin-bottom:16px;}
-    h1{font-size:clamp(1.8em,4vw,3.2em);letter-spacing:4px;margin-bottom:10px;text-shadow:0 0 30px rgba(255,255,255,.08);}
-    .sub{font-size:.75em;color:var(--dim);letter-spacing:2px;margin-bottom:30px;opacity:.8;}
-    .desc{max-width:480px;font-size:.8em;color:var(--dim);line-height:1.7;margin:0 auto 32px;opacity:.75;}
-    .tag{display:inline-block;font-size:.55em;letter-spacing:2px;text-transform:uppercase;padding:6px 20px;border-radius:24px;border:1px solid var(--ac);color:var(--ac);margin-bottom:24px;}
-    a.back{font-size:.6em;letter-spacing:2px;text-transform:uppercase;color:var(--dim);text-decoration:none;opacity:.6;}
-    a.back:hover{opacity:1;}
+    body { background:var(--aom-bg); color:var(--aom-text); font-family:Georgia,serif;
+            --ch-accent:#309894; --k-accent:#309894; --vol-accent:#309894;
+            --aom-glow:rgba(48,152,148,0.22); }
+    .stub { max-width:720px; margin:0 auto; padding:90px 24px; text-align:center; }
+    .stub .eyebrow { font-size:.62rem; letter-spacing:5px; text-transform:uppercase;
+            color:#309894; margin-bottom:18px; }
+    .stub h1 { font-size:clamp(2rem,6vw,3.4rem); letter-spacing:4px; margin-bottom:.3em;
+            text-shadow:0 0 60px rgba(48,152,148,0.22); }
+    .stub .sub { color:var(--aom-dim); font-style:italic; margin-bottom:30px; }
+    .stub .badge { display:inline-block; padding:8px 20px; border:1px solid #309894;
+            border-radius:24px; color:#309894; letter-spacing:2px; font-size:.7rem;
+            text-transform:uppercase; }
+    .stub .chips { margin-top:36px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+    .stub .chip { padding:8px 16px; border-radius:20px; border:1px solid rgba(255,255,255,.14);
+            color:var(--aom-dim); font-size:.66rem; letter-spacing:1px; }
   </style>
 </head>
-<body>
-  <div class="badge">The New World &bull; Chapter Three</div>
-  <h1>Rise of Beasts</h1>
-  <div class="sub">Coming Soon</div>
-  <p class="desc">Heroes and monsters equalize. Thirty legends narrow to six as the mythic trials unfold.</p>
-  <span class="tag">In Development</span><br>
-  <a href="../index.html" class="back">&#8592; Back to The New World</a>
+<body class="aom" data-aom-type="chapter">
+  <div class="stub">
+    <div class="eyebrow">Volume V — The New World · Chapter 3</div>
+    <h1>RISE OF BEASTS</h1>
+    <div class="sub">Part of The New World</div>
+    <span class="badge">Coming Soon</span>
+    
+  </div>
+  <script src="../../../../../assets/manifest.js"></script>
+  <script src="../../../../../assets/aom.js"></script> <!-- aom:injected -->
 </body>
 </html>

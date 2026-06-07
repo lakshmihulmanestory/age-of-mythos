@@ -87,7 +87,16 @@
       "Bash(python3 tools/story_to_audio.py --filter \"parashurama-kshetra/stories\")",
       "Bash(afinfo audio/chapter-1-rise-of-legends__parashurama-kshetra__the-109th-form.m4a)",
       "Bash(git commit -q -m 'Snapshot before unified-nav redesign *)",
-      "Bash(git checkout *)"
+      "Bash(git checkout *)",
+      "Bash(python3 tools/build_site.py)",
+      "Bash(python3 tools/extract_pure_story.py --dry-run)",
+      "Bash(python3 tools/extract_pure_story.py --filter \"chapter-4\")",
+      "Bash(python3 tools/story_to_audio.py --filter \"chapter-4\" --dry-run)",
+      "Bash(sed -n '1,60p' docs/STORY_FORMATS.md)",
+      "Bash(sed -n '1,35p' docs/MEDIA_GUIDE.md)",
+      "Bash(sed -n '1,30p' tools/extract_pure_story.py)",
+      "Bash(sed -n '1,30p' tools/story_to_audio.py)",
+      "Bash(git commit -q -m 'Unified navigation & theming layer across the site *)"
     ],
     "additionalDirectories": [
       "/Users/smk/repos/MahaHulmane/images",

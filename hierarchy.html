@@ -3,651 +3,107 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Story Hierarchy — Age of Mythos</title>
+  <title>The Map — Age of Mythos</title>
+  <link rel="stylesheet" href="assets/aom.css">
   <style>
-    :root {
-      --bg:           #ffffff;
-      --bg-card:      rgba(250,244,255,0.95);
-      --rv:           #922285;
-      --rv-dim:       #6a1563;
-      --gold:         #b8760a;
-      --gold-dim:     #9a6206;
-      --text:         #0a0808;
-      --text-dim:     #1a1010;
-      --border-dim:   #e4d0e4;
+    body { background:var(--aom-bg); color:var(--aom-text); font-family:Georgia,serif; }
+    .map-head { text-align:center; padding:50px 24px 24px; }
+    .map-head .eyebrow { font-size:.6rem; letter-spacing:5px; text-transform:uppercase; color:var(--aom-gold); margin-bottom:12px; }
+    .map-head h1 { font-size:clamp(1.9rem,5vw,3rem); letter-spacing:4px; }
+    .map-head p { color:var(--aom-dim); font-size:.82rem; margin-top:10px; font-style:italic; }
+    .map { max-width:1000px; margin:0 auto; padding:10px 20px 90px; }
 
-      --c-series:     #922285;
-      --c-volume:     #6820b0;
-      --c-saga:       #1a60c8;
-      --c-region:     #b07800;
-      --c-kingdom:    #1a8a4a;
+    details.vol { border:1px solid var(--vc); border-radius:12px; margin-bottom:16px; overflow:hidden; background:var(--aom-bg2); }
+    details.vol > summary { list-style:none; cursor:pointer; padding:18px 22px;
+      background:linear-gradient(135deg, var(--vc) 0%, transparent 70%); display:flex; align-items:center; gap:14px; }
+    details.vol > summary { background:rgba(255,255,255,.02); }
+    details.vol > summary::-webkit-details-marker { display:none; }
+    .vbadge { font-size:.55rem; letter-spacing:2px; text-transform:uppercase; color:var(--vc); border:1px solid var(--vc); padding:3px 9px; border-radius:12px; }
+    .vname { font-size:1.25rem; letter-spacing:1px; }
+    .vsub { font-size:.72rem; color:var(--aom-dim); font-style:italic; margin-left:auto; }
+    .soon-tag { font-size:.55rem; letter-spacing:1.5px; text-transform:uppercase; color:var(--aom-dim); border:1px solid rgba(255,255,255,.16); padding:3px 9px; border-radius:12px; margin-left:auto; }
 
-      --south:   #1a8a4a;
-      --west:    #c06800;
-      --east:    #1a60c8;
-      --north:   #c01870;
-      --ne:      #6820b0;
-      --central: #b07800;
-    }
+    .chap { margin:0 16px 12px; }
+    details.chapter { border-left:2px solid var(--cc); margin:10px 0; }
+    details.chapter > summary { list-style:none; cursor:pointer; padding:10px 16px; font-size:.92rem; color:var(--cc); letter-spacing:1px; }
+    details.chapter > summary::-webkit-details-marker { display:none; }
+    details.chapter > summary .cn { font-size:.56rem; letter-spacing:1px; text-transform:uppercase; opacity:.7; margin-right:8px; }
+    a.chap-open { font-size:.62rem; color:var(--aom-dim); text-decoration:none; margin-left:10px; border-bottom:1px dotted; }
 
-    * { box-sizing:border-box; margin:0; padding:0; }
-    body { font-family:Georgia,serif; background:var(--bg); color:var(--text); min-height:100vh; line-height:1.6; }
-
-    /* NAV */
-    nav {
-      position:fixed; top:0; left:0; right:0; z-index:100;
-      background:rgba(255,255,255,.97); border-bottom:1px solid var(--border-dim);
-      display:flex; align-items:center; gap:16px; padding:0 24px; height:56px;
-      box-shadow:0 1px 12px rgba(146,34,133,.06);
-    }
-    .nav-logo { font-size:1em; letter-spacing:1px; color:var(--rv); text-decoration:none; font-weight:bold; }
-    .nav-back  { font-size:.7em; color:var(--text-dim); text-decoration:none; letter-spacing:1px; opacity:.6; }
-    .nav-back:hover { opacity:1; color:var(--rv); }
-
-    /* HERO */
-    .hero { padding:90px 24px 32px; text-align:center;
-      background:radial-gradient(ellipse at center, rgba(146,34,133,.07) 0%, transparent 65%); }
-    .hero h1 { font-size:clamp(1.6em,4vw,2.8em); letter-spacing:4px; color:var(--rv);
-      text-shadow:0 2px 8px rgba(146,34,133,.12); margin-bottom:8px; }
-    .hero .sub { font-size:.75em; color:var(--text-dim); letter-spacing:3px; text-transform:uppercase; opacity:.7; }
-
-    /* ── LEVEL DIAGRAM (SVG) ── */
-    .diagram-wrap {
-      max-width:860px; margin:48px auto 0; padding:0 24px;
-    }
-    .diagram-label {
-      text-align:center; font-size:.62em; letter-spacing:3px; text-transform:uppercase;
-      color:var(--text-dim); opacity:.55; margin-bottom:20px;
-    }
-    .diagram-svg { width:100%; display:block; }
-
-    /* ── LEGEND ── */
-    .legend {
-      display:flex; flex-wrap:wrap; justify-content:center; gap:12px;
-      max-width:760px; margin:40px auto 0; padding:0 24px;
-    }
-    .legend-item {
-      display:flex; align-items:center; gap:8px;
-      font-size:.68em; letter-spacing:1px; color:var(--text-dim);
-    }
-    .legend-dot {
-      width:12px; height:12px; border-radius:3px; flex-shrink:0;
-    }
-
-    /* ── TREE ── */
-    .tree-root { max-width:1100px; margin:60px auto 80px; padding:0 20px; }
-
-    /* Series block */
-    .series-block {
-      background:rgba(146,34,133,.05); border:2px solid var(--rv);
-      border-radius:16px; padding:20px 28px; text-align:center; position:relative;
-      margin-bottom:0;
-    }
-    .series-label { font-size:.6em; letter-spacing:4px; text-transform:uppercase; color:var(--rv-dim); opacity:.7; margin-bottom:4px; }
-    .series-title { font-size:1.6em; color:var(--rv); letter-spacing:3px; }
-    .series-desc  { font-size:.72em; color:var(--text-dim); margin-top:6px; opacity:.85; }
-
-    /* Connector line from series down */
-    .connector-v { width:2px; height:32px; background:rgba(146,34,133,.25); margin:0 auto; }
-    .connector-v.short { height:20px; }
-
-    /* Volume row */
-    .volumes-row {
-      display:grid; grid-template-columns:repeat(6,1fr); gap:8px;
-      position:relative;
-    }
-    .volumes-row::before {
-      content:''; position:absolute; top:0; left:calc(100%/12); right:calc(100%/12);
-      height:2px; background:rgba(104,32,176,.2);
-    }
-
-    .vol-card {
-      border:1px solid rgba(104,32,176,.25); border-radius:10px;
-      padding:12px 10px; text-align:center; position:relative;
-      background:rgba(104,32,176,.04);
-    }
-    .vol-card::before {
-      content:''; position:absolute; top:-22px; left:50%; width:2px; height:22px;
-      background:rgba(104,32,176,.2); transform:translateX(-50%);
-    }
-    .vol-card.active { border-color:var(--c-volume); background:rgba(104,32,176,.08); }
-    .vol-num   { font-size:.52em; letter-spacing:2px; text-transform:uppercase; color:var(--c-volume); opacity:.8; margin-bottom:3px; }
-    .vol-title { font-size:.72em; color:var(--c-volume); line-height:1.3; }
-    .vol-card.dim .vol-title { color:var(--text-dim); opacity:.6; }
-    .vol-cs    { font-size:.52em; letter-spacing:1px; color:var(--text-dim); opacity:.5; margin-top:4px; text-transform:uppercase; }
-
-    /* ── VOLUME I EXPANDED AREA ── */
-    .vol1-expand {
-      margin-top:28px; border:1px solid rgba(104,32,176,.2);
-      border-radius:14px; padding:24px; background:rgba(104,32,176,.03);
-    }
-    .vol1-header {
-      text-align:center; font-size:.62em; letter-spacing:3px; text-transform:uppercase;
-      color:var(--c-volume); opacity:.9; margin-bottom:20px;
-    }
-
-    /* Sagas row */
-    .sagas-row {
-      display:grid; grid-template-columns:repeat(7,1fr); gap:8px;
-      margin-bottom:28px;
-    }
-    .saga-card {
-      border:1px solid rgba(26,96,200,.2); border-radius:10px;
-      padding:10px 8px; text-align:center;
-      background:rgba(26,96,200,.04);
-    }
-    .saga-card.active { border-color:var(--c-saga); background:rgba(26,96,200,.08); }
-    .saga-num   { font-size:.5em; letter-spacing:2px; text-transform:uppercase; color:var(--c-saga); opacity:.8; margin-bottom:3px; }
-    .saga-title { font-size:.68em; color:var(--c-saga); line-height:1.3; }
-    .saga-card.dim .saga-title { color:var(--text-dim); opacity:.55; }
-    .saga-cs    { font-size:.5em; letter-spacing:1px; color:var(--text-dim); opacity:.5; margin-top:4px; text-transform:uppercase; }
-
-    /* ── SAGA I EXPANDED ── */
-    .saga1-expand {
-      border:1px solid rgba(26,96,200,.15); border-radius:12px;
-      padding:20px; background:rgba(26,96,200,.02);
-    }
-    .saga1-header {
-      text-align:center; font-size:.6em; letter-spacing:3px; text-transform:uppercase;
-      color:var(--c-saga); opacity:.85; margin-bottom:20px;
-    }
-
-    /* Regions */
-    .regions-grid {
-      display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px;
-    }
-    .region-block {
-      border-radius:10px; overflow:hidden;
-      border:1px solid rgba(255,255,255,.08);
-    }
-    .region-header {
-      padding:8px 14px; font-size:.6em; letter-spacing:3px; text-transform:uppercase;
-      font-weight:bold; display:flex; align-items:center; justify-content:space-between;
-    }
-    .region-count { opacity:.6; }
-
-    .kingdoms-list { padding:10px 10px 12px; display:flex; flex-direction:column; gap:6px; }
-
-    .kingdom-card {
-      border-radius:7px; padding:8px 12px;
-      display:flex; align-items:center; justify-content:space-between; gap:8px;
-      text-decoration:none; transition:background .15s, box-shadow .15s;
-      border:1px solid rgba(0,0,0,.07);
-      background:#ffffff;
-    }
-    .kingdom-card:hover { background:rgba(146,34,133,.04); box-shadow:0 2px 8px rgba(146,34,133,.08); }
-    .kingdom-card.no-link { cursor:default; }
-
-    .k-left {}
-    .k-name  { font-size:.72em; color:var(--text); line-height:1.3; }
-    .k-hero  { font-size:.6em; color:var(--text-dim); opacity:.75; margin-top:2px; }
-    .k-badge {
-      font-size:.5em; letter-spacing:1px; text-transform:uppercase;
-      padding:2px 7px; border-radius:10px; flex-shrink:0; white-space:nowrap;
-      background:rgba(146,34,133,.07); color:var(--rv-dim);
-      border:1px solid rgba(146,34,133,.15);
-    }
-    .k-badge.live { background:rgba(26,138,74,.1); color:#0d5c30; border-color:rgba(26,138,74,.25); }
-
-    /* Region colour overrides */
-    .r-south  .region-header { background:rgba(26,138,74,.08);  color:var(--south);   }
-    .r-west   .region-header { background:rgba(192,104,0,.08);  color:var(--west);    }
-    .r-east   .region-header { background:rgba(26,96,200,.08);  color:var(--east);    }
-    .r-north  .region-header { background:rgba(192,24,112,.08); color:var(--north);   }
-    .r-ne     .region-header { background:rgba(104,32,176,.08); color:var(--ne);      }
-    .r-central .region-header{ background:rgba(176,120,0,.08);  color:var(--central); }
-
-    .r-south  { border-color:rgba(26,138,74,.2);   }
-    .r-west   { border-color:rgba(192,104,0,.2);   }
-    .r-east   { border-color:rgba(26,96,200,.2);   }
-    .r-north  { border-color:rgba(192,24,112,.2);  }
-    .r-ne     { border-color:rgba(104,32,176,.2);  }
-    .r-central{ border-color:rgba(176,120,0,.2);   }
-
-    footer {
-      text-align:center; padding:24px; font-size:.65em;
-      color:var(--text-dim); opacity:.7; letter-spacing:1px;
-      border-top:1px solid var(--border-dim);
-      background:#faf5fd;
-    }
+    .region { margin:6px 0 6px 18px; }
+    .region-label { font-size:.58rem; letter-spacing:2px; text-transform:uppercase; color:var(--aom-dim); opacity:.7; margin:12px 0 6px; }
+    .kingdoms { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:8px; }
+    .kingdom { border:1px solid rgba(255,255,255,.08); border-radius:9px; padding:10px 12px; background:rgba(255,255,255,.02); }
+    .kingdom > a.kname { color:var(--ka); text-decoration:none; font-size:.85rem; display:flex; align-items:center; gap:7px; }
+    .kingdom > a.kname::before { content:''; width:9px; height:9px; border-radius:50%; background:var(--ka); display:inline-block; flex:0 0 auto; }
+    .kingdom > a.kname:hover { text-decoration:underline; }
+    .stories { margin:7px 0 0 16px; display:grid; gap:3px; }
+    .stories a { color:var(--aom-dim); font-size:.72rem; text-decoration:none; }
+    .stories a::before { content:'\203A  '; color:var(--ka); }
+    .stories a:hover { color:#fff; }
   </style>
 </head>
-<body>
+<body class="aom" data-aom-type="root">
 
-  <nav>
-    <a href="index.html" class="nav-logo">Age of Mythos</a>
-    <a href="index.html" class="nav-back">&#8592; Series Home</a>
-  </nav>
-
-  <div class="hero">
-    <h1>STORY HIERARCHY</h1>
-    <p class="sub">Age of Mythos &bull; Novel &rarr; Volume &rarr; Chapter &rarr; Kingdom</p>
+  <div class="map-head">
+    <div class="eyebrow">The Complete Atlas</div>
+    <h1>The Map of Mythos</h1>
+    <p>Every volume, chapter, kingdom, and story — pick any thread, or read straight through.</p>
   </div>
 
-  <!-- ── VISUAL LEVEL DIAGRAM ── -->
-  <div class="diagram-wrap">
-    <p class="diagram-label">How the story is structured</p>
-    <svg class="diagram-svg" viewBox="0 0 840 240" xmlns="http://www.w3.org/2000/svg" style="max-height:240px;">
+  <div class="map" id="map"></div>
 
-      <!-- LEVEL LABELS -->
-      <text x="420" y="18" text-anchor="middle" font-family="Georgia" font-size="9" fill="#6a1563" letter-spacing="3" opacity=".7">THE FOUR LEVELS</text>
+  <script src="assets/manifest.js"></script>
+  <script>
+    (function () {
+      var M = window.AOM_MANIFEST; if (!M) return;
+      var root = document.getElementById('map');
+      function roman(n){ return ['','I','II','III','IV','V','VI'][n] || n; }
+      function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
 
-      <!-- Level boxes -->
-      <!-- Novel -->
-      <rect x="310" y="28" width="220" height="44" rx="8" fill="rgba(146,34,133,0.07)" stroke="#922285" stroke-width="1.5"/>
-      <text x="420" y="47" text-anchor="middle" font-family="Georgia" font-size="8" fill="#6a1563" letter-spacing="2" opacity=".8">NOVEL</text>
-      <text x="420" y="62" text-anchor="middle" font-family="Georgia" font-size="12" fill="#922285" letter-spacing="1">Age of Mythos</text>
-      <!-- connector -->
-      <line x1="420" y1="72" x2="420" y2="90" stroke="rgba(104,32,176,0.35)" stroke-width="1.5"/>
+      (M.nav.volumes || []).forEach(function (v) {
+        var vol = document.createElement('details');
+        vol.className = 'vol';
+        if (v.available) vol.open = true;
+        vol.style.setProperty('--vc', v.accent);
 
-      <!-- Volume -->
-      <rect x="240" y="90" width="360" height="44" rx="8" fill="rgba(104,32,176,0.06)" stroke="#6820b0" stroke-width="1.5"/>
-      <text x="420" y="109" text-anchor="middle" font-family="Georgia" font-size="8" fill="#6820b0" letter-spacing="2" opacity=".8">VOLUME = ONE CONTINENT'S FULL STORY</text>
-      <text x="420" y="124" text-anchor="middle" font-family="Georgia" font-size="12" fill="#6820b0" letter-spacing="1">e.g. Vol. I: Maha Parva (India)</text>
-      <!-- connector -->
-      <line x1="420" y1="134" x2="420" y2="152" stroke="rgba(26,96,200,0.35)" stroke-width="1.5"/>
+        var summary = '<summary><span class="vbadge">Vol ' + roman(v.n) + '</span>' +
+          '<span class="vname">' + esc(v.title) + '</span>' +
+          (v.available ? '<span class="vsub">' + esc(v.subtitle||'') + '</span>'
+                       : '<span class="soon-tag">Coming Soon</span>') + '</summary>';
 
-      <!-- Chapter -->
-      <rect x="200" y="152" width="440" height="44" rx="8" fill="rgba(26,96,200,0.05)" stroke="#1a60c8" stroke-width="1.5"/>
-      <text x="420" y="171" text-anchor="middle" font-family="Georgia" font-size="8" fill="#1a60c8" letter-spacing="2" opacity=".8">CHAPTER = ONE STORY ARC (4 PER VOLUME)</text>
-      <text x="420" y="186" text-anchor="middle" font-family="Georgia" font-size="11" fill="#1a60c8" letter-spacing="1">Rise of Legends &bull; Civil War &bull; Rise of Beasts &bull; The Great Epic</text>
-      <!-- connector -->
-      <line x1="420" y1="196" x2="420" y2="214" stroke="rgba(26,138,74,0.35)" stroke-width="1.5"/>
+        var body = '<div class="chap">';
+        (v.chapters || []).forEach(function (c) {
+          var open = c.available ? ' open' : '';
+          body += '<details class="chapter"' + open + ' style="--cc:' + c.accent + '">' +
+            '<summary><span class="cn">Chapter ' + c.n + '</span>' + esc(c.title) +
+            (c.available ? ' <a class="chap-open" href="' + c.rel + '">open hub →</a>' : '') +
+            '</summary>';
+          (c.regions || []).forEach(function (r) {
+            body += '<div class="region"><div class="region-label">' + esc(r.label) + ' Region</div><div class="kingdoms">';
+            (r.kingdoms || []).forEach(function (k) {
+              body += '<div class="kingdom" style="--ka:' + k.accent + '">' +
+                '<a class="kname" href="' + (k.rel || '#') + '">' + esc(k.name) + '</a>';
+              if (k.stories && k.stories.length) {
+                body += '<div class="stories">';
+                k.stories.forEach(function (s) {
+                  body += '<a href="' + s.rel + '">' + esc(s.title) + '</a>';
+                });
+                body += '</div>';
+              }
+              body += '</div>';
+            });
+            body += '</div></div>';
+          });
+          body += '</details>';
+        });
+        body += '</div>';
 
-      <!-- Kingdom -->
-      <polygon points="415,214 425,214 420,222" fill="rgba(26,138,74,0.4)"/>
-      <text x="420" y="232" text-anchor="middle" font-family="Georgia" font-size="8" fill="#1a8a4a" letter-spacing="2" opacity=".7">KINGDOM = ONE BOOK (30 PER VOLUME I)</text>
-
-      <!-- Side labels -->
-      <text x="60" y="52" text-anchor="middle" font-family="Georgia" font-size="8" fill="#922285" opacity=".6">1 Novel</text>
-      <text x="60" y="114" text-anchor="middle" font-family="Georgia" font-size="8" fill="#6820b0" opacity=".6">6 Volumes</text>
-      <text x="60" y="176" text-anchor="middle" font-family="Georgia" font-size="8" fill="#1a60c8" opacity=".6">4 Chapters / Vol</text>
-      <text x="60" y="232" text-anchor="middle" font-family="Georgia" font-size="8" fill="#1a8a4a" opacity=".6">30 Kingdoms</text>
-
-      <text x="780" y="52" text-anchor="middle" font-family="Georgia" font-size="8" fill="#922285" opacity=".6">The complete work</text>
-      <text x="780" y="114" text-anchor="middle" font-family="Georgia" font-size="8" fill="#6820b0" opacity=".6">One continent</text>
-      <text x="780" y="176" text-anchor="middle" font-family="Georgia" font-size="8" fill="#1a60c8" opacity=".6">One story arc</text>
-      <text x="780" y="232" text-anchor="middle" font-family="Georgia" font-size="8" fill="#1a8a4a" opacity=".6">One small book</text>
-    </svg>
-  </div>
-
-  <!-- LEGEND -->
-  <div class="legend">
-    <div class="legend-item"><div class="legend-dot" style="background:#ffd700;"></div> Novel — The complete Age of Mythos universe</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#cc88ff;"></div> Volume — One continent's full story (6 volumes total)</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#44ccff;"></div> Chapter — One story arc within a continent (4 per volume)</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#aaffcc;"></div> Kingdom — One small book (a single kingdom's story)</div>
-  </div>
-
-  <!-- ── THE FULL TREE ── -->
-  <div class="tree-root">
-
-    <!-- NOVEL -->
-    <div class="series-block">
-      <div class="series-label">The Complete Novel</div>
-      <div class="series-title">AGE OF MYTHOS</div>
-      <div class="series-desc">6 volumes &bull; 6 continents &bull; 4 chapters per volume &bull; 30 kingdoms per continent &bull; One eternal war</div>
-    </div>
-
-    <div class="connector-v"></div>
-
-    <!-- VOLUMES ROW (6 continents) -->
-    <div class="volumes-row">
-      <div class="vol-card active">
-        <div class="vol-num">Volume I</div>
-        <div class="vol-title">Maha Parva</div>
-        <div class="vol-cs" style="color:var(--c-volume); opacity:.7;">Indian Continent</div>
-      </div>
-      <div class="vol-card dim">
-        <div class="vol-num">Volume II</div>
-        <div class="vol-title">The Great West</div>
-        <div class="vol-cs">European Continent</div>
-      </div>
-      <div class="vol-card dim">
-        <div class="vol-num">Volume III</div>
-        <div class="vol-title">The Eastern Dragon</div>
-        <div class="vol-cs">East Asian Continent</div>
-      </div>
-      <div class="vol-card dim">
-        <div class="vol-num">Volume IV</div>
-        <div class="vol-title">The Ancient Sands</div>
-        <div class="vol-cs">African Continent</div>
-      </div>
-      <div class="vol-card dim">
-        <div class="vol-num">Volume V</div>
-        <div class="vol-title">The New World</div>
-        <div class="vol-cs">American Continent</div>
-      </div>
-      <div class="vol-card dim">
-        <div class="vol-num">Volume VI</div>
-        <div class="vol-title">The Southern Cross</div>
-        <div class="vol-cs">Oceanian Continent</div>
-      </div>
-    </div>
-
-    <!-- VOLUME I EXPANDED: Maha Parva -->
-    <div class="vol1-expand">
-      <div class="vol1-header">Volume I: Maha Parva &mdash; Indian Continent &mdash; 4 Chapters &bull; 30 Kingdoms</div>
-
-      <!-- Opening paragraph -->
-      <div style="text-align:center; max-width:680px; margin:0 auto 24px; font-size:.72em; color:var(--text-dim); line-height:1.75; opacity:.8; font-style:italic;">
-        An asteroid blazes across the sky and strikes the Indian subcontinent &mdash; the opening event that
-        awakens 30 kingdoms, forges new legends, ignites the great civil war, summons the ancient beasts,
-        and culminates in the rise of the one Maha warrior who leads all of Bharatavarsha.
-      </div>
-
-      <!-- CHAPTERS ROW (4 chapters) -->
-      <div class="sagas-row" style="grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:28px;">
-
-        <!-- Chapter 1 -->
-        <div class="saga-card active" style="border-color:var(--c-saga);">
-          <div class="saga-num">Chapter 1</div>
-          <div class="saga-title">Rise of Legends</div>
-          <div class="saga-cs" style="opacity:.75; font-size:.55em; line-height:1.5; margin-top:6px; color:var(--text-dim);">
-            Asteroid strikes &bull; 30 kingdoms stir &bull; Old rulers fall &bull; New legends emerge &bull; Power shifts
-          </div>
-        </div>
-
-        <!-- Chapter 2 -->
-        <div class="saga-card dim">
-          <div class="saga-num">Chapter 2</div>
-          <div class="saga-title">Civil War</div>
-          <div class="saga-cs" style="opacity:.65; font-size:.55em; line-height:1.5; margin-top:6px; color:var(--text-dim);">
-            Kingdoms turn on each other &bull; Legends struggle &bull; Beasts begin to stir
-          </div>
-        </div>
-
-        <!-- Chapter 3 -->
-        <div class="saga-card dim">
-          <div class="saga-num">Chapter 3</div>
-          <div class="saga-title">Rise of Beasts</div>
-          <div class="saga-cs" style="opacity:.65; font-size:.55em; line-height:1.5; margin-top:6px; color:var(--text-dim);">
-            Heroes &amp; monsters equalize &bull; 30 legends narrow to 6 &bull; Legendary beasts claimed
-          </div>
-        </div>
-
-        <!-- Chapter 4 -->
-        <div class="saga-card dim">
-          <div class="saga-num">Chapter 4</div>
-          <div class="saga-title">The Great Epic</div>
-          <div class="saga-cs" style="opacity:.65; font-size:.55em; line-height:1.5; margin-top:6px; color:var(--text-dim);">
-            6 legends compete &bull; The Maha warrior rises &bull; One ruler of all Bharatavarsha
-          </div>
-        </div>
-
-      </div>
-
-      <!-- CHAPTER 1: BHARATAVARSHA KINGDOMS EXPANDED -->
-      <div class="saga1-expand">
-        <div class="saga1-header">Chapter 1: Rise of Legends &mdash; Bharatavarsha &mdash; 6 Regions &bull; 30 Kingdoms</div>
-
-        <div class="regions-grid">
-
-          <!-- SOUTH -->
-          <div class="region-block r-south">
-            <div class="region-header">
-              <span>&#9650; South</span>
-              <span class="region-count">5 kingdoms</span>
-            </div>
-            <div class="kingdoms-list">
-              <a href="com/hulmane/age-of-mythos/volume-1-maha-parva/chapter-1-rise-of-legends/bharatavarsha/regions/south/vijayanagara-reborn/index.html" class="kingdom-card">
-                <div class="k-left">
-                  <div class="k-name">Vijayanagara Reborn</div>
-                  <div class="k-hero">Tungabhadra &bull; The River Queen</div>
-                </div>
-                <span class="k-badge live">Live</span>
-              </a>
-              <a href="com/hulmane/age-of-mythos/volume-1-maha-parva/chapter-1-rise-of-legends/bharatavarsha/regions/south/sangam-tamilakam/index.html" class="kingdom-card">
-                <div class="k-left">
-                  <div class="k-name">Sangam Tamilakam</div>
-                  <div class="k-hero">Kurinjiselvi &bull; The Mountain Bloom</div>
-                </div>
-                <span class="k-badge">Placeholder</span>
-              </a>
-              <a href="com/hulmane/age-of-mythos/volume-1-maha-parva/chapter-1-rise-of-legends/bharatavarsha/regions/south/parashurama-kshetra/index.html" class="kingdom-card">
-                <div class="k-left">
-                  <div class="k-name">Parashurama-Kshetra</div>
-                  <div class="k-hero">Parashurama &bull; The Axe Reborn</div>
-                </div>
-                <span class="k-badge">Placeholder</span>
-              </a>
-              <a href="com/hulmane/age-of-mythos/volume-1-maha-parva/chapter-1-rise-of-legends/bharatavarsha/regions/south/dharmakshetra-amaravati/index.html" class="kingdom-card">
-                <div class="k-left">
-                  <div class="k-name">Dharmakshetra Amaravati</div>
-                  <div class="k-hero">Krishnaveni &bull; The River's Daughter</div>
-                </div>
-                <span class="k-badge">Placeholder</span>
-              </a>
-              <a href="com/hulmane/age-of-mythos/volume-1-maha-parva/chapter-1-rise-of-legends/bharatavarsha/regions/south/chaya-golkonda/index.html" class="kingdom-card">
-                <div class="k-left">
-                  <div class="k-name">Chaya-Golkonda</div>
-                  <div class="k-hero">Chittaranga &bull; The Spotted Blade</div>
-                </div>
-                <span class="k-badge">Placeholder</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- WEST -->
-          <div class="region-block r-west">
-            <div class="region-header">
-              <span>&#9668; West</span>
-              <span class="region-count">4 kingdoms</span>
-            </div>
-            <div class="kingdoms-list">
-              <a href="com/hulmane/age-of-mythos/volume-1-maha-parva/chapter-1-rise-of-legends/bharatavarsha/regions/west/swarajya-sahyadri/index.html" class="kingdom-card">
-                <div class="k-left">
-                  <div class="k-name">Swarajya Sahyadri</div>
-                  <div class="k-hero">Shivagati &bull; The Mountain Dancer</div>
-                </div>
-                <span class="k-badge">Placeholder</span>
-              </a>
-              <a href="com/hulmane/age-of-mythos/volume-1-maha-parva/chapter-1-rise-of-legends/bharatavarsha/regions/west/simha-dwara/index.html" class="kingdom-card">
-                <div class="k-left">
-                  <div class="k-name">Simha-Dwara</div>
-                  <div class="k-hero">Simhavikrama &bull; The Lion's Roar</div>
-                </div>
-                <span class="k-badge">Placeholder</span>
-              </a>
-              <a href="com/hulmane/age-of-mythos/volume-1-maha-parva/chapter-1-rise-of-legends/bharatavarsha/regions/west/samudra-dvipa/index.html" class="kingdom-card">
-                <div class="k-left">
-                  <div class="k-name">Samudra-Dvipa</div>
-                  <div class="k-hero">Sagaradeva &bull; The Ocean's Chosen</div>
-                </div>
-                <span class="k-badge">Placeholder</span>
-              </a>
-              <a href="com/hulmane/age-of-mythos/volume-1-maha-parva/chapter-1-rise-of-legends/bharatavarsha/regions/west/maru-maya/index.html" class="kingdom-card">
-                <div class="k-left">
-                  <div class="k-name">Maru-Maya</div>
-                  <div class="k-hero">Mrigatrishna &bull; The Mirage Walker</div>
-                </div>
-                <span class="k-badge">Placeholder</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- EAST -->
-          <div class="region-block r-east">
-            <div class="region-header">
-              <span>&#9658; East</span>
-              <span class="region-count">4 kingdoms</span>
-            </div>
-            <div class="kingdoms-list">
-              <a href="com/hulmane/age-of-mythos/volume-1-maha-parva/chapter-1-rise-of-legends/bharatavarsha/regions/east/sundara-vana/index.html" class="kingdom-card">
-                <div class="k-left">
-                  <div class="k-name">Sundara-Vana</div>
-                  <div class="k-hero">Sundarvani &bull; The Mangrove Keeper</div>
-                </div>
-                <span class="k-badge">Placeholder</span>
-              </a>
-              <a href="com/hulmane/age-of-mythos/volume-1-maha-parva/chapter-1-rise-of-legends/bharatavarsha/regions/east/kalinga-chakra/index.html" class="kingdom-card">
-                <div class="k-left">
-                  <div class="k-name">Kalinga-Chakra</div>
-                  <div class="k-hero">Jagannathi &bull; The Wheel Bearer</div>
-                </div>
-                <span class="k-badge">Placeholder</span>
-              </a>
-              <a href="com/hulmane/age-of-mythos/volume-1-maha-parva/chapter-1-rise-of-legends/bharatavarsha/regions/east/vajra-bhumi/index.html" class="kingdom-card">
-                <div class="k-left">
-                  <div class="k-name">Vajra-Bhumi</div>
-                  <div class="k-hero">Vajramukha &bull; The Iron Face</div>
-                </div>
-                <span class="k-badge">Placeholder</span>
-              </a>
-              <a href="com/hulmane/age-of-mythos/volume-1-maha-parva/chapter-1-rise-of-legends/bharatavarsha/regions/east/vana-agni/index.html" class="kingdom-card">
-                <div class="k-left">
-                  <div class="k-name">Vana-Agni</div>
-                  <div class="k-hero">Vanajara &bull; The Forest Born</div>
-                </div>
-                <span class="k-badge">Placeholder</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- NORTH -->
-          <div class="region-block r-north">
-            <div class="region-header">
-              <span>&#9650; North</span>
-              <span class="region-count">5 kingdoms</span>
-            </div>
-            <div class="kingdoms-list">
-              <a href="com/hulmane/age-of-mythos/volume-1-maha-parva/chapter-1-rise-of-legends/bharatavarsha/regions/north/ganga-simhasana/index.html" class="kingdom-card">
-                <div class="k-left">
-                  <div class="k-name">Ganga-Simhasana</div>
-                  <div class="k-hero">Gangaputra &bull; The Son of Ganga</div>
-                </div>
-                <span class="k-badge">Placeholder</span>
-              </a>
-              <a href="com/hulmane/age-of-mythos/volume-1-maha-parva/chapter-1-rise-of-legends/bharatavarsha/regions/north/deva-bhumi/index.html" class="kingdom-card">
-                <div class="k-left">
-                  <div class="k-name">Deva-Bhumi</div>
-                  <div class="k-hero">Kasturika &bull; The Musk Bearer</div>
-                </div>
-                <span class="k-badge">Placeholder</span>
-              </a>
-              <a href="com/hulmane/age-of-mythos/volume-1-maha-parva/chapter-1-rise-of-legends/bharatavarsha/regions/north/hima-chhaya/index.html" class="kingdom-card">
-                <div class="k-left">
-                  <div class="k-name">Hima-Chhaya</div>
-                  <div class="k-hero">Himavati &bull; The Snow's Daughter</div>
-                </div>
-                <span class="k-badge">Placeholder</span>
-              </a>
-              <a href="com/hulmane/age-of-mythos/volume-1-maha-parva/chapter-1-rise-of-legends/bharatavarsha/regions/north/panch-nada/index.html" class="kingdom-card">
-                <div class="k-left">
-                  <div class="k-name">Panch-Nada</div>
-                  <div class="k-hero">Panchanada &bull; The Five Rivers' Son</div>
-                </div>
-                <span class="k-badge">Placeholder</span>
-              </a>
-              <a href="com/hulmane/age-of-mythos/volume-1-maha-parva/chapter-1-rise-of-legends/bharatavarsha/regions/north/kurukshetra-bhoomi/index.html" class="kingdom-card">
-                <div class="k-left">
-                  <div class="k-name">Kurukshetra-Bhoomi</div>
-                  <div class="k-hero">Kurukshetraa &bull; The Battlefield Born</div>
-                </div>
-                <span class="k-badge">Placeholder</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- NORTHEAST -->
-          <div class="region-block r-ne">
-            <div class="region-header">
-              <span>&#9651; Northeast</span>
-              <span class="region-count">8 kingdoms</span>
-            </div>
-            <div class="kingdoms-list">
-              <a href="com/hulmane/age-of-mythos/volume-1-maha-parva/chapter-1-rise-of-legends/bharatavarsha/regions/northeast/ganda-kshetra/index.html" class="kingdom-card">
-                <div class="k-left">
-                  <div class="k-name">Ganda-Kshetra</div>
-                  <div class="k-hero">Kamalavarna &bull; The Lotus Shield</div>
-                </div>
-                <span class="k-badge">Placeholder</span>
-              </a>
-              <a href="com/hulmane/age-of-mythos/volume-1-maha-parva/chapter-1-rise-of-legends/bharatavarsha/regions/northeast/arunodaya-kshetra/index.html" class="kingdom-card">
-                <div class="k-left">
-                  <div class="k-name">Arunodaya-Kshetra</div>
-                  <div class="k-hero">Udayagiri &bull; The Dawn Runner</div>
-                </div>
-                <span class="k-badge">Placeholder</span>
-              </a>
-              <a href="com/hulmane/age-of-mythos/volume-1-maha-parva/chapter-1-rise-of-legends/bharatavarsha/regions/northeast/sangai-nata/index.html" class="kingdom-card">
-                <div class="k-left">
-                  <div class="k-name">Sangai-Nata</div>
-                  <div class="k-hero">Moirangthem &bull; The Dancing Blade</div>
-                </div>
-                <span class="k-badge">Placeholder</span>
-              </a>
-              <a href="com/hulmane/age-of-mythos/volume-1-maha-parva/chapter-1-rise-of-legends/bharatavarsha/regions/northeast/megha-maata/index.html" class="kingdom-card">
-                <div class="k-left">
-                  <div class="k-name">Megha-Maata</div>
-                  <div class="k-hero">Meghanadi &bull; The Cloud Keeper</div>
-                </div>
-                <span class="k-badge">Placeholder</span>
-              </a>
-              <a href="com/hulmane/age-of-mythos/volume-1-maha-parva/chapter-1-rise-of-legends/bharatavarsha/regions/northeast/tlawmngaihna-desh/index.html" class="kingdom-card">
-                <div class="k-left">
-                  <div class="k-name">Tlawmngaihna-Desh</div>
-                  <div class="k-hero">Tlangvala &bull; The Duty Keeper</div>
-                </div>
-                <span class="k-badge">Placeholder</span>
-              </a>
-              <a href="com/hulmane/age-of-mythos/volume-1-maha-parva/chapter-1-rise-of-legends/bharatavarsha/regions/northeast/dzukou-rashtra/index.html" class="kingdom-card">
-                <div class="k-left">
-                  <div class="k-name">Dzukou-Rashtra</div>
-                  <div class="k-hero">Dzulevira &bull; The Valley's Blade</div>
-                </div>
-                <span class="k-badge">Placeholder</span>
-              </a>
-              <a href="com/hulmane/age-of-mythos/volume-1-maha-parva/chapter-1-rise-of-legends/bharatavarsha/regions/northeast/beyul-kshetra/index.html" class="kingdom-card">
-                <div class="k-left">
-                  <div class="k-name">Beyul-Kshetra</div>
-                  <div class="k-hero">Kanchenjunga &bull; The Mountain's Voice</div>
-                </div>
-                <span class="k-badge">Placeholder</span>
-              </a>
-              <a href="com/hulmane/age-of-mythos/volume-1-maha-parva/chapter-1-rise-of-legends/bharatavarsha/regions/northeast/tri-pura/index.html" class="kingdom-card">
-                <div class="k-left">
-                  <div class="k-name">Tri-Pura</div>
-                  <div class="k-hero">Tripurari &bull; The City Breaker</div>
-                </div>
-                <span class="k-badge">Placeholder</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- CENTRAL -->
-          <div class="region-block r-central">
-            <div class="region-header">
-              <span>&#9679; Central</span>
-              <span class="region-count">2 kingdoms</span>
-            </div>
-            <div class="kingdoms-list">
-              <a href="com/hulmane/age-of-mythos/volume-1-maha-parva/chapter-1-rise-of-legends/bharatavarsha/regions/central/hridaya-sthana/index.html" class="kingdom-card">
-                <div class="k-left">
-                  <div class="k-name">Hridaya-Sthana</div>
-                  <div class="k-hero">Dvadashashringa &bull; The Twelve-Antlered</div>
-                </div>
-                <span class="k-badge">Placeholder</span>
-              </a>
-              <a href="com/hulmane/age-of-mythos/volume-1-maha-parva/chapter-1-rise-of-legends/bharatavarsha/regions/central/dandakaranya/index.html" class="kingdom-card">
-                <div class="k-left">
-                  <div class="k-name">Dandakaranya</div>
-                  <div class="k-hero">Dandakarni &bull; The Forest's Daughter</div>
-                </div>
-                <span class="k-badge">Placeholder</span>
-              </a>
-            </div>
-          </div>
-
-        </div><!-- /regions-grid -->
-      </div><!-- /chapter1-expand -->
-    </div><!-- /vol1-expand -->
-
-  </div><!-- /tree-root -->
-
-  <footer>
-    &copy; Age of Mythos &mdash; Lakshmi Hulmane &bull; All rights reserved
-  </footer>
-
+        vol.innerHTML = summary + body;
+        root.appendChild(vol);
+      });
+    })();
+  </script>
+  <script src="assets/aom.js"></script>
 </body>
 </html>

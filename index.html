@@ -3,909 +3,121 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Age of Mythos — The Complete Novel</title>
+  <title>Age of Mythos — The Complete Saga</title>
+  <link rel="stylesheet" href="assets/aom.css">
   <style>
-    :root {
-      --bg:        #0d0a14;
-      --bg2:       #120f1e;
-      --bg-card:   #1a1528;
-      --rv:        #c44daa;
-      --rv-dim:    #9a3088;
-      --gold:      #d4952a;
-      --gold-dim:  #b07818;
-      --text:      #f0e8f8;
-      --text-dim:  #b8a8cc;
-      --border:    rgba(196,77,170,.25);
-      --glow:      rgba(196,77,170,.15);
-    }
+    body { background: var(--aom-bg); color: var(--aom-text); font-family: Georgia, serif; }
+    .home-hero { text-align:center; padding:70px 24px 30px; position:relative; overflow:hidden; }
+    .home-hero::before { content:''; position:absolute; inset:0;
+      background:radial-gradient(ellipse at center top, rgba(196,77,170,.14) 0%, transparent 62%); pointer-events:none; }
+    .home-hero .eyebrow { font-size:.62rem; letter-spacing:6px; text-transform:uppercase; color:var(--aom-gold); opacity:.85; margin-bottom:18px; }
+    .home-hero h1 { font-size:clamp(2.4rem,7vw,5rem); letter-spacing:8px; line-height:1.05;
+      text-shadow:0 0 70px rgba(196,77,170,.4); margin-bottom:14px; }
+    .home-hero h1 span { color:var(--vol-accent); }
+    .motto-sa { font-size:clamp(1rem,2.5vw,1.35rem); color:var(--aom-gold); letter-spacing:1px; margin:10px 0 4px; }
+    .motto-en { font-size:.9rem; color:var(--aom-dim); font-style:italic; line-height:1.7; max-width:560px; margin:0 auto; }
+    .home-cta { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin:34px 0 8px; }
+    .cta { text-decoration:none; padding:14px 30px; border-radius:30px; font-size:.72rem; letter-spacing:2px;
+      text-transform:uppercase; transition:all .18s; }
+    .cta.primary { background:var(--vol-accent); color:var(--aom-bg); font-weight:bold; }
+    .cta.primary:hover { filter:brightness(1.12); transform:translateY(-2px); }
+    .cta.ghost { border:1px solid var(--vol-accent); color:var(--vol-accent); }
+    .cta.ghost:hover { background:var(--aom-glow); }
+    .home-stats { display:flex; gap:8px 26px; justify-content:center; flex-wrap:wrap; margin:26px auto 0;
+      font-size:.64rem; letter-spacing:2px; text-transform:uppercase; color:var(--aom-dim); opacity:.8; }
+    .home-stats b { color:var(--aom-gold); }
+    .home-divider { display:flex; align-items:center; gap:16px; max-width:340px; margin:46px auto 28px; }
+    .home-divider::before, .home-divider::after { content:''; flex:1; height:1px;
+      background:linear-gradient(90deg, transparent, var(--aom-gold), transparent); opacity:.35; }
+    .home-divider span { color:var(--aom-gold); opacity:.6; font-size:.6rem; letter-spacing:4px; text-transform:uppercase; }
 
-    /* ── CONTINENT PALETTES ── */
-    .v1 { --accent:#c44daa; --accent2:#9a3088; --accent-glow:rgba(196,77,170,.2); --badge-bg:rgba(196,77,170,.12); }
-    .v2 { --accent:#4a7fd4; --accent2:#2a5aaa; --accent-glow:rgba(74,127,212,.2);  --badge-bg:rgba(74,127,212,.12); }
-    .v3 { --accent:#d44a4a; --accent2:#aa2828; --accent-glow:rgba(212,74,74,.2);   --badge-bg:rgba(212,74,74,.12); }
-    .v4 { --accent:#d4922a; --accent2:#aa6a0a; --accent-glow:rgba(212,146,42,.2);  --badge-bg:rgba(212,146,42,.12); }
-    .v5 { --accent:#3ab86e; --accent2:#1a8a4a; --accent-glow:rgba(58,184,110,.2);  --badge-bg:rgba(58,184,110,.12); }
-    .v6 { --accent:#4ac4c4; --accent2:#1a9a9a; --accent-glow:rgba(74,196,196,.2);  --badge-bg:rgba(74,196,196,.12); }
-
-    * { box-sizing:border-box; margin:0; padding:0; }
-    body {
-      font-family:Georgia,serif;
-      background:var(--bg);
-      color:var(--text);
-      min-height:100vh;
-      background-image:
-        radial-gradient(ellipse at 20% 0%, rgba(196,77,170,.08) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 100%, rgba(74,127,212,.06) 0%, transparent 50%);
-    }
-
-    /* ── NAV ── */
-    nav {
-      position:fixed; top:0; left:0; right:0; z-index:200;
-      background:rgba(13,10,20,.92); border-bottom:1px solid rgba(196,77,170,.18);
-      display:flex; align-items:center; justify-content:space-between;
-      padding:0 32px; height:58px;
-      backdrop-filter:blur(12px);
-    }
-    .nav-logo { font-size:1.05em; letter-spacing:2px; color:var(--rv); text-decoration:none; font-weight:bold; text-transform:uppercase; }
-    .nav-right { display:flex; gap:24px; align-items:center; }
-    .nav-link { font-size:.65em; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); text-decoration:none; opacity:.7; transition:opacity .2s, color .2s; }
-    .nav-link:hover { opacity:1; color:var(--rv); }
-
-    /* ── HERO ── */
-    .hero {
-      padding:140px 24px 60px;
-      text-align:center;
-      position:relative;
-      overflow:hidden;
-    }
-    .hero::before {
-      content:'';
-      position:absolute; inset:0;
-      background:radial-gradient(ellipse at center top, rgba(196,77,170,.12) 0%, transparent 65%);
-      pointer-events:none;
-    }
-    .hero-eyebrow {
-      font-size:.6em; letter-spacing:6px; text-transform:uppercase;
-      color:var(--gold); opacity:.8; margin-bottom:18px;
-    }
-    .hero h1 {
-      font-size:clamp(2.4em,6vw,4.8em); letter-spacing:8px; color:var(--text);
-      text-shadow:0 0 60px rgba(196,77,170,.4), 0 2px 4px rgba(0,0,0,.5);
-      margin-bottom:16px; line-height:1.1;
-    }
-    .hero h1 span { color:var(--rv); }
-    .hero-motto { font-size:.85em; color:var(--text-dim); letter-spacing:2px; font-style:italic; margin-bottom:6px; opacity:.8; }
-    .hero-tagline { font-size:.68em; color:var(--gold); letter-spacing:4px; text-transform:uppercase; opacity:.9; }
-    .hero-divider {
-      display:flex; align-items:center; gap:16px;
-      max-width:320px; margin:28px auto;
-    }
-    .hero-divider::before, .hero-divider::after {
-      content:''; flex:1; height:1px;
-      background:linear-gradient(90deg, transparent, rgba(196,77,170,.4), transparent);
-    }
-    .hero-divider-gem { color:var(--gold); font-size:1em; opacity:.6; }
-
-    /* ── HOW IT WORKS BAR ── */
-    .story-flow {
-      display:flex; align-items:center; justify-content:center;
-      flex-wrap:wrap; gap:0; max-width:700px; margin:0 auto 16px;
-      background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.06);
-      border-radius:40px; padding:10px 20px;
-    }
-    .flow-item {
-      font-size:.6em; letter-spacing:2px; text-transform:uppercase;
-      color:var(--text-dim); padding:4px 12px;
-    }
-    .flow-item.active { color:var(--rv); }
-    .flow-arrow { font-size:.7em; color:var(--text-dim); opacity:.3; }
-
-    /* ── SECTION ── */
-    .section-head {
-      text-align:center; padding:48px 24px 0;
-    }
-    .section-label {
-      font-size:.58em; letter-spacing:5px; text-transform:uppercase;
-      color:var(--gold); opacity:.8; margin-bottom:6px;
-    }
-    .section-title {
-      font-size:1.15em; color:var(--text); letter-spacing:2px; margin-bottom:8px;
-    }
-    .section-desc {
-      font-size:.72em; color:var(--text-dim); max-width:560px; margin:0 auto;
-      line-height:1.7; opacity:.75;
-    }
-
-    /* ── VOLUMES LAYOUT ── */
-    .volumes-wrap {
-      max-width:1200px; margin:0 auto; padding:40px 24px 100px;
-      display:flex; flex-direction:column; gap:20px;
-    }
-
-    /* ── VOLUME CARD ── */
-    .vol-card {
-      background:var(--bg-card);
-      border:1px solid rgba(255,255,255,.07);
-      border-radius:18px;
-      overflow:hidden;
-      transition:border-color .25s, box-shadow .25s;
-      position:relative;
-    }
-    .vol-card::before {
-      content:''; position:absolute;
-      top:0; left:0; right:0; height:2px;
-      background:linear-gradient(90deg, transparent, var(--accent), transparent);
-      opacity:.7;
-    }
-    .vol-card:hover { border-color:rgba(255,255,255,.13); box-shadow:0 8px 40px var(--accent-glow); }
-
-    /* ── CARD HEADER (always visible) ── */
-    .vol-header {
-      display:grid;
-      grid-template-columns:auto 1fr auto;
-      align-items:center;
-      gap:0;
-      cursor:pointer;
-      user-select:none;
-      padding:0;
-    }
-
-    /* Left accent strip */
-    .vol-accent-strip {
-      width:5px;
-      align-self:stretch;
-      background:linear-gradient(180deg, var(--accent), var(--accent2));
-      border-radius:0;
-      flex-shrink:0;
-    }
-
-    /* Vol banner / map area */
-    .vol-banner {
-      position:relative;
-      width:220px;
-      min-height:130px;
-      flex-shrink:0;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      overflow:hidden;
-      background:linear-gradient(135deg, rgba(0,0,0,.6), rgba(0,0,0,.3)),
-                 linear-gradient(135deg, var(--accent2), var(--accent));
-      border-right:1px solid rgba(255,255,255,.05);
-    }
-    .vol-banner img {
-      position:absolute; inset:0;
-      width:100%; height:100%;
-      object-fit:cover;
-      opacity:.35;
-    }
-    .vol-banner-inner { position:relative; text-align:center; padding:16px; }
-    .vol-roman {
-      font-size:2.4em; color:rgba(255,255,255,.15);
-      font-weight:bold; letter-spacing:4px;
-      line-height:1; margin-bottom:4px;
-    }
-    .vol-num-label {
-      font-size:.5em; letter-spacing:3px; text-transform:uppercase;
-      color:var(--accent); opacity:.9;
-    }
-    .vol-continent-label {
-      font-size:.55em; letter-spacing:1px; text-transform:uppercase;
-      color:rgba(255,255,255,.5); margin-top:4px;
-    }
-
-    /* Center info */
-    .vol-info { padding:20px 28px; flex:1; }
-    .vol-status-badge {
-      display:inline-flex; align-items:center; gap:6px;
-      font-size:.52em; letter-spacing:2px; text-transform:uppercase;
-      padding:3px 12px; border-radius:20px; margin-bottom:12px;
-      background:var(--badge-bg);
-      border:1px solid var(--accent);
-      color:var(--accent);
-    }
-    .vol-status-badge.coming { background:rgba(255,255,255,.04); border-color:rgba(255,255,255,.12); color:var(--text-dim); }
-    .vol-status-dot {
-      width:6px; height:6px; border-radius:50%;
-      background:var(--accent);
-      box-shadow:0 0 6px var(--accent);
-      animation:pulse 2s infinite;
-    }
-    .coming .vol-status-dot { background:var(--text-dim); box-shadow:none; animation:none; }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
-
-    .vol-title { font-size:1.5em; color:var(--text); letter-spacing:2px; margin-bottom:4px; }
-    .vol-subtitle { font-size:.72em; color:var(--accent); opacity:.85; margin-bottom:10px; letter-spacing:1px; }
-    .vol-desc { font-size:.72em; color:var(--text-dim); line-height:1.7; opacity:.8; max-width:560px; }
-
-    /* Chapter pills row (header preview) */
-    .vol-chapters-preview {
-      display:flex; flex-wrap:wrap; gap:6px; margin-top:14px;
-    }
-    .ch-pill {
-      font-size:.52em; letter-spacing:1px; text-transform:uppercase;
-      padding:3px 10px; border-radius:20px;
-      background:rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.1);
-      color:var(--text-dim);
-      transition:background .2s, border-color .2s, color .2s;
-    }
-    .ch-pill.ch-active {
-      background:var(--badge-bg);
-      border-color:var(--accent);
-      color:var(--accent);
-    }
-
-    /* Toggle arrow */
-    .vol-toggle {
-      padding:0 28px;
-      display:flex; align-items:center; justify-content:center;
-      flex-direction:column; gap:6px;
-    }
-    .vol-toggle-arrow {
-      font-size:1.2em; color:var(--accent); opacity:.6;
-      transition:transform .3s, opacity .3s;
-    }
-    .vol-toggle-label {
-      font-size:.5em; letter-spacing:2px; text-transform:uppercase;
-      color:var(--text-dim); opacity:.5;
-    }
-    .vol-card.expanded .vol-toggle-arrow { transform:rotate(180deg); opacity:1; }
-
-    /* ── EXPANDED BODY ── */
-    .vol-body {
-      display:none;
-      border-top:1px solid rgba(255,255,255,.06);
-      padding:32px 32px 32px calc(5px + 220px + 28px);
-    }
-    .vol-card.expanded .vol-body { display:block; }
-
-    .chapters-grid {
-      display:grid;
-      grid-template-columns:repeat(4, 1fr);
-      gap:16px;
-    }
-    @media(max-width:900px) { .chapters-grid { grid-template-columns:repeat(2,1fr); } }
-    @media(max-width:500px) { .chapters-grid { grid-template-columns:1fr; } }
-
-    .ch-card {
-      background:rgba(255,255,255,.03);
-      border:1px solid rgba(255,255,255,.07);
-      border-radius:12px;
-      padding:20px 18px;
-      position:relative;
-      overflow:hidden;
-      transition:border-color .2s, background .2s, box-shadow .2s;
-      text-decoration:none;
-      color:inherit;
-      display:flex;
-      flex-direction:column;
-    }
-    .ch-card::before {
-      content:''; position:absolute;
-      top:0; left:0; right:0; height:2px;
-      background:var(--accent); opacity:.4;
-    }
-    .ch-card.ch-live { border-color:rgba(255,255,255,.12); }
-    .ch-card.ch-live:hover {
-      border-color:var(--accent);
-      background:rgba(255,255,255,.05);
-      box-shadow:0 4px 20px var(--accent-glow);
-      cursor:pointer;
-    }
-    .ch-card.ch-live::before { opacity:.7; }
-    .ch-card.ch-upcoming { opacity:.5; cursor:default; }
-
-    .ch-number {
-      font-size:.52em; letter-spacing:3px; text-transform:uppercase;
-      color:var(--accent); margin-bottom:8px; opacity:.8;
-    }
-    .ch-title { font-size:.95em; color:var(--text); letter-spacing:1px; margin-bottom:10px; line-height:1.3; }
-    .ch-desc { font-size:.65em; color:var(--text-dim); line-height:1.65; opacity:.8; flex:1; }
-    .ch-tag {
-      margin-top:14px; align-self:flex-start;
-      font-size:.5em; letter-spacing:2px; text-transform:uppercase;
-      padding:3px 10px; border-radius:20px;
-      background:var(--badge-bg); border:1px solid var(--accent);
-      color:var(--accent);
-    }
-    .ch-card.ch-upcoming .ch-tag {
-      background:rgba(255,255,255,.04); border-color:rgba(255,255,255,.1);
-      color:var(--text-dim);
-    }
-
-    /* Chapter number big bg watermark */
-    .ch-bg-num {
-      position:absolute; right:12px; top:50%; transform:translateY(-50%);
-      font-size:4em; font-weight:bold;
-      color:rgba(255,255,255,.03); pointer-events:none;
-      line-height:1; user-select:none;
-    }
-
-    /* kingdoms teaser under chapter 1 */
-    .kingdoms-teaser {
-      margin-top:20px;
-      padding-top:20px;
-      border-top:1px solid rgba(255,255,255,.06);
-    }
-    .kt-label {
-      font-size:.55em; letter-spacing:3px; text-transform:uppercase;
-      color:var(--text-dim); opacity:.6; margin-bottom:14px;
-    }
-    .kt-regions {
-      display:flex; flex-wrap:wrap; gap:8px;
-    }
-    .kt-region {
-      font-size:.58em; letter-spacing:1px;
-      padding:4px 14px; border-radius:20px;
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.09);
-      color:var(--text-dim);
-    }
-    .kt-cta {
-      margin-top:16px;
-      display:inline-flex; align-items:center; gap:8px;
-      font-size:.65em; letter-spacing:2px; text-transform:uppercase;
-      color:var(--accent); text-decoration:none;
-      border:1px solid var(--accent);
-      border-radius:24px; padding:7px 20px;
-      transition:background .2s, box-shadow .2s;
-    }
-    .kt-cta:hover {
-      background:var(--badge-bg);
-      box-shadow:0 0 20px var(--accent-glow);
-    }
-
-    /* ── OPENING EVENT BANNER ── */
-    .event-banner {
-      max-width:1200px; margin:0 auto 0; padding:0 24px;
-    }
-    .event-inner {
-      background:linear-gradient(135deg, rgba(196,77,170,.08), rgba(74,127,212,.06));
-      border:1px solid rgba(196,77,170,.2);
-      border-radius:14px; padding:24px 32px;
-      display:flex; align-items:center; gap:24px;
-    }
-    .event-icon { font-size:2.4em; flex-shrink:0; }
-    .event-title { font-size:.62em; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
-    .event-body { font-size:.78em; color:var(--text-dim); line-height:1.7; opacity:.85; }
-
-    /* ── FOOTER ── */
-    footer {
-      text-align:center; padding:28px 24px;
-      font-size:.62em; color:var(--text-dim); opacity:.5;
-      letter-spacing:2px; text-transform:uppercase;
-      border-top:1px solid rgba(255,255,255,.06);
-    }
-
-    /* ── RESPONSIVE ── */
-    @media(max-width:768px) {
-      .vol-header { grid-template-columns:auto 1fr auto; }
-      .vol-banner { width:100px; min-height:100px; }
-      .vol-roman { font-size:1.6em; }
-      .vol-body { padding:24px 20px; }
-      .vol-info { padding:16px 16px; }
-      .vol-toggle { padding:0 16px; }
-      .event-inner { flex-direction:column; gap:14px; }
-    }
+    .vol-grid { max-width:1180px; margin:0 auto; padding:0 22px 80px;
+      display:grid; grid-template-columns:repeat(auto-fill,minmax(330px,1fr)); gap:20px; }
+    .vol-card { border:1px solid var(--vc); border-radius:14px; overflow:hidden; background:var(--aom-bg2);
+      transition:transform .15s, box-shadow .15s; }
+    .vol-card:hover { transform:translateY(-3px); box-shadow:0 14px 40px -18px var(--vc); }
+    .vol-card .vc-head { display:block; text-decoration:none; padding:22px 22px 18px;
+      background:linear-gradient(135deg, var(--vcg) 0%, transparent 70%); border-bottom:1px solid var(--vc); }
+    .vol-card .vc-num { font-size:.58rem; letter-spacing:3px; text-transform:uppercase; color:var(--vc); opacity:.9; }
+    .vol-card .vc-title { font-size:1.5rem; color:var(--aom-text); letter-spacing:1px; margin:4px 0 2px; }
+    .vol-card .vc-sub { font-size:.74rem; color:var(--aom-dim); font-style:italic; }
+    .vc-status { float:right; font-size:.55rem; letter-spacing:1.5px; text-transform:uppercase;
+      padding:4px 10px; border-radius:14px; border:1px solid var(--vc); color:var(--vc); }
+    .vc-status.soon { border-color:rgba(255,255,255,.18); color:var(--aom-dim); }
+    .vc-chaps { padding:14px 18px 18px; display:grid; gap:8px; }
+    .vc-chap { display:flex; justify-content:space-between; align-items:center; text-decoration:none;
+      padding:10px 14px; border-radius:9px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.02);
+      color:var(--aom-dim); font-size:.78rem; transition:all .15s; }
+    .vc-chap:hover { border-color:var(--vc); color:#fff; background:var(--aom-glow); }
+    .vc-chap .n { font-size:.58rem; letter-spacing:1px; text-transform:uppercase; color:var(--vc); opacity:.85; }
   </style>
 </head>
-<body>
+<body class="aom" data-aom-type="root">
 
-  <nav>
-    <a href="index.html" class="nav-logo">Age of Mythos</a>
-    <div class="nav-right">
-      <a href="hierarchy.html" class="nav-link">&#9783; Hierarchy</a>
-      <a href="com/hulmane/age-of-mythos/volume-1-maha-parva/index.html" class="nav-link">Vol I &rarr;</a>
-    </div>
-  </nav>
-
-  <!-- ── HERO ── -->
-  <div class="hero">
-    <p class="hero-eyebrow">The Complete Novel</p>
+  <section class="home-hero">
+    <div class="eyebrow">An Epic in Six Volumes</div>
     <h1>AGE OF <span>MYTHOS</span></h1>
-    <p class="hero-motto">Yato Yogyat&#257; Tato Satyam &bull; Yato Ritam Tato Jayah</p>
-    <p class="hero-tagline">Six Continents &bull; Four Chapters Each &bull; One Eternal War</p>
-    <div class="hero-divider"><span class="hero-divider-gem">&#9670;</span></div>
-    <div class="story-flow">
-      <span class="flow-item active">Novel</span>
-      <span class="flow-arrow">&#8594;</span>
-      <span class="flow-item">Volume</span>
-      <span class="flow-arrow">&#8594;</span>
-      <span class="flow-item">Chapter</span>
-      <span class="flow-arrow">&#8594;</span>
-      <span class="flow-item">Kingdom</span>
+    <div class="motto-sa">यतो योग्यता ततो सत्यम् · यतो ऋतम् ततो जयः</div>
+    <p class="motto-en">Where worthiness stands, truth stands.<br>Where cosmic order stands, victory stands.</p>
+    <div class="home-cta">
+      <a class="cta primary" id="cta-read" href="#">▸ Start Reading in Order</a>
+      <a class="cta ghost" href="hierarchy.html">✦ Explore the Map</a>
     </div>
-  </div>
-
-  <!-- ── OPENING EVENT ── -->
-  <div class="event-banner">
-    <div class="event-inner">
-      <div class="event-icon">&#9732;</div>
-      <div class="event-text">
-        <div class="event-title">The Opening Event &mdash; Where It All Begins</div>
-        <div class="event-body">
-          An asteroid blazes through the cosmos and strikes the Indian continent &mdash; the cataclysm
-          that awakens 30 ancient kingdoms, shatters the old order, and ignites a chain of legend, war,
-          and mythic reckoning that will sweep across all six continents of the world.
-        </div>
-      </div>
+    <div class="home-stats">
+      <span><b>6</b> Volumes</span>
+      <span><b>24</b> Chapters</span>
+      <span><b>30</b> Kingdoms</span>
+      <span><b>1</b> Maha-Adhipati</span>
     </div>
-  </div>
+  </section>
 
-  <!-- ── SECTION HEADING ── -->
-  <div class="section-head">
-    <p class="section-label">The Six Volumes</p>
-    <p class="section-title">Choose a Continent &bull; Follow Its Legend</p>
-    <p class="section-desc">Click any volume to reveal its four chapters. Each continent's story is self-contained yet woven into the one eternal war.</p>
-  </div>
+  <div class="home-divider"><span>The Six Volumes</span></div>
 
-  <!-- ── VOLUMES ── -->
-  <div class="volumes-wrap">
+  <section class="vol-grid" id="vol-grid"></section>
 
-    <!-- ═══════════════ VOLUME I ═══════════════ -->
-    <div class="vol-card v1 expanded" id="vol1">
-      <div class="vol-header" onclick="toggle('vol1')">
-        <div class="vol-accent-strip"></div>
-        <div class="vol-banner">
-          <img src="media/volumes/volume-1-rise-of-legends.png" alt="Maha Parva">
-          <div class="vol-banner-inner">
-            <div class="vol-roman">I</div>
-            <div class="vol-num-label">Volume I</div>
-            <div class="vol-continent-label">Indian Continent</div>
-          </div>
-        </div>
-        <div class="vol-info">
-          <div class="vol-status-badge">
-            <span class="vol-status-dot"></span>
-            Active &bull; Now Live
-          </div>
-          <div class="vol-title">Maha Parva</div>
-          <div class="vol-subtitle">Bharatavarsha &bull; The First Continent &bull; 30 Kingdoms</div>
-          <div class="vol-desc">
-            From the moment the asteroid strikes, 30 kingdoms of the Indian subcontinent awaken.
-            Old rulers fall. New legends are born. Four chapters carry Bharatavarsha from
-            the rise of its first heroes to the coronation of the one Maha warrior.
-          </div>
-          <div class="vol-chapters-preview">
-            <span class="ch-pill ch-active">Ch.1 Rise of Legends</span>
-            <span class="ch-pill">Ch.2 Civil War</span>
-            <span class="ch-pill">Ch.3 Rise of Beasts</span>
-            <span class="ch-pill">Ch.4 The Great Epic</span>
-          </div>
-        </div>
-        <div class="vol-toggle">
-          <span class="vol-toggle-arrow">&#8964;</span>
-          <span class="vol-toggle-label">Chapters</span>
-        </div>
-      </div>
-      <div class="vol-body">
-        <div class="chapters-grid">
-
-          <a href="com/hulmane/age-of-mythos/volume-1-maha-parva/chapter-1-rise-of-legends/index.html" class="ch-card ch-live">
-            <span class="ch-bg-num">1</span>
-            <div class="ch-number">Chapter One</div>
-            <div class="ch-title">Rise of Legends</div>
-            <div class="ch-desc">
-              An asteroid blazes from the sky and strikes the Indian continent. The shock awakens
-              30 sleeping kingdoms. Old rulers are displaced; new legends claw their way to power.
-              Each kingdom's warrior emerges &mdash; and a new power politics begins.
-            </div>
-            <span class="ch-tag">Live &rarr; Enter</span>
-          </a>
-
-          <a href="com/hulmane/age-of-mythos/volume-1-maha-parva/chapter-2-civil-war/index.html" class="ch-card ch-live">
-            <span class="ch-bg-num">2</span>
-            <div class="ch-number">Chapter Two</div>
-            <div class="ch-title">Civil War</div>
-            <div class="ch-desc">
-              The 30 kingdoms turn on one another. Alliances shatter overnight. The legends forged
-              in Chapter 1 now bleed against each other while, in the shadows, the first beasts
-              and monsters stir from their ancient sleep.
-            </div>
-            <span class="ch-tag">Live &rarr; Enter</span>
-          </a>
-
-          <div class="ch-card ch-upcoming">
-            <span class="ch-bg-num">3</span>
-            <div class="ch-number">Chapter Three</div>
-            <div class="ch-title">Rise of Beasts</div>
-            <div class="ch-desc">
-              Heroes and monsters reach equilibrium &mdash; the lines between warrior and beast blur.
-              Region by region, 30 heroes narrow to 6 legendary champions, each bonded to an
-              ancient creature of the continent.
-            </div>
-            <span class="ch-tag">Coming Soon</span>
-          </div>
-
-          <div class="ch-card ch-upcoming">
-            <span class="ch-bg-num">4</span>
-            <div class="ch-number">Chapter Four</div>
-            <div class="ch-title">The Great Epic</div>
-            <div class="ch-desc">
-              The 6 legends converge in the final reckoning. One supreme warrior &mdash; the Maha
-              warrior &mdash; rises above all others to become the king and unifier of the entire
-              Indian continent. The first continental throne is claimed.
-            </div>
-            <span class="ch-tag">Coming Soon</span>
-          </div>
-
-        </div>
-
-        <div class="kingdoms-teaser">
-          <div class="kt-label">30 Kingdoms across 6 regions of Bharatavarsha</div>
-          <div class="kt-regions">
-            <span class="kt-region">&#9650; South &bull; 5 kingdoms</span>
-            <span class="kt-region">&#9668; West &bull; 4 kingdoms</span>
-            <span class="kt-region">&#9658; East &bull; 4 kingdoms</span>
-            <span class="kt-region">&#9650; North &bull; 5 kingdoms</span>
-            <span class="kt-region">&#9651; Northeast &bull; 8 kingdoms</span>
-            <span class="kt-region">&#9679; Central &bull; 4 kingdoms</span>
-          </div>
-          <a href="com/hulmane/age-of-mythos/volume-1-maha-parva/index.html" class="kt-cta">
-            Enter Maha Parva &rarr;
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- ═══════════════ VOLUME II ═══════════════ -->
-    <div class="vol-card v2" id="vol2">
-      <div class="vol-header" onclick="toggle('vol2')">
-        <div class="vol-accent-strip"></div>
-        <div class="vol-banner">
-          <div class="vol-banner-inner">
-            <div class="vol-roman">II</div>
-            <div class="vol-num-label">Volume II</div>
-            <div class="vol-continent-label">European Continent</div>
-          </div>
-        </div>
-        <div class="vol-info">
-          <div class="vol-status-badge coming">
-            <span class="vol-status-dot"></span>
-            In Development
-          </div>
-          <div class="vol-title">The Great West</div>
-          <div class="vol-subtitle">Europa &bull; The Second Continent &bull; 30 Kingdoms</div>
-          <div class="vol-desc">
-            The asteroid's tremors reach the western kingdoms. Ancient European powers awaken &mdash;
-            Norse clans, Roman remnants, Celtic bloodlines &mdash; as a new age of legend and war
-            sweeps across the entire western world.
-          </div>
-          <div class="vol-chapters-preview">
-            <span class="ch-pill">Ch.1 Rise of Legends</span>
-            <span class="ch-pill">Ch.2 Civil War</span>
-            <span class="ch-pill">Ch.3 Rise of Beasts</span>
-            <span class="ch-pill">Ch.4 The Great Epic</span>
-          </div>
-        </div>
-        <div class="vol-toggle">
-          <span class="vol-toggle-arrow">&#8964;</span>
-          <span class="vol-toggle-label">Chapters</span>
-        </div>
-      </div>
-      <div class="vol-body">
-        <div class="chapters-grid">
-          <div class="ch-card ch-upcoming">
-            <span class="ch-bg-num">1</span>
-            <div class="ch-number">Chapter One</div>
-            <div class="ch-title">Rise of Legends</div>
-            <div class="ch-desc">The shockwave reaches European shores. Thirty ancient kingdoms stir and new warriors emerge from the ruins of forgotten dynasties, claiming power no ruler had dared hold since the fall of empire.</div>
-            <span class="ch-tag">Coming Soon</span>
-          </div>
-          <div class="ch-card ch-upcoming">
-            <span class="ch-bg-num">2</span>
-            <div class="ch-number">Chapter Two</div>
-            <div class="ch-title">Civil War</div>
-            <div class="ch-desc">Brotherhood turns to blood. The western kingdoms fracture into warring factions. Legends who once stood as allies now raise arms against each other across the Rhine, the Thames, and the Tiber.</div>
-            <span class="ch-tag">Coming Soon</span>
-          </div>
-          <div class="ch-card ch-upcoming">
-            <span class="ch-bg-num">3</span>
-            <div class="ch-number">Chapter Three</div>
-            <div class="ch-title">Rise of Beasts</div>
-            <div class="ch-desc">The great beasts of European myth walk again: the Fenrir, the Wyvern, the Hydra. Warriors bond with these ancient creatures. Thirty heroes narrow to six in the crucible of beast and flame.</div>
-            <span class="ch-tag">Coming Soon</span>
-          </div>
-          <div class="ch-card ch-upcoming">
-            <span class="ch-bg-num">4</span>
-            <div class="ch-number">Chapter Four</div>
-            <div class="ch-title">The Great Epic</div>
-            <div class="ch-desc">The six western champions converge for the final trial. One warrior rises above all &mdash; the supreme sovereign of the West &mdash; to unite Europe under a single legendary throne.</div>
-            <span class="ch-tag">Coming Soon</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ═══════════════ VOLUME III ═══════════════ -->
-    <div class="vol-card v3" id="vol3">
-      <div class="vol-header" onclick="toggle('vol3')">
-        <div class="vol-accent-strip"></div>
-        <div class="vol-banner">
-          <div class="vol-banner-inner">
-            <div class="vol-roman">III</div>
-            <div class="vol-num-label">Volume III</div>
-            <div class="vol-continent-label">East Asian Continent</div>
-          </div>
-        </div>
-        <div class="vol-info">
-          <div class="vol-status-badge coming">
-            <span class="vol-status-dot"></span>
-            In Development
-          </div>
-          <div class="vol-title">The Eastern Dragon</div>
-          <div class="vol-subtitle">Purva Dvipa &bull; The Third Continent &bull; 30 Kingdoms</div>
-          <div class="vol-desc">
-            Dynasties older than memory shatter and reform across the East. Dragon-bonded warriors
-            rise from mountain strongholds, river kingdoms, and island fortresses as Asia faces
-            its own age of legend, war, and mythic reckoning.
-          </div>
-          <div class="vol-chapters-preview">
-            <span class="ch-pill">Ch.1 Rise of Legends</span>
-            <span class="ch-pill">Ch.2 Civil War</span>
-            <span class="ch-pill">Ch.3 Rise of Beasts</span>
-            <span class="ch-pill">Ch.4 The Great Epic</span>
-          </div>
-        </div>
-        <div class="vol-toggle">
-          <span class="vol-toggle-arrow">&#8964;</span>
-          <span class="vol-toggle-label">Chapters</span>
-        </div>
-      </div>
-      <div class="vol-body">
-        <div class="chapters-grid">
-          <div class="ch-card ch-upcoming">
-            <span class="ch-bg-num">1</span>
-            <div class="ch-number">Chapter One</div>
-            <div class="ch-title">Rise of Legends</div>
-            <div class="ch-desc">Across river kingdoms, mountain clans, and island fortresses, thirty ancient lineages awaken. Warriors who carry the blood of dragon-riders and monk-soldiers step forward to claim their destiny.</div>
-            <span class="ch-tag">Coming Soon</span>
-          </div>
-          <div class="ch-card ch-upcoming">
-            <span class="ch-bg-num">2</span>
-            <div class="ch-number">Chapter Two</div>
-            <div class="ch-title">Civil War</div>
-            <div class="ch-desc">The great river valleys run red. Ancient rivalries between northern steppe kingdoms and southern sea empires ignite into open war. Honour codes shatter under the weight of survival.</div>
-            <span class="ch-tag">Coming Soon</span>
-          </div>
-          <div class="ch-card ch-upcoming">
-            <span class="ch-bg-num">3</span>
-            <div class="ch-number">Chapter Three</div>
-            <div class="ch-title">Rise of Beasts</div>
-            <div class="ch-desc">The great dragons wake. Celestial qilins, divine tigers, and serpent gods of the deep emerge. Warriors bond with these sacred creatures, thirty dwindling to six as the mythic trials unfold.</div>
-            <span class="ch-tag">Coming Soon</span>
-          </div>
-          <div class="ch-card ch-upcoming">
-            <span class="ch-bg-num">4</span>
-            <div class="ch-number">Chapter Four</div>
-            <div class="ch-title">The Great Epic</div>
-            <div class="ch-desc">Six dragon-bonded warriors face the final ordeal. One supreme sovereign rises &mdash; the Eastern Dragon-King &mdash; to unify the entirety of the Asian continent under an age of peace and power.</div>
-            <span class="ch-tag">Coming Soon</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ═══════════════ VOLUME IV ═══════════════ -->
-    <div class="vol-card v4" id="vol4">
-      <div class="vol-header" onclick="toggle('vol4')">
-        <div class="vol-accent-strip"></div>
-        <div class="vol-banner">
-          <div class="vol-banner-inner">
-            <div class="vol-roman">IV</div>
-            <div class="vol-num-label">Volume IV</div>
-            <div class="vol-continent-label">African Continent</div>
-          </div>
-        </div>
-        <div class="vol-info">
-          <div class="vol-status-badge coming">
-            <span class="vol-status-dot"></span>
-            In Development
-          </div>
-          <div class="vol-title">The Ancient Sands</div>
-          <div class="vol-subtitle">Krisha Dvipa &bull; The Fourth Continent &bull; 30 Kingdoms</div>
-          <div class="vol-desc">
-            From the Sahara's silence to the savanna's roar, the oldest kingdoms on Earth reawaken.
-            Civilizations that held the world's deepest secrets are forced into open war &mdash; and
-            the mightiest warrior Africa has ever known rises from the fire.
-          </div>
-          <div class="vol-chapters-preview">
-            <span class="ch-pill">Ch.1 Rise of Legends</span>
-            <span class="ch-pill">Ch.2 Civil War</span>
-            <span class="ch-pill">Ch.3 Rise of Beasts</span>
-            <span class="ch-pill">Ch.4 The Great Epic</span>
-          </div>
-        </div>
-        <div class="vol-toggle">
-          <span class="vol-toggle-arrow">&#8964;</span>
-          <span class="vol-toggle-label">Chapters</span>
-        </div>
-      </div>
-      <div class="vol-body">
-        <div class="chapters-grid">
-          <div class="ch-card ch-upcoming">
-            <span class="ch-bg-num">1</span>
-            <div class="ch-number">Chapter One</div>
-            <div class="ch-title">Rise of Legends</div>
-            <div class="ch-desc">From Nile delta to Cape of Storms, thirty kingdoms that guarded ancient knowledge now pour warriors into the open. Kings who hid behind ceremony must now prove themselves on the field of legend.</div>
-            <span class="ch-tag">Coming Soon</span>
-          </div>
-          <div class="ch-card ch-upcoming">
-            <span class="ch-bg-num">2</span>
-            <div class="ch-number">Chapter Two</div>
-            <div class="ch-title">Civil War</div>
-            <div class="ch-desc">Desert kingdoms war against forest kingdoms. River-people and mountain-tribes tear old alliances apart. The continent bleeds even as the first ancestral beasts begin to manifest across the land.</div>
-            <span class="ch-tag">Coming Soon</span>
-          </div>
-          <div class="ch-card ch-upcoming">
-            <span class="ch-bg-num">3</span>
-            <div class="ch-number">Chapter Three</div>
-            <div class="ch-title">Rise of Beasts</div>
-            <div class="ch-desc">The Great Lion, the Elephant of Memory, the Serpent of the Nile &mdash; Africa's sacred beasts bond with six chosen warriors as the rest fall. The continent's thirty narrow to the worthy few.</div>
-            <span class="ch-tag">Coming Soon</span>
-          </div>
-          <div class="ch-card ch-upcoming">
-            <span class="ch-bg-num">4</span>
-            <div class="ch-number">Chapter Four</div>
-            <div class="ch-title">The Great Epic</div>
-            <div class="ch-desc">Six beast-bonded champions stand at the roof of the world. One rises as the Great Lion-King &mdash; sovereign of all Africa &mdash; carrying the oldest power of the continent into an eternal age.</div>
-            <span class="ch-tag">Coming Soon</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ═══════════════ VOLUME V ═══════════════ -->
-    <div class="vol-card v5" id="vol5">
-      <div class="vol-header" onclick="toggle('vol5')">
-        <div class="vol-accent-strip"></div>
-        <div class="vol-banner">
-          <div class="vol-banner-inner">
-            <div class="vol-roman">V</div>
-            <div class="vol-num-label">Volume V</div>
-            <div class="vol-continent-label">American Continent</div>
-          </div>
-        </div>
-        <div class="vol-info">
-          <div class="vol-status-badge coming">
-            <span class="vol-status-dot"></span>
-            In Development
-          </div>
-          <div class="vol-title">The New World</div>
-          <div class="vol-subtitle">Nava Dvipa &bull; The Fifth Continent &bull; 30 Kingdoms</div>
-          <div class="vol-desc">
-            Across twin continents bound by mountain spine and jungle heart, warrior traditions
-            of North and South collide. Ancient prophecies ignite, sky-beasts and earth-serpents
-            emerge, and from the clash a new world power is forged.
-          </div>
-          <div class="vol-chapters-preview">
-            <span class="ch-pill">Ch.1 Rise of Legends</span>
-            <span class="ch-pill">Ch.2 Civil War</span>
-            <span class="ch-pill">Ch.3 Rise of Beasts</span>
-            <span class="ch-pill">Ch.4 The Great Epic</span>
-          </div>
-        </div>
-        <div class="vol-toggle">
-          <span class="vol-toggle-arrow">&#8964;</span>
-          <span class="vol-toggle-label">Chapters</span>
-        </div>
-      </div>
-      <div class="vol-body">
-        <div class="chapters-grid">
-          <div class="ch-card ch-upcoming">
-            <span class="ch-bg-num">1</span>
-            <div class="ch-number">Chapter One</div>
-            <div class="ch-title">Rise of Legends</div>
-            <div class="ch-desc">From the frozen north to the sun-drenched south, thirty kingdoms awaken. Warriors of the plains, jungle, and mountain emerge — the children of eagle-gods and feathered serpents claiming their inheritance.</div>
-            <span class="ch-tag">Coming Soon</span>
-          </div>
-          <div class="ch-card ch-upcoming">
-            <span class="ch-bg-num">2</span>
-            <div class="ch-number">Chapter Two</div>
-            <div class="ch-title">Civil War</div>
-            <div class="ch-desc">North wars against South. Plains warriors clash with jungle kings. The great river civilizations shatter and reform as the most brutal civil war the twin continents have ever witnessed consumes everything.</div>
-            <span class="ch-tag">Coming Soon</span>
-          </div>
-          <div class="ch-card ch-upcoming">
-            <span class="ch-bg-num">3</span>
-            <div class="ch-number">Chapter Three</div>
-            <div class="ch-title">Rise of Beasts</div>
-            <div class="ch-desc">The Thunderbird descends. The Great Jaguar walks from the stone temples. The Condor of the high peaks soars. Six warriors are chosen as the thirty-strong field narrows to those worthy of bonding.</div>
-            <span class="ch-tag">Coming Soon</span>
-          </div>
-          <div class="ch-card ch-upcoming">
-            <span class="ch-bg-num">4</span>
-            <div class="ch-number">Chapter Four</div>
-            <div class="ch-title">The Great Epic</div>
-            <div class="ch-desc">The six chosen face the sky-trials. One warrior &mdash; the Sovereign of the New World &mdash; rises to unite both continents, bridging North and South under the banner of the eternal eagle.</div>
-            <span class="ch-tag">Coming Soon</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ═══════════════ VOLUME VI ═══════════════ -->
-    <div class="vol-card v6" id="vol6">
-      <div class="vol-header" onclick="toggle('vol6')">
-        <div class="vol-accent-strip"></div>
-        <div class="vol-banner">
-          <div class="vol-banner-inner">
-            <div class="vol-roman">VI</div>
-            <div class="vol-num-label">Volume VI</div>
-            <div class="vol-continent-label">Oceanian Continent</div>
-          </div>
-        </div>
-        <div class="vol-info">
-          <div class="vol-status-badge coming">
-            <span class="vol-status-dot"></span>
-            In Development
-          </div>
-          <div class="vol-title">The Southern Cross</div>
-          <div class="vol-subtitle">Dakshina Dvipa &bull; The Sixth Continent &bull; 30 Kingdoms</div>
-          <div class="vol-desc">
-            The last continent to stir &mdash; and the most volatile. Island kingdoms, red-earth
-            clans, and dreamtime navigators converge in the final continental reckoning of the
-            Age of Mythos, watched over by the stars of the southern sky.
-          </div>
-          <div class="vol-chapters-preview">
-            <span class="ch-pill">Ch.1 Rise of Legends</span>
-            <span class="ch-pill">Ch.2 Civil War</span>
-            <span class="ch-pill">Ch.3 Rise of Beasts</span>
-            <span class="ch-pill">Ch.4 The Great Epic</span>
-          </div>
-        </div>
-        <div class="vol-toggle">
-          <span class="vol-toggle-arrow">&#8964;</span>
-          <span class="vol-toggle-label">Chapters</span>
-        </div>
-      </div>
-      <div class="vol-body">
-        <div class="chapters-grid">
-          <div class="ch-card ch-upcoming">
-            <span class="ch-bg-num">1</span>
-            <div class="ch-number">Chapter One</div>
-            <div class="ch-title">Rise of Legends</div>
-            <div class="ch-desc">From the red deserts to the Pacific atolls, the last of the world's sleeping kingdoms awaken. Warriors who carry the songs of the Dreamtime and the winds of the open ocean rise to claim their destiny.</div>
-            <span class="ch-tag">Coming Soon</span>
-          </div>
-          <div class="ch-card ch-upcoming">
-            <span class="ch-bg-num">2</span>
-            <div class="ch-number">Chapter Two</div>
-            <div class="ch-title">Civil War</div>
-            <div class="ch-desc">Island wars against continent. The great reef-kingdoms clash with the inland clans. Navigation becomes war-strategy; the vast ocean itself becomes the most dangerous battlefield ever contested.</div>
-            <span class="ch-tag">Coming Soon</span>
-          </div>
-          <div class="ch-card ch-upcoming">
-            <span class="ch-bg-num">3</span>
-            <div class="ch-number">Chapter Three</div>
-            <div class="ch-title">Rise of Beasts</div>
-            <div class="ch-desc">The great sea-serpents rise from the deep. The sacred crocodile walks the red earth. The albatross of immortality chooses its rider. Six warriors are bound to the creatures of the Southern Cross.</div>
-            <span class="ch-tag">Coming Soon</span>
-          </div>
-          <div class="ch-card ch-upcoming">
-            <span class="ch-bg-num">4</span>
-            <div class="ch-number">Chapter Four</div>
-            <div class="ch-title">The Great Epic</div>
-            <div class="ch-desc">The final champion &mdash; the Southern Star &mdash; emerges from the last great trial to claim the sixth and final continental throne, completing the circle of power that spans the entire Earth.</div>
-            <span class="ch-tag">Coming Soon</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div><!-- /volumes-wrap -->
-
-  <footer>
-    &copy; Age of Mythos &mdash; Lakshmi Hulmane &bull; All Rights Reserved
-  </footer>
-
+  <script src="assets/manifest.js"></script>
   <script>
-    function toggle(id) {
-      const card = document.getElementById(id);
-      card.classList.toggle('expanded');
-    }
-  </script>
+    (function () {
+      var M = window.AOM_MANIFEST;
+      if (!M) return;
+      // primary CTA -> first page of the reading spine
+      var read = document.getElementById('cta-read');
+      if (M.spine && M.spine.length) read.href = M.spine[0];
 
+      var grid = document.getElementById('vol-grid');
+      (M.nav.volumes || []).forEach(function (v) {
+        var card = document.createElement('div');
+        card.className = 'vol-card';
+        card.style.setProperty('--vc', v.accent);
+        // translucent glow from accent
+        card.style.setProperty('--vcg', v.accent + '22');
+
+        var status = v.available
+          ? '<span class="vc-status">Available</span>'
+          : '<span class="vc-status soon">Coming Soon</span>';
+
+        var head =
+          '<a class="vc-head" href="' + v.rel + '">' + status +
+            '<div class="vc-num">Volume ' + roman(v.n) + '</div>' +
+            '<div class="vc-title">' + v.title + '</div>' +
+            '<div class="vc-sub">' + (v.subtitle || '') + '</div>' +
+          '</a>';
+
+        var chaps = '<div class="vc-chaps">';
+        (v.chapters || []).forEach(function (c) {
+          chaps += '<a class="vc-chap" href="' + c.rel + '">' +
+                     '<span>' + c.title + '</span>' +
+                     '<span class="n">Ch ' + c.n + '</span></a>';
+        });
+        chaps += '</div>';
+
+        card.innerHTML = head + chaps;
+        grid.appendChild(card);
+      });
+
+      function roman(n){ return ['','I','II','III','IV','V','VI'][n] || n; }
+    })();
+  </script>
+  <script src="assets/aom.js"></script>
 </body>
 </html>

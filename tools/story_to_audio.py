@@ -115,23 +115,42 @@ def extract_story_text(html_path: Path, clean: bool = False) -> str:
     return text.strip()
 
 
+def discover_stories(root: Path) -> list[Path]:
+    """All readable story pages across the volume's chapter layouts.
+
+    * Chapters 2-3 : <kingdom>/story.html
+    * Chapter 1    : <kingdom>/stories/*.html
+    * Chapter 4    : set-piece section pages (maha-adhipati, maw, ...), but NOT
+                     the chapter-root index.html, which is just a nav/landing page.
+    """
+    found = set(root.rglob("story.html")) | set(root.rglob("stories/*.html"))
+    for ch in root.rglob("chapter-*"):
+        if ch.is_dir() and not any(ch.rglob("story.html")) \
+                and not any(ch.rglob("stories/*.html")):
+            found |= {h for h in ch.rglob("*.html") if h != ch / "index.html"}
+    return sorted(found)
+
+
 def derive_name(html_path: Path, root: Path) -> str:
     """Build a flat, sortable output basename from the story's path.
 
     e.g. chapter-3-rise-of-beasts/.../sangai-nata/story.html
          -> chapter-3-rise-of-beasts__sangai-nata
-    A page inside a stories/ folder keeps its saga slug:
-         chapter-1-.../parashurama-kshetra/stories/the-109th-form.html
-         -> chapter-1-rise-of-legends__parashurama-kshetra__the-109th-form
+    A page inside a stories/ folder keeps its saga slug; Chapter 4 set-piece
+    pages keep their section (and stem when not index.html).
     """
     rel = html_path.relative_to(root)
-    parts = rel.parent.parts
-    chapter = next((p for p in parts if p.startswith("chapter-")), parts[0])
-    if rel.parent.name == "stories":
-        kingdom = rel.parent.parent.name
-        return f"{chapter}__{kingdom}__{rel.stem}"
-    kingdom = rel.parent.name
-    return f"{chapter}__{kingdom}"
+    chapter = next((p for p in rel.parts if p.startswith("chapter-")), rel.parts[0])
+    parent = rel.parent.name
+    if html_path.name == "story.html":
+        label = parent
+    elif parent == "stories":
+        label = f"{rel.parent.parent.name}__{rel.stem}"
+    elif rel.stem == "index":          # section page, e.g. maha-adhipati/index.html
+        label = parent
+    else:                               # e.g. bharatavarsha/maw.html
+        label = f"{parent}__{rel.stem}"
+    return f"{chapter}__{label}"
 
 
 def render_audio(text: str, out_path: Path, voice: str, rate: int, fmt: str) -> None:
@@ -175,9 +194,7 @@ def main(argv=None) -> int:
         print(f"error: root not found: {root}", file=sys.stderr)
         return 2
 
-    # Real prose lives either in <kingdom>/story.html (Chapters 2-4) or in
-    # <kingdom>/stories/*.html (Chapter 1, split out from the shared JS data).
-    stories = sorted(set(root.rglob("story.html")) | set(root.rglob("stories/*.html")))
+    stories = discover_stories(root)
     if args.filter:
         stories = [s for s in stories if args.filter in str(s)]
     if not stories:
