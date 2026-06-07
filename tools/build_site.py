@@ -374,6 +374,19 @@ def build_model():
 
 build_model()
 
+# ---- world / lore pages (not tied to any volume) ----
+nav["world"] = []
+_world_dir = os.path.join(ROOT, AOM, "world")
+if os.path.isdir(_world_dir):
+    _gold, _gold2 = "#d4952a", "#b07818"
+    for f in sorted(glob.glob(os.path.join(_world_dir, "*.html"))):
+        rp = rel_of(f)
+        wt = page_title(f, os.path.basename(f)[:-5].replace("-", " ").title())
+        register(rp, wt, "page", tokens(_gold, _gold2, _gold),
+                 [crumb("Home", "index.html"), crumb("World & Lore"), crumb(wt)],
+                 vol_label="World & Lore")
+        nav["world"].append({"title": wt, "rel": rp})
+
 # ===========================================================================
 # emit manifest.js
 # ===========================================================================
@@ -542,7 +555,7 @@ def render_md_story(relpath, meta):
 # apply to all Volume-1 pages
 # ===========================================================================
 for relpath, meta in pages.items():
-    if not relpath.startswith("%s/volume-1" % AOM):
+    if not (relpath.startswith("%s/volume-1" % AOM) or relpath.startswith("%s/world" % AOM)):
         # Volumes 2-6 hubs are regenerated separately as stubs
         continue
     if meta["type"] == "story":
@@ -565,6 +578,44 @@ for relpath, meta in pages.items():
 # ---- move-safe: refresh asset-link depth on every content page ----
 for f in glob.glob(os.path.join(ROOT, AOM, "**", "*.html"), recursive=True):
     refresh_assets(rel_of(f))
+
+# ---- plain-language README.txt in every kingdom and story folder ----
+def write_readme(folder, lines):
+    open(os.path.join(folder, "README.txt"), "w", encoding="utf-8").write("\n".join(lines) + "\n")
+
+for relpath, meta in pages.items():
+    folder = os.path.dirname(os.path.join(ROOT, relpath))
+    if meta["type"] == "kingdom":
+        t = meta["title"]
+        write_readme(folder, [
+            t, "=" * len(t), "",
+            'This folder is the kingdom "%s".' % t, "",
+            "What is inside:",
+            "  index.html     - the kingdom's main page (double-click to open in a browser)",
+            "  identity.html  - who they are: heroes, animals, culture",
+            "  rules.html     - their weapons and powers",
+            "  stories/       - each story has its own folder in here",
+            "  media/         - pictures for this kingdom", "",
+            "To read it, just double-click index.html.",
+        ])
+    elif meta["type"] == "story" and meta.get("md"):
+        t = meta["title"]
+        write_readme(folder, [
+            t, "=" * len(t), "",
+            "HOW TO EDIT THIS STORY  (no computer knowledge needed):", "",
+            "  1. Open the file 'story.md'. It is just plain writing.",
+            "  2. Change the words however you like. Leave the few lines at the",
+            "     very top (between the --- marks) as they are.",
+            "  3. To add a picture: put it in the 'images' folder next to this file,",
+            "     then write this on its own line where you want it to appear:",
+            "         ![](images/your-picture.png)",
+            "  4. Save the file.",
+            "  5. Go to the main 'Age of Mythos' folder and double-click",
+            "     'Rebuild Website.command'.",
+            "  6. Open index.html to see your changes.", "",
+            "Please do NOT edit index.html by hand - it is rebuilt automatically",
+            "from story.md every time.",
+        ])
 
 # ===========================================================================
 # themed stub shells for Volumes 2-6

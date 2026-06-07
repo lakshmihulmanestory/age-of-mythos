@@ -102,6 +102,23 @@
         vol.innerHTML = summary + body;
         root.appendChild(vol);
       });
+
+      var world = (M.nav && M.nav.world) || [];
+      if (world.length) {
+        var wd = document.createElement('details');
+        wd.className = 'vol'; wd.open = true;
+        wd.style.setProperty('--vc', '#d4952a');
+        var b = '<summary><span class="vbadge">Lore</span>' +
+                '<span class="vname">World &amp; Lore</span></summary>' +
+                '<div class="chap"><div class="region"><div class="kingdoms">';
+        world.forEach(function (x) {
+          b += '<div class="kingdom" style="--ka:#d4952a">' +
+               '<a class="kname" href="' + x.rel + '">' + esc(x.title) + '</a></div>';
+        });
+        b += '</div></div></div>';
+        wd.innerHTML = b;
+        root.appendChild(wd);
+      }
     })();
   </script>
   <script src="assets/aom.js"></script>

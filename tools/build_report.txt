@@ -1,10 +1,10 @@
 AGE OF MYTHOS — build report
 ========================================
-pages in manifest : 330
+pages in manifest : 336
 reading spine     : 101 pages
 chrome injected   : 0
 stories retemplated: 27
 stubs generated   : 25
-already done(skip): 274
+already done(skip): 280
 
 OUTLIERS — story pages that need a manual pass (0):

@@ -75,6 +75,9 @@
 
   <section class="vol-grid" id="vol-grid"></section>
 
+  <div class="home-divider" id="world-divider" style="display:none"><span>World &amp; Lore</span></div>
+  <section class="vol-grid" id="world-grid" style="grid-template-columns:repeat(auto-fill,minmax(240px,1fr))"></section>
+
   <script src="assets/manifest.js"></script>
   <script>
     (function () {
@@ -116,6 +119,19 @@
       });
 
       function roman(n){ return ['','I','II','III','IV','V','VI'][n] || n; }
+
+      // World & Lore links
+      var world = (M.nav && M.nav.world) || [];
+      if (world.length) {
+        document.getElementById('world-divider').style.display = '';
+        var wg = document.getElementById('world-grid');
+        world.forEach(function (x) {
+          var a = document.createElement('a');
+          a.href = x.rel; a.className = 'vc-chap'; a.style.padding = '16px';
+          a.innerHTML = '<span>' + x.title + '</span><span class="n">Lore</span>';
+          wg.appendChild(a);
+        });
+      }
     })();
   </script>
   <script src="assets/aom.js"></script>
