@@ -1,0 +1,28 @@
+---
+title: "The Fleet of the Drowned"
+subtitle: "Samudra-Dvipa — The Ocean's Pearl — Goa"
+motto: "“The tide takes, the tide returns — we trade with both”"
+context: "Paschimapatha (West) • Rise of Legends • Chapter One"
+hero: "Sagaradeva"
+villain: "Samudra-Daitya"
+region: west
+kingdom: samudra-dvipa
+---
+
+Goa has always been a place between worlds. Between sea and land, between East and West, between the temples in the hills and the churches on the coast. This in-between quality is its strength and its vulnerability — for things that exist between worlds can be pulled in either direction.
+
+Sagaradeva understood this instinctively. Born on water, raised between fishing nets and temple bells, he learned early that balance is not stillness — it is constant, exhausting adjustment. His cutlass Samudra and his chain Lahara are not just weapons; they are the two pulls of his life — the ocean that calls him and the land that needs him.
+
+The night the ghost fleet appeared, every bulbul in Goa sang at once. Ruby-throated yellow bulbuls do not sing at night — but the dead ships' lanterns confused them into thinking dawn had come. Fifty vessels, crewed by drowned warriors whose half-formed tattoos glowed sickly green in the darkness, sailed into the mouth of the Mandovi river.
+
+Samudra-Daitya stood at the prow of the lead ship, and he was laughing. Not the laugh of a conqueror — the laugh of a man who has found a loophole in death itself.
+
+The battle in the harbor was chaos. You cannot kill what is already dead. Sagaradeva's sailors fought bravely but their blades passed through ghost-flesh like water through a net. Only when Padre Velha rang the bell of his sea-cave chapel — a bell forged from both temple bronze and church brass — did the ghost sailors flinch. The sound of both faiths combined was the one frequency that reminded them of what they were: dead, and wrongly kept from rest.
+
+Sagaradeva used that moment. He dove into the harbor, chain in hand, and wrapped Lahara around the anchor of the ghost-flagship. The gaur tattoo on his arm blazed — the bull does not charge unless provoked, but once provoked, it does not stop. He pulled. The chain sang with tension. And the flagship capsized, spilling ghost sailors into the harbor where Padre Velha's bell-sound dissolved them into sea-foam.
+
+Samudra-Daitya escaped on a smaller vessel. His fleet scattered but did not sink — ghost ships cannot sink twice.
+
+Now Goa's harbors are guarded by bells that ring with two faiths' resonance, and the bulbuls have learned to sing at the first sign of ghost-light. Sagaradeva patrols the coast nightly, his chain dragging in the water behind his boat, feeling for the vibration of dead keels beneath the surface.
+
+The gaur on his arm has grown — the horns now reach his shoulder. The half-body mark approaches, but its price is clear: he must face the ghost fleet one more time, and this time, he must go under the water to find the sunken temple where Samudra-Daitya builds his new ships from drowned men's bones.

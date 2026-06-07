@@ -1,0 +1,140 @@
+---
+title: "The River's Oath — A Film in Two Halves"
+subtitle: "Dharmakshetra Amaravati — Andhra Pradesh"
+motto: "“The river remembers what the sword forgets”"
+context: "Dakshinapatha (South) • Rise of Legends • Chapter One"
+hero: "Krishnaveni"
+villain: "Narakasura Reborn"
+region: south
+kingdom: dharmakshetra-amaravati
+---
+
+=== FIRST HALF ===
+
+## OPENING — THE RIVER'S DAUGHTER
+
+Dawn on the Krishna riverbank. Krishnaveni stands waist-deep in the current, her twin urumi whip-swords — Godavari and Krishna — coiled around her forearms like sleeping serpents. She closes her eyes. The water speaks to her in the language her grandmother taught her — the river's mood, its depth, its memory. In one fluid motion, she uncoils both whips. They crack across the surface like lightning, splitting water droplets into diamonds. Slow motion. This is not practice. This is prayer.
+
+On the bank, children from her river school cheer. She teaches them every morning — not just fighting, but swimming, reading currents, understanding when the river is angry and when it is kind. Her younger brother Bhimavaram watches from his patrol boat, grinning. "Sister, the fish are filing complaints about your whips."
+
+We see Amaravati in its glory — the river kingdom where water flows through every street in stone channels, where parakeets carry messages between forts in tiny silver capsules, where blackbucks drink fearlessly at the river ghats. Krishnaveni walks through the market, greeted by every face. She is not a queen by title, but by love. The people chose her.
+
+## A VILLAGE THAT REMEMBERS THIRST
+
+Two hundred kilometers upstream. Dust. A village where the river should flow but doesn't — the water was diverted thirty years ago to feed Amaravati's growth. A mother squeezes moisture from roots to feed her infant. Blackbucks lie dead in cracked fields, tongues swollen. This is the other side of Amaravati's paradise.
+
+A man named Naraka kneels beside a dead blackbuck. He was a water engineer once — brilliant, idealistic. He petitioned the kingdom for years to restore the upstream flow. Nobody listened. His daughter died of waterborne disease. His wife walked into the desert and did not return.
+
+He dives into the dried Godavari bed. Beneath the cracked mud, he finds it — a submerged temple sealed for a thousand years, where ancient priests tattooed themselves with inverted animal marks to control water's flow. The walls are covered in forbidden knowledge. Naraka reads for seven days. On the eighth day, he carves the reversed blackbuck into his own chest with a fishbone needle. He screams for three days as the dark power floods his veins. When he stands, the air around him shimmers with heat. Water in a nearby pot begins to bubble. He touches the Godavari bed — and the remaining underground moisture rises as steam.
+
+He is no longer Naraka the engineer. He is Narakasura Reborn. The Blood Emperor.
+
+## THE FIRST STRIKE
+
+A fishing fleet on the Godavari — forty boats, two hundred families. They are singing an evening raga when the river begins to bubble. First slowly, then violently. The water turns white. Steam rises in a wall. Men leap from boats. Fish float belly-up, boiled alive. By dawn, the entire fleet is found floating, the water still steaming.
+
+Krishnaveni arrives and touches the water. It is hot enough to blister. She follows the steam upstream and finds Narakasura standing on the dry riverbed, his cursed trident — Rakta-Trishula — planted in the earth. Behind him, five hundred followers. The forgotten. The parched. The angry. They carry iron staffs and burning torches.
+
+"I didn't come to fight you," he says. "I came to show you what your paradise costs."
+
+## THE FIRST BATTLE
+
+Krishnaveni charges. Her urumi whips sing through the air — beautiful, deadly, unpredictable arcs that would dismember any normal fighter. She is faster than him. More skilled. Her whips wrap around his trident in a double bind.
+
+But Narakasura smiles. Heat surges through the trident, up the metal whips, into the handles. Krishnaveni's palms sizzle. She smells burning flesh — her own. She drops her weapons and falls to her knees.
+
+He stands over her. "Every drop of water your kingdom drinks was stolen from my people." He could kill her. He doesn't. He walks past her, towards Amaravati.
+
+## THE MARCH OF DROUGHT
+
+Narakasura walks south, and the land dies behind him. Every well he passes boils dry. Every reservoir steams into nothing. Farmers watch their irrigation channels turn to mist. The blackbucks flee in herds, their ancient instinct screaming danger. The parakeets stop flying — the air over Narakasura's territory is too hot for feathers.
+
+His army grows with every dried village. Five hundred becomes two thousand. He doesn't need to recruit — the thirsty come to the man who controls water. His promise is simple: "Follow me to Amaravati, and you will drink from the river that was stolen from you."
+
+Krishnaveni rallies her warriors. Bhimavaram organizes the Delta Shield — a defensive line of boats along the Krishna. Nelluri Devi, the Rice Blade, arms her farming militia with sharpened tools. Chandra-Mukhi, the former assassin, infiltrates Narakasura's camp to find his weakness.
+
+The second battle happens at the Great Dam. Krishnaveni wears heat-resistant armor woven with river-silk and charges with re-forged urumi fitted with graphene-cooled handles. The fight is ferocious — her whips cracking like monsoon thunder, his trident sweeping like a scythe. She lands a cut across his shoulder. He bleeds.
+
+But the blood that drips from his wound is boiling. Where it touches the ground, the earth cracks. He slams the trident down and the entire dam begins to steam. The reservoir — the last major water source for three districts — evaporates in minutes. Krishnaveni watches two years of stored water vanish into the sky.
+
+Chandra-Mukhi returns from her mission with devastating news: there is no weakness. The inverted tattoo feeds on heat from the earth itself. As long as the ground has warmth, Narakasura cannot be stopped. He is not using dark power — he is channeling the planet.
+
+=== INTERVAL ===
+
+Krishnaveni sits by a dry riverbed. Her hands are bandaged. Her whips lie beside her, the metal warped by heat. The Krishna river — her namesake, her identity, her power — is a trickle. Amaravati's stone channels are empty. Children she taught to swim now stand in dust.
+
+Behind her, Rishi Amareshwara, the blind river-sage, sits motionless. He has not spoken in three days. The parakeets that once carried messages huddle in the dead trees, feathers dull.
+
+Krishnaveni whispers: "He is right. We did steal their water. And now he will steal ours. And the river will not flow for anyone."
+
+The screen goes dark.
+
+=== SECOND HALF ===
+
+## THE GURU'S RIDDLE
+
+Rishi Amareshwara finally speaks. He has not drunk water in ten days. His voice is dry as sand: "You are fighting drought with flood, child. The river does not fight. The river finds another path."
+
+"There IS no other path. He controls every river in the region."
+
+Amareshwara places his hand on the cracked earth. "He controls the rivers. But what lies beneath the rivers? Who controls that?"
+
+## THE EARTH REMEMBERS
+
+Krishnaveni descends. Using ancient maps kept by Amareshwara — maps older than the kingdom itself — she finds the entrance to the underground river network of the Deccan Plateau. These are not wells or springs. These are rivers beneath rivers — a vast hidden water system that feeds every surface river in the South. Narakasura can boil what flows above ground. But he cannot reach what flows below.
+
+The underground cavern is vast, dark, and ancient. Stalactites drip water that has not seen sunlight in ten thousand years. Krishnaveni wades into an underground pool so pure it glows faintly blue. When the water touches her burned hands, the blisters heal. Her skin cools. She feels something she hasn't felt since the drought began — the river's presence.
+
+Her tattoo changes. The blackbuck on her shoulder begins to move — its hooves, which had been frozen mid-leap, now touch water in the ink. The half-body mark begins to spread. She understands: the river didn't abandon her. It went underground. It was waiting.
+
+## THE IMPOSSIBLE MOMENT
+
+But Narakasura is not waiting. He has reached the outskirts of Amaravati. His army of three thousand surrounds the city. He plants his trident at the main river gate and speaks: "Open the gates, and I will let the river flow again. Resist, and I will boil the blood in your veins."
+
+He is not bluffing. He demonstrates — a soldier who refuses to kneel screams as the blood in his arms begins to simmer. Krishnaveni's people watch from the walls. Some want to surrender. The council argues. Bhimavaram draws his sword: "We fight." Nelluri Devi raises her farming blade: "We fight." But how? The enemy controls the very water in their bodies.
+
+Narakasura gives them until dawn.
+
+## THE RIVER BENEATH
+
+That night, Krishnaveni does not prepare for battle. She digs. Using the underground maps, she and a team of volunteers tunnel from the underground cavern to points beneath every village in Narakasura's territory. Not to attack. To give water. Channel by channel, spring by spring, she opens the underground river to the surface in the places that were parched — the villages that Narakasura claimed to be saving.
+
+Dawn arrives. Narakasura prepares his final assault. But his scouts ride in with impossible news: "The villages… the water is returning. From the ground."
+
+## THE TURNING POINT
+
+Narakasura's followers — the thirsty, the desperate, the angry — watch springs burst from the earth in their home villages. Clean water, flowing from the ground itself. Not from Amaravati's rivers. Not from any dam or channel. From the earth. A mother fills her pot from a spring that was not there yesterday. A blackbuck drinks from a new pool.
+
+One by one, they put down their staffs. They are not Narakasura's soldiers. They are villagers who wanted water. And the water has come — from a source that no man controls.
+
+Narakasura stands alone. His army of three thousand is now thirty. His generals are gone. The villages he claimed to protect have what they need. His cause — which began as justice — has no followers.
+
+But his rage has no need for followers.
+
+## THE FINAL BATTLE
+
+He slams his trident into the earth and channels everything. Not just surface heat. He reaches deep — pulling geothermal energy from the earth's core itself. The ground around him glows red. Rocks crack and melt. The air becomes unbreathable. He will not boil the river. He will boil the EARTH.
+
+Krishnaveni emerges from the underground river. She is different. Her tattoo now covers her entire body — the blackbuck in full leap, hooves touching water at every joint, antlers reaching her neck. Her urumi whips are wet with sacred underground water that does not evaporate, even in Narakasura's heat. When she cracks them, they hiss with a sound like a river breaking through a dam.
+
+The fight is not elegant. It is brutal. Trident against whips. Heat against water. The earth cracks between them. Krishnaveni wraps both urumi around the trident and pulls. Narakasura surges heat. The metal glows red. But the underground water on the blades turns to sacred steam — and instead of burning Krishnaveni, it cools her. The water protects its own.
+
+The trident breaks.
+
+Narakasura falls to his knees. His inverted tattoo pulses — the reversed blackbuck running backwards, running down, fading. The heat leaves him in waves. The earth cools. The air becomes breathable.
+
+Krishnaveni stands over him. The audience expects the killing blow.
+
+Instead, she kneels. She opens her water skin — filled from the underground spring — and holds it to his lips. "The river doesn't choose who drinks."
+
+He drinks. Tears cut through the ash on his face. Somewhere beneath the Blood Emperor, the water engineer who loved his daughter still breathes.
+
+## THE RIVER RETURNS
+
+Rain. The underground springs join the surface rivers. The Krishna flows wider than it ever has, nourishing both Amaravati AND the upstream villages. The parakeets return — green wings flashing like emerald lightning across the delta. The blackbucks return to drink at new springs that will never dry.
+
+Krishnaveni stands in the river. Her full-body tattoo glows faintly in the water. The blackbuck leaps across her entire form — hooves touching water everywhere, antlers crowned with river-light.
+
+Narakasura is not forgiven. He is not freed. But he is given water.
+
+The river remembers what the sword forgets.

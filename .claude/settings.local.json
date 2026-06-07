@@ -99,7 +99,10 @@
       "Bash(git commit -q -m 'Unified navigation & theming layer across the site *)",
       "Bash(perl -0pi -e 's{com/hulmane/age-of-mythos/volume-1-maha-parva}{content/volume-1-maha-parva}g' tools/extract_pure_story.py tools/story_to_audio.py tools/split_sagas_to_stories.py)",
       "Bash(perl -0pi -e 's{com/hulmane/age-of-mythos}{content}g' generate_images.py)",
-      "Bash(git commit -q -m 'Stage A: move content out of com/hulmane/age-of-mythos to content/ *)"
+      "Bash(git commit -q -m 'Stage A: move content out of com/hulmane/age-of-mythos to content/ *)",
+      "Bash(python3 tools/migrate_stories_to_md.py)",
+      "Bash(sed -n '1,16p' content/volume-1-maha-parva/chapter-1-rise-of-legends/bharatavarsha/regions/south/parashurama-kshetra/stories/the-109th-form/story.md)",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --disable-gpu --allow-file-access-from-files --virtual-time-budget=4000 --dump-dom file://__TRACKED_VAR__/content/volume-1-maha-parva/chapter-1-rise-of-legends/bharatavarsha/regions/south/vijayanagara-reborn/stories/buried-temple.html)"
     ],
     "additionalDirectories": [
       "/Users/smk/repos/MahaHulmane/images",

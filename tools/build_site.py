@@ -161,6 +161,52 @@ def page_title(abspath, fallback):
 # ===========================================================================
 # node registry
 # ===========================================================================
+# Markdown story source (story.md = front-matter + plain prose)
+# ===========================================================================
+def parse_front_matter(md):
+    fm, body = {}, md
+    m = re.match(r"^﻿?---\s*\n(.*?)\n---\s*\n?(.*)$", md, re.S)
+    if m:
+        for line in m.group(1).splitlines():
+            mm = re.match(r"\s*([A-Za-z0-9_]+)\s*:\s*(.*?)\s*$", line)
+            if mm:
+                v = mm.group(2)
+                if len(v) >= 2 and v[0] == v[-1] and v[0] in "\"'":
+                    v = v[1:-1]
+                fm[mm.group(1)] = v
+        body = m.group(2)
+    return fm, body.strip()
+
+def md_inline(s):
+    s = html.escape(s, quote=False)
+    s = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", s)
+    s = re.sub(r"(?<!\*)\*(?!\*)(.+?)\*(?!\*)", r"<em>\1</em>", s)
+    return s
+
+def md_to_html(body):
+    out = []
+    for b in re.split(r"\n\s*\n", body.strip()):
+        b = b.strip()
+        if not b:
+            continue
+        m = re.match(r"^===\s*(.+?)\s*===$", b)
+        if m:
+            out.append('<div class="half-banner"><span>%s</span></div>' % md_inline(m.group(1))); continue
+        m = re.match(r"^#{1,6}\s+(.+)$", b)
+        if m:
+            out.append("<h3>%s</h3>" % md_inline(m.group(1))); continue
+        m = re.match(r"^!\[(.*?)\]\((.+?)\)$", b)
+        if m:
+            out.append('<img src="%s" alt="%s">' % (m.group(2), html.escape(m.group(1)))); continue
+        if b.startswith("> "):
+            out.append("<blockquote>%s</blockquote>" %
+                       md_inline(re.sub(r"^>\s?", "", b, flags=re.M).replace("\n", " "))); continue
+        b = re.sub(r"!\[(.*?)\]\((.+?)\)",
+                   lambda m: '<img src="%s" alt="%s">' % (m.group(2), html.escape(m.group(1))), b)
+        out.append("<p>%s</p>" % md_inline(b.replace("\n", " ")))
+    return "\n".join(out)
+
+# ===========================================================================
 pages = {}     # relpath -> meta dict
 spine = []     # ordered relpaths
 nav   = {"volumes": []}   # overview tree
@@ -284,19 +330,28 @@ def build_model():
                                      [HOME, vlink, clink, crumb(rlabel), klink, crumb(lbl)],
                                      vol_label=vlabel, ch_label=clabel)
 
-                    # story leaves (in spine)
+                    # story leaves (in spine) — folder-with-story.md (preferred) or flat .html (bespoke)
                     sdir = os.path.join(kabs, "stories")
                     if os.path.isdir(sdir):
-                        for sf in sorted(os.listdir(sdir)):
-                            if not sf.endswith(".html"):
-                                continue
-                            sabs = os.path.join(sdir, sf)
-                            srel = kbase + "/stories/" + sf
-                            stitle = page_title(sabs, sf[:-5].replace("-", " ").title())
-                            register(srel, stitle, "story", ktok,
-                                     [HOME, vlink, clink, crumb(rlabel), klink, crumb(stitle)],
-                                     in_spine=True, vol_label=vlabel, ch_label=clabel)
-                            king_node["stories"].append({"title": stitle, "rel": srel})
+                        for e in sorted(os.listdir(sdir)):
+                            full = os.path.join(sdir, e)
+                            mdfile = os.path.join(full, "story.md")
+                            if os.path.isdir(full) and os.path.isfile(mdfile):
+                                fm, _ = parse_front_matter(read(mdfile))
+                                srel = kbase + "/stories/" + e + "/index.html"
+                                stitle = fm.get("title") or e.replace("-", " ").title()
+                                m = register(srel, stitle, "story", ktok,
+                                             [HOME, vlink, clink, crumb(rlabel), klink, crumb(stitle)],
+                                             in_spine=True, vol_label=vlabel, ch_label=clabel)
+                                m["md"] = True
+                                king_node["stories"].append({"title": stitle, "rel": srel})
+                            elif e.endswith(".html"):
+                                srel = kbase + "/stories/" + e
+                                stitle = page_title(full, e[:-5].replace("-", " ").title())
+                                register(srel, stitle, "story", ktok,
+                                         [HOME, vlink, clink, crumb(rlabel), klink, crumb(stitle)],
+                                         in_spine=True, vol_label=vlabel, ch_label=clabel)
+                                king_node["stories"].append({"title": stitle, "rel": srel})
 
                     # attach kingdom to nav tree under its region
                     rnode = next((x for x in ch_node["regions"] if x["region"] == region), None)
@@ -460,6 +515,29 @@ def retemplate_story(relpath, meta):
     write(abspath, out)
     return "ok"
 
+def render_md_story(relpath, meta):
+    """Render a story.md (front-matter + Markdown) into its themed index.html.
+    story.md is the editable source — this runs every build so edits show up."""
+    abspath = os.path.join(ROOT, relpath)
+    mdpath = os.path.join(os.path.dirname(abspath), "story.md")
+    fm, body = parse_front_matter(read(mdpath))
+    pre = prefix_for(relpath)
+    cast = ""
+    bits = []
+    if fm.get("hero"):    bits.append('Hero: <strong>%s</strong>' % html.escape(fm["hero"]))
+    if fm.get("villain"): bits.append('Villain: <strong>%s</strong>' % html.escape(fm["villain"]))
+    if bits:
+        cast = '<div class="reader-cast">%s</div>' % ' &bull; '.join(bits)
+    title = fm.get("title") or meta["title"]
+    out = READER_TMPL.format(
+        title=html.escape(title), pre=pre, mark=MARK,
+        eyebrow=('<div class="eyebrow">%s</div>' % html.escape(fm["context"])) if fm.get("context") else "",
+        h1='<h1>%s</h1>' % html.escape(title),
+        subtitle=('<div class="subtitle">%s</div>' % html.escape(fm["subtitle"])) if fm.get("subtitle") else "",
+        motto=('<div class="motto">%s</div>' % html.escape(fm["motto"])) if fm.get("motto") else "",
+        cast=cast, body=md_to_html(body))
+    write(abspath, out)
+
 # ===========================================================================
 # apply to all Volume-1 pages
 # ===========================================================================
@@ -468,6 +546,10 @@ for relpath, meta in pages.items():
         # Volumes 2-6 hubs are regenerated separately as stubs
         continue
     if meta["type"] == "story":
+        if meta.get("md"):
+            render_md_story(relpath, meta)
+            report["retemplated"].append(relpath)
+            continue
         res = retemplate_story(relpath, meta)
         if res == "ok":
             report["retemplated"].append(relpath)
