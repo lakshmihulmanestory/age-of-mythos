@@ -104,7 +104,14 @@
       "Bash(sed -n '1,16p' content/volume-1-maha-parva/chapter-1-rise-of-legends/bharatavarsha/regions/south/parashurama-kshetra/stories/the-109th-form/story.md)",
       "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --disable-gpu --allow-file-access-from-files --virtual-time-budget=4000 --dump-dom file://__TRACKED_VAR__/content/volume-1-maha-parva/chapter-1-rise-of-legends/bharatavarsha/regions/south/vijayanagara-reborn/stories/buried-temple.html)",
       "Bash(chmod +x \"Rebuild Website.command\")",
-      "Bash(git commit -q -m 'Stage C: non-technical UX, orphan triage, dedup, world section *)"
+      "Bash(git commit -q -m 'Stage C: non-technical UX, orphan triage, dedup, world section *)",
+      "Bash(say -v Samantha -r 175 -f story-text/chapter-2-civil-war__dandakaranya.txt -o audio/story-text/__test_dandakaranya.m4a --file-format=m4af --data-format=aac)",
+      "Bash(afinfo audio/story-text/__test_dandakaranya.m4a)",
+      "Bash(command -v node deno bun npx)",
+      "Bash(echo \"rc=$?\")",
+      "Read(//Applications/**)",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless --disable-gpu --no-sandbox --virtual-time-budget=4000 --dump-dom file://__TRACKED_VAR__/__TRACKED_VAR__)",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless --disable-gpu --no-sandbox --virtual-time-budget=4500 --window-size=1600,1000 --screenshot=/tmp/conn.png file://__TRACKED_VAR__/__TRACKED_VAR__)"
     ],
     "additionalDirectories": [
       "/Users/smk/repos/MahaHulmane/images",
