@@ -140,11 +140,13 @@ def discover_stories(root: Path) -> list[Path]:
     """All readable story pages across the volume's chapter layouts.
 
     * Chapters 2-3 : <kingdom>/story.html
-    * Chapter 1    : <kingdom>/stories/*.html
+    * Chapter 1    : <kingdom>/stories/*.html  and  <kingdom>/stories/<slug>/index.html
     * Chapter 4    : set-piece section pages (maha-adhipati, maw, ...), but NOT
                      the chapter-root index.html, which is just a nav/landing page.
     """
-    found = set(root.rglob("story.html")) | set(root.rglob("stories/*.html"))
+    found = (set(root.rglob("story.html"))
+             | set(root.rglob("stories/*.html"))
+             | set(root.rglob("stories/*/index.html")))
     for ch in root.rglob("chapter-*"):
         if ch.is_dir() and not any(ch.rglob("story.html")) \
                 and not any(ch.rglob("stories/*.html")):
@@ -158,8 +160,10 @@ def derive_name(html_path: Path, root: Path) -> str:
     parent = rel.parent.name
     if html_path.name == "story.html":
         label = parent
-    elif parent == "stories":
+    elif parent == "stories":           # flat: stories/buried-temple.html
         label = f"{rel.parent.parent.name}__{rel.stem}"
+    elif rel.parent.parent.name == "stories":   # nested: stories/<slug>/index.html
+        label = f"{rel.parent.parent.parent.name}__{rel.parent.name}"
     elif rel.stem == "index":          # section page, e.g. maha-adhipati/index.html
         label = parent
     else:                               # e.g. bharatavarsha/maw.html
