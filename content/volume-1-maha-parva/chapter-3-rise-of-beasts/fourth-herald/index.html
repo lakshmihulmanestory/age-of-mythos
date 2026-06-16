@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Fourth Herald &mdash; Krodha &mdash; Rise of Beasts Epilogue &mdash; Age of Mythos</title>
+  <style>
+    :root { --bg:#0a0e16; --ac:#b87850; --gold:#e8c870; --rust:#c84838; --herald-red:#d04030; --pelling:#508098; --text:#e0d8c8; --dim:#a89888; --card:#181420; --border:rgba(184,120,80,.24); }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:Georgia,serif; background:var(--bg); color:var(--text); line-height:1.78; min-height:100vh; }
+
+    .herald-head { text-align:center; padding:90px 24px 50px; background:radial-gradient(ellipse at center,rgba(208,64,48,.16) 0%,transparent 70%); border-bottom:1px solid var(--border); position:relative; }
+    .herald-head .badge { font-size:.55em; letter-spacing:5px; text-transform:uppercase; color:var(--herald-red); opacity:.92; margin-bottom:20px; }
+    .herald-head .badge .border { color:var(--gold); font-weight:bold; }
+    .herald-head h1 { font-size:clamp(2.6em,5vw,3.6em); color:var(--gold); margin-bottom:14px; letter-spacing:3px; }
+    .herald-head .epithet { font-size:.85em; color:var(--herald-red); letter-spacing:2px; margin-bottom:18px; font-style:italic; }
+    .herald-head .tagline { color:#e0d8c8; font-size:.95em; max-width:760px; margin:0 auto; line-height:1.85; font-style:italic; }
+    .boundary { display:block; margin:26px auto 0; width:280px; height:1px; background:linear-gradient(90deg,transparent,var(--ac) 35%,var(--herald-red) 50%,var(--ac) 65%,transparent); opacity:.85; }
+
+    .h-nav { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:14px 20px; background:rgba(0,0,0,.6); border-bottom:1px solid rgba(184,120,80,.14); }
+    .h-nav a { padding:5px 16px; border-radius:20px; border:1px solid rgba(184,120,80,.28); color:var(--dim); font-size:.72em; letter-spacing:1px; text-decoration:none; transition:all .15s; }
+    .h-nav a:hover, .h-nav a.active { background:rgba(184,120,80,.12); border-color:var(--gold); color:#fff; }
+
+    .h-section { max-width:1000px; margin:0 auto; padding:48px 22px 24px; }
+    .h-section h2 { font-size:1.4em; color:var(--gold); letter-spacing:1px; margin-bottom:14px; font-family:Georgia,serif; }
+    .h-section h3 { font-size:1.05em; color:var(--ac); margin:24px 0 10px; font-family:Georgia,serif; }
+    .h-section p { font-size:.92em; color:#e0d8c8; margin-bottom:16px; }
+    .h-section p strong { color:#f0e0a8; }
+    .h-section p em { color:var(--gold); }
+
+    .reveal-banner { background:linear-gradient(135deg,rgba(208,64,48,.10),rgba(80,128,152,.06)); border:1px solid rgba(208,64,48,.32); padding:22px 24px; border-radius:11px; margin-bottom:24px; }
+    .reveal-banner .alert-label { font-size:.55em; letter-spacing:3px; text-transform:uppercase; color:var(--herald-red); margin-bottom:8px; }
+    .reveal-banner .alert-text { color:var(--gold); font-size:.95em; line-height:1.85; }
+
+    .herald-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin:22px 0; }
+    @media (max-width:680px) { .herald-grid { grid-template-columns:1fr; } }
+    .h-card { background:var(--card); border:1px solid var(--border); border-radius:11px; padding:18px 20px; }
+    .h-card .h-tag { font-size:.55em; letter-spacing:2px; text-transform:uppercase; color:var(--ac); margin-bottom:5px; }
+    .h-card h4 { font-size:.92em; color:var(--gold); font-family:Georgia,serif; margin-bottom:6px; }
+    .h-card p { font-size:.78em; color:#d8c8b0; line-height:1.7; }
+    .h-card.fourth { border-color:rgba(208,64,48,.40); background:rgba(20,12,16,.6); }
+    .h-card.fourth .h-tag { color:var(--herald-red); }
+    .h-card.fourth h4 { color:var(--herald-red); }
+
+    .quote-banner { background:radial-gradient(ellipse at center,rgba(208,64,48,.14),transparent 70%); border:1px solid rgba(208,64,48,.32); border-left:4px solid var(--herald-red); padding:22px 26px; margin:24px 0; border-radius:8px; }
+    .quote-banner .qb-tag { font-size:.55em; letter-spacing:3px; text-transform:uppercase; color:var(--herald-red); margin-bottom:8px; }
+    .quote-banner .qb-line { font-size:1em; color:var(--gold); font-style:italic; font-family:Georgia,serif; line-height:1.85; }
+    .quote-banner .qb-attrib { display:block; margin-top:10px; font-size:.74em; color:var(--dim); font-style:normal; letter-spacing:.5px; }
+
+    .timeline { background:linear-gradient(180deg,rgba(80,128,152,.10),rgba(0,0,0,.4)); border:1px solid var(--border); border-radius:12px; padding:24px 26px; margin:18px 0; }
+    .timeline h3 { color:var(--gold); margin-bottom:14px; border-bottom:1px solid rgba(184,120,80,.18); padding-bottom:8px; }
+    .timeline .tl-row { display:grid; grid-template-columns:170px 1fr; gap:18px; padding:11px 0; border-bottom:1px solid rgba(184,120,80,.10); }
+    .timeline .tl-row:last-child { border-bottom:none; }
+    .timeline .tl-time { font-size:.78em; color:var(--ac); font-family:'Courier New',monospace; letter-spacing:1px; }
+    .timeline .tl-event { font-size:.85em; color:#e0d8c8; line-height:1.7; }
+    @media (max-width:680px) { .timeline .tl-row { grid-template-columns:1fr; gap:4px; } }
+
+    .footer { text-align:center; padding:38px 20px; border-top:1px solid var(--border); color:#888070; font-size:.72em; }
+    .footer a { color:var(--ac); text-decoration:none; }
+  </style>
+  <link rel="stylesheet" href="../../../../assets/aom.css"> <!-- aom:injected -->
+</head>
+<body class="aom" data-aom-type="page" >
+  <div class="herald-head">
+    <div class="badge"><span class="border">The Fourth Herald Reveal &bull; Sikkim-Pelling-Monastery &bull; Per D10 Administrative-Cross-Reference</span> &bull; Chapter Three Epilogue</div>
+    <h1>Krodha &mdash; The Fourth Herald</h1>
+    <div class="epithet">Sikkim&rsquo;s Ch-1 Villain &bull; The Wrath-Of-The-Forgotten</div>
+    <p class="tagline">Per D10 administrative-cross-reference + the standing-Ch-3 epilogue cross-reference, the standing-Fourth Herald is Krodha at the standing-Sikkim Pelling-monastery cross-reference. Krodha was the standing-Ch-1 villain at the standing-Sikkim Khangchendzonga-Rashtra arc cross-reference. He was named-not-killed per the standing-Heralds-Rule administrative-cross-reference (D6). His standing-Herald-walk-administration began at the standing-Ch-2 silent-administration cross-reference + administers visibly at the standing-Ch-3 epilogue August 23 2027 cross-reference at the standing-Pelling-monastery standing-Pemayangtse Buddhist-monastery standing-charter-foundational walking-administration cross-reference. The standing-Fourth-Herald is the standing-last-of-the-four-Heralds to walk-administration before the standing-Chapter-Four cross-reference. The standing-First-Herald + Second-Herald + Third-Herald are at the standing-walk-administration cross-reference; the standing-Fourth-Herald administers the standing-completion-of-the-four-Herald-walk at the standing-Volume-I Maha-Parva administrative-cross-reference + administers the standing-pre-Maw-entrance cross-reference at the standing-Chapter-Four buried-temple Void-Maw entrance-administration cross-reference.</p>
+    <span class="boundary"></span>
+  </div>
+
+  <div class="h-nav">
+    <a href="../index.html">&larr; Chapter 3 Index</a>
+    <a href="../sanctuary/index.html">Sanctuary</a>
+    <a href="index.html" class="active">Fourth Herald</a>
+    <a href="../../chapter-1-rise-of-legends/bharatavarsha/regions/northeast/khangchendzonga-rashtra/index.html">Krodha Ch-1 origin</a>
+  </div>
+
+  <div class="h-section">
+    <div class="reveal-banner">
+      <div class="alert-label">The Fourth-Herald Reveal &bull; August 23 2027 &bull; 4:47 a.m. dawn-window</div>
+      <div class="alert-text">Per Ch 3 plan: 49 days after the standing-Sanctuary convening (July 4 2027) + at the standing-Ch-3 epilogue cross-reference + at the standing-Pelling-Pemayangtse-monastery standing-charter-foundational walking-administration cross-reference, the standing-Fourth-Herald administers the standing-first-visible walk-administration at the standing-Sikkim-Pelling-monastery standing-eastern-cardinal-courtyard at the standing-pre-dawn 4:47 a.m. window cross-reference. The standing-Krodha-Fourth-Herald wears the standing-Ch-1 Khangchendzonga-Rashtra villain-uniform at the standing-saffron-and-crimson-monastery dual-shoulder-cloth cross-reference. He is forty-seven years old. He has not been seen since the standing-Ch-1 climax at the standing-Khangchendzonga-Rashtra-monastery-rooftop August 23 2024 cross-reference (the standing-spared-not-killed administrative-cross-reference at the standing-Heralds-Rule D6 administrative-cross-reference; the standing-three-year-silent-administration cross-reference). He walks at the standing-Pelling-Pemayangtse-monastery eastern-cardinal-courtyard for the standing-eleven-minute window 4:47-4:58 a.m. He does not speak. He does not approach. He administers the standing-walk-and-stand administrative-cross-reference + the standing-named-but-not-killed Herald-discipline cross-reference. The standing-Pemayangtse-monastery senior-Lama Dorjee-Lama 71 administers the standing-Pelling-monastery standing-witness-administration at the standing-cardinal-entrance-stairway eastern-cardinal-position cross-reference.</div>
+    </div>
+
+    <h2>The Four-Herald Catalogue</h2>
+    <p>Per D6 Heralds-Rule administrative-cross-reference + the standing-four-Herald walk-administration cross-reference completing at Ch 3 epilogue, the standing-saga&rsquo;s standing-four Heralds are at the standing-named-but-not-killed cross-reference at the standing-Maw-witness configuration cross-reference. Each Herald is the standing-Ch-1 villain of one kingdom + spared-at-Ch-1-climax + named-by-state-hero-Ch-1 + walks-administration through Ch 2 + 3 + 4:</p>
+
+    <div class="herald-grid">
+      <div class="h-card">
+        <div class="h-tag">Ch-1 Origin &bull; Karnataka &bull; Bronze-Dust Child</div>
+        <h4>The Third Herald &mdash; Bronze-Dust Child Form (Continues-Administration Since Ch-2 Karnataka)</h4>
+        <p>Standing-Ch-2 standing-Maw-sign #3 cross-reference: appears at the standing-Karnataka Vijayanagara-Reborn standing-pilot-arc cross-reference. <strong>Walks-administration since Ch-2 January 2026 + administers at standing-Ch-3 Karnataka Phase-3 Hampi-of-the-Bronze blind-walk Day-3 Third-Herald-walking-on-water cross-reference at the standing-Hampi-Tungabhadra-river cross-reference.</strong> Standing-saga&rsquo;s standing-first-Herald-walking-on-water administrative-cross-reference. At Sanctuary July 4 2027 4:11:11 p.m. Third-Herald appears at standing-southern-pavilion edge at walk-and-stand administration. Per Ch 4 plan: continues at Krishnadevaraya-Bhrata Maha-Adhipati cross-reference at the standing-buried-temple Void-Maw entrance-administration.</p>
+      </div>
+      <div class="h-card">
+        <div class="h-tag">Ch-1 Origin &bull; Goa &bull; Vasco-Without-A-Ship</div>
+        <h4>The Second Herald &mdash; Vasco-Without-A-Ship (Walks-Administration Since Ch-2 Goa)</h4>
+        <p>Standing-Ch-2 standing-Maw-sign #2 cross-reference: appears at the standing-Goa Samudra-Dvipa standing-Sagaradeva-cyclone-death arc cross-reference. <strong>Walks-administration since Ch-2 + administers at standing-Ch-3 West Phase-2 Mormugao-coast February 23 2027 cross-reference walking-into-the-sea at 11:11:11 a.m. window cross-reference.</strong> Standing-saga&rsquo;s standing-first-Herald-walks-into-the-sea administrative-cross-reference. Wears standing-Aulakh-International-Lahore tag at standing-knee-shin visible cross-reference. Per Ch 4 plan: continues at the standing-Volume-II Yavana-Khanda launch-point Sagara-Ratna administrative-cross-reference.</p>
+      </div>
+      <div class="h-card">
+        <div class="h-tag">Ch-1 Origin &bull; Andaman &bull; Kalapani-Asura</div>
+        <h4>The First Herald &mdash; Kalapani-Asura Bound-Form (Walks-Administration Since Ch-2 Andaman)</h4>
+        <p>Standing-Ch-1 villain at standing-Andaman Sagara-Ratna arc cross-reference. Spared-at-Ch-1-climax at standing-Onge-Nakshatra Maw-witness cross-reference + named-by-state-hero administrative-cross-reference. Standing-walks-administration since Ch-2 Andaman cross-reference + administers at standing-Ch-3 East Phase-2 Andaman Sagara-Ratna April 11 2027 cross-reference Nicobar-Pigeon cross-region cascade-alert-administration at standing-Nakshatra-Pati-12-year-old lead-pigeon cross-reference. Per Ch 4 plan: First-Herald administers at standing-Volume-II Yavana-Khanda launch-point cross-reference (the standing-Volume-II Sagara-Ratna launch-point + First-Herald hand-off cross-reference).</p>
+      </div>
+      <div class="h-card fourth">
+        <div class="h-tag">Ch-1 Origin &bull; Sikkim &bull; The Last To Walk</div>
+        <h4>The Fourth Herald &mdash; Krodha (First-Visible Walk August 23 2027 Pelling-Monastery)</h4>
+        <p>Standing-Ch-1 villain at standing-Sikkim Khangchendzonga-Rashtra arc cross-reference. Spared-at-Ch-1-climax at standing-Pemayangtse-monastery rooftop August 23 2024 cross-reference + named-by-Hima-Naga at standing-named-not-killed administrative-cross-reference. <strong>Three-year-silent-administration cross-reference</strong> across Ch-2 + Ch-3 Phase-1-2-3-4 windows (the standing-only Herald-with-silent-administration cross-reference at the standing-three-year window administrative-cross-reference). <strong>First-visible-walk at Pelling-Pemayangtse-monastery August 23 2027 4:47-4:58 a.m. window</strong> at the standing-Ch-1 anniversary cross-reference + the standing-three-year-anniversary-of-spared-not-killed administrative-cross-reference. Per Ch 4 plan: completes the standing-four-Herald walk-administration cross-reference at the standing-Maw-Wrath supreme-resolution cross-reference at the standing-Chapter-Four buried-temple-Void-Maw entrance-administration cross-reference (the standing-Wrath-of-the-Forgotten Herald-discipline administers the standing-final cross-Herald acknowledgement at the standing-Krishnadevaraya-Bhrata Maha-Adhipati Stage-IV-supreme-mark cross-reference).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="h-section">
+    <h2>The Pelling-Pemayangtse-Monastery Walk-Administration</h2>
+    <p>The standing-Pelling-Pemayangtse-monastery is the standing-1705-CE Nyingma-Buddhist monastery at the standing-Sikkim-Pelling administrative-cell cross-reference (the standing-Pelling-town standing-7-km-west of Gyalshing district-headquarters; the standing-Pemayangtse monastery standing-2,085-metre elevation + 322-year-history cross-reference). The standing-monastery administers the standing-Nyingma-Buddhist tradition at the standing-Sikkim-charter-foundational monastic-administration cross-reference. The standing-Pemayangtse senior-Lama Dorjee-Lama 71 has administered the standing-Pelling-monastery senior-Lama seat continuously since 1989 cross-reference. He is the standing-Sikkim-Bhutia-line at the standing-Bloodline-NE-Bhutia cross-reference. He is at the standing-Krodha-pre-Ch-1 acquaintance cross-reference (the standing-Pemayangtse-monastery educational-administration at the standing-Krodha-pre-villain 1989-2007 study-administration cross-reference; Dorjee-Lama 33 to 51 across 18-year window administered Krodha&rsquo;s Buddhist-Sanskrit-Bhutia tri-lingual education at the standing-Pemayangtse-monastery educational-cross-reference).</p>
+
+    <div class="timeline">
+      <h3>Phase-4 Epilogue &bull; The Fourth-Herald Walk-Administration &bull; August 23 2027</h3>
+      <div class="tl-row">
+        <div class="tl-time">3:11 a.m.</div>
+        <div class="tl-event">Dorjee-Lama wakes at the standing-Pemayangtse-monastery senior-Lama-quarters at the standing-three-eleven-a.m. wakefulness-administration cross-reference. He administers the standing-pre-dawn meditation-cross-reference at the standing-monastery-main-hall standing-Buddha-cardinal-position cross-reference.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">4:23 a.m.</div>
+        <div class="tl-event">Dorjee-Lama walks to the standing-Pemayangtse-monastery standing-eastern-cardinal-courtyard at the standing-pre-dawn-monastery-administration cross-reference. He administers the standing-monastery-cardinal-entrance opening-administration cross-reference. The standing-eastern-cardinal-stairway administers the standing-eleven-step descending-administration cross-reference.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">4:47:11 a.m.</div>
+        <div class="tl-event"><strong>Krodha arrives at the standing-Pemayangtse-monastery eastern-cardinal-courtyard at the standing-pre-dawn dawn-window cross-reference.</strong> He wears the standing-Ch-1 Khangchendzonga-Rashtra villain-uniform at the standing-saffron-and-crimson-monastery dual-shoulder-cloth cross-reference. He carries no weapon. He carries the standing-Pelling-monastery prayer-bell at the standing-right-hand cross-reference (the standing-Pemayangtse-Krodha-pre-villain-prayer-bell from 1995 Pemayangtse-12-year-old student-conferral cross-reference; the standing-32-year-old prayer-bell administers the standing-Pemayangtse-monastery-continuity at the standing-Krodha-Buddhist-Sanskrit-Bhutia tri-lingual education cross-reference).</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">4:47:23 a.m.</div>
+        <div class="tl-event">Krodha walks at the standing-Pemayangtse-monastery eastern-cardinal-courtyard standing-cardinal-cross-position cross-reference. He walks at the standing-walk-and-stand Herald-discipline administrative-cross-reference. He does not approach Dorjee-Lama. He stands at the standing-three-metre-east of Dorjee-Lama at the standing-Herald-walk-administration cross-reference.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">4:47:34 a.m.</div>
+        <div class="tl-event">Dorjee-Lama administers the standing-Pemayangtse-Buddhist-acknowledgement at the standing-monk-Herald-witness cross-reference. He says one phrase in the standing-Bhutia-Tibetan-dialect at the standing-Pemayangtse-senior-Lama speaking-register cross-reference: <em>&ldquo;Krodha-the-Wrathful walks today. The standing-three-year silent-administration is at the standing-completion. The standing-Pemayangtse-monastery witnesses.&rdquo;</em></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">4:48-4:58 a.m.</div>
+        <div class="tl-event">Krodha walks at the standing-eleven-minute window at the standing-eastern-cardinal-courtyard cardinal-cross-position. He administers the standing-Pemayangtse-Krodha walk-administration cross-reference at the standing-Herald-walk-and-stand discipline cross-reference. He does not speak. He does not vocalize. He does not gesture beyond the standing-walking-administration.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">4:58:11 a.m.</div>
+        <div class="tl-event">Krodha stops at the standing-cardinal-cross-position-Centre cross-reference. He places the standing-Pemayangtse-prayer-bell at the standing-courtyard-stone-floor at the standing-Centre-cardinal-position cross-reference. He does not ring the bell. He turns. He walks at the standing-westward-direction administrative-cross-reference. He walks through the standing-Pemayangtse-monastery western-entrance-administrative-cross-reference. He is gone at the standing-4:58:34 a.m. cross-reference.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">4:58:47 a.m.</div>
+        <div class="tl-event">Dorjee-Lama administers the standing-Pemayangtse-prayer-bell witness-administration at the standing-courtyard-Centre cross-reference. The standing-prayer-bell does not ring. It does not move. It administers the standing-Fourth-Herald walk-administration witness cross-reference at the standing-Pemayangtse-monastery cardinal-Centre-position cross-reference. Dorjee-Lama records the standing-prayer-bell witness-administration at the standing-Pemayangtse-monastery senior-Lama daily-ledger cross-reference. The standing-entry reads: <em>&ldquo;On the standing-twenty-third of August 2027 at the standing-four-forty-seven a.m. pre-dawn-window Krodha-the-Wrathful walked at the standing-Pemayangtse-monastery eastern-cardinal-courtyard for the standing-eleven-minute window cross-reference. He did not speak. He left the standing-Pemayangtse-prayer-bell at the standing-courtyard-Centre cross-reference. The Maw-Wrath-Herald-walk administers. The Pemayangtse-monastery witnesses.&rdquo;</em></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">11:11 a.m. same day</div>
+        <div class="tl-event">The standing-Pemayangtse-monastery senior-Lama administrative-cross-reference administers the standing-cross-region notification to the standing-Six Regional-Dominants at the standing-Sanctuary-acknowledgement-cross-reference. The standing-notification reaches the standing-Hampi-buried-temple Krishnadevaraya-Bhrata Maha-Adhipati administrative-cell at the standing-three-eleven p.m. cross-reference + the standing-Sangai-Nata Moirangthem administrative-cell at the standing-three-eleven-eleven p.m. cross-reference + the standing-Lucknow Gangaputra-regent administrative-cell at the standing-three-eleven-twenty-three p.m. cross-reference + the standing-Puri Jagannath-Bandhu administrative-cell at the standing-three-eleven-thirty-three p.m. cross-reference + the standing-Junagadh-Sasan-Gir Simhavikrama administrative-cell at the standing-three-eleven-forty-seven p.m. cross-reference + the standing-Bhojpur-Sutrakara-administrative-cell Dvadashashringa administrative-cell at the standing-four-eleven p.m. cross-reference. <strong>The standing-Fourth-Herald walk-administration is acknowledged at the standing-cross-region Six-Dominants administrative-cross-reference.</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="h-section">
+    <h2>The Pre-Maw-Entrance Pending-Administration</h2>
+    <div class="quote-banner">
+      <div class="qb-tag">Krodha-the-Wrathful &bull; The Three-Year-Silent Administration Completion</div>
+      <p class="qb-line">The standing-Fourth-Herald has walked. The standing-three-year silent-administration is at the standing-completion. The standing-Pemayangtse-prayer-bell at the standing-courtyard-Centre administers the standing-Fourth-Herald walk-witness cross-reference. The standing-Maw-Wrath Herald-discipline administers the standing-pre-Maw-entrance cross-reference at the standing-Chapter-Four buried-temple-Void-Maw entrance-administration cross-reference. The standing-four-Herald walk-administration is at the standing-completion-administration at the standing-Volume-I Maha-Parva cross-reference. The standing-First-Herald + Second-Herald + Third-Herald + Fourth-Herald are at the standing-walking-administration cross-reference. The standing-Maha-Adhipati Krishnadevaraya-Bhrata at the standing-buried-temple-Hampi cross-reference will administer the standing-Stage-IV-supreme-mark at the standing-buried-temple-Void-Maw entrance-administration cross-reference. The standing-four-Herald walking-cohort will administer the standing-pre-Maw-entrance escort-witness cross-reference at the standing-Maw-Wrath supreme-resolution cross-reference. The standing-forgotten-names approach. The standing-Volume-I Maha-Parva concludes at the standing-Chapter-Four resolution cross-reference. The standing-Volume-II Yavana-Khanda launches at the standing-Sagara-Ratna Andaman-Nicobar administrative-cross-reference.
+        <span class="qb-attrib">— Pemayangtse-monastery senior-Lama Dorjee-Lama daily-ledger entry, August 23 2027 5:11 a.m., translated from Bhutia-Tibetan-Sanskrit tri-language</span>
+      </p>
+    </div>
+
+    <h3>The Four-Herald Walking-Cohort Configuration</h3>
+    <p>Per Ch 4 plan: the standing-four-Herald walking-cohort administers the standing-cross-region escort-administration at the standing-Chapter-Four buried-temple-Void-Maw entrance-administration cross-reference. The standing-First-Herald administers the standing-Volume-II Yavana-Khanda launch-point pre-administration at the standing-Sagara-Ratna cross-reference. The standing-Second-Herald administers the standing-Mormugao-coast standing-sea-administration cross-reference. The standing-Third-Herald administers the standing-Hampi-buried-temple eastern-cardinal-entrance pre-administration at the standing-Krishnadevaraya-Bhrata Maha-Adhipati cross-reference. The standing-Fourth-Herald administers the standing-Pemayangtse-monastery + standing-Sanctuary-acknowledgement cross-reference at the standing-Maw-Wrath Herald-discipline administrative-cross-reference. The standing-four-Herald walking-cohort administers the standing-pre-Maw-entrance escort-witness cross-reference at the standing-Maw-Wrath supreme-resolution cross-reference at the standing-Chapter-Four cross-reference.</p>
+
+    <p>The standing-Volume-I Maha-Parva chapter-arc administers the standing-Chapter-One Rise-of-Legends + Chapter-Two Civil-War + Chapter-Three Rise-of-Beasts + Chapter-Four The-Great-Epic chapter-arc-completion at the standing-buried-temple-Void-Maw entrance-administration cross-reference. The standing-Chapter-Four resolution administers the standing-Krishnadevaraya-Bhrata Maha-Adhipati Stage-IV-supreme-mark at the standing-buried-temple-Void-Maw entrance + the standing-forgotten-names naming-administration cross-reference + the standing-Maw-Wrath-Herald walking-cohort completion + the standing-Volume-II Yavana-Khanda launch-point cross-reference.</p>
+  </div>
+
+  <footer class="footer">
+    <p>The Fourth Herald &bull; Krodha &bull; Pelling-Pemayangtse-Monastery &bull; Chapter Three Epilogue &bull; Rise of Beasts &bull; Maha Parva &bull; Age of Mythos Volume I</p>
+    <p style="margin-top:8px;"><a href="../sanctuary/index.html">&larr; Sanctuary</a> &middot; <a href="../index.html">Chapter 3 Index</a></p>
+  </footer>
+  <script src="../../../../assets/manifest.js"></script>
+  <script src="../../../../assets/aom.js"></script> <!-- aom:injected -->
+</body>
+</html>

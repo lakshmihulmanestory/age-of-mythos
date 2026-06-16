@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Story &mdash; Age of Mythos Volume I</title>
+  <link rel="stylesheet" href="../../../../css/style.css">
+  <style>
+    .breadcrumb { padding:70px 20px 0; max-width:1200px; margin:0 auto; }
+    .breadcrumb a { color:var(--gold-dim); text-decoration:none; font-size:.8rem; }
+    .breadcrumb a:hover { color:var(--gold); }
+    .breadcrumb span { color:var(--text-dim); font-size:.8rem; margin:0 6px; }
+    .breadcrumb .current { color:var(--gold); font-weight:bold; }
+    .kingdom-banner { text-align:center; padding:30px 20px 50px; }
+    .kingdom-banner h1 { font-size:2.5rem; margin-bottom:5px; }
+    .kingdom-banner .state-name-top { color:var(--text); font-size:1.1rem; margin-bottom:8px; }
+    .kingdom-banner .motto-top { color:var(--text-dim); font-style:italic; font-size:1rem; max-width:600px; margin:0 auto; }
+    .content-area { max-width:1100px; margin:0 auto; padding:0 20px 60px; }
+    .creatures-panel { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:40px; }
+    @media(max-width:600px) { .creatures-panel { grid-template-columns:1fr; } }
+    .creature-box { padding:20px; border-radius:10px; background:rgba(0,0,0,.25); border:1px solid var(--border-dim); }
+    .creature-box .c-label { font-size:.65rem; text-transform:uppercase; letter-spacing:2px; color:var(--text-dim); margin-bottom:4px; }
+    .creature-box .c-name { color:var(--gold); font-size:1.2rem; font-weight:bold; margin-bottom:4px; }
+    .creature-box .c-symbol { color:var(--text); font-style:italic; font-size:.85rem; line-height:1.5; }
+    .section-title-bar { display:flex; align-items:center; gap:12px; margin:40px 0 20px; }
+    .section-title-bar h2 { font-size:1.4rem; margin:0; white-space:nowrap; }
+    .section-title-bar::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,var(--border-dim),transparent); }
+    .profile-full { padding:25px; border-radius:12px; margin-bottom:25px; }
+    .profile-full.hero-p { background:linear-gradient(135deg,rgba(0,60,0,.15),rgba(0,30,0,.08)); border:1px solid rgba(68,255,136,.2); }
+    .profile-full.villain-p { background:linear-gradient(135deg,rgba(60,0,0,.15),rgba(30,0,0,.08)); border:1px solid rgba(255,68,68,.2); }
+    .p-tag { display:inline-block; padding:3px 14px; border-radius:12px; font-size:.65rem; text-transform:uppercase; letter-spacing:2px; font-weight:bold; margin-bottom:12px; }
+    .hero-p .p-tag { background:#44ff88; color:#000; }
+    .villain-p .p-tag { background:#ff4444; color:#fff; }
+    .profile-full h3 { margin:0 0 2px; font-size:1.5rem; }
+    .hero-p h3 { color:#44ff88; }
+    .villain-p h3 { color:#ff4444; }
+    .p-title { color:var(--text-dim); font-style:italic; font-size:.9rem; margin-bottom:15px; }
+    .p-desc { color:var(--text); font-size:.92rem; line-height:1.8; margin-bottom:15px; }
+    .p-detail { font-size:.88rem; line-height:1.6; margin:6px 0; }
+    .p-detail .dl { font-weight:bold; min-width:100px; display:inline-block; }
+    .hero-p .dl { color:rgba(68,255,136,.7); }
+    .villain-p .dl { color:rgba(255,100,100,.7); }
+    .p-detail .dv { color:var(--text); }
+    .battle-cry-full { margin-top:15px; padding:12px 18px; font-style:italic; font-size:.95rem; border-radius:6px; }
+    .hero-p .battle-cry-full { color:#44ff88; background:rgba(68,255,136,.06); border-left:3px solid rgba(68,255,136,.3); }
+    .villain-p .battle-cry-full { color:#ff6666; background:rgba(255,68,68,.06); border-left:3px solid rgba(255,68,68,.3); }
+    .guru-panel { background:linear-gradient(135deg,rgba(170,102,255,.1),rgba(100,50,200,.05)); border:1px solid rgba(170,102,255,.2); border-radius:12px; padding:25px; margin-bottom:25px; }
+    .guru-panel h3 { color:#aa66ff; margin:0 0 2px; font-size:1.3rem; }
+    .g-title { color:var(--text-dim); font-style:italic; font-size:.9rem; margin-bottom:12px; }
+    .g-desc { color:var(--text); font-size:.92rem; line-height:1.8; margin-bottom:15px; }
+    .g-wisdom { color:#cc99ff; font-style:italic; font-size:1rem; padding:14px 20px; background:rgba(170,102,255,.08); border-left:3px solid #aa66ff; border-radius:0 6px 6px 0; line-height:1.7; }
+    .warriors-grid-full { display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:15px; margin-bottom:30px; }
+    .w-card { padding:16px; border-radius:10px; background:rgba(0,0,0,.2); border:1px solid var(--border-dim); }
+    .w-card[data-loyalty="hero"]    { border-left:3px solid #44ff88; }
+    .w-card[data-loyalty="villain"] { border-left:3px solid #ff4444; }
+    .w-card[data-loyalty="neutral"] { border-left:3px solid #ffaa00; }
+    .w-card .wn { color:var(--gold); font-weight:bold; font-size:.95rem; }
+    .w-card .wt { color:var(--text-dim); font-style:italic; font-size:.8rem; margin-bottom:6px; }
+    .w-card .ws { color:var(--text); font-size:.85rem; line-height:1.5; }
+    .w-card .wl { display:inline-block; margin-top:8px; padding:2px 10px; border-radius:10px; font-size:.65rem; text-transform:uppercase; letter-spacing:1px; }
+    .w-card[data-loyalty="hero"]    .wl { background:rgba(68,255,136,.15); color:#44ff88; }
+    .w-card[data-loyalty="villain"] .wl { background:rgba(255,68,68,.15);  color:#ff4444; }
+    .w-card[data-loyalty="neutral"] .wl { background:rgba(255,170,0,.15);  color:#ffaa00; }
+    .saga-full .saga-title { color:var(--gold); font-size:1.6rem; margin-bottom:20px; text-align:center; }
+    .saga-full .saga-body  { color:var(--text); font-size:.95rem; line-height:2; white-space:pre-line; text-align:justify; }
+    .saga-full .saga-body::first-letter { font-size:3rem; color:var(--gold); float:left; line-height:1; margin-right:8px; margin-top:4px; }
+    .k-sibling-nav { margin-top:50px; padding-top:30px; border-top:1px solid var(--border-dim); text-align:center; }
+    .k-sibling-nav h3 { color:var(--gold-dim); font-size:1rem; margin-bottom:15px; }
+    .sibling-links { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-bottom:24px; }
+    .sibling-links a { padding:8px 18px; border:1px solid var(--border-dim); border-radius:20px; color:var(--text-dim); text-decoration:none; font-size:.85rem; transition:all .2s; }
+    .sibling-links a:hover, .sibling-links a.current { border-color:var(--gold); color:var(--gold); background:rgba(255,215,0,.06); }
+    .sibling-links a.current { pointer-events:none; }
+    .back-links { display:flex; justify-content:center; gap:15px; flex-wrap:wrap; }
+    .back-links a { padding:10px 24px; border:1px solid var(--gold-dim); border-radius:20px; color:var(--gold); text-decoration:none; font-size:.9rem; transition:all .2s; }
+    .back-links a:hover { background:rgba(255,215,0,.1); }
+    .vs-divider { display:flex; align-items:center; justify-content:center; gap:15px; margin:30px 0; }
+    .vs-divider::before, .vs-divider::after { content:""; flex:1; height:1px; background:linear-gradient(90deg,transparent,rgba(255,68,68,.3),transparent); }
+    .vs-circle { width:56px; height:56px; border-radius:50%; background:radial-gradient(circle,#ff4444,#660000); display:flex; align-items:center; justify-content:center; font-weight:bold; color:#fff; font-size:1rem; box-shadow:0 0 25px rgba(255,68,68,.3); }
+    .portrait-pair { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:24px; }
+    .portrait-pair img { width:100%; border-radius:10px; display:block; }
+    .insp-grid { display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-bottom:30px; }
+    .insp-card { padding:15px; border-radius:8px; background:rgba(0,0,0,.2); }
+    .img-gallery { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px; margin-bottom:24px; }
+    .img-gallery img { width:100%; border-radius:8px; border:1px solid var(--border-dim); display:block; }
+  </style>
+  <link rel="stylesheet" href="../../../../../../../assets/aom.css"> <!-- aom:injected -->
+</head>
+<body class="aom" data-aom-type="kingdom-sub" >
+  <!-- aom:listen --><div class="reader-media"><div class="reader-langtoggle" role="tablist" aria-label="Language"><button type="button" class="active" data-lang="en">English</button><button type="button" data-lang="kn">ಕನ್ನಡ</button></div><div class="reader-audio" data-lang="en"><span class="reader-audio-label">Listen — English</span><audio controls preload="none" src="../../../../../../../audio/chapter-1-rise-of-legends__ganda-kshetra__rhino-knight.m4a"></audio></div><div class="reader-audio" data-lang="kn" hidden><span class="reader-audio-label">ಆಲಿಸಿ — ಕನ್ನಡ</span><audio controls preload="none" src="../../../../../../../audio/kannada/chapter-1-rise-of-legends__ganda-kshetra__rhino-knight.kn.mp3"></audio></div><div class="reader-lang" data-lang="kn" lang="kn" hidden><p>ಇದು ಒಬ್ಬ ತಾಯಿ ಮತ್ತು ಅವಳ ಮಗಳ ಕಥೆ — ತನ್ನ ಮಗಳ ಭುಜದ ಮೇಲಿನ ಗುರುತನ್ನು ಕಂಡು, ಎಲ್ಲರೂ ಹೆದರಿದ ಕೊಲ್ಲಲಾಗದ ಮೃಗದ ಬಳಿಗೆ ಅವಳನ್ನು ಹೊತ್ತೊಯ್ದ ತಾಯಿ ಪದ್ಮಾವತಿ, ಮತ್ತು ಆ ಮೃಗದೊಂದಿಗೆ ಒಂದು ಜೀವಮಾನದ ಬಂಧ ಕಟ್ಟಿಕೊಂಡ ಮಗಳು ಕಮಲವರ್ಣಳ ಕಥೆ.</p>
+<p>ಅಸ್ಸಾಂ — ಈಶಾನ್ಯ ರಾಜ್ಯ. ಕಾಜಿರಂಗದ ಘೇಂಡಾಮೃಗ ವೀರೆ. ಪವಿತ್ರ ಪ್ರಾಣಿ: ಭಾರತೀಯ ಒಂದು-ಕೊಂಬಿನ ಘೇಂಡಾಮೃಗ. ಸಂಗಾತಿ: ವಜ್ರಕವಚ. ಆಯುಧ: ಕವಚ ಎಂಬ ಗೋಪುರ-ಗುರಾಣಿ ಮತ್ತು ಘೇಂಡಾ-ಕೊಂಬಿನ ಗದೆ.</p>
+<p><strong>ಮೊದಲ ಅಧ್ಯಾಯ — ಚಿನ್ನದ ಹುಲ್ಲು, ಮೂರು ವರ್ಷ.</strong> ಕಾಜಿರಂಗದ ಆನೆ ಹುಲ್ಲು ಬೆಳೆದ ಮನುಷ್ಯನಿಗಿಂತ ಎತ್ತರ ಬೆಳೆಯುತ್ತದೆ. ಮಳೆಗಾಲದ ಆರಂಭದಲ್ಲಿ ಅದು ಹಳೆಯ ಚಿನ್ನದ ಬಣ್ಣಕ್ಕೆ ತಿರುಗುತ್ತದೆ, ಮತ್ತು ಗಾಳಿ ಅದರ ಮೂಲಕ ಚಲಿಸಿದಾಗ ಇಡೀ ಪ್ರವಾಹ ಬಯಲು ಒಂದು ಜೀವಂತ ಸಮುದ್ರದಂತೆ ಅಲೆಯೇಳುತ್ತದೆ. ಬೊಹಾಗ್ ತಿಂಗಳ ಒಂದು ಮುಂಜಾವಿನಲ್ಲಿ ಪದ್ಮಾವತಿ ಕಮಲವರ್ಣ ತನ್ನ ಮೂರು ವರ್ಷದ ಮಗಳನ್ನು ಈ ಚಿನ್ನದ ಸಮುದ್ರದೊಳಗೆ ಹೊತ್ತೊಯ್ದಳು.</p>
+<p>ಹಿರಿಯರು ಅದನ್ನು ನಿಷೇಧಿಸಿದ್ದರು. ವಜ್ರಕವಚ — ಮೂರು ಸಾವಿರ ಕಿಲೋಗ್ರಾಂ ಕವಚಿತ ಆವೇಶದ ಮಹಾ ಗಂಡು ಘೇಂಡಾಮೃಗ — ಆ ಋತುವಿನಲ್ಲಿ ಇಬ್ಬರು ಬೇಟೆಗಾರರನ್ನು ಕೊಂದಿತ್ತು. ಅದು ಪೂರ್ವದ ಜೌಗುಗಳ ನಿರ್ವಿವಾದ ಒಡೆಯ. ವಜ್ರಕವಚದ ಬಳಿಗೆ ಯಾರೂ ಸುಳಿಯುತ್ತಿರಲಿಲ್ಲ. ಯಾರೂ ಇಲ್ಲ. ಆದರೆ ಪದ್ಮಾವತಿ ಆ ಗುರುತನ್ನು ಕಂಡಿದ್ದಳು. ತನ್ನ ಮಗಳ ಬಲ ಭುಜದ ಮೇಲೆ, ದೀಪದ ಬೆಳಕಿನಲ್ಲಿ ಮಂದವಾಗಿ ಹೊಳೆಯುತ್ತಾ, ಒಂದು ಘೇಂಡಾಮೃಗದ ಹೆಜ್ಜೆಗುರುತಿನ ನಿಸ್ಸಂದೇಹ ಮುದ್ರೆ. ಕಮಲವರ್ಣ ಕುಲ ನಾನೂರು ವರ್ಷಗಳಿಂದ ಘೇಂಡಾ ಗುರುತನ್ನು ಹೊತ್ತಿತ್ತು, ಆದರೆ ಅದು ಎಂದೂ ಇಷ್ಟು ಬೇಗ ಕಾಣಿಸಿಕೊಂಡಿರಲಿಲ್ಲ, ಮತ್ತು ಎಂದೂ ತನ್ನದೇ ಮಂದ ನೇರಳೆ ಬೆಳಕಿನಿಂದ ಮಿಡಿದಿರಲಿಲ್ಲ.</p>
+<p>ಆನೆ ಹುಲ್ಲು ಕೆಸರಿನ ಬಯಲಾಗಿ ತೆಳುವಾಗುವ ಜೌಗಿನ ಅಂಚಿನಲ್ಲಿ ಅವರು ಅವನನ್ನು ಕಂಡರು. ಪದ್ಮಾವತಿ ಮಗುವನ್ನು ಇಪ್ಪತ್ತು ಹೆಜ್ಜೆ ದೂರದ ಹುಲ್ಲಿನಲ್ಲಿ ಇಳಿಸಿ ಹಿಂದೆ ಸರಿದಳು, ಮಗಳನ್ನು ಎತ್ತಿಕೊಂಡು ಓಡು ಎಂದು ಪ್ರತಿ ಪ್ರವೃತ್ತಿಯೂ ಕಿರುಚುತ್ತಿರುವಾಗ. ಪುಟ್ಟ ಹುಡುಗಿ ಅಳಲಿಲ್ಲ. ಓಡಲಿಲ್ಲ. ಅವಳು ತೊದಲು ಕಾಲುಗಳ ಮೇಲೆ ಮುಂದೆ ನಡೆದು, ತನ್ನ ಮುಂದಿನ ಬೂದು ಪರ್ವತದೆಡೆಗೆ ತನ್ನ ಪುಟ್ಟ ಕೈಗಳನ್ನು ಚಾಚಿದಳು. ವಜ್ರಕವಚ ತಲೆ ಎತ್ತಿತು. ಅದರ ಎದೆಯಿಂದ ಒಂದು ಮಂದ ಗುಡುಗು ಉರುಳಿತು — ನೆಲದ ಮೂಲಕ ಮಗುವಿನ ಪಾದಗಳ ಮೂಲಕ ಅವಳ ಮೂಳೆಗಳಿಗೆ ಸಾಗಿದ ಸದ್ದು.</p>
+<p>ಅದು ತನ್ನ ಬೃಹತ್ ತಲೆಯನ್ನು ತನ್ನ ಕೊಂಬು ಬಹುತೇಕ ಭೂಮಿಯನ್ನು ಮುಟ್ಟುವವರೆಗೆ ಇಳಿಸಿತು, ಮತ್ತು ಮಗು ತನ್ನ ಎರಡೂ ಪುಟ್ಟ ಕೈಗಳನ್ನು ಅದರ ಮೂತಿಯ ಮೇಲೆ ಇಟ್ಟಳು. ಅದರ ಚರ್ಮ ಬೆಚ್ಚಗೆ, ಬಿಸಿಲಲ್ಲಿ ಕಾದ ಕಲ್ಲಿನಂತೆ ಒರಟಾಗಿತ್ತು. ಮತ್ತು ಅವಳ ಭುಜದ ಗುರುತು ಒಮ್ಮೆ ಪ್ರಜ್ವಲಿಸಿ, ಎಂದೂ ಸಂಪೂರ್ಣ ಮಾಯವಾಗದ ಸ್ಥಿರ ಹೊಳಪಿನಲ್ಲಿ ನೆಲೆಸಿತು. ಬಂಧ ಮೂಡಿತು. ಯಾರಿಂದಲೂ ಆರಿಸಲ್ಪಡದೆ, ಒತ್ತಾಯಿಸಲ್ಪಡದೆ, ಗಳಿಸಲ್ಪಡದೆ. ಬರೀ ಗುರುತಿಸಲ್ಪಟ್ಟು, ನದಿ ಸಮುದ್ರವನ್ನು ಗುರುತಿಸುವಂತೆ. "ಅವಳು ಕೊಲ್ಲಲಾಗದ ವಸ್ತುವನ್ನು ಮುಟ್ಟಿದಳು, ಮತ್ತು ಆ ಕೊಲ್ಲಲಾಗದ ವಸ್ತು ಸೌಮ್ಯವಾಗಿತ್ತು. ಅದು ಮೊದಲ ಪವಾಡ. ನಂತರದ್ದೆಲ್ಲವೂ ಬರೀ ಪರಿಣಾಮ," ಎಂದಳು ತಾಯಿ ಪದ್ಮಾವತಿ.</p>
+<p><strong>ಎರಡನೆಯ ಅಧ್ಯಾಯ — ಹುಲ್ಲುಗಾವಲು, ಆರರಿಂದ ಹನ್ನೆರಡು.</strong> ಅವಳು ಬರಿಗಾಲಲ್ಲಿ ಓಡಿದಳು. ಯಾವಾಗಲೂ ಬರಿಗಾಲಲ್ಲಿ. ಅವಳ ಪಾದಗಳ ಅಡಿ ಗಟ್ಟಿಯಾಯಿತು, ಆದರೆ ಆ ಚರ್ಮದ ಕೆಳಗೆ ಅವಳ ನರಗಳು ಅತಿಸೂಕ್ಷ್ಮವಾಗಿ ಉಳಿದವು. ಇನ್ನೂರು ಮೀಟರ್ ದೂರದಲ್ಲಿ ಕಾಡೆಮ್ಮೆಗಳ ಹಿಂಡು ದಿಕ್ಕು ಬದಲಿಸುವುದನ್ನು ಅವಳು ಅನುಭವಿಸಬಲ್ಲಳು. ಒಂದು ಘೇಂಡಾಮೃಗದ ಮೂರು-ಬೆರಳಿನ ಹೆಜ್ಜೆಯ ವಿಶಿಷ್ಟ ಒತ್ತಡವನ್ನು ಅನುಭವಿಸಿ, ನೋಡದೆಯೇ ಅದು ವಜ್ರಕವಚವೋ ಅಥವಾ ಒಬ್ಬ ಎಳೆಯ ಗಂಡೋ ಎಂದು ತಿಳಿಯಬಲ್ಲಳು. ಭೂಮಿ ಅವಳೊಂದಿಗೆ ಮಾತಾಡಿತು, ಮತ್ತು ಅವಳು ತನ್ನ ಪಾದಗಳಿಂದ ಆಲಿಸಿದಳು.</p>
+<p>ಪ್ರತಿ ಮುಂಜಾವೂ ಸೂರ್ಯ ಕಾರ್ಬಿ ಬೆಟ್ಟಗಳ ಮೇಲೆ ಮೂಡುವ ಮೊದಲು ಅವಳು ಹಿಂಡನ್ನು ಕಂಡುಕೊಂಡಳು. ಅವಳು ಅವುಗಳ ವೇಗವನ್ನು ನಿಖರವಾಗಿ ಹೊಂದಿಸಿದಳು. ಅವು ಉಸಿರಾಡಿದಂತೆ ಉಸಿರಾಡಲು ಕಲಿತಳು — ಎದೆಗಿಂತ ಮೊದಲು ಹೊಟ್ಟೆಯನ್ನು ತುಂಬುವ ಆಳವಾದ, ನಿಧಾನ ಉಸಿರಾಟ. ತರಬೇತಿ ಪ್ರಕೃತಿಯಷ್ಟೇ ಕ್ರೂರವಾಗಿತ್ತು: ದ್ವೇಷವಿಲ್ಲದೆ, ಕರುಣೆಯಿಲ್ಲದೆ. ಮೊದಲ ವರ್ಷ ಅವಳ ಮೂರು ಬೆರಳುಗಳು ಮುರಿದವು. ಆದರೆ ಆ ಮುಂಜಾವುಗಳು. ಬ್ರಹ್ಮಪುತ್ರದಿಂದ ಏಳುವ ಮಂಜು, ಮೊದಲ ಚಿನ್ನವನ್ನು ಹಿಡಿದ ಆನೆ ಹುಲ್ಲು, ಅವಳ ಪಕ್ಕದಲ್ಲಿ ವಜ್ರಕವಚದ ಉಸಿರಾಟ — ಆ ಆಳವಾದ, ಹೃದಯಬಡಿತದಷ್ಟು ಸ್ಥಿರ ಸದ್ದು. ಆ ಕ್ಷಣಗಳಲ್ಲಿ, ತಾನು ಮಾನವ ದೇಹದಲ್ಲಿ ಜನಿಸಿಯೇ ಇಲ್ಲ ಎಂದು ಅವಳಿಗೆ ಅನಿಸುತ್ತಿತ್ತು. ಹದಿಮೂರನೆಯ ವಯಸ್ಸಿಗೆ, ಅವಳು ನಿಲ್ಲದೆ ನಾಲ್ಕು ಗಂಟೆ ಓಡಬಲ್ಲಳು, ಆರು ಗಂಟೆ ಮರಗಟ್ಟಿ ನಿಲ್ಲಬಲ್ಲಳು, ಮತ್ತು ಮುನ್ನೂರು ಮೀಟರ್ ದೂರದ ಮಾನವ ಹೆಜ್ಜೆಯನ್ನು ನೆಲದ ಕಂಪನದಿಂದ ಅರಿಯಬಲ್ಲಳು.</p>
+<p><strong>ಮೂರನೆಯ ಅಧ್ಯಾಯ — ತೆರೆದ ಪ್ರವಾಹ ಬಯಲು, ಹನ್ನೆರಡರಿಂದ ಹದಿನೆಂಟು.</strong> ಮೊದಲ ಬಾರಿ ಅವಳು ವಜ್ರಕವಚದತ್ತ ನುಗ್ಗಿದಾಗ, ತಾನು ಆರಂಭಿಸಿದಲ್ಲಿಂದ ನಲವತ್ತು ಅಡಿ ದೂರದ ಕೆಸರಿನ ಗುಂಡಿಯಲ್ಲಿ ಬೋರಲಾಗಿ ಬಿದ್ದು ಎಚ್ಚರಗೊಂಡಳು. ಅವಳು ಮರುದಿನ ಮತ್ತೆ ನುಗ್ಗಿದಳು. ಮತ್ತು ಮರುದಿನ. ಆರು ವರ್ಷ. ಮೂರು ಟನ್ ಪ್ರಾಣಿಯ ನೇರ ನುಗ್ಗುವಿಕೆಯ ಮುಂದೆ ನಿಂತು, ಅವನ ಭುಜದ ಮೇಲೆ ಒತ್ತಿ, ಅವನ ಸ್ವಂತ ವೇಗವನ್ನು ಬಳಸಿ ಅವನ ಹಾದಿಯನ್ನು ತಿರುಗಿಸಲು ಯತ್ನಿಸುವುದು — ಭೂಕುಸಿತವನ್ನು ಕೈಯಿಂದ ತಿರುಗಿಸಲು ಯತ್ನಿಸಿದಂತೆ. ಆದರೆ ನಿಧಾನವಾಗಿ ಅವಳು ಕಲಿಯಲಾರಂಭಿಸಿದಳು. ತಡೆಯಲಾಗದ್ದನ್ನು ತಡೆಯುವುದು ಹೇಗೆಂದಲ್ಲ — ವಜ್ರಕವಚವನ್ನು ತಡೆಯಲಾಗದು. ಬದಲಾಗಿ ಅವನ ನುಗ್ಗುವಿಕೆಗೆ ಮೊದಲಿನ ಸೂಚನೆಗಳನ್ನು ಓದುವುದು ಹೇಗೆಂದು: ಕಿವಿಗಳ ತುಸು ಚಪ್ಪಟೆಯಾಗುವಿಕೆ, ಹಿಂಗಾಲುಗಳ ಮೇಲೆ ಭಾರ ಸರಿಯುವಿಕೆ.</p>
+<p>ಹದಿನೈದನೆಯ ವಯಸ್ಸಿಗೆ, ಅವಳು ಅವನ ನುಗ್ಗುವಿಕೆಯನ್ನು ನಲವತ್ತೈದು ಡಿಗ್ರಿ ತಿರುಗಿಸಬಲ್ಲಳು. ಹದಿನಾರಕ್ಕೆ, ಅವನನ್ನು ಸಂಪೂರ್ಣ ಗಿರಕಿ ಹೊಡೆಸಬಲ್ಲಳು. ಹದಿನೇಳಕ್ಕೆ, ಕಮಲವರ್ಣ ವಂಶದ ಯಾವ ಯೋಧನೂ ಸಾಧಿಸದ್ದನ್ನು ಸಾಧಿಸಿದಳು: ಗಂಟೆಗೆ ಮೂವತ್ತೈದು ಕಿಲೋಮೀಟರ್ ವೇಗದಲ್ಲಿ ಬರುತ್ತಿದ್ದ ಮೂರು ಸಾವಿರ ಕಿಲೋಗ್ರಾಂ ಪ್ರಾಗೈತಿಹಾಸಿಕ ಕವಚದ ನೇರ ಹಾದಿಯಲ್ಲಿ ನಿಂತು ಅವನನ್ನು ತಡೆದು ನಿಲ್ಲಿಸಿದಳು. ಬಲದಿಂದ ಅಲ್ಲ. ಅವನ ಹೆಜ್ಜೆಯ ಲಯವನ್ನು ಓದಿ, ಅವನ ಮುಂಗಾಲುಗಳು ನೆಲ ಬಿಡುವ ನಿಖರ ಕ್ಷಣದಲ್ಲಿ ತನ್ನ ಗುರಾಣಿಯನ್ನು ನೆಟ್ಟು, ಆ ವೇಗವನ್ನು ತನ್ನ ಮೊಣಕಾಲು, ಸೊಂಟ, ಮತ್ತು ಗಟ್ಟಿ ದೇಹದ ಮೂಲಕ ಭೂಮಿಗೆ ಹರಿಸಿ. ಆ ಗುರಾಣಿ ತಂತ್ರಕ್ಕೆ ಯಾವ ಹೆಸರೂ ಇರಲಿಲ್ಲ. ಅದು ಬರೀ ಅವಳು ನಿಂತ ರೀತಿ. "ಎಲ್ಲರೂ ತಡೆಯಲಾಗದ ಹೊಡೆತ ಕೊಡುವುದು ಹೇಗೆಂದು ತಿಳಿಯಲು ಬಯಸುತ್ತಾರೆ. ಚಲಿಸಲಾಗದ ವಸ್ತುವಾಗುವುದು ಹೇಗೆಂದು ಯಾರೂ ಕೇಳುವುದಿಲ್ಲ. ಆ ಎರಡನೆಯ ಪ್ರಶ್ನೆ ಕಠಿಣ. ಮತ್ತು ಹೆಚ್ಚು ಉಪಯುಕ್ತ," ಎಂದಳು ಕಮಲವರ್ಣ.</p>
+<p><strong>ನಾಲ್ಕನೆಯ ಅಧ್ಯಾಯ — ಎರಡು ಆತ್ಮಗಳ ಬಂಧ.</strong> ವಜ್ರಕವಚ ಒಂದು ಮೈಲು ದೂರದಿಂದ ಅವಳ ಹೆಜ್ಜೆಗಳನ್ನು ಗುರುತಿಸುತ್ತಿತ್ತು. ಅವಳು ಯಾವ ದಿಕ್ಕಿನಿಂದ ಬಂದರೂ, ಆ ಮಹಾ ಗಂಡು ತಲೆ ಎತ್ತಿ, ಕಿವಿಗಳನ್ನು ಆ ಸದ್ದಿನೆಡೆಗೆ ತಿರುಗಿಸಿ, ಅವಳು ಕಾಣುವ ಮೊದಲೇ ಭೇಟಿಯಾಗಲು ನಡೆಯಲಾರಂಭಿಸುತ್ತಿತ್ತು. ಅವಳು ದುಃಖಿಸಿದಾಗ ಅದು ಮಂದ, ದೀರ್ಘ ಸದ್ದು ಮಾಡುತ್ತಿತ್ತು — ನಾನಿಲ್ಲಿದ್ದೇನೆ ಎಂದು ಹೇಳುವ ಅದರ ರೀತಿ. ಅವಳೂ ಅದರ ಭಾಷೆ ಕಲಿತಳು. ಏನೋ ತಪ್ಪಿದೆ ಎಂದರ್ಥದ ತ್ವರಿತ ಎರಡು-ಸೀನು. ನಾನು ತೃಪ್ತ ಎಂದರ್ಥದ ದೀರ್ಘ ಉಸಿರು. ನನ್ನೊಂದಿಗೆ ಚಲಿಸು ಎಂದು ಹೇಳಲು ತನ್ನ ಕೊಂಬನ್ನು ಮೃದುವಾಗಿ ಅವಳ ಭುಜಕ್ಕೆ ಒತ್ತುವ ರೀತಿ.</p>
+<p>ಒಮ್ಮೆ ಅವಳನ್ನು ನೀರ್ಗೆಸರು ಹಿಡಿಯಿತು. ಅವಳು ಸೊಂಟದವರೆಗೆ ಮುಳುಗಿದಳು. ಅವಳ ಮುಷ್ಟಿಗಳು ಮೇಲ್ಮೈಗೆ ಬಡಿಯುವ ಸದ್ದನ್ನು ನೆಲದ ಮೂಲಕ ಗ್ರಹಿಸಿ ವಜ್ರಕವಚ ಬಂದಿತು. ಅದು ಗಟ್ಟಿ ನೆಲದ ಅಂಚಿನಲ್ಲಿ ಮಲಗಿ ತನ್ನ ಬೃಹತ್ ತಲೆಯನ್ನು ಅವಳೆಡೆಗೆ ಚಾಚಿತು. ಅವಳು ಎರಡೂ ಕೈಗಳಿಂದ ಅದರ ಕೊಂಬನ್ನು ಹಿಡಿದಳು, ಮತ್ತು ಅದು ನಿಧಾನವಾಗಿ ಎದ್ದು ಅವಳನ್ನು ಎಳೆದು ಹೊರ ತೆಗೆಯಿತು. ಮತ್ತೊಮ್ಮೆ ಗುಡುಗಿನ ಬಿರುಗಾಳಿ. ಘೇಂಡಾಮೃಗಗಳು ಕವಚವಿದ್ದರೂ ಗುಡುಗಿಗೆ ಹೆದರುತ್ತವೆ. ಮಹಾ ಬೊಹಾಗ್ ಬಿರುಗಾಳಿಯ ರಾತ್ರಿ, ವಜ್ರಕವಚ ನಡುಗುತ್ತಾ ಘೀಳಿಡುತ್ತಿತ್ತು. ಕಮಲವರ್ಣ ಅದರ ಪಕ್ಕದ ಕೆಸರಿನಲ್ಲಿ ಕುಳಿತು, ತನ್ನ ಹಣೆಯನ್ನು ಅದರ ಕತ್ತಿಗೆ ಒತ್ತಿ, ತನ್ನ ತಾಯಿ ಹಾಡುತ್ತಿದ್ದ ಒಂದು ಹಳೆಯ ಅಸ್ಸಾಮಿ ಜೋಗುಳ ಹಾಡಿದಳು — ತನ್ನ ಮಕ್ಕಳನ್ನು ಸುರಕ್ಷಿತವಾಗಿ ಸಮುದ್ರಕ್ಕೆ ಕೊಂಡೊಯ್ಯುವ ನದಿಯ ಬಗ್ಗೆ. ಅದರ ನಡುಕ ನಿಧಾನವಾಯಿತು. ಐದನೆಯ ಬಾರಿಯ ಹೊತ್ತಿಗೆ, ಅದು ನಿದ್ರಿಸಿತ್ತು. "ಜನರು ನನ್ನನ್ನು ಏನು ಬಲಿಷ್ಠಗೊಳಿಸುತ್ತದೆಂದು ಕೇಳುತ್ತಾರೆ. ನಾನು ಬಲಿಷ್ಠಳಲ್ಲ. ನಾನು ಲಂಗರು ಹಾಕಲ್ಪಟ್ಟಿದ್ದೇನೆ. ನನ್ನ ಲಂಗರು ಮೂರು ಸಾವಿರ ಕಿಲೋಗ್ರಾಂ ತೂಗುತ್ತದೆ ಮತ್ತು ಗೊರಕೆ ಹೊಡೆಯುತ್ತದೆ," ಎಂದಳು ಕಮಲವರ್ಣ.</p>
+<p><strong>ಐದನೆಯ ಅಧ್ಯಾಯ — ಕಾಜಿರಂಗ, ಅತ್ಯಂತ ಕರಾಳ ಮುಂಜಾವು.</strong> ಅವರು ಸೇನಾ ನಿಖರತೆಯಿಂದ ಬಂದರು. ಹದಿನೈದು ಜನ, ರಾತ್ರಿ-ದೃಷ್ಟಿ ಸಲಕರಣೆ ಮತ್ತು ಆನೆಯನ್ನೇ ಬೀಳಿಸುವ ಅರಿವಳಿಕೆಯೊಂದಿಗೆ. ಅವರು ಸಾಮಾನ್ಯ ಬೇಟೆಗಾರರಲ್ಲ. ಅವರು ಗಡಿಗಳಾದ್ಯಂತ ಘೇಂಡಾ-ಕೊಂಬು ಸಾಗಿಸುವ ಅಂತಾರಾಷ್ಟ್ರೀಯ ಜಾಲದ ವಿಶೇಷ ಪಡೆ. ಅವರು ನಾಲ್ಕು ಗಂಟೆಯಲ್ಲಿ ಏಳು ಘೇಂಡಾಮೃಗಗಳನ್ನು ಕೊಂದರು. ಅವರು ಆಗ ಹೊರಡಬೇಕಿತ್ತು. ಆದರೆ ಯಾರೋ ವಜ್ರಕವಚವನ್ನು ಬಯಸಿದರು. ಆ ಮಹಾ ಗಂಡಿನ ಕೊಂಬು ಪೌರಾಣಿಕವಾಗಿತ್ತು — ಕಾಜಿರಂಗದ ಯಾವ ಜೀವಂತ ಘೇಂಡಾಮೃಗಕ್ಕಿಂತಲೂ ಉದ್ದ. ಅರಿವಳಿಕೆ ಬಾಣ ಅವನ ಕತ್ತಿಗೆ ತಾಗಿತು. ಅವನು ತೂಗಾಡಿದ. ನಂತರ ಶೂಟರ್ ರೈಫಲ್ ಬಳಸಿದ. ಗುಂಡು ಅವನ ಎಡ ಭುಜದ ಕೆಳಗೆ ಹೊಕ್ಕು ಅವನ ಬೆನ್ನುಮೂಳೆಗೆ ತಾಗಿ ನಿಂತಿತು. ವಜ್ರಕವಚ ಮಂಡಿಯೂರಿ ಬಿದ್ದ. ಅವನ ಹಿಂಗಾಲುಗಳು ಕೆಲಸ ಮಾಡುವುದನ್ನು ನಿಲ್ಲಿಸಿದವು.</p>
+<p>ಕಮಲವರ್ಣ ಅದನ್ನು ನೆಲದ ಮೂಲಕ ಅನುಭವಿಸಿದಳು. ಅವಳು ಮೂರು ಕಿಲೋಮೀಟರ್ ದೂರದಲ್ಲಿ ನಿದ್ರಿಸುತ್ತಿದ್ದಳು. ಆ ಕಂಪನ ವಿದ್ಯುದಾಘಾತದಂತೆ ಅವಳ ಪಾದಗಳಿಗೆ ತಾಗಿತು — ಒಂದು ಬೃಹತ್ ದೇಹ ನೆಲಕ್ಕೆ ಬಿದ್ದು ಮೇಲೇಳದ ಸದ್ದು. ಅವಳು ಸಂಪೂರ್ಣ ಎಚ್ಚರಗೊಳ್ಳುವ ಮೊದಲೇ ಬರಿಗಾಲಲ್ಲಿ ಓಡುತ್ತಿದ್ದಳು. ಮುಂಜಾವಿನಲ್ಲಿ ಅವಳು ಅವನನ್ನು ಕಂಡಳು. ಬೇಟೆಗಾರರು ಓಡಿಹೋಗಿದ್ದರು. ಅವಳು ಅವನ ಎಂಭತ್ತು ಕಿಲೋಗ್ರಾಂ ತಲೆಯನ್ನು ಎತ್ತಿ ತನ್ನ ತೊಡೆಯ ಮೇಲೆ ಇಟ್ಟಳು. ಅವನ ಕಣ್ಣುಗಳು ಅವಳ ಕಣ್ಣುಗಳನ್ನು ಕಂಡವು. ಅವಳು ಅಳಲಿಲ್ಲ. ಅವಳು ತನ್ನ ಹಣೆಯನ್ನು ಅವನ ಕೊಂಬಿಗೆ ಒತ್ತಿದಳು ಮತ್ತು ಅವಳೊಳಗೆ ಏನೋ ಅಣೆಕಟ್ಟಿನಂತೆ ಒಡೆಯಿತು. ಒಡೆತದ ಮೂಲಕ ಹರಿದದ್ದು ದುಃಖವಲ್ಲ. ಅದು ಹಳೆಯ, ಬಿಸಿ, ಮತ್ತು ಅನಂತ ಅಪಾಯಕಾರಿ ಯಾವುದೋ.</p>
+<p>ಅವಳ ಹಚ್ಚೆ ಸ್ಫೋಟಿಸಿತು. ಭುಜದ ಮೇಲಿನ ಘೇಂಡಾ ಹೆಜ್ಜೆಗುರುತು — ವರ್ಷಗಳಲ್ಲಿ ಅವಳ ಭುಜ ಮತ್ತು ಮೇಲ್ತೋಳನ್ನು ಮುಚ್ಚಿದ್ದ ಎರಡನೆಯ ಹಂತ — ಚಲಿಸಲಾರಂಭಿಸಿತು. ಮಸಿ ಅವಳ ಚರ್ಮದ ಕೆಳಗೆ ಜೀವಂತ ವಸ್ತುವಿನಂತೆ ಹರಿಯಿತು, ಅವಳ ತೋಳಿನ ಕೆಳಗೆ, ಪಕ್ಕೆಲುಬುಗಳಾದ್ಯಂತ, ಬೆನ್ನ ಮೇಲೆ. ಪೂರ್ಣ ಘೇಂಡಾ ರೂಪ ಹೊರಹೊಮ್ಮುತ್ತಿತ್ತು. ಸೂರ್ಯ ಮೂಡುವ ಹೊತ್ತಿಗೆ, ಅವಳ ಇಡೀ ಬಲಭಾಗ ಮುಚ್ಚಲ್ಪಟ್ಟಿತ್ತು. ಮೂರನೆಯ ಹಂತ. ಯುದ್ಧದ ಪರೀಕ್ಷೆಯಿಂದಲ್ಲ, ಬದಲಾಗಿ ಮಾನವ ಹೃದಯ ಹಿಡಿದಿಡಬಲ್ಲ ಅತ್ಯಂತ ಶುದ್ಧ ವೇದನೆಯ ಮೂಲಕ ಸಾಧಿಸಲ್ಪಟ್ಟಿತು — ನೀನು ಜಗತ್ತಿನಲ್ಲಿ ಅತ್ಯಂತ ಪ್ರೀತಿಸುವುದು ಸಾಯುತ್ತಿದೆ ಮತ್ತು ನಿನಗೆ ಅದನ್ನು ತಡೆಯಲಾಗದು ಎಂಬ ಅರಿವು.</p>
+<p><strong>ಆರನೆಯ ಅಧ್ಯಾಯ — ಮೂರು ರಾಜ್ಯಗಳಾದ್ಯಂತ, ಏಳು ದಿನಗಳ ಲೆಕ್ಕಚುಕ್ತ.</strong> ಅವಳು ವಜ್ರಕವಚವನ್ನು ಪಶುವೈದ್ಯ ತಂಡದ ಆರೈಕೆಗೆ ಬಿಟ್ಟು, ತನ್ನ ಕವಚ ಧರಿಸಿ, ಕವಚ ಗುರಾಣಿ ಹಿಡಿದು, ಜಾಡುಗಳನ್ನು ಹಿಂಬಾಲಿಸಿದಳು. ಅವಳು ಸಾಮಾನ್ಯ ಮನುಷ್ಯಳಂತೆ ಜಾಡು ಹಿಡಿಯಲಿಲ್ಲ. ಅವಳು ಘೇಂಡಾಮೃಗದಂತೆ ಜಾಡು ಹಿಡಿದಳು — ಪಾದಗಳ ಮೂಲಕ ಭೂಮಿಯನ್ನು ಓದಿ. ಮೊದಲ ದಿನ: ಹೆಲಿಕಾಪ್ಟರ್ ಸ್ಥಳ. ಎರಡನೆಯ ದಿನ: ಮೇಘಾಲಯ, ಗಾರೋ ಬೆಟ್ಟಗಳಲ್ಲಿ ಸಾಗಣೆ ಲಾರಿ; ಎರಡು ಕೊಂಬುಗಳನ್ನು ಮರಳಿ ಪಡೆದಳು. ಮೂರು-ನಾಲ್ಕನೆಯ ದಿನ: ಜಾಲ ಚದುರಿತು. ಅವಳು ತನ್ನ ಹೆಸರಿನ ಪ್ರಾಣಿಯ ನಿರಂತರ ತಾಳ್ಮೆಯಿಂದ ಚಲಿಸಿದಳು — ತ್ವರೆಯಿಲ್ಲ, ದಣಿವಿಲ್ಲ, ನಿಲ್ಲುವಿಕೆಯಿಲ್ಲ. ಐದನೆಯ ದಿನ: ನಾಗಾಲ್ಯಾಂಡ್ ಗಡಿ. ಜಾಲದ ಪ್ರಾದೇಶಿಕ ಸೇನಾಧಿಪತಿ ಹನ್ನೆರಡು ಸಶಸ್ತ್ರ ಕಾವಲುಗಾರರೊಂದಿಗೆ ಒಂದು ಆವರಣದಲ್ಲಿ ಅಡಗಿಕೊಂಡಿದ್ದ. ಅವಳು ಆವರಣದ ಗೋಡೆಯ ಮೂಲಕ ಬಂದಳು. ಗೋಡೆಯ ಸುತ್ತಲೂ ಅಲ್ಲ, ಮೇಲೂ ಅಲ್ಲ. ಮೂಲಕ. ಕಾವಲುಗಾರರು ಗುಂಡು ಹಾರಿಸಿದರು. ಅವಳು ಕವಚವನ್ನು ಎತ್ತಿ ಒಂದು ಘೇಂಡಾಮೃಗ ತನ್ನ ಪ್ರದೇಶ ದಾಟುವ ನಿಧಾನ ವೇಗದಲ್ಲಿ ಮುಂದೆ ನಡೆದಳು. ತಡೆಯಲಾಗದು. ಅವಸರವಿಲ್ಲದೆ. ಅನಿವಾರ್ಯ. ಆದರೆ ಅವಳು ಯಾರನ್ನೂ ಕೊಲ್ಲಲಿಲ್ಲ. ಗುಡುಗಿನ ಬಿರುಗಾಳಿಯಲ್ಲಿ ಘೇಂಡಾಮೃಗವನ್ನು ಹಾಡಿ ಮಲಗಿಸಿದ ಹುಡುಗಿ, ತನ್ನ ಅತ್ಯಂತ ಆಳವಾದ ಆವೇಶದಲ್ಲೂ, ಒಂದು ಜೀವವನ್ನು ತೆಗೆಯಲಿಲ್ಲ.</p>
+<p><strong>ಏಳನೆಯ ಅಧ್ಯಾಯ — ಸ್ವಭಾವವನ್ನು ಬಯಲಿಗೆ ತರುವ ಆಯ್ಕೆ.</strong> ಜಾಡು ಮೇಲಕ್ಕೆ ಸಾಗಿತು — ಅಸ್ಸಾಂನ ಎಲ್ಲರಿಗೂ ಗೊತ್ತಿದ್ದ ಹೆಸರಿಗೆ. ಭುವನೇಶ್ವರ ದೇಕಾ. ಪ್ರಾದೇಶಿಕ ಅಭಿವೃದ್ಧಿ ಪರಿಷತ್ತಿನ ಸದಸ್ಯ. ಮೂರು ಅನಾಥಾಶ್ರಮಗಳ ಪೋಷಕ. ಘೇಂಡಾಮೃಗವನ್ನು ರಕ್ಷಿಸುವ ಬಗ್ಗೆ ಭಾಷಣ ಮಾಡುತ್ತಾ ಗುಪ್ತವಾಗಿ ಅವುಗಳ ಕೊಂಬುಗಳನ್ನು ಮಾರುವ ನಿಗಮವನ್ನು ಒಡೆತನದಲ್ಲಿಟ್ಟಿದ್ದ ಮನುಷ್ಯ. ಕಮಲವರ್ಣ ಅವನನ್ನು ಗುವಾಹಟಿಯ ಮಹಡಿಮನೆಯಲ್ಲಿ ಕಂಡಳು. ಅವನು ಹೆದರಲಿಲ್ಲ. "ನೀನು ನನ್ನನ್ನು ಮುಟ್ಟಲಾರೆ. ನಾನು ಈ ರಾಜ್ಯದ ಅರ್ಧ ಸಂಸ್ಥೆಗಳಿಗೆ ಹಣ ಕೊಡುತ್ತೇನೆ. ನಾನೇ ವ್ಯವಸ್ಥೆ, ಹುಡುಗಿ. ನನ್ನನ್ನು ಕೊಲ್ಲು, ಮತ್ತು ನೀನು ಪ್ರೀತಿಸುವ ವಸ್ತುಗಳನ್ನೇ ಕೊಲ್ಲುತ್ತೀಯೆ."</p>
+<p>ಅವಳು ಬಹಳ ಹೊತ್ತು ನಿಂತಳು. ಆವೇಶ ಇನ್ನೂ ಇತ್ತು — ಘೇಂಡಾಮೃಗದ ಆವೇಶ, ವಿಶಾಲ ಮತ್ತು ಸರಳ. ನುಗ್ಗು. ಜಜ್ಜು. ಆದರೆ ಅವಳ ಕೂದಲಲ್ಲಿನ ಕಮಲ ಬೇರೇನೋ ಪಿಸುಗುಟ್ಟಿತು. ಅವಳು ಕವಚದ ಬುಡವನ್ನು ಅವನ ಅಮೃತಶಿಲೆಯ ನೆಲಕ್ಕೆ ಬಡಿದು, ಒಂದು ತಲೆಮಾರಿನ ಈಶಾನ್ಯ ರಾಜಕೀಯವನ್ನೇ ಮರುರೂಪಿಸುವ ಮೂರು ಪದಗಳನ್ನು ಹೇಳಿದಳು: "ಹಾಗಾದರೆ ವ್ಯವಸ್ಥೆ ಬದಲಾಗುತ್ತದೆ." ಅವಳು ಅವನನ್ನು ಕೊಲ್ಲಲಿಲ್ಲ. ಹೊಡೆಯಲೂ ಇಲ್ಲ. ಅವಳು ಎಲ್ಲವನ್ನೂ ದಾಖಲಿಸಿದಳು — ಅವನ ಕಚೇರಿಯ ಪ್ರತಿ ದಾಖಲೆ, ಅವನ ಸಂರಕ್ಷಣಾ ನಿಧಿಯನ್ನು ಜಾಲದ ಖಾತೆಗಳಿಗೆ ಜೋಡಿಸುವ ಪ್ರತಿ ಹಣಕಾಸು ದಾಖಲೆ. ಅವಳು ಆ ಸತ್ಯವನ್ನು ಪೊಲೀಸರಿಗಲ್ಲ, ನ್ಯಾಯಾಲಯಗಳಿಗಲ್ಲ, ಬದಲಾಗಿ ಜನರಿಗೆ ತಲುಪಿಸಿದಳು. ಭುವನೇಶ್ವರ ದೇಕಾ ಎಪ್ಪತ್ತೆರಡು ಗಂಟೆಯೊಳಗೆ ರಾಜ್ಯ ಬಿಟ್ಟು ಓಡಿಹೋದ. ವ್ಯವಸ್ಥೆ ಕುಸಿಯಲಿಲ್ಲ. ಅದು ಮರುಕಟ್ಟಲ್ಪಟ್ಟಿತು. ಬಲಿಷ್ಠ, ಸ್ವಚ್ಛ, ಮತ್ತು ಇನ್ನು ಸತ್ತ ಘೇಂಡಾಮೃಗಗಳ ಮೂಳೆಗಳ ಮೇಲೆ ಕಟ್ಟಲ್ಪಡದ.</p>
+<p><strong>ಎಂಟನೆಯ ಅಧ್ಯಾಯ — ನಲವತ್ತಮೂರು ದಿನ.</strong> ಗುಂಡು ವಜ್ರಕವಚದ ಬೆನ್ನುಹುರಿಯಿಂದ ಎರಡು ಮಿಲಿಮೀಟರ್ ದೂರದಲ್ಲಿ ಸಿಲುಕಿತ್ತು. ಪಶುವೈದ್ಯ ತಂಡ ಹೊಲದಲ್ಲೇ, ಕ್ಯಾನ್ವಾಸಿನ ಕೆಳಗೆ, ಹನ್ನೊಂದು ಗಂಟೆ ಶಸ್ತ್ರಚಿಕಿತ್ಸೆ ಮಾಡಿತು. ಕಮಲವರ್ಣ ಹನ್ನೊಂದು ಗಂಟೆಯೂ ಶಸ್ತ್ರಚಿಕಿತ್ಸಾ ಡೇರೆಯ ಹೊರಗೆ ಕುಳಿತಳು, ತನ್ನ ಬರಿಗಾಲುಗಳನ್ನು ಭೂಮಿಗೆ ಒತ್ತಿ, ಅವನ ಹೃದಯಬಡಿತದ ಲಯವನ್ನು ನೆಲದ ಮೂಲಕ ಅನುಭವಿಸುತ್ತಾ. ಅವಳು ನಲವತ್ತಮೂರು ದಿನ ಅವನ ಪಕ್ಕ ಬಿಡಲಿಲ್ಲ. ಅವಳು ಅವನ ಗಾಯಗಳಿಗೆ ಕಟ್ಟು ಬದಲಿಸಿದಳು, ಹುಲ್ಲುಗಾವಲಿನಿಂದ ಸಂಗ್ರಹಿಸಿದ ಗಿಡಮೂಲಿಕೆಗಳ ಲೇಪವನ್ನು ಹಚ್ಚಿದಳು. ಅವನು ಮೂರು ವಾರ ನಿಲ್ಲಲಾಗಲಿಲ್ಲ.</p>
+<p>ಇಪ್ಪತ್ತೆರಡನೆಯ ದಿನ, ಅವನು ಯತ್ನಿಸಿದ. ಬಿದ್ದ. ಇಪ್ಪತ್ತಮೂರನೆಯ ದಿನ. ಇಪ್ಪತ್ತನಾಲ್ಕನೆಯ ದಿನ. ಪ್ರತಿ ಬಾರಿ ಅವನ ಹಿಂಗಾಲುಗಳು ತುಸು ಹೆಚ್ಚು ಕಾಲ ನಿಂತವು. ಮೂವತ್ತೊಂಬತ್ತನೆಯ ದಿನ, ಅವನು ನಿಂತ. ಅದು ಸೊಗಸಾಗಿರಲಿಲ್ಲ. ಅವನ ಹಿಂಗಾಲುಗಳು ತೀವ್ರವಾಗಿ ನಡುಗಿದವು. ಆದರೆ ಅವನು ನೆಟ್ಟಗೆ ನಿಂತ, ತನ್ನ ಕೊಂಬನ್ನು ಆಕಾಶದೆಡೆಗೆ ತೋರಿಸಿ, ಮತ್ತು ಅರಣ್ಯಪಾಲಕರು ಎಂದೂ ದಾಖಲಿಸಿದ ಅತ್ಯಂತ ಜೋರಾದ ಘೇಂಡಾ ಗರ್ಜನೆಯನ್ನು ಹೊರಡಿಸಿದ — ಜೀವಂತರ ಕರೆ. ಭೂಮಿಗೆ ಉತ್ತರ. ಆ ಕ್ಷಣದಲ್ಲಿ ಕಮಲವರ್ಣಳ ಹಚ್ಚೆ ತಾನೇ ಪೂರ್ಣಗೊಂಡಿತು. ಅಂತಿಮ ಹಂತ — ಭುಜದಿಂದ ಪಾದದವರೆಗೆ ಪೂರ್ಣ-ದೇಹ ಘೇಂಡಾಮೃಗ — ಯುದ್ಧದ ಆವೇಶದಲ್ಲಲ್ಲ, ದುಃಖದ ಶಕ್ತಿಯಲ್ಲಲ್ಲ, ಬದಲಾಗಿ ಶಾಂತ, ಸ್ಥಿರ, ಹಠಮಾರಿ ಪ್ರೀತಿಯಲ್ಲಿ ಹೊರಹೊಮ್ಮಿತು. ನಾಲ್ಕನೆಯ ಹಂತ. ಪೂರ್ಣ ದೇಹ. ವಿಜಯದಿಂದಲ್ಲ, ಬದಲಾಗಿ ನಲವತ್ತಮೂರು ದಿನ ಬಿಟ್ಟುಹೋಗಲು ನಿರಾಕರಿಸಿದ್ದರಿಂದ ಗಳಿಸಲ್ಪಟ್ಟಿತು.</p>
+<p><strong>ಒಂಬತ್ತನೆಯ ಅಧ್ಯಾಯ — ಪ್ರತಿ ಮುಂಜಾವು.</strong> ಮಂಜು ಸೂರ್ಯನಿಗಿಂತ ಮೊದಲು ಬ್ರಹ್ಮಪುತ್ರದಿಂದ ಏಳುತ್ತದೆ. ಪ್ರತಿ ಮುಂಜಾವೂ ಅವಳು ಅದೇ ಸಮಯಕ್ಕೆ ಅರಣ್ಯಪಾಲಕ ಠಾಣೆಯಿಂದ ಹೊರಬರುತ್ತಾಳೆ. ಅವನು ಯಾವಾಗಲೂ ಕಾಯುತ್ತಿರುತ್ತಾನೆ. ಅವನು ಈಗ ಗಾಯಗೊಂಡಿದ್ದಾನೆ — ಎಡ ಪಕ್ಕದಲ್ಲಿ ಬೆಳ್ಳಿ ಗೆರೆ, ಬಲ ಹಿಂಗಾಲಿನಲ್ಲಿ ಬಹುತೇಕ ಗಮನಕ್ಕೆ ಬಾರದ ಕುಂಟು. ಅವಳು ಅವನ ಮೂತಿಯ ಮೇಲೆ ಕೈಯಿಡುತ್ತಾಳೆ. ಅವನು ಉಸಿರು ಬಿಡುತ್ತಾನೆ. ಅವರು ನಡೆಯುತ್ತಾರೆ. ಪಕ್ಕಪಕ್ಕದಲ್ಲಿ, ಘೇಂಡಾಮೃಗದ ವೇಗದಲ್ಲಿ. ಅವಳ ಹೆಜ್ಜೆಗಳು ಅವನವನ್ನು ಹೊಂದುತ್ತವೆ. ಅವಳ ಉಸಿರಾಟ ಅವನದನ್ನು ಹೊಂದುತ್ತದೆ. ಸೂರ್ಯ ಪೂರ್ವದ ಬೆಟ್ಟಗಳ ಮೇಲೆ ಮೂಡುತ್ತಾನೆ. ಚಿನ್ನದ ಬೆಳಕು ಪ್ರವಾಹ ಬಯಲನ್ನು ತುಂಬುತ್ತದೆ. ಎರಡು ಆಕೃತಿಗಳು ಆ ಚಿನ್ನದ ಲೋಕದ ಮೂಲಕ ಚಲಿಸುತ್ತವೆ — ಒಂದು ಬೃಹತ್ ಮತ್ತು ಬೂದು, ಒಂದು ಎತ್ತರ ಮತ್ತು ಗುಂಡುಗಳೂ ಮುಗಿಸಲಾಗದ ಪ್ರೀತಿಯ ಕಥೆ ಹೇಳುವ ಹಚ್ಚೆಯಿಂದ ಕವಚಿತ.</p>
+<p><strong>ಆಚೆಯ ಕತ್ತಲೆ.</strong> ಪಶ್ಚಿಮ ಬಂಗಾಳದ ಸುಂದರ್‌ವಾಣಿ ವ್ಯತ್ಯಾಸವನ್ನು ಗಮನಿಸಿದಳು. ಕಮಲವರ್ಣ ದೇಕಾನ ಕಚೇರಿಯಿಂದ ಮರಳಿ ಪಡೆದ ಹಣಕಾಸು ದಾಖಲೆಗಳಲ್ಲಿ ಲಾಭದ ಲೆಕ್ಕ ಹೊಂದಿಕೊಳ್ಳುತ್ತಿರಲಿಲ್ಲ. ಯಾರೋ ಕಾರ್ಯಾಚರಣೆಗೆ ಸಬ್ಸಿಡಿ ನೀಡುತ್ತಿದ್ದರು. ಕೊಂಬುಗಳು ಸಾಂಪ್ರದಾಯಿಕ ಸರಬರಾಜು ಸರಪಳಿಗೆ ಪ್ರವೇಶಿಸುತ್ತಿರಲಿಲ್ಲ. ಅವು ಯಾವ ನಕ್ಷೆಯಲ್ಲೂ ಇಲ್ಲದ ಸ್ಥಳಕ್ಕೆ — ಮಧ್ಯ ಏಷ್ಯಾದ ಪರ್ವತಗಳಲ್ಲಿ ಗಣಿ ಕಾರ್ಯಾಚರಣೆಯ ವೇಷದಲ್ಲಿನ ಒಂದು ಸೌಲಭ್ಯಕ್ಕೆ — ಸಾಗಿಸಲ್ಪಡುತ್ತಿದ್ದವು. ಆ ಸೌಲಭ್ಯ ಔಷಧವನ್ನು ಸುಗ್ಗಿ ಮಾಡುತ್ತಿರಲಿಲ್ಲ. ಅದು ಬಂಧವನ್ನೇ ಸುಗ್ಗಿ ಮಾಡುತ್ತಿತ್ತು — ತಲೆಮಾರುಗಳಿಂದ ಮಾನವ ಯೋಧರೊಂದಿಗೆ ಬಂಧ ಹೊಂದಿದ ಪ್ರಾಣಿಗಳ ಮೂಳೆ ಮತ್ತು ಕೊಂಬುಗಳಲ್ಲಿ ಸಂಗ್ರಹವಾದ ಆಧ್ಯಾತ್ಮಿಕ ಅವಶೇಷ.</p>
+<p>ಕಮಲವರ್ಣ ಆ ವರದಿಯನ್ನು ಮೂರು ಬಾರಿ ಓದಿದಳು. ನಂತರ ವಜ್ರಕವಚ ಮಲಗಿದ್ದ ಪೂರ್ವದ ಜೌಗಿಗೆ ನಡೆದು, ಅವನ ಪಕ್ಕದಲ್ಲಿ ಕುಳಿತು, ತನ್ನ ಕೈಯನ್ನು ಅವನ ಗಾಯಗೊಂಡ ಪಕ್ಕಕ್ಕೆ ಒತ್ತಿ, ಅವನ ಪುರಾತನ ಹೃದಯದ ಸ್ಥಿರ ಲಯವನ್ನು ಅನುಭವಿಸಿದಳು. ಬೇಟೆಗಾರರು ಹಣಕ್ಕಾಗಿ ಬಂದಿರಲಿಲ್ಲ. ಅವರು ಅದಕ್ಕಿಂತ ಕೆಟ್ಟ ಯಾವುದಕ್ಕೋ ಬಂದಿದ್ದರು. ಆ ಪರ್ವತದಲ್ಲಿ ಜೋಡಿಸಲ್ಪಡುತ್ತಿದ್ದ ಆಚರಣೆ ಅಥವಾ ಆಯುಧ, ಅವಳು ಅತ್ಯಂತ ಪ್ರೀತಿಸುವ ವಸ್ತುವಿನಿಂದಲೇ ಶಕ್ತಿ ಪಡೆಯುತ್ತಿತ್ತು: ಮಾನವ ಮತ್ತು ಮೃಗದ ನಡುವಿನ ಬಂಧ.</p>
+<p>ಅವಳು ಎದ್ದಳು. ಕವಚವನ್ನು ಎತ್ತಿಕೊಂಡಳು. ಪೂರ್ವದೆಡೆಗೆ, ತಾನು ಅರಿತ ನೆಲಗಳ ಗಡಿಗಳಾಚೆಗೆ ಏರುವ ಪರ್ವತಗಳೆಡೆಗೆ ನೋಡಿದಳು. ಆ ಪರ್ವತಗಳಲ್ಲಿ ಏನೋ ಕದಲುತ್ತಿತ್ತು. ಜಗತ್ತಿನ ಅತ್ಯಂತ ಹಳೆಯ ಮಾಯೆಯನ್ನು ತಿನ್ನುವ ಯಾವುದೋ. ಮತ್ತು ಕಮಲವರ್ಣ — ಒಮ್ಮೆ ತನ್ನ ಪುಟ್ಟ ಕೈಗಳನ್ನು ಕೊಲ್ಲಲಾಗದ ವಸ್ತುವಿನ ಮೂತಿಯ ಮೇಲೆ ಇಟ್ಟ ಹೆಣ್ಣು — ಕಾಜಿರಂಗವನ್ನು ರಕ್ಷಿಸುವುದು ಇನ್ನು ಸಾಲದು ಎಂದು ಅರ್ಥಮಾಡಿಕೊಂಡಳು. ಶೂನ್ಯ-ಮಾವ್ ಸಮೀಪಿಸುತ್ತಿದೆ. ನಕ್ಷತ್ರಗಳು ಮಾಯವಾಗುತ್ತಿವೆ. ಮತ್ತು ಯಾರೋ, ಎಲ್ಲೋ, ಪವಿತ್ರ ಮೃಗಗಳ ಕದ್ದ ಆತ್ಮಗಳನ್ನು ಬಳಸಿ ಅದರ ಆಗಮನವನ್ನು ತ್ವರಿತಗೊಳಿಸಲು ಯತ್ನಿಸುತ್ತಿದ್ದಾರೆ.</p>
+<p>ಕೊಲ್ಲಲಾಗದ ವಸ್ತುವನ್ನು ಮುಟ್ಟಿದ ಹುಡುಗಿ, ಎಲ್ಲವನ್ನೂ ಕೊಲ್ಲುವ ಶಕ್ತಿಯ ಮುಂದೆ ನಿಲ್ಲಬಲ್ಲ ಏಕೈಕ ವ್ಯಕ್ತಿಯಾಗಿರಬಹುದು. ಶೂನ್ಯ-ಮಾವ್ ತಡೆಯಲಾಗದು. ತಡೆಯಲಾಗದ್ದನ್ನು ಎದುರಿಸಿದಾಗ ಏನು ಮಾಡಬೇಕೆಂದು ಕಮಲವರ್ಣ ತನ್ನ ಇಡೀ ಬದುಕನ್ನು ಕಲಿಯುತ್ತಾ ಕಳೆದಿದ್ದಾಳೆ. ಅವಳು ಚಲಿಸುವುದಿಲ್ಲ. ಮತ್ತು ಬಹಳ ಹಿಂದೆ, ಒಂದು ಚಿನ್ನದ ಮುಂಜಾವಿನಲ್ಲಿ, ಆ ನಿಲುವನ್ನು ಸಾಧ್ಯವಾಗಿಸಿದ್ದು ಒಬ್ಬ ತಾಯಿ — ತನ್ನ ಮಗಳ ಗುರುತನ್ನು ನಂಬಿ, ಕೊಲ್ಲಲಾಗದ ವಸ್ತುವಿನ ಬಳಿಗೆ ಅವಳನ್ನು ಹೊತ್ತೊಯ್ದು ಹಿಂದೆ ಸರಿದ ತಾಯಿ ಪದ್ಮಾವತಿ.</p></div></div><!-- /aom:listen -->
+
+  
+
+  
+
+
+  <nav class="maha-nav">
+    <a href="../../../../../../../../../index.html" class="nav-logo">Age of Mythos</a>
+    <div class="nav-links">
+      <a href="../../../../index.html">Volume I</a>
+      <a href="../../../../kingdoms.html">Kingdoms</a>
+      <a href="../../../../identity.html">Identities</a>
+      <a href="../../../../characters.html">Heroes</a>
+      <a href="../../../../systems.html">Systems</a>
+      <a href="../../../../council.html">Council</a>
+      <a href="../../../../bharatavarsha/global-map.html">Map</a>
+    </div>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('nav-open')">&#9776;</button>
+  </nav>
+
+  <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:14px 20px;background:rgba(0,0,0,.4);border-bottom:1px solid rgba(255,255,255,.06);">
+    <a href="index.html"    style="padding:5px 16px;border-radius:20px;border:1px solid rgba(255,255,255,.14);color:var(--text-dim);font-size:.72em;text-decoration:none;">Overview</a>
+    <a href="identity.html" style="padding:5px 16px;border-radius:20px;border:1px solid rgba(255,255,255,.14);color:var(--text-dim);font-size:.72em;text-decoration:none;">Identity</a>
+    <a href="story.html"    style="padding:5px 16px;border-radius:20px;border:1px solid var(--gold-dim);background:rgba(255,215,0,.08);color:var(--gold);font-size:.72em;text-decoration:none;">Story</a>
+    <a href="rules.html"    style="padding:5px 16px;border-radius:20px;border:1px solid rgba(255,255,255,.14);color:var(--text-dim);font-size:.72em;text-decoration:none;">Rules &amp; Weapons</a>
+  </div>
+
+  <div class="breadcrumb" id="breadcrumb"></div>
+  <section class="kingdom-banner"  id="banner"></section>
+  <div class="content-area" id="content">
+    <p style="color:var(--text-dim);text-align:center;padding:60px 0;">Loading kingdom story...</p>
+  </div>
+
+  <script>
+    var STATE_ID = "assam";
+    var PORTRAIT_HERO    = "media/portraits/assam-hero-portrait.png";
+    var PORTRAIT_VILLAIN = "media/portraits/assam-villain-portrait.png";
+  </script>
+  <script src="../../../../js/state-stories-data.js"></script>
+  <script>
+  (function() {
+    var sid      = STATE_ID;
+    var kingdom  = (STATE_KINGDOMS || []).find(function(k) { return k.stateId === sid; });
+    if (!kingdom) {
+      document.getElementById("content").innerHTML =
+        "<p style=\"color:#ff4444;text-align:center;padding:80px;\">Kingdom data not found: " + sid + "</p>";
+      return;
+    }
+
+    var RL = { south:"Dakshinapatha (South)", west:"Paschimapatha (West)",
+                east:"Purvapatha (East)", north:"Uttarapatha (North)",
+                northeast:"Pragjyotisha (Northeast)", central:"Madhyadesa (Central)" };
+    var RC = { south:"#44ff88", west:"#ff8c00", east:"#44aaff",
+                north:"#ff66cc", northeast:"#aa66ff", central:"#ffaa00" };
+    var rc = RC[kingdom.region] || "#ffd700";
+
+    document.title = kingdom.kingdomName.split("—")[0].trim() + " — Story — Age of Mythos";
+
+    document.getElementById("breadcrumb").innerHTML =
+      "<a href=\"../../../../kingdoms.html\">All Kingdoms</a><span>&rsaquo;</span>" +
+      "<a href=\"../../../../kingdoms.html\">" + (RL[kingdom.region] || kingdom.region) + "</a><span>&rsaquo;</span>" +
+      "<a href=\"index.html\">" + kingdom.stateName + "</a><span>&rsaquo;</span>" +
+      "<span class=\"current\">Story</span>";
+
+    document.getElementById("banner").innerHTML =
+      "<div class=\"state-name-top\">" + kingdom.stateName + "</div>" +
+      "<h1 style=\"color:" + rc + ";\">"+kingdom.kingdomName.split("—")[0].trim()+"</h1>" +
+      "<div class=\"motto-top\">&ldquo;" + kingdom.motto + "&rdquo;</div>";
+
+    var html = "";
+
+    // --- Hero & villain portraits ---
+    html += "<div class=\"portrait-pair\">";
+    html += "<div><img src=\"" + PORTRAIT_HERO + "\" alt=\"Hero\" style=\"border:1px solid rgba(68,255,136,.2)\" onerror=\"this.parentNode.remove()\"></div>";
+    html += "<div><img src=\"" + PORTRAIT_VILLAIN + "\" alt=\"Villain\" style=\"border:1px solid rgba(255,68,68,.2)\" onerror=\"this.parentNode.remove()\"></div>";
+    html += "</div>";
+
+    // --- Sacred creatures ---
+    html += "<div class=\"creatures-panel\">";
+    html += "<div class=\"creature-box\"><div class=\"c-label\">Sacred Animal</div><div class=\"c-name\">" + kingdom.animal.name + "</div><div class=\"c-symbol\">" + kingdom.animal.symbolism + "</div></div>";
+    html += "<div class=\"creature-box\"><div class=\"c-label\">Sacred Bird</div><div class=\"c-name\">" + kingdom.bird.name + "</div><div class=\"c-symbol\">" + kingdom.bird.symbolism + "</div></div>";
+    html += "</div>";
+
+    // --- Hero ---
+    html += "<div class=\"section-title-bar\"><h2 style=\"color:#44ff88;\">The Hero</h2></div>";
+    html += "<div class=\"profile-full hero-p\">";
+    html += "<span class=\"p-tag\">Hero of " + kingdom.stateName + "</span>";
+    html += "<h3>" + kingdom.hero.name + "</h3>";
+    html += "<div class=\"p-title\">" + kingdom.hero.title + " &mdash; " + kingdom.hero.epithet + "</div>";
+    html += "<div class=\"p-desc\">"  + kingdom.hero.description + "</div>";
+    html += "<div class=\"p-detail\"><span class=\"dl\">Gender: </span><span class=\"dv\">" + kingdom.hero.gender + (kingdom.hero.age ? ", Age: "+kingdom.hero.age : "") + "</span></div>";
+    html += "<div class=\"p-detail\"><span class=\"dl\">Weapon: </span><span class=\"dv\">" + kingdom.hero.weapon  + "</span></div>";
+    html += "<div class=\"p-detail\"><span class=\"dl\">Tattoo: </span><span class=\"dv\">" + kingdom.hero.tattoo  + "</span></div>";
+    html += "<div class=\"battle-cry-full\">&ldquo;" + kingdom.hero.battleCry + "&rdquo;</div>";
+    html += "</div>";
+
+    // --- VS ---
+    html += "<div class=\"vs-divider\"><div class=\"vs-circle\">VS</div></div>";
+
+    // --- Villain ---
+    html += "<div class=\"section-title-bar\"><h2 style=\"color:#ff4444;\">The Villain</h2></div>";
+    html += "<div class=\"profile-full villain-p\">";
+    html += "<span class=\"p-tag\">Nemesis</span>";
+    html += "<h3>" + kingdom.villain.name + "</h3>";
+    html += "<div class=\"p-title\">" + kingdom.villain.title + " &mdash; " + kingdom.villain.epithet + "</div>";
+    html += "<div class=\"p-desc\">"  + kingdom.villain.description + "</div>";
+    html += "<div class=\"p-detail\"><span class=\"dl\">Weapon: </span><span class=\"dv\">" + kingdom.villain.weapon + "</span></div>";
+    html += "<div class=\"p-detail\"><span class=\"dl\">Motivation: </span><span class=\"dv\">" + kingdom.villain.motivation + "</span></div>";
+    html += "<div class=\"battle-cry-full\"><span class=\"dl\" style=\"color:#ff6666;\">Dark Power: </span>" + kingdom.villain.darkPower + "</div>";
+    html += "</div>";
+
+    // --- Guru ---
+    html += "<div class=\"section-title-bar\"><h2 style=\"color:#aa66ff;\">The Guru</h2></div>";
+    html += "<div class=\"guru-panel\">";
+    html += "<h3>" + kingdom.guru.name + "</h3>";
+    html += "<div class=\"g-title\">" + kingdom.guru.title + "</div>";
+    html += "<div class=\"g-desc\">"  + kingdom.guru.description + "</div>";
+    html += "<div class=\"g-wisdom\">&ldquo;" + kingdom.guru.wisdom + "&rdquo;</div>";
+    html += "</div>";
+
+    // --- Warriors ---
+    html += "<div class=\"section-title-bar\"><h2>Warriors &amp; Champions</h2></div>";
+    html += "<div class=\"warriors-grid-full\">";
+    (kingdom.warriors || []).forEach(function(w) {
+      html += "<div class=\"w-card\" data-loyalty=\"" + w.loyalty + "\">";
+      html += "<div class=\"wn\">" + w.name + "</div>";
+      html += "<div class=\"wt\">" + w.title + "</div>";
+      html += "<div class=\"ws\">" + w.specialty + "</div>";
+      html += "<span class=\"wl\">" + w.loyalty + "</span>";
+      html += "</div>";
+    });
+    html += "</div>";
+
+    // --- Saga ---
+    if (kingdom.saga) {
+      html += "<div class=\"section-title-bar\"><h2>The Epic Saga</h2></div>";
+      html += "<div class=\"saga-full\">";
+      html += "<div class=\"saga-title\">" + kingdom.saga.title + "</div>";
+      html += "<div class=\"saga-body\">"  + kingdom.saga.narrative + "</div>";
+      html += "</div>";
+    }
+
+    // --- Modern Arsenal & Geopolitics ---
+    if (kingdom.modernArsenal || kingdom.geopolitics) {
+      html += "<div class=\"section-title-bar\"><h2 style=\"color:#ffaa00;\">Modern Arsenal &amp; Geopolitics</h2></div>";
+      html += "<div style=\"padding:20px;border-radius:12px;background:rgba(0,0,0,.15);border:1px solid rgba(255,215,0,.08);margin-bottom:30px;\">";
+      if (kingdom.modernArsenal) {
+        html += "<div style=\"display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;\">";
+        html += "<div style=\"padding:12px;border-radius:6px;background:rgba(0,60,0,.15);border-left:2px solid #44ff88;color:#88ffaa;font-size:.85rem;line-height:1.6;\"><div style=\"font-size:.65rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-dim);margin-bottom:3px;\">Hero Arsenal</div>" + kingdom.modernArsenal.hero + "</div>";
+        html += "<div style=\"padding:12px;border-radius:6px;background:rgba(60,0,0,.15);border-left:2px solid #ff4444;color:#ffaaaa;font-size:.85rem;line-height:1.6;\"><div style=\"font-size:.65rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-dim);margin-bottom:3px;\">Villain Arsenal</div>" + kingdom.modernArsenal.villain + "</div>";
+        html += "</div>";
+      }
+      if (kingdom.geopolitics) {
+        html += "<div style=\"padding:12px;border-radius:6px;background:rgba(100,100,0,.08);border-left:2px solid #ffaa00;color:var(--text);font-size:.85rem;line-height:1.6;font-style:italic;\"><div style=\"font-size:.65rem;text-transform:uppercase;letter-spacing:1.5px;color:#ffaa00;margin-bottom:3px;\">Geopolitical Context</div>" + kingdom.geopolitics + "</div>";
+      }
+      html += "</div>";
+    }
+
+    // --- Inspiration ---
+    if (kingdom.inspiration) {
+      html += "<div class=\"section-title-bar\"><h2 style=\"color:var(--gold);\">Mythological Inspiration</h2></div>";
+      html += "<div class=\"insp-grid\">";
+      var insp = kingdom.inspiration;
+      html += "<div class=\"insp-card\" style=\"border-left:3px solid var(--gold-dim);\"><div style=\"font-size:.65rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-dim);margin-bottom:4px;\">Hero &mdash; Divine Inspiration</div><div style=\"color:var(--gold);font-size:1rem;font-weight:bold;margin-bottom:2px;\">" + insp.heroGod.name + "</div><div style=\"color:var(--text-dim);font-style:italic;font-size:.8rem;margin-bottom:6px;\">" + insp.heroGod.domain + "</div><div style=\"color:var(--text);font-size:.85rem;line-height:1.6;\">" + insp.heroGod.parallel + "</div></div>";
+      html += "<div class=\"insp-card\" style=\"border-left:3px solid var(--gold-dim);\"><div style=\"font-size:.65rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-dim);margin-bottom:4px;\">Hero &mdash; Mahabharata Parallel</div><div style=\"color:var(--gold);font-size:1rem;font-weight:bold;margin-bottom:2px;\">" + insp.heroMahabharata.name + "</div><div style=\"color:var(--text);font-size:.85rem;line-height:1.6;\">" + insp.heroMahabharata.parallel + "</div></div>";
+      html += "<div class=\"insp-card\" style=\"border-left:3px solid #ff4444;\"><div style=\"font-size:.65rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-dim);margin-bottom:4px;\">Villain &mdash; Demon Inspiration</div><div style=\"color:#ff6666;font-size:1rem;font-weight:bold;margin-bottom:2px;\">" + insp.villainDemon.name + "</div><div style=\"color:var(--text-dim);font-style:italic;font-size:.8rem;margin-bottom:6px;\">" + insp.villainDemon.domain + "</div><div style=\"color:var(--text);font-size:.85rem;line-height:1.6;\">" + insp.villainDemon.parallel + "</div></div>";
+      html += "<div class=\"insp-card\" style=\"border-left:3px solid #ff4444;\"><div style=\"font-size:.65rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-dim);margin-bottom:4px;\">Villain &mdash; Mahabharata Parallel</div><div style=\"color:#ff6666;font-size:1rem;font-weight:bold;margin-bottom:2px;\">" + insp.villainMahabharata.name + "</div><div style=\"color:var(--text);font-size:.85rem;line-height:1.6;\">" + insp.villainMahabharata.parallel + "</div></div>";
+      html += "</div>";
+    }
+
+    // --- Story images (from storyImages field if present) ---
+    if (kingdom.storyImages) {
+      var si = kingdom.storyImages;
+      var bp = si.basePath || "";
+      if (si.heroPortrait || si.villainPortrait) {
+        html += "<div class=\"section-title-bar\"><h2 style=\"color:" + rc + ";\">Character Portraits</h2></div>";
+        html += "<div class=\"portrait-pair\">";
+        if (si.heroPortrait)    html += "<div><img src=\"" + bp + si.heroPortrait    + "\" onerror=\"this.parentNode.remove()\" style=\"border:1px solid rgba(68,255,136,.2)\"></div>";
+        if (si.villainPortrait) html += "<div><img src=\"" + bp + si.villainPortrait + "\" onerror=\"this.parentNode.remove()\" style=\"border:1px solid rgba(255,68,68,.2)\"></div>";
+        html += "</div>";
+      }
+      if (si.warriors && si.warriors.length) {
+        html += "<div class=\"section-title-bar\"><h2 style=\"color:" + rc + ";\">Warriors &amp; Allies</h2></div>";
+        html += "<div class=\"img-gallery\">";
+        si.warriors.forEach(function(w) {
+          html += "<div style=\"border-radius:9px;overflow:hidden;border:1px solid var(--border-dim);\"><img src=\"" + bp + w.file + "\" onerror=\"this.parentNode.remove()\"><div style=\"padding:7px 9px;background:rgba(0,0,0,.3);\"><div style=\"color:var(--gold);font-size:.83em;font-weight:bold;\">" + w.name + "</div><div style=\"color:var(--text-dim);font-size:.7em;font-style:italic;\">" + w.role + "</div></div></div>";
+        });
+        html += "</div>";
+      }
+      if (si.scenes && si.scenes.length) {
+        html += "<div class=\"section-title-bar\"><h2 style=\"color:" + rc + ";\">Story Scenes</h2></div>";
+        html += "<div class=\"img-gallery\">";
+        si.scenes.forEach(function(s) {
+          html += "<div style=\"border-radius:9px;overflow:hidden;border:1px solid var(--border-dim);\"><img src=\"" + bp + s.file + "\" onerror=\"this.parentNode.remove()\"><div style=\"padding:6px 9px;background:rgba(0,0,0,.3);font-size:.7em;color:var(--text-dim);font-style:italic;\">" + s.label + "</div></div>";
+        });
+        html += "</div>";
+      }
+    }
+
+    // --- Additional stories ---
+    if (window.ADDITIONAL_STORIES && ADDITIONAL_STORIES[sid]) {
+      var stories = ADDITIONAL_STORIES[sid];
+      html += "<div class=\"section-title-bar\"><h2 style=\"color:var(--gold);\">Additional Stories</h2></div>";
+      html += "<div style=\"display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:15px;margin-bottom:30px;\">";
+      stories.forEach(function(s) {
+        html += "<a href=\"stories/" + s.file + "\" style=\"display:block;padding:20px;border-radius:12px;background:rgba(255,215,0,.06);border:1px solid rgba(255,215,0,.2);text-decoration:none;\">";
+        html += "<div style=\"color:var(--gold);font-size:1.1rem;font-weight:bold;margin-bottom:4px;\">" + s.title + "</div>";
+        html += "<div style=\"color:var(--text-dim);font-size:.8rem;margin-bottom:8px;\">Featuring " + s.hero + "</div>";
+        html += "<div style=\"color:var(--text);font-size:.85rem;line-height:1.6;\">" + s.desc + "</div>";
+        html += "<div style=\"color:var(--gold-dim);font-size:.85rem;margin-top:10px;\">Read the full story &rarr;</div></a>";
+      });
+      html += "</div>";
+    }
+
+    // --- Sibling kingdom nav ---
+    var siblings = STATE_KINGDOMS.filter(function(k) { return k.region === kingdom.region; });
+    html += "<div class=\"k-sibling-nav\">";
+    html += "<h3>Other Kingdoms in " + (RL[kingdom.region] || kingdom.region) + "</h3>";
+    html += "<div class=\"sibling-links\">";
+    siblings.forEach(function(s) {
+      var kslug = s.kingdomName.split("—")[0].trim().toLowerCase().replace(/\s+/g,"-").replace(/[^a-z0-9-]/g,"");
+      var isCurrent = s.stateId === kingdom.stateId;
+      html += "<a href=\"../" + kslug + "/story.html\"" + (isCurrent ? " class=\"current\"" : "") + ">" + s.stateName + "</a>";
+    });
+    html += "</div>";
+    html += "<div class=\"back-links\">";
+    html += "<a href=\"index.html\">&larr; Kingdom Overview</a>";
+    html += "<a href=\"../../../../kingdoms.html\">&larr; All Kingdoms</a>";
+    html += "</div></div>";
+
+    document.getElementById("content").innerHTML = html;
+  })();
+  </script>
+  <script src="../../../../js/app.js"></script>
+  <script src="../../../../../../../assets/manifest.js"></script>
+  <script src="../../../../../../../assets/aom.js"></script> <!-- aom:injected -->
+</body>
+</html>

@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Continental Origins — The Seven Brothers | Hulmane-The-Saga</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .origins-hero {
+      text-align: center;
+      padding: 110px 20px 60px;
+      background: radial-gradient(ellipse at 50% 30%, rgba(138,43,226,0.18) 0%, rgba(0,0,0,0) 70%);
+    }
+    .origins-hero h1 { font-size: 3.2rem; color: var(--gold); text-shadow: 0 0 50px rgba(255,215,0,0.3); margin-bottom: 6px; }
+    .origins-hero .subtitle { color: var(--text-dim); font-size: 1rem; margin-bottom: 20px; letter-spacing: 2px; text-transform: uppercase; }
+    .origins-hero .intro-text { color: var(--text); font-size: 1rem; line-height: 1.9; max-width: 720px; margin: 0 auto; font-style: italic; }
+    .earth-unity-viz { max-width: 480px; margin: 0 auto 30px; }
+    .planet-viz { max-width: 460px; margin: 0 auto 30px; }
+    .section { padding: 60px 20px; }
+    .section-title { text-align: center; font-size: 1.8rem; color: var(--gold); margin-bottom: 10px; }
+    .section-sub { text-align: center; color: var(--text-dim); font-size: 0.92rem; max-width: 680px; margin: 0 auto 40px; line-height: 1.7; }
+    .brothers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
+    .brother-card { padding: 22px; border-radius: 12px; background: rgba(0,0,0,0.25); border: 1px solid var(--border-dim); transition: transform 0.25s, box-shadow 0.25s; position: relative; overflow: hidden; }
+    .brother-card:hover { transform: translateY(-5px); box-shadow: 0 12px 35px rgba(0,0,0,0.4); }
+    .bc-number { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 6px; opacity: 0.7; }
+    .bc-name { font-size: 1.4rem; font-weight: bold; margin-bottom: 2px; }
+    .bc-title { font-size: 0.82rem; font-style: italic; margin-bottom: 14px; color: var(--text-dim); }
+    .bc-continent { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; padding: 3px 12px; display: inline-block; border-radius: 10px; }
+    .bc-element { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 12px; }
+    .bc-desc { font-size: 0.87rem; line-height: 1.7; color: var(--text); }
+    .bc-warning { margin-top: 12px; font-size: 0.8rem; font-style: italic; padding: 8px 12px; border-radius: 6px; border-left: 3px solid; }
+    .metal-panel { max-width: 900px; margin: 0 auto; padding: 35px; background: linear-gradient(135deg, rgba(255,215,0,0.06), rgba(255,150,0,0.03)); border: 1px solid rgba(255,215,0,0.25); border-radius: 14px; }
+    .metal-stats { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-top: 25px; }
+    .metal-stat { text-align: center; padding: 16px; background: rgba(0,0,0,0.2); border-radius: 10px; border: 1px solid rgba(255,215,0,0.15); }
+    .metal-stat .ms-num { font-size: 2.2rem; color: var(--gold); font-weight: bold; }
+    .metal-stat .ms-label { font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+    .script-panel { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+    .timeline { max-width: 850px; margin: 0 auto; display: flex; flex-direction: column; gap: 0; }
+    .tl-item { display: flex; gap: 20px; padding: 0 0 30px; position: relative; }
+    .tl-item::before { content: ''; position: absolute; left: 17px; top: 36px; bottom: 0; width: 1px; background: linear-gradient(180deg, rgba(255,215,0,0.3), transparent); }
+    .tl-dot { flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; border: 2px solid; }
+    .tl-content { padding-top: 5px; }
+    .tl-era { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 4px; }
+    .tl-title { font-size: 1.05rem; color: var(--text); font-weight: bold; margin-bottom: 6px; }
+    .tl-desc { font-size: 0.88rem; color: var(--text-dim); line-height: 1.7; }
+    .cta-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; max-width: 900px; margin: 0 auto; }
+    .cta-card { padding: 20px; border-radius: 10px; text-align: center; text-decoration: none; display: block; transition: transform 0.2s, box-shadow 0.2s; }
+    .cta-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+    .cta-icon { font-size: 2rem; margin-bottom: 10px; }
+    .cta-card h4 { font-size: 0.92rem; margin: 0 0 6px; }
+    .cta-card p { font-size: 0.78rem; opacity: 0.8; margin: 0; line-height: 1.5; }
+    .approach-bar { max-width: 750px; margin: 0 auto 40px; padding: 25px 30px; background: rgba(138,43,226,0.1); border: 1px solid rgba(138,43,226,0.3); border-radius: 12px; text-align: center; }
+    .ab-label { font-size: 0.8em; text-transform: uppercase; letter-spacing: 2px; color: #aa66ff; margin-bottom: 8px; }
+    .ab-num { font-size: 2.6rem; color: #aa66ff; font-weight: bold; }
+    .ab-track { height: 8px; background: rgba(138,43,226,0.15); border-radius: 4px; margin: 15px 0; overflow: hidden; }
+    .ab-fill { height: 100%; background: linear-gradient(90deg, #3d0838, #aa66ff); border-radius: 4px; animation: approach-advance 6s ease-in-out infinite alternate; }
+    @keyframes approach-advance { from { width: 65%; } to { width: 72%; } }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+    .info-box { padding: 22px; background: rgba(138,43,226,0.08); border: 1px solid rgba(138,43,226,0.2); border-radius: 12px; }
+    .info-box h3 { color: #cc66ff; margin-bottom: 10px; }
+    .info-box p { color: var(--text); font-size: 0.9em; line-height: 1.8; }
+    .planet-compare-wrap { max-width: 1050px; margin: 0 auto; overflow-x: auto; }
+    .planet-compare-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 900px; margin: 28px auto 0; }
+    .pc-stat { padding: 22px; border-radius: 12px; }
+    .pc-stat h3 { font-size: 1.1rem; margin-bottom: 14px; }
+    .ps-row { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.84em; }
+    .ps-row:last-child { border: none; }
+    .ps-label { color: var(--text-dim); }
+    .ps-val { color: var(--text); font-weight: bold; }
+    .alien-section-grid { display: grid; grid-template-columns: 280px 1fr; gap: 38px; max-width: 1050px; margin: 0 auto; align-items: start; }
+    .alien-profile-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 22px; }
+    .ap-stat { padding: 13px 15px; background: rgba(0,0,0,0.25); border: 1px solid rgba(138,43,226,0.22); border-radius: 10px; }
+    .ap-lbl { font-size: 0.67rem; text-transform: uppercase; letter-spacing: 2px; color: #aa66ff; margin-bottom: 5px; }
+    .ap-val { font-size: 0.93rem; color: var(--text); font-weight: bold; line-height: 1.4; }
+    .size-compare-wrap { max-width: 1100px; margin: 44px auto 0; overflow-x: auto; }
+    .metal-crystal-wrap { display: flex; justify-content: center; margin: 32px 0 10px; }
+    @media(max-width: 760px) { .alien-section-grid { grid-template-columns: 1fr; } .planet-compare-stats { grid-template-columns: 1fr; } }
+    @media(max-width: 640px) {
+      .brothers-grid { grid-template-columns: 1fr; }
+      .script-panel { grid-template-columns: 1fr; }
+      .two-col { grid-template-columns: 1fr; }
+      .origins-hero h1 { font-size: 2.2rem; }
+    }
+  </style>
+  <link rel="stylesheet" href="../../assets/aom.css"> <!-- aom:injected -->
+</head>
+<body class="aom" data-aom-type="page" >
+
+<nav class="maha-nav">
+  <a href="../../../../index.html" class="nav-logo">Age of Mythos</a>
+  <div class="nav-links">
+    <a href="index.html">Volume I</a>
+    <a href="kingdoms.html">Kingdoms</a>
+    <a href="identity.html">Identities</a>
+    <a href="characters.html">Heroes</a>
+    <a href="galactic-threat.html">Cosmic Threat</a>
+    <a href="council.html">Council</a>
+    <a href="bharatavarsha/global-map.html">Map</a>
+  </div>
+  <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('nav-open')">&#9776;</button>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="origins-hero">
+  <div class="earth-unity-viz">
+    <svg viewBox="0 0 500 500" style="width:100%;max-width:420px;height:auto;">
+      <defs>
+        <radialGradient id="earthGrad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#1a4a8a" stop-opacity="0.9"/>
+          <stop offset="55%" stop-color="#0d2d5e" stop-opacity="0.85"/>
+          <stop offset="100%" stop-color="#040e1e" stop-opacity="0.98"/>
+        </radialGradient>
+        <radialGradient id="panGrad" cx="45%" cy="40%" r="55%">
+          <stop offset="0%" stop-color="#5a9a4a"/>
+          <stop offset="100%" stop-color="#2a5a1e"/>
+        </radialGradient>
+        <filter id="earthGlow">
+          <feGaussianBlur stdDeviation="8" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <filter id="sg">
+          <feGaussianBlur stdDeviation="3" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+      <!-- Stars -->
+      <circle cx="30" cy="50" r="1.5" fill="white" opacity="0.5"/>
+      <circle cx="80" cy="20" r="1" fill="white" opacity="0.4"/>
+      <circle cx="450" cy="40" r="1.5" fill="white" opacity="0.6"/>
+      <circle cx="20" cy="200" r="1.5" fill="white" opacity="0.5"/>
+      <circle cx="490" cy="300" r="1" fill="white" opacity="0.4"/>
+      <circle cx="60" cy="430" r="1.5" fill="white" opacity="0.3"/>
+      <circle cx="420" cy="460" r="1" fill="white" opacity="0.5"/>
+      <circle cx="360" cy="15" r="1.5" fill="white" opacity="0.4"/>
+      <!-- Orbit rings -->
+      <circle cx="250" cy="250" r="235" fill="none" stroke="#1a4a8a" stroke-width="1" stroke-dasharray="4,8" opacity="0.25">
+        <animateTransform attributeName="transform" type="rotate" from="0 250 250" to="360 250 250" dur="60s" repeatCount="indefinite"/>
+      </circle>
+      <!-- Earth body -->
+      <circle cx="250" cy="250" r="200" fill="url(#earthGrad)" filter="url(#earthGlow)">
+        <animate attributeName="r" values="198;202;198" dur="8s" repeatCount="indefinite"/>
+      </circle>
+      <!-- Pangaea (Eka-Bhumi) — unified landmass -->
+      <path d="M195,148 C235,128 288,138 318,160 C352,184 362,216 356,248 C350,278 332,302 306,316 C274,334 236,338 206,326 C170,312 150,286 144,256 C136,224 146,196 168,174 C178,163 188,154 195,148 Z"
+            fill="url(#panGrad)" opacity="0.88" filter="url(#sg)">
+        <animate attributeName="opacity" values="0.88;0.78;0.88" dur="5s" repeatCount="indefinite"/>
+      </path>
+      <!-- Crack lines — alien division marks -->
+      <line x1="250" y1="148" x2="248" y2="328" stroke="#ffd700" stroke-width="1.5" stroke-dasharray="5,7" opacity="0">
+        <animate attributeName="opacity" values="0;0.55;0;0.55;0" dur="7s" begin="1s" repeatCount="indefinite"/>
+      </line>
+      <line x1="150" y1="238" x2="356" y2="244" stroke="#ffd700" stroke-width="1.5" stroke-dasharray="5,7" opacity="0">
+        <animate attributeName="opacity" values="0;0;0.55;0;0.55" dur="7s" begin="3s" repeatCount="indefinite"/>
+      </line>
+      <!-- 7 guardian light nodes -->
+      <circle cx="252" cy="218" r="8" fill="#6699ff" opacity="0.75" filter="url(#sg)"><animate attributeName="r" values="7;11;7" dur="3s" repeatCount="indefinite"/></circle>
+      <circle cx="218" cy="282" r="6" fill="#ff6633" opacity="0.65" filter="url(#sg)"><animate attributeName="r" values="5;9;5" dur="3.5s" repeatCount="indefinite"/></circle>
+      <circle cx="274" cy="172" r="6" fill="#aaddff" opacity="0.6" filter="url(#sg)"><animate attributeName="r" values="5;9;5" dur="4s" repeatCount="indefinite"/></circle>
+      <circle cx="178" cy="212" r="5" fill="#33aaff" opacity="0.6" filter="url(#sg)"><animate attributeName="r" values="4;8;4" dur="2.8s" repeatCount="indefinite"/></circle>
+      <circle cx="192" cy="294" r="5" fill="#44cc66" opacity="0.6" filter="url(#sg)"><animate attributeName="r" values="4;8;4" dur="3.2s" repeatCount="indefinite"/></circle>
+      <circle cx="316" cy="258" r="5" fill="#cc66ff" opacity="0.6" filter="url(#sg)"><animate attributeName="r" values="4;8;4" dur="2.6s" repeatCount="indefinite"/></circle>
+      <circle cx="248" cy="316" r="5" fill="#aaccdd" opacity="0.6" filter="url(#sg)"><animate attributeName="r" values="4;8;4" dur="3.8s" repeatCount="indefinite"/></circle>
+      <!-- Labels -->
+      <text x="250" y="462" fill="#ffd700" text-anchor="middle" font-size="13" font-family="Georgia" opacity="0.75">EKA-BHUMI &mdash; The One Earth</text>
+      <text x="250" y="480" fill="#e8cce4" text-anchor="middle" font-size="10" font-family="Georgia" opacity="0.45">Before the Division &middot; 200 Million Years Ago</text>
+    </svg>
+  </div>
+  <h1>The Great Division</h1>
+  <p class="subtitle">Origins of the Seven Continents &nbsp;&bull;&nbsp; The Seven Brothers &nbsp;&bull;&nbsp; Vimana-Loka</p>
+  <p class="intro-text">
+    Before nations, before languages, before memory — there was one land.
+    <em>Eka-Bhumi</em>: the single, breathing supercontinent covering the face of the young Earth.
+    Then came the Seven. Enormous beings from a distant planet, crossing the void between stars
+    not as conquerors, but as harvesters. What they sought lay buried beneath the land.
+    What they left behind became everything — every continent, every tongue, every myth, every war.
+  </p>
+</section>
+
+<!-- ===== VIMANA-LOKA ===== -->
+<section class="section">
+  <h2 class="section-title">Vimana-Loka &mdash; The Sky-Chariot World</h2>
+  <p class="section-sub">A planet orbiting a dying star beyond the visible sky — home of the Seven Brothers, now depleted, now returning to reclaim what they left behind.</p>
+  <div class="planet-viz">
+    <svg viewBox="0 0 500 380" style="width:100%;max-width:460px;height:auto;">
+      <defs>
+        <radialGradient id="planetGrad" cx="42%" cy="38%" r="55%">
+          <stop offset="0%" stop-color="#bb55dd"/>
+          <stop offset="40%" stop-color="#660088"/>
+          <stop offset="100%" stop-color="#180028"/>
+        </radialGradient>
+        <filter id="pGlow">
+          <feGaussianBlur stdDeviation="6" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <filter id="psg">
+          <feGaussianBlur stdDeviation="3" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+      <!-- Stars -->
+      <circle cx="40" cy="30" r="1" fill="white" opacity="0.5"/>
+      <circle cx="100" cy="15" r="1.5" fill="white" opacity="0.4"/>
+      <circle cx="400" cy="25" r="1" fill="white" opacity="0.6"/>
+      <circle cx="460" cy="80" r="1.5" fill="white" opacity="0.35"/>
+      <circle cx="20" cy="180" r="1" fill="white" opacity="0.4"/>
+      <circle cx="480" cy="200" r="1" fill="white" opacity="0.3"/>
+      <circle cx="350" cy="350" r="1.5" fill="white" opacity="0.4"/>
+      <circle cx="80" cy="340" r="1" fill="white" opacity="0.45"/>
+      <circle cx="200" cy="50" r="1" fill="white" opacity="0.3"/>
+      <!-- Dying star -->
+      <circle cx="60" cy="60" r="18" fill="#ffaa33" opacity="0.22" filter="url(#pGlow)"/>
+      <circle cx="60" cy="60" r="10" fill="#ffcc66" opacity="0.38" filter="url(#pGlow)"/>
+      <circle cx="60" cy="60" r="5" fill="#ffffff" opacity="0.6"/>
+      <text x="60" y="88" fill="#ffcc66" text-anchor="middle" font-size="8" font-family="Georgia" opacity="0.55">Dying Star</text>
+      <!-- Ring back half -->
+      <ellipse cx="250" cy="195" rx="190" ry="28" fill="none" stroke="#cc88ff" stroke-width="18" opacity="0.22"/>
+      <!-- Planet body -->
+      <circle cx="250" cy="195" r="130" fill="url(#planetGrad)" filter="url(#pGlow)">
+        <animate attributeName="r" values="128;133;128" dur="9s" repeatCount="indefinite"/>
+      </circle>
+      <!-- Surface markings -->
+      <ellipse cx="208" cy="165" rx="35" ry="20" fill="#aa33cc" opacity="0.25" transform="rotate(-25,208,165)"/>
+      <ellipse cx="282" cy="218" rx="45" ry="22" fill="#7700aa" opacity="0.2" transform="rotate(15,282,218)"/>
+      <!-- 7 brother lights on planet surface -->
+      <circle cx="220" cy="155" r="5" fill="#6699ff" filter="url(#psg)" opacity="0.9"><animate attributeName="r" values="4;7;4" dur="2.5s" repeatCount="indefinite"/></circle>
+      <circle cx="255" cy="145" r="4" fill="#ff6633" filter="url(#psg)" opacity="0.9"><animate attributeName="r" values="3;6;3" dur="3s" repeatCount="indefinite"/></circle>
+      <circle cx="285" cy="165" r="5" fill="#aaddff" filter="url(#psg)" opacity="0.9"><animate attributeName="r" values="4;7;4" dur="2s" repeatCount="indefinite"/></circle>
+      <circle cx="300" cy="195" r="4" fill="#33aaff" filter="url(#psg)" opacity="0.9"><animate attributeName="r" values="3;6;3" dur="3.5s" repeatCount="indefinite"/></circle>
+      <circle cx="275" cy="225" r="5" fill="#44cc66" filter="url(#psg)" opacity="0.9"><animate attributeName="r" values="4;7;4" dur="2.8s" repeatCount="indefinite"/></circle>
+      <circle cx="230" cy="235" r="4" fill="#cc66ff" filter="url(#psg)" opacity="0.9"><animate attributeName="r" values="3;6;3" dur="3.2s" repeatCount="indefinite"/></circle>
+      <circle cx="200" cy="210" r="5" fill="#aaccdd" filter="url(#psg)" opacity="0.9"><animate attributeName="r" values="4;7;4" dur="2.2s" repeatCount="indefinite"/></circle>
+      <!-- Ring front half -->
+      <ellipse cx="250" cy="195" rx="190" ry="28" fill="none" stroke="#cc88ff" stroke-width="7" opacity="0.14" stroke-dasharray="20,15">
+        <animateTransform attributeName="transform" type="rotate" from="0 250 195" to="360 250 195" dur="25s" repeatCount="indefinite"/>
+      </ellipse>
+      <!-- Approach arrow -->
+      <path d="M 390 278 L 410 292 L 390 306" fill="none" stroke="#cc66ff" stroke-width="2" opacity="0.7">
+        <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2s" repeatCount="indefinite"/>
+      </path>
+      <line x1="360" y1="292" x2="408" y2="292" stroke="#cc66ff" stroke-width="2">
+        <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2s" repeatCount="indefinite"/>
+      </line>
+      <text x="418" y="296" fill="#cc66ff" font-size="9" font-family="Georgia" opacity="0.7">EARTH</text>
+      <text x="250" y="358" fill="#cc66ff" text-anchor="middle" font-size="13" font-family="Georgia" opacity="0.85">VIMANA-LOKA</text>
+      <text x="250" y="374" fill="#e8cce4" text-anchor="middle" font-size="9" font-family="Georgia" opacity="0.45">Planet of the Sky-Chariot People &middot; Now Approaching</text>
+    </svg>
+  </div>
+
+  <div style="max-width:900px;margin:0 auto;padding:0 20px;">
+    <div class="two-col">
+      <div class="info-box">
+        <h3>Origin</h3>
+        <p>A planet of immense technological civilization, orbiting a star far beyond our solar system. Its people — the Vimana — mastered interstellar travel billions of years ago. They are not invaders in the human sense. They are miners, researchers, harvesters. Earth, to them, is a resource site — one they seeded with life as a side effect of their work.</p>
+      </div>
+      <div class="info-box">
+        <h3>The Seven Brothers</h3>
+        <p>Seven elite Vimana were chosen for the Earth mission — one to govern each continental extraction zone. Each carries the elemental signature of his domain: sky, fire, wind, water, earth, void, and ice. They are enormous — towering above mountains — and older than most of Earth's geological formations.</p>
+      </div>
+      <div class="info-box">
+        <h3>Their Depletion</h3>
+        <p>Whatever they extracted from Earth — Brahma-Dhatu, the cosmic metal — powered their entire civilization's energy. After billions of years of use, Vimana-Loka's reserves are nearly gone. The planet itself has begun to die. The Seven Brothers have no choice: they must return to Earth to claim the remaining 10% they left behind.</p>
+      </div>
+      <div class="info-box">
+        <h3>The Approach</h3>
+        <p>Vimana-Loka has entered a gravitational path that brings it near our solar system once every several billion years. Astronomers have detected an anomalous object at the edge of observable range. Ancient texts across five civilizations describe this exact moment. The planet is not a metaphor. It is coming.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Approach Progress -->
+<section class="section" style="padding-top:0;">
+  <div class="approach-bar">
+    <div class="ab-label">Vimana-Loka Approach Status</div>
+    <div style="display:flex;justify-content:center;gap:40px;margin:10px 0;">
+      <div><span class="ab-num">~500</span><br><span style="color:#cc66ff;font-size:0.9rem;">Years to arrival</span></div>
+      <div style="color:#aa66ff50;font-size:2rem;padding-top:10px;">·</div>
+      <div><span class="ab-num">2</span><br><span style="color:#cc66ff;font-size:0.9rem;">Prior Earth visits</span></div>
+      <div style="color:#aa66ff50;font-size:2rem;padding-top:10px;">·</div>
+      <div><span class="ab-num">10%</span><br><span style="color:#cc66ff;font-size:0.9rem;">Brahma-Dhatu remains</span></div>
+    </div>
+    <div class="ab-track"><div class="ab-fill"></div></div>
+    <div style="font-size:0.75em;color:var(--text-dim);">Gravitational signature detected from Akasha-Lipi decoding — Indian Desert Observatory, 2024</div>
+  </div>
+</section>
+
+<!-- ===== PLANET COMPARISON ===== -->
+<section class="section" style="background:rgba(0,0,0,0.1);">
+  <h2 class="section-title">Planet Comparison &mdash; Earth vs Vimana-Loka</h2>
+  <p class="section-sub">Vimana-Loka is 1.35&times; the diameter of Earth — older, denser, and now critically depleted of the one resource that powered its civilization for billions of years.</p>
+  <div class="planet-compare-wrap">
+    <svg viewBox="0 0 1000 470" style="width:100%;height:auto;max-width:1000px;display:block;margin:0 auto;">
+      <defs>
+        <radialGradient id="earthOcean" cx="38%" cy="35%" r="60%">
+          <stop offset="0%" stop-color="#2266cc"/>
+          <stop offset="55%" stop-color="#0d3d82"/>
+          <stop offset="100%" stop-color="#061a40"/>
+        </radialGradient>
+        <radialGradient id="vimanaBody" cx="38%" cy="35%" r="58%">
+          <stop offset="0%" stop-color="#8822aa"/>
+          <stop offset="45%" stop-color="#4d0070"/>
+          <stop offset="100%" stop-color="#140020"/>
+        </radialGradient>
+        <radialGradient id="moonGrad" cx="40%" cy="35%" r="55%">
+          <stop offset="0%" stop-color="#aaaaaa"/>
+          <stop offset="100%" stop-color="#444444"/>
+        </radialGradient>
+        <filter id="pglow"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="psg"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="starGlow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+
+      <!-- Stars -->
+      <circle cx="15" cy="30" r="1" fill="white" opacity="0.5"/><circle cx="48" cy="12" r="1.5" fill="white" opacity="0.4"/>
+      <circle cx="380" cy="18" r="1" fill="white" opacity="0.6"/><circle cx="500" cy="8" r="1.5" fill="white" opacity="0.3"/>
+      <circle cx="620" cy="22" r="1" fill="white" opacity="0.5"/><circle cx="780" cy="10" r="1" fill="white" opacity="0.4"/>
+      <circle cx="960" cy="90" r="1.5" fill="white" opacity="0.5"/><circle cx="12" cy="280" r="1" fill="white" opacity="0.3"/>
+      <circle cx="500" cy="380" r="1" fill="white" opacity="0.3"/><circle cx="45" cy="420" r="1.5" fill="white" opacity="0.4"/>
+
+      <!-- EARTH -->
+      <!-- Moon orbit arc (faint dashed) -->
+      <path d="M 190 55 A 115 95 -20 0 0 148 330" stroke="rgba(180,200,255,0.18)" stroke-width="1" stroke-dasharray="5,9" fill="none"/>
+      <!-- Moon -->
+      <circle cx="116" cy="55" r="24" fill="url(#moonGrad)"/>
+      <path d="M 107 38 A 24 24 0 0 1 107 72 A 20 20 0 0 0 107 38 Z" fill="rgba(255,255,255,0.12)"/>
+      <text x="116" y="87" fill="#aaaaaa" text-anchor="middle" font-size="9" font-family="Georgia" opacity="0.6">Moon</text>
+      <!-- Earth atmosphere -->
+      <circle cx="252" cy="192" r="148" fill="rgba(80,140,255,0.10)"/>
+      <!-- Earth body -->
+      <circle cx="252" cy="192" r="132" fill="url(#earthOcean)" filter="url(#pglow)">
+        <animate attributeName="r" values="130;134;130" dur="9s" repeatCount="indefinite"/>
+      </circle>
+      <!-- Ice caps -->
+      <ellipse cx="252" cy="68" rx="36" ry="13" fill="rgba(255,255,255,0.72)"/>
+      <ellipse cx="252" cy="316" rx="28" ry="10" fill="rgba(255,255,255,0.60)"/>
+      <!-- Continents -->
+      <ellipse cx="272" cy="182" rx="42" ry="52" fill="#2d6622" transform="rotate(-12,272,182)" opacity="0.88"/>
+      <ellipse cx="224" cy="165" rx="17" ry="30" fill="#2d6622" transform="rotate(8,224,165)" opacity="0.82"/>
+      <ellipse cx="218" cy="215" rx="13" ry="22" fill="#2d6622" transform="rotate(-6,218,215)" opacity="0.75"/>
+      <ellipse cx="290" cy="225" rx="15" ry="9" fill="#2d6622" transform="rotate(-18,290,225)" opacity="0.72"/>
+      <!-- Cloud wisps -->
+      <ellipse cx="230" cy="150" rx="28" ry="8" fill="rgba(255,255,255,0.12)" transform="rotate(-25,230,150)"/>
+      <ellipse cx="280" cy="240" rx="22" ry="6" fill="rgba(255,255,255,0.10)" transform="rotate(15,280,240)"/>
+      <!-- Earth label -->
+      <text x="252" y="352" fill="#6699ff" text-anchor="middle" font-size="17" font-family="Georgia" font-weight="bold">EARTH</text>
+      <text x="252" y="370" fill="#e8cce4" text-anchor="middle" font-size="10" font-family="Georgia" opacity="0.65">Diameter: 12,742 km</text>
+
+      <!-- VS -->
+      <text x="500" y="210" fill="rgba(255,255,255,0.09)" text-anchor="middle" font-size="62" font-family="Georgia" font-weight="bold">VS</text>
+      <!-- Scale note -->
+      <text x="500" y="240" fill="rgba(255,255,255,0.25)" text-anchor="middle" font-size="9" font-family="Georgia">drawn to scale</text>
+
+      <!-- VIMANA-LOKA -->
+      <!-- Dying star (upper right) -->
+      <circle cx="946" cy="38" r="22" fill="#ffaa22" opacity="0.18" filter="url(#starGlow)"/>
+      <circle cx="946" cy="38" r="12" fill="#ffcc44" opacity="0.32" filter="url(#starGlow)"/>
+      <circle cx="946" cy="38" r="5" fill="#ffffaa" opacity="0.65"/>
+      <text x="946" y="68" fill="#ffcc44" text-anchor="middle" font-size="8" font-family="Georgia" opacity="0.55">Dying Star</text>
+      <!-- Ring (back half) -->
+      <ellipse cx="748" cy="192" rx="228" ry="30" fill="none" stroke="#cc88ff" stroke-width="18" opacity="0.20"/>
+      <!-- Planet atmosphere -->
+      <circle cx="748" cy="192" r="196" fill="rgba(100,0,150,0.08)"/>
+      <!-- Planet body -->
+      <circle cx="748" cy="192" r="178" fill="url(#vimanaBody)" filter="url(#pglow)">
+        <animate attributeName="r" values="176;180;176" dur="11s" repeatCount="indefinite"/>
+      </circle>
+      <!-- Depleted surface zones (craters/extraction sites) -->
+      <ellipse cx="718" cy="168" rx="42" ry="25" fill="#1c0030" opacity="0.50" transform="rotate(-18,718,168)"/>
+      <ellipse cx="778" cy="212" rx="58" ry="30" fill="#160028" opacity="0.42" transform="rotate(12,778,212)"/>
+      <ellipse cx="740" cy="248" rx="30" ry="16" fill="#200035" opacity="0.38" transform="rotate(-5,740,248)"/>
+      <!-- Ring (front half) -->
+      <ellipse cx="748" cy="192" rx="228" ry="30" fill="none" stroke="#cc88ff" stroke-width="9" opacity="0.12" stroke-dasharray="22,16">
+        <animateTransform attributeName="transform" type="rotate" from="0 748 192" to="360 748 192" dur="28s" repeatCount="indefinite"/>
+      </ellipse>
+      <!-- 7 brother lights on surface -->
+      <circle cx="718" cy="158" r="4" fill="#6699ff" filter="url(#psg)" opacity="0.9"><animate attributeName="r" values="3;5;3" dur="2.5s" repeatCount="indefinite"/></circle>
+      <circle cx="748" cy="145" r="3.5" fill="#ff6633" filter="url(#psg)" opacity="0.9"><animate attributeName="r" values="2.5;4.5;2.5" dur="3s" repeatCount="indefinite"/></circle>
+      <circle cx="778" cy="162" r="4" fill="#aaddff" filter="url(#psg)" opacity="0.9"><animate attributeName="r" values="3;5;3" dur="2s" repeatCount="indefinite"/></circle>
+      <circle cx="795" cy="195" r="3.5" fill="#33aaff" filter="url(#psg)" opacity="0.9"><animate attributeName="r" values="2.5;4.5;2.5" dur="3.5s" repeatCount="indefinite"/></circle>
+      <circle cx="772" cy="225" r="4" fill="#44cc66" filter="url(#psg)" opacity="0.9"><animate attributeName="r" values="3;5;3" dur="2.8s" repeatCount="indefinite"/></circle>
+      <circle cx="728" cy="232" r="3.5" fill="#cc66ff" filter="url(#psg)" opacity="0.9"><animate attributeName="r" values="2.5;4.5;2.5" dur="3.2s" repeatCount="indefinite"/></circle>
+      <circle cx="700" cy="208" r="4" fill="#aaccdd" filter="url(#psg)" opacity="0.9"><animate attributeName="r" values="3;5;3" dur="2.2s" repeatCount="indefinite"/></circle>
+      <!-- Vimana-Loka label -->
+      <text x="748" y="395" fill="#cc66ff" text-anchor="middle" font-size="17" font-family="Georgia" font-weight="bold">VIMANA-LOKA</text>
+      <text x="748" y="413" fill="#e8cce4" text-anchor="middle" font-size="10" font-family="Georgia" opacity="0.65">Diameter: ~17,200 km</text>
+
+      <!-- Diameter comparison bars (bottom) -->
+      <text x="500" y="442" fill="rgba(255,255,255,0.28)" text-anchor="middle" font-size="9" font-family="Georgia" letter-spacing="2">DIAMETER COMPARISON (TO SCALE)</text>
+      <!-- Earth bar: 132px radius = 264px bar -->
+      <rect x="56" y="450" width="264" height="12" rx="3" fill="#2244aa" opacity="0.75"/>
+      <text x="56" y="448" fill="#6699ff" font-size="9" font-family="Georgia">Earth</text>
+      <!-- Vimana bar: 178/132 * 264 = 356px -->
+      <rect x="56" y="466" width="356" height="12" rx="3" fill="#6600aa" opacity="0.75"/>
+      <text x="56" y="464" fill="#cc66ff" font-size="9" font-family="Georgia">Vimana-Loka (1.35x)</text>
+    </svg>
+  </div>
+
+  <div class="planet-compare-stats">
+    <div class="pc-stat" style="background:linear-gradient(135deg,rgba(30,80,180,0.12),rgba(0,40,100,0.07));border:1px solid rgba(68,120,220,0.28);">
+      <h3 style="color:#6699ff;">&#127757;&nbsp; Earth</h3>
+      <div class="ps-row"><span class="ps-label">Diameter</span><span class="ps-val">12,742 km</span></div>
+      <div class="ps-row"><span class="ps-label">Surface Gravity</span><span class="ps-val">9.8 m/s&sup2;</span></div>
+      <div class="ps-row"><span class="ps-label">Age</span><span class="ps-val">4.5 Billion Years</span></div>
+      <div class="ps-row"><span class="ps-label">Brahma-Dhatu Remaining</span><span class="ps-val" style="color:#ffaa44;">10%</span></div>
+      <div class="ps-row"><span class="ps-label">Population</span><span class="ps-val">8 Billion Humans</span></div>
+      <div class="ps-row"><span class="ps-label">Status</span><span class="ps-val" style="color:#44ff88;">Viable &mdash; Under Threat</span></div>
+    </div>
+    <div class="pc-stat" style="background:linear-gradient(135deg,rgba(138,43,226,0.12),rgba(60,0,80,0.07));border:1px solid rgba(138,43,226,0.28);">
+      <h3 style="color:#cc66ff;">&#128308;&nbsp; Vimana-Loka</h3>
+      <div class="ps-row"><span class="ps-label">Diameter</span><span class="ps-val">~17,200 km (estimated)</span></div>
+      <div class="ps-row"><span class="ps-label">Surface Gravity</span><span class="ps-val">~13.2 m/s&sup2;</span></div>
+      <div class="ps-row"><span class="ps-label">Age</span><span class="ps-val">&gt; 8 Billion Years</span></div>
+      <div class="ps-row"><span class="ps-label">Brahma-Dhatu Remaining</span><span class="ps-val" style="color:#ff4444;">&lt; 0.5%</span></div>
+      <div class="ps-row"><span class="ps-label">Population</span><span class="ps-val">Unknown &mdash; Dwindling</span></div>
+      <div class="ps-row"><span class="ps-label">Status</span><span class="ps-val" style="color:#ff6644;">Critical &mdash; Dying Planet</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== THE SEVEN BROTHERS ===== -->
+<section class="section" style="background:rgba(0,0,0,0.12);">
+  <h2 class="section-title">The Seven Brothers</h2>
+  <p class="section-sub">Each brother claimed one continent as his domain. Each extracted his share of Brahma-Dhatu. Each left behind a script — and from that script, a language, a culture, a civilization grew.</p>
+  <div class="brothers-grid">
+
+    <!-- 1 Indra-Vara — Asia -->
+    <div class="brother-card" style="border-color:rgba(102,153,255,0.3);">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#6699ff,transparent);"></div>
+      <div style="text-align:center;margin-bottom:12px;">
+        <svg width="56" height="56" viewBox="0 0 56 56">
+          <circle cx="28" cy="28" r="24" fill="rgba(102,153,255,0.1)" stroke="#6699ff" stroke-width="1.5"/>
+          <text x="28" y="34" text-anchor="middle" font-size="22">&#9889;</text>
+          <circle cx="28" cy="28" r="27" fill="none" stroke="#6699ff" stroke-width="0.5" stroke-dasharray="3,5" opacity="0.35">
+            <animateTransform attributeName="transform" type="rotate" from="0 28 28" to="360 28 28" dur="8s" repeatCount="indefinite"/>
+          </circle>
+        </svg>
+      </div>
+      <div class="bc-number" style="color:#6699ff;">Brother I</div>
+      <div class="bc-name" style="color:#6699ff;">Indra-Vara</div>
+      <div class="bc-title">The Sky Sovereign &middot; Lord of the Cosmic Storm</div>
+      <span class="bc-continent" style="background:rgba(102,153,255,0.15);color:#6699ff;">Asia</span>
+      <div class="bc-element">&#9672; Sky &amp; Cosmic Lightning &nbsp;&bull;&nbsp; Seeded: Sanskrit &amp; Vedic</div>
+      <div class="bc-desc">The eldest and greatest. Indra-Vara chose the largest landmass — holding the richest Brahma-Dhatu. He did not merely extract; he studied, mapped, and left the most detailed script of all. From his Akasha-Lipi grew the root of all Indo-European languages. The Vedas were not written for humans — they were his research notes.</div>
+      <div class="bc-warning" style="border-left-color:#6699ff;background:rgba(102,153,255,0.08);color:#aabbff;">"He who seeded the Vedas did not write them for humans — he wrote them for himself. We merely learned to read what he left."</div>
+    </div>
+
+    <!-- 2 Agni-Vara — Africa -->
+    <div class="brother-card" style="border-color:rgba(255,102,51,0.3);">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#ff6633,transparent);"></div>
+      <div style="text-align:center;margin-bottom:12px;">
+        <svg width="56" height="56" viewBox="0 0 56 56">
+          <circle cx="28" cy="28" r="24" fill="rgba(255,102,51,0.1)" stroke="#ff6633" stroke-width="1.5"/>
+          <text x="28" y="34" text-anchor="middle" font-size="22">&#128293;</text>
+          <circle cx="28" cy="28" r="27" fill="none" stroke="#ff6633" stroke-width="0.5" stroke-dasharray="3,5" opacity="0.35">
+            <animateTransform attributeName="transform" type="rotate" from="360 28 28" to="0 28 28" dur="10s" repeatCount="indefinite"/>
+          </circle>
+        </svg>
+      </div>
+      <div class="bc-number" style="color:#ff6633;">Brother II</div>
+      <div class="bc-name" style="color:#ff6633;">Agni-Vara</div>
+      <div class="bc-title">The Fire Primordial &middot; Keeper of Earth's Inner Flame</div>
+      <span class="bc-continent" style="background:rgba(255,102,51,0.15);color:#ff6633;">Africa</span>
+      <div class="bc-element">&#9672; Fire &amp; Volcanic Force &nbsp;&bull;&nbsp; Seeded: Proto-Afroasiatic</div>
+      <div class="bc-desc">Agni-Vara was drawn to the volcanic heartland of the world's most ancient continent. He carved his script into the bedrock of the Sahara in a tongue of pure flame. The desert still holds his words, buried beneath sand. Humanity evolved in Africa — Agni-Vara is why. Humans are the unintended consequence of his heat processes.</div>
+      <div class="bc-warning" style="border-left-color:#ff6633;background:rgba(255,102,51,0.08);color:#ffaa88;">"Humanity evolved in Africa. Agni-Vara is why. He seeded conditions for life as a byproduct of extraction — humans are the unintended consequence."</div>
+    </div>
+
+    <!-- 3 Vayu-Vara — Europe -->
+    <div class="brother-card" style="border-color:rgba(170,221,255,0.3);">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#aaddff,transparent);"></div>
+      <div style="text-align:center;margin-bottom:12px;">
+        <svg width="56" height="56" viewBox="0 0 56 56">
+          <circle cx="28" cy="28" r="24" fill="rgba(170,221,255,0.1)" stroke="#aaddff" stroke-width="1.5"/>
+          <text x="28" y="34" text-anchor="middle" font-size="22">&#127788;</text>
+          <circle cx="28" cy="28" r="27" fill="none" stroke="#aaddff" stroke-width="0.5" stroke-dasharray="3,5" opacity="0.35">
+            <animateTransform attributeName="transform" type="rotate" from="0 28 28" to="360 28 28" dur="12s" repeatCount="indefinite"/>
+          </circle>
+        </svg>
+      </div>
+      <div class="bc-number" style="color:#aaddff;">Brother III</div>
+      <div class="bc-name" style="color:#aaddff;">Vayu-Vara</div>
+      <div class="bc-title">The Wind Walker &middot; Architect of Currents</div>
+      <span class="bc-continent" style="background:rgba(170,221,255,0.15);color:#aaddff;">Europe</span>
+      <div class="bc-element">&#9672; Wind &amp; Harmonic Current &nbsp;&bull;&nbsp; Seeded: Proto-Indo-European</div>
+      <div class="bc-desc">The most meticulous of the brothers. Vayu-Vara did not carve in stone — he encoded his script in harmonic resonance of coastal cliffs. Europe's great cave paintings are not art: they are partial translations of his instruction manual for the extraction machines he left running. Stonehenge is not a calendar. It is one of his resonance amplifiers — still functioning.</div>
+      <div class="bc-warning" style="border-left-color:#aaddff;background:rgba(170,221,255,0.08);color:#cceeff;">"Stonehenge is not a calendar. It is one of Vayu-Vara's resonance amplifiers — still functioning, still broadcasting."</div>
+    </div>
+
+    <!-- 4 Jala-Vara — North America -->
+    <div class="brother-card" style="border-color:rgba(51,170,255,0.3);">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#33aaff,transparent);"></div>
+      <div style="text-align:center;margin-bottom:12px;">
+        <svg width="56" height="56" viewBox="0 0 56 56">
+          <circle cx="28" cy="28" r="24" fill="rgba(51,170,255,0.1)" stroke="#33aaff" stroke-width="1.5"/>
+          <text x="28" y="34" text-anchor="middle" font-size="22">&#127754;</text>
+          <circle cx="28" cy="28" r="27" fill="none" stroke="#33aaff" stroke-width="0.5" stroke-dasharray="3,5" opacity="0.35">
+            <animateTransform attributeName="transform" type="rotate" from="360 28 28" to="0 28 28" dur="7s" repeatCount="indefinite"/>
+          </circle>
+        </svg>
+      </div>
+      <div class="bc-number" style="color:#33aaff;">Brother IV</div>
+      <div class="bc-name" style="color:#33aaff;">Jala-Vara</div>
+      <div class="bc-title">The Deep Mover &middot; Commander of Waters</div>
+      <span class="bc-continent" style="background:rgba(51,170,255,0.15);color:#33aaff;">North America</span>
+      <div class="bc-element">&#9672; Water &amp; Deep Earth &nbsp;&bull;&nbsp; Seeded: Proto-Na-Dene</div>
+      <div class="bc-desc">Jala-Vara was the engineer — methodical, precise, obsessed with systems. He built the most sophisticated Brahma-Dhatu extraction network, running along what humans call the Appalachians, the Rockies, and the Great Lakes. His script was encoded in water — in the pattern of river systems only visible from orbit. The Great Lakes are not natural. They are cooling reservoirs for his subterranean furnaces.</div>
+      <div class="bc-warning" style="border-left-color:#33aaff;background:rgba(51,170,255,0.08);color:#88ccff;">"The Great Lakes are not natural formations. They are cooling reservoirs for Jala-Vara's subterranean extraction furnaces."</div>
+    </div>
+
+    <!-- 5 Prithvi-Vara — South America -->
+    <div class="brother-card" style="border-color:rgba(68,204,102,0.3);">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#44cc66,transparent);"></div>
+      <div style="text-align:center;margin-bottom:12px;">
+        <svg width="56" height="56" viewBox="0 0 56 56">
+          <circle cx="28" cy="28" r="24" fill="rgba(68,204,102,0.1)" stroke="#44cc66" stroke-width="1.5"/>
+          <text x="28" y="34" text-anchor="middle" font-size="22">&#127807;</text>
+          <circle cx="28" cy="28" r="27" fill="none" stroke="#44cc66" stroke-width="0.5" stroke-dasharray="3,5" opacity="0.35">
+            <animateTransform attributeName="transform" type="rotate" from="0 28 28" to="360 28 28" dur="15s" repeatCount="indefinite"/>
+          </circle>
+        </svg>
+      </div>
+      <div class="bc-number" style="color:#44cc66;">Brother V</div>
+      <div class="bc-name" style="color:#44cc66;">Prithvi-Vara</div>
+      <div class="bc-title">The Earth Keeper &middot; Whisperer of Growing Things</div>
+      <span class="bc-continent" style="background:rgba(68,204,102,0.15);color:#44cc66;">South America</span>
+      <div class="bc-element">&#9672; Living Earth &amp; Root-Force &nbsp;&bull;&nbsp; Seeded: Proto-Amerindian</div>
+      <div class="bc-desc">The most gentle of the brothers. Prithvi-Vara was fascinated by Earth's biology, far more complex than he expected. He spent more time studying and recording life than extracting. The Amazon rainforest grows in the exact pattern of his script. The biodiversity there is not accidental — it is a living library. When the Amazon burns, it is pages of his codex, irreversibly lost.</div>
+      <div class="bc-warning" style="border-left-color:#44cc66;background:rgba(68,204,102,0.08);color:#aaffcc;">"When the Amazon burns, it is not just trees that die — it is pages of Prithvi-Vara's living codex, irreplaceable and irreversible."</div>
+    </div>
+
+    <!-- 6 Akasha-Vara — Australia -->
+    <div class="brother-card" style="border-color:rgba(204,102,255,0.3);">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#cc66ff,transparent);"></div>
+      <div style="text-align:center;margin-bottom:12px;">
+        <svg width="56" height="56" viewBox="0 0 56 56">
+          <circle cx="28" cy="28" r="24" fill="rgba(204,102,255,0.1)" stroke="#cc66ff" stroke-width="1.5"/>
+          <text x="28" y="34" text-anchor="middle" font-size="22">&#10024;</text>
+          <circle cx="28" cy="28" r="27" fill="none" stroke="#cc66ff" stroke-width="0.5" stroke-dasharray="3,5" opacity="0.35">
+            <animateTransform attributeName="transform" type="rotate" from="360 28 28" to="0 28 28" dur="9s" repeatCount="indefinite"/>
+          </circle>
+        </svg>
+      </div>
+      <div class="bc-number" style="color:#cc66ff;">Brother VI</div>
+      <div class="bc-name" style="color:#cc66ff;">Akasha-Vara</div>
+      <div class="bc-title">The Void Dweller &middot; Walker Between Worlds</div>
+      <span class="bc-continent" style="background:rgba(204,102,255,0.15);color:#cc66ff;">Australia &amp; Oceania</span>
+      <div class="bc-element">&#9672; Cosmic Void &amp; Dream-Space &nbsp;&bull;&nbsp; Seeded: Proto-Australian</div>
+      <div class="bc-desc">The most mysterious of the seven. Akasha-Vara chose the ancient, isolated continent barely changed since before his arrival. His script exists in a dimension parallel to physical space — what Aboriginal Australians call the Dreamtime is, in fact, Akasha-Vara's operating frequency. They have been communicating with him for 60,000 years without knowing it. The Songlines are coordinates to buried Brahma-Dhatu caches.</div>
+      <div class="bc-warning" style="border-left-color:#cc66ff;background:rgba(204,102,255,0.08);color:#ddaaff;">"The Songlines of Australia are not stories. They are coordinates — navigation paths to the buried Brahma-Dhatu caches that Akasha-Vara left."</div>
+    </div>
+
+    <!-- 7 Tamas-Vara — Antarctica -->
+    <div class="brother-card" style="border-color:rgba(170,204,221,0.3);">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#aaccdd,transparent);"></div>
+      <div style="text-align:center;margin-bottom:12px;">
+        <svg width="56" height="56" viewBox="0 0 56 56">
+          <circle cx="28" cy="28" r="24" fill="rgba(170,204,221,0.1)" stroke="#aaccdd" stroke-width="1.5"/>
+          <text x="28" y="34" text-anchor="middle" font-size="22">&#10052;</text>
+          <circle cx="28" cy="28" r="27" fill="none" stroke="#aaccdd" stroke-width="0.5" stroke-dasharray="3,5" opacity="0.35">
+            <animateTransform attributeName="transform" type="rotate" from="0 28 28" to="360 28 28" dur="20s" repeatCount="indefinite"/>
+          </circle>
+        </svg>
+      </div>
+      <div class="bc-number" style="color:#aaccdd;">Brother VII</div>
+      <div class="bc-name" style="color:#aaccdd;">Tamas-Vara</div>
+      <div class="bc-title">The Dark Keeper &middot; Guardian of the Final Seal</div>
+      <span class="bc-continent" style="background:rgba(170,204,221,0.15);color:#aaccdd;">Antarctica</span>
+      <div class="bc-element">&#9672; Primal Ice &amp; Deep Darkness &nbsp;&bull;&nbsp; Seeded: Lost — Never Decoded</div>
+      <div class="bc-desc">The youngest and most secretive. Tamas-Vara chose Antarctica — then a warm, forested continent — because it held the control mechanism for the entire extraction network. When the brothers departed, he froze the continent deliberately, entombing his work under kilometers of ice. His Akasha-Lipi has never been found. What lies beneath the Antarctic ice is the master key to all seven continental extraction sites. The melting of Antarctica is not climate change alone — his seal is weakening.</div>
+      <div class="bc-warning" style="border-left-color:#aaccdd;background:rgba(170,204,221,0.08);color:#cce8ff;">"The melting of Antarctica is not climate change alone. Tamas-Vara's seal is weakening. Something beneath the ice is waking."</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== THE VIMANA — ALIEN BEINGS ===== -->
+<section class="section">
+  <h2 class="section-title">The Vimana &mdash; What They Look Like</h2>
+  <p class="section-sub">The Vimana are ancient cosmic beings — not biological in the human sense. They are partially energy, partially matter. To early humans who witnessed them, they appeared as gods. In reality, they are miners who have worked this planet before.</p>
+
+  <div class="alien-section-grid">
+    <!-- Alien Portrait SVG -->
+    <div style="display:flex;flex-direction:column;align-items:center;">
+      <svg viewBox="0 0 340 700" style="width:100%;max-width:280px;height:auto;">
+        <defs>
+          <radialGradient id="alienAura" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#6699ff" stop-opacity="0.14"/>
+            <stop offset="100%" stop-color="#6699ff" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="alienBody" cx="30%" cy="30%" r="65%">
+            <stop offset="0%" stop-color="#1e1535"/>
+            <stop offset="100%" stop-color="#08050f"/>
+          </radialGradient>
+          <radialGradient id="alienRobe" cx="50%" cy="20%" r="70%">
+            <stop offset="0%" stop-color="#12102a"/>
+            <stop offset="100%" stop-color="#050410"/>
+          </radialGradient>
+          <filter id="eyeGlw"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="softGlw"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="crownGlw"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <!-- Background stars -->
+        <circle cx="18" cy="45" r="1" fill="white" opacity="0.4"/>
+        <circle cx="312" cy="72" r="1.5" fill="white" opacity="0.45"/>
+        <circle cx="42" cy="195" r="1" fill="white" opacity="0.3"/>
+        <circle cx="298" cy="340" r="1.2" fill="white" opacity="0.4"/>
+        <circle cx="22" cy="520" r="1.5" fill="white" opacity="0.35"/>
+        <circle cx="318" cy="600" r="1" fill="white" opacity="0.3"/>
+        <!-- Outer aura -->
+        <ellipse cx="170" cy="410" rx="152" ry="278" fill="url(#alienAura)">
+          <animate attributeName="rx" values="150;158;150" dur="6s" repeatCount="indefinite"/>
+        </ellipse>
+        <!-- Ground glow -->
+        <ellipse cx="170" cy="688" rx="88" ry="11" fill="rgba(102,153,255,0.10)" filter="url(#softGlw)">
+          <animate attributeName="rx" values="82;96;82" dur="5s" repeatCount="indefinite"/>
+        </ellipse>
+        <!-- Energy wisps (bottom of robe) -->
+        <path d="M 92 690 C 82 660 78 628 94 608" stroke="#6699ff" stroke-width="1.5" fill="none" opacity="0.35"><animate attributeName="d" values="M 92 690 C 82 660 78 628 94 608;M 90 690 C 86 658 74 626 90 606;M 92 690 C 82 660 78 628 94 608" dur="3.2s" repeatCount="indefinite"/></path>
+        <path d="M 132 695 C 124 664 120 632 135 612" stroke="#6699ff" stroke-width="1" fill="none" opacity="0.28"><animate attributeName="d" values="M 132 695 C 124 664 120 632 135 612;M 130 695 C 128 662 116 630 130 610;M 132 695 C 124 664 120 632 135 612" dur="4.1s" repeatCount="indefinite"/></path>
+        <path d="M 170 698 C 166 667 164 634 170 614" stroke="#6699ff" stroke-width="2" fill="none" opacity="0.32"><animate attributeName="d" values="M 170 698 C 166 667 164 634 170 614;M 170 698 C 169 665 167 632 170 612;M 170 698 C 166 667 164 634 170 614" dur="3.6s" repeatCount="indefinite"/></path>
+        <path d="M 208 695 C 216 664 220 632 205 612" stroke="#6699ff" stroke-width="1" fill="none" opacity="0.28"><animate attributeName="d" values="M 208 695 C 216 664 220 632 205 612;M 210 695 C 212 662 224 630 210 610;M 208 695 C 216 664 220 632 205 612" dur="4.5s" repeatCount="indefinite"/></path>
+        <path d="M 248 690 C 258 660 262 628 246 608" stroke="#6699ff" stroke-width="1.5" fill="none" opacity="0.35"><animate attributeName="d" values="M 248 690 C 258 660 262 628 246 608;M 250 690 C 254 658 266 626 250 606;M 248 690 C 258 660 262 628 246 608" dur="3s" repeatCount="indefinite"/></path>
+        <!-- Lower robe -->
+        <path d="M 52 695 L 82 565 L 110 484 L 132 432 L 150 392 L 162 368 L 170 356 L 178 368 L 190 392 L 208 432 L 230 484 L 258 565 L 288 695 Z" fill="url(#alienRobe)" stroke="#3355aa" stroke-width="0.8" opacity="0.92"/>
+        <path d="M 122 615 L 138 516 L 150 466 L 162 428 L 170 412 L 178 428 L 190 466 L 202 516 L 218 615 Z" fill="rgba(4,3,12,0.55)"/>
+        <!-- Lower arms (pair 3, emerging from robe) -->
+        <path d="M 126 428 C 100 450 80 464 62 458" stroke="#334488" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <path d="M 126 428 C 100 450 80 464 62 458" stroke="#6699ff" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+        <ellipse cx="59" cy="458" rx="9" ry="6" fill="#1e1535" stroke="#6699ff" stroke-width="1" filter="url(#softGlw)"/>
+        <path d="M 214 428 C 240 450 260 464 278 458" stroke="#334488" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <path d="M 214 428 C 240 450 260 464 278 458" stroke="#6699ff" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+        <ellipse cx="281" cy="458" rx="9" ry="6" fill="#1e1535" stroke="#6699ff" stroke-width="1" filter="url(#softGlw)"/>
+        <!-- Torso / chest armor -->
+        <path d="M 122 362 L 120 308 L 122 272 L 130 250 L 146 236 L 170 232 L 194 236 L 210 250 L 218 272 L 220 308 L 218 362 L 198 375 L 170 379 L 142 375 Z" fill="url(#alienBody)" stroke="#4466bb" stroke-width="1.2"/>
+        <!-- Chest armor detail lines -->
+        <line x1="148" y1="258" x2="192" y2="258" stroke="#6699ff" stroke-width="0.7" opacity="0.45"/>
+        <line x1="144" y1="282" x2="196" y2="282" stroke="#6699ff" stroke-width="0.5" opacity="0.35"/>
+        <path d="M 148 306 L 170 297 L 192 306" stroke="#6699ff" stroke-width="0.6" fill="none" opacity="0.45"/>
+        <!-- Chest orb -->
+        <circle cx="170" cy="318" r="12" fill="rgba(102,153,255,0.18)" stroke="#6699ff" stroke-width="1.5" filter="url(#crownGlw)"><animate attributeName="r" values="10;14;10" dur="3.2s" repeatCount="indefinite"/></circle>
+        <circle cx="170" cy="318" r="5" fill="#88aaff" opacity="0.85" filter="url(#eyeGlw)"/>
+        <!-- Circuit lines on armor -->
+        <path d="M 138 300 L 132 310 L 136 322" stroke="rgba(102,153,255,0.35)" stroke-width="0.8" fill="none"/>
+        <path d="M 202 300 L 208 310 L 204 322" stroke="rgba(102,153,255,0.35)" stroke-width="0.8" fill="none"/>
+        <!-- Middle arms (pair 2 — main arms) -->
+        <path d="M 122 278 C 95 276 72 270 52 262 L 38 254" stroke="#334488" stroke-width="9" fill="none" stroke-linecap="round"/>
+        <path d="M 122 278 C 95 276 72 270 52 262 L 38 254" stroke="#6699ff" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.7"/>
+        <ellipse cx="35" cy="252" rx="11" ry="7" fill="#1e1535" stroke="#6699ff" stroke-width="1.2" filter="url(#softGlw)"/>
+        <path d="M 218 278 C 245 276 268 270 288 262 L 302 254" stroke="#334488" stroke-width="9" fill="none" stroke-linecap="round"/>
+        <path d="M 218 278 C 245 276 268 270 288 262 L 302 254" stroke="#6699ff" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.7"/>
+        <ellipse cx="305" cy="252" rx="11" ry="7" fill="#1e1535" stroke="#6699ff" stroke-width="1.2" filter="url(#softGlw)"/>
+        <!-- Upper arms (pair 1 — raised, blessing pose) -->
+        <path d="M 130 250 C 105 232 84 208 66 182 L 54 162" stroke="#334488" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <path d="M 130 250 C 105 232 84 208 66 182 L 54 162" stroke="#8899cc" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+        <!-- Left hand starburst -->
+        <circle cx="52" cy="160" r="5" fill="rgba(102,153,255,0.25)" stroke="#6699ff" stroke-width="1" filter="url(#softGlw)"/>
+        <line x1="52" y1="151" x2="52" y2="142" stroke="#6699ff" stroke-width="1" opacity="0.65"/>
+        <line x1="43" y1="155" x2="36" y2="150" stroke="#6699ff" stroke-width="1" opacity="0.65"/>
+        <line x1="61" y1="155" x2="68" y2="150" stroke="#6699ff" stroke-width="1" opacity="0.65"/>
+        <path d="M 210 250 C 235 232 256 208 274 182 L 286 162" stroke="#334488" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <path d="M 210 250 C 235 232 256 208 274 182 L 286 162" stroke="#8899cc" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+        <!-- Right hand starburst -->
+        <circle cx="288" cy="160" r="5" fill="rgba(102,153,255,0.25)" stroke="#6699ff" stroke-width="1" filter="url(#softGlw)"/>
+        <line x1="288" y1="151" x2="288" y2="142" stroke="#6699ff" stroke-width="1" opacity="0.65"/>
+        <line x1="279" y1="155" x2="272" y2="150" stroke="#6699ff" stroke-width="1" opacity="0.65"/>
+        <line x1="297" y1="155" x2="304" y2="150" stroke="#6699ff" stroke-width="1" opacity="0.65"/>
+        <!-- Neck -->
+        <rect x="156" y="192" width="28" height="42" rx="8" fill="url(#alienBody)" stroke="#4466bb" stroke-width="0.9"/>
+        <!-- Shoulder armor -->
+        <ellipse cx="118" cy="245" rx="24" ry="12" fill="#0c0820" stroke="#4466bb" stroke-width="1.2" transform="rotate(-18,118,245)"/>
+        <ellipse cx="222" cy="245" rx="24" ry="12" fill="#0c0820" stroke="#4466bb" stroke-width="1.2" transform="rotate(18,222,245)"/>
+        <!-- Head -->
+        <ellipse cx="170" cy="152" rx="50" ry="58" fill="url(#alienBody)" stroke="#4466bb" stroke-width="1.3"/>
+        <!-- Face circuit markings -->
+        <path d="M 146 122 C 154 117 164 115 170 115" stroke="rgba(102,153,255,0.38)" stroke-width="0.9" fill="none"/>
+        <path d="M 194 122 C 186 117 176 115 170 115" stroke="rgba(102,153,255,0.38)" stroke-width="0.9" fill="none"/>
+        <line x1="170" y1="115" x2="170" y2="104" stroke="rgba(102,153,255,0.28)" stroke-width="0.8"/>
+        <path d="M 134 145 L 127 139 L 123 141" stroke="rgba(102,153,255,0.32)" stroke-width="0.7" fill="none"/>
+        <path d="M 206 145 L 213 139 L 217 141" stroke="rgba(102,153,255,0.32)" stroke-width="0.7" fill="none"/>
+        <path d="M 153 188 C 160 193 180 193 187 188" stroke="rgba(102,153,255,0.28)" stroke-width="0.8" fill="none"/>
+        <!-- Eye sockets -->
+        <ellipse cx="147" cy="140" rx="22" ry="14" fill="#06040e" opacity="0.85"/>
+        <ellipse cx="193" cy="140" rx="22" ry="14" fill="#06040e" opacity="0.85"/>
+        <!-- Eye glow -->
+        <ellipse cx="147" cy="140" rx="18" ry="11" fill="#88aaff" opacity="0.92" filter="url(#eyeGlw)"><animate attributeName="opacity" values="0.78;1;0.78" dur="3.5s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="193" cy="140" rx="18" ry="11" fill="#88aaff" opacity="0.92" filter="url(#eyeGlw)"><animate attributeName="opacity" values="0.78;1;0.78" dur="3.5s" repeatCount="indefinite"/></ellipse>
+        <!-- Eye core (pure white) -->
+        <ellipse cx="147" cy="140" rx="8" ry="5" fill="#ddeeff"/>
+        <ellipse cx="193" cy="140" rx="8" ry="5" fill="#ddeeff"/>
+        <!-- Nose (minimal) -->
+        <path d="M 163 172 C 162 177 164 179 170 179 C 176 179 178 177 177 172" stroke="#3d5599" stroke-width="0.8" fill="none" opacity="0.55"/>
+        <!-- Mouth (vestigial thin line) -->
+        <path d="M 157 190 C 162 193 178 193 183 190" stroke="#3d5599" stroke-width="0.8" fill="none" opacity="0.45"/>
+        <!-- Crown ring -->
+        <ellipse cx="170" cy="90" rx="72" ry="12" fill="rgba(102,153,255,0.14)" stroke="#6699ff" stroke-width="1.6" filter="url(#crownGlw)"/>
+        <!-- 7 crown spires (one per continent/brother) -->
+        <path d="M 163 80 L 170 36 L 177 80" fill="rgba(102,153,255,0.48)" stroke="#6699ff" stroke-width="0.9"/>
+        <circle cx="170" cy="33" r="4.5" fill="#ffd700" filter="url(#crownGlw)"><animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/></circle>
+        <path d="M 138 82 L 136 50 L 147 82" fill="rgba(102,153,255,0.38)" stroke="#6699ff" stroke-width="0.8"/>
+        <circle cx="136" cy="47" r="3.8" fill="#ff6633" filter="url(#crownGlw)"><animate attributeName="opacity" values="0.6;0.95;0.6" dur="2.6s" repeatCount="indefinite"/></circle>
+        <path d="M 193 82 L 204 50 L 202 82" fill="rgba(102,153,255,0.38)" stroke="#6699ff" stroke-width="0.8"/>
+        <circle cx="204" cy="47" r="3.8" fill="#aaddff" filter="url(#crownGlw)"><animate attributeName="opacity" values="0.6;0.95;0.6" dur="3.1s" repeatCount="indefinite"/></circle>
+        <path d="M 110 86 L 104 62 L 118 86" fill="rgba(102,153,255,0.28)" stroke="#5577bb" stroke-width="0.7"/>
+        <circle cx="104" cy="59" r="3.2" fill="#33aaff" filter="url(#crownGlw)"><animate attributeName="opacity" values="0.5;0.85;0.5" dur="2.9s" repeatCount="indefinite"/></circle>
+        <path d="M 230 86 L 236 62 L 222 86" fill="rgba(102,153,255,0.28)" stroke="#5577bb" stroke-width="0.7"/>
+        <circle cx="236" cy="59" r="3.2" fill="#44cc66" filter="url(#crownGlw)"><animate attributeName="opacity" values="0.5;0.85;0.5" dur="3.4s" repeatCount="indefinite"/></circle>
+        <path d="M 88 88 L 80 70 L 94 88" fill="rgba(102,153,255,0.18)" stroke="#446699" stroke-width="0.6"/>
+        <circle cx="79" cy="68" r="2.8" fill="#cc66ff" filter="url(#crownGlw)"/>
+        <path d="M 252 88 L 260 70 L 246 88" fill="rgba(102,153,255,0.18)" stroke="#446699" stroke-width="0.6"/>
+        <circle cx="261" cy="68" r="2.8" fill="#aaccdd" filter="url(#crownGlw)"/>
+        <!-- Floating orbiting orbs -->
+        <circle cx="42" cy="310" r="7" fill="rgba(102,153,255,0.28)" stroke="#6699ff" stroke-width="1" filter="url(#softGlw)">
+          <animateTransform attributeName="transform" type="rotate" from="0 170 370" to="360 170 370" dur="13s" repeatCount="indefinite"/>
+          <animate attributeName="r" values="6;9;6" dur="3s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="298" cy="430" r="5" fill="rgba(102,153,255,0.22)" stroke="#6699ff" stroke-width="0.8" filter="url(#softGlw)">
+          <animateTransform attributeName="transform" type="rotate" from="180 170 370" to="540 170 370" dur="8.5s" repeatCount="indefinite"/>
+          <animate attributeName="r" values="4;7;4" dur="2.6s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="170" cy="50" r="4" fill="rgba(255,215,0,0.32)" stroke="#ffd700" stroke-width="0.8" filter="url(#softGlw)">
+          <animateTransform attributeName="transform" type="rotate" from="90 170 370" to="450 170 370" dur="11s" repeatCount="indefinite"/>
+        </circle>
+        <!-- Label at bottom -->
+        <text x="170" y="670" fill="#6699ff" text-anchor="middle" font-size="11" font-family="Georgia" font-weight="bold" opacity="0.75">INDRA-VARA</text>
+        <text x="170" y="684" fill="#e8cce4" text-anchor="middle" font-size="9" font-family="Georgia" opacity="0.5">Guardian of Asia &middot; Element: Sky</text>
+      </svg>
+      <p style="color:var(--text-dim);font-size:0.72rem;text-align:center;margin-top:8px;max-width:260px;line-height:1.6;">Portrait based on Akasha-Lipi Fragment 12 — partial visual record left by Indra-Vara</p>
+    </div>
+
+    <!-- Alien Profile Info -->
+    <div>
+      <h3 style="color:#aa66ff;margin-bottom:18px;font-size:1.25rem;">Vimana Biology &amp; Appearance</h3>
+      <div class="alien-profile-stats">
+        <div class="ap-stat"><div class="ap-lbl">Adult Height</div><div class="ap-val">~9,000 – 15,000 metres</div></div>
+        <div class="ap-stat"><div class="ap-lbl">Child Height</div><div class="ap-val">~2,500 – 4,500 metres</div></div>
+        <div class="ap-stat"><div class="ap-lbl">Arm Configuration</div><div class="ap-val">Six arms, three pairs</div></div>
+        <div class="ap-stat"><div class="ap-lbl">Eye Type</div><div class="ap-val">Full-spectrum energy orbs — no iris, no pupil</div></div>
+        <div class="ap-stat"><div class="ap-lbl">Skin</div><div class="ap-val">Dark crystalline — circuit-like energy patterns visible beneath surface</div></div>
+        <div class="ap-stat"><div class="ap-lbl">Mass State</div><div class="ap-val">50% matter, 50% energy field — can compress or expand</div></div>
+        <div class="ap-stat"><div class="ap-lbl">Lifespan</div><div class="ap-val">Unknown — older than Earth's current geological era</div></div>
+        <div class="ap-stat"><div class="ap-lbl">Crown</div><div class="ap-val">Geometric headpiece — 7 spires, one per continental domain</div></div>
+      </div>
+
+      <div style="background:rgba(138,43,226,0.08);border:1px solid rgba(138,43,226,0.22);border-radius:12px;padding:20px;margin-bottom:18px;">
+        <h4 style="color:#cc66ff;margin-bottom:10px;">Physical Description</h4>
+        <p style="color:var(--text);font-size:0.88em;line-height:1.8;">The Vimana appear humanoid — two legs, a torso, a head — but this is convergent evolution, not similarity to humans. They have six arms arranged in three pairs: the upper pair raised in what humans interpreted as a blessing gesture (it is actually a scanning array), the middle pair used for primary manipulation, and the lower pair partially concealed within their energy-robe field.</p>
+        <p style="color:var(--text);font-size:0.88em;line-height:1.8;margin-top:10px;">Their eyes emit a constant light across the full electromagnetic spectrum — including frequencies humans cannot see. Their "skin" is dark crystalline matter threaded with visible energy channels, like circuitry. When fully compressed to interact with a planetary surface, they stand between 9 and 15 kilometres tall. In deep space, they expand to sizes that dwarf planets.</p>
+      </div>
+
+      <div style="background:rgba(138,43,226,0.08);border:1px solid rgba(138,43,226,0.22);border-radius:12px;padding:20px;">
+        <h4 style="color:#cc66ff;margin-bottom:10px;">The Crown — Seven Spires</h4>
+        <p style="color:var(--text);font-size:0.88em;line-height:1.8;">Each Vimana's crown carries seven crystalline spires — one for each brother, each tuned to a different elemental frequency. These are not decorative. They are communication and monitoring arrays, keeping each brother connected to his brothers and to the Brahma-Dhatu extraction systems buried in each continent. The tip of each spire glows in the colour of the corresponding guardian: blue for Asia, red for Africa, pale blue for Europe, cyan for North America, green for South America, violet for Australia, and silver-white for Antarctica.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Size Comparison SVG -->
+  <div class="size-compare-wrap">
+    <h3 style="text-align:center;color:var(--gold);font-size:1.3rem;margin-bottom:8px;">Size Comparison &mdash; Vimana vs Human</h3>
+    <p style="text-align:center;color:var(--text-dim);font-size:0.85rem;max-width:600px;margin:0 auto 20px;line-height:1.6;">An adult Vimana stands as tall as the highest mountains on Earth. Their children — juveniles by Vimana standards — still tower over any human structure ever built.</p>
+    <svg viewBox="0 0 1100 560" style="width:100%;height:auto;max-width:1100px;display:block;margin:0 auto;">
+      <defs>
+        <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#04030e"/>
+          <stop offset="60%" stop-color="#08051a"/>
+          <stop offset="100%" stop-color="#0d0a22"/>
+        </linearGradient>
+        <linearGradient id="terrainGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#2a2018"/>
+          <stop offset="100%" stop-color="#15100a"/>
+        </linearGradient>
+        <radialGradient id="adultAura" cx="50%" cy="100%" r="60%">
+          <stop offset="0%" stop-color="#6699ff" stop-opacity="0.18"/>
+          <stop offset="100%" stop-color="#6699ff" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="childAura" cx="50%" cy="100%" r="60%">
+          <stop offset="0%" stop-color="#aa66ff" stop-opacity="0.14"/>
+          <stop offset="100%" stop-color="#aa66ff" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="scGlow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="scSoft"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+
+      <!-- Sky gradient background (subtle) -->
+      <rect x="0" y="0" width="1100" height="520" fill="url(#skyGrad)" opacity="0.4"/>
+
+      <!-- Stars -->
+      <circle cx="50" cy="20" r="1" fill="white" opacity="0.35"/><circle cx="180" cy="8" r="1.2" fill="white" opacity="0.3"/>
+      <circle cx="420" cy="15" r="1" fill="white" opacity="0.4"/><circle cx="700" cy="6" r="1.2" fill="white" opacity="0.3"/>
+      <circle cx="900" cy="18" r="1" fill="white" opacity="0.35"/><circle cx="1060" cy="10" r="1.2" fill="white" opacity="0.4"/>
+
+      <!-- Scale ruler (far left) -->
+      <line x1="28" y1="52" x2="28" y2="520" stroke="rgba(255,215,0,0.35)" stroke-width="1"/>
+      <line x1="22" y1="52" x2="34" y2="52" stroke="rgba(255,215,0,0.35)" stroke-width="1"/>
+      <!-- Scale ticks: 1km = 46.4px, total height = 10km at y=52; ground y=520 -->
+      <!-- 10km: y=52 -->
+      <line x1="22" y1="52" x2="34" y2="52" stroke="rgba(255,215,0,0.5)" stroke-width="1.2"/>
+      <text x="18" y="56" fill="rgba(255,215,0,0.55)" font-size="8" font-family="Georgia" text-anchor="end">10 km</text>
+      <!-- 8km: y=52+93=145 -->
+      <line x1="22" y1="145" x2="34" y2="145" stroke="rgba(255,215,0,0.4)" stroke-width="1"/>
+      <text x="18" y="149" fill="rgba(255,215,0,0.5)" font-size="8" font-family="Georgia" text-anchor="end">8 km</text>
+      <!-- 6km: y=52+185=237 -->
+      <line x1="22" y1="237" x2="34" y2="237" stroke="rgba(255,215,0,0.4)" stroke-width="1"/>
+      <text x="18" y="241" fill="rgba(255,215,0,0.5)" font-size="8" font-family="Georgia" text-anchor="end">6 km</text>
+      <!-- 4km: y=52+278=330 -->
+      <line x1="22" y1="330" x2="34" y2="330" stroke="rgba(255,215,0,0.4)" stroke-width="1"/>
+      <text x="18" y="334" fill="rgba(255,215,0,0.5)" font-size="8" font-family="Georgia" text-anchor="end">4 km</text>
+      <!-- 2km: y=52+371=423 -->
+      <line x1="22" y1="423" x2="34" y2="423" stroke="rgba(255,215,0,0.4)" stroke-width="1"/>
+      <text x="18" y="427" fill="rgba(255,215,0,0.5)" font-size="8" font-family="Georgia" text-anchor="end">2 km</text>
+      <!-- 0 (ground): y=520 -->
+      <line x1="22" y1="520" x2="34" y2="520" stroke="rgba(255,215,0,0.5)" stroke-width="1.2"/>
+      <text x="18" y="524" fill="rgba(255,215,0,0.55)" font-size="8" font-family="Georgia" text-anchor="end">0 km</text>
+
+      <!-- Mountain silhouette (Himalayan range, center) — peak at 8.8km = y=52+11=63 approx -->
+      <!-- 1km = (520-52)/10 = 46.8px; 8.8km = 412px; y=520-412=108 -->
+      <polygon points="300,520 340,380 380,450 420,280 460,370 500,220 540,340 580,260 620,340 660,390 700,520" fill="#1e1a12" opacity="0.85"/>
+      <polygon points="300,520 340,390 370,460 400,320 440,400 490,240 530,350 565,280 600,350 630,400 660,520" fill="#2a2418" opacity="0.7"/>
+      <!-- Snow caps on peaks -->
+      <polygon points="490,240 500,220 510,238" fill="rgba(255,255,255,0.65)"/>
+      <polygon points="565,280 580,260 595,278" fill="rgba(255,255,255,0.55)"/>
+      <!-- Everest label -->
+      <line x1="500" y1="220" x2="500" y2="195" stroke="rgba(255,255,255,0.3)" stroke-width="0.8" stroke-dasharray="3,4"/>
+      <text x="500" y="192" fill="rgba(255,255,255,0.5)" text-anchor="middle" font-size="8" font-family="Georgia">Everest ~8.8 km</text>
+
+      <!-- VIMANA ADULT (left side, x=100-240) — height 10km = to y=52 -->
+      <!-- Aura -->
+      <ellipse cx="170" cy="520" rx="110" ry="250" fill="url(#adultAura)"/>
+      <!-- Body silhouette (simplified humanoid outline) -->
+      <!-- Robe/lower body -->
+      <path d="M 95 520 L 115 430 L 130 380 L 145 345 L 155 322 L 162 308 L 170 302 L 178 308 L 185 322 L 195 345 L 210 380 L 225 430 L 245 520 Z" fill="#1a1530" stroke="#6699ff" stroke-width="1.2" opacity="0.9"/>
+      <!-- Torso -->
+      <path d="M 147 308 L 144 270 L 147 248 L 154 232 L 170 226 L 186 232 L 193 248 L 196 270 L 193 308 L 178 316 L 170 318 L 162 316 Z" fill="#1a1530" stroke="#5577bb" stroke-width="1"/>
+      <!-- Upper arms raised -->
+      <path d="M 154 242 C 132 224 112 200 96 174 L 84 152" stroke="#334488" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.8"/>
+      <path d="M 154 242 C 132 224 112 200 96 174 L 84 152" stroke="#6699ff" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.6"/>
+      <path d="M 186 242 C 208 224 228 200 244 174 L 256 152" stroke="#334488" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.8"/>
+      <path d="M 186 242 C 208 224 228 200 244 174 L 256 152" stroke="#6699ff" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.6"/>
+      <!-- Middle arms -->
+      <path d="M 146 270 C 120 268 98 262 78 255 L 64 248" stroke="#334488" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.8"/>
+      <path d="M 146 270 C 120 268 98 262 78 255 L 64 248" stroke="#6699ff" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.6"/>
+      <path d="M 194 270 C 220 268 242 262 262 255 L 276 248" stroke="#334488" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.8"/>
+      <path d="M 194 270 C 220 268 242 262 262 255 L 276 248" stroke="#6699ff" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.6"/>
+      <!-- Neck -->
+      <rect x="161" y="190" width="18" height="38" rx="5" fill="#1a1530" stroke="#5577bb" stroke-width="0.8"/>
+      <!-- Head -->
+      <ellipse cx="170" cy="164" rx="32" ry="38" fill="#1a1530" stroke="#5577bb" stroke-width="1.1"/>
+      <!-- Eyes -->
+      <ellipse cx="158" cy="158" rx="10" ry="7" fill="#88aaff" filter="url(#scGlow)" opacity="0.95"><animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite"/></ellipse>
+      <ellipse cx="182" cy="158" rx="10" ry="7" fill="#88aaff" filter="url(#scGlow)" opacity="0.95"><animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite"/></ellipse>
+      <!-- Crown base -->
+      <ellipse cx="170" cy="124" rx="44" ry="8" fill="rgba(102,153,255,0.2)" stroke="#6699ff" stroke-width="1.2"/>
+      <!-- Crown spires (simplified — 3 visible) -->
+      <path d="M 164 116 L 170 80 L 176 116" fill="rgba(102,153,255,0.5)" stroke="#6699ff" stroke-width="0.8"/>
+      <circle cx="170" cy="77" r="3.5" fill="#ffd700" filter="url(#scSoft)"><animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/></circle>
+      <path d="M 142 118 L 140 90 L 150 118" fill="rgba(102,153,255,0.35)" stroke="#6699ff" stroke-width="0.7"/>
+      <circle cx="140" cy="87" r="3" fill="#ff6633" filter="url(#scSoft)"/>
+      <path d="M 190 118 L 200 90 L 198 118" fill="rgba(102,153,255,0.35)" stroke="#6699ff" stroke-width="0.7"/>
+      <circle cx="200" cy="87" r="3" fill="#aaddff" filter="url(#scSoft)"/>
+      <!-- Ground glow below adult -->
+      <ellipse cx="170" cy="520" rx="75" ry="10" fill="rgba(102,153,255,0.15)" filter="url(#scSoft)"/>
+      <!-- Label -->
+      <text x="170" y="545" fill="#6699ff" text-anchor="middle" font-size="11" font-family="Georgia" font-weight="bold">VIMANA ADULT</text>
+      <text x="170" y="558" fill="#aabbdd" text-anchor="middle" font-size="9" font-family="Georgia">(Indra-Vara) ~9,000 – 15,000 m</text>
+      <!-- Height annotation line -->
+      <line x1="250" y1="52" x2="250" y2="520" stroke="rgba(102,153,255,0.2)" stroke-width="0.8" stroke-dasharray="4,6"/>
+      <line x1="244" y1="52" x2="256" y2="52" stroke="rgba(102,153,255,0.4)" stroke-width="1"/>
+      <line x1="244" y1="520" x2="256" y2="520" stroke="rgba(102,153,255,0.4)" stroke-width="1"/>
+
+      <!-- VIMANA CHILD (center, x=580-700) — height ~4km = 187px; top y=520-187=333 -->
+      <!-- Aura -->
+      <ellipse cx="640" cy="520" rx="80" ry="155" fill="url(#childAura)"/>
+      <!-- Robe -->
+      <path d="M 584 520 L 600 466 L 612 432 L 622 408 L 630 390 L 636 380 L 640 375 L 644 380 L 650 390 L 658 408 L 668 432 L 680 466 L 696 520 Z" fill="#1a1030" stroke="#aa66ff" stroke-width="1" opacity="0.9"/>
+      <!-- Torso -->
+      <path d="M 624 380 L 622 355 L 624 340 L 630 330 L 640 327 L 650 330 L 656 340 L 658 355 L 656 380 L 647 386 L 640 387 L 633 386 Z" fill="#1a1030" stroke="#8855cc" stroke-width="0.9"/>
+      <!-- Arms raised -->
+      <path d="M 630 342 C 616 330 604 316 596 302 L 590 292" stroke="#5533aa" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.8"/>
+      <path d="M 630 342 C 616 330 604 316 596 302 L 590 292" stroke="#aa66ff" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.6"/>
+      <path d="M 650 342 C 664 330 676 316 684 302 L 690 292" stroke="#5533aa" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.8"/>
+      <path d="M 650 342 C 664 330 676 316 684 302 L 690 292" stroke="#aa66ff" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.6"/>
+      <!-- Middle arms -->
+      <path d="M 622 357 C 604 355 590 350 578 344 L 570 340" stroke="#5533aa" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.8"/>
+      <path d="M 622 357 C 604 355 590 350 578 344 L 570 340" stroke="#aa66ff" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.6"/>
+      <path d="M 658 357 C 676 355 690 350 702 344 L 710 340" stroke="#5533aa" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.8"/>
+      <path d="M 658 357 C 676 355 690 350 702 344 L 710 340" stroke="#aa66ff" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.6"/>
+      <!-- Head -->
+      <ellipse cx="640" cy="314" rx="22" ry="26" fill="#1a1030" stroke="#8855cc" stroke-width="0.9"/>
+      <!-- Eyes (curious, tilted slightly — child look) -->
+      <ellipse cx="632" cy="310" rx="7" ry="5" fill="#cc88ff" filter="url(#scGlow)" opacity="0.9"><animate attributeName="opacity" values="0.75;1;0.75" dur="4s" repeatCount="indefinite"/></ellipse>
+      <ellipse cx="648" cy="310" rx="7" ry="5" fill="#cc88ff" filter="url(#scGlow)" opacity="0.9"><animate attributeName="opacity" values="0.75;1;0.75" dur="4s" repeatCount="indefinite"/></ellipse>
+      <!-- Crown (simpler, not fully developed) -->
+      <ellipse cx="640" cy="286" rx="30" ry="5.5" fill="rgba(170,102,255,0.18)" stroke="#aa66ff" stroke-width="1"/>
+      <path d="M 637 281 L 640 260 L 643 281" fill="rgba(170,102,255,0.4)" stroke="#aa66ff" stroke-width="0.7"/>
+      <circle cx="640" cy="257" r="2.8" fill="#ffd700" filter="url(#scSoft)"><animate attributeName="opacity" values="0.6;1;0.6" dur="2.5s" repeatCount="indefinite"/></circle>
+      <!-- Ground glow -->
+      <ellipse cx="640" cy="520" rx="55" ry="8" fill="rgba(170,102,255,0.12)" filter="url(#scSoft)"/>
+      <!-- Label -->
+      <text x="640" y="545" fill="#aa66ff" text-anchor="middle" font-size="11" font-family="Georgia" font-weight="bold">VIMANA CHILD</text>
+      <text x="640" y="558" fill="#ccaaee" text-anchor="middle" font-size="9" font-family="Georgia">~2,500 – 4,500 m tall</text>
+
+      <!-- CITY SKYLINE (right side) — buildings ~200-500m, at scale: 200m=9px, 500m=23px -->
+      <!-- Building cluster x=820-1060 -->
+      <rect x="826" y="497" width="18" height="23" fill="#1a1826" stroke="#334466" stroke-width="0.5"/>
+      <rect x="848" y="489" width="22" height="31" fill="#1e1c2e" stroke="#334466" stroke-width="0.5"/>
+      <rect x="874" y="493" width="16" height="27" fill="#1a1826" stroke="#334466" stroke-width="0.5"/>
+      <rect x="894" y="485" width="26" height="35" fill="#1e1c2e" stroke="#334466" stroke-width="0.5"/>
+      <rect x="924" y="491" width="14" height="29" fill="#1a1826" stroke="#334466" stroke-width="0.5"/>
+      <rect x="942" y="484" width="20" height="36" fill="#181622" stroke="#334466" stroke-width="0.5"/>
+      <rect x="966" y="494" width="14" height="26" fill="#1a1826" stroke="#334466" stroke-width="0.5"/>
+      <rect x="984" y="490" width="18" height="30" fill="#1e1c2e" stroke="#334466" stroke-width="0.5"/>
+      <rect x="1006" y="496" width="12" height="24" fill="#1a1826" stroke="#334466" stroke-width="0.5"/>
+      <!-- Building lights -->
+      <rect x="850" y="492" width="2" height="2" fill="#ffdd88" opacity="0.7"/>
+      <rect x="856" y="496" width="2" height="2" fill="#ffdd88" opacity="0.5"/>
+      <rect x="896" y="490" width="2" height="2" fill="#88ccff" opacity="0.7"/>
+      <rect x="902" y="494" width="2" height="2" fill="#ffdd88" opacity="0.6"/>
+      <rect x="944" y="488" width="2" height="2" fill="#88ccff" opacity="0.6"/>
+      <rect x="950" y="494" width="2" height="2" fill="#ffdd88" opacity="0.5"/>
+      <!-- City label -->
+      <text x="916" y="545" fill="#8899bb" text-anchor="middle" font-size="10" font-family="Georgia">Mumbai Skyline (human scale)</text>
+      <!-- Magnification circle -->
+      <circle cx="916" cy="497" r="2.5" fill="none" stroke="#ffaa44" stroke-width="1.2">
+        <animate attributeName="r" values="2;3;2" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <!-- Magnification indicator line -->
+      <line x1="916" y1="494" x2="916" y2="445" stroke="rgba(255,170,68,0.4)" stroke-width="0.8" stroke-dasharray="3,4"/>
+      <!-- Zoom box -->
+      <rect x="866" y="400" width="100" height="42" rx="4" fill="rgba(10,8,22,0.85)" stroke="#ffaa44" stroke-width="1"/>
+      <text x="916" y="415" fill="#ffaa44" text-anchor="middle" font-size="8" font-family="Georgia" font-weight="bold">MAGNIFIED 500x</text>
+      <!-- Tiny human figures in zoom box -->
+      <!-- Human 1 -->
+      <circle cx="890" cy="425" r="2.5" fill="#ffcc88" opacity="0.8"/>
+      <line x1="890" y1="427.5" x2="890" y2="434" stroke="#ffcc88" stroke-width="1.5" opacity="0.8"/>
+      <line x1="890" y1="430" x2="886" y2="433" stroke="#ffcc88" stroke-width="1" opacity="0.7"/>
+      <line x1="890" y1="430" x2="894" y2="433" stroke="#ffcc88" stroke-width="1" opacity="0.7"/>
+      <line x1="890" y1="434" x2="887" y2="438" stroke="#ffcc88" stroke-width="1.2" opacity="0.8"/>
+      <line x1="890" y1="434" x2="893" y2="438" stroke="#ffcc88" stroke-width="1.2" opacity="0.8"/>
+      <!-- Human 2 -->
+      <circle cx="902" cy="425" r="2.5" fill="#ffcc88" opacity="0.7"/>
+      <line x1="902" y1="427.5" x2="902" y2="434" stroke="#ffcc88" stroke-width="1.5" opacity="0.7"/>
+      <line x1="902" y1="430" x2="898" y2="433" stroke="#ffcc88" stroke-width="1" opacity="0.65"/>
+      <line x1="902" y1="430" x2="906" y2="433" stroke="#ffcc88" stroke-width="1" opacity="0.65"/>
+      <line x1="902" y1="434" x2="899" y2="438" stroke="#ffcc88" stroke-width="1.2" opacity="0.7"/>
+      <line x1="902" y1="434" x2="905" y2="438" stroke="#ffcc88" stroke-width="1.2" opacity="0.7"/>
+      <text x="934" y="432" fill="#aabbcc" font-size="7" font-family="Georgia">Human ~1.8m</text>
+
+      <!-- Ground terrain fill -->
+      <rect x="0" y="520" width="1100" height="40" fill="url(#terrainGrad)"/>
+      <!-- Terrain surface detail -->
+      <path d="M 0 520 Q 100 516 200 520 Q 300 524 400 520 Q 500 516 600 520 Q 700 524 800 520 Q 900 516 1000 520 Q 1050 522 1100 520" fill="none" stroke="#3a3020" stroke-width="1.5" opacity="0.6"/>
+
+      <!-- Comparison legend at top-right -->
+      <rect x="720" y="18" width="360" height="60" rx="6" fill="rgba(4,3,14,0.75)" stroke="rgba(255,255,255,0.12)" stroke-width="0.8"/>
+      <text x="900" y="34" fill="rgba(255,255,255,0.5)" text-anchor="middle" font-size="9" font-family="Georgia" letter-spacing="2">SCALE: 1 KM = 46.8 px</text>
+      <circle cx="740" cy="46" r="4" fill="#6699ff"/><text x="750" y="50" fill="#aabbdd" font-size="9" font-family="Georgia">Vimana Adult: ~9,000 – 15,000 m</text>
+      <circle cx="740" cy="60" r="4" fill="#aa66ff"/><text x="750" y="64" fill="#ccaaee" font-size="9" font-family="Georgia">Vimana Child: ~2,500 – 4,500 m</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ===== BRAHMA-DHATU ===== -->
+<section class="section">
+  <h2 class="section-title">Brahma-Dhatu &mdash; The Primordial Metal</h2>
+  <p class="section-sub">Neither gold nor uranium nor any element known to science — a cosmic material formed only in the hearts of dying stars, buried in abundance beneath the young Earth four billion years ago.</p>
+  <div class="metal-panel">
+    <div class="two-col">
+      <div>
+        <h3 style="color:var(--gold);margin-bottom:10px;">What It Is</h3>
+        <p style="color:var(--text);font-size:0.9em;line-height:1.8;">Brahma-Dhatu is a transuranium element — element 142 on an extended periodic table, existing in a metastable state impossible to synthesize but stable when extracted and processed through methods only the Vimana know. A single gram releases energy equivalent to twenty metric tons of uranium fission, cleanly, with zero radiation signature.</p>
+      </div>
+      <div>
+        <h3 style="color:var(--gold);margin-bottom:10px;">What the Brothers Did</h3>
+        <p style="color:var(--text);font-size:0.9em;line-height:1.8;">The Seven Brothers spent what humans measure as three geological ages extracting Brahma-Dhatu from each continental deposit. They took 90%. They left 10% as structural — removing it would have destabilized Earth's tectonic system, collapsing the planet. That remaining 10% is what keeps Earth alive. It is also what the brothers are returning for.</p>
+      </div>
+    </div>
+    <div class="metal-stats">
+      <div class="metal-stat"><div class="ms-num">90%</div><div class="ms-label">Extracted in First Visit</div></div>
+      <div class="metal-stat"><div class="ms-num">10%</div><div class="ms-label">Remaining in Earth's Core</div></div>
+      <div class="metal-stat"><div class="ms-num">142</div><div class="ms-label">Atomic Number</div></div>
+      <div class="metal-stat"><div class="ms-num">0</div><div class="ms-label">Known Human Synthesis Methods</div></div>
+    </div>
+    <div style="margin-top:25px;padding:18px;background:rgba(255,215,0,0.05);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;">
+      <p style="color:var(--text-dim);font-size:0.88em;line-height:1.7;font-style:italic;">"The metal is why the continents are shaped the way they are. Each extraction tunnel left a void. The tectonic plates collapsed into those voids — that is continental drift. Every earthquake is a 200-million-year-old tunnel ceiling finally giving way."<br>
+      <span style="color:var(--gold);font-size:0.82em;">— Decoded from Akasha-Lipi, Rajasthan Stone, Fragment 7</span></p>
+    </div>
+
+    <!-- Metal Crystal Visual -->
+    <div class="metal-crystal-wrap">
+      <svg viewBox="0 0 680 360" style="width:100%;max-width:680px;height:auto;">
+        <defs>
+          <radialGradient id="crystalMain" cx="35%" cy="30%" r="60%">
+            <stop offset="0%" stop-color="#fffde0"/>
+            <stop offset="30%" stop-color="#ffd700"/>
+            <stop offset="65%" stop-color="#c8920a"/>
+            <stop offset="100%" stop-color="#5a3d00"/>
+          </radialGradient>
+          <radialGradient id="crystalSide" cx="30%" cy="40%" r="55%">
+            <stop offset="0%" stop-color="#ffeaa0"/>
+            <stop offset="50%" stop-color="#cc9900"/>
+            <stop offset="100%" stop-color="#3a2600"/>
+          </radialGradient>
+          <radialGradient id="crystalSmall" cx="40%" cy="30%" r="60%">
+            <stop offset="0%" stop-color="#e8f8ff"/>
+            <stop offset="40%" stop-color="#88ccff"/>
+            <stop offset="100%" stop-color="#1a4466"/>
+          </radialGradient>
+          <radialGradient id="energyGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#ffffaa" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#ffd700" stop-opacity="0"/>
+          </radialGradient>
+          <filter id="crystalGlow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="csg"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="csSoft"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+
+        <!-- Background stars / space -->
+        <circle cx="30" cy="25" r="1" fill="white" opacity="0.4"/>
+        <circle cx="80" cy="10" r="1.5" fill="white" opacity="0.3"/>
+        <circle cx="550" cy="18" r="1" fill="white" opacity="0.45"/>
+        <circle cx="640" cy="45" r="1.5" fill="white" opacity="0.35"/>
+        <circle cx="620" cy="320" r="1" fill="white" opacity="0.3"/>
+        <circle cx="50" cy="300" r="1.2" fill="white" opacity="0.4"/>
+        <circle cx="160" cy="340" r="1" fill="white" opacity="0.3"/>
+
+        <!-- Outer energy aura (central glow) -->
+        <ellipse cx="340" cy="180" rx="200" ry="140" fill="url(#energyGrad)" opacity="0.25">
+          <animate attributeName="rx" values="190;215;190" dur="6s" repeatCount="indefinite"/>
+          <animate attributeName="ry" values="135;148;135" dur="6s" repeatCount="indefinite"/>
+        </ellipse>
+
+        <!-- Energy beams emanating from crystal -->
+        <!-- 8 beams in different directions -->
+        <line x1="340" y1="180" x2="120" y2="40" stroke="#ffd700" stroke-width="1.5" opacity="0.18"><animate attributeName="opacity" values="0.1;0.25;0.1" dur="3s" repeatCount="indefinite"/></line>
+        <line x1="340" y1="180" x2="560" y2="40" stroke="#ffd700" stroke-width="1.5" opacity="0.18"><animate attributeName="opacity" values="0.1;0.25;0.1" dur="3.5s" repeatCount="indefinite"/></line>
+        <line x1="340" y1="180" x2="80" y2="180" stroke="#ffd700" stroke-width="1" opacity="0.15"><animate attributeName="opacity" values="0.08;0.2;0.08" dur="4s" repeatCount="indefinite"/></line>
+        <line x1="340" y1="180" x2="600" y2="180" stroke="#ffd700" stroke-width="1" opacity="0.15"><animate attributeName="opacity" values="0.08;0.2;0.08" dur="4.5s" repeatCount="indefinite"/></line>
+        <line x1="340" y1="180" x2="200" y2="340" stroke="#ffd700" stroke-width="1" opacity="0.12"><animate attributeName="opacity" values="0.06;0.18;0.06" dur="3.8s" repeatCount="indefinite"/></line>
+        <line x1="340" y1="180" x2="480" y2="340" stroke="#ffd700" stroke-width="1" opacity="0.12"><animate attributeName="opacity" values="0.06;0.18;0.06" dur="4.2s" repeatCount="indefinite"/></line>
+        <line x1="340" y1="180" x2="340" y2="20" stroke="#ffffaa" stroke-width="2" opacity="0.22"><animate attributeName="opacity" values="0.15;0.32;0.15" dur="2.8s" repeatCount="indefinite"/></line>
+        <line x1="340" y1="180" x2="340" y2="340" stroke="#ffd700" stroke-width="1.5" opacity="0.15"><animate attributeName="opacity" values="0.08;0.22;0.08" dur="3.2s" repeatCount="indefinite"/></line>
+
+        <!-- Floating small crystals (surrounding) -->
+        <!-- Crystal A (upper left) -->
+        <g transform="translate(142,78)">
+          <polygon points="0,-22 10,-5 5,20 -5,20 -10,-5" fill="url(#crystalSmall)" stroke="#88ccff" stroke-width="0.8" opacity="0.82">
+            <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="18s" repeatCount="indefinite"/>
+          </polygon>
+          <animateTransform attributeName="transform" type="translate" values="142,78;140,72;142,78" dur="5s" repeatCount="indefinite"/>
+        </g>
+        <!-- Crystal B (upper right) -->
+        <g transform="translate(538,65)">
+          <polygon points="0,-18 8,-4 4,16 -4,16 -8,-4" fill="url(#crystalSmall)" stroke="#88ccff" stroke-width="0.8" opacity="0.75">
+            <animateTransform attributeName="transform" type="rotate" from="45 0 0" to="405 0 0" dur="22s" repeatCount="indefinite"/>
+          </polygon>
+          <animateTransform attributeName="transform" type="translate" values="538,65;540,70;538,65" dur="6.5s" repeatCount="indefinite"/>
+        </g>
+        <!-- Crystal C (lower left) -->
+        <g transform="translate(168,272)">
+          <polygon points="0,-16 7,-3 3,14 -3,14 -7,-3" fill="url(#crystalSide)" stroke="#ffdd66" stroke-width="0.8" opacity="0.68">
+            <animateTransform attributeName="transform" type="rotate" from="20 0 0" to="380 0 0" dur="25s" repeatCount="indefinite"/>
+          </polygon>
+          <animateTransform attributeName="transform" type="translate" values="168,272;166,276;168,272" dur="7s" repeatCount="indefinite"/>
+        </g>
+        <!-- Crystal D (lower right) -->
+        <g transform="translate(512,278)">
+          <polygon points="0,-14 6,-2 3,12 -3,12 -6,-2" fill="url(#crystalMain)" stroke="#ffcc44" stroke-width="0.8" opacity="0.7">
+            <animateTransform attributeName="transform" type="rotate" from="-30 0 0" to="330 0 0" dur="20s" repeatCount="indefinite"/>
+          </polygon>
+          <animateTransform attributeName="transform" type="translate" values="512,278;514,274;512,278" dur="8s" repeatCount="indefinite"/>
+        </g>
+
+        <!-- MAIN CRYSTAL CLUSTER -->
+        <!-- Crystal shadow/base glow -->
+        <ellipse cx="340" cy="290" rx="80" ry="18" fill="rgba(255,200,0,0.12)" filter="url(#csg)">
+          <animate attributeName="rx" values="76;88;76" dur="4s" repeatCount="indefinite"/>
+        </ellipse>
+
+        <!-- Left crystal (tilted) -->
+        <g transform="translate(280,185) rotate(-22)">
+          <polygon points="0,-88 28,-30 18,70 -18,70 -28,-30" fill="url(#crystalSide)" stroke="#cc9900" stroke-width="1.2" opacity="0.85"/>
+          <!-- Facet line -->
+          <line x1="-28" y1="-30" x2="28" y2="-30" stroke="rgba(255,220,100,0.4)" stroke-width="0.8"/>
+          <line x1="-18" y1="70" x2="18" y2="70" stroke="rgba(180,130,0,0.5)" stroke-width="0.8"/>
+          <line x1="0" y1="-88" x2="0" y2="70" stroke="rgba(255,240,180,0.25)" stroke-width="0.6"/>
+        </g>
+
+        <!-- Right crystal (tilted opposite) -->
+        <g transform="translate(400,190) rotate(18)">
+          <polygon points="0,-80 24,-28 16,65 -16,65 -24,-28" fill="url(#crystalSide)" stroke="#cc9900" stroke-width="1.2" opacity="0.80"/>
+          <line x1="-24" y1="-28" x2="24" y2="-28" stroke="rgba(255,220,100,0.4)" stroke-width="0.8"/>
+          <line x1="0" y1="-80" x2="0" y2="65" stroke="rgba(255,240,180,0.22)" stroke-width="0.6"/>
+        </g>
+
+        <!-- Back crystal (behind, dimmer) -->
+        <g transform="translate(340,170) rotate(5)">
+          <polygon points="0,-65 20,-22 12,52 -12,52 -20,-22" fill="url(#crystalMain)" stroke="#aa7700" stroke-width="1" opacity="0.55"/>
+        </g>
+
+        <!-- MAIN CENTRAL CRYSTAL (tallest) -->
+        <g transform="translate(340,180)">
+          <polygon points="0,-110 36,-38 26,90 -26,90 -36,-38" fill="url(#crystalMain)" stroke="#ffcc44" stroke-width="1.5" filter="url(#csSoft)" opacity="0.95">
+            <animate attributeName="opacity" values="0.9;1;0.9" dur="4s" repeatCount="indefinite"/>
+          </polygon>
+          <!-- Bright top face -->
+          <polygon points="0,-110 36,-38 0,-60" fill="rgba(255,255,220,0.55)"/>
+          <polygon points="0,-110 -36,-38 0,-60" fill="rgba(255,240,180,0.35)"/>
+          <!-- Middle facet line -->
+          <line x1="-36" y1="-38" x2="36" y2="-38" stroke="rgba(255,240,150,0.5)" stroke-width="1"/>
+          <!-- Center spine -->
+          <line x1="0" y1="-110" x2="0" y2="90" stroke="rgba(255,255,200,0.22)" stroke-width="0.8"/>
+          <!-- Inner energy glow -->
+          <ellipse cx="0" cy="-10" rx="18" ry="40" fill="rgba(255,240,100,0.18)" filter="url(#csg)">
+            <animate attributeName="ry" values="35;50;35" dur="3.5s" repeatCount="indefinite"/>
+          </ellipse>
+          <!-- Top glow bloom -->
+          <circle cx="0" cy="-110" r="18" fill="rgba(255,255,180,0.35)" filter="url(#crystalGlow)">
+            <animate attributeName="r" values="15;24;15" dur="2.5s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="0" cy="-110" r="7" fill="#ffffdd" opacity="0.9">
+            <animate attributeName="opacity" values="0.7;1;0.7" dur="2.5s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+
+        <!-- Element symbol overlay -->
+        <text x="340" y="196" fill="rgba(255,255,200,0.55)" text-anchor="middle" font-size="22" font-family="Georgia" font-weight="bold" font-style="italic">Bd</text>
+        <text x="340" y="213" fill="rgba(255,220,100,0.50)" text-anchor="middle" font-size="13" font-family="Georgia">142</text>
+
+        <!-- Particle effects -->
+        <circle cx="298" cy="140" r="2.5" fill="#ffd700" opacity="0.7" filter="url(#csSoft)"><animate attributeName="cy" values="140;130;140" dur="4s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.5;0.9;0.5" dur="4s" repeatCount="indefinite"/></circle>
+        <circle cx="385" cy="125" r="2" fill="#ffffaa" opacity="0.6" filter="url(#csSoft)"><animate attributeName="cy" values="125;115;125" dur="5s" repeatCount="indefinite"/></circle>
+        <circle cx="316" cy="230" r="1.8" fill="#ffd700" opacity="0.55" filter="url(#csSoft)"><animate attributeName="cy" values="230;220;230" dur="3.5s" repeatCount="indefinite"/></circle>
+        <circle cx="366" cy="245" r="2" fill="#ffee88" opacity="0.5" filter="url(#csSoft)"><animate attributeName="cy" values="245;235;245" dur="4.5s" repeatCount="indefinite"/></circle>
+
+        <!-- Labels -->
+        <text x="340" y="330" fill="#ffd700" text-anchor="middle" font-size="15" font-family="Georgia" font-weight="bold" filter="url(#csSoft)">BRAHMA-DHATU</text>
+        <text x="340" y="348" fill="#e8cce4" text-anchor="middle" font-size="10" font-family="Georgia" opacity="0.65">Element 142 &middot; The Primordial Cosmic Metal &middot; Stabilised Transuranium Crystal</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AKASHA-LIPI ===== -->
+<section class="section" style="background:rgba(0,0,0,0.12);">
+  <h2 class="section-title">The Akasha-Lipi &mdash; Sky Writing</h2>
+  <p class="section-sub">In a desert in Rajasthan, beneath twenty meters of sand, explorers found a stone unlike any other — carved in a language no human had ever written. It took three thousand years of accumulated knowledge to decode. The translation changed everything.</p>
+  <div class="script-panel">
+    <div>
+      <h3 style="color:var(--gold);margin-bottom:16px;">The Discovery</h3>
+      <p style="color:var(--text);font-size:0.9em;line-height:1.8;margin-bottom:14px;">Explorers digging in the Thar Desert in 2019 — searching for an underground water source — struck a smooth surface at 21 meters depth. What they uncovered took two years to fully excavate: a slab of unknown material, 40 meters long, 8 meters wide, impossibly smooth, covered in script unlike any human language ever recorded.</p>
+      <p style="color:var(--text);font-size:0.9em;line-height:1.8;margin-bottom:14px;">The material itself was Brahma-Dhatu alloy — explaining why it survived billions of years underground with zero degradation. And why decoding it required tools that hadn't existed until the 21st century.</p>
+      <p style="color:var(--text);font-size:0.9em;line-height:1.8;">Similar stones were found in 6 other locations worldwide — one per continent, each in the script of that region's guardian. The Rajasthan stone — Indra-Vara's stone — is the most complete, decoded at 68%. The others range from 2% to 41%.</p>
+      <div style="margin-top:20px;padding:16px;background:rgba(255,215,0,0.05);border-left:3px solid rgba(255,215,0,0.4);border-radius:0 8px 8px 0;">
+        <p style="color:var(--text-dim);font-size:0.86em;line-height:1.7;font-style:italic;">"Each stone emits a constant low-frequency harmonic. Over millions of years, proto-human primates adapted their vocal systems to mimic that frequency. Language is not evolution. Language is mimicry of an alien script."<br>
+        <span style="color:var(--gold);font-size:0.8em;">— Dr. A. Sharma, Akasha-Lipi Decoding Project, 2023</span></p>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:center;">
+      <svg viewBox="0 0 300 360" style="width:100%;max-width:260px;height:auto;">
+        <defs>
+          <linearGradient id="stoneGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#3a3020"/>
+            <stop offset="55%" stop-color="#2a2015"/>
+            <stop offset="100%" stop-color="#1a1008"/>
+          </linearGradient>
+          <filter id="stoneGlow">
+            <feGaussianBlur stdDeviation="4" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <rect x="30" y="20" width="240" height="310" rx="8" fill="url(#stoneGrad)" stroke="#5a4a30" stroke-width="2"/>
+        <rect x="34" y="24" width="232" height="302" rx="6" fill="none" stroke="#4a3a20" stroke-width="1" opacity="0.5"/>
+        <!-- Script lines -->
+        <text x="52" y="65" fill="#ffd700" font-size="14" font-family="Georgia" opacity="0.72">&#8853; &#8855; &#8709; &#8857; &#8859; &#8854; &#8853;</text>
+        <text x="52" y="90" fill="#ffd700" font-size="12" font-family="Georgia" opacity="0.52">&#916; &#8711; &#9671; &#10145; &#9672; &#8711; &#916;</text>
+        <text x="52" y="112" fill="#ffd700" font-size="11" font-family="Georgia" opacity="0.60">&#10216; &#8779; &#10217; &#8250; &#10216; &#8779; &#10217;</text>
+        <text x="52" y="134" fill="#cc66ff" font-size="13" font-family="Georgia" opacity="0.65">&#8859; &#8857; &#8854; &#8853; &#8855; &#8709; &#8857;</text>
+        <line x1="52" y1="149" x2="248" y2="149" stroke="#ffd700" stroke-width="0.5" opacity="0.28"/>
+        <text x="52" y="170" fill="#ffd700" font-size="10" font-family="Georgia" opacity="0.50">&#8749; &#8751; &#8750; &#8748; &#8749; &#8751; &#8750;</text>
+        <text x="52" y="190" fill="#aaddff" font-size="12" font-family="Georgia" opacity="0.58">&#8904; &#8866; &#8867; &#8904; &#8866; &#8867; &#8904;</text>
+        <text x="52" y="210" fill="#ffd700" font-size="11" font-family="Georgia" opacity="0.55">&#8888; &#10236; &#8888; &#10236; &#8888; &#10236;</text>
+        <text x="52" y="232" fill="#ffd700" font-size="14" font-family="Georgia" opacity="0.88" filter="url(#stoneGlow)">&#8853; &#8855; &#8709; &#8857; &#8859; &#8854;</text>
+        <text x="52" y="254" fill="#cc66ff" font-size="10" font-family="Georgia" opacity="0.50">&#8250; &#10216; &#8779; &#10217; &#8250; &#10216; &#8779;</text>
+        <text x="52" y="274" fill="#ffd700" font-size="12" font-family="Georgia" opacity="0.45">&#10145; &#9672; &#8711; &#916; &#10145; &#9672; &#8711;</text>
+        <text x="52" y="294" fill="#aaddff" font-size="11" font-family="Georgia" opacity="0.50">&#8857; &#8859; &#8854; &#8853; &#8855; &#8709; &#8857;</text>
+        <!-- Seal -->
+        <circle cx="150" cy="320" r="14" fill="rgba(255,215,0,0.1)" stroke="#ffd700" stroke-width="1.5" filter="url(#stoneGlow)">
+          <animate attributeName="r" values="12;16;12" dur="3s" repeatCount="indefinite"/>
+        </circle>
+        <text x="150" y="326" fill="#ffd700" text-anchor="middle" font-size="13" filter="url(#stoneGlow)">&#8857;</text>
+        <text x="150" y="352" fill="#ffd700" text-anchor="middle" font-size="10" font-family="Georgia" opacity="0.7">AKASHA-LIPI &middot; Indra-Vara's Stone</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Language decode table -->
+  <div style="max-width:900px;margin:40px auto 0;overflow-x:auto;">
+    <table style="width:100%;border-collapse:collapse;font-size:0.87em;">
+      <thead>
+        <tr style="border-bottom:1px solid var(--border);">
+          <th style="text-align:left;padding:12px 14px;color:var(--gold);">Guardian</th>
+          <th style="text-align:left;padding:12px 14px;color:var(--gold);">Continent</th>
+          <th style="text-align:left;padding:12px 14px;color:var(--gold);">Script Location</th>
+          <th style="text-align:left;padding:12px 14px;color:var(--gold);">Language Seeded</th>
+          <th style="text-align:right;padding:12px 14px;color:var(--gold);">Decoded</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--border-dim);"><td style="padding:11px 14px;color:#6699ff;">Indra-Vara</td><td style="padding:11px 14px;color:var(--text);">Asia</td><td style="padding:11px 14px;color:var(--text-dim);">Rajasthan Desert, India</td><td style="padding:11px 14px;color:var(--text);">Sanskrit, Vedic, Indo-European</td><td style="padding:11px 14px;text-align:right;color:#44ff88;font-weight:bold;">68%</td></tr>
+        <tr style="border-bottom:1px solid var(--border-dim);"><td style="padding:11px 14px;color:#ff6633;">Agni-Vara</td><td style="padding:11px 14px;color:var(--text);">Africa</td><td style="padding:11px 14px;color:var(--text-dim);">Sub-Saharan Bedrock</td><td style="padding:11px 14px;color:var(--text);">Proto-Afroasiatic</td><td style="padding:11px 14px;text-align:right;color:#ffaa44;font-weight:bold;">41%</td></tr>
+        <tr style="border-bottom:1px solid var(--border-dim);"><td style="padding:11px 14px;color:#aaddff;">Vayu-Vara</td><td style="padding:11px 14px;color:var(--text);">Europe</td><td style="padding:11px 14px;color:var(--text-dim);">Stonehenge Resonance Field</td><td style="padding:11px 14px;color:var(--text);">Proto-Indo-European</td><td style="padding:11px 14px;text-align:right;color:#ffaa44;font-weight:bold;">33%</td></tr>
+        <tr style="border-bottom:1px solid var(--border-dim);"><td style="padding:11px 14px;color:#33aaff;">Jala-Vara</td><td style="padding:11px 14px;color:var(--text);">North America</td><td style="padding:11px 14px;color:var(--text-dim);">River System Patterns, Mississippi Basin</td><td style="padding:11px 14px;color:var(--text);">Proto-Na-Dene</td><td style="padding:11px 14px;text-align:right;color:#ff8844;font-weight:bold;">18%</td></tr>
+        <tr style="border-bottom:1px solid var(--border-dim);"><td style="padding:11px 14px;color:#44cc66;">Prithvi-Vara</td><td style="padding:11px 14px;color:var(--text);">South America</td><td style="padding:11px 14px;color:var(--text-dim);">Amazon Growth Patterns</td><td style="padding:11px 14px;color:var(--text);">Proto-Amerindian</td><td style="padding:11px 14px;text-align:right;color:#ff8844;font-weight:bold;">12%</td></tr>
+        <tr style="border-bottom:1px solid var(--border-dim);"><td style="padding:11px 14px;color:#cc66ff;">Akasha-Vara</td><td style="padding:11px 14px;color:var(--text);">Australia / Oceania</td><td style="padding:11px 14px;color:var(--text-dim);">Dreamtime Frequency (non-physical)</td><td style="padding:11px 14px;color:var(--text);">Proto-Australian</td><td style="padding:11px 14px;text-align:right;color:#ff6644;font-weight:bold;">2%</td></tr>
+        <tr><td style="padding:11px 14px;color:#aaccdd;">Tamas-Vara</td><td style="padding:11px 14px;color:var(--text);">Antarctica</td><td style="padding:11px 14px;color:var(--text-dim);">Under Antarctic Ice Sheet (undiscovered)</td><td style="padding:11px 14px;color:var(--text);">Unknown — No Human Language Derived</td><td style="padding:11px 14px;text-align:right;color:#ff4444;font-weight:bold;">0%</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== TIMELINE ===== -->
+<section class="section">
+  <h2 class="section-title">Timeline of the Earth — From One to Seven</h2>
+  <p class="section-sub">Four billion years of history, compressed into the moments that matter.</p>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-dot" style="background:rgba(255,215,0,0.1);border-color:#ffd700;">&#127757;</div>
+      <div class="tl-content">
+        <div class="tl-era">~4 Billion Years Ago</div>
+        <div class="tl-title">Eka-Bhumi — The One Earth</div>
+        <div class="tl-desc">Earth exists as a single supercontinent, geologically active, rich in Brahma-Dhatu distributed throughout its mantle. No complex life. No language. The metal waits.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot" style="background:rgba(138,43,226,0.1);border-color:#aa66ff;">&#128640;</div>
+      <div class="tl-content">
+        <div class="tl-era">~3.8 Billion Years Ago</div>
+        <div class="tl-title">The First Arrival — Vimana-Loka Approaches</div>
+        <div class="tl-desc">The planet Vimana-Loka enters the outer solar system. Seven enormous beings descend in craft that dwarf mountains. They carry instruments beyond human understanding. They have done this before, elsewhere. Earth is not special — except in the quality of its Brahma-Dhatu deposit.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot" style="background:rgba(255,215,0,0.1);border-color:#ffd700;">&#9889;</div>
+      <div class="tl-content">
+        <div class="tl-era">~3.8 – 3.2 Billion Years Ago</div>
+        <div class="tl-title">The Great Division</div>
+        <div class="tl-desc">Each brother claims his territory. The continental division follows the exact distribution map of Brahma-Dhatu beneath the surface. The brothers use forces beyond geological scale to separate the landmass. This is what humans call the breakup of Pangaea, misattributed to tectonic drift alone.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot" style="background:rgba(255,102,51,0.1);border-color:#ff6633;">&#9935;</div>
+      <div class="tl-content">
+        <div class="tl-era">~3.2 – 0.5 Billion Years Ago</div>
+        <div class="tl-title">The Long Extraction</div>
+        <div class="tl-desc">Over billions of years, the seven brothers extract Brahma-Dhatu from their continental zones. As a byproduct — heat, chemical reactions, atmospheric alteration — life emerges. First microbial, then complex. The brothers observe but do not interfere significantly. Life is a curiosity, not their purpose.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot" style="background:rgba(170,204,221,0.1);border-color:#aaccdd;">&#128220;</div>
+      <div class="tl-content">
+        <div class="tl-era">~500 Million Years Ago</div>
+        <div class="tl-title">The Akasha-Lipi — Scripts Left Behind</div>
+        <div class="tl-desc">Before departing, each brother inscribes his record — what he extracted, what he left, how the extraction systems work, and a warning about removing the remaining Brahma-Dhatu. Each stone is written in Brahma-Dhatu alloy, guaranteed to survive until the brothers return.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot" style="background:rgba(138,43,226,0.1);border-color:#aa66ff;">&#127756;</div>
+      <div class="tl-content">
+        <div class="tl-era">~500 Million Years Ago</div>
+        <div class="tl-title">The Departure — And the Seeding of Language</div>
+        <div class="tl-desc">The brothers leave Earth. In the process, proto-human primates begin adapting their vocal systems to mimic the resonance frequencies of the Akasha-Lipi stones, which emit a constant low-frequency signal. Over millions of years, this mimicry becomes language. Every human tongue is a biological echo of an alien script.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot" style="background:rgba(68,204,102,0.1);border-color:#44cc66;">&#127964;</div>
+      <div class="tl-content">
+        <div class="tl-era">2019</div>
+        <div class="tl-title">The Rajasthan Discovery</div>
+        <div class="tl-desc">Explorers in the Thar Desert excavate the first Akasha-Lipi stone — Indra-Vara's record for Asia. Six more are found on other continents in subsequent years. The stones emit a resonance that interferes with electronic equipment, explaining why they remained undetected for so long.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot" style="background:rgba(255,215,0,0.1);border-color:#ffd700;">&#128300;</div>
+      <div class="tl-content">
+        <div class="tl-era">2019 – 2024</div>
+        <div class="tl-title">Decoding Begins — The World Unites</div>
+        <div class="tl-desc">Teams across seven continents work simultaneously to decode their stones. As translations emerge, the picture clarifies: the brothers are coming back. The remaining 10% of Brahma-Dhatu is their target. And the Akasha-Lipi contains something else — partial instructions on how to use that 10% to resist Vimana-Loka itself.</div>
+      </div>
+    </div>
+
+    <div class="tl-item" style="padding-bottom:0;">
+      <div class="tl-item::before" style="display:none;"></div>
+      <div class="tl-dot" style="background:rgba(255,68,68,0.1);border-color:#ff4444;">&#9876;</div>
+      <div class="tl-content">
+        <div class="tl-era">Now — 2026 and Beyond</div>
+        <div class="tl-title">The Preparation — Volume I Begins in Bharatavarsha</div>
+        <div class="tl-desc">Bharatavarsha — the Indian subcontinent, territory of Indra-Vara — holds the most decoded stone and the highest concentration of remaining Brahma-Dhatu. It is ground zero. The kingdoms of India must unite not just politically but dharmically, generating a force that the stone's partial instructions describe as the one thing the brothers fear: organized, unified resistance at the source.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== EXPLORE ===== -->
+<section class="section" style="background:rgba(0,0,0,0.12);">
+  <h2 class="section-title">Explore the Saga</h2>
+  <p class="section-sub">The continental origins are the foundation. Volume I begins in Bharatavarsha — the first ground to be reclaimed, the first to resist.</p>
+  <div class="cta-grid">
+    <a href="bharatavarsha/global-map.html" class="cta-card card" style="border-color:rgba(255,215,0,0.3);">
+      <div class="cta-icon">&#128506;</div>
+      <h4 style="color:var(--gold);">Bharatavarsha Map</h4>
+      <p>Explore Indra-Vara's domain — the Indian subcontinent, center of the coming resistance</p>
+    </a>
+    <a href="galactic-threat.html" class="cta-card card" style="border-color:rgba(255,68,68,0.3);">
+      <div class="cta-icon">&#128308;</div>
+      <h4 style="color:#ff4444;">The Galactic Threat</h4>
+      <p>The full cosmic scope — Vimana-Loka and other forces converging on Earth</p>
+    </a>
+    <a href="characters.html" class="cta-card card" style="border-color:rgba(68,255,136,0.3);">
+      <div class="cta-icon">&#9876;</div>
+      <h4 style="color:#44ff88;">The Heroes</h4>
+      <p>The 28 kingdom warriors whose dharmic power forms Earth's only real defense</p>
+    </a>
+    <a href="council.html" class="cta-card card" style="border-color:rgba(170,102,255,0.3);">
+      <div class="cta-icon">&#127758;</div>
+      <h4 style="color:#aa66ff;">Grand Council</h4>
+      <p>67 representatives from India, the world, and space — all converging on the crisis</p>
+    </a>
+    <a href="vimana-zones.html" class="cta-card card" style="border-color:rgba(255,215,0,0.3);">
+      <div class="cta-icon">&#127764;</div>
+      <h4 style="color:var(--gold);">The 7 Vimana Zones</h4>
+      <p>The real territorial map — India with Africa &amp; South America, Canada with Siberia</p>
+    </a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer style="text-align:center;padding:40px 20px;border-top:1px solid var(--border-dim);color:var(--text-dim);font-size:0.85em;">
+  <p style="color:var(--gold);margin-bottom:10px;">Seven brothers divided the Earth. Seven brothers are returning to take what they left.</p>
+  <p>Hulmane-The-Saga &mdash; Volume I: Bharatavarsha</p>
+  <p style="margin-top:15px;">
+    <a href="index.html" style="color:var(--gold-dim);">Volume I Home</a> &bull;
+    <a href="galactic-threat.html" style="color:var(--gold-dim);">Galactic Threat</a> &bull;
+    <a href="bharatavarsha/global-map.html" style="color:var(--gold-dim);">Map</a> &bull;
+    <a href="characters.html" style="color:var(--gold-dim);">Heroes</a> &bull;
+    <a href="../../../../index.html" style="color:var(--gold-dim);">Saga Home</a>
+  </p>
+</footer>
+
+  <script src="../../assets/manifest.js"></script>
+  <script src="../../assets/aom.js"></script> <!-- aom:injected -->
+</body>
+</html>

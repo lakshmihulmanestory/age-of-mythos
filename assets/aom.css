@@ -1,0 +1,203 @@
+/* ============================================================
+   Age of Mythos — shared design system (aom.css)
+   Loaded on every page. Provides: theme tokens, unified chrome
+   (header / breadcrumb / prev-next / footer), and the story
+   reader theme. Injected nav is rendered by aom.js.
+   ============================================================ */
+
+:root {
+  --aom-bg:        #0d0a14;
+  --aom-bg2:       #120f1e;
+  --aom-card:      #1a1528;
+  --aom-text:      #f0e8f8;
+  --aom-dim:       #b8a8cc;
+  --aom-gold:      #d4952a;
+
+  /* Theme tokens — set per page by aom.js from the manifest.
+     Defaults = Volume I family so pages look right before JS runs. */
+  --vol-accent:    #c44daa;
+  --vol-accent2:   #9a3088;
+  --ch-accent:     #c44daa;
+  --k-accent:      #c44daa;   /* kingdom / leaf accent  */
+  --k-accent2:     #9a3088;   /* kingdom secondary      */
+  --aom-glow:      rgba(196,77,170,.18);
+
+  --aom-header-h:  54px;
+  --aom-max:       820px;
+}
+
+/* ---- base, applied via <body class="aom"> ---- */
+body.aom {
+  padding-top: var(--aom-header-h);
+  background-image:
+    radial-gradient(ellipse at 20% -5%, var(--aom-glow) 0%, transparent 55%);
+}
+
+/* Hide the old, inconsistent navigation — aom.js renders the unified one. */
+body.aom .maha-nav,
+body.aom nav.maha-nav,
+body.aom .k-nav { display: none !important; }
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.aom-header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9000;
+  height: var(--aom-header-h);
+  display: flex; align-items: center; gap: 18px;
+  padding: 0 18px;
+  background: rgba(13,10,20,.90);
+  border-bottom: 1px solid var(--ch-accent);
+  box-shadow: 0 1px 0 rgba(0,0,0,.4), 0 0 24px -10px var(--ch-accent);
+  backdrop-filter: blur(12px);
+  font-family: Georgia, serif;
+}
+.aom-logo {
+  font-size: .82rem; letter-spacing: 2px; text-transform: uppercase;
+  font-weight: bold; text-decoration: none; white-space: nowrap;
+  color: var(--ch-accent);
+}
+.aom-here {
+  font-size: .68rem; letter-spacing: 1px; color: var(--aom-dim);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  flex: 1 1 auto; opacity: .85;
+}
+.aom-here b { color: var(--k-accent); font-weight: 600; }
+.aom-actions { display: flex; gap: 8px; align-items: center; flex: 0 0 auto; }
+.aom-btn {
+  font-family: Georgia, serif;
+  font-size: .62rem; letter-spacing: 1.5px; text-transform: uppercase;
+  text-decoration: none; white-space: nowrap;
+  color: var(--aom-dim);
+  padding: 6px 12px; border-radius: 18px;
+  border: 1px solid rgba(255,255,255,.16);
+  transition: all .15s;
+}
+.aom-btn:hover { color: #fff; border-color: var(--ch-accent); background: var(--aom-glow); }
+.aom-btn.primary { color: var(--aom-bg); background: var(--ch-accent); border-color: var(--ch-accent); font-weight: bold; }
+.aom-btn.primary:hover { filter: brightness(1.12); }
+
+/* mobile menu toggle */
+.aom-menu-toggle { display: none; background: none; border: 0; color: var(--aom-dim); font-size: 1.3rem; cursor: pointer; }
+@media (max-width: 720px) {
+  .aom-here { display: none; }
+  .aom-actions { position: fixed; top: var(--aom-header-h); right: 0;
+    flex-direction: column; align-items: stretch; gap: 0;
+    background: rgba(13,10,20,.98); border-left: 1px solid var(--ch-accent);
+    border-bottom: 1px solid var(--ch-accent);
+    padding: 6px; min-width: 180px; display: none; }
+  .aom-actions.open { display: flex; }
+  .aom-btn { border: 0; border-radius: 0; text-align: left; padding: 12px; }
+  .aom-menu-toggle { display: block; }
+}
+
+/* ============================================================
+   BREADCRUMB
+   ============================================================ */
+.aom-crumbs {
+  max-width: var(--aom-max); margin: 0 auto; padding: 14px 20px 2px;
+  font-family: Georgia, serif; font-size: .7rem; letter-spacing: .5px;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 4px;
+}
+.aom-crumbs a { color: var(--k-accent); text-decoration: none; opacity: .8; }
+.aom-crumbs a:hover { opacity: 1; text-decoration: underline; }
+.aom-crumbs .sep { color: var(--k-accent); opacity: .4; margin: 0 2px; }
+.aom-crumbs .here { color: var(--aom-text); opacity: .9; }
+
+/* ============================================================
+   PREV / NEXT PAGER
+   ============================================================ */
+.aom-pager {
+  max-width: var(--aom-max); margin: 40px auto 0; padding: 22px 20px 60px;
+  display: flex; gap: 12px; justify-content: space-between;
+  border-top: 1px solid rgba(255,255,255,.08);
+  font-family: Georgia, serif;
+}
+.aom-pager a {
+  flex: 1 1 0; max-width: 48%; text-decoration: none;
+  display: flex; flex-direction: column; gap: 4px;
+  padding: 14px 16px; border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.02);
+  transition: all .15s;
+}
+.aom-pager a:hover { border-color: var(--k-accent); background: var(--aom-glow); }
+.aom-pager a.next { text-align: right; align-items: flex-end; margin-left: auto; }
+.aom-pager .lbl { font-size: .58rem; letter-spacing: 2px; text-transform: uppercase; color: var(--k-accent); opacity: .85; }
+.aom-pager .ttl { font-size: .82rem; color: var(--aom-text); }
+.aom-pager a.disabled { visibility: hidden; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.aom-footer {
+  text-align: center; padding: 30px 20px; font-family: Georgia, serif;
+  border-top: 1px solid rgba(255,255,255,.07);
+  color: var(--aom-dim); font-size: .68rem; letter-spacing: .5px;
+}
+.aom-footer a { color: var(--k-accent); text-decoration: none; }
+.aom-footer a:hover { text-decoration: underline; }
+
+/* ============================================================
+   STORY READER THEME  (used by re-templated story leaves)
+   ============================================================ */
+body.aom-reader { background: var(--aom-bg); color: var(--aom-text); font-family: Georgia, serif; line-height: 1.9; }
+.reader-banner {
+  text-align: center; padding: 56px 24px 34px;
+  background: radial-gradient(ellipse at center, var(--aom-glow) 0%, transparent 70%);
+  border-bottom: 1px solid var(--k-accent);
+}
+.reader-banner .eyebrow { font-size: .6rem; letter-spacing: 5px; text-transform: uppercase; color: var(--k-accent); margin-bottom: 14px; }
+.reader-banner h1 { font-size: clamp(1.9rem, 5vw, 2.6rem); color: var(--aom-text); letter-spacing: 1px; margin-bottom: .25em;
+  text-shadow: 0 0 50px var(--aom-glow); }
+.reader-banner .subtitle { font-size: .92rem; color: var(--aom-dim); font-style: italic; }
+.reader-banner .motto { font-size: .8rem; color: var(--k-accent); font-style: italic; margin-top: 12px; opacity: .9; }
+.reader-cast { max-width: var(--aom-max); margin: 22px auto 0; text-align: center; color: var(--aom-dim); font-size: .82rem; }
+.reader-cast strong { color: var(--k-accent); }
+.reader-body { max-width: var(--aom-max); margin: 0 auto; padding: 40px 24px 0; }
+.reader-body h2, .reader-body h3 {
+  font-size: 1rem; color: var(--k-accent); letter-spacing: 1px; text-transform: uppercase;
+  margin: 38px 0 12px;
+}
+.reader-body p { font-size: 1rem; margin-bottom: 20px; }
+.reader-body img { max-width: 100%; border-radius: 10px; display: block; margin: 24px auto; border: 1px solid rgba(255,255,255,.1); }
+.reader-body blockquote { border-left: 3px solid var(--k-accent); margin: 22px 0; padding: 4px 20px; color: var(--aom-dim); font-style: italic; }
+.half-banner { text-align: center; margin: 50px 0 28px; }
+.half-banner span { display: inline-block; padding: 10px 26px; border-top: 1px solid var(--k-accent); border-bottom: 1px solid var(--k-accent);
+  color: var(--k-accent); letter-spacing: 4px; font-size: .85rem; text-transform: uppercase; }
+
+/* ---- story media bar: language toggle + audio players ---- */
+.reader-media {
+  max-width: var(--aom-max); margin: 26px auto 0; padding: 18px 24px 0;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.reader-langtoggle {
+  display: inline-flex; align-self: center; gap: 0;
+  border: 1px solid var(--k-accent); border-radius: 22px; overflow: hidden;
+}
+.reader-langtoggle button {
+  font-family: Georgia, serif; font-size: .72rem; letter-spacing: 1.5px;
+  padding: 8px 20px; cursor: pointer; border: 0; background: transparent;
+  color: var(--aom-dim); transition: all .15s;
+}
+.reader-langtoggle button + button { border-left: 1px solid var(--k-accent); }
+.reader-langtoggle button:hover { color: var(--aom-text); }
+.reader-langtoggle button.active { background: var(--k-accent); color: var(--aom-bg); font-weight: bold; }
+.reader-audio {
+  display: flex; flex-direction: column; gap: 8px; align-items: center;
+}
+.reader-audio-label {
+  font-size: .58rem; letter-spacing: 3px; text-transform: uppercase; color: var(--k-accent);
+}
+.reader-audio audio { width: 100%; max-width: 520px; }
+.reader-lang[lang="kn"] { line-height: 2.0; }
+
+/* Kannada prose shown inside an injected "Listen & Read" panel */
+.reader-media .reader-lang {
+  width: 100%; max-width: var(--aom-max); margin: 8px auto 0;
+  text-align: left; color: var(--aom-text); line-height: 2.0;
+  border-top: 1px solid rgba(255,255,255,.10); padding-top: 18px;
+}
+.reader-media .reader-lang p { margin-bottom: 18px; }
+
+/* generic helper used by stub shells & overview cards */
+.aom-wrap { max-width: 1100px; margin: 0 auto; padding: 40px 22px 80px; }

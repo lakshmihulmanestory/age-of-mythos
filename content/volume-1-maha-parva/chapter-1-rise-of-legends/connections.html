@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Connection Tree &mdash; Volume I</title>
+  <style>
+    :root{
+      --bg:#0d0a14; --panel:#160f22; --card:#1a1528; --line:#2c2340;
+      --text:#f0e8f8; --dim:#b8a8cc; --gold:#d4952a;
+      --a:#e0a93a; --b:#4f9ae6; --c:#b066e6; --d:#46c878; --e:#e8584e; --u:#7d8aa0;
+      --hero:#46c878; --vill:#e8584e; --guru:#5ad0d0; --council:#e0b341; --herald:#c07ad8;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      overflow:hidden;}
+
+    /* ── header ── */
+    .ct-head{padding:62px 22px 10px;text-align:center;}
+    .ct-head h1{margin:0 0 4px;font-family:Georgia,serif;font-size:1.5rem;letter-spacing:.5px;}
+    .ct-head p{margin:0 auto;max-width:680px;color:var(--dim);font-size:.78rem;line-height:1.55;}
+
+    /* ── toolbar ── */
+    .ct-bar{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;padding:8px 14px;
+      border-bottom:1px solid var(--line);}
+    .ct-bar .grp{display:flex;gap:5px;align-items:center;padding:0 6px;}
+    .ct-bar .grp + .grp{border-left:1px solid var(--line);}
+    .chip{padding:5px 12px;border-radius:20px;border:1px solid var(--line);background:none;
+      color:var(--dim);font-size:.72rem;cursor:pointer;transition:.15s;white-space:nowrap;}
+    .chip:hover{color:var(--text);border-color:#4a3d63;}
+    .chip.on{color:#0d0a14;font-weight:700;border-color:transparent;}
+    .chip.bl-A.on{background:var(--a)} .chip.bl-B.on{background:var(--b)}
+    .chip.bl-C.on{background:var(--c)} .chip.bl-D.on{background:var(--d)}
+    .chip.bl-E.on{background:var(--e)} .chip.bl-U.on{background:var(--u)}
+    .chip.bl-ALL.on{background:var(--gold)}
+    .chip.tg.on{background:#2c2340;color:var(--text);border-color:#4a3d63;font-weight:600;}
+    .lbl{font-size:.62rem;text-transform:uppercase;letter-spacing:1px;color:#6a5d80;margin-right:2px;}
+
+    /* ── stage ── */
+    #stage{position:fixed;inset:0;top:0;z-index:-1;}
+    svg{width:100%;height:100%;display:block;cursor:grab;background:
+      radial-gradient(circle at 50% 12%,#1a1230 0%,#0d0a14 60%);}
+    svg.drag{cursor:grabbing;}
+    .node{cursor:pointer;}
+    .node rect,.node ellipse,.node polygon{transition:filter .15s,opacity .2s;}
+    .node:hover rect,.node:hover ellipse,.node:hover polygon{filter:brightness(1.25);}
+    .node text{pointer-events:none;font-family:-apple-system,Helvetica,Arial,sans-serif;}
+    .nlabel{font-size:13px;font-weight:600;}
+    .nsub{font-size:9.5px;}
+    .klabel{font-size:10px;fill:var(--dim);font-weight:600;letter-spacing:.4px;}
+    .badge{font-size:13px;}
+    .dim-out{opacity:.08 !important;}
+    .link{fill:none;}
+
+    /* zoom controls */
+    .zoom{position:fixed;right:16px;bottom:16px;display:flex;flex-direction:column;gap:6px;z-index:5;}
+    .zoom button{width:36px;height:36px;border-radius:9px;border:1px solid var(--line);
+      background:var(--card);color:var(--text);font-size:1.1rem;cursor:pointer;}
+    .zoom button:hover{border-color:#4a3d63;}
+
+    /* legend */
+    .legend{position:fixed;left:16px;bottom:16px;z-index:5;background:rgba(16,11,26,.86);
+      border:1px solid var(--line);border-radius:10px;padding:10px 13px;font-size:.66rem;
+      color:var(--dim);line-height:1.7;backdrop-filter:blur(4px);max-width:230px;}
+    .legend b{color:var(--text);display:block;margin-bottom:3px;font-size:.7rem;}
+    .legend span.k{display:inline-block;width:11px;height:11px;border-radius:3px;
+      vertical-align:-1px;margin-right:5px;}
+
+    /* detail panel */
+    #panel{position:fixed;top:0;right:0;height:100vh;width:340px;max-width:88vw;z-index:30;
+      background:linear-gradient(180deg,#1a1228,#120c1c);border-left:1px solid var(--line);
+      transform:translateX(100%);transition:transform .25s ease;overflow-y:auto;
+      box-shadow:-12px 0 40px rgba(0,0,0,.5);}
+    #panel.open{transform:translateX(0);}
+    #panel .pclose{position:absolute;top:12px;right:14px;background:none;border:none;
+      color:var(--dim);font-size:1.4rem;cursor:pointer;line-height:1;}
+    #panel .ptop{padding:46px 22px 16px;}
+    #panel .ptag{display:inline-block;font-size:.62rem;text-transform:uppercase;letter-spacing:1px;
+      padding:3px 9px;border-radius:20px;font-weight:700;margin-bottom:10px;}
+    #panel h2{margin:0 0 2px;font-family:Georgia,serif;font-size:1.35rem;}
+    #panel .ptitle{color:var(--gold);font-size:.82rem;font-style:italic;margin-bottom:14px;}
+    #panel .prow{padding:9px 22px;border-top:1px solid var(--line);font-size:.78rem;line-height:1.5;}
+    #panel .prow .h{font-size:.6rem;text-transform:uppercase;letter-spacing:1px;color:#7a6d90;
+      display:block;margin-bottom:3px;}
+    #panel .prow .v{color:var(--text);}
+    #panel .prow.note .v{color:var(--dim);font-style:italic;}
+    @media(max-width:640px){
+      .ct-head h1{font-size:1.2rem} .legend{display:none}
+    }
+  </style>
+  <link rel="stylesheet" href="../../../assets/aom.css"> <!-- aom:injected -->
+</head>
+<body class="aom" data-aom-type="page">
+
+  <div class="ct-head">
+    <h1>The Connection Tree</h1>
+    <p>Volume I &middot; Maha Parva &mdash; thirty kingdoms, five bloodlines, one quarrelling family.
+       Cousins fight cousins; gurus teach both sides. Drag to pan, scroll to zoom, click any node.</p>
+  </div>
+
+  <div class="ct-bar">
+    <div class="grp">
+      <span class="lbl">Bloodline</span>
+      <button class="chip bl-ALL on" data-bl="ALL">All</button>
+      <button class="chip bl-A" data-bl="A">A&nbsp;Elephant</button>
+      <button class="chip bl-B" data-bl="B">B&nbsp;Solar</button>
+      <button class="chip bl-C" data-bl="C">C&nbsp;Lunar</button>
+      <button class="chip bl-D" data-bl="D">D&nbsp;Forest</button>
+      <button class="chip bl-E" data-bl="E">E&nbsp;Ocean</button>
+      <button class="chip bl-U" data-bl="U">Unaligned</button>
+    </div>
+    <div class="grp">
+      <span class="lbl">Show</span>
+      <button class="chip tg on" data-tg="vill">Villains</button>
+      <button class="chip tg on" data-tg="marriage">Marriages</button>
+      <button class="chip tg" data-tg="guru">Gurus</button>
+      <button class="chip tg" data-tg="council">Council</button>
+    </div>
+  </div>
+
+  <div id="stage"><svg id="svg" viewBox="0 0 2380 1640" preserveAspectRatio="xMidYMid meet"></svg></div>
+
+  <div class="zoom">
+    <button id="zin" title="Zoom in">+</button>
+    <button id="zout" title="Zoom out">&minus;</button>
+    <button id="zfit" title="Fit" style="font-size:.7rem">fit</button>
+  </div>
+
+  <div class="legend">
+    <b>Legend</b>
+    <div><span class="k" style="background:var(--hero)"></span>Hero &nbsp;
+         <span class="k" style="background:var(--vill)"></span>Villain</div>
+    <div><span class="k" style="background:var(--guru)"></span>Guru &nbsp;
+         <span class="k" style="background:var(--herald)"></span>Herald</div>
+    <div>&#9819; Grand-Council seat &nbsp; &#9889; twins</div>
+    <div style="margin-top:5px">— blood &nbsp; <span style="color:var(--gold)">– –</span> marriage
+         &nbsp; <span style="color:var(--guru)">····</span> teaches</div>
+  </div>
+
+  <aside id="panel">
+    <button class="pclose" aria-label="close">&times;</button>
+    <div id="pbody"></div>
+  </aside>
+
+<script>
+/* ============================================================
+   DATA  — derived from heroes.csv / villains.csv (Ch-1 canon)
+   + _planning/02-relationship-graph.md  (bloodlines & relations)
+   ============================================================ */
+const BL = {
+  A:{name:"Gajavamsha", en:"Elephant Lineage", region:"South + East coast",
+     founder:"Rode the war-elephants of the original Vijayanagara; scattered when it fell.", col:0},
+  B:{name:"Suryavamsha", en:"Solar Line", region:"North + Central",
+     founder:"One king ruled all Aryavarta; his seven sons each took a piece.", col:1},
+  C:{name:"Chandravamsha", en:"Lunar Line (matrilineal)", region:"Northeast + Bengal",
+     founder:"A moon-queen who could not be killed scattered her daughters across the mist.", col:2},
+  D:{name:"Vana-Kula", en:"Forest Clan", region:"Central + forest belt",
+     founder:"A mother-forest that walked; her footsteps became kingdoms, her shadow villains.", col:3},
+  E:{name:"Sagaravamsha", en:"Ocean & Stone", region:"West + South coast",
+     founder:"Where the sea met the desert, a king and queen built a bridge of stone.", col:4},
+  U:{name:"Unaligned Houses", en:"bloodline emerges in Ch 2+", region:"mixed",
+     founder:"Chapter-1 kingdoms whose ancestral claim has not yet surfaced.", col:5},
+};
+
+// hero.role = Mahabharata mirror; relation = place in the line
+const K = [
+  // ---- A · Gajavamsha ----
+  {id:"karnataka",bl:"A",row:0,state:"Karnataka",kingdom:"Vijayanagara Reborn",region:"South",
+   hero:{name:"Tungabhadra",title:"The River Queen",role:"Bhima",relation:"Direct heir — Maha-Empress of the line",council:"South + Maha-Adhipati (supreme)",herald:"Third Herald rises here (temple-quake child)",gurus:["Sage Vidyaranya","Old Parashurama"],
+     notes:"Falls in late Ch 2 — her elephant-bond & the line's headship pass to Krishnadevaraya-Bhrata."},
+   vill:{name:"Bhoomi-Takshaka",title:"The Earth Serpent",role:"Ashwatthama",relation:"Cousin-sister of the dispossessed branch"}},
+  {id:"kerala",bl:"A",row:1,state:"Kerala",kingdom:"Parashurama-Kshetra",region:"South",
+   hero:{name:"Parashurama",title:"The Axe Reborn",role:"Karna (as guru)",relation:"Granduncle — the line's oldest living elder",gurus:[],
+     notes:"Teaches the 108 forms; refused to teach Kala-Hasta — not from honour but fear of the 109th."},
+   vill:{name:"Kala-Hasta",title:"The Black Hand",role:"Karna",relation:"Parashurama's exiled disciple — inherits the legacy, not the blood"}},
+  {id:"andhra-pradesh",bl:"A",row:2,state:"Andhra Pradesh",kingdom:"Dharmakshetra Amaravati",region:"South",
+   hero:{name:"Krishnaveni",title:"The River's Daughter",role:"Draupadi",relation:"Half-sister to Tungabhadra (different mothers)",gurus:["Sage Vidyaranya (once)"],twin:"andhra-pradesh"},
+   vill:{name:"Kalaniksha",title:"The Black Wind",role:"Shakuni",relation:"Krishnaveni's twin — lost at birth, returned hostile",twin:true}},
+  {id:"jharkhand",bl:"A",row:3,state:"Jharkhand",kingdom:"Vana-Agni",region:"East",
+   hero:{name:"Vanajara",title:"The Jungle Strider",role:"—",relation:"Distant cousin via the Eastern-Ghats migration — also cross-bound to Vana-Kula (D)",gurus:["Aranya-Mata"]},
+   vill:{name:"Vana-Raksha",title:"Forest Demon",role:"—",relation:"Vanajara's adoptive elder (clan-uncle, not blood)"}},
+
+  // ---- B · Suryavamsha ----
+  {id:"uttar-pradesh",bl:"B",row:0,state:"Uttar Pradesh",kingdom:"Ganga-Simhasana",region:"North",
+   hero:{name:"Gangaputra",title:"The Ganga's Son",role:"Arjuna",relation:"The Suryavamsha throne-heir",council:"North",gurus:["Mahaguru Drona-of-the-Plain"],
+     notes:"His mother was Gajavamsha-born → he and Tungabhadra are first cousins (Ch 4 unification fulcrum)."},
+   vill:{name:"Adharma",title:"The Lawless One",role:"Karna-shadow",relation:"Half-brother — born first, raised wrong"}},
+  {id:"madhya-pradesh",bl:"B",row:1,state:"Madhya Pradesh",kingdom:"Hridaya-Sthana",region:"Central",
+   hero:{name:"Dvadashashringa",title:"The Twelve-Antlered",role:"Yudhishthira",relation:"Younger half-brother of Gangaputra (the king-mind to his warrior-arm)",council:"Central",gurus:[]},
+   vill:{name:"Adharma-Kendra",title:"Chaos Heart",role:"Shakuni",relation:"Maternal uncle to Gangaputra & Dvadashashringa (the Shakuni seat)"}},
+  {id:"haryana",bl:"B",row:2,state:"Haryana",kingdom:"Kurukshetra-Bhoomi",region:"North",
+   hero:{name:"Kurukshetraa",title:"The Sacred Field Warrior",role:"Yudhishthira",relation:"First cousin — her grandmother was Vana-Kula (D)",gurus:["Mahaguru Drona-of-the-Plain"]},
+   vill:{name:"Kuru-Bhasma",title:"Ash of Kuru",role:"Duryodhana / Ashwatthama",relation:"Kurukshetraa's husband-turned-rival (the bitter marriage)"}},
+  {id:"punjab",bl:"B",row:3,state:"Punjab",kingdom:"Panch-Nada",region:"North",
+   hero:{name:"Panchanada",title:"The Five Rivers' Son",role:"Arjuna",relation:"Cousin via the Kuru-Panchala marriage",gurus:["Mahaguru Drona-of-the-Plain"]},
+   vill:{name:"Panchavish",title:"Five Poisons",role:"Karna",relation:"Panchanada's disinherited brother"}},
+  {id:"kashmir",bl:"B",row:4,state:"Kashmir",kingdom:"Sharada-Pitha",region:"North",added:true,
+   hero:{name:"Sharad-Pandit",title:"Keeper of Sharada",role:"—",relation:"Scholar-branch joined to the Suryavamsha (added kingdom)",gurus:[]},
+   vill:{name:"Avantivarman-Bhrasta",title:"The Erasing Historian",role:"—",relation:"Rewrites the line's records to unseat its memory"}},
+
+  // ---- C · Chandravamsha ----
+  {id:"assam",bl:"C",row:0,state:"Assam",kingdom:"Ganda-Kshetra",region:"Northeast",
+   hero:{name:"Kamalavarna",title:"The Lotus Shield",role:"Bhima",relation:"Matriarch of the (matrilineal) line",council:"Northeast",gurus:["The Silent Mother"],
+     notes:"Cousin to Shivagati (C+E) — their Ch 3 alliance is blood, not strategy."},
+   vill:{name:"Kama-Mara",title:"Desire's End",role:"Duryodhana",relation:"Mother's-sister's-daughter — first cousin & dark-cult inheritor"}},
+  {id:"meghalaya",bl:"C",row:1,state:"Meghalaya",kingdom:"Megha-Maata",region:"Northeast",
+   hero:{name:"Meghanadi",title:"Cloud Thunder",role:"—",relation:"Younger sister to Kamalavarna",gurus:["The Silent Mother"]},
+   vill:{name:"Megha-Daitya",title:"Storm Fiend",role:"Duryodhana",relation:"The line's only male claimant — pushed out by matrilineal rule"}},
+  {id:"nagaland",bl:"C",row:2,state:"Nagaland",kingdom:"Dzukou-Rashtra",region:"Northeast",
+   hero:{name:"Dzulevira",title:"The Valley Spirit",role:"Draupadi",relation:"Niece (elder sister's daughter)",gurus:["The Silent Mother"],
+     notes:"Her elder sister is married to Moirangthem — Manipur & Nagaland share a child (Sangaputra) by Ch 3."},
+   vill:{name:"Naga-Rakshasa",title:"Serpent Fiend",role:"Ashwatthama",relation:"A serpent-bound man Kamalavarna's mother once spared"}},
+  {id:"west-bengal",bl:"C",row:3,state:"West Bengal",kingdom:"Sundara-Vana",region:"East",
+   hero:{name:"Sundarvani",title:"The Sundarban's Voice",role:"Draupadi",relation:"Distant cousin via the delta — married into Suryavamsha (B) through her father",gurus:[],twin:"west-bengal",
+     notes:"Her child (Ch 2) is Adharma's nephew — why Bengal cannot stay neutral."},
+   vill:{name:"Kala-Nadi",title:"Black River",role:"—",relation:"Sundarvani's own twin — split at birth in the delta",twin:true}},
+  {id:"manipur",bl:"C",row:4,state:"Manipur",kingdom:"Sangai-Nata",region:"Northeast",
+   hero:{name:"Moirangthem",title:"The Dancing Warrior",role:"Arjuna",relation:"Cousin (the Sangai-deer house)",gurus:[]},
+   vill:{name:"Tamasa-Nrita",title:"Dark Dancer",role:"Ashwatthama",relation:"Moirangthem's dance-guru who turned"}},
+
+  // ---- D · Vana-Kula ----
+  {id:"chhattisgarh",bl:"D",row:0,state:"Chhattisgarh",kingdom:"Dandakaranya",region:"Central",
+   hero:{name:"Dandakarni",title:"The Forest Fury",role:"Bhima",relation:"The line's living head — eldest of the wild",gurus:["Aranya-Mata"],twin:"chhattisgarh"},
+   vill:{name:"Dandaka-Rakshasa",title:"Forest Ravager",role:"—",relation:"Dandakarni's twin brother — the city-pulled half",twin:true}},
+  {id:"sikkim",bl:"D",row:1,state:"Sikkim",kingdom:"Beyul-Kshetra",region:"Northeast",
+   hero:{name:"Kanchenjunga",title:"The Five Treasures",role:"Yudhishthira",relation:"Cousin via the eastern-forest migration",gurus:["Bodhi Lama"]},
+   vill:{name:"Krodha",title:"Pure Wrath",role:"Ashwatthama",relation:"Was a clan-brother — exiled for the first rage; once Bodhi Lama's companion"}},
+  {id:"mizoram",bl:"D",row:2,state:"Mizoram",kingdom:"Tlawmngaihna-Desh",region:"Northeast",
+   hero:{name:"Tlangvala",title:"Mountain Guardian",role:"—",relation:"Forest cousin — the line's southern remnant",gurus:["Bodhi Lama"]},
+   vill:{name:"Parvata-Asura",title:"Mountain Demon",role:"Duryodhana",relation:"Outside the line — a mountain that adopted the clan name to claim them"}},
+  {id:"arunachal-pradesh",bl:"D",row:3,state:"Arunachal Pradesh",kingdom:"Arunodaya-Kshetra",region:"Northeast",
+   hero:{name:"Udayagiri",title:"The Dawn Walker",role:"Karna",relation:"Cousin via the rising-sun migration north",gurus:["Aranya-Mata"],twin:"arunachal-pradesh",
+     herald:"First Herald appears in his region (a man with no shadow)"},
+   vill:{name:"Asta-Asura",title:"Twilight Demon",role:"—",relation:"Udayagiri's own shadow, split off at first dawn (mystic-twin)",twin:true}},
+  {id:"tripura",bl:"D",row:4,state:"Tripura",kingdom:"Tri-Pura",region:"Northeast",
+   hero:{name:"Tripurari",title:"The Three Cities' Conqueror",role:"—",relation:"Cousin via the three-cities founding",gurus:[]},
+   vill:{name:"Tripura-Asura",title:"Three Cities' Shadow",role:"—",relation:"A stone-spirit gifted by Tripurari's grandfather — turned"}},
+
+  // ---- E · Sagaravamsha ----
+  {id:"goa",bl:"E",row:0,state:"Goa",kingdom:"Samudra-Dvipa",region:"West",
+   hero:{name:"Sagaradeva",title:"The Ocean's Chosen",role:"Karna",relation:"Direct heir",gurus:["Sage Agastya"],
+     herald:"Second Herald appears in his region (a sailor returned without a ship)"},
+   vill:{name:"Maha-Vega",title:"The Devouring Tide",role:"Karna",relation:"Sagaradeva's storm-cursed half-brother"}},
+  {id:"gujarat",bl:"E",row:1,state:"Gujarat",kingdom:"Simha-Dwara",region:"West",
+   hero:{name:"Simhavikrama",title:"The Lion's Roar",role:"—",relation:"First cousin — the desert-edge of the line",gurus:[]},
+   vill:{name:"Kala-Simha",title:"The Shadow Lion",role:"Duryodhana",relation:"Simhavikrama's nephew (elder sister's son) claiming primogeniture"}},
+  {id:"maharashtra",bl:"E",row:2,state:"Maharashtra",kingdom:"Swarajya Sahyadri",region:"West",
+   hero:{name:"Shivagati",title:"The Mountain Dancer",role:"—",relation:"Mountain-side niece of Sagaradeva — her mother was Chandravamsha (C)",council:"West",gurus:[]},
+   vill:{name:"Vanaraksha",title:"False Forest King",role:"Duryodhana",relation:"Shivagati's literal elder brother"}},
+  {id:"rajasthan",bl:"E",row:3,state:"Rajasthan",kingdom:"Maru-Maya",region:"West",
+   hero:{name:"Mrigatrishna",title:"The Desert Mirage",role:"Shakuni (rare hero-Shakuni)",relation:"Cousin via the desert-queen's line",gurus:["Sage Agastya (briefly)"]},
+   vill:{name:"Maru-Yama",title:"Desert Reaper",role:"Ashwatthama",relation:"The desert-queen's ghost-servant who outlived her"}},
+  {id:"andaman",bl:"E",row:4,state:"Andaman & Nicobar",kingdom:"Sagara-Ratna",region:"East",added:true,
+   hero:{name:"Onge-Nakshatra",title:"Star-Reader of the Isles",role:"—",relation:"Ocean-branch joined to the Sagaravamsha (added kingdom)",gurus:[]},
+   vill:{name:"Kalapani-Asura",title:"The Warden of the Forgotten",role:"—",relation:"Keeper of the penal-isle that swallows names"}},
+
+  // ---- U · Unaligned Houses ----
+  {id:"telangana",bl:"U",row:0,state:"Telangana",kingdom:"Chaya-Golkonda",region:"South",
+   hero:{name:"Chittaranga",title:"The Spotted Blade",role:"Arjuna",relation:"Bloodline unrevealed (Deccan house)",gurus:[],
+     notes:"Twin sister Chitralekha vanished on the eve of the Trial — now leads an eastern shadow guild."},
+   vill:{name:"Chitrabheda",title:"Destroyer of Patterns",role:"Shakuni",relation:"Breaker of the spotted-pattern fighting line"}},
+  {id:"tamil-nadu",bl:"U",row:1,state:"Tamil Nadu",kingdom:"Sangam Tamilakam",region:"South",
+   hero:{name:"Kurinjiselvi",title:"The Mountain Bloom",role:"Draupadi",relation:"Sangam-era hill line; bloodline unrevealed",gurus:["Sage Agastya"]},
+   vill:{name:"Palinisi",title:"She Who Withers",role:"Duryodhana",relation:"The blight against the once-in-twelve-years bloom"}},
+  {id:"uttarakhand",bl:"U",row:2,state:"Uttarakhand",kingdom:"Deva-Bhumi",region:"North",
+   hero:{name:"Kasturika",title:"The Musk Bearer",role:"—",relation:"Mountain-Pact house; bloodline unrevealed",gurus:[]},
+   vill:{name:"Hima-Mara",title:"Ice Death",role:"—",relation:"The frost that stalks the god-land"}},
+  {id:"himachal-pradesh",bl:"U",row:3,state:"Himachal Pradesh",kingdom:"Hima-Chhaya",region:"North",
+   hero:{name:"Himavati",title:"The Snow Ghost",role:"Draupadi",relation:"Mountain-Pact house; bloodline unrevealed",gurus:["Bodhi Lama"]},
+   vill:{name:"Hima-Asura",title:"Frost Demon",role:"Duryodhana",relation:"The avalanche given a will"}},
+  {id:"odisha",bl:"U",row:4,state:"Odisha",kingdom:"Kalinga-Chakra",region:"East",
+   hero:{name:"Jagannathi",title:"The Wheel Keeper",role:"Yudhishthira",relation:"Bloodline unrevealed",council:"East",gurus:[]},
+   vill:{name:"Chakra-Bheda",title:"Wheel Breaker",role:"Shakuni",relation:"Breaker of the Kalinga wheel of law"}},
+  {id:"bihar",bl:"U",row:5,state:"Bihar",kingdom:"Vajra-Bhumi",region:"East",
+   hero:{name:"Vajramukha",title:"The Diamond Fist",role:"Bhima",relation:"River-Sisters house; bloodline unrevealed",gurus:[]},
+   vill:{name:"Tamasa",title:"Pure Darkness",role:"—",relation:"The thunderbolt-land's answering dark"}},
+];
+
+const GURUS = [
+  {name:"Sage Vidyaranya", tradition:"spirit · Vijayanagara philosophy",
+   secret:"Was once mortal-married to Bhoomi-Takshaka's grandmother — he carries the guilt.",
+   teaches:["karnataka","andhra-pradesh"]},
+  {name:"Mahaguru Drona-of-the-Plain", tradition:"Kuru warrior code",
+   secret:"His true loyalty is to Adharma-Kendra (a maternal-uncle's debt).",
+   teaches:["uttar-pradesh","haryana","punjab"]},
+  {name:"The Silent Mother", tradition:"animal-bond mysticism (a clouded leopard of dreams)",
+   secret:"She is the Chandravamsha founder herself, undying.",
+   teaches:["assam","meghalaya","nagaland"]},
+  {name:"Old Parashurama", tradition:"the 108 forms",
+   secret:"Refused the 109th not from honour but fear — he discovered it and could not unlearn it.",
+   teaches:["karnataka"], refused:"kerala"},
+  {name:"Sage Agastya", tradition:"river-bound · Sangam knowledge",
+   secret:"Knows where all five Sangam texts lie — one of them names the Void Maw.",
+   teaches:["tamil-nadu","goa","rajasthan"]},
+  {name:"Bodhi Lama", tradition:"Beyul compassion tradition",
+   secret:"Was Krodha's first companion before exile — could have stopped him and didn't.",
+   teaches:["sikkim","himachal-pradesh","mizoram"]},
+  {name:"Aranya-Mata", tradition:"Vana-Kula clan rites (forest-mother)",
+   secret:"Knows the line's 'stolen members' — heroes who are Vana-Kula but don't know it.",
+   teaches:["chhattisgarh","jharkhand","arunachal-pradesh"]},
+];
+
+// cross-bloodline marriages / dual ties  (a,b = node ids; founder ids = "F-X")
+const MARRIAGE = [
+  {a:"uttar-pradesh", b:"karnataka", t:"first cousins (B+A) — Ch 4 unification fulcrum"},
+  {a:"haryana",       b:"F-D",       t:"grandmother is Vana-Kula (B+D)"},
+  {a:"west-bengal",   b:"F-B",       t:"married into Suryavamsha (C+B)"},
+  {a:"maharashtra",   b:"assam",     t:"cousins once removed (E+C)"},
+  {a:"jharkhand",     b:"F-D",       t:"dual bloodline (A+D)"},
+];
+
+const HERALDS = [
+  {name:"First Herald",  sub:"Northeast · a man with no shadow",          to:"arunachal-pradesh"},
+  {name:"Second Herald", sub:"West · a sailor returned without a ship",   to:"goa"},
+  {name:"Third Herald",  sub:"South · a child born in a temple-quake",    to:"karnataka"},
+];
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+const ORIGIN_X=90, COL_W=375, HERO_DX=0, VILL_DX=175, NODE_W=150, NODE_H=46;
+const ANCY=80, FOUNDERY=205, ROW_Y0=355, ROW_H=150;
+const colX = c => ORIGIN_X + c*COL_W;
+const heroX = c => colX(c)+HERO_DX, villX = c => colX(c)+VILL_DX;
+const founderCX = c => colX(c)+ (NODE_W+VILL_DX)/2;
+const ancestorCX = founderCX(2.5);
+const guruY = ROW_Y0 + 6*ROW_H + 40;
+
+const nodes={};   // id -> {x,y,w,h,cx,cy,bl,el}
+const SVG = document.getElementById('svg');
+const NS="http://www.w3.org/2000/svg";
+function el(tag,attrs,parent){const e=document.createElementNS(NS,tag);
+  for(const k in attrs)e.setAttribute(k,attrs[k]); if(parent)parent.appendChild(e); return e;}
+
+// layers (links under nodes)
+const gLinks = el('g',{},SVG);
+const gNodes = el('g',{},SVG);
+
+function reg(id,x,y,w,h,bl){nodes[id]={x,y,w,h,cx:x+w/2,cy:y+h/2,bl};}
+
+// curved link path between two points
+function curve(x1,y1,x2,y2,k=0.5){
+  const mx=(x1+x2)/2; return `M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`;
+}
+function vcurve(x1,y1,x2,y2){
+  const my=(y1+y2)/2; return `M${x1},${y1} C${x1},${my} ${x2},${my} ${x2},${y2}`;
+}
+
+/* ---- build node geometry first (so links can reference) ---- */
+// ancestor
+reg("ANC", ancestorCX-90, ANCY-26, 180, 52, "ALL");
+// founders
+for(const key in BL){const c=BL[key].col; reg("F-"+key, founderCX(c)-95, FOUNDERY-24, 190, 48, key);}
+// kingdoms (hero + villain)
+for(const k of K){
+  const c=BL[k.bl].col, y=ROW_Y0+k.row*ROW_H;
+  reg(k.id, heroX(c), y, NODE_W, NODE_H, k.bl);
+  reg("v-"+k.id, villX(c), y, NODE_W, NODE_H, k.bl);
+}
+// gurus along bottom band
+GURUS.forEach((g,i)=>{const x=ORIGIN_X + i*( (6*COL_W-NODE_W)/ (GURUS.length-1) );
+  reg("g-"+i, x, guruY, NODE_W, 40, "GURU"); });
+// heralds — small band just under ancestor, right side
+HERALDS.forEach((h,i)=>{ reg("h-"+i, ancestorCX+260+i*180, ANCY-14, 150, 40, "HERALD"); });
+
+/* ============================================================
+   DRAW LINKS
+   ============================================================ */
+function link(a,b,cls,vert){const A=nodes[a],B=nodes[b]; if(!A||!B)return null;
+  let x1,y1,x2,y2,d;
+  if(vert){ x1=A.cx; y1=A.y+A.h; x2=B.cx; y2=B.y; d=vcurve(x1,y1,x2,y2);}
+  else { // horizontal-ish: connect nearest sides
+    if(A.cx<B.cx){x1=A.x+A.w;x2=B.x;} else {x1=A.x;x2=B.x+B.w;}
+    y1=A.cy;y2=B.cy; d=curve(x1,y1,x2,y2);
+  }
+  return el('path',{d,class:'link '+cls,'data-a':a,'data-b':b},gLinks);
+}
+
+// blood: ancestor -> founders, founder -> its kingdoms (hero node)
+for(const key in BL) link("ANC","F-"+key,"blood",true).setAttribute('data-blood',key);
+for(const k of K){ const l=link("F-"+k.bl,k.id,"blood",true); l.setAttribute('data-blood',k.bl); l.setAttribute('data-k',k.id);}
+// hero<->villain shadow link (within kingdom)
+for(const k of K){ const l=link(k.id,"v-"+k.id, (k.hero.twin?"twin":"shadow"),false);
+  l.setAttribute('data-vill','1'); l.setAttribute('data-bl',k.bl); }
+// marriages
+MARRIAGE.forEach((m,i)=>{const l=link(m.a,m.b,"marriage",false);
+  if(l){l.setAttribute('data-marriage','1'); l.dataset.t=m.t;}});
+// gurus
+GURUS.forEach((g,i)=>{ g.teaches.forEach(tid=>{const l=link("g-"+i,tid,"guru",true);
+    if(l)l.setAttribute('data-guru','1');});
+  if(g.refused){const l=link("g-"+i,g.refused,"refused",true); if(l)l.setAttribute('data-guru','1');}});
+// heralds
+HERALDS.forEach((h,i)=>{const l=link("h-"+i,h.to,"herald",true); if(l)l.setAttribute('data-herald','1');});
+
+/* link styles via JS (keep <style> lean) */
+const style=document.createElementNS(NS,'style');
+style.textContent=`
+ .blood{stroke:#5a4a72;stroke-width:1.6}
+ .blood[data-blood=A]{stroke:var(--a)} .blood[data-blood=B]{stroke:var(--b)}
+ .blood[data-blood=C]{stroke:var(--c)} .blood[data-blood=D]{stroke:var(--d)}
+ .blood[data-blood=E]{stroke:var(--e)} .blood[data-blood=U]{stroke:var(--u)}
+ .shadow{stroke:#5a3540;stroke-width:1.4;stroke-dasharray:2 4;opacity:.7}
+ .twin{stroke:#e8a23a;stroke-width:2;stroke-dasharray:1 4;opacity:.9}
+ .marriage{stroke:var(--gold);stroke-width:2;stroke-dasharray:7 5;opacity:.85}
+ .guru{stroke:var(--guru);stroke-width:1.3;stroke-dasharray:1 4;opacity:.8}
+ .refused{stroke:#888;stroke-width:1.3;stroke-dasharray:2 6;opacity:.5}
+ .herald{stroke:var(--herald);stroke-width:1.6;stroke-dasharray:5 4;opacity:.85}
+`;
+SVG.appendChild(style);
+
+/* ============================================================
+   DRAW NODES
+   ============================================================ */
+function node(id,opts){
+  const n=nodes[id]; const g=el('g',{class:'node','data-id':id,'data-bl':n.bl},gNodes);
+  g.setAttribute('transform',`translate(${n.x},${n.y})`);
+  if(opts.shape==='ellipse'){
+    el('ellipse',{cx:n.w/2,cy:n.h/2,rx:n.w/2,ry:n.h/2,fill:opts.fill,stroke:opts.stroke,'stroke-width':2},g);
+  } else if(opts.shape==='diamond'){
+    el('polygon',{points:`${n.w/2},2 ${n.w-2},${n.h/2} ${n.w/2},${n.h-2} 2,${n.h/2}`,fill:opts.fill,stroke:opts.stroke,'stroke-width':1.5},g);
+  } else {
+    el('rect',{x:0,y:0,width:n.w,height:n.h,rx:opts.rx||10,fill:opts.fill,stroke:opts.stroke,'stroke-width':opts.sw||1.5},g);
+  }
+  const tx=n.w/2;
+  if(opts.label){const t=el('text',{x:tx,y:opts.sub?n.h/2-3:n.h/2+4,'text-anchor':'middle',
+    'dominant-baseline':'middle',class:'nlabel',fill:opts.tcol||'#fff'},g); t.textContent=opts.label;}
+  if(opts.sub){const t=el('text',{x:tx,y:n.h/2+11,'text-anchor':'middle',class:'nsub',
+    fill:opts.scol||'rgba(255,255,255,.7)'},g); t.textContent=opts.sub;}
+  if(opts.badge){const t=el('text',{x:n.w-4,y:13,'text-anchor':'end',class:'badge'},g);t.textContent=opts.badge;}
+  if(opts.onclick)g.addEventListener('click',e=>{e.stopPropagation();opts.onclick();});
+  return g;
+}
+function blColor(bl){return {A:'#e0a93a',B:'#4f9ae6',C:'#b066e6',D:'#46c878',E:'#e8584e',U:'#7d8aa0'}[bl]||'#888';}
+
+// ancestor
+node("ANC",{shape:'ellipse',fill:'#241734',stroke:'#c44daa',label:'Great-Ancestor',sub:'mythic · unnamed',
+  tcol:'#f3d9ee',scol:'#c9a8dd',onclick:()=>showAncestor()});
+// founders
+for(const key in BL){const b=BL[key];
+  node("F-"+key,{fill:'#1c1530',stroke:blColor(key),sw:2,rx:8,
+    label:b.name,sub:b.en,tcol:blColor(key),scol:'rgba(255,255,255,.55)',
+    onclick:()=>showFounder(key)});
+}
+// kingdom hero + villain
+for(const k of K){
+  // kingdom label above hero
+  const hn=nodes[k.id];
+  const kl=el('text',{x:hn.x+ (NODE_W+VILL_DX)/2, y:hn.y-9,'text-anchor':'middle',class:'klabel'},gNodes);
+  kl.textContent=k.state+' · '+k.kingdom;
+  let hbadge = k.hero.council? '♛' : (k.hero.herald? '☄' : '');
+  node(k.id,{fill:'#13251a',stroke:'#46c878',rx:10,label:k.hero.name,sub:k.hero.title,
+    tcol:'#bdf3cf',scol:'#74c98e',badge:hbadge,onclick:()=>showChar(k,'hero')});
+  let vbadge = k.vill.twin? '⚡' : '';
+  node("v-"+k.id,{fill:'#251315',stroke:'#e8584e',rx:10,label:k.vill.name,sub:k.vill.title,
+    tcol:'#f3c3bf',scol:'#cf7d7d',badge:vbadge,onclick:()=>showChar(k,'vill')});
+}
+// gurus
+GURUS.forEach((g,i)=>node("g-"+i,{fill:'#10262a',stroke:'#5ad0d0',rx:8,
+  label:g.name.replace(/^Sage |^Mahaguru |^Old /,''),sub:'guru',tcol:'#bff',scol:'#7bd',
+  onclick:()=>showGuru(g)}));
+// heralds
+HERALDS.forEach((h,i)=>node("h-"+i,{shape:'diamond',fill:'#241024',stroke:'#c07ad8',
+  label:h.name,sub:'',tcol:'#f0d8ff',onclick:()=>showHerald(h)}));
+
+/* ============================================================
+   DETAIL PANEL
+   ============================================================ */
+const panel=document.getElementById('panel'), pbody=document.getElementById('pbody');
+function openPanel(html){pbody.innerHTML=html;panel.classList.add('open');}
+panel.querySelector('.pclose').onclick=()=>panel.classList.remove('open');
+function row(h,v,cls){return v?`<div class="prow ${cls||''}"><span class="h">${h}</span><span class="v">${v}</span></div>`:'';}
+
+function showChar(k,which){
+  const isH=which==='hero', c=isH?k.hero:k.vill;
+  const col=isH?'var(--hero)':'var(--vill)';
+  let html=`<div class="ptop"><span class="ptag" style="background:${col};color:#0d0a14">${isH?'HERO':'VILLAIN'} · ${k.bl==='U'?'Unaligned':'Bloodline '+k.bl}</span>
+    <h2>${c.name}</h2><div class="ptitle">${c.title}</div></div>`;
+  html+=row('Kingdom',`${k.kingdom} <span style="color:var(--dim)">(${k.state}, ${k.region})</span>`);
+  html+=row('Bloodline', k.bl==='U'? 'Unrevealed — '+BL.U.en : `${BL[k.bl].name} — ${BL[k.bl].en}`);
+  html+=row('Place in the line', c.relation);
+  html+=row('Mahabharata mirror', c.role && c.role!=='—'? c.role : '');
+  if(isH){
+    html+=row('Grand-Council seat', c.council? '♛ '+c.council : '');
+    html+=row('Void-Maw herald', c.herald? '☄ '+c.herald : '');
+    html+=row('Gurus', c.gurus && c.gurus.length? c.gurus.join(', ') : '');
+    if(c.twin) html+=row('Twin','⚡ '+k.vill.name+' (the line’s shadow half)');
+  } else if(c.twin){ html+=row('Twin','⚡ '+k.hero.name+' (split at birth)'); }
+  html+=row('Note', c.notes, 'note');
+  openPanel(html);
+}
+function showFounder(key){const b=BL[key];
+  const members=K.filter(k=>k.bl===key).map(k=>k.state).join(', ');
+  let html=`<div class="ptop"><span class="ptag" style="background:${blColor(key)};color:#0d0a14">BLOODLINE ${key}</span>
+    <h2>${b.name}</h2><div class="ptitle">${b.en}</div></div>`;
+  html+=row('Reach', b.region);
+  html+=row('Founder myth', b.founder);
+  html+=row('Kingdoms', members);
+  openPanel(html);
+}
+function showAncestor(){
+  openPanel(`<div class="ptop"><span class="ptag" style="background:#c44daa;color:#0d0a14">ORIGIN</span>
+    <h2>The Great-Ancestor</h2><div class="ptitle">mythic, unnamed</div></div>
+    ${row('Role','The single source from which all five bloodlines descend. Never named in Chapter 1 — the bloodlines surface only in Chapter 2 via ancestral visions and shrine inscriptions.')}
+    ${row('The rule','Maintain Mahabharata fractality: every alliance must contain at least one cousin on each side.')}`);
+}
+function showGuru(g){
+  const students=g.teaches.map(id=>{const k=K.find(x=>x.id===id);return k?k.hero.name+' ('+k.state+')':id;}).join(', ');
+  let html=`<div class="ptop"><span class="ptag" style="background:var(--guru);color:#0d0a14">GURU</span>
+    <h2>${g.name}</h2><div class="ptitle">${g.tradition}</div></div>`;
+  html+=row('Teaches', students);
+  if(g.refused){const rk=K.find(x=>x.id===g.refused); html+=row('Refused', rk?rk.vill.name+' ('+rk.state+')':g.refused);}
+  html+=row('Hidden truth', g.secret, 'note');
+  openPanel(html);
+}
+function showHerald(h){
+  const k=K.find(x=>x.id===h.to);
+  openPanel(`<div class="ptop"><span class="ptag" style="background:var(--herald);color:#0d0a14">VOID-MAW HERALD</span>
+    <h2>${h.name}</h2><div class="ptitle">${h.sub}</div></div>
+    ${row('Rises near', k? k.kingdom+' ('+k.state+')':'')}
+    ${row('What they are','Not a villain — a warning. Heroes who kill a Herald in Chapter 2 unwittingly accelerate the Void Maw’s arrival. The three converge in Chapter 4.')}`);
+}
+
+/* ============================================================
+   FILTERS / TOGGLES
+   ============================================================ */
+const state={bl:'ALL', vill:true, marriage:true, guru:false, council:false};
+
+function apply(){
+  // toggles: gurus & heralds visibility
+  gLinks.querySelectorAll('[data-guru]').forEach(l=>l.style.display=state.guru?'':'none');
+  gNodes.querySelectorAll('.node[data-bl=GURU]').forEach(n=>n.style.display=state.guru?'':'none');
+  // heralds tie to council toggle? keep heralds always on but subtle; show with their own — reuse 'council'? we keep heralds visible always
+  // villains
+  const showV=state.vill;
+  for(const k of K){
+    const vn=gNodes.querySelector(`.node[data-id="v-${k.id}"]`);
+    if(vn)vn.style.display=showV?'':'none';
+  }
+  gLinks.querySelectorAll('[data-vill]').forEach(l=>l.style.display=showV?'':'none');
+  // marriages
+  gLinks.querySelectorAll('[data-marriage]').forEach(l=>l.style.display=state.marriage?'':'none');
+  // bloodline focus
+  const f=state.bl;
+  document.querySelectorAll('#svg .node').forEach(n=>{
+    const b=n.getAttribute('data-bl');
+    let on = f==='ALL' || b===f || b==='ALL' || b==='GURU' || b==='HERALD';
+    n.classList.toggle('dim-out', !on);
+  });
+  gLinks.querySelectorAll('path').forEach(p=>{
+    const bl60=p.getAttribute('data-blood')||p.getAttribute('data-bl');
+    let on = f==='ALL' || !bl60 || bl60===f;
+    // marriage links: show if either endpoint in focus
+    if(p.classList.contains('marriage')) on = f==='ALL' || true;
+    p.classList.toggle('dim-out', !on && f!=='ALL');
+  });
+  // council highlight
+  document.querySelectorAll('#svg .node').forEach(n=>{
+    const id=n.getAttribute('data-id'); const k=K.find(x=>x.id===id);
+    if(k && k.hero.council){ n.style.filter = state.council? 'drop-shadow(0 0 7px var(--council))':''; }
+  });
+  if(state.council){ // dim non-council heroes/villains
+    document.querySelectorAll('#svg .node').forEach(n=>{
+      const id=n.getAttribute('data-id'); const k=K.find(x=>x.id===id);
+      const isCouncil = k && k.hero.council;
+      const meta = n.getAttribute('data-bl')==='ALL'||n.getAttribute('data-bl')==='GURU'||n.getAttribute('data-bl')==='HERALD';
+      if(!isCouncil && !meta) n.classList.add('dim-out');
+    });
+  }
+}
+
+document.querySelectorAll('.chip[data-bl]').forEach(c=>c.onclick=()=>{
+  document.querySelectorAll('.chip[data-bl]').forEach(x=>x.classList.remove('on'));
+  c.classList.add('on'); state.bl=c.dataset.bl; apply();
+});
+document.querySelectorAll('.chip[data-tg]').forEach(c=>c.onclick=()=>{
+  c.classList.toggle('on'); state[c.dataset.tg]=c.classList.contains('on'); apply();
+});
+apply();
+
+/* ============================================================
+   PAN / ZOOM
+   ============================================================ */
+const VB={x:0,y:0,w:2380,h:1640};
+const FULL={x:0,y:0,w:2380,h:1640};
+function setVB(){SVG.setAttribute('viewBox',`${VB.x} ${VB.y} ${VB.w} ${VB.h}`);}
+function fit(){const b=gNodes.getBBox(); const pad=70;
+  VB.x=b.x-pad;VB.y=b.y-pad;VB.w=b.width+pad*2;VB.h=b.height+pad*2; setVB();}
+function zoom(f,cx,cy){
+  const r=SVG.getBoundingClientRect();
+  cx=cx!=null?VB.x+(cx-r.left)/r.width*VB.w : VB.x+VB.w/2;
+  cy=cy!=null?VB.y+(cy-r.top)/r.height*VB.h : VB.y+VB.h/2;
+  const nw=VB.w*f, nh=VB.h*f;
+  if(nw<400||nw>6000)return;
+  VB.x=cx-(cx-VB.x)*f; VB.y=cy-(cy-VB.y)*f; VB.w=nw; VB.h=nh; setVB();
+}
+document.getElementById('zin').onclick=()=>zoom(0.8);
+document.getElementById('zout').onclick=()=>zoom(1.25);
+document.getElementById('zfit').onclick=()=>fit();
+SVG.addEventListener('wheel',e=>{e.preventDefault();zoom(e.deltaY>0?1.12:0.89,e.clientX,e.clientY);},{passive:false});
+let drag=null;
+SVG.addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY};SVG.classList.add('drag');SVG.setPointerCapture(e.pointerId);});
+SVG.addEventListener('pointermove',e=>{if(!drag)return;const r=SVG.getBoundingClientRect();
+  VB.x-=(e.clientX-drag.x)/r.width*VB.w; VB.y-=(e.clientY-drag.y)/r.height*VB.h;
+  drag.x=e.clientX;drag.y=e.clientY;setVB();});
+SVG.addEventListener('pointerup',e=>{drag=null;SVG.classList.remove('drag');});
+SVG.addEventListener('click',()=>panel.classList.remove('open'));
+// initial fit after layout settles
+requestAnimationFrame(()=>requestAnimationFrame(fit));
+</script>
+
+  <script src="../../../assets/manifest.js"></script>
+  <script src="../../../assets/aom.js"></script> <!-- aom:injected -->
+</body>
+</html>

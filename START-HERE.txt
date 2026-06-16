@@ -1,0 +1,70 @@
+============================================================
+  AGE OF MYTHOS  —  START HERE
+============================================================
+
+Welcome! This folder holds the whole story-world and the website
+that shows it. You do NOT need any computer knowledge to read or
+edit it. Here is everything you need.
+
+
+------------------------------------------------------------
+1) TO READ THE STORY
+------------------------------------------------------------
+Double-click:   index.html
+
+It opens in your web browser. From there you can:
+  • see all six Volumes,
+  • click "Explore the Map" to jump to any kingdom or story,
+  • click "Start Reading in Order" to read straight through,
+  • use the  ‹ Previous  /  Next ›  buttons at the bottom of
+    every page to move through the story in order.
+
+
+------------------------------------------------------------
+2) WHERE THE STORIES LIVE
+------------------------------------------------------------
+Everything is inside the  "content"  folder, organised the way
+the story is organised:
+
+  content/
+    volume-1-maha-parva/            (Volume 1 - India)
+      chapter-1-rise-of-legends/
+        south/
+          parashurama-kshetra/      (a kingdom)
+            stories/
+              the-109th-form/       (one story)
+                story.md     <- the story you can edit
+                images/      <- pictures for this story
+
+Each kingdom folder and each story folder also has a small
+"README.txt" telling you what is inside.
+
+
+------------------------------------------------------------
+3) TO EDIT A STORY  (the important part)
+------------------------------------------------------------
+  1. Find the story's folder (see above) and open  story.md
+  2. It is just plain writing. Change the words however you like.
+     - Keep the few lines at the very top (between the --- marks).
+     - Start a new scene heading with two hashes:   ## THE NIGHT
+     - Add a picture: put it in the "images" folder, then write
+       this on its own line:        ![](images/my-picture.png)
+  3. Save the file.
+  4. Come back to this main folder and double-click:
+        Rebuild Website.command
+  5. Open index.html again - your change is there.
+
+That's it. You never have to touch the technical files.
+
+  (The file index.html inside a story folder is made automatically
+   from story.md. Don't edit it by hand - it gets rebuilt.)
+
+
+------------------------------------------------------------
+4) FOLDERS YOU CAN IGNORE
+------------------------------------------------------------
+  assets/   - the look and the menus of the website
+  tools/    - the program that rebuilds the website
+  docs/     - notes for writers and artists
+
+Questions later? Re-read this file. Happy storytelling.

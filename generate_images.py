@@ -14,7 +14,7 @@ FONT_ARIAL_BOLD = "/System/Library/Fonts/Supplemental/Arial Bold.ttf"
 FONT_TNR       = "/System/Library/Fonts/Supplemental/Times New Roman.ttf"
 
 BASE = (
-    "/Users/smk/repos/age-of-mythos/com/hulmane/age-of-mythos"
+    "/Users/smk/repos/age-of-mythos/content"
     "/volume-1-maha-parva/chapter-1-rise-of-legends"
     "/bharatavarsha/regions"
 )

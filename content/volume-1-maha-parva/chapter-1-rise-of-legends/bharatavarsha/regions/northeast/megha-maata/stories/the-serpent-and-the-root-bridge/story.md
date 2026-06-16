@@ -1,0 +1,34 @@
+---
+title: "The Serpent and the Root Bridge"
+subtitle: "Megha-Maata — The Mother of Clouds — Meghalaya"
+motto: "“Where the clouds are born, women rule”"
+context: "Pragjyotisha (Northeast) • Rise of Legends • Chapter One"
+hero: "Meghanadi"
+villain: "U Thlen"
+region: northeast
+kingdom: megha-maata
+---
+
+Meghalaya is a matrilineal society. Property passes through the mother. The youngest daughter inherits the ancestral home. Men are respected but women rule. This is not a modern experiment — it is an ancient tradition, and the living root bridges of Meghalaya are its physical proof: structures that take fifty years to grow, planted by grandmothers for grandchildren they will never meet. This is how women build — not for themselves, but for the future.
+
+U Thlen offers a different model. Wealth now. Power now. Blood now.
+
+Meghanadi's battle against U Thlen is not a battle of weapons — it is a battle of timescales. U Thlen thrives in urgency: feed me NOW, sacrifice NOW, prosper NOW. The matriarchal wisdom of Meghalaya operates on generations: plant the root NOW, and your great-granddaughter will have a bridge.
+
+The serpent reformed in the deepest cave of the Jaintia Hills, pieced together from centuries of small sacrifices. A shop-keeper who bled his nephew for a profitable season. A farmer who bled her cousin for a bountiful harvest. Each drop of blood was a scale, and U Thlen's scales number in the millions.
+
+When he emerged, the clouded leopards of Meghalaya — usually invisible, usually silent — screamed from every tree in the canopy. Hill Mynas repeated the scream until the entire forest rang with alarm.
+
+Meghanadi met him at the longest root bridge in Meghalaya — a structure that had been growing for 500 years, planted by a woman whose name no one remembers. The bridge spanned a gorge so deep that clouds formed inside it. U Thlen coiled at one end, his body blocking the passage. His mouth opened, and inside was darkness — not the darkness of a throat, but the darkness of every corrupt bargain ever made.
+
+"Join me," he whispered. "Your matriarchy is beautiful, but it is slow. I can make Meghalaya the richest kingdom in India by morning."
+
+Meghanadi's answer was lightning. Her cloud-staff drew a bolt from the perpetual storm-clouds above, and the bolt struck U Thlen's head — but the serpent's scales, made from human blood, absorbed the electricity. He laughed, and the laugh echoed through the gorge like the sound of bones breaking.
+
+The root bridge itself saved her. Fifty years of growth, five hundred years of patience, channeled through living wood that had never asked for anything and never taken a life. The roots moved. Not fast — roots never move fast — but inevitably. They wrapped around U Thlen's body and held him, not crushing but simply containing, the way a grandmother holds a screaming child.
+
+U Thlen thrashes still. The root bridge holds. And Meghanadi plants new roots every morning, growing the bridge stronger, inch by patient inch.
+
+Her daughter wants to leave Meghalaya for Nagaland. In a matrilineal society, a daughter's departure is not just personal — it is a potential end of the line. Meghanadi must choose between holding her daughter and holding U Thlen.
+
+The clouds gather. The Hill Mynas repeat whatever they hear. And in the gorge, the root bridge grows.

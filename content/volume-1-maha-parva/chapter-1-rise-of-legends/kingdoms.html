@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kingdoms of Bharatavarsha &mdash; Age of Mythos Volume I</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .kingdoms-hero {
+      text-align: center;
+      padding: 90px 24px 36px;
+      background: radial-gradient(ellipse at center, rgba(146,34,133,0.18) 0%, transparent 70%);
+    }
+    .kingdoms-hero h1 { font-size: clamp(1.6em, 4vw, 2.6em); color: var(--gold); letter-spacing: 3px; margin-bottom: 8px; }
+    .kingdoms-hero .sub { font-size: .8em; color: var(--text-dim); letter-spacing: 2px; font-style: italic; }
+
+    /* Region tabs */
+    .region-tabs {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      justify-content: center;
+      padding: 24px 20px 16px;
+      position: sticky; top: 60px; z-index: 50;
+      background: rgba(18,3,16,.95);
+      border-bottom: 1px solid var(--border-dim);
+    }
+    .region-tab {
+      padding: 6px 18px; border-radius: 20px; cursor: pointer;
+      font-size: .7em; letter-spacing: 1.5px; text-transform: uppercase;
+      border: 1px solid transparent; background: none; color: var(--text-dim);
+      transition: all .15s;
+    }
+    .region-tab:hover { background: rgba(255,255,255,.05); }
+    .region-tab.active { color: #fff; }
+    .region-tab[data-r="all"]    { border-color: var(--gold-dim); color: var(--gold-dim); }
+    .region-tab[data-r="all"].active { background: rgba(255,215,0,.1); border-color: var(--gold); color: var(--gold); }
+    .region-tab[data-r="south"]  { border-color: rgba(68,255,136,.3); color: var(--south-text); }
+    .region-tab[data-r="south"].active { background: var(--south-bg); border-color: var(--south); }
+    .region-tab[data-r="west"]   { border-color: rgba(255,140,0,.3); color: var(--west-text); }
+    .region-tab[data-r="west"].active { background: var(--west-bg); border-color: var(--west); }
+    .region-tab[data-r="east"]   { border-color: rgba(68,170,255,.3); color: var(--east-text); }
+    .region-tab[data-r="east"].active { background: var(--east-bg); border-color: var(--east); }
+    .region-tab[data-r="north"]  { border-color: rgba(255,102,204,.3); color: var(--north-text); }
+    .region-tab[data-r="north"].active { background: var(--north-bg); border-color: var(--north); }
+    .region-tab[data-r="northeast"] { border-color: rgba(170,102,255,.3); color: var(--northeast-text); }
+    .region-tab[data-r="northeast"].active { background: var(--northeast-bg); border-color: var(--northeast); }
+    .region-tab[data-r="central"] { border-color: rgba(255,170,0,.3); color: var(--central-text); }
+    .region-tab[data-r="central"].active { background: var(--central-bg); border-color: var(--central); }
+
+    /* Region section */
+    .region-section { padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
+    .region-section[hidden] { display: none; }
+    .region-heading {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px;
+    }
+    .region-pill {
+      font-size: .6em; letter-spacing: 3px; text-transform: uppercase;
+      padding: 4px 14px; border-radius: 20px; border: 1px solid currentColor;
+    }
+    .region-name { font-size: 1.3em; font-family: Georgia, serif; }
+    .region-count { font-size: .7em; color: var(--text-dim); margin-left: auto; opacity: .6; }
+
+    /* Kingdom cards grid */
+    .kingdoms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    /* Kingdom card */
+    .kingdom-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-dim);
+      border-radius: 12px;
+      padding: 22px 20px;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: border-color .18s, transform .18s;
+      position: relative;
+      overflow: hidden;
+    }
+    .kingdom-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: var(--kc, var(--gold-dim));
+      opacity: .6;
+    }
+    .kingdom-card:hover {
+      border-color: var(--kc, var(--gold-dim));
+      transform: translateY(-3px);
+    }
+    .kingdom-card:hover::before { opacity: 1; }
+
+    .kc-badge {
+      display: inline-block;
+      font-size: .55em; letter-spacing: 2px; text-transform: uppercase;
+      padding: 2px 8px; border-radius: 10px; margin-bottom: 10px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.1);
+      color: var(--text-dim);
+    }
+    .kc-name { font-size: 1.1em; color: var(--gold); margin-bottom: 4px; font-family: Georgia, serif; }
+    .kc-kingdom-name { font-size: .7em; color: var(--text-dim); margin-bottom: 12px; opacity: .75; font-style: italic; }
+    .kc-hero { font-size: .8em; color: var(--text); margin-bottom: 3px; }
+    .kc-hero span { opacity: .5; font-size: .85em; }
+    .kc-animal { font-size: .75em; color: var(--text-dim); margin-bottom: 12px; opacity: .7; }
+    .kc-theme { font-size: .7em; color: var(--text-dim); line-height: 1.55; opacity: .7; }
+    .kc-enter {
+      display: inline-block; margin-top: 14px;
+      font-size: .62em; letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--kc, var(--gold-dim));
+      opacity: .7;
+    }
+    .kc-enter:after { content: ' →'; }
+  </style>
+  <link rel="stylesheet" href="../../../assets/aom.css"> <!-- aom:injected -->
+</head>
+<body class="aom" data-aom-type="page" >
+
+  <nav class="maha-nav">
+    <a href="../../../../../index.html" class="nav-logo">Age of Mythos</a>
+    <div class="nav-links">
+      <a href="index.html">Volume I</a>
+      <a href="kingdoms.html" class="active">Kingdoms</a>
+      <a href="identity.html">Identities</a>
+      <a href="characters.html">Heroes</a>
+      <a href="systems.html">Systems</a>
+      <a href="council.html">Council</a>
+      <a href="bharatavarsha/global-map.html">Map</a>
+    </div>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('nav-open')">&#9776;</button>
+  </nav>
+
+  <div class="kingdoms-hero">
+    <div style="font-size:.6em; letter-spacing:3px; text-transform:uppercase; color:var(--gold-dim); opacity:.6; margin-bottom:10px;">
+      Volume I &bull; Bharat Varsha
+    </div>
+    <h1>Kingdoms of Bharatavarsha</h1>
+    <p class="sub">30 Kingdoms &bull; 6 Regions &bull; 30 Heroes &bull; 30 Sacred Animals</p>
+    <p style="max-width:640px; margin:16px auto 0; font-size:.82em; color:var(--text-dim); line-height:1.7; opacity:.8;">
+      Each kingdom is ruled by a hero bonded to a sacred animal and inspired by Hindu deity energies.
+      Every kingdom has its own story, villain, weapons, and tattoo system.
+      Click any kingdom to explore its dedicated page.
+    </p>
+  </div>
+
+  <!-- Region filter tabs -->
+  <div class="region-tabs">
+    <button class="region-tab active" data-r="all">All 30</button>
+    <button class="region-tab" data-r="south">South</button>
+    <button class="region-tab" data-r="west">West</button>
+    <button class="region-tab" data-r="east">East</button>
+    <button class="region-tab" data-r="north">North</button>
+    <button class="region-tab" data-r="northeast">Northeast</button>
+    <button class="region-tab" data-r="central">Central</button>
+  </div>
+
+  <!-- Kingdoms content — rendered by JS -->
+  <div id="kingdoms-root" style="max-width:1200px; margin:0 auto; padding:0 0 80px;"></div>
+
+  <footer style="text-align:center; padding:32px 20px; border-top:1px solid var(--border-dim); color:var(--text-dim); font-size:.8em;">
+    <p style="color:var(--gold); margin-bottom:8px;">Kingdoms of Bharatavarsha &mdash; Age of Mythos Volume I</p>
+    <p><a href="../../../../../index.html" style="color:var(--gold-dim); text-decoration:none;">&larr; All Volumes</a></p>
+  </footer>
+
+  <script src="js/kingdom-identity-data.js"></script>
+  <script>
+    function kingdomSlug(name) {
+      return name.split('—')[0].split('&mdash;')[0].trim()
+        .toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,'');
+    }
+
+    const REGION_META = {
+      south:     { label: 'South Region',     color: '#44ff88', bg: 'var(--south-bg)',     text: 'var(--south-text)' },
+      west:      { label: 'West Region',      color: '#ff8c00', bg: 'var(--west-bg)',      text: 'var(--west-text)' },
+      east:      { label: 'East Region',      color: '#44aaff', bg: 'var(--east-bg)',      text: 'var(--east-text)' },
+      north:     { label: 'North Region',     color: '#ff66cc', bg: 'var(--north-bg)',     text: 'var(--north-text)' },
+      northeast: { label: 'Northeast Region', color: '#aa66ff', bg: 'var(--northeast-bg)', text: 'var(--northeast-text)' },
+      central:   { label: 'Central Region',   color: '#ffaa00', bg: 'var(--central-bg)',   text: 'var(--central-text)' },
+    };
+    const REGION_ORDER = ['south','west','east','north','northeast','central'];
+
+    function kingdomPath(k) {
+      const slug = kingdomSlug(k.kingdomName);
+      return `bharatavarsha/regions/${k.region}/${slug}/index.html`;
+    }
+
+    function renderCard(k) {
+      const color = REGION_META[k.region].color;
+      return `
+        <a href="${kingdomPath(k)}" class="kingdom-card" style="--kc:${color}">
+          <div class="kc-badge">${k.region.charAt(0).toUpperCase() + k.region.slice(1)}</div>
+          <div class="kc-name">${k.kingdomName.split('—')[0].trim()}</div>
+          <div class="kc-kingdom-name">${k.state}</div>
+          <div class="kc-hero">${k.hero.name} <span>&bull; ${k.hero.title}</span></div>
+          <div class="kc-animal">Sacred Animal: ${k.animal.name}</div>
+          <div class="kc-theme">${k.theme}</div>
+          <div class="kc-enter">Enter Kingdom</div>
+        </a>
+      `;
+    }
+
+    function renderRegionSection(region, kingdoms) {
+      const meta = REGION_META[region];
+      return `
+        <section class="region-section" data-region="${region}">
+          <div class="region-heading">
+            <span class="region-pill" style="color:${meta.color}; border-color:${meta.color}44">${region.toUpperCase()}</span>
+            <span class="region-name" style="color:${meta.color}">${meta.label}</span>
+            <span class="region-count">${kingdoms.length} Kingdom${kingdoms.length > 1 ? 's' : ''}</span>
+          </div>
+          <div class="kingdoms-grid">
+            ${kingdoms.map(renderCard).join('')}
+          </div>
+        </section>
+      `;
+    }
+
+    function render(filter) {
+      const root = document.getElementById('kingdoms-root');
+      let html = '';
+      for (const region of REGION_ORDER) {
+        if (filter !== 'all' && filter !== region) continue;
+        const kingdoms = (window.KINGDOM_IDENTITY || []).filter(k => k.region === region);
+        html += renderRegionSection(region, kingdoms);
+      }
+      root.innerHTML = html || '<p style="text-align:center;padding:60px;color:var(--text-dim)">No kingdoms found.</p>';
+    }
+
+    // Tab filtering
+    document.querySelectorAll('.region-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.region-tab').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        render(btn.dataset.r);
+        // Scroll to top of content
+        document.getElementById('kingdoms-root').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    render('all');
+  </script>
+
+  <script src="../../../assets/manifest.js"></script>
+  <script src="../../../assets/aom.js"></script> <!-- aom:injected -->
+</body>
+</html>

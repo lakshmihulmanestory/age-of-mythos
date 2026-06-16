@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deva-Bhumi &mdash; Civil War &mdash; Age of Mythos</title>
+  <link rel="stylesheet" href="../../../../../chapter-1-rise-of-legends/css/style.css">
+  <style>
+    body { background:#08090c; color:#e8e0d0; min-height:100vh; }
+    .k-banner { text-align:center; padding:78px 20px 40px; background:linear-gradient(180deg,#08090c 0%,#15120a 60%,#08090c 100%); border-bottom:1px solid rgba(184,106,42,.16); position:relative; }
+    .k-banner .badge { font-size:.55em; letter-spacing:4px; text-transform:uppercase; color:#b86a2a; opacity:.85; margin-bottom:14px; }
+    .k-banner .badge .border { color:#4a6a8a; font-weight:bold; }
+    .k-banner h1 { font-size:2.6em; color:#d89868; margin-bottom:.15em; letter-spacing:2px; }
+    .k-banner .state-label { font-size:.78em; color:#c8b8a0; opacity:.7; letter-spacing:1px; margin-bottom:.6em; }
+    .k-banner .tagline { color:#d8cab0; font-size:.92em; max-width:680px; margin:0 auto; line-height:1.75; font-style:italic; }
+    .boundary-line { display:block; margin:24px auto 0; width:280px; height:1px; background:linear-gradient(90deg,transparent 0%,#b86a2a 35%,transparent 50%,#4a6a8a 65%,transparent 100%); position:relative; opacity:.75; }
+    .k-nav { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:14px 20px; background:rgba(0,0,0,.5); border-bottom:1px solid rgba(184,106,42,.1); }
+    .k-nav a { padding:5px 16px; border-radius:20px; border:1px solid rgba(184,106,42,.25); color:#c8b8a0; font-size:.72em; letter-spacing:1px; text-decoration:none; transition:all .15s; }
+    .k-nav a:hover, .k-nav a.active { background:rgba(184,106,42,.12); border-color:#d89868; color:#fff; }
+    .k-section { max-width:1100px; margin:0 auto; padding:40px 20px 60px; }
+    .k-two { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    @media(max-width:640px){ .k-two { grid-template-columns:1fr; } }
+    .k-card { background:rgba(255,255,255,.025); border:1px solid rgba(184,106,42,.15); border-radius:10px; padding:22px; margin-bottom:16px; }
+    .k-card h3 { font-size:.72em; letter-spacing:2px; text-transform:uppercase; color:#d89868; margin-bottom:12px; opacity:.9; }
+    .k-card p { font-size:.88em; color:#d8cab0; line-height:1.75; }
+    .hero-portrait { width:100%; border-radius:10px; border:1px solid rgba(216,152,104,.22); display:block; }
+
+    .faction-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:14px; }
+    @media(max-width:980px){ .faction-grid { grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:560px){ .faction-grid { grid-template-columns:1fr; } }
+    .fac { padding:14px 16px; border-radius:10px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.02); }
+    .fac .fac-tag { font-size:.55em; letter-spacing:2px; text-transform:uppercase; margin-bottom:6px; }
+    .fac .fac-name { font-size:.9em; margin-bottom:6px; font-family:Georgia,serif; }
+    .fac .fac-desc { font-size:.74em; color:#d8cab0; line-height:1.55; opacity:.85; }
+    .fac.pilgrim { border-color:rgba(184,106,42,.30); }
+    .fac.pilgrim .fac-tag  { color:#b86a2a; }
+    .fac.pilgrim .fac-name { color:#e8a878; }
+    .fac.yatra { border-color:rgba(204,68,68,.30); }
+    .fac.yatra .fac-tag  { color:#cc4444; }
+    .fac.yatra .fac-name { color:#e88888; }
+    .fac.monastic { border-color:rgba(74,106,138,.30); }
+    .fac.monastic .fac-tag  { color:#4a6a8a; }
+    .fac.monastic .fac-name { color:#88a8c8; }
+
+    .k-quick-links { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-top:32px; }
+    .k-quick-link { display:block; padding:18px 20px; border-radius:10px; border:1px solid rgba(216,152,104,.22); background:rgba(21,18,10,.5); text-decoration:none; text-align:center; transition:border-color .15s; }
+    .k-quick-link:hover { border-color:#d89868; }
+    .k-quick-link .ql-title { font-size:.85em; color:#d89868; display:block; margin-bottom:4px; }
+    .k-quick-link .ql-sub { font-size:.7em; color:#a89878; opacity:.75; }
+
+    .alert-banner { background:linear-gradient(135deg,rgba(184,106,42,.10),rgba(21,18,10,.04)); border:1px solid rgba(184,106,42,.32); padding:16px 20px; border-radius:10px; margin-bottom:18px; }
+    .alert-banner .alert-label { font-size:.55em; letter-spacing:2px; text-transform:uppercase; color:#b86a2a; margin-bottom:6px; }
+    .alert-banner .alert-text { color:#e8a878; font-size:.88em; line-height:1.7; }
+
+    .stat-chip { font-size:.65em; padding:3px 10px; border-radius:12px; background:rgba(216,152,104,.07); border:1px solid rgba(216,152,104,.22); color:#e8a878; display:inline-block; margin:2px; }
+    .stat-chip.guru { background:rgba(74,106,138,.10); border-color:rgba(74,106,138,.32); color:#88a8c8; }
+  </style>
+  <link rel="stylesheet" href="../../../../../../../assets/aom.css"> <!-- aom:injected -->
+</head>
+<body class="aom" data-aom-type="kingdom" >
+  <div class="k-banner">
+    <div class="badge"><span class="border">Feminine-Healing Acceptance Bond &bull; The Saga&rsquo;s First Stage III Through the Co-Equal Healer-Walk</span> &bull; Chapter Two &bull; Civil War</div>
+    <h1>Deva-Bhumi</h1>
+    <div class="state-label">Uttarakhand &bull; North Region</div>
+    <p class="tagline">For nineteen years the warrior-priestess of the standing-Char-Dham circuit had carried the standing-Garhwal-Khasi tradition&rsquo;s standing-protector-discipline at the standing-state-hero seat &mdash; she had walked the standing-Yamunotri-to-Gangotri-to-Kedarnath-to-Badrinath route across every standing-pre-monsoon-yatra-opening season since 2007, blessed the standing-pilgrim cohorts at the standing-Akshaya-Tritiya opening-ceremony, and dismissed at the standing-2019 Garhwal-Khasi-feminine-healing protocol revival-attempt the standing-Bhairavi-Mata standing-Char-Dham-tradition healer-woman as a standing-folk-tradition irrelevance at the standing-modern-State-Yatra-administration era. Hima-Mara returned as Tax Commissioner Lalita Aulakh at the Uttarakhand State-Roads-Corporation Pilgrimage-Tax-Cell in November 2025 with a forged 2014-IAS-cadre certificate and a State-Government appointment-letter. She introduced the Pilgrim-Tax at ₹2,111 per head at the Hardwar-Rishikesh entry-checkpoints, contracted the standing-Kedarnath-Rambara-Gaurikund road-widening project to her standing-secret-cousin-firm Aulakh-Roads-and-Construction, and the standing-blasting began February 2026 at the Rambara-Lincholi-Gaurikund corridor at the Himalayan-monsoon-vulnerability ignored configuration. Kasturika filed the standing-Geological-Survey-of-India landslide-risk warning March 7 2026 identifying the Rambara-Lincholi corridor at high-risk landslide-vulnerability. The Tax Commissioner intercepted her report at the DGP-of-Roads administrative-cell March 11 and substituted a no-landslide-risk replacement-report. The blasting continued. On May 23 2026 at 11:43 a.m. (the Akshaya-Tritiya-following Friday at the Char-Dham-opening-week peak-pilgrim-density window) the standing-Rambara-Lincholi corridor collapsed. <strong>Three hundred eleven pilgrims died.</strong> Two hundred eleven bodies recovered; one hundred remain at the landslide-debris permanent-burial. On May 27 she met Bhairavi-Mata at the standing-Hardwar Hari-ki-Pauri ghat at the pilgrim-Sangha grief-cascade. <strong>She accepted Bhairavi-Mata as her co-equal at the healer-tradition.</strong> They walked the Char-Dham circuit alongside the standing-three-hundred-eleven bereaved-families across forty-seven days as the standing-co-equal healer-pair. On July 11 2026 at the Badrinath final-bereaved-family healing-completion moment the standing-Stage-III musk-deer-foreleg-first-stroke formed at Kasturika&rsquo;s standing-right-upper-back. The standing-Kedarnath Nandi-statue turned its head 25.4 millimetres east-northeast overnight.</p>
+    <span class="boundary-line"></span>
+  </div>
+
+  <div class="k-nav">
+    <a href="../../../../index.html">&larr; Chapter 2</a>
+    <a href="index.html" class="active">Overview</a>
+    <a href="identity.html">Identity</a>
+    <a href="story.html">Story</a>
+    <a href="rules.html">Rules &amp; Weapons</a>
+  </div>
+
+  <div class="k-section">
+
+    <div class="alert-banner">
+      <div class="alert-label">Feminine-Healing Acceptance Bond &bull; This Chapter</div>
+      <div class="alert-text">Deva-Bhumi is the saga&rsquo;s first kingdom whose state-hero earns the Stage III bond-mark through the standing-co-equal healer-walk acceptance &mdash; the saga&rsquo;s twenty-fourth bond-mechanic. Hima-Mara (Ch 1 antagonist; spared under administrative-rehabilitation clause) returns as <strong>Tax Commissioner Lalita Aulakh</strong> at the standing-Uttarakhand State-Roads-Corporation Pilgrimage-Tax-Cell November 2025 with a standing-forged 2014-IAS-cadre certificate (Bhopal-printing-press; same Singapore-funded forgery-cell that produced the standing-six prior cross-network products: Naga-Rakshasa DNA-rite kits, Tri-Yantra-Bheda doctorate, Acharya Ghora appointment-letter, Vana-Raksha PhD, Kala-Nadi birth-record, Panchavish Damdami-Taksal certificate). Founded the standing-Pilgrim-Tax at ₹2,111 per standing-pilgrim head-tax at the Hardwar-Rishikesh entry-checkpoints; contracted standing-Aulakh-Roads-and-Construction (her standing-secret-cousin-firm) for the standing-Kedarnath-Rambara-Gaurikund road-widening project at ₹211 crore lump-sum contract. The standing-blasting began February 11 2026 at the standing-Rambara-Lincholi-Gaurikund corridor at the standing-Himalayan-monsoon-vulnerability ignored configuration (the standing-IIT-Roorkee Department-of-Earthquake-Engineering pre-clearance assessment had been excluded at the standing-Tax-Commissioner standing-cross-reference protocol; the standing-Garhwal-tradition standing-blasting-prohibition-during-pre-monsoon-window had been rescinded at the standing-State-Roads-Corporation administrative-override). Kasturika filed the standing-Geological-Survey-of-India landslide-risk warning report at the standing-Char-Dham Yatra Authority March 7 2026 at the standing-Geological-Survey senior-geologist Dr. R. Negi&rsquo;s standing-23-page risk-assessment identifying the Rambara-Lincholi corridor at high-risk landslide-vulnerability at the blasting-induced micro-fracture cascade. The standing-Tax Commissioner intercepted the report at the DGP-of-Roads administrative-cell March 11 at 11:11 a.m. and substituted a standing-replacement-report at the standing-no-landslide-risk configuration through the standing-Aulakh-Roads-and-Construction administrative-counter-cell. The standing-blasting continued across March-April-May. On <strong>May 23 2026 at 11:43 a.m.</strong> (the standing-Akshaya-Tritiya-following Friday at the standing-Char-Dham-opening-week peak-pilgrim-density window; the standing-pre-monsoon rain at 6:11 a.m. that day produced the standing-final micro-fracture-cascade trigger), the standing-Rambara-Lincholi corridor collapsed across approximately 211 metres of vertical-debris-cascade at the standing-Mandakini-river canyon-wall western-face. <strong>Three hundred eleven pilgrims died</strong> at the standing-Pilgrim-Sangha standing-Kedarnath-bound cohort at the standing-Rambara-bend half-way-up trekking-position. The standing-Pilgrim-Sangha demographic was: 187 standing-Char-Dham-tradition seniors aged 53-78; 47 standing-younger-pilgrim adults aged 23-52; 47 standing-pilgrim-Sangha porters aged 25-43; 30 standing-Pilgrim-Sangha tour-leader administrators. 211 standing-pilgrim-bodies were recovered across the standing-following 11-day search-and-rescue window; 100 remain at the standing-landslide-debris permanent-burial. The standing-State-Roads-Corporation contractor and Lalita Aulakh disappeared at the standing-Hardwar-Rishikesh administrative-cell standing-May-24 morning departure; reached the standing-Pakistan-Lahore safe-house via the standing-Wagah-pre-border standing-Indian-customs zone at 4:23 a.m. May 25 (received at the standing-Lahore Anarkali-Bazaar-corner safe-house by the standing-Vinasha-Garbha cross-network Northern field-operative receiving-officer codename Adesh-Singh at 6:11 a.m. May 25; joined the standing-Lahore safe-house cell alongside Sant Hari-Charanjit Maharaj). Kasturika faced the standing-Pilgrim-Sangha grief-cascade at the standing-Hardwar Hari-ki-Pauri ghat May 27 2026 4:11 p.m. The standing-Pilgrim-Sangha senior-leader Pradhan Yogi Vishnu-Bhakt (sixty-three, Char-Dham-tradition senior-yogi since 2003) accused her at the standing-warning-failed configuration. She acknowledged the standing-bureaucratic-burial of her March-7 GSI report at the standing-pilgrim-Sangha standing-eleven-thousand attendees at the ghat. She met <strong>Bhairavi-Mata</strong> (seventy-three, Char-Dham-tradition healer-woman whom Kasturika had dismissed at the standing-2019 Garhwal-Khasi-feminine-healing protocol revival-attempt) at the standing-ghat-southern-pavilion at 4:43 p.m. May 27. Bhairavi-Mata offered the standing-feminine-healing tradition standing-Pilgrim-Sangha grief-tending protocol at the standing-pilgrim-family standing-individual-healing level across the standing-311 bereaved-families. <strong>Kasturika accepted at 5:14 p.m.</strong> They walked the standing-Char-Dham circuit alongside the standing-three-hundred-eleven bereaved-families across the standing-following forty-seven days as the standing-co-equal healer-pair (May 28 to July 12 2026; standing-Pilgrim-Sangha bereaved-family standing-individual-healing visit-protocol at approximately 6-7 families per day at the standing-Bhairavi-Mata-Kasturika twin-administered grief-tending ceremony). On <strong>July 11 2026</strong> at the standing-Badrinath final-bereaved-family healing-completion moment at 4:11 p.m. the standing-Stage-III musk-deer-foreleg-first-stroke formed at Kasturika&rsquo;s standing-right-upper-back across eleven seconds 4:11:23-4:11:34 p.m. in standing-saffron-and-cream dual-ink at the Uttarakhand healer-tradition visual-anchor. <strong>At 4:11:08 a.m. on July 12 2026</strong> the standing-Kedarnath-Mandir Nandi-statue at the standing-temple-courtyard standing-eastern-entrance position turned its standing-head 25.4 millimetres east-northeast overnight. The standing-amended Deva-Bhumi charter (seven core provisions) is ratified 41-3 at the standing-Hardwar State-Council session July 23 2026. Per restructure §1 and §4 Bhairava-Ji (Bhairavi-Mata&rsquo;s adult son, 38, retired Indian-Army Major) accepts the standing-warrior-role at the standing-Uttarakhand kingdom-council standing-State-Hero deferential-successor designation; Kasturika becomes the standing-Guru-of-the-Healer-Line at the standing-Char-Dham-tradition healer-line lead.</div>
+    </div>
+
+    <div class="k-two">
+      <div>
+        <img src="media/portraits/uttarakhand-ch2-kasturika-bhairavi-mata.png"
+             alt="Kasturika and Bhairavi-Mata at the Badrinath final-bereaved-family healing-completion 4:11 p.m. July 11 2026 — co-equal healer-pair at standing-three-metre side-by-side configuration"
+             class="hero-portrait"
+             onerror="this.style.display='none'">
+        <p style="font-size:.7em;color:#a89878;text-align:center;margin-top:8px;opacity:.7;">Kasturika and Bhairavi-Mata at the standing-Badrinath Brahma-Kapal ghat at the standing-final-bereaved-family healing-completion moment at 4:11 p.m. on July 11 2026 (day-forty-seven of the standing-co-equal healer-walk) &mdash; Kasturika at the standing-eastern-position with the standing-Mrigaa-Mudra musk-deer-bond healing-administration; Bhairavi-Mata at the standing-western-position with the standing-Garhwal-Khasi-tradition standing-grief-tending herbal-bundle; the standing-Himalayan-monal Mrigaa-Sakhi at the standing-three-metre overhead Brahma-Kapal-pillar perch; the standing-bereaved-family standing-mother-grandmother-and-children cohort at the standing-eleven-metre-rear receiving-position; the standing-Stage-III mark forming at Kasturika&rsquo;s standing-right-upper-back position at the standing-eleven-second mark-formation window</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div class="k-card">
+          <h3>The Hero (Survives, Stage III by Co-Equal-Healer-Walk; Ch 3 Guru of the Healer-Line)</h3>
+          <p><strong style="color:#d89868">Kasturika</strong> &mdash; The Warrior-Priestess Who Stopped Protecting and Started Healing</p>
+          <p style="margin-top:8px;">Forty-three. Kingdom-council&rsquo;s standing-state-hero of Uttarakhand since 2007 (nineteen-year tenure); standing-warrior-priestess of the standing-Char-Dham circuit; standing-musk-deer-bond at the standing-Madhmaheshwar-Tunganath corridor since 2007 conferral; standing-Himalayan-monal Mrigaa-Sakhi standing-aerial-companion since 2011. Bloodline-? Yudhishthira-mapped (king-mind warrior-priestess) with Draupadi-secondary (collective dignity at the bereaved-families standing-healer-walk). Standing-Garhwal-Khasi tradition protector-discipline observer for nineteen years. Dismissed Bhairavi-Mata at the standing-2019 Garhwal-Khasi-feminine-healing protocol revival-attempt at the standing-modern-State-Yatra-administration era cross-reference. Files standing-Geological-Survey-of-India landslide-risk warning March 7 2026; report intercepted and substituted by Tax Commissioner Lalita Aulakh March 11. Rambara-Lincholi corridor collapses May 23 11:43 a.m. (311 dead). Faces Pilgrim-Sangha grief-cascade at Hardwar Hari-ki-Pauri ghat May 27 4:11 p.m. Acknowledges bureaucratic-burial of GSI report. Meets Bhairavi-Mata at ghat-southern-pavilion 4:43 p.m.; accepts co-equal healer-pair at 5:14 p.m. Walks Char-Dham circuit 47 days May 28-July 12 with Bhairavi-Mata. Stage III musk-deer-foreleg-first-stroke forms July 11 4:11:23-4:11:34 p.m. at Badrinath Brahma-Kapal ghat in saffron-and-cream dual-ink. Survives chapter. Per restructure §4 becomes Guru of the Healer-Line at Char-Dham-tradition healer-line lead; per §1 Bhairava-Ji becomes Uttarakhand kingdom-council standing-State-Hero deferential-successor at Sanctuary spring 2026 acknowledgement.</p>
+          <div style="margin-top:10px;">
+            <span class="stat-chip">Survives &bull; Stage III by Co-Equal-Healer-Walk</span>
+            <span class="stat-chip guru">Ch 3 Guru of Healer-Line</span>
+            <span class="stat-chip">Bloodline ? &bull; Yudhishthira+Draupadi</span>
+          </div>
+        </div>
+        <div class="k-card">
+          <h3>The Catalyst Villain &bull; Hima-Mara as Tax Commissioner</h3>
+          <p><strong style="color:#e88888">Tax Commissioner Lalita Aulakh</strong> &mdash; Hima-Mara&rsquo;s Death-as-Bureaucracy Form, the Woman With a Ledger</p>
+          <p style="margin-top:8px;">Forty-seven. Was Hima-Mara-the-Yamuna-Pilgrimage-corridor administrator at the Ch 1 Mussoorie confrontation October 2022; spared at Ch 1 climax under standing-administrative-rehabilitation clause; transferred to non-disclosed Tamil-Nadu-district administrative-cell. Re-emerged November 2025 with a forged 2014-IAS-cadre certificate (Bhopal-printing-press; same Singapore-funded forgery-cell that produced six prior cross-network products) and standing-State-Government Uttarakhand appointment-letter at the Pilgrimage-Tax-Cell standing-Tax-Commissioner designation. Founded the standing-Pilgrim-Tax at ₹2,111 per standing-pilgrim head-tax at the standing-Hardwar-Rishikesh entry-checkpoints (cumulative-revenue ₹47 crore across November 2025-May 2026 standing-pre-disaster six-month window). Contracted standing-Aulakh-Roads-and-Construction (her standing-secret-cousin-firm at the standing-Lahore parent-corporation cross-reference) for the standing-Kedarnath-Rambara-Gaurikund road-widening project at ₹211 crore lump-sum. Intercepted Kasturika&rsquo;s GSI landslide-risk warning report March 11 2026 11:11 a.m.; substituted standing-replacement-report at no-landslide-risk configuration. Departed Uttarakhand May 24 morning post-landslide; Wagah-pre-border crossing 4:23 a.m. May 25; Pakistan-Lahore Anarkali-Bazaar-corner safe-house 6:11 a.m. May 25. Survives Chapter Two. Per Ch 3 plan she is the standing-villain-network&rsquo;s standing-Northern field-operative at the Pakistan-Lahore safe-house alongside Sant Hari-Charanjit Maharaj (Punjab) and the standing-Hima-Asura Himachal-Pradesh storm-form; coordinates the standing-Northern operations-base bureaucratic-warfare cell.</p>
+        </div>
+        <div class="k-card">
+          <h3>The Healer-Co-Equal &bull; New Female Character (Per Restructure §5 Co-Equal-Healer-Pattern)</h3>
+          <p><strong style="color:#88a8c8">Bhairavi-Mata</strong> &mdash; The Seventy-Three-Year-Old Char-Dham-Tradition Healer-Woman Whom Kasturika Had Once Dismissed</p>
+          <p style="margin-top:8px;">Seventy-three. Standing-Garhwal-Khasi-tradition healer-woman since 1972 (fifty-four-year tradition-practice tenure). Standing-Char-Dham-tradition standing-feminine-healing protocol-keeper at the standing-Madhmaheshwar-village standing-Bhairavi-Mata-cottage residence-administration. Practised the standing-pilgrim-family grief-tending healing-administration ceremony across the standing-prior-fifty-four-year window at approximately 4,711 standing-bereaved-family ceremonies. Dismissed by Kasturika at the standing-2019 Garhwal-Khasi-feminine-healing protocol revival-attempt at the standing-modern-State-Yatra-administration era cross-reference (Kasturika at the standing-thirty-six-year-old protector-discipline configuration had rejected the standing-feminine-healing tradition at the standing-administrative-modernisation-era preference). Held the standing-Madhmaheshwar-village residence across 2019-2026 at the standing-grief-tending-individual-family voluntary-administration without standing-State-Yatra-administration recognition. Walked from Madhmaheshwar to Hardwar Hari-ki-Pauri ghat across May 24-26 2026 at the standing-211-kilometre walking-pace upon hearing of the landslide. Met Kasturika at ghat-southern-pavilion 4:43 p.m. May 27. Accepted Kasturika&rsquo;s standing-co-equal healer-pair acknowledgment at 5:14 p.m. Walked Char-Dham circuit 47 days as co-equal-healer-pair. Per restructure §5 she is a New Female Character introduced at Ch 2 Stage III at the standing-co-equal healer-acknowledgment role; her standing-fifty-four-year healer-tradition provides the standing-Garhwal-Khasi-feminine-healing standing-charter-foundational tradition-anchor that Kasturika&rsquo;s standing-Stage-III mark-formation acknowledges. Per Ch 3 plan she becomes the standing-Char-Dham-tradition standing-living-archive seat-equivalent representative at the standing-Sanctuary mediation council; her standing-adult-son Bhairava-Ji (38, retired Indian-Army Major) takes the standing-warrior-role at the standing-Uttarakhand kingdom-council standing-State-Hero deferential-successor designation.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="k-card" style="margin-top:24px;">
+      <h3>The Three-Way Faction Split &mdash; Pilgrim, Yatra-Corporation, Silent-Monasteries</h3>
+      <p style="margin-bottom:14px;">Deva-Bhumi has answered the standing-Char-Dham pilgrimage question one way for the standing-eighth-century-Adi-Shankaracharya reconstruction-precedent: the standing-pilgrim cohorts walk the standing-Yamunotri-Gangotri-Kedarnath-Badrinath circuit at the standing-Char-Dham-tradition standing-pre-monsoon-yatra-opening administration. Chapter Two splits the inheritance along the standing-Pilgrim-Tax revenue-protection faultline.</p>
+      <div class="faction-grid">
+        <div class="fac pilgrim">
+          <div class="fac-tag">Faction One &bull; Pilgrim-Sangha &bull; ~52% pilgrim-population, ~47% Char-Dham-tradition rural-base</div>
+          <div class="fac-name">The Pilgrim-Sangha &bull; Char-Dham-Tradition Yatra-Cohort Under Pradhan Yogi Vishnu-Bhakt</div>
+          <div class="fac-desc">The standing-Char-Dham-tradition pilgrim-cohort across the standing-Yamunotri-Gangotri-Kedarnath-Badrinath circuit. Approximately 4,711 standing-active-Pilgrim-Sangha members at the standing-2025-pilgrim-Sangha membership-register; ~211 standing-tour-leader administrator-cohort; approximately 47 standing-yogi-elder cohort under Pradhan Yogi Vishnu-Bhakt (63, Char-Dham-tradition senior-yogi since 2003). Senior delegate Pradhan Yogi Vishnu-Bhakt accused Kasturika at the standing-Hardwar Hari-ki-Pauri ghat May 27 4:11 p.m. at the standing-warning-failed configuration. After Bhairavi-Mata&rsquo;s standing-co-equal healer-acknowledgment 5:14 p.m. May 27 the standing-Pilgrim-Sangha block consolidates under Kasturika&rsquo;s standing-Guru-of-the-Healer-Line authority at the standing-amended-charter Sannihit-Sarovar-parallel-recognition.</div>
+        </div>
+        <div class="fac yatra">
+          <div class="fac-tag">Faction Two &bull; Yatra-Corporation &bull; ~31% revenue-generation, ~28% State-Civil-Service-aligned</div>
+          <div class="fac-name">The Yatra Corporation &bull; State-Roads-Corporation Aligned + Aulakh-Roads-and-Construction Subcontracting Chain</div>
+          <div class="fac-desc">The standing-Uttarakhand State-Roads-Corporation standing-Yatra-Pilgrimage-Tax-Cell and the standing-Aulakh-Roads-and-Construction subcontracting chain under Tax Commissioner Lalita Aulakh. Approximately 211 standing-State-Roads-Corporation administrator-cohort and approximately 47 standing-Aulakh-Roads-and-Construction senior-engineering cohort (the standing-47 standing-blasting-team operators at the standing-Rambara-Lincholi corridor at the standing-pre-disaster six-month window; standing-23 of the 47 are at the standing-State-Police IPC 304A culpable-homicide investigation arrest-and-prosecution custody post-disaster). The standing-Yatra-Corporation collapses at the standing-Tax Commissioner exfiltration May 24-25; the standing-State-Government Yatra-Pilgrimage-Tax-Cell is dissolved at the standing-amended-charter Second-Provision standing-Pilgrim-Tax revocation; the standing-Aulakh-Roads-and-Construction contract is voided at the standing-State-Forest-Department afforestation-mandate confiscation per the standing-amended-charter Fourth-Provision cross-region precedent.</div>
+        </div>
+        <div class="fac monastic">
+          <div class="fac-tag">Faction Three &bull; Silent-Monasteries &bull; ~17% standing-monastic-population, ~25% standing-spiritual-authority</div>
+          <div class="fac-name">The Silent Monasteries &bull; Standing-Adi-Shankaracharya-Tradition Math-Network Under Acharya Govindananda-Saraswati</div>
+          <div class="fac-desc">The standing-Adi-Shankaracharya-tradition math-network across the standing-Jyotirmath-Badrinath-Kedarnath-Joshimath standing-eighth-century reconstruction-precedent. Approximately 311 standing-monastic-resident cohort across the standing-four-Math-network; standing-Acharya Govindananda-Saraswati (74, Jyotirmath Shankaracharya since 2017) at the standing-senior-monastic authority position. The standing-Silent-Monasteries faction does not side with either the standing-Pilgrim-Sangha grief-cascade or the standing-Yatra-Corporation revenue-defence; observes silence at the standing-May-27 Hari-ki-Pauri ghat assembly; sends standing-no-delegate to the standing-co-equal healer-walk; sends standing-no-delegate to the standing-July-23 Hardwar State-Council amended-charter ratification. Acknowledges the standing-amended-charter at the standing-Jyotirmath standing-Acharya-issued letter-of-spiritual-counsel dated August 11 2026 (post-ratification); the standing-letter does not endorse, does not condemn, records the standing-charter at the standing-Jyotirmath permanent-record archive. Per Ch 3 plan the standing-Silent-Monasteries faction attends the Sanctuary as the standing-Jyotirmath-Acharya senior-monastic representative observer-cohort under Acharya Govindananda-Saraswati.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="k-card">
+      <h3>The Void Maw Sign &mdash; The Kedarnath Nandi Turns Its Head 25.4 Millimetres East-Northeast (Opens Monument-Animation Category)</h3>
+      <p>At 4:11:08 a.m. on July 12 2026 (the standing-dawn following Kasturika&rsquo;s standing-Stage-III mark-formation at the standing-Badrinath Brahma-Kapal ghat 4:11:23-4:11:34 p.m. on July 11), the standing-Kedarnath-Mandir Nandi-statue at the standing-temple-courtyard standing-eastern-entrance position turns its standing-head by 25.4 millimetres east-northeast at the standing-cervical-vertebrae cross-section rotation. The standing-Nandi-statue is the standing-pre-1100 CE Pandya-era stone-carved standing-deity-companion at the standing-eighth-century-Adi-Shankaracharya-reconstruction-precedent configuration. The standing-statue is one standing-solid-piece carved standing-granite (approximately 211 standing-cubic-metres standing-stone-volume; standing-weight approximately 580 metric tonnes). The standing-statue-base is the standing-temple-courtyard foundation-stone at the standing-cement-mortar embedded-configuration since the standing-1882 Garhwal-restoration. The standing-statue has not been at the standing-aerial-rotation displacement at any standing-prior-observation across the standing-1144-year recorded-history.</p>
+      <p style="margin-top:10px;">The standing-Kedarnath-Mandir standing-pre-dawn-puja-attendant Pujari Bhuvan-Chandra (forty-three, Kedarnath-Mandir standing-senior-pujari since 2016) observes the standing-head-rotation at 4:11:08 a.m. at the standing-pre-dawn-puja-administration approach. He calls the standing-State-Department-of-Archaeology Garhwal-cell&rsquo;s standing-on-call senior-officer Dr. K. Joshi (sixty-one, ASI Garhwal-cell standing-senior-archaeologist since 2014) at 4:23 a.m. Dr. K. Joshi arrives at the standing-Kedarnath-Mandir at 11:11 a.m. He conducts the standing-laser-rangefinder cross-reference measurement at the standing-Nandi-statue head-cervical-vertebrae position across 11:11-2:43 p.m. He confirms the standing-25.4-millimetre east-northeast rotation at the standing-eleven-degree compass-heading cross-reference. The standing-photograph-cluster M-24A-through-G at the standing-twenty-three-position cross-reference protocol is the kingdom-council&rsquo;s standing-Maw-sign-recognition cell evidence-document anchor. The Maw has demonstrated the capacity to <strong>alter the standing-physical-configuration of a standing-bonded-monument at the standing-aerial-elevation by the standing-25.4-millimetre cervical-vertebrae cross-section rotation without standing-mechanical-mechanism identification across a standing-580-metric-tonne stone-statue at the standing-cement-mortar embedded-configuration</strong>. The standing-Nandi-head-turn opens the saga&rsquo;s <strong>ninth paired-sign category &mdash; monument-animation: the Maw alters the standing-physical-configuration of a standing-bonded-monument at the standing-aerial-elevation</strong> (distinct from the standing-Punjab reflection-substitution category at the standing-monument&rsquo;s standing-reflection-medium without altering the standing-actual-monument). The pair-candidate is awaiting standing-emergence in a standing-subsequent Chapter-Two kingdom (the standing-Maw-sign-recognition cell&rsquo;s standing-Northern-Federation standing-watch-protocol projects standing-Himachal-Pradesh Hidimba-Devi-temple standing-pillar-shift, standing-Kashmir Martand-Sun-Temple standing-fragment-realignment, or standing-Maharashtra Trimbakeshwar standing-Tryambakeshwar-lingam standing-cardinal-orientation-shift as the standing-most-probable pair-candidates).</p>
+    </div>
+
+    <div class="k-quick-links">
+      <a href="identity.html" class="k-quick-link">
+        <span class="ql-title">Faction &amp; Cast</span>
+        <span class="ql-sub">Three factions, the Tax Commissioner, the healer-co-equal, the warrior-son, the Nandi</span>
+      </a>
+      <a href="story.html" class="k-quick-link">
+        <span class="ql-title">Full Story</span>
+        <span class="ql-sub">The Pilgrim&rsquo;s Tax &mdash; A Film in Two Halves</span>
+      </a>
+      <a href="rules.html" class="k-quick-link">
+        <span class="ql-title">Rules &amp; Weapons</span>
+        <span class="ql-sub">Feminine-healing acceptance bond, the Mrigaa-Mudra, the Nandi head-turn</span>
+      </a>
+      <a href="../../../index.html" class="k-quick-link" style="border-color:rgba(247,217,106,.15);">
+        <span class="ql-title" style="color:#c9a04a;">All Civil War Stories</span>
+        <span class="ql-sub">Back to Chapter 2</span>
+      </a>
+    </div>
+  </div>
+
+  <footer style="text-align:center;padding:28px 20px;border-top:1px solid rgba(184,106,42,.12);color:#a89878;font-size:.75em;">
+    <p>Deva-Bhumi &bull; Civil War &bull; Chapter 2 &bull; Maha Parva &bull; Age of Mythos Volume I</p>
+    <p style="margin-top:6px;"><a href="../../../index.html" style="color:#c9a04a;text-decoration:none;">&larr; Chapter 2 Index</a></p>
+  </footer>
+  <script src="../../../../../../../assets/manifest.js"></script>
+  <script src="../../../../../../../assets/aom.js"></script> <!-- aom:injected -->
+</body>
+</html>

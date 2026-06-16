@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Buried Temple of the Malenad &mdash; Karnataka | Hulmane-The-Saga</title>
+  <link rel="stylesheet" href="../../../../../css/style.css">
+  <style>
+    :root {
+      --story-green: #44ff88;
+      --story-green-dim: #aaffcc;
+      --story-gold: #ffd700;
+    }
+
+    /* ── Chapter blocks ── */
+    .chapter {
+      max-width: 900px;
+      margin: 0 auto 2.5rem;
+      padding: 2.2rem 2.5rem;
+      background: rgba(0, 40, 18, 0.38);
+      border: 1px solid rgba(68, 255, 136, 0.14);
+      border-radius: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+    .chapter::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: linear-gradient(180deg, transparent, var(--story-green), transparent);
+    }
+    .chapter-num {
+      font-size: 0.6em;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--story-green);
+      opacity: 0.6;
+      margin-bottom: 4px;
+    }
+    .chapter h3 {
+      color: var(--story-green);
+      font-size: 1.55rem;
+      margin: 0 0 6px;
+      font-family: Georgia, serif;
+    }
+    .chapter .ch-sub {
+      font-style: italic;
+      color: var(--story-green-dim);
+      font-size: 0.88em;
+      margin-bottom: 1.4em;
+      opacity: 0.75;
+      border-bottom: 1px solid rgba(68,255,136,0.1);
+      padding-bottom: 0.8em;
+    }
+    .chapter p {
+      color: var(--text);
+      line-height: 1.95;
+      font-size: 0.95em;
+      margin-bottom: 1.1em;
+      text-align: justify;
+    }
+    .chapter blockquote {
+      border-left: 3px solid var(--story-green);
+      padding: 0.8em 1.2em;
+      margin: 1.2em 0;
+      background: rgba(68,255,136,0.04);
+      border-radius: 0 8px 8px 0;
+      font-style: italic;
+      color: var(--story-green-dim);
+      font-size: 0.93em;
+      line-height: 1.7;
+    }
+
+    /* ── Story image — full width inside chapter ── */
+    .story-img {
+      width: 100%;
+      border-radius: 10px;
+      display: block;
+      margin: 1.4em 0;
+      border: 1px solid rgba(68,255,136,0.15);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+    }
+    .story-img-caption {
+      text-align: center;
+      font-size: 0.72em;
+      color: var(--text-dim);
+      font-style: italic;
+      margin-top: -0.6em;
+      margin-bottom: 1.2em;
+      opacity: 0.6;
+    }
+
+    /* ── Side-by-side image pair ── */
+    .img-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 1.4em 0;
+    }
+    .img-pair img {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid rgba(68,255,136,0.12);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.45);
+      display: block;
+    }
+    @media (max-width: 540px) { .img-pair { grid-template-columns: 1fr; } }
+
+    /* ── Cinematic banner image ── */
+    .scene-banner {
+      max-width: 900px;
+      margin: 0 auto 1.8rem;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+    }
+    .scene-banner img {
+      width: 100%;
+      display: block;
+      border: 1px solid rgba(68,255,136,0.18);
+    }
+    .scene-banner-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 10px 18px;
+      background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 100%);
+      font-size: 0.75em;
+      color: var(--story-green-dim);
+      font-style: italic;
+    }
+
+    /* ── Divider ── */
+    .story-divider {
+      display: flex; align-items: center; justify-content: center;
+      gap: 12px; margin: 2rem auto; max-width: 300px;
+      color: var(--story-green); opacity: 0.35;
+      font-size: 0.8rem; letter-spacing: 4px;
+    }
+    .story-divider::before, .story-divider::after {
+      content: '';
+      flex: 1; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--story-green), transparent);
+    }
+
+    /* ── Hero intro card ── */
+    .hero-intro {
+      max-width: 900px;
+      margin: 0 auto 2rem;
+      padding: 28px 30px;
+      background: rgba(0,40,18,0.45);
+      border: 1px solid rgba(68,255,136,0.22);
+      border-radius: 14px;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+    .hero-intro img {
+      width: 200px;
+      border-radius: 10px;
+      border: 1px solid rgba(68,255,136,0.25);
+      display: block;
+    }
+    .hero-intro h2 { color: var(--story-green); margin: 0 0 3px; font-size: 1.6rem; }
+    .hero-intro .hi-title { color: var(--story-green-dim); font-style: italic; font-size: 0.88em; margin-bottom: 10px; }
+    .hero-intro p { color: var(--text); font-size: 0.88em; line-height: 1.75; margin-bottom: 10px; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.82em; }
+    .hero-tag { color: var(--story-gold); }
+    @media (max-width: 600px) {
+      .hero-intro { grid-template-columns: 1fr; }
+      .hero-intro img { width: 100%; max-width: 220px; margin: 0 auto; }
+    }
+
+    /* ── Quote callout ── */
+    .callout {
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+      text-align: center;
+      padding: 20px 28px;
+      background: rgba(68,255,136,0.04);
+      border: 1px solid rgba(68,255,136,0.18);
+      border-radius: 10px;
+      font-family: Georgia, serif;
+      font-style: italic;
+      font-size: 1.05em;
+      color: var(--story-green-dim);
+      line-height: 1.7;
+    }
+
+    /* ── Cast cards ── */
+    .cast-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px,1fr)); gap: 14px; max-width: 900px; margin: 0 auto 2rem; }
+    .cast-card {
+      background: rgba(0,40,18,0.4);
+      border: 1px solid rgba(68,255,136,0.18);
+      border-radius: 10px;
+      padding: 16px 14px;
+      text-align: center;
+    }
+    .cast-card .ci { font-size: 2rem; margin-bottom: 6px; }
+    .cast-card h4 { color: var(--story-green); margin: 0 0 3px; font-size: 0.95em; }
+    .cast-card .cr { font-style: italic; font-size: 0.72em; color: var(--story-green-dim); margin-bottom: 6px; opacity: 0.8; }
+    .cast-card p { font-size: 0.78em; color: var(--text-dim); line-height: 1.5; margin: 0; }
+
+    /* ── Nav ── */
+    .back-nav { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .back-nav a {
+      display: inline-flex; align-items: center; gap: 0.5em;
+      padding: 0.6em 1.5em; border: 1px solid var(--story-green);
+      border-radius: 20px; color: var(--story-green); font-size: 0.88em;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .back-nav a:hover { background: rgba(68,255,136,0.08); }
+
+    @media (max-width: 600px) {
+      .chapter { padding: 1.2rem 1rem; }
+      .chapter h3 { font-size: 1.2rem; }
+    }
+  </style>
+  <link rel="stylesheet" href="../../../../../../../../assets/aom.css"> <!-- aom:injected -->
+</head>
+<body class="aom" data-aom-type="story" >
+  <!-- aom:listen --><div class="reader-media"><div class="reader-langtoggle" role="tablist" aria-label="Language"><button type="button" class="active" data-lang="en">English</button><button type="button" data-lang="kn">ಕನ್ನಡ</button></div><div class="reader-audio" data-lang="en"><span class="reader-audio-label">Listen — English</span><audio controls preload="none" src="../../../../../../../../audio/chapter-1-rise-of-legends__vijayanagara-reborn__buried-temple.m4a"></audio></div><div class="reader-audio" data-lang="kn" hidden><span class="reader-audio-label">ಆಲಿಸಿ — ಕನ್ನಡ</span><audio controls preload="none" src="../../../../../../../../audio/kannada/chapter-1-rise-of-legends__vijayanagara-reborn__buried-temple.kn.mp3"></audio></div><div class="reader-lang" data-lang="kn" lang="kn" hidden><p>ಇದು ಒಬ್ಬ ಅಣ್ಣ ಮತ್ತು ಅವನ ತಮ್ಮನಂತಿದ್ದ ಗೆಳೆಯನ ಕಥೆ — ರಕ್ತದ ಸಹೋದರರಲ್ಲ, ಆದರೆ ಒಂದೇ ಕಾಡನ್ನು ತಾಯಿಯಂತೆ ಕಾಪಾಡಿದ ವಿಕ್ರಮಾದಿತ್ಯ ಮತ್ತು ಅವನ ತಮ್ಮ ಕಾರ್ತಿಕನ ಕಥೆ.</p>
+<p>ಕರ್ನಾಟಕ — ದಕ್ಷಿಣದ ರಾಜ್ಯ. ಅರ್ಹತೆ ಎಲ್ಲಿ ಅಡಗಿರುತ್ತದೋ, ಅಲ್ಲಿ ಸತ್ಯ ಒಂದು ಸರ್ಪವನ್ನು ಕಾವಲಿಗಿಡುತ್ತದೆ.</p>
+<p>ಮಲೆನಾಡಿನ ಕಾಡಿನ ಅಂಚಿಗೆ ಆ ವರದಿ ಬಂದಿತು, ಕಾಡಿನ ಕೆಸರಿನ ದಟ್ಟ ಕೊಳೆಯಿಂದ ಚರ್ಮ ಕಲೆಗಟ್ಟಿದ ಮತ್ತು ಕಣ್ಣುಗಳಲ್ಲಿ ಆದಿಮ ಭಯ ತುಂಬಿದ ಒಬ್ಬ ಗೂಢಚಾರನಿಂದ ಹೊತ್ತು ತರಲ್ಪಟ್ಟು. ಪಾಚಿ ಮುಚ್ಚಿದ ವೀರಗಲ್ಲಿನ ಬುಡದಲ್ಲಿ ವಿಕ್ರಮಾದಿತ್ಯನನ್ನು ಅವನು ಕಂಡ, ಅಲ್ಲಿ ಆ ಯೋಧ ತನ್ನ ಆಯುಧವನ್ನು — ಬಾಬಾ ಬುಡನ್ ಗಿರಿಯ ಕರಾಳ ಮ್ಯಾಗ್ನಟೈಟ್‌ನಿಂದ ಕಮ್ಮಾರಿಸಿದ ಭಾರವಾದ, ಗರಗಸದಂಚಿನ ಖಡ್ಗ ಹೊಯ್ಸಳಾಸ್ತ್ರವನ್ನು — ನಿಷ್ಠೆಯಿಂದ ಸ್ವಚ್ಛಗೊಳಿಸುತ್ತಿದ್ದ.</p>
+<p>"ಕಾಳಿಂಗ ಸರ್ಪಗಳು ಮಾಯವಾಗಿವೆ," ಗೂಢಚಾರ ಪಿಸುಗುಟ್ಟಿದ.</p>
+<p>ವಿಕ್ರಮಾದಿತ್ಯ ತಕ್ಷಣ ತಲೆ ಎತ್ತಲಿಲ್ಲ. ಅವನು ಬೇಲೂರಿನ ಕಂಬಗಳಂತೆ ಕಟ್ಟಲ್ಪಟ್ಟ ಮನುಷ್ಯ — ಅಗಲ ಭುಜಗಳ, ಅಚಲ, ಬಲಿತ ತೇಗದ ಬಣ್ಣದ ಚರ್ಮದವನು. ಅವನು ಹೊಯ್ಸಳ ಕಾವಲುಗಾರರ ವಂಶಜ, ಮತ್ತು ಅವನ ನಡಿಗೆಯಲ್ಲೇ ಕಾಡಿನ ಭಾರವನ್ನು ಹೊತ್ತಿದ್ದ. ಅವನು ತನ್ನ ಸಾಣೆಗಲ್ಲನ್ನು ಪಕ್ಕಕ್ಕಿಟ್ಟು ಗೂಢಚಾರನನ್ನು ನೋಡಿದ. "ನಾಗರಹಾವುಗಳು ಸುಮ್ಮನೆ ಹೊರಟುಹೋಗುವುದಿಲ್ಲ, ಕಾರ್ತಿಕ. ಅವು ಮಳೆಯ ಆತ್ಮ. ಅವು ಮಾಯವಾದರೆ, ಮಲೆನಾಡು ಸಾಯುತ್ತದೆ."</p>
+<p>ಆಗುಂಬೆ ಸುತ್ತಳತೆಯ ಮುಖ್ಯ ಅರಣ್ಯಪಾಲಕ ಕಾರ್ತಿಕ — ವಿಕ್ರಮಾದಿತ್ಯ ತನ್ನ ತಮ್ಮನಂತೆ ಕಾಣುತ್ತಿದ್ದ ಹುಡುಗ — ಅವನಿಗೆ ಒಂದು ನಕ್ಷೆಯನ್ನು ತೋರಿಸಿದ. ಇಪ್ಪತ್ತು ಅಡಿ ಉದ್ದದ, ತಮ್ಮ ಹೆಡೆಗಳ ಮೇಲೆ ದೇವಾಲಯದ ಕೆತ್ತನೆಗಳಂತಹ ವಿನ್ಯಾಸಗಳಿದ್ದ ಕಾಳಿಂಗ ಸರ್ಪಗಳು ಯಗಚಿ ನದಿಯ ದಡಗಳ ಬಳಿ ಸಂಪೂರ್ಣವಾಗಿ ಕಾಣೆಯಾಗಿದ್ದವು.</p>
+<p>ವಿಕ್ರಮಾದಿತ್ಯ ಭೂಗೋಳವನ್ನು ಬೆರಳಿನಿಂದ ಜಾಡು ಹಿಡಿದ. ಅವನ ಮನಸ್ಸು ಬೇಲೂರಿನ ಚೆನ್ನಕೇಶವನ ಕಥೆಗಳಿಗೆ ಹೋಯಿತು — "ಸುಂದರ ಕೇಶವ," ಅವನ ದೇವಾಲಯಕ್ಕೆ ಒಂದು ಅವಳಿ ಇದೆಯೆಂದು ಹೇಳಲಾಗುತ್ತಿತ್ತು — ಯುದ್ಧಕ್ಕೆ ಅಲ್ಲ, ಬದಲಾಗಿ ಸರಿಯುವ ಬಿಳಿ ಮರಳಿಗೆ ಮತ್ತು ಮುತ್ತುತ್ತಿರುವ ಪಚ್ಚೆಯ ಕಾಡಿಗೆ ಕಳೆದುಹೋದ ರಚನೆ.</p>
+<p>"ಅವು ವಲಸೆ ಹೋಗುತ್ತಿಲ್ಲ. ಅವು ಮೂಲಕ್ಕೆ ಮರಳುತ್ತಿವೆ. ಗೂಢಚಾರರನ್ನು ಸೇರಿಸು. ಮುಂಜಾವಿನಲ್ಲಿ ನಾವು ಮಂಜಿನ ಹೃದಯದೊಳಗೆ ಹೊರಡುತ್ತೇವೆ," ಎಂದ ವಿಕ್ರಮಾದಿತ್ಯ.</p>
+<p>ಮುಂಜಾವಿನ ಮಲೆನಾಡು ಉಸಿರುಗಟ್ಟಿಸುವ ಹಸಿರಿನ ಲೋಕ. ಪ್ರತಿ ಎಲೆಯ ಮೇಲೂ ಜಿಗಣೆಗಳು ಕಾಯುತ್ತಿದ್ದವು, ಮತ್ತು ಮೇಲ್ಚಾವಣಿ ಎಷ್ಟು ದಟ್ಟವಾಗಿತ್ತೆಂದರೆ ಸೂರ್ಯ ಬರೀ ಒಂದು ಕಲ್ಪನೆಯಾಗಿತ್ತು. ವಿಕ್ರಮಾದಿತ್ಯ ಎಂಟು ಜನರ ತಂಡವನ್ನು ಮುನ್ನಡೆಸಿದ: ಕಾರ್ತಿಕ ಮತ್ತು ಮೂವರು ಜಾಡುಗಾರರು, ಹೊಯ್ಸಳ ಜ್ಯಾಮಿತಿಯಲ್ಲಿ ಪರಿಣತನಾದ ಸೋಮನಾಥ ಎಂಬ ದೇವಾಲಯ ವಾಸ್ತುಶಿಲ್ಪಿ, ಮತ್ತು ಹೊಯ್ಸಳರ ನೆಗೆಯುವ ಸಿಂಹವನ್ನು ಕೆತ್ತಿದ ಗುರಾಣಿ ಹೊತ್ತ ಬೃಹತ್ ಯೋಧ ಭೈರವ.</p>
+<p>ಅವರು "ಕಾಳಿಂಗ" ಜಾಡುಗಳನ್ನು ಹಿಂಬಾಲಿಸಿದರು. ನಾಗರಹಾವುಗಳು ಕೆಸರಿನಲ್ಲಿ ವಿಶಿಷ್ಟ ಗುರುತುಗಳನ್ನು ಬಿಡುತ್ತಿದ್ದವು, ಆದರೆ ಎಲ್ಲವೂ ಒಂದೇ ಸಾಲಿನಲ್ಲಿ ಸಾಗುತ್ತಿದ್ದವು — ಅಷ್ಟು ಪ್ರಾದೇಶಿಕ ಜೀವಿಗೆ ಇದು ಅಸಾಧ್ಯ. ಸೋಮನಾಥ ನೆಲವನ್ನು ತೋರಿಸಿದ. "ಜೋಡಣೆಯನ್ನು ನೋಡು, ವಿಕ್ರಮಾದಿತ್ಯ. ಅವು ನದಿಯನ್ನು ಹಿಂಬಾಲಿಸುತ್ತಿಲ್ಲ. ಅವು ಭೂಮಿಯದೇ ವಾಸ್ತುವನ್ನು ಹಿಂಬಾಲಿಸುತ್ತಿವೆ."</p>
+<p>ಮೂರನೆಯ ದಿನ, ಮರಗಳು ಭಯಭಕ್ತಿಯಿಂದ ಹಿಂದೆ ಸರಿದಂತೆ ತೋರುವ ಒಂದು ತೆರೆದ ಜಾಗವನ್ನು ಅವರು ತಲುಪಿದರು. ನಡುವೆ ಕರಾಳ ಕಾಡಿನ ಮಣ್ಣಿನಲ್ಲಿ ತಪ್ಪಾಗಿ ಕಾಣುವ ಬಿಳಿ ಮರಳಿನ ದಿಬ್ಬವಿತ್ತು. ಯುದ್ಧ-ಗುರಾಣಿಯಷ್ಟು ಅಗಲಕ್ಕೆ ಹೆಡೆ ಬಿಚ್ಚಿದ ಒಂದು ಬೃಹತ್ ನಾಗರಹಾವು ಆ ದಿಬ್ಬದ ಮೇಲೆ ನಿಂತಿತ್ತು. ಅದು ಶತಮಾನಗಳ ಜ್ಞಾನ ತುಂಬಿದ ಕಣ್ಣುಗಳಿಂದ ವಿಕ್ರಮಾದಿತ್ಯನನ್ನು ನೋಡಿತು. ಅದು ಹೊಡೆಯಲಿಲ್ಲ. ಅದು ಬರೀ ತಿರುಗಿ ಎರಡು ಹೂತ ಕಲ್ಲುಗಳ ನಡುವಿನ ಸಂದಿಯೊಳಗೆ ಜಾರಿತು. "ಇದೇ ಅದು. ಯಗಚಿಯ ಕಳೆದುಹೋದ ಗುಡಿ," ಎಂದ ಸೋಮನಾಥ, ನರ್ತಕಿಯೊಬ್ಬಳನ್ನು ಕೆತ್ತಿದ ಬಳಪದ ಕಲ್ಲಿನ ಲಿಂಟಲಿನಿಂದ ಮರಳನ್ನು ಒರೆಸುತ್ತಾ.</p>
+<p>ಪ್ರವೇಶದ್ವಾರವನ್ನು ಸ್ವಚ್ಛಗೊಳಿಸಲು ಮೂರು ದಿನಗಳ ಮೌನ, ಕೈಗೆಲಸ ಬೇಕಾಯಿತು. ವಿಕ್ರಮಾದಿತ್ಯ ಕೆತ್ತನೆಗಳ ಬಳಿ ಕಬ್ಬಿಣದ ಸಲಿಕೆಗಳ ಬಳಕೆಯನ್ನು ನಿಷೇಧಿಸಿದ, ಮರಳನ್ನು ಸುಲಿಯಲು ಮರದ ಸಾಧನಗಳನ್ನು ಮಾತ್ರ ಬಳಸಿ. ಬಾಗಿಲು ಹೊರಹೊಮ್ಮಿದಂತೆ, ಅದು ಬರೀ ಗುಡಿಯಲ್ಲ, ಚೆನ್ನಕೇಶವನಿಗೆ ಸ್ಪರ್ಧಿಸುವ ಮೇರುಕೃತಿ ಎಂದು ಅವರಿಗೆ ಅರಿವಾಯಿತು. ಅವರು ಒಳಗಿಳಿದಂತೆ, ಗಾಳಿ ಬದಲಾಯಿತು. ಅದು ತೇವದ ಮಣ್ಣಿನ ವಾಸನೆಯಲ್ಲ; ಅದು ಪ್ರಾಚೀನ ಏಲಕ್ಕಿ ಮತ್ತು ಶ್ರೀಗಂಧದ ಎಣ್ಣೆಯ ವಾಸನೆ.</p>
+<p>ವಿಕ್ರಮಾದಿತ್ಯ ಒಂದು ಪಂಜನ್ನು ಎತ್ತಿ ಹಿಡಿದ. ಬೆಳಕು ಕಂಬಗಳಿಗೆ ತಾಗಿತು, ಮತ್ತು ಕಲ್ಲು ಹೊಳೆಯುವಂತೆ ತೋರಿತು. ಇವು ಉತ್ತರದ ಕರಾಳ ಗ್ರಾನೈಟ್‌ಗಳಲ್ಲ, ಬದಲಾಗಿ ಕಾಲಾಂತರದಲ್ಲಿ ಗಟ್ಟಿಯಾಗುವ ಮೃದು ಬಳಪದ ಕಲ್ಲು. ಗೋಡೆಗಳು ನಾಗ ಕೆತ್ತನೆಗಳಿಂದ ಮುಚ್ಚಲ್ಪಟ್ಟಿದ್ದವು — ಮಾನವ ಮುಂಡದ ಸರ್ಪ ದೇವತೆಗಳು, ಅವುಗಳ ಬಾಲಗಳು ದೇವಾಲಯದ ಬುಡದ ಸುತ್ತ ಜೀವಂತ ಅಡಿಪಾಯದಂತೆ ಸುತ್ತಿಕೊಂಡಿದ್ದವು.</p>
+<p>"ತಡೆ. ಕೇಳು." ನೆಲದ ಮೂಲಕ ಒಂದು ಮಂದ ಕಂಪನ ಗುಂಯ್‌ಗುಡುತ್ತಿತ್ತು. ವಿಕ್ರಮಾದಿತ್ಯ ಮಂಡಿಯೂರಿ ತನ್ನ ಕಿವಿಯನ್ನು ಬಳಪದ ಕಲ್ಲಿಗೆ ಒತ್ತಿದ. ಅದು ನೀರಿನ ಸದ್ದಲ್ಲ. ಅದು ಸಾವಿರಾರು ಪೊರೆಗಳು ಏಕಲಯದಲ್ಲಿ ಚಲಿಸುವ ಸದ್ದು — ಎಂದ ಭೈರವ.</p>
+<p>ಅವರು ಮಹಾಮಂಟಪವನ್ನು ಪ್ರವೇಶಿಸಿದರು. ಅದು ಕಲ್ಲಿನ ಕಾಡು. ಪ್ರತಿ ಕಂಬವೂ ವಿಶಿಷ್ಟ, ಕಲ್ಲಿನ ಮೂರ್ತಿಗಳ ಮೇಲಿನ ಆಭರಣ ತೂಗಾಡುವುದು ಕಾಣುವಷ್ಟು ಸೂಕ್ಷ್ಮವಾಗಿ ಕೆತ್ತಲ್ಪಟ್ಟಿತ್ತು. ಆದರೆ ನೆಲ ಮರೆಯಾಗಿತ್ತು. ಸಾವಿರಾರು ಕಾಳಿಂಗ ಸರ್ಪಗಳು ನೆರಳುಗಳಲ್ಲಿ ಸುತ್ತಿಕೊಂಡು ಮಲಗಿದ್ದವು. ಅವು ಗೂಡುಗಳನ್ನು ತುಂಬಿದ್ದವು, ತೊಲೆಗಳ ಮೇಲೆ ತೂಗಾಡುತ್ತಿದ್ದವು, ಮತ್ತು ಕೇಂದ್ರ ಪೀಠವನ್ನು ಸುತ್ತುವರಿದಿದ್ದವು. ಕೋಣೆಯ ನಡುವೆ ಒಂದು ಅವಶೇಷವಿತ್ತು: ಶುದ್ಧ, ಅರೆಪಾರದರ್ಶಕ ಪಚ್ಚೆಯ ಚಕ್ರ, ಮಾಡಿನ ಗುಪ್ತ ಗಾಳಿ-ಕೊಳವೆಯಿಂದ ಬರುವ ಬೆಳಕಿನ ಕಿರಣದಲ್ಲಿ ನಿಧಾನವಾಗಿ ತಿರುಗುತ್ತಾ.</p>
+<p>ಆ ಹಾವುಗಳು ಕಾವಲುಗಾರರು. ಅವು ಬೇಟೆಯಾಡಲು ಅಲ್ಲಿರಲಿಲ್ಲ; ಅವು ಕಂಪಿಸಲು ಅಲ್ಲಿದ್ದವು. ಅವುಗಳ ನಿರಂತರ, ಕಡಿಮೆ-ಆವೃತ್ತಿಯ ಗುಂಯ್‌ಗುಡುವಿಕೆ ಪಚ್ಚೆ ಚಕ್ರವನ್ನು ಚಲನೆಯಲ್ಲಿ ಇಡುತ್ತಿತ್ತು. "ನಾಗವಂಶ ಇದನ್ನು ಒಬ್ಬ ದೇವರಿಗಾಗಿ ಕಟ್ಟಲಿಲ್ಲ. ಅವರು ಇದನ್ನು ಕಾಡನ್ನು ಸ್ಥಿರಗೊಳಿಸಲು ಕಟ್ಟಿದರು. ಈ ದೇವಾಲಯ ಒಂದು ಯಂತ್ರ, ವಿಕ್ರಮಾದಿತ್ಯ. ಇದು ಇಡೀ ಮಲೆನಾಡಿನ ಮಳೆಯನ್ನು ನಿಯಂತ್ರಿಸುತ್ತದೆ," ಎಂದ ಸೋಮನಾಥ.</p>
+<p>ವಿಕ್ರಮಾದಿತ್ಯ ಮುಂದೆ ಹೆಜ್ಜೆ ಇಟ್ಟ. ಅತಿ ದೊಡ್ಡ ನಾಗರಹಾವು ಎದ್ದಿತು, ಅದರ ತಲೆ ಅವನ ಎದೆಯ ಮಟ್ಟಕ್ಕೆ. ವಿಕ್ರಮಾದಿತ್ಯ ಹೊಯ್ಸಳಾಸ್ತ್ರವನ್ನು ಸೆಳೆಯಲಿಲ್ಲ. ಅವನು ನಮಸ್ಕಾರದ ಸನ್ನೆಯಲ್ಲಿ ತಲೆ ಬಾಗಿಸಿದ. ಆ ಹಾವನ್ನು ಈ ಕ್ಷೇತ್ರದ ನಿಜವಾದ ರಾಜನೆಂದು ಅವನು ಗುರುತಿಸಿದ. ಸರ್ಪ ತಂಪಾದ ಗಾಳಿಯ ಉಸಿರೊಂದನ್ನು ಬಿಟ್ಟು, ತನ್ನ ಹೆಡೆಯನ್ನು ಇಳಿಸಿ, ಪಚ್ಚೆ ಅವಶೇಷದೆಡೆಗೆ ಅವನನ್ನು ಹಾದುಹೋಗಲು ಬಿಟ್ಟಿತು.</p>
+<p>ಆ ಸಂಶೋಧನೆ ಅಲ್ಪಕಾಲದ್ದಾಗಿತ್ತು. ಒಂದು ವಾರದ ನಂತರ, ಸುತ್ತಳತೆಯ ಗೂಢಚಾರರು ಚಲನೆಯನ್ನು ವರದಿ ಮಾಡಿದರು — ಪ್ರಾಣಿಗಳಲ್ಲ, ಮನುಷ್ಯರು. ಹೊಯ್ಸಳ ಪಚ್ಚೆಯ ವದಂತಿಗಳನ್ನು ಕೇಳಿದ ಸಂಗ್ರಾಹಕರು ಮತ್ತು "ಶೂನ್ಯದ ಅರಸುಗರು." ವಿಕ್ರಮಾದಿತ್ಯ ಹೂತ ದೇವಾಲಯದ ಪ್ರವೇಶದ್ವಾರದಲ್ಲಿ ನಿಂತು, ಒಂದು ಸಹಸ್ರಮಾನದ ಮೌನವನ್ನು ಕಾಪಾಡಿದ ಕಲ್ಲಿನ ಸುಂದರಿಯರಾದ ಮದನಿಕೆಯರ ಕೆತ್ತನೆಗಳನ್ನು ನೋಡಿದ. ಜಗತ್ತು ಈ ಸ್ಥಳವನ್ನು ಕಂಡುಕೊಂಡರೆ, ಪಚ್ಚೆ ಕದಿಯಲ್ಪಡುತ್ತದೆ, ಹಾವುಗಳು ಕೊಲ್ಲಲ್ಪಡುತ್ತವೆ, ಮತ್ತು ಮಲೆನಾಡು ಮರುಭೂಮಿಯಾಗಿ ಒಣಗುತ್ತದೆ ಎಂದು ಅವನಿಗೆ ಗೊತ್ತಿತ್ತು.</p>
+<p>"ನಾವು ಒಂದು ಸೈನ್ಯದ ವಿರುದ್ಧ ಈ ಸ್ಥಳವನ್ನು ಹಿಡಿದಿಡಲಾರೆವು," ಎಂದ ಭೈರವ, ಗುರಾಣಿ ಸಿದ್ಧವಾಗಿಟ್ಟು. "ನಾವು ಪಚ್ಚೆಯನ್ನು ನಗರಕ್ಕೆ ಒಯ್ಯಬೇಕು."</p>
+<p>"ಬೇಡ. ಪಚ್ಚೆ ಕಾಳಿಂಗಕ್ಕೆ ಸೇರಿದ್ದು. ಕಾಳಿಂಗ ಮಲೆನಾಡಿಗೆ ಸೇರಿದ್ದು. ನಾವು ನಿಧಿಯನ್ನು ತೆಗೆದುಕೊಳ್ಳುವುದಿಲ್ಲ. ನಾವೇ ಮರಳಾಗುತ್ತೇವೆ," ಎಂದ ವಿಕ್ರಮಾದಿತ್ಯ.</p>
+<p>ಅವನು ತಂಡಕ್ಕೆ ಹಿಮ್ಮೆಟ್ಟುವಂತೆ ಆಜ್ಞಾಪಿಸಿದ. ಸೋಮನಾಥ ಕಂಡುಕೊಂಡ ಅದೇ ಯಾಂತ್ರಿಕ ಸಾಧನಗಳನ್ನು ಬಳಸಿ, ಅವರು ಹೊರಗಿನ ಮರಳು-ತಡೆ ಗೋಡೆಗಳ ನಿಯಂತ್ರಿತ ಕುಸಿತವನ್ನು ಪ್ರಚೋದಿಸಿದರು. ಯಗಚಿಯ ಬಿಳಿ ಮರಳು ಬಳಪದ ಕಲ್ಲಿನ ನರ್ತಕಿಯರ, ಕಂಬಗಳ, ಮತ್ತು ಪಚ್ಚೆ ಚಕ್ರದ ಮೇಲೆ ಮತ್ತೆ ಸುರಿಯಿತು. ಕೊನೆಯ ಸಂದಿ ಮುಚ್ಚುವವರೆಗೆ ವಿಕ್ರಮಾದಿತ್ಯ ನಿಂತ. ಆ ಮಹಾ ಕಾಳಿಂಗ ಸರ್ಪ ಮತ್ತೆ ಸುರಕ್ಷಿತವಾಗಿ ಭೂಮಿಯ ನೆರಳುಗಳೊಳಗೆ ಜಾರುವುದನ್ನು ಅವನು ನೋಡಿದ.</p>
+<p>ಅವನು ತನ್ನ ಖಡ್ಗ ಮತ್ತು ಒಂದು ರಹಸ್ಯ ಮಾತ್ರ ಒಡೆತನವಾಗಿರುವ ಮನುಷ್ಯನಾಗಿ ಮಲೆನಾಡಿಗೆ ಮರಳಿದ. ಅವನು ತನ್ನ ಉಳಿದ ದಿನಗಳನ್ನು ಆಗುಂಬೆ ಕಾಡಿನ "ಹುಚ್ಚ" ತಪಸ್ವಿಯಾಗಿ ಕಳೆಯುತ್ತಾನೆ, ಯಗಚಿಯ ಬಿಳಿ ಮರಳಿನಲ್ಲಿ ಯಾರೂ ಎಂದೂ ತೀರಾ ಆಳವಾಗಿ ಅಗೆಯದಂತೆ ನೋಡಿಕೊಳ್ಳುವ ಮೌನ ಕಾವಲುಗಾರ. ನಾಗರಹಾವುಗಳು ಮರಳಿದವು, ಮಳೆ ಬೀಳುತ್ತಲೇ ಇತ್ತು, ಮತ್ತು ಕಾಡಿನ ಸುಂದರ ಕೇಶವ ಹಸಿರಿನಲ್ಲಿ ಹೂತ ಕನಸಾಗಿ ಉಳಿದ.</p>
+<p>ಪಚ್ಚೆ ಚಕ್ರ ಇನ್ನೂ ತಿರುಗುತ್ತದೆ. ಸರ್ಪಗಳು ಇನ್ನೂ ಕಂಪಿಸುತ್ತವೆ. ಮಲೆನಾಡು ಇನ್ನೂ ತನ್ನ ಮಳೆಯನ್ನು ಪಡೆಯುತ್ತದೆ. ಮತ್ತು ಆಗುಂಬೆಯಲ್ಲಿ ಎಲ್ಲೋ, ಗಾಯಗೊಂಡ ಒಬ್ಬ ಯೋಧ ಕಲ್ಲಿನ ತಾಳ್ಮೆಯಿಂದ ಕಾಡನ್ನು ನೋಡುತ್ತಾನೆ — ಮತ್ತು ಪ್ರತಿ ವರ್ಷ, ಅವನ ತಮ್ಮ ಕಾರ್ತಿಕ ಒಮ್ಮೆ ಬಂದು ಅವನ ಪಕ್ಕದಲ್ಲಿ ಮೌನವಾಗಿ ಕೂರುತ್ತಾನೆ, ಆ ರಹಸ್ಯ ಒಬ್ಬನೇ ಮನುಷ್ಯನ ಮೇಲೆ ಇಡೀ ಭಾರ ಹಾಕದಂತೆ. ಅರ್ಹತೆ ಎಲ್ಲಿರುತ್ತದೋ, ಅಲ್ಲಿ ಸತ್ಯವಿರುತ್ತದೆ. ಮಲೆನಾಡಿನ ಅರ್ಹತೆ ಅದರ ಮೌನ.</p></div></div><!-- /aom:listen -->
+
+
+  <!-- NAV -->
+    <nav class="maha-nav">
+    <a href="../../../../../../index.html" class="nav-logo">Age of Mythos</a>
+    <div class="nav-links">
+      <a href="../../../../../../../../../index.html">Volume I</a>
+      <a href="../../../../../kingdoms.html">Kingdoms</a>
+      <a href="../../../../../identity.html">Identities</a>
+      <a href="../../../../../characters.html">Heroes</a>
+      <a href="../../../../../systems.html">Systems</a>
+      <a href="../../../../../council.html">Council</a>
+      <a href="../../../../../bharatavarsha/global-map.html">Map</a>
+    </div>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('nav-open')">&#9776;</button>
+  </nav>
+  <!-- Back to kingdom story -->
+  <div style="max-width:1100px;margin:12px auto 0;padding:0 20px;">
+    <a href="../story.html" style="color:var(--gold-dim);text-decoration:none;font-size:.8em;">&larr; Back to Kingdom Story</a>
+    &nbsp;&nbsp;
+    <a href="../index.html" style="color:var(--gold-dim);text-decoration:none;font-size:.8em;">&larr; Kingdom Overview</a>
+  </div>
+
+  <!-- BREADCRUMB -->
+  <div style="padding:70px 20px 0; max-width:1100px; margin:0 auto; font-size:0.78rem; display:flex; flex-wrap:wrap; align-items:center; gap:4px;">
+    <a href="../../../../../kingdoms.html" style="color:rgba(68,255,136,0.6); text-decoration:none;">All Kingdoms</a>
+    <span style="color:rgba(68,255,136,0.25); margin:0 4px;">›</span>
+    <a href="../../../../../kingdoms.html" style="color:rgba(68,255,136,0.6); text-decoration:none;">India</a>
+    <span style="color:rgba(68,255,136,0.25); margin:0 4px;">›</span>
+    <a href="../index.html" style="color:rgba(68,255,136,0.6); text-decoration:none;">Dakshinapatha (South)</a>
+    <span style="color:rgba(68,255,136,0.25); margin:0 4px;">›</span>
+    <a href="../index.html" style="color:rgba(68,255,136,0.6); text-decoration:none;">Karnataka</a>
+    <span style="color:rgba(68,255,136,0.25); margin:0 4px;">›</span>
+    <span style="color:#44ff88; font-weight:bold;">The Buried Temple of the Malenad</span>
+  </div>
+
+  <!-- TITLE BANNER -->
+  <section class="section" style="text-align:center; padding-top:50px; padding-bottom:10px;">
+    <div style="font-size:0.62em; text-transform:uppercase; letter-spacing:3px; color:var(--story-green); opacity:0.6; margin-bottom:10px;">
+      Karnataka &mdash; The Southern Kingdom
+    </div>
+    <h1 style="color:#ffd700; font-family:Georgia,serif; font-size:2.2rem; margin:0 0 8px; line-height:1.2;">
+      The Buried Temple of the Malenad
+    </h1>
+    <p style="color:var(--story-green-dim); font-style:italic; font-size:1em; margin:0 0 6px;">
+      Where Merit lies hidden, Truth keeps a serpent guard.
+    </p>
+    <div style="font-size:0.72em; color:var(--text-dim); opacity:0.55;">
+      &#127793; Malenad Forest &bull; &#127754; Yagachi River &bull; &#127963; Hoysala Heritage
+    </div>
+  </section>
+
+  <!-- CINEMATIC OPENER -->
+  <section class="section" style="padding-top:0; padding-bottom:0;">
+    <div class="scene-banner">
+      <img src="../media/story/still-kalinga-sarpa-gone.png"
+           alt="The scout delivers the news — the Kalinga Sarpa are gone" onerror="this.style.display='none'">
+      <div class="scene-banner-caption">&ldquo;Kalinga Sarpa are gone.&rdquo; &mdash; The news that started everything</div>
+    </div>
+  </section>
+
+  <!-- HERO INTRO -->
+  <section class="section" style="padding-top:10px;">
+    <div class="hero-intro">
+      <img src="../media/story/hero-vikramaditya-portrait.png"
+           alt="Vikramaditya — The Hoysala Guardian"
+           onerror="this.style.display='none'">
+      <div>
+        <div style="font-size:0.65em; text-transform:uppercase; letter-spacing:2px; color:var(--story-green); margin-bottom:6px; opacity:0.7;">Hoysala Guardian &mdash; Karnataka</div>
+        <h2>Vikramaditya</h2>
+        <div class="hi-title">Descendant of the Hoysala Guards &mdash; Keeper of the Malenad</div>
+        <p>
+          Built like the pillars of Belur &mdash; broad-shouldered, immovable, with skin the colour of seasoned teak.
+          A warrior-scholar who moves through the forest as though the trees know him. He carries the
+          <em>Hoysalastra</em>, a heavy serrated broadsword forged from the dark magnetite of the Baba Budan hills,
+          and the weight of the Malenad in his very gait.
+        </p>
+        <div class="hero-tags">
+          <span class="hero-tag">&#127993; King Cobra &mdash; Kalinga Sarpa Bond</span>
+          <span class="hero-tag">&#9876; Hoysalastra Broadsword</span>
+          <span class="hero-tag">&#127963; Hoysala Heritage</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       THE STORY
+  ══════════════════════════════════════════════════════════════ -->
+  <section class="section" style="padding-top:0;">
+    <div style="max-width:900px; margin:0 auto 1.5rem;">
+      <h2 class="section-title" style="border-bottom-color:var(--story-green); color:var(--story-green);">The Full Story</h2>
+    </div>
+
+    <!-- ── CHAPTER I ── -->
+    <div class="chapter animate-on-scroll">
+      <div class="chapter-num">Chapter I</div>
+      <h3>The Veiled King</h3>
+      <div class="ch-sub">In which the Kalinga Sarpa of the Malenad forests vanish, and a warrior-scholar turns his gaze toward the shifting sands of the Yagachi</div>
+
+      <img class="story-img"
+           src="../media/story/ch1-veiled-king-garrison.png"
+           alt="Karthik reports to Vikramaditya in the garrison courtyard" onerror="this.style.display='none'">
+      <div class="story-img-caption">The garrison courtyard — Karthik delivers the impossible news to Vikramaditya</div>
+
+      <p>
+        The report arrived at the edge of the Malenad wilderness, carried by a scout whose skin was stained with
+        the deep rot of jungle peat and whose eyes were wide with a primal fear. He found Vikramaditya at the foot
+        of a moss-covered hero-stone, where the warrior was meticulously cleaning his weapon &mdash; Hoysalastra,
+        a heavy, serrated broadsword forged from the dark magnetite of the Baba Budan hills.
+      </p>
+      <p>
+        &ldquo;The Kalinga Sarpa are gone,&rdquo; the scout whispered.
+      </p>
+      <p>
+        Vikramaditya did not look up immediately. He was a man built like the pillars of Belur &mdash;
+        broad-shouldered, immovable, with skin the colour of seasoned teak. He was a descendant of the Hoysala
+        guards, and he carried the weight of the forest in his very gait. He set aside his whetstone and looked
+        at the scout. &ldquo;The King Cobras do not simply leave, Karthik. They are the soul of the rain. If they
+        vanish, the Malenad dies.&rdquo;
+      </p>
+      <p>
+        Karthik, the lead ranger of the Agumbe perimeter, showed him a map. The sightings of the Kalinga Sarpa
+        &mdash; some reaching lengths of twenty feet, their hoods etched with patterns like temple friezes &mdash;
+        had ceased entirely near the riverbanks of the Yagachi.
+      </p>
+      <p>
+        Vikramaditya traced the geography. His mind went to the legends of Belur Chennakeshava, the
+        &ldquo;Beautiful Keshav,&rdquo; whose temple was said to have a twin &mdash; a structure lost not to war,
+        but to the shifting white sands and the encroaching emerald tide of the forest.
+      </p>
+      <blockquote>
+        &ldquo;They aren&rsquo;t migrating. They are returning to the source. Assemble the scouts. We head into
+        the heart of the mist at dawn.&rdquo;<br>
+        &mdash; Vikramaditya
+      </blockquote>
+    </div>
+
+    <div class="story-divider">&#9671; &#9671; &#9671;</div>
+
+    <!-- ── CHAPTER II ── -->
+    <div class="chapter animate-on-scroll">
+      <div class="chapter-num">Chapter II</div>
+      <h3>The Emerald Cathedral</h3>
+      <div class="ch-sub">In which the team enters the primordial Malenad, and the forest reveals a path of scales and stone</div>
+
+      <div class="img-pair">
+        <img src="../media/story/ch2-vikramaditya-hoysalastra.png"
+             alt="Vikramaditya with his Hoysalastra broadsword — full body Hoysala tattoo" onerror="this.style.display='none'">
+        <img src="../media/story/ch2-emerald-cathedral-team.png"
+             alt="The team enters the Malenad forest" onerror="this.style.display='none'">
+      </div>
+      <div class="story-img-caption">Vikramaditya bearing the Hoysalastra (left) &bull; The team descends into the Malenad (right)</div>
+
+      <p>
+        The Malenad at dawn was a world of suffocating green. Leeches waited on every leaf, and the canopy was
+        so thick that the sun was a mere myth. Vikramaditya led a team of eight: Karthik and three trackers,
+        a temple architect named Somnath who specialised in Hoysala geometry, and Bhairava, a massive warrior
+        who carried a shield embossed with the leaping lion of the Hoysalas.
+      </p>
+      <p>
+        They tracked the &ldquo;Kalinga&rdquo; trails. The King Cobras were leaving distinctive marks in the mud,
+        but they were all heading in a single file &mdash; an impossibility for a creature so territorial. Somnath,
+        the architect, pointed to the ground. &ldquo;Look at the alignment, Vikramaditya. They aren&rsquo;t
+        following the river. They are following the <em>Vastu</em> of the earth itself.&rdquo;
+      </p>
+
+      <img class="story-img"
+           src="../media/story/ch2-following-kalinga-trails.png"
+           alt="Karthik and Vikramaditya reading the Kalinga serpent trails" onerror="this.style.display='none'">
+      <div class="story-img-caption">Reading the trails &mdash; Karthik traces the impossible convergence of the Kalinga paths</div>
+
+      <p>
+        On the third day, they reached a clearing where the trees seemed to pull back in reverence. In the centre
+        sat a mound of white sand, out of place in the dark jungle soil. A massive King Cobra, its hood flared
+        to the size of a war-shield, stood atop the mound. It looked at Vikramaditya with eyes that held the
+        wisdom of centuries. It did not strike. It simply turned and slid into a gap between two buried stones.
+      </p>
+
+      <img class="story-img"
+           src="../media/story/ch2-convergence-at-fissure.png"
+           alt="The great King Cobra at the strangler fig fissure" onerror="this.style.display='none'">
+      <div class="story-img-caption">The Convergence &mdash; the great Kalinga Sarpa at the strangler fig, guarding the way below</div>
+
+      <blockquote>
+        &ldquo;This is it. The lost shrine of the Yagachi.&rdquo;<br>
+        &mdash; Somnath, brushing sand from a soapstone lintel carved with a dancer
+      </blockquote>
+    </div>
+
+    <!-- Cinematic still: Lost shrine -->
+    <div class="scene-banner" style="max-width:900px; margin:0 auto 2rem;">
+      <img src="../media/story/still-lost-shrine-yagachi.png"
+           alt="The team uncovers the soapstone lintel in the white sand" onerror="this.style.display='none'">
+      <div class="scene-banner-caption">&ldquo;Lost shrine of the Yagachi.&rdquo; &mdash; Somnath uncovers the first carved stone</div>
+    </div>
+
+    <div class="story-divider">&#9671; &#9671; &#9671;</div>
+
+    <!-- ── CHAPTER III ── -->
+    <div class="chapter animate-on-scroll">
+      <div class="chapter-num">Chapter III</div>
+      <h3>The Descent into Soapstone</h3>
+      <div class="ch-sub">In which the earth is unburdened, and the scent of crushed cardamom rises from the deep</div>
+
+      <img class="story-img"
+           src="../media/story/ch3-descent-soapstone-tunnel.png"
+           alt="Vikramaditya with a torch at the entrance to the soapstone tunnel" onerror="this.style.display='none'">
+      <div class="story-img-caption">The Descent &mdash; Vikramaditya holds the torch aloft at the arched soapstone entrance</div>
+
+      <p>
+        It took three days of silent, manual labour to clear the entrance. Vikramaditya forbade the use of iron
+        shovels near the carvings, using only wooden tools to peel back the sand. As the doorway emerged, they
+        realised it wasn&rsquo;t just a shrine; it was a masterpiece that rivalled Chennakeshava.
+      </p>
+      <p>
+        The architecture was distinctly Hoysala &mdash; a star-shaped base, intricate lathe-turned pillars, and
+        Madanika figures that seemed ready to step off the walls. But as they descended, the air changed. It
+        didn&rsquo;t smell of damp earth; it smelled of ancient cardamom and sandalwood oil.
+      </p>
+      <p>
+        Vikramaditya held a torch aloft. The light hit the pillars, and the stone seemed to glow. These were not
+        the dark granites of the north, but the soft, malleable soapstone that hardened with age. The walls were
+        covered in carvings of the Naga &mdash; serpent deities with human torsos, their tails winding around the
+        base of the temple like a living foundation.
+      </p>
+      <blockquote>
+        &ldquo;Wait. Listen.&rdquo;<br>
+        A low vibration hummed through the floor. Vikramaditya knelt and pressed his ear to the soapstone.
+        It wasn&rsquo;t the sound of water. It was the sound of thousands of scales moving in unison.
+        &mdash; Bhairava
+      </blockquote>
+    </div>
+
+    <div class="story-divider">&#9671; &#9671; &#9671;</div>
+
+    <!-- ── CHAPTER IV ── -->
+    <div class="chapter animate-on-scroll">
+      <div class="chapter-num">Chapter IV</div>
+      <h3>The Sanctum of the Kalinga</h3>
+      <div class="ch-sub">In which the hero discovers the heart of the forest, and the King Cobras keep their ancient watch</div>
+
+      <img class="story-img"
+           src="../media/story/still-forest-living-stone.png"
+           alt="The great hall — a forest of stone pillars and a thousand King Cobras" onerror="this.style.display='none'">
+      <div class="story-img-caption">&ldquo;Forest of living stone.&rdquo; &mdash; The Mahamandapa, its columns carved in perfect detail, every shadow alive with Kalinga Sarpa</div>
+
+      <p>
+        They entered the Mahamandapa &mdash; the great hall. It was a forest of stone. Every pillar was unique,
+        carved with such detail that the jewellery on the stone figures could be seen to dangle. But the floor
+        was hidden.
+      </p>
+      <p>
+        Thousands of Kalinga Sarpa lay coiled in the shadows. They filled the niches, draped over the beams, and
+        circled the central pedestal. In the centre of the room sat a relic: a Chakra made of pure, translucent
+        jade, spinning slowly in a shaft of light that came from a hidden ventilation duct in the ceiling.
+      </p>
+      <p>
+        The snakes were the guardians. They were not there to hunt; they were there to vibrate. Their constant,
+        low-frequency humming kept the jade Chakra in motion.
+      </p>
+
+      <img class="story-img"
+           src="../media/story/ch4-sanctum-jade-chakra.png"
+           alt="The sanctum — the jade Chakra and Vikramaditya approaching" onerror="this.style.display='none'">
+      <div class="story-img-caption">The jade Chakra spinning in its shaft of light &mdash; the machine that controls the Malenad&rsquo;s rainfall</div>
+
+      <img class="story-img"
+           src="../media/story/still-guardians-forest-machine.png"
+           alt="The cobra rises before Vikramaditya — guardians of the forest machine" onerror="this.style.display='none'">
+      <div class="story-img-caption">&ldquo;Guardians of the forest machine.&rdquo; &mdash; The great Kalinga Sarpa rises before Vikramaditya</div>
+
+      <blockquote>
+        &ldquo;The Nagavamsha didn&rsquo;t build this for a god. They built it to stabilise the forest. This
+        temple is a machine, Vikramaditya. It controls the rainfall of the entire Malenad.&rdquo;<br>
+        &mdash; Somnath
+      </blockquote>
+      <p>
+        Vikramaditya stepped forward. The largest cobra rose, its head level with his chest. Vikramaditya did
+        not draw Hoysalastra. He lowered his head in a gesture of Namaskara. He recognised the cobra as the true
+        king of this domain. The serpent huffed a breath of cool air, then lowered its hood, allowing him to pass
+        toward the jade relic.
+      </p>
+
+      <img class="story-img"
+           src="../media/story/ch4-reading-nagavamsha-inscription.png"
+           alt="Vikramaditya and Somnath surrounded by cobras, reading the Nagavamsha inscription by lamplight" onerror="this.style.display='none'">
+      <div class="story-img-caption">By lamplight and serpent-hum &mdash; Vikramaditya and Somnath decipher the Nagavamsha inscription</div>
+    </div>
+
+    <div class="story-divider">&#9671; &#9671; &#9671;</div>
+
+    <!-- ── CHAPTER V ── -->
+    <div class="chapter animate-on-scroll">
+      <div class="chapter-num">Chapter V</div>
+      <h3>The Shadow of the Void</h3>
+      <div class="ch-sub">In which a new threat emerges, and the Hoysala hero makes a choice of silence</div>
+
+      <p>
+        The discovery was short-lived. A week later, the perimeter scouts reported movement &mdash; not animals,
+        but men. Collectors and &ldquo;seekers of the void&rdquo; who had heard rumours of the Hoysala jade.
+      </p>
+      <p>
+        Vikramaditya stood at the entrance of the buried temple, looking at the intricate carvings of the
+        Madanikas &mdash; the stone beauties who had watched over the silence for a millennium. He knew that if
+        the world found this place, the jade would be stolen, the snakes slaughtered, and the Malenad would
+        wither into a desert.
+      </p>
+      <p>
+        &ldquo;We cannot hold this place against an army,&rdquo; Bhairava argued, his shield ready.
+        &ldquo;We must take the jade to the city.&rdquo;
+      </p>
+
+      <img class="story-img"
+           src="../media/story/still-we-become-the-sand.png"
+           alt="The Madanika stone statue as white sand pours over the entrance — We become the sand" onerror="this.style.display='none'">
+      <div class="story-img-caption">&ldquo;We become the sand.&rdquo; &mdash; The controlled collapse seals the Yagachi shrine once more</div>
+
+      <blockquote>
+        &ldquo;No. The jade belongs to the Kalinga. The Kalinga belong to the Malenad. We do not take the
+        treasure. We become the sand.&rdquo;<br>
+        &mdash; Vikramaditya
+      </blockquote>
+      <p>
+        He ordered the team to retreat. Using the very mechanisms Somnath had discovered, they triggered a
+        controlled collapse of the outer sand-retaining walls. The white sands of the Yagachi poured back over
+        the soapstone dancers, the lathe-turned pillars, and the jade Chakra.
+      </p>
+      <p>
+        Vikramaditya stood until the last gap was closed. He watched the great Kalinga Sarpa slip back into the
+        shadows of the earth, safe once more.
+      </p>
+
+      <img class="story-img"
+           src="../media/story/ch5-hermit-vigil.png"
+           alt="Vikramaditya sitting alone on a mossy rock in the Agumbe forest — the hermit's vigil" onerror="this.style.display='none'">
+      <div class="story-img-caption">The Hermit&rsquo;s Vigil &mdash; Vikramaditya alone in the Agumbe woods, the last guardian of the secret</div>
+
+      <p>
+        He returned to the Malenad as a man who owned nothing but his sword and a secret. He would spend the
+        rest of his days as a &ldquo;mad&rdquo; hermit of the Agumbe woods, a silent guardian ensuring that no
+        one ever dug too deep into the white sands of the Yagachi. The King Cobras had returned, the rains
+        continued to fall, and the Beautiful Keshava of the forest remained a dream buried in the green.
+      </p>
+
+      <div style="text-align:center; padding:24px 20px; margin-top:20px;
+                  background:rgba(68,255,136,0.04); border:1px solid rgba(68,255,136,0.15); border-radius:12px;">
+        <p style="color:var(--story-green); font-size:1.1em; font-weight:bold; margin-bottom:8px; font-family:Georgia,serif;">
+          The Temple Waits
+        </p>
+        <p style="color:var(--story-green-dim); font-style:italic; font-size:0.88em; margin:0; line-height:1.7;">
+          The jade Chakra still spins. The serpents still vibrate. The Malenad still receives its rains.<br>
+          And somewhere in the Agumbe, a scarred warrior watches the forest with the patience of stone.
+        </p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- CALLOUT QUOTE -->
+  <section class="section" style="padding-top:0;">
+    <div class="callout">
+      &ldquo;Where there is Merit, there is Truth.<br>
+      The Merit of the Malenad is its silence.&rdquo;
+    </div>
+  </section>
+
+  <!-- CAST -->
+  <section class="section" style="padding-top:0;">
+    <div style="max-width:900px; margin:0 auto 1rem;">
+      <h2 class="section-title" style="border-bottom-color:var(--story-green); color:var(--story-green);">Characters of This Story</h2>
+    </div>
+    <div class="cast-grid">
+      <div class="cast-card">
+        <div class="ci">&#127993;</div>
+        <h4>Vikramaditya</h4>
+        <div class="cr">The Hoysala Guardian</div>
+        <p>Descendant of Hoysala guards. Bearer of the Malenad&rsquo;s oldest secret. Now a hermit of Agumbe.</p>
+      </div>
+      <div class="cast-card">
+        <div class="ci">&#127919;</div>
+        <h4>Karthik</h4>
+        <div class="cr">Lead Ranger, Agumbe Perimeter</div>
+        <p>First to report the disappearing Kalinga Sarpa. Veteran tracker who spent three days in the tunnel when the shadows came.</p>
+      </div>
+      <div class="cast-card">
+        <div class="ci">&#127963;</div>
+        <h4>Somnath</h4>
+        <div class="cr">Hoysala Temple Architect</div>
+        <p>Specialist in Hoysala geometry. Deciphered the Nagavamsha inscription. Understood the jade Chakra as a machine, not a relic.</p>
+      </div>
+      <div class="cast-card">
+        <div class="ci">&#127681;</div>
+        <h4>Bhairava</h4>
+        <div class="cr">Shield-Bearer</div>
+        <p>Carries a shield embossed with the leaping Hoysala lion. Argued for taking the jade. Accepted the burial without question.</p>
+      </div>
+      <div class="cast-card">
+        <div class="ci">&#128027;</div>
+        <h4>The Kalinga Sarpa</h4>
+        <div class="cr">Guardians of the Jade Chakra</div>
+        <p>King Cobras of the Malenad. Their vibration keeps the jade Chakra spinning, and the rains falling across Karnataka.</p>
+      </div>
+      <div class="cast-card">
+        <div class="ci">&#128302;</div>
+        <h4>The Seekers of the Void</h4>
+        <div class="cr">The Threat</div>
+        <p>Collectors who heard rumours of the Hoysala jade. Their hunger for the relic nearly ended the Malenad&rsquo;s rainfall forever.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BACK NAV -->
+  <section class="section" style="padding-top:0; padding-bottom:40px;">
+    <div class="back-nav">
+      <a href="index.html">&#8592; Karnataka Kingdom</a>
+      <a href="vijayanagara-reborn.html">&#8592; Vijayanagara Reborn</a>
+      <a href="../index.html">&#8592; Southern Kingdoms</a>
+      <a href="../../../../../characters.html">&#8592; All Characters</a>
+      <a href="../../../../../../../../../index.html">&#8592; Home</a>
+    </div>
+  </section>
+
+  <footer style="text-align:center; padding:36px 20px; border-top:1px solid var(--border-dim); color:var(--text-dim); font-size:0.82em;">
+    <p style="color:var(--story-gold); margin-bottom:8px;">Hulmane-The-Saga &mdash; The Great Assembly of Warriors</p>
+    <p>Inspired by the Mahabharata &bull; Karnataka &bull; The Buried Temple of the Malenad</p>
+  </footer>
+
+  <script src="../../../../../js/app.js"></script>
+  <script src="../../../../../../../../assets/manifest.js"></script>
+  <script src="../../../../../../../../assets/aom.js"></script> <!-- aom:injected -->
+</body>
+</html>

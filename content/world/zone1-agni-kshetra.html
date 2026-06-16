@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agni-Kshetra — Zone I | The Sacred Fire Realm | Hulmane-The-Saga</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body { background: #0d0408; margin: 0; }
+    .map-page { padding: 30px 20px; max-width: 1200px; margin: 0 auto; }
+    .map-header { text-align: center; padding: 20px 0 24px; }
+    .map-header h1 { font-size: 2.4rem; color: #e08040; text-shadow: 0 0 40px rgba(200,100,0,0.4); margin-bottom: 6px; }
+    .map-header .mh-sub { color: #c8956e; font-size: 0.9rem; letter-spacing: 3px; text-transform: uppercase; }
+    .map-header .mh-desc { color: var(--text-dim); font-size: 0.88rem; max-width: 700px; margin: 12px auto 0; line-height: 1.7; font-style: italic; }
+    .map-container { width: 100%; overflow-x: auto; }
+    .map-svg-wrap { min-width: 860px; }
+    .zone-info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; max-width: 1100px; margin: 30px auto; }
+    .zi-card { padding: 18px; border-radius: 10px; background: rgba(180,80,20,0.08); border: 1px solid rgba(200,100,30,0.22); }
+    .zi-card h4 { color: #e08040; font-size: 0.92rem; margin-bottom: 8px; }
+    .zi-card p { color: var(--text-dim); font-size: 0.82rem; line-height: 1.65; margin: 0; }
+    .map-nav { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; padding: 20px 0; }
+    .map-nav a { padding: 10px 18px; border-radius: 8px; border: 1px solid rgba(200,100,30,0.3); color: #e08040; text-decoration: none; font-size: 0.82rem; transition: background 0.2s; }
+    .map-nav a:hover { background: rgba(200,100,30,0.15); }
+    @media(max-width:900px) { .map-header h1 { font-size: 1.8rem; } }
+  </style>
+  <link rel="stylesheet" href="../../assets/aom.css"> <!-- aom:injected -->
+</head>
+<body class="aom" data-aom-type="page" >
+
+<nav class="maha-nav">
+  <a href="../../../../index.html" class="nav-logo">Age of Mythos</a>
+  <div class="nav-links">
+    <a href="index.html">Volume I</a>
+    <a href="continental-origins.html">Origins</a>
+    <a href="vimana-zones.html">All 7 Zones</a>
+    <a href="galactic-threat.html">Cosmic Threat</a>
+    <a href="bharatavarsha/global-map.html">Bharatavarsha</a>
+  </div>
+  <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('nav-open')">&#9776;</button>
+</nav>
+
+<div class="map-page">
+  <div class="map-header">
+    <h1>Agni-Kshetra &mdash; Zone I</h1>
+    <p class="mh-sub">The Sacred Fire Realm &nbsp;&bull;&nbsp; Gondwana's Ancient Heart</p>
+    <p class="mh-desc">India, Africa, and Eastern South America are not three separate lands. Beneath the ocean, they are a single vein of Brahma-Dhatu — the most concentrated volcanic deposit on Earth. Agni-Vara claimed all three as one territory, one harvest, one fire.</p>
+  </div>
+
+  <div class="map-container">
+    <div class="map-svg-wrap">
+
+    <svg viewBox="0 0 1150 760" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+      <defs>
+        <!-- Parchment texture -->
+        <filter id="parchTex" x="0%" y="0%" width="100%" height="100%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.065" numOctaves="4" seed="8" result="noise"/>
+          <feColorMatrix type="saturate" values="0.08" in="noise" result="desatNoise"/>
+          <feBlend in="SourceGraphic" in2="desatNoise" mode="multiply" result="blend"/>
+          <feComposite in="blend" in2="SourceGraphic" operator="in"/>
+        </filter>
+        <!-- Ocean wave effect -->
+        <filter id="oceanFx" x="-5%" y="-5%" width="110%" height="110%">
+          <feTurbulence type="turbulence" baseFrequency="0.012" numOctaves="3" seed="5" result="wave"/>
+          <feDisplacementMap in="SourceGraphic" in2="wave" scale="3" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+        <!-- Territory glow -->
+        <filter id="terrGlow" x="-8%" y="-8%" width="116%" height="116%">
+          <feGaussianBlur stdDeviation="3" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <!-- Soft glow -->
+        <filter id="sg"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <!-- Strong glow -->
+        <filter id="stGlow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <!-- Drop shadow -->
+        <filter id="shadow" x="-5%" y="-5%" width="115%" height="125%">
+          <feDropShadow dx="2" dy="3" stdDeviation="4" flood-color="rgba(60,20,0,0.5)"/>
+        </filter>
+
+        <!-- Parchment gradient base -->
+        <linearGradient id="parchBase" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#c9a86a"/>
+          <stop offset="25%" stop-color="#b8924e"/>
+          <stop offset="50%" stop-color="#cc9e62"/>
+          <stop offset="75%" stop-color="#b88848"/>
+          <stop offset="100%" stop-color="#c0944e"/>
+        </linearGradient>
+        <!-- Parchment edge vignette -->
+        <radialGradient id="vignette" cx="50%" cy="50%" r="52%">
+          <stop offset="55%" stop-color="transparent"/>
+          <stop offset="100%" stop-color="rgba(80,35,5,0.45)"/>
+        </radialGradient>
+        <!-- Ocean gradient -->
+        <linearGradient id="oceanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#1a5a7a"/>
+          <stop offset="50%" stop-color="#15506e"/>
+          <stop offset="100%" stop-color="#124868"/>
+        </linearGradient>
+        <!-- Mystic circle gradient -->
+        <radialGradient id="mysticCircle" cx="50%" cy="50%" r="50%">
+          <stop offset="78%" stop-color="transparent"/>
+          <stop offset="90%" stop-color="rgba(255,200,120,0.08)"/>
+          <stop offset="100%" stop-color="transparent"/>
+        </radialGradient>
+        <!-- Fire glow overlay -->
+        <radialGradient id="fireGlow" cx="50%" cy="55%" r="45%">
+          <stop offset="0%" stop-color="rgba(220,90,10,0.12)"/>
+          <stop offset="100%" stop-color="transparent"/>
+        </radialGradient>
+
+        <!-- Curved text paths -->
+        <path id="mysticCurve1" d="M 90,590 A 500 480 0 0 1 1060,610" fill="none"/>
+        <path id="mysticCurve2" d="M 110,610 A 480 460 0 0 1 1040,628" fill="none"/>
+        <path id="shipArc" d="M 200,440 A 250 200 0 0 1 420,480" fill="none"/>
+      </defs>
+
+      <!-- ============================================================ -->
+      <!-- PARCHMENT BACKGROUND                                          -->
+      <!-- ============================================================ -->
+      <rect x="0" y="0" width="1150" height="760" fill="url(#parchBase)"/>
+      <rect x="0" y="0" width="1150" height="760" fill="url(#parchBase)" filter="url(#parchTex)" opacity="0.45"/>
+      <!-- Edge darkening -->
+      <rect x="0" y="0" width="1150" height="760" fill="url(#vignette)"/>
+
+      <!-- Map border frame (double line) -->
+      <rect x="10" y="10" width="1130" height="740" rx="5" fill="none" stroke="#6B3A10" stroke-width="2.5"/>
+      <rect x="16" y="16" width="1118" height="728" rx="4" fill="none" stroke="#8B5A28" stroke-width="1.2"/>
+      <rect x="20" y="20" width="1110" height="720" rx="3" fill="none" stroke="#5A2A08" stroke-width="0.6"/>
+
+      <!-- Corner ornaments -->
+      <text x="22" y="44" fill="#6B3A10" font-size="16" font-family="serif" opacity="0.7">&#10022;</text>
+      <text x="1118" y="44" fill="#6B3A10" font-size="16" font-family="serif" opacity="0.7" text-anchor="end">&#10022;</text>
+      <text x="22" y="750" fill="#6B3A10" font-size="16" font-family="serif" opacity="0.7">&#10022;</text>
+      <text x="1118" y="750" fill="#6B3A10" font-size="16" font-family="serif" opacity="0.7" text-anchor="end">&#10022;</text>
+
+      <!-- ============================================================ -->
+      <!-- OCEAN FILL                                                    -->
+      <!-- ============================================================ -->
+      <!-- Main ocean area inside border -->
+      <rect x="20" y="20" width="1110" height="720" rx="3" fill="url(#oceanGrad)"/>
+
+      <!-- Mystic concentric rings -->
+      <circle cx="575" cy="440" r="295" fill="none" stroke="rgba(255,200,120,0.10)" stroke-width="1.2"/>
+      <circle cx="575" cy="440" r="340" fill="none" stroke="rgba(255,200,120,0.07)" stroke-width="1"/>
+      <circle cx="575" cy="440" r="385" fill="none" stroke="rgba(255,190,100,0.05)" stroke-width="0.8"/>
+      <!-- Fire glow on ocean center -->
+      <ellipse cx="575" cy="440" rx="380" ry="320" fill="url(#fireGlow)"/>
+
+      <!-- Ocean texture / subtle wave lines -->
+      <g opacity="0.08" stroke="#a0d0e0" stroke-width="0.8" fill="none">
+        <path d="M 30,350 Q 80,345 130,352 Q 180,358 230,352"/>
+        <path d="M 30,365 Q 80,360 130,367 Q 180,373 230,367"/>
+        <path d="M 30,380 Q 80,375 130,382 Q 180,388 230,382"/>
+        <path d="M 280,395 Q 330,390 380,397 Q 430,403 480,397"/>
+        <path d="M 280,410 Q 330,405 380,412 Q 430,418 480,412"/>
+        <path d="M 680,480 Q 730,475 780,482 Q 830,488 880,482"/>
+        <path d="M 680,495 Q 730,490 780,497 Q 830,503 880,497"/>
+      </g>
+
+      <!-- ============================================================ -->
+      <!-- BACKGROUND / ADJACENT TERRITORIES (lighter, faded)           -->
+      <!-- ============================================================ -->
+
+      <!-- EUROPE (upper center, very faded) -->
+      <path d="M 462,28 L 520,26 L 560,38 L 588,52 L 598,68 L 582,80 L 558,85 L 528,82 L 505,90 L 488,100 L 468,105 L 452,98 L 435,85 L 425,70 L 428,55 L 442,42 Z"
+            fill="#c5a870" stroke="#9a7840" stroke-width="0.8" opacity="0.72"/>
+      <text x="512" y="72" fill="#5a3a10" text-anchor="middle" font-size="8.5" font-family="Georgia" font-style="italic" opacity="0.7">EUROPE</text>
+
+      <!-- Middle East / Arabian Peninsula (right of N Africa) -->
+      <path d="M 750,150 L 810,142 L 848,158 L 858,188 L 845,215 L 818,228 L 788,225 L 762,210 L 748,185 L 748,165 Z"
+            fill="#c8a858" stroke="#9a7830" stroke-width="0.8" opacity="0.65"/>
+      <text x="800" y="192" fill="#5a3a10" text-anchor="middle" font-size="7.5" font-family="Georgia" font-style="italic" opacity="0.65">ARABIA</text>
+
+      <!-- East Africa coast context (Zanzibar reference) -->
+
+      <!-- North Africa (Zone III — lighter golden tone) -->
+      <path d="M 425,105 L 452,98 L 470,108 L 490,108 L 510,105 L 538,100 L 568,102 L 605,112 L 638,125 L 662,140 L 682,160 L 692,178 L 698,195 L 695,212 L 688,220 L 672,218 L 648,225 L 618,228 L 590,225 L 565,220 L 540,215 L 515,210 L 488,205 L 462,200 L 438,192 L 420,182 L 410,168 L 408,152 L 415,135 L 422,118 Z"
+            fill="#c8a545" stroke="#8a7020" stroke-width="0.9" opacity="0.78"/>
+      <text x="558" y="168" fill="#4a3008" text-anchor="middle" font-size="8" font-family="Georgia" font-style="italic" opacity="0.72">SAHARA DESERT</text>
+      <text x="558" y="180" fill="#5a3a10" text-anchor="middle" font-size="6.5" font-family="Georgia" font-style="italic" opacity="0.6">(ZONE III BOUNDARY)</text>
+
+      <!-- Western South America (Andes — Zone V, green) -->
+      <path d="M 58,275 L 70,268 L 82,272 L 88,290 L 85,320 L 82,355 L 82,390 L 78,425 L 72,458 L 65,492 L 58,525 L 52,558 L 48,588 L 45,615 L 40,642 L 38,665 L 35,685 L 32,700 L 30,720 L 26,730 L 24,720 L 26,700 L 28,678 L 30,655 L 32,628 L 35,600 L 38,568 L 42,538 L 45,508 L 48,478 L 50,445 L 50,412 L 48,380 L 48,348 L 50,318 L 52,290 Z"
+            fill="#5a7a28" stroke="#3a5a18" stroke-width="0.8" opacity="0.72"/>
+      <text x="52" y="505" fill="#e8dbc8" text-anchor="middle" font-size="7" font-family="Georgia" font-style="italic" transform="rotate(-88, 52, 505)" opacity="0.75">ANDES — ZONE V</text>
+
+      <!-- Central America / Mexico (lighter) -->
+      <path d="M 55,260 L 68,252 L 80,248 L 90,255 L 88,268 L 80,272 L 68,272 L 58,268 Z"
+            fill="#b89a5a" stroke="#8a7030" stroke-width="0.6" opacity="0.6"/>
+
+      <!-- ============================================================ -->
+      <!-- ZONE I — SOUTH AMERICA (EASTERN BRAZIL & AMAZON)            -->
+      <!-- ============================================================ -->
+
+      <!-- Full Eastern South America (Zone I) -->
+      <!-- Amazon / Equatorial North -->
+      <path d="M 85,272 L 110,265 L 135,262 L 162,268 L 188,272 L 212,280 L 238,282 L 265,285 L 295,295 L 318,312 L 328,335 L 322,362 L 308,390 L 295,420 L 282,452 L 268,482 L 255,510 L 242,535 L 228,558 L 215,575 L 198,588 L 180,598 L 162,608 L 145,615 L 128,625 L 110,638 L 95,650 L 80,658 L 65,650 L 52,638 L 48,622 L 50,605 L 52,588 L 55,568 L 58,545 L 62,520 L 65,495 L 68,468 L 70,440 L 72,412 L 74,382 L 75,352 L 76,322 L 78,295 L 80,278 L 85,272 Z"
+            fill="#3a5a18" stroke="#285010" stroke-width="1" opacity="0.85"/>
+
+      <!-- Amazon overlay (deeper green for forest core) -->
+      <path d="M 90,285 L 115,278 L 142,275 L 168,278 L 195,282 L 218,285 L 245,288 L 275,298 L 295,312 L 308,335 L 302,360 L 285,392 L 272,422 L 258,452 L 245,478 L 232,502 L 218,525 L 205,542 L 192,555 L 178,565 L 165,572 L 150,580 L 135,588 L 120,595 L 108,602 L 98,612 L 90,618 L 80,622 L 75,610 L 72,592 L 74,572 L 78,550 L 80,525 L 82,498 L 82,468 L 82,438 L 82,410 L 82,382 L 82,355 L 82,328 L 84,302 L 88,285 Z"
+            fill="#4a6a20" stroke="#2a4a10" stroke-width="0.8" opacity="0.7"/>
+
+      <!-- Brazilian Highlands (SE Brazil — warmer amber) -->
+      <path d="M 225,390 L 295,312 L 318,335 L 322,365 L 308,392 L 295,422 L 282,452 L 268,480 L 255,510 L 242,535 L 228,555 L 215,572 L 202,545 L 188,518 L 178,492 L 172,462 L 172,432 L 175,405 L 180,382 L 190,362 L 202,345 L 215,332 L 228,318 Z"
+            fill="#8B5A1A" stroke="#6a3a10" stroke-width="0.9" opacity="0.75"/>
+
+      <!-- Rio de la Plata (southern tip — amber) -->
+      <path d="M 200,558 L 228,558 L 242,535 L 252,510 L 262,535 L 268,558 L 258,580 L 242,595 L 225,600 L 208,595 L 195,580 Z"
+            fill="#9A7A3A" stroke="#7a5a20" stroke-width="0.8" opacity="0.72"/>
+
+      <!-- Sub-region number markers — SA -->
+      <circle cx="140" cy="395" r="9" fill="#1a1005" stroke="#e09040" stroke-width="1.2"/>
+      <text x="140" y="399" fill="#e09040" text-anchor="middle" font-size="8.5" font-family="serif" font-weight="bold">11</text>
+      <circle cx="255" cy="415" r="9" fill="#1a1005" stroke="#e09040" stroke-width="1.2"/>
+      <text x="255" y="419" fill="#e09040" text-anchor="middle" font-size="8.5" font-family="serif" font-weight="bold">12</text>
+      <circle cx="225" cy="568" r="9" fill="#1a1005" stroke="#e09040" stroke-width="1.2"/>
+      <text x="225" y="572" fill="#e09040" text-anchor="middle" font-size="8.5" font-family="serif" font-weight="bold">13</text>
+
+      <!-- SA Region labels -->
+      <text x="128" y="388" fill="#f0e0c0" text-anchor="middle" font-size="8" font-family="Georgia" font-weight="bold" opacity="0.85">AMAZON</text>
+      <text x="128" y="399" fill="#f0e0c0" text-anchor="middle" font-size="7" font-family="Georgia" font-style="italic" opacity="0.75">WILDERNESS</text>
+      <text x="252" y="435" fill="#f0e0c0" text-anchor="middle" font-size="8" font-family="Georgia" font-weight="bold" opacity="0.85">HIGHLANDS</text>
+      <text x="252" y="446" fill="#f0e0c0" text-anchor="middle" font-size="7" font-family="Georgia" font-style="italic" opacity="0.75">OF BRASIL</text>
+      <text x="228" y="580" fill="#f0e0c0" text-anchor="middle" font-size="7.5" font-family="Georgia" font-weight="bold" opacity="0.85">RIO DE</text>
+      <text x="228" y="591" fill="#f0e0c0" text-anchor="middle" font-size="7" font-family="Georgia" font-style="italic" opacity="0.75">LA PLATA</text>
+
+      <!-- SA territory title -->
+      <text x="175" y="292" fill="#f8e8c0" text-anchor="middle" font-size="10" font-family="Georgia" font-weight="bold" opacity="0.9">AGNI-KSHETRA</text>
+      <text x="175" y="303" fill="#f8e8c0" text-anchor="middle" font-size="8" font-family="Georgia" font-style="italic" opacity="0.75">EASTERN REALM</text>
+
+      <!-- ============================================================ -->
+      <!-- ZONE I — AFRICA (SUB-SAHARAN)                                -->
+      <!-- ============================================================ -->
+
+      <!-- Full Africa outline (both N.Africa and Sub-Saharan drawn together) -->
+      <!-- N.Africa already drawn above as Zone III lighter area -->
+
+      <!-- West Africa (Zone I — warm amber-green) -->
+      <path d="M 415,220 L 440,215 L 465,212 L 492,210 L 518,212 L 540,218 L 558,225 L 568,240 L 562,258 L 548,272 L 528,280 L 508,282 L 485,278 L 462,272 L 442,260 L 428,245 L 418,232 Z"
+            fill="#7A5518" stroke="#5a3808" stroke-width="0.9" opacity="0.85"/>
+
+      <!-- West Africa coast (extending down) -->
+      <path d="M 408,230 L 415,220 L 418,235 L 420,250 L 415,268 L 408,282 L 400,295 L 392,308 L 385,322 L 382,338 L 380,355 L 382,372 L 388,388 L 395,405 L 402,418 L 410,432 L 418,445 L 422,462 L 422,478 L 418,492 L 412,505 L 408,520 L 405,538 L 402,555 L 400,572 L 398,588 L 396,605 L 392,620 L 388,635 L 382,648 L 375,660 L 368,672 L 362,682 L 355,692 L 350,702 L 345,712 L 340,720 L 338,728 L 340,732 L 348,730 L 360,722 L 372,710 L 382,698 L 390,685 L 398,670 L 408,655 L 418,640 L 428,625 L 438,610 L 448,595 L 458,580 L 468,565 L 475,548 L 480,532 L 482,515 L 480,498 L 478,480 L 475,462 L 470,445 L 465,428 L 460,412 L 455,395 L 450,378 L 445,362 L 440,345 L 435,328 L 430,312 L 425,295 L 420,278 L 416,262 L 413,245 L 408,232 Z"
+            fill="#7A5518" stroke="#5a3808" stroke-width="1" opacity="0.82"/>
+
+      <!-- Gulf of Guinea indent (Bight) -->
+      <path d="M 462,272 L 480,278 L 498,282 L 515,285 L 530,288 L 548,288 L 565,285 L 580,280 L 595,278 L 612,278 L 628,282 L 640,290 L 648,302 L 648,318 L 640,330 L 628,338 L 612,342 L 595,342 L 578,340 L 562,335 L 545,328 L 528,322 L 510,315 L 492,308 L 475,302 L 462,295 L 455,282 L 455,272 Z"
+            fill="#6A4A12" stroke="#4a2a08" stroke-width="0.9" opacity="0.85"/>
+
+      <!-- Congo Basin (dark tropical forest) -->
+      <path d="M 545,325 L 580,312 L 618,312 L 650,325 L 668,345 L 672,368 L 665,390 L 648,408 L 628,418 L 608,422 L 588,418 L 568,410 L 548,398 L 530,382 L 520,362 L 520,342 L 532,328 Z"
+            fill="#2A4A0A" stroke="#1a3005" stroke-width="1" opacity="0.88"/>
+
+      <!-- East African coast / Rift Valley -->
+      <path d="M 672,345 L 705,325 L 735,318 L 762,325 L 782,342 L 790,365 L 785,390 L 772,412 L 755,428 L 735,438 L 712,440 L 690,432 L 670,418 L 658,398 L 655,375 L 660,355 L 668,345 Z"
+            fill="#6A7A1A" stroke="#4a5a0a" stroke-width="0.9" opacity="0.85"/>
+
+      <!-- Horn of Africa (Somalia) -->
+      <path d="M 760,322 L 790,315 L 818,310 L 840,318 L 848,340 L 840,362 L 820,378 L 798,385 L 778,382 L 762,368 L 752,348 L 755,330 Z"
+            fill="#8A6A28" stroke="#6a4a10" stroke-width="0.9" opacity="0.82"/>
+
+      <!-- Southern Africa -->
+      <path d="M 410,538 L 440,535 L 468,540 L 495,548 L 522,558 L 548,568 L 572,578 L 594,590 L 612,604 L 625,618 L 630,635 L 625,650 L 612,660 L 595,665 L 578,662 L 560,655 L 542,645 L 525,632 L 508,618 L 490,605 L 472,595 L 454,588 L 436,582 L 418,575 L 405,565 L 400,552 L 404,540 Z"
+            fill="#7A3A0A" stroke="#5a2008" stroke-width="1" opacity="0.85"/>
+
+      <!-- Mozambique / SE coast -->
+      <path d="M 660,418 L 692,412 L 718,418 L 740,430 L 758,448 L 768,468 L 765,488 L 752,505 L 735,515 L 715,518 L 695,512 L 675,498 L 658,480 L 648,460 L 645,440 L 650,425 Z"
+            fill="#6A5A18" stroke="#4a3a08" stroke-width="0.9" opacity="0.82"/>
+
+      <!-- Africa borders / outline stroke -->
+      <path d="M 425,105 L 452,98 L 490,108 L 540,100 L 568,102 L 608,112 L 638,125 L 662,140 L 682,162 L 695,185 L 698,208 L 690,222 L 665,228 L 635,228 L 608,230 L 580,228 L 545,220 L 515,212 L 488,208 L 462,202 L 438,192 L 420,178 L 408,158 L 408,135 L 418,118 L 428,108 Z"
+            fill="none" stroke="#6B4520" stroke-width="1.2" opacity="0.6"/>
+
+      <!-- Outer Africa border line -->
+      <path d="M 408,232 C 400,248 392,265 385,282 C 378,300 375,318 375,338 C 375,358 380,378 390,398 C 400,418 412,435 422,452 C 432,470 440,488 445,508 C 450,528 448,548 445,568 C 440,588 432,608 422,625 C 412,642 400,658 390,672 C 378,688 368,700 360,712 C 350,724 342,730 342,732"
+            fill="none" stroke="#5a2a08" stroke-width="1.5" opacity="0.55"/>
+      <path d="M 645,228 C 668,232 692,238 715,248 C 740,258 762,272 780,292 C 798,312 810,335 818,360 C 825,385 825,410 818,435 C 810,460 795,482 778,500 C 762,518 742,532 720,542 C 698,552 675,556 652,552 C 628,548 605,538 582,525 C 558,512 535,495 512,480 C 490,465 468,450 448,435 C 428,420 408,405 400,385 C 392,368 392,352 398,335 C 405,318 418,305 430,295 C 442,285 455,278 468,272"
+            fill="none" stroke="#5a2a08" stroke-width="1.5" opacity="0.55"/>
+
+      <!-- Sub-region markers — Africa -->
+      <circle cx="445" cy="310" r="9" fill="#1a1005" stroke="#e09040" stroke-width="1.2"/>
+      <text x="445" y="314" fill="#e09040" text-anchor="middle" font-size="8.5" font-family="serif" font-weight="bold">7</text>
+      <circle cx="572" cy="368" r="9" fill="#1a1005" stroke="#e09040" stroke-width="1.2"/>
+      <text x="572" y="372" fill="#e09040" text-anchor="middle" font-size="8.5" font-family="serif" font-weight="bold">8</text>
+      <circle cx="710" cy="380" r="9" fill="#1a1005" stroke="#e09040" stroke-width="1.2"/>
+      <text x="710" y="384" fill="#e09040" text-anchor="middle" font-size="8.5" font-family="serif" font-weight="bold">9</text>
+      <circle cx="515" cy="598" r="9" fill="#1a1005" stroke="#e09040" stroke-width="1.2"/>
+      <text x="515" y="602" fill="#e09040" text-anchor="middle" font-size="8.5" font-family="serif" font-weight="bold">10</text>
+      <!-- N.Africa marker (Zone III edge) -->
+      <circle cx="558" cy="168" r="9" fill="#1a1005" stroke="#a09040" stroke-width="1.2"/>
+      <text x="558" y="172" fill="#c09040" text-anchor="middle" font-size="8.5" font-family="serif" font-weight="bold">6</text>
+
+      <!-- Africa region labels -->
+      <text x="420" y="325" fill="#f8e0b0" text-anchor="middle" font-size="7.5" font-family="Georgia" font-weight="bold" opacity="0.88">WEST AFRICAN</text>
+      <text x="420" y="336" fill="#f8e0b0" text-anchor="middle" font-size="7" font-family="Georgia" font-style="italic" opacity="0.78">REACH</text>
+      <text x="568" y="380" fill="#e8f0d0" text-anchor="middle" font-size="7.5" font-family="Georgia" font-weight="bold" opacity="0.9">KONGO</text>
+      <text x="568" y="390" fill="#e8f0d0" text-anchor="middle" font-size="7" font-family="Georgia" font-style="italic" opacity="0.8">BASIN</text>
+      <text x="705" y="392" fill="#f0e8c0" text-anchor="middle" font-size="7.5" font-family="Georgia" font-weight="bold" opacity="0.88">GREAT RIFT</text>
+      <text x="705" y="403" fill="#f0e8c0" text-anchor="middle" font-size="7" font-family="Georgia" font-style="italic" opacity="0.78">VALLEY</text>
+      <text x="515" y="615" fill="#f8e0c0" text-anchor="middle" font-size="7.5" font-family="Georgia" font-weight="bold" opacity="0.88">SOUTH AFRICAN</text>
+      <text x="515" y="626" fill="#f8e0c0" text-anchor="middle" font-size="7" font-family="Georgia" font-style="italic" opacity="0.78">CAPE</text>
+
+      <!-- AFRICA title -->
+      <text x="520" y="460" fill="#fde8b0" text-anchor="middle" font-size="13" font-family="Georgia" font-weight="bold" opacity="0.92">AFRICA</text>
+      <text x="520" y="474" fill="#fde8b0" text-anchor="middle" font-size="9" font-family="Georgia" font-style="italic" opacity="0.78">AGNI-KSHETRA REACH</text>
+
+      <!-- Madagascar (small island E of Africa) -->
+      <path d="M 760,478 L 772,470 L 782,480 L 785,498 L 780,515 L 770,525 L 758,518 L 750,502 L 752,485 Z"
+            fill="#7A6520" stroke="#5a4510" stroke-width="0.8" opacity="0.78"/>
+      <text x="768" y="500" fill="#f0e0b0" text-anchor="middle" font-size="6.5" font-family="Georgia" opacity="0.7">MADAGASCAR</text>
+
+      <!-- ============================================================ -->
+      <!-- ZONE I — INDIA (SUBCONTINENT)                                -->
+      <!-- ============================================================ -->
+
+      <!-- Pakistan / NW India -->
+      <path d="M 875,195 L 900,168 L 910,150 L 925,138 L 945,130 L 962,128 L 978,132 L 990,142 L 998,158 L 998,175 L 990,188 L 978,198 L 962,205 L 945,210 L 928,212 L 912,210 L 895,205 L 878,200 Z"
+            fill="#9A6A2A" stroke="#7a4a10" stroke-width="1" opacity="0.85"/>
+
+      <!-- Gangetic Plains (northern India) -->
+      <path d="M 952,128 L 975,132 L 995,145 L 1010,158 L 1022,172 L 1032,188 L 1038,205 L 1038,222 L 1032,238 L 1020,250 L 1005,258 L 990,262 L 975,260 L 960,255 L 945,248 L 932,238 L 920,225 L 910,210 L 918,198 L 932,188 L 945,178 L 955,162 L 958,148 Z"
+            fill="#C47A2A" stroke="#9a5a10" stroke-width="1" opacity="0.88"/>
+
+      <!-- Deccan Plateau (main fire deposit zone) -->
+      <path d="M 912,210 L 932,205 L 952,205 L 975,208 L 998,215 L 1018,228 L 1030,245 L 1035,265 L 1032,285 L 1022,305 L 1008,318 L 990,325 L 972,325 L 955,318 L 938,308 L 922,295 L 908,278 L 898,260 L 892,240 L 892,222 L 900,212 Z"
+            fill="#8B3A0A" stroke="#6a2008" stroke-width="1.2" opacity="0.92"/>
+
+      <!-- South India -->
+      <path d="M 922,295 L 942,308 L 962,318 L 980,322 L 998,320 L 1015,315 L 1028,305 L 1038,290 L 1042,275 L 1040,258 L 1045,268 L 1050,285 L 1050,305 L 1042,322 L 1030,338 L 1015,350 L 998,358 L 982,362 L 965,358 L 948,350 L 932,338 L 918,322 L 910,308 L 910,292 Z"
+            fill="#9B4A1A" stroke="#7a2a08" stroke-width="1" opacity="0.88"/>
+
+      <!-- Southern tip / Tamil Nadu -->
+      <path d="M 950,348 L 968,355 L 985,358 L 1002,355 L 1018,345 L 1028,332 L 1030,345 L 1022,360 L 1008,372 L 990,378 L 972,375 L 955,365 L 945,352 Z"
+            fill="#A84B1A" stroke="#7a2a08" stroke-width="0.9" opacity="0.88"/>
+
+      <!-- Bengal & NE India -->
+      <path d="M 1032,188 L 1052,195 L 1070,205 L 1082,222 L 1085,242 L 1078,258 L 1062,268 L 1045,272 L 1030,265 L 1018,252 L 1012,238 L 1015,222 L 1022,208 Z"
+            fill="#7A6A2A" stroke="#5a4a10" stroke-width="1" opacity="0.85"/>
+
+      <!-- Malabar / Kerala coast (W side) -->
+      <path d="M 895,240 L 910,235 L 922,248 L 928,268 L 928,288 L 922,308 L 912,322 L 902,330 L 892,322 L 885,305 L 882,285 L 882,262 L 888,248 Z"
+            fill="#6A4A18" stroke="#4a2a08" stroke-width="0.9" opacity="0.85"/>
+
+      <!-- Sri Lanka -->
+      <path d="M 1008,382 L 1020,378 L 1030,385 L 1032,400 L 1025,412 L 1012,415 L 1000,408 L 996,395 L 1002,385 Z"
+            fill="#5A7A2A" stroke="#3a5a10" stroke-width="0.9" opacity="0.88"/>
+
+      <!-- Sub-region markers — India -->
+      <circle cx="955" cy="252" r="9" fill="#1a1005" stroke="#e09040" stroke-width="1.2"/>
+      <text x="955" y="256" fill="#e09040" text-anchor="middle" font-size="8.5" font-family="serif" font-weight="bold">2</text>
+      <circle cx="960" cy="262" r="9" fill="#1a1005" stroke="#e09040" stroke-width="1.2"/>
+      <!-- Overlap fix - reposition -->
+      <circle cx="985" cy="245" r="9" fill="#1a1005" stroke="#e09040" stroke-width="1.2"/>
+      <text x="985" y="249" fill="#e09040" text-anchor="middle" font-size="8.5" font-family="serif" font-weight="bold">1</text>
+      <circle cx="955" cy="252" r="9" fill="#1a1005" stroke="#e09040" stroke-width="1.2"/>
+      <text x="955" y="256" fill="#e09040" text-anchor="middle" font-size="8.5" font-family="serif" font-weight="bold">2</text>
+      <circle cx="920" cy="302" r="9" fill="#1a1005" stroke="#e09040" stroke-width="1.2"/>
+      <text x="920" y="306" fill="#e09040" text-anchor="middle" font-size="8.5" font-family="serif" font-weight="bold">3</text>
+      <circle cx="1052" cy="232" r="9" fill="#1a1005" stroke="#e09040" stroke-width="1.2"/>
+      <text x="1052" y="236" fill="#e09040" text-anchor="middle" font-size="8.5" font-family="serif" font-weight="bold">4</text>
+      <circle cx="1015" cy="400" r="9" fill="#1a1005" stroke="#e09040" stroke-width="1.2"/>
+      <text x="1015" y="404" fill="#e09040" text-anchor="middle" font-size="8.5" font-family="serif" font-weight="bold">5</text>
+
+      <!-- India region labels -->
+      <text x="985" y="232" fill="#ffe8c0" text-anchor="middle" font-size="8" font-family="Georgia" font-weight="bold" opacity="0.9">DECCAN</text>
+      <text x="985" y="243" fill="#ffe8c0" text-anchor="middle" font-size="7" font-family="Georgia" font-style="italic" opacity="0.8">PLATEAU</text>
+      <text x="958" y="230" fill="#fde0a0" text-anchor="middle" font-size="7.5" font-family="Georgia" font-weight="bold" opacity="0.88">GANGETIC</text>
+      <text x="958" y="242" fill="#fde0a0" text-anchor="middle" font-size="7" font-family="Georgia" font-style="italic" opacity="0.78">PLAINS</text>
+      <text x="912" y="295" fill="#f8e8c0" text-anchor="middle" font-size="7.5" font-family="Georgia" font-weight="bold" opacity="0.88">SOUTH</text>
+      <text x="912" y="305" fill="#f8e8c0" text-anchor="middle" font-size="7" font-family="Georgia" font-style="italic" opacity="0.78">INDIA</text>
+      <text x="1060" y="248" fill="#f8e8b0" text-anchor="middle" font-size="7.5" font-family="Georgia" font-weight="bold" opacity="0.88">BENGAL &amp;</text>
+      <text x="1060" y="258" fill="#f8e8b0" text-anchor="middle" font-size="7" font-family="Georgia" font-style="italic" opacity="0.78">NORTHEAST</text>
+      <text x="1012" y="394" fill="#f0edd8" text-anchor="middle" font-size="7" font-family="Georgia" font-style="italic" opacity="0.82">LANKA</text>
+
+      <!-- India / Subcontinent title -->
+      <text x="972" y="175" fill="#ffe8c0" text-anchor="middle" font-size="11" font-family="Georgia" font-weight="bold" opacity="0.92">BHARATAVARSHA</text>
+      <text x="972" y="187" fill="#ffe8c0" text-anchor="middle" font-size="8" font-family="Georgia" font-style="italic" opacity="0.78">ZONE I HEARTLAND</text>
+
+      <!-- Indian subcontinent border overlay -->
+      <path d="M 875,195 C 890,178 905,160 922,145 C 938,130 955,122 975,120 C 992,118 1010,125 1025,138 C 1040,152 1048,168 1052,188 C 1058,210 1062,232 1068,252 C 1072,270 1075,288 1072,305 C 1068,322 1058,338 1045,352 C 1030,368 1012,380 992,388 C 972,396 952,396 932,388 C 912,380 894,365 880,348 C 868,332 860,312 858,292 C 856,272 860,252 868,235 C 872,222 875,210 875,198 Z"
+            fill="none" stroke="#6a3010" stroke-width="1.8" opacity="0.55"/>
+
+      <!-- ============================================================ -->
+      <!-- OCEAN LABELS                                                  -->
+      <!-- ============================================================ -->
+      <text x="305" y="450" fill="rgba(220,235,245,0.55)" text-anchor="middle" font-size="13" font-family="Georgia" font-style="italic" font-weight="bold">ATLANTIC</text>
+      <text x="305" y="466" fill="rgba(220,235,245,0.55)" text-anchor="middle" font-size="13" font-family="Georgia" font-style="italic" font-weight="bold">OCEAN</text>
+      <text x="830" y="255" fill="rgba(220,235,245,0.50)" text-anchor="middle" font-size="11" font-family="Georgia" font-style="italic">INDIAN OCEAN</text>
+      <text x="878" y="462" fill="rgba(220,235,245,0.45)" text-anchor="middle" font-size="9.5" font-family="Georgia" font-style="italic">SOUTHERN OCEAN</text>
+      <text x="920" y="175" fill="rgba(220,235,245,0.45)" text-anchor="middle" font-size="9" font-family="Georgia" font-style="italic">ARABIAN SEA</text>
+      <text x="1075" y="310" fill="rgba(220,235,245,0.42)" text-anchor="middle" font-size="8.5" font-family="Georgia" font-style="italic">BAY OF</text>
+      <text x="1075" y="322" fill="rgba(220,235,245,0.42)" text-anchor="middle" font-size="8.5" font-family="Georgia" font-style="italic">BENGAL</text>
+      <text x="360" y="600" fill="rgba(220,235,245,0.40)" text-anchor="middle" font-size="9" font-family="Georgia" font-style="italic">SOUTHERN OCEAN</text>
+      <text x="820" y="588" fill="rgba(220,235,245,0.38)" text-anchor="middle" font-size="8" font-family="Georgia" font-style="italic">MOZAMBIQUE CHANNEL</text>
+
+      <!-- ============================================================ -->
+      <!-- ADJACENT ZONE LABELS                                          -->
+      <!-- ============================================================ -->
+      <text x="118" y="40" fill="#3a2008" text-anchor="middle" font-size="8" font-family="Georgia" font-weight="bold" opacity="0.65">ZONE IV</text>
+      <text x="118" y="52" fill="#3a2008" text-anchor="middle" font-size="7" font-family="Georgia" font-style="italic" opacity="0.55">JALA-KSHETRA</text>
+      <text x="490" y="42" fill="#3a2008" text-anchor="middle" font-size="8" font-family="Georgia" font-weight="bold" opacity="0.65">ZONE III — VAYU-KSHETRA</text>
+      <text x="490" y="54" fill="#3a2008" text-anchor="middle" font-size="7" font-family="Georgia" font-style="italic" opacity="0.55">EUROPE &amp; NORTH AFRICA</text>
+      <text x="1095" y="135" fill="#3a2008" text-anchor="middle" font-size="7.5" font-family="Georgia" font-weight="bold" opacity="0.6">ZONE VII</text>
+      <text x="1095" y="147" fill="#3a2008" text-anchor="middle" font-size="7" font-family="Georgia" font-style="italic" opacity="0.5">INDRA-KSHETRA</text>
+      <text x="812" y="695" fill="#3a2008" text-anchor="middle" font-size="7.5" font-family="Georgia" font-weight="bold" opacity="0.55">ZONE V — PRITHVI-KSHETRA</text>
+      <text x="812" y="706" fill="#3a2008" text-anchor="middle" font-size="7" font-family="Georgia" font-style="italic" opacity="0.45">ANTARCTICA REACH</text>
+
+      <!-- ============================================================ -->
+      <!-- MYSTIC CURRENTS TEXT (curved)                                 -->
+      <!-- ============================================================ -->
+      <text font-size="11" font-family="Georgia" font-style="italic" fill="rgba(255,220,160,0.55)" letter-spacing="3">
+        <textPath href="#mysticCurve1" startOffset="5%">MYSTIC CURRENTS OF AGNI-KSHETRA — THE FIRE UNION OF THREE ANCIENT LANDS</textPath>
+      </text>
+      <text font-size="9" font-family="Georgia" font-style="italic" fill="rgba(255,200,120,0.35)" letter-spacing="4">
+        <textPath href="#mysticCurve2" startOffset="8%">GONDWANA ETERNAL — WHERE THE FLAME RUNS BENEATH THE SEA</textPath>
+      </text>
+
+      <!-- ============================================================ -->
+      <!-- SHIPS IN OCEAN                                                -->
+      <!-- ============================================================ -->
+
+      <!-- Ship 1 (Atlantic, near S.America) -->
+      <g transform="translate(320, 415)" opacity="0.65">
+        <path d="M -18,8 L -18,-3 C -18,-3 -12,-6 0,-6 C 12,-6 18,-3 18,-3 L 18,8 C 10,12 -10,12 -18,8 Z" fill="#7a4510" stroke="#4a2a08" stroke-width="0.8"/>
+        <line x1="0" y1="-6" x2="0" y2="-28" stroke="#4a2a08" stroke-width="1.2"/>
+        <path d="M 0,-28 L -14,-12 L 0,-6 Z" fill="#c8a070" stroke="#8a5a20" stroke-width="0.5"/>
+        <path d="M 0,-28 L 12,-16 L 0,-9 Z" fill="#c8a070" stroke="#8a5a20" stroke-width="0.5"/>
+        <path d="M -18,8 L 18,8" stroke="#4a2a08" stroke-width="0.5"/>
+      </g>
+
+      <!-- Ship 2 (Atlantic, mid) -->
+      <g transform="translate(370, 390) rotate(-5)" opacity="0.55">
+        <path d="M -14,6 L -14,-2 C -14,-2 -8,-5 0,-5 C 8,-5 14,-2 14,-2 L 14,6 C 8,10 -8,10 -14,6 Z" fill="#7a4510" stroke="#4a2a08" stroke-width="0.8"/>
+        <line x1="0" y1="-5" x2="0" y2="-22" stroke="#4a2a08" stroke-width="1"/>
+        <path d="M 0,-22 L -10,-10 L 0,-5 Z" fill="#c8a070" stroke="#8a5a20" stroke-width="0.5"/>
+        <path d="M 0,-22 L 10,-12 L 0,-7 Z" fill="#c8a070" stroke="#8a5a20" stroke-width="0.5"/>
+      </g>
+
+      <!-- Ship 3 (Indian Ocean) -->
+      <g transform="translate(840, 360) rotate(8)" opacity="0.55">
+        <path d="M -16,7 L -16,-3 C -16,-3 -10,-5 0,-5 C 10,-5 16,-3 16,-3 L 16,7 C 8,11 -8,11 -16,7 Z" fill="#7a4510" stroke="#4a2a08" stroke-width="0.8"/>
+        <line x1="0" y1="-5" x2="0" y2="-25" stroke="#4a2a08" stroke-width="1.2"/>
+        <path d="M 0,-25 L -12,-11 L 0,-5 Z" fill="#c8a070" stroke="#8a5a20" stroke-width="0.5"/>
+        <path d="M 0,-25 L 10,-14 L 0,-8 Z" fill="#c8a070" stroke="#8a5a20" stroke-width="0.5"/>
+      </g>
+
+      <!-- Sea serpent / leviathan (Atlantic) -->
+      <g opacity="0.42" fill="none" stroke="#4a7a5a" stroke-width="2">
+        <path d="M 255,500 C 270,490 285,495 295,488 C 305,480 308,470 318,462 C 328,455 340,458 348,450"/>
+        <circle cx="255" cy="500" r="5" fill="#4a7a5a"/>
+        <!-- spines -->
+        <path d="M 270,492 L 268,482" stroke-width="1.2"/>
+        <path d="M 282,492 L 280,482" stroke-width="1.2"/>
+        <path d="M 295,487 L 294,477" stroke-width="1.2"/>
+        <path d="M 308,478 L 308,468" stroke-width="1.2"/>
+        <path d="M 322,468 L 322,458" stroke-width="1.2"/>
+      </g>
+
+      <!-- ============================================================ -->
+      <!-- FIRE / AGNI SYMBOL (Center ocean, connecting the three lands) -->
+      <!-- ============================================================ -->
+      <!-- Brahma-Dhatu connection lines (underwater veins) -->
+      <path d="M 182,388 C 250,420 320,418 380,398" stroke="rgba(255,140,30,0.18)" stroke-width="2.5" fill="none" stroke-dasharray="8,12"/>
+      <path d="M 380,398 C 450,365 490,355 520,358" stroke="rgba(255,140,30,0.15)" stroke-width="2" fill="none" stroke-dasharray="8,12"/>
+      <path d="M 815,398 C 860,398 882,390 900,365" stroke="rgba(255,140,30,0.15)" stroke-width="2" fill="none" stroke-dasharray="8,12"/>
+      <!-- Central fire symbol -->
+      <text x="568" y="432" fill="rgba(255,150,40,0.32)" text-anchor="middle" font-size="42" font-family="serif">&#9830;</text>
+      <text x="568" y="435" fill="rgba(255,200,80,0.22)" text-anchor="middle" font-size="18" font-family="Georgia" font-style="italic">Agni</text>
+      <text x="568" y="452" fill="rgba(255,180,60,0.18)" text-anchor="middle" font-size="11" font-family="Georgia" font-style="italic">&#x2942;</text>
+
+      <!-- ============================================================ -->
+      <!-- COMPASS ROSE (upper right)                                    -->
+      <!-- ============================================================ -->
+      <g transform="translate(1058, 108)">
+        <!-- Outer ring -->
+        <circle r="48" fill="rgba(180,120,40,0.18)" stroke="#8B5A20" stroke-width="1.2"/>
+        <circle r="42" fill="rgba(140,90,30,0.12)" stroke="#9B6A30" stroke-width="0.8"/>
+
+        <!-- 8-point star (N/S/E/W) -->
+        <path d="M 0,-42 L 5,-12 L 0,-18 L -5,-12 Z" fill="#8B4010"/>
+        <path d="M 0,42 L 5,12 L 0,18 L -5,12 Z" fill="#8B4010"/>
+        <path d="M -42,0 L -12,5 L -18,0 L -12,-5 Z" fill="#8B4010"/>
+        <path d="M 42,0 L 12,5 L 18,0 L 12,-5 Z" fill="#8B4010"/>
+        <!-- Diagonal points (lighter) -->
+        <path d="M -29,-29 L -8,-4 L -4,-8 Z" fill="#C4883A"/>
+        <path d="M 29,-29 L 8,-4 L 4,-8 Z" fill="#C4883A"/>
+        <path d="M -29,29 L -8,4 L -4,8 Z" fill="#C4883A"/>
+        <path d="M 29,29 L 8,4 L 4,8 Z" fill="#C4883A"/>
+        <!-- Center circles -->
+        <circle r="8" fill="#8B4010" stroke="#C4883A" stroke-width="1"/>
+        <circle r="4" fill="#E8A040"/>
+        <!-- Cardinal text -->
+        <text x="0" y="-50" fill="#5a2a05" text-anchor="middle" font-size="11" font-family="Georgia" font-weight="bold">N</text>
+        <text x="0" y="62" fill="#5a2a05" text-anchor="middle" font-size="11" font-family="Georgia" font-weight="bold">S</text>
+        <text x="55" y="5" fill="#5a2a05" text-anchor="start" font-size="11" font-family="Georgia" font-weight="bold">E</text>
+        <text x="-55" y="5" fill="#5a2a05" text-anchor="end" font-size="11" font-family="Georgia" font-weight="bold">W</text>
+      </g>
+
+      <!-- ============================================================ -->
+      <!-- CORNER DECORATIONS                                            -->
+      <!-- ============================================================ -->
+
+      <!-- Upper left corner: Lion & Flame (Agni Zone emblem) -->
+      <g transform="translate(32, 32)" opacity="0.72">
+        <rect x="0" y="0" width="118" height="58" rx="5" fill="rgba(50,25,5,0.6)" stroke="#6B3A10" stroke-width="1.2"/>
+        <text x="12" y="22" fill="#e0903a" font-size="18" font-family="serif">&#9876;</text>
+        <text x="40" y="18" fill="#ffd080" font-size="10" font-family="Georgia" font-weight="bold">AGNI-KSHETRA</text>
+        <text x="40" y="30" fill="#c8a060" font-size="8" font-family="Georgia" font-style="italic">Zone I — Fire Territory</text>
+        <text x="12" y="50" fill="#e0903a" font-size="18" font-family="serif">&#128293;</text>
+        <text x="40" y="48" fill="#a08040" font-size="8" font-family="Georgia" font-style="italic">Guardian: Agni-Vara</text>
+      </g>
+
+      <!-- Upper right corner area title -->
+      <g transform="translate(820, 28)" opacity="0.75">
+        <text x="0" y="0" fill="#5a2a05" font-size="9" font-family="Georgia" font-style="italic">ARCTIC OCEAN</text>
+      </g>
+
+      <!-- Right side: Standing warrior figure (like in original maps) -->
+      <g transform="translate(1108, 340)" opacity="0.60">
+        <!-- Simple stylized figure -->
+        <circle cx="0" cy="-55" r="10" fill="none" stroke="#6B4A20" stroke-width="1.5"/>
+        <line x1="0" y1="-45" x2="0" y2="-10" stroke="#6B4A20" stroke-width="2"/>
+        <line x1="0" y1="-38" x2="-12" y2="-25" stroke="#6B4A20" stroke-width="1.5"/>
+        <line x1="0" y1="-38" x2="12" y2="-28" stroke="#6B4A20" stroke-width="1.5"/>
+        <line x1="0" y1="-10" x2="-8" y2="15" stroke="#6B4A20" stroke-width="1.5"/>
+        <line x1="0" y1="-10" x2="8" y2="15" stroke="#6B4A20" stroke-width="1.5"/>
+        <text x="0" y="30" fill="#5a3010" text-anchor="middle" font-size="7" font-family="Georgia" font-style="italic">Brahma-</text>
+        <text x="0" y="40" fill="#5a3010" text-anchor="middle" font-size="7" font-family="Georgia" font-style="italic">Dhatu</text>
+        <text x="0" y="50" fill="#5a3010" text-anchor="middle" font-size="7" font-family="Georgia" font-style="italic">Seeker</text>
+      </g>
+
+      <!-- ============================================================ -->
+      <!-- LEGEND BOX (lower left)                                       -->
+      <!-- ============================================================ -->
+      <rect x="24" y="480" width="230" height="250" rx="6" fill="rgba(12,6,2,0.88)" stroke="#7B4A18" stroke-width="1.5"/>
+      <rect x="28" y="484" width="222" height="242" rx="4" fill="none" stroke="#5a3010" stroke-width="0.8"/>
+
+      <text x="139" y="506" fill="#e08040" text-anchor="middle" font-size="13" font-family="Georgia" font-weight="bold">AGNI-KSHETRA</text>
+      <text x="139" y="520" fill="#c06828" text-anchor="middle" font-size="8.5" font-family="Georgia" font-weight="bold">THE SACRED FIRE REALM</text>
+      <line x1="38" y1="526" x2="240" y2="526" stroke="#6B3A10" stroke-width="0.8"/>
+
+      <!-- Legend entries -->
+      <text x="38" y="542" fill="#e09040" font-size="8.5" font-family="Georgia" font-weight="bold">INDIA (BHARATAVARSHA)</text>
+      <text x="38" y="554" fill="#c8a060" font-size="8" font-family="Georgia">1. Deccan Plateau (Core Deposit)</text>
+      <text x="38" y="566" fill="#c8a060" font-size="8" font-family="Georgia">2. Gangetic Plains</text>
+      <text x="38" y="578" fill="#c8a060" font-size="8" font-family="Georgia">3. South India &amp; Malabar Coast</text>
+      <text x="38" y="590" fill="#c8a060" font-size="8" font-family="Georgia">4. Bengal &amp; Northeastern Reach</text>
+      <text x="38" y="602" fill="#c8a060" font-size="8" font-family="Georgia">5. Lanka Island</text>
+      <line x1="38" y1="607" x2="240" y2="607" stroke="#4B2A08" stroke-width="0.6"/>
+
+      <text x="38" y="618" fill="#e09040" font-size="8.5" font-family="Georgia" font-weight="bold">AFRICA</text>
+      <text x="38" y="630" fill="#c8a060" font-size="8" font-family="Georgia">6. Saharan Border (Zone III edge)</text>
+      <text x="38" y="642" fill="#c8a060" font-size="8" font-family="Georgia">7. West African Coast</text>
+      <text x="38" y="654" fill="#c8a060" font-size="8" font-family="Georgia">8. Kongo &amp; Equatorial Basin</text>
+      <text x="38" y="666" fill="#c8a060" font-size="8" font-family="Georgia">9. Great Rift Valley</text>
+      <text x="38" y="678" fill="#c8a060" font-size="8" font-family="Georgia">10. South African Cape</text>
+      <line x1="38" y1="683" x2="240" y2="683" stroke="#4B2A08" stroke-width="0.6"/>
+
+      <text x="38" y="694" fill="#e09040" font-size="8.5" font-family="Georgia" font-weight="bold">EASTERN S. AMERICA</text>
+      <text x="38" y="706" fill="#c8a060" font-size="8" font-family="Georgia">11. Amazon Wilderness</text>
+      <text x="38" y="718" fill="#c8a060" font-size="8" font-family="Georgia">12. Highlands of Brasil</text>
+      <text x="38" y="730" fill="#c8a060" font-size="8" font-family="Georgia">13. Rio de la Plata Region</text>
+
+      <!-- Gondwana note -->
+      <line x1="38" y1="734" x2="240" y2="734" stroke="#4B2A08" stroke-width="0.6"/>
+      <text x="38" y="744" fill="#907040" font-size="7" font-family="Georgia" font-style="italic">Copyright © 2019 of Projection, Gondwana Fire</text>
+      <text x="38" y="754" fill="#907040" font-size="7" font-family="Georgia" font-style="italic">Mapping Project | Hulmane-The-Saga</text>
+
+      <!-- ============================================================ -->
+      <!-- MAP TITLE (parchment area, outside ocean)                     -->
+      <!-- ============================================================ -->
+      <text x="700" y="696" fill="#5a2a05" text-anchor="middle" font-size="18" font-family="Georgia" font-weight="bold" opacity="0.85">AGNI-KSHETRA HULMANE</text>
+      <text x="700" y="716" fill="#7a4015" text-anchor="middle" font-size="12" font-family="Georgia" font-weight="bold" opacity="0.78">THE SACRED FIRE REALM OF GONDWANA</text>
+      <line x1="490" y1="724" x2="908" y2="724" stroke="#6B3A10" stroke-width="0.8" opacity="0.6"/>
+      <text x="700" y="738" fill="#8a5020" text-anchor="middle" font-size="9" font-family="Georgia" font-style="italic" opacity="0.65">Zone I — Agni-Kshetra — The Lands United Beneath by Brahma-Dhatu's Ancient Fire</text>
+
+      <!-- Small copyright -->
+      <text x="1100" y="750" fill="#5a3010" text-anchor="end" font-size="6.5" font-family="Georgia" opacity="0.5">Copyright © 2019 of Projection, Southland Projection | Hulmane Continuation.</text>
+
+    </svg>
+    </div>
+  </div>
+
+  <!-- Zone I info panels -->
+  <div class="zone-info-grid">
+    <div class="zi-card">
+      <h4>&#128293; Why One Zone?</h4>
+      <p>India, Africa, and Eastern South America share the same underground Brahma-Dhatu vein — a remnant of Gondwana, the ancient supercontinent they once formed together. Agni-Vara did not see three landmasses. He saw one continuous deposit stretching beneath what would later become three oceans.</p>
+    </div>
+    <div class="zi-card">
+      <h4>&#9830; The Deccan Plateau</h4>
+      <p>The main Brahma-Dhatu deposit in Zone I lies beneath the Deccan Plateau — the volcanic shield of central India. This is the shallowest and most accessible deposit. It is why the Akasha-Lipi was found in Rajasthan, and why Volume I begins in Bharatavarsha. The war starts here.</p>
+    </div>
+    <div class="zi-card">
+      <h4>&#127807; The Living Library</h4>
+      <p>The Amazon rainforest grows directly above Agni-Vara's extraction network. Mineral nutrients released by the Brahma-Dhatu residue feed the ecosystem. The forest's extraordinary biodiversity is not evolution — it is the unintended consequence of billions of years of a fire-being's underground work.</p>
+    </div>
+    <div class="zi-card">
+      <h4>&#9651; The Rift Connection</h4>
+      <p>Africa's Great Rift Valley marks the seam where Gondwana first began to split — pulled apart by the stress of Agni-Vara's deep extraction network. The volcanoes, the rift lakes, and the seismic activity of East Africa are all sustained by the 10% of Brahma-Dhatu Agni-Vara left behind as structural support.</p>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <div class="map-nav">
+    <a href="vimana-zones.html">&#8592; All 7 Zones</a>
+    <a href="continental-origins.html">Continental Origins</a>
+    <a href="galactic-threat.html">Galactic Threat</a>
+    <a href="bharatavarsha/global-map.html">Bharatavarsha Map</a>
+    <a href="index.html">Volume I Home</a>
+  </div>
+</div>
+
+<footer style="text-align:center;padding:30px 20px;border-top:1px solid var(--border-dim);color:var(--text-dim);font-size:0.82em;margin-top:10px;">
+  <p style="color:#e08040;margin-bottom:8px;">The fire beneath India, Africa, and Brazil is the same fire — separated by ocean, united by stone.</p>
+  <p>Hulmane-The-Saga &mdash; Volume I: Bharatavarsha &mdash; Agni-Kshetra Zone I</p>
+</footer>
+
+  <script src="../../assets/manifest.js"></script>
+  <script src="../../assets/aom.js"></script> <!-- aom:injected -->
+</body>
+</html>

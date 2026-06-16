@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sangam Tamilakam &mdash; Rules &amp; Weapons &mdash; Civil War</title>
+  <link rel="stylesheet" href="../../../../../chapter-1-rise-of-legends/css/style.css">
+  <style>
+    body { background:#0a0a0e; color:#f0e8f8; }
+    .k-banner { text-align:center; padding:78px 20px 36px; border-bottom:1px solid rgba(196,77,170,.16); }
+    .k-banner .badge { font-size:.55em; letter-spacing:4px; text-transform:uppercase; color:#c44daa; opacity:.85; margin-bottom:12px; }
+    .k-banner h1 { font-size:2em; color:#b890e0; margin-bottom:.1em; }
+    .k-banner .state-label { font-size:.72em; color:#c9bbd8; opacity:.6; margin-bottom:.4em; }
+    .k-nav { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:14px 20px; background:rgba(0,0,0,.5); border-bottom:1px solid rgba(196,77,170,.1); }
+    .k-nav a { padding:5px 16px; border-radius:20px; border:1px solid rgba(196,77,170,.25); color:#d4c5e8; font-size:.72em; letter-spacing:1px; text-decoration:none; transition:all .15s; }
+    .k-nav a:hover, .k-nav a.active { background:rgba(196,77,170,.12); border-color:#c44daa; color:#fff; }
+    .k-section { max-width:1000px; margin:0 auto; padding:40px 20px 60px; }
+    .k-card { background:rgba(255,255,255,.025); border:1px solid rgba(196,77,170,.15); border-radius:10px; padding:24px; margin-bottom:20px; }
+    .k-card h3 { font-size:.72em; letter-spacing:2px; text-transform:uppercase; color:#b890e0; margin-bottom:14px; opacity:.9; }
+    .k-two { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    @media(max-width:640px){ .k-two { grid-template-columns:1fr; } }
+    .id-label { font-size:.62em; text-transform:uppercase; letter-spacing:2px; color:#9a8db0; opacity:.6; margin-bottom:3px; }
+    .id-value { font-size:.88em; color:#c9bbd8; margin-bottom:14px; line-height:1.65; }
+    .id-value strong { color:#fff5d4; }
+
+    .speech-mech { padding:18px 22px; border-radius:12px; background:linear-gradient(135deg,rgba(184,144,224,.10),rgba(20,15,30,.04)); border:1px solid rgba(184,144,224,.32); margin:14px 0; }
+    .speech-mech .sm-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#b890e0; margin-bottom:8px; }
+    .speech-mech .sm-text { color:#d4b8ec; font-size:.9em; line-height:1.75; }
+    .speech-mech .sm-text strong { color:#fff5d4; }
+
+    .tattoo-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    @media(max-width:600px){ .tattoo-grid { grid-template-columns:repeat(2,1fr); } }
+    .tattoo-stage { text-align:center; }
+    .tattoo-img { width:100%; border-radius:8px; border:1px solid rgba(184,144,224,.22); display:block; aspect-ratio:1; object-fit:cover; margin-bottom:8px; background:rgba(184,144,224,.06); }
+    .tattoo-stage.done .tattoo-img    { border-color:rgba(184,144,224,.40); background:rgba(20,15,30,.15); }
+    .tattoo-stage.new  .tattoo-img    { border-color:rgba(184,144,224,.50); background:rgba(30,20,40,.20); }
+    .tattoo-stage.future .tattoo-img  { border-color:rgba(196,77,170,.18); background:rgba(196,77,170,.04); opacity:.5; }
+    .tattoo-stage-label { font-size:.58em; letter-spacing:2px; text-transform:uppercase; color:#b890e0; opacity:.85; display:block; margin-bottom:2px; }
+    .tattoo-stage.new .tattoo-stage-label { color:#d4b8ec; }
+    .tattoo-stage.future .tattoo-stage-label { color:#c44daa; }
+    .tattoo-stage-name { font-size:.78em; color:#fff5d4; display:block; margin-bottom:4px; }
+    .tattoo-stage-desc { font-size:.7em; color:#9a8db0; opacity:.85; line-height:1.55; }
+
+    .weapon-img { width:100%; border-radius:10px; border:1px solid rgba(184,144,224,.22); display:block; margin-bottom:10px; background:rgba(184,144,224,.04); }
+    .weapon-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#b890e0; opacity:.85; margin-bottom:4px; display:block; }
+    .weapon-name { font-size:.95em; color:#fff5d4; margin-bottom:8px; }
+    .weapon-desc { font-size:.82em; color:#c9bbd8; line-height:1.7; }
+
+    .saga-rule { padding:18px 22px; border-radius:12px; background:linear-gradient(135deg,rgba(184,144,224,.07),rgba(20,15,30,.03)); border:1px solid rgba(184,144,224,.28); margin:14px 0; }
+    .saga-rule .sr-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#b890e0; margin-bottom:6px; }
+    .saga-rule .sr-text { color:#d4b8ec; font-size:.9em; line-height:1.75; font-style:italic; }
+    .saga-rule .sr-text strong { color:#fff5d4; font-style:normal; }
+
+    .void-callout { padding:20px 22px; border-radius:12px; background:linear-gradient(135deg,rgba(100,90,160,.12),rgba(20,10,40,.04)); border:1px solid rgba(160,140,255,.25); margin-bottom:16px; }
+    .void-callout .vc-label { font-size:.6em; letter-spacing:2px; text-transform:uppercase; color:#c4b8ff; margin-bottom:6px; }
+    .void-callout .vc-text { color:#dfd8f0; font-size:.9em; line-height:1.75; }
+    .void-callout .vc-text strong { color:#fff5d4; }
+  </style>
+  <link rel="stylesheet" href="../../../../../../../assets/aom.css"> <!-- aom:injected -->
+</head>
+<body class="aom" data-aom-type="kingdom-sub" >
+  <div class="k-banner">
+    <div class="badge">Civil War &bull; Rules &amp; Weapons (Chapter 2)</div>
+    <h1>Sangam Tamilakam</h1>
+    <div class="state-label">Tamil Nadu &mdash; The Unauthorised-Speech Bond, the Kurinji-Staff, the Manuscript That Wrote Itself</div>
+  </div>
+  <div class="k-nav">
+    <a href="../../../../index.html">&larr; Chapter 2</a>
+    <a href="index.html">Overview</a>
+    <a href="identity.html">Identity</a>
+    <a href="story.html">Story</a>
+    <a href="rules.html" class="active">Rules &amp; Weapons</a>
+  </div>
+
+  <div class="k-section">
+
+    <!-- ====== THE UNAUTHORISED-SPEECH BOND ====== -->
+    <div class="k-card">
+      <h3>The Nilgiri-Tahr-Bond &mdash; Stage III by Unauthorised Speech</h3>
+      <p style="font-size:.92em;color:#c9bbd8;line-height:1.8;">Kurinjiselvi earns the Stage III Nilgiri-tahr-foreleg-first-stroke not by combat, not by surrender, not by refusal, not by concession, not by transmission, not by mercy. She earns it by <strong>speaking in a council chamber before the assembly&rsquo;s authorisation-clerk has called her name</strong>. The mark appears across her left side at the eleventh syllable of an unauthorised Thirukkural-couplet&rsquo;s opening phrase. The Kurinji-flower has not bloomed; the half-bloom is enough. This is the saga&rsquo;s sixteenth bond-mechanic: the <strong>unauthorised-speech bond</strong>.</p>
+      <div class="speech-mech">
+        <div class="sm-label">Saga-Rule &bull; The Unauthorised-Speech Bond Mechanic</div>
+        <div class="sm-text">A hero whose kingdom&rsquo;s institutional charter requires authorisation before speech may earn the Stage III bond-stroke by <strong>speaking publicly in the council chamber before the authorisation-protocol has completed its standing-procedural-response</strong>. The mechanic requires: (1) the kingdom&rsquo;s standing-charter contains an authorisation-protocol that has been weaponised against the assembly&rsquo;s vocation across an institutional-time-window of at least 12 months (the Sangam authorisation-clerk office&rsquo;s 18-month weaponisation; future kingdoms may use parliamentary-procedures, religious-licensing, academic-clearance, or corporate-compliance as the authorisation-protocol&rsquo;s axes), (2) the kingdom&rsquo;s standing-procedural-handbook contains a clear protocol-failure-mode &mdash; a moment where the authorisation-clerk&rsquo;s standing-procedural-response can be invalidated by the standing-handbook&rsquo;s own time-threshold rules (Palinisi&rsquo;s primary procedural-response crossed the session-start threshold by 1 minute 43 seconds and became procedurally invalid; the secondary-response was begun simultaneously with the bond-mark&rsquo;s formation and was abandoned at the third sentence), (3) the hero possesses the institutional-standing to approach the speaker&rsquo;s-mark stone at the pre-speaker&rsquo;s-mark waiting-position (the state-hero standing-rank or the standing senior-mentor seat-holder rank or higher), (4) the speech itself must be the kingdom-council&rsquo;s standing-protocol&rsquo;s required-form &mdash; not an arbitrary outburst but a recognised composition in the kingdom-council&rsquo;s standing-poetry-register (the Acharya Bharati&rsquo;s 1989 Thirukkural-couplet; future kingdoms&rsquo; unauthorised-speech compositions must similarly draw on the kingdom-council&rsquo;s standing-archive&rsquo;s recognised compositions). <strong>The unauthorised-speech bond&rsquo;s Stage III mark forms on the body at the syllable-of-completion of the first phrase&rsquo;s opening, not at the full composition&rsquo;s end.</strong> The kingdom-council&rsquo;s emergency-amendment-protocol then becomes the standing-procedural-handbook&rsquo;s required follow-up; the amendment&rsquo;s ratification timeline is approximately 12 days under continuous-hours session-mode. The saga&rsquo;s registry of unauthorised-speech bond instances opens with Kurinjiselvi as the first entry.</div>
+      </div>
+    </div>
+
+    <!-- ====== TATTOO LADDER ====== -->
+    <div class="k-card">
+      <h3>The Tattoo Ladder &mdash; Kurinjiselvi</h3>
+      <p style="color:#c9bbd8;font-size:.85em;line-height:1.7;margin-bottom:24px;">Four stages. Stage III completes at 11:02:18 a.m. on Friday 15 February at the eleventh syllable&rsquo;s completion in the Sangam Hall chamber. Stage IV is deferred under restructure §4&rsquo;s step-back-to-elder retirement-protocol; Kurinjiselvi&rsquo;s standing-elder seat-investiture in Ch 2 closes her active-warrior tattoo-ladder; the Stage IV full-body would have formed at a Chapter Three or Four trial that the kingdom-council&rsquo;s standing-retirement protocol now substitutes with the standing-elder seat&rsquo;s ceremonial-investiture.</p>
+
+      <div class="tattoo-grid">
+        <div class="tattoo-stage done">
+          <img src="media/tattoo/tn-ch2-stage-1.png" alt="Stage I" class="tattoo-img" onerror="this.style.background='rgba(184,144,224,.06)'">
+          <span class="tattoo-stage-label">Stage I &bull; Pre-Ch 1</span><span class="tattoo-stage-name">The Tahr-Hoofprint</span>
+          <div class="tattoo-stage-desc">Earned at age twenty-three when Kurinjiselvi completed the standing Sangam-warrior ordination at the Nilgiri Mountains&rsquo; standing-tahr-herd recognition-ceremony. Single Nilgiri-tahr-hoofprint on her left tailbone &mdash; the standing tahr-line bond-position.</div>
+        </div>
+        <div class="tattoo-stage done">
+          <img src="media/tattoo/tn-ch2-stage-2.png" alt="Stage II" class="tattoo-img" onerror="this.style.background='rgba(184,144,224,.06)'">
+          <span class="tattoo-stage-label">Stage II &bull; Ch 1 Finale</span><span class="tattoo-stage-name">The Tahr Climbing the Spine</span>
+          <div class="tattoo-stage-desc">Earned at the Ch 1 post-Ravana-Vadham confirmation in 2023. The Nilgiri tahr climbing her spine &mdash; hooves at her tailbone, horns reaching her neck &mdash; half-body mark with the left side&rsquo;s foreleg lighter than the right (the unfinished Ch 2-trial reservation).</div>
+        </div>
+        <div class="tattoo-stage new">
+          <img src="media/tattoo/tn-ch2-stage-3.png" alt="Stage III by Unauthorised Speech" class="tattoo-img" onerror="this.style.background='rgba(30,20,40,.20)'">
+          <span class="tattoo-stage-label">Stage III &bull; This Chapter &bull; By Unauthorised Speech</span><span class="tattoo-stage-name">The Left Foreleg Completion-Stroke</span>
+          <div class="tattoo-stage-desc">The single new ink-line drawn across the half-body Nilgiri-tahr-tattoo&rsquo;s left foreleg at 11:02:18 a.m. on Friday 15 February at the eleventh syllable&rsquo;s completion of the Acharya Bharati&rsquo;s 1989 Thirukkural-couplet&rsquo;s opening phrase. The foreleg is now inked to the same density as the right side; the tahr&rsquo;s climbing posture is now visibly anchored by both forelegs. The completion-stroke is the kingdom&rsquo;s evidence that the unauthorised speech was the bond&rsquo;s recognition.</div>
+        </div>
+        <div class="tattoo-stage future">
+          <img src="media/tattoo/tn-ch2-stage-4.png" alt="Stage IV (Retirement-Substituted)" class="tattoo-img" onerror="this.style.background='rgba(196,77,170,.04)'">
+          <span class="tattoo-stage-label">Stage IV &bull; Substituted by Standing-Elder Investiture</span><span class="tattoo-stage-name">The Standing-Elder Seat&rsquo;s Deep-Saffron Cloth</span>
+          <div class="tattoo-stage-desc">Per restructure §4&rsquo;s step-back-to-elder retirement-protocol, the Stage IV full-body mark is not formed. The kingdom-council&rsquo;s standing-elder seat&rsquo;s deep-saffron shoulder-cloth (placed by senior-mentor seat-rota chair Manimekalai-Periya at 3:18 a.m. on the day-62 open-assembly evening) is the kingdom&rsquo;s substituting investiture. Kurinjiselvi&rsquo;s body bears Stages I, II, III; her standing-elder identity is in the seat-cloth, not in the tattoo.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== SACRED WEAPONS ====== -->
+    <div class="k-card">
+      <h3>Sacred Weapons &mdash; The Kurinji-Staff and the Bronze-Spear</h3>
+      <p style="font-size:.92em;color:#c9bbd8;line-height:1.8;">The chapter&rsquo;s weapon-status is a generational handover. The Kurinji-staff has been Kurinjiselvi&rsquo;s standing implement for fifteen years; it returns to the Nilgiri Mountains&rsquo; standing-stand at her residence on 22 February without being re-sharpened. The standing succession-candidate&rsquo;s bronze-spear has been Tholkappiyan-the-Younger&rsquo;s standing implement for the past three years; at the day-62 open-assembly evening&rsquo;s investiture it formally becomes the kingdom-council&rsquo;s standing visible-seat-holder&rsquo;s weapon.</p>
+      <div class="k-two" style="margin-top:14px;">
+        <div>
+          <span class="weapon-label">Ancient Weapon &bull; Returned to the Nilgiri Stand</span>
+          <div class="weapon-name">Kurinji &mdash; The Crescent-Bladed Mountain-Staff</div>
+          <img src="media/weapons/tn-ch2-kurinji-staff.png" alt="The Kurinji Staff" class="weapon-img" onerror="this.style.display='none'">
+          <div class="id-label">Type</div><div class="id-value">A crescent-bladed staff of the Nilgiri-mountain warrior-tradition. Two-metre yew-wood shaft; crescent-shaped iron blade at the upper end (the blade&rsquo;s curve resembles the standing-Nilgiri kurinji-flower blooming-petal); leather grip wrapped at the lower-third in twelve turns. The blade blooms with the standing blue-flame at the year-twelve Kurinji-bloom (the kingdom-council&rsquo;s standing mountain-warrior power-bond enhancement). Has been Kurinjiselvi&rsquo;s standing implement since her twenty-second-year ordination at the Nilgiri Mountains.</div>
+          <div class="id-label">Status This Chapter</div><div class="id-value">Sharpened across two hours at the residence&rsquo;s western training-courtyard on Tuesday 2 February pre-dawn before the fourteen-day mountain-trail walk to Madurai. Re-sharpened at the trail&rsquo;s last waypost the evening before the Friday 15 February chamber-event. Held at her right side at the speaker&rsquo;s-mark stone during the eleven-syllable recitation; the crescent-blade caught the morning&rsquo;s eastern light through the hall&rsquo;s open-air eastern roof-opening at the syllable-of-completion. Carried back to the Nilgiri Mountains on the fourteen-day return-walk (22 February arrival). Placed at the residence&rsquo;s standing-stand at the western training-courtyard; the blade is dulled by one-tenth of its sharpness from the trail&rsquo;s mountain-pass-friction; she does not re-sharpen the blade. The blade will not be carried daily again; the kingdom-council&rsquo;s standing-elder seat&rsquo;s formal-protocol does not require weapon-carriage at the standing-elder consultative-correspondence sessions.</div>
+        </div>
+        <div>
+          <span class="weapon-label">New Visible-Seat Weapon &bull; Bronze-Spear</span>
+          <div class="weapon-name">The Sangam-Tradition Standing-Succession Bronze-Spear</div>
+          <img src="media/weapons/tn-ch2-bronze-spear.png" alt="The Bronze-Spear" class="weapon-img" onerror="this.style.display='none'">
+          <div class="id-label">Type</div><div class="id-value">A bronze-headed spear of the Sangam-tradition standing-succession-candidate weapon-line. Two-and-a-half-metre teak shaft; bronze leaf-shaped spearhead at the upper end (the standard Sangam-tradition succession-candidate&rsquo;s spearhead since 1873); leather grip at the lower-third. The standing-succession-candidate&rsquo;s implement during the candidate-rank period; at the visible-seat investiture the spear becomes the standing visible-seat-holder&rsquo;s weapon.</div>
+          <div class="id-label">Status This Chapter</div><div class="id-value">Carried by Tholkappiyan-the-Younger at the standing succession-candidate&rsquo;s standing-rank since spring 2024 (held at his Sangam Hall poet-warrior gymnasium&rsquo;s standing-stand between sessions; carried daily on his standing-training-route). Held at his right side at the day-62 open-assembly evening&rsquo;s speaker&rsquo;s-mark stone during his maiden Sangam-charter-praising composition recitation. Formally invested as the kingdom-council&rsquo;s standing visible-seat-holder&rsquo;s weapon at 4:01 a.m. on the open-assembly evening. Will be carried at the Sanctuary at the Manipur convening as Tamil Nadu&rsquo;s standing visible-seat representative&rsquo;s identifying-implement. Per Ch 4 plan the bronze-spear is the southern federation&rsquo;s standing poet-warrior voice&rsquo;s standing-weapon at the Kurukshetra Council.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== SAGA RULES ====== -->
+    <div class="k-card">
+      <h3>The Saga-Rules This Chapter Established</h3>
+      <div class="saga-rule">
+        <div class="sr-label">Saga-Rule &bull; The Procedure Cannot Become the Silence</div>
+        <div class="sr-text">A kingdom whose institutional charter contains an authorisation-protocol of any kind (procedural pre-clearance, religious licensing, academic clearance, corporate compliance, parliamentary procedure) must <strong>amend the protocol the moment the protocol begins absorbing voices the assembly was designed to receive</strong>. The threshold: when the standing-procedural-handbook&rsquo;s standard-secondary-response can be invalidated by the handbook&rsquo;s own time-threshold rules (as Palinisi&rsquo;s primary procedural-response crossed the session-start threshold by 1 minute 43 seconds and became procedurally invalid), the kingdom&rsquo;s charter has already begun the silence. The kingdom-council&rsquo;s standing-charter-amendment-protocol must follow within the same chapter. The amendment&rsquo;s required-architecture: <strong>open-registration replaces pre-clearance; the standing senior-mentor seat-rota replaces single-clerk control; the living-archive seat is instituted as a non-rotational kingdom-council standing-seat for the kingdom&rsquo;s memory-of-silenced-voices</strong>. The rule applies to every kingdom whose Chapter Two crisis involves authorisation-protocol weaponisation; the saga&rsquo;s Volume Two will see similar amendments at the Yavana-Khanda parliamentary-procedure traditions and at the Sagara-Ratna academic-clearance protocols.</div>
+      </div>
+      <div class="saga-rule" style="margin-top:10px;">
+        <div class="sr-label">Saga-Rule &bull; The Living-Archive Seat (Children Are Not Observers)</div>
+        <div class="sr-text">A kingdom-council whose standing-charter has historically admitted poet-children to its council sessions as observer-only attendees may discover, in a chapter-level silence-crisis, that the children have been performing an institutional function the charter did not name &mdash; <strong>they have been memorising what the procedure cannot record</strong>. The kingdom-council&rsquo;s required institutional response is to amend the standing-charter with a non-rotational <em>standing living-archive seat</em>; the seat-holder is the kingdom-council&rsquo;s standing-recourse for unrecorded silencings, retrieved voices, and reconstructed-from-memory un-written poems. The seat is not a procedural-administrative position; the seat is a memorial-discipline. The seat-holder&rsquo;s standing-duty is to attend every council session and to recite when the kingdom-council&rsquo;s standing voices-recovery is required. The seat-holder is recognised at the standing post-amendment open-assembly evening by the senior-mentor seat-vote 12-0 upon evidence of qualifying memorial-capacity (Avvaiyar-the-Younger&rsquo;s 23,000-poem retention with her grandmother&rsquo;s 100% confirmation-rate across the 5-year evening-recitation discipline). The seat-holder may be a child. The kingdom-council&rsquo;s standing-charter does not specify a minimum-age; the seat-holder&rsquo;s age is the kingdom&rsquo;s evidence that the kingdom&rsquo;s memory does not respect the kingdom-council&rsquo;s adult-standing-rank.</div>
+      </div>
+      <div class="saga-rule" style="margin-top:10px;">
+        <div class="sr-label">Saga-Rule &bull; Step-Back-to-Elder Is the Charter, Not the Retirement</div>
+        <div class="sr-text">A hero whose Chapter Two trial concludes in an unauthorised-speech bond-formation may, at the kingdom-council&rsquo;s standing post-amendment open-assembly evening, formally step back to the kingdom-council&rsquo;s standing-elder seat. The step-back is not the hero&rsquo;s exit from the saga; the step-back is the kingdom-council&rsquo;s standing-charter&rsquo;s required institutional-architecture for the post-amendment continuation. The standing-elder seat&rsquo;s consultative-correspondence is the kingdom-council&rsquo;s standing-record after the step-back; the standing-elder attends every Sanctuary and Council convening as the kingdom-council&rsquo;s standing-elder representative; the standing-elder&rsquo;s standing-elder shoulder-cloth (deep-saffron) is the kingdom-council&rsquo;s standing-identification at the cross-kingdom federation. The Stage IV full-body tattoo is substituted by the standing-elder seat&rsquo;s formal-investiture. Per restructure §4 every female-hero step-back across the saga follows this rule.</div>
+      </div>
+    </div>
+
+    <!-- ====== VOID MAW SIGN ====== -->
+    <div class="void-callout">
+      <div class="vc-label">Void Maw Sign &bull; Catalogue Entry &bull; Tamil Nadu &bull; The Fourteen Lines on Manimekalai Leaf 247 (First Manuscript-Inscription Experiment)</div>
+      <div class="vc-text">6:18 a.m. on day 52 of the chapter &mdash; the morning after the kingdom-council&rsquo;s amended Sangam-charter&rsquo;s day-12 ratification (the chapter&rsquo;s calendar day-12 corresponds to the chapter-overall day-52 because the chapter opened on 1 February and the charter-amendment was ratified on 27 February, the chapter&rsquo;s 27th day, with the manuscript-discovery on the 52nd day). The Madurai Maraimalai Adigal Tamil-Language Public Library&rsquo;s manuscript-vault. The Sangam-tradition&rsquo;s only complete copy of the second-century-CE Buddhist epic <em>Manimekalai</em> by Sittalai Sattanar &mdash; a palm-leaf bundle of 2,743 leaves, sealed in a glass case at the central display-table, opened at leaf 247-248 in the standard cross-quarter display-configuration &mdash; shows <strong>fourteen content-original lines</strong> on leaf 247 that were not on the leaf at the day-49 maintenance-check three days earlier. The lines are in the standard Tamil-Brahmi script and the standard <em>Manimekalai</em> Tamil-classical-Sangam akaval-meter (~8-10 syllables per line). The ink is the standard palm-leaf iron-gall blend; mass-spectrometric analysis (Madurai Kamaraj University&rsquo;s materials-science laboratory, day 55) confirms a composition consistent with the rest of the manuscript and a paleographic dating of approximately 1,700 years (within the standard paleographic-error range of the manuscript&rsquo;s second-century CE composition-date). The lines are not in any of the world&rsquo;s extant <em>Manimekalai</em> partial-copies, commentaries, or scholarly-reconstructions; the lines are content-original. The lines describe the chapter&rsquo;s chamber-event in standard Sangam-tradition allegorical register: the authorisation-clerk&rsquo;s rota-page held above the sun, the page&rsquo;s shadow as the kingdom&rsquo;s longest silence, the silenced names on the children&rsquo;s tongues, the mountain&rsquo;s flower a year early, the unauthorised word as the assembly&rsquo;s charter, the manuscript that wrote itself. The lines do not change, fade, or multiply across the 8-month observation period. <strong>Mechanism (read through the Nilgiri-tahr-bond by Kurinjiselvi at the manuscript-vault on day 54):</strong> the Maw has demonstrated the capacity to write into a sealed historical manuscript across the 1,700-year-old ink-and-leaf threshold. The Maw is producing language no one made &mdash; not voice from a creature (Mizoram&rsquo;s two-headed serow) but text on a page (TN&rsquo;s leaf 247). The saga&rsquo;s second cross-region paired Maw-sign is formally recognised: Mizoram (Maw-voice) + TN (Maw-text). The pairing-protocol&rsquo;s recognition is filed at the kingdom-council&rsquo;s standing-pairing-registry on day 55. <strong>Significance:</strong> TN&rsquo;s sign is the sixteenth rung of the escalation pattern &mdash; the <em>first manuscript-inscription experiment</em>. The Maw has shifted from experimenting on material-presence (Kerala&rsquo;s coconut, AP&rsquo;s delta) to experimenting on textual-presence itself.</div>
+      <div style="margin:12px 0 4px;padding-left:12px;font-size:.78em;color:#dfd8f0;line-height:1.7;">
+        <strong style="color:#fff5d4;">Person</strong> &times; 2 (Karnataka, Goa) &rarr; <strong style="color:#fff5d4;">Place</strong> (Maharashtra) &rarr; <strong style="color:#fff5d4;">Landscape</strong> (UP) &rarr; <strong style="color:#fff5d4;">Multi-creature</strong> (MP) &rarr; <strong style="color:#fff5d4;">Landscape + Multi-creature</strong> (Assam) &rarr; <strong style="color:#fff5d4;">Anti-weather</strong> (Meghalaya) &rarr; <strong style="color:#fff5d4;">Self-signing form-making</strong> (Manipur) &rarr; <strong style="color:#fff5d4;">Self-cancelling form</strong> (Nagaland) &rarr; <strong style="color:#fff5d4;">Species-lethal-altitude experiment</strong> (Sikkim) &rarr; <strong style="color:#fff5d4;">Face-erasure (First Herald)</strong> (Arunachal) &rarr; <strong style="color:#fff5d4;">Future-naming (two-headed serow speaks)</strong> (Mizoram) &rarr; <strong style="color:#fff5d4;">Stuck-behaviour (pigeon broods empty)</strong> (Tripura) &rarr; <strong style="color:#fff5d4;">Material-permanence (coconut does not rot)</strong> (Kerala) &rarr; <strong style="color:#fff5d4;">Land-erasure (delta loses a metre overnight)</strong> (Andhra Pradesh) &rarr; <strong style="color:#fff5d4;">Manuscript-inscription (epic-page gains new lines)</strong> (Tamil Nadu).
+      </div>
+      <div style="margin-top:14px;padding:12px 16px;border-radius:8px;background:rgba(184,144,224,.06);border-left:3px solid rgba(184,144,224,.5);">
+        <div style="font-size:.62em;letter-spacing:2px;text-transform:uppercase;color:#d4b8ec;margin-bottom:6px;">Cross-Kingdom Paired-Sign Recognition (Second Pair)</div>
+        <div style="font-size:.85em;color:#dfd8f0;line-height:1.75;">Avvaiyar-the-Younger drafts the cross-kingdom Sarus-pigeon cascade-alert on day 56 as the kingdom-council&rsquo;s standing living-archive seat-holder. The alert reaches all 9 bonded-kingdom senior guardians by sunset. Hmangaihi at Aizawl sends the NE-pair acknowledgement: <em>&ldquo;Mizoram&rsquo;s two-headed serow named me; TN&rsquo;s epic-page wrote what the assembly silenced. The two Maw-language signs are paired. The Sanctuary will receive both.&rdquo;</em> Krishnadevaraya-Bhrata at Vijayanagara sends the cross-region acknowledgement: <em>&ldquo;The southern federation accepts the pairing-protocol&rsquo;s second registry-entry. The Karnataka Bronze-Dust Child&rsquo;s muteness and the AP delta&rsquo;s erasure and the Kerala coconut&rsquo;s permanence and the TN manuscript&rsquo;s emergence are the four southern-bloc Maw-sign-pairs. The Sanctuary will receive all four.&rdquo;</em></div>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;margin-top:24px;flex-wrap:wrap;gap:10px;">
+      <a href="story.html" style="color:#c9a04a;text-decoration:none;font-size:.85em;">&larr; Kingdom Story</a>
+      <a href="../../../../index.html" style="color:#c9a04a;text-decoration:none;font-size:.85em;">All Civil War Stories &rarr;</a>
+    </div>
+  </div>
+
+  <footer style="text-align:center;padding:28px 20px;border-top:1px solid rgba(196,77,170,.12);color:#9a8db0;font-size:.75em;">
+    <p>Sangam Tamilakam Rules &amp; Weapons &bull; Civil War &bull; Chapter 2</p>
+  </footer>
+  <script src="../../../../../../../assets/manifest.js"></script>
+  <script src="../../../../../../../assets/aom.js"></script> <!-- aom:injected -->
+</body>
+</html>

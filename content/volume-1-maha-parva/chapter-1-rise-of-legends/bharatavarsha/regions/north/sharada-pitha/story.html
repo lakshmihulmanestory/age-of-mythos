@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sharada-Pitha &mdash; Story &mdash; Age of Mythos Volume I</title>
+  <link rel="stylesheet" href="../../../../css/style.css">
+  <style>
+    .breadcrumb { padding:70px 20px 0; max-width:1200px; margin:0 auto; }
+    .breadcrumb a { color:var(--gold-dim); text-decoration:none; font-size:.8rem; }
+    .breadcrumb a:hover { color:var(--gold); }
+    .breadcrumb span { color:var(--text-dim); font-size:.8rem; margin:0 6px; }
+    .breadcrumb .current { color:var(--gold); font-weight:bold; }
+    .kingdom-banner { text-align:center; padding:30px 20px 50px; }
+    .kingdom-banner h1 { font-size:2.5rem; margin-bottom:5px; }
+    .kingdom-banner .state-name-top { color:var(--text); font-size:1.1rem; margin-bottom:8px; }
+    .kingdom-banner .motto-top { color:var(--text-dim); font-style:italic; font-size:1rem; max-width:600px; margin:0 auto; }
+    .content-area { max-width:1100px; margin:0 auto; padding:0 20px 60px; }
+    .creatures-panel { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:40px; }
+    @media(max-width:600px) { .creatures-panel { grid-template-columns:1fr; } }
+    .creature-box { padding:20px; border-radius:10px; background:rgba(0,0,0,.25); border:1px solid var(--border-dim); }
+    .creature-box .c-label { font-size:.65rem; text-transform:uppercase; letter-spacing:2px; color:var(--text-dim); margin-bottom:4px; }
+    .creature-box .c-name { color:var(--gold); font-size:1.2rem; font-weight:bold; margin-bottom:4px; }
+    .creature-box .c-symbol { color:var(--text); font-style:italic; font-size:.85rem; line-height:1.5; }
+    .section-title-bar { display:flex; align-items:center; gap:12px; margin:40px 0 20px; }
+    .section-title-bar h2 { font-size:1.4rem; margin:0; white-space:nowrap; }
+    .section-title-bar::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,var(--border-dim),transparent); }
+    .profile-full { padding:25px; border-radius:12px; margin-bottom:25px; }
+    .profile-full.hero-p { background:linear-gradient(135deg,rgba(160,107,255,.12),rgba(80,30,150,.06)); border:1px solid rgba(160,107,255,.2); }
+    .profile-full.villain-p { background:linear-gradient(135deg,rgba(60,0,0,.15),rgba(30,0,0,.08)); border:1px solid rgba(255,68,68,.2); }
+    .p-tag { display:inline-block; padding:3px 14px; border-radius:12px; font-size:.65rem; text-transform:uppercase; letter-spacing:2px; font-weight:bold; margin-bottom:12px; }
+    .hero-p .p-tag { background:#a06bff; color:#000; }
+    .villain-p .p-tag { background:#ff4444; color:#fff; }
+    .profile-full h3 { margin:0 0 2px; font-size:1.5rem; }
+    .hero-p h3 { color:#cfb8ff; }
+    .villain-p h3 { color:#ff7766; }
+    .p-title { color:var(--text-dim); font-style:italic; font-size:.9rem; margin-bottom:15px; }
+    .p-desc { color:var(--text); font-size:.92rem; line-height:1.8; margin-bottom:15px; }
+    .p-detail { font-size:.88rem; line-height:1.6; margin:6px 0; }
+    .p-detail .dl { font-weight:bold; min-width:100px; display:inline-block; }
+    .hero-p .dl { color:rgba(160,107,255,.85); }
+    .villain-p .dl { color:rgba(255,100,100,.7); }
+    .p-detail .dv { color:var(--text); }
+    .battle-cry-full { margin-top:15px; padding:12px 18px; font-style:italic; font-size:.95rem; border-radius:6px; }
+    .hero-p .battle-cry-full { color:#cfb8ff; background:rgba(160,107,255,.07); border-left:3px solid rgba(160,107,255,.4); }
+    .villain-p .battle-cry-full { color:#ff6666; background:rgba(255,68,68,.06); border-left:3px solid rgba(255,68,68,.3); }
+    .guru-panel { background:linear-gradient(135deg,rgba(255,170,0,.1),rgba(180,120,0,.04)); border:1px solid rgba(255,170,0,.2); border-radius:12px; padding:25px; margin-bottom:25px; }
+    .guru-panel h3 { color:#ffcc66; margin:0 0 2px; font-size:1.3rem; }
+    .g-title { color:var(--text-dim); font-style:italic; font-size:.9rem; margin-bottom:12px; }
+    .g-desc { color:var(--text); font-size:.92rem; line-height:1.8; margin-bottom:15px; }
+    .g-wisdom { color:#ffd699; font-style:italic; font-size:1rem; padding:14px 20px; background:rgba(255,170,0,.06); border-left:3px solid #ffaa00; border-radius:0 6px 6px 0; line-height:1.7; }
+    .warriors-grid-full { display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:15px; margin-bottom:30px; }
+    .w-card { padding:16px; border-radius:10px; background:rgba(0,0,0,.2); border:1px solid var(--border-dim); }
+    .w-card[data-loyalty="hero"]    { border-left:3px solid #a06bff; }
+    .w-card[data-loyalty="villain"] { border-left:3px solid #ff4444; }
+    .w-card[data-loyalty="neutral"] { border-left:3px solid #ffaa00; }
+    .w-card .wn { color:var(--gold); font-weight:bold; font-size:.95rem; }
+    .w-card .wt { color:var(--text-dim); font-style:italic; font-size:.8rem; margin-bottom:6px; }
+    .w-card .ws { color:var(--text); font-size:.85rem; line-height:1.5; }
+    .w-card .wl { display:inline-block; margin-top:8px; padding:2px 10px; border-radius:10px; font-size:.65rem; text-transform:uppercase; letter-spacing:1px; }
+    .w-card[data-loyalty="hero"]    .wl { background:rgba(160,107,255,.18); color:#cfb8ff; }
+    .w-card[data-loyalty="villain"] .wl { background:rgba(255,68,68,.15);  color:#ff4444; }
+    .w-card[data-loyalty="neutral"] .wl { background:rgba(255,170,0,.15);  color:#ffaa00; }
+    .saga-full .saga-title { color:var(--gold); font-size:1.6rem; margin-bottom:20px; text-align:center; }
+    .saga-full .saga-body  { color:var(--text); font-size:.95rem; line-height:2; white-space:pre-line; text-align:justify; }
+    .saga-full .saga-body::first-letter { font-size:3rem; color:var(--gold); float:left; line-height:1; margin-right:8px; margin-top:4px; }
+    .k-sibling-nav { margin-top:50px; padding-top:30px; border-top:1px solid var(--border-dim); text-align:center; }
+    .k-sibling-nav h3 { color:var(--gold-dim); font-size:1rem; margin-bottom:15px; }
+    .sibling-links { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-bottom:24px; }
+    .sibling-links a { padding:8px 18px; border:1px solid var(--border-dim); border-radius:20px; color:var(--text-dim); text-decoration:none; font-size:.85rem; transition:all .2s; }
+    .sibling-links a:hover, .sibling-links a.current { border-color:var(--gold); color:var(--gold); background:rgba(255,215,0,.06); }
+    .sibling-links a.current { pointer-events:none; }
+    .back-links { display:flex; justify-content:center; gap:15px; flex-wrap:wrap; }
+    .back-links a { padding:10px 24px; border:1px solid var(--gold-dim); border-radius:20px; color:var(--gold); text-decoration:none; font-size:.9rem; transition:all .2s; }
+    .back-links a:hover { background:rgba(255,215,0,.1); }
+    .vs-divider { display:flex; align-items:center; justify-content:center; gap:15px; margin:30px 0; }
+    .vs-divider::before, .vs-divider::after { content:""; flex:1; height:1px; background:linear-gradient(90deg,transparent,rgba(255,68,68,.3),transparent); }
+    .vs-circle { width:56px; height:56px; border-radius:50%; background:radial-gradient(circle,#ff4444,#660000); display:flex; align-items:center; justify-content:center; font-weight:bold; color:#fff; font-size:1rem; box-shadow:0 0 25px rgba(255,68,68,.3); }
+    .portrait-pair { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:24px; }
+    .portrait-pair img { width:100%; border-radius:10px; display:block; }
+    .insp-grid { display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-bottom:30px; }
+    .insp-card { padding:15px; border-radius:8px; background:rgba(0,0,0,.2); }
+    .img-gallery { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px; margin-bottom:24px; }
+    .img-gallery img { width:100%; border-radius:8px; border:1px solid var(--border-dim); display:block; }
+  </style>
+  <link rel="stylesheet" href="../../../../../../../assets/aom.css"> <!-- aom:injected -->
+</head>
+<body class="aom" data-aom-type="kingdom-sub" >
+  <!-- aom:listen --><div class="reader-media"><div class="reader-langtoggle" role="tablist" aria-label="Language"><button type="button" class="active" data-lang="en">English</button><button type="button" data-lang="kn">ಕನ್ನಡ</button></div><div class="reader-audio" data-lang="en"><span class="reader-audio-label">Listen — English</span><audio controls preload="none" src="../../../../../../../audio/chapter-1-rise-of-legends__sharada-pitha__the-snow-library.m4a"></audio></div><div class="reader-audio" data-lang="kn" hidden><span class="reader-audio-label">ಆಲಿಸಿ — ಕನ್ನಡ</span><audio controls preload="none" src="../../../../../../../audio/kannada/chapter-1-rise-of-legends__sharada-pitha__the-snow-library.kn.mp3"></audio></div><div class="reader-lang" data-lang="kn" lang="kn" hidden><p>ಇದು ಒಬ್ಬ ಅಜ್ಜ ಮತ್ತು ಅವನ ಮೊಮ್ಮಗನ ಕಥೆ — "ಎರಡು ಬಾರಿ ನಕಲು ಮಾಡು" ಎಂದು ಕಲಿಸಿದ ಅಜ್ಜ, ಮತ್ತು ಆ ಒಂದೇ ಪಾಠದಿಂದ ಇಡೀ ಗ್ರಂಥಾಲಯವನ್ನು ಉಳಿಸಿದ ಮೊಮ್ಮಗನ ಕಥೆ.</p>
+<p>ಆರು ವರ್ಷದ ಹುಡುಗ ಒಂದು ದೋಣಿಮನೆಯ ನೆಲದ ಮೇಲೆ ಪದ್ಮಾಸನದಲ್ಲಿ ಕೂತಿದ್ದಾನೆ. ದೋಣಿಮನೆ ದಾಲ್ ಸರೋವರದ ಮೇಲೆ ತೇಲುತ್ತದೆ. ಸೆಪ್ಟೆಂಬರ್ ಮುಂಜಾವಿನ ಕೆಳಗೆ ಸರೋವರ ಕನ್ನಡಿಯಷ್ಟು ಸ್ತಬ್ಧ. ಹುಡುಗನ ಕೈಯಲ್ಲಿ ಜೊಂಡಿನ ಲೇಖನಿ. ಅವನ ಅಜ್ಜನ ಕೈಯಲ್ಲಿ ಹಸ್ತಪ್ರತಿ.</p>
+<p>"ನೀನು ಯಾಕೆ ಅದನ್ನು ಎರಡು ಬಾರಿ ನಕಲು ಮಾಡುತ್ತೀಯೆ, ನಾನಾ?" ಹುಡುಗ ಕೇಳುತ್ತಾನೆ.</p>
+<p>"ಏಕೆಂದರೆ ಒಂದು ಪ್ರತಿ ದೋಣಿಯಲ್ಲಿ ಬದುಕುತ್ತದೆ. ಮತ್ತೊಂದು ಸರೋವರದಂಚಿನ ಸೋದರಸಂಬಂಧಿಗೆ ಹೋಗುತ್ತದೆ."</p>
+<p>"ಯಾಕೆ?"</p>
+<p>"ಏಕೆಂದರೆ ದೋಣಿ ಸುಡಬಹುದು. ಮನೆ ಸುಡಬಹುದು. ಆದರೆ ಎರಡು ಜಾಗಗಳಲ್ಲಿ ಬದುಕುವ ಹಸ್ತಪ್ರತಿ ಆ ಎರಡನ್ನೂ ಮೀರಿ ಬದುಕುತ್ತದೆ."</p>
+<p>ಹುಡುಗ ತಲೆಯಾಡಿಸುತ್ತಾನೆ. ಅವನಿಗೆ "ಮೀರಿ ಬದುಕು" ಎಂಬ ಪದ ಅರ್ಥವಾಗುವುದಿಲ್ಲ. ಅವನಿಗೆ "ಎರಡು" ಎಂಬ ಪದ ಅರ್ಥವಾಗುತ್ತದೆ. ಅವನು ಮತ್ತೆ ನಕಲು ಮಾಡಲು ಮರಳುತ್ತಾನೆ.</p>
+<p>ಅವನ ಹೆಸರು ಶರದ್-ಪಂಡಿತ. ಅವನು ತನ್ನ ವಂಶದ ಎಂಟನೆಯವನು — ಒಂಬತ್ತು ಶತಮಾನಗಳ ಹಿಂದೆ ಒಬ್ಬ ಪೂರ್ವಜ ಎತ್ತರದ ಕಣಿವೆಗಳ ಶಾರದಾ-ಪೀಠ ದೇವಾಲಯದಿಂದ ಒಂದು ಬೊಗಸೆ ಸುರುಳಿಗಳೊಂದಿಗೆ ಕಣಿವೆಗೆ ಇಳಿದು ಬಂದಾಗ ಆರಂಭವಾದ ವಂಶ. <em>ಎರಡು ಬಾರಿ ನಕಲು ಮಾಡು, ಒಂದನ್ನು ದಾನ ಕೊಡು, ಜ್ಞಾನವನ್ನು ಎಂದೂ ಸ್ವಂತ ಮಾಡಿಕೊಳ್ಳಬೇಡ</em> ಎಂದು ಹೇಳುವ ವಂಶ.</p>
+<p>ಹನ್ನೆರಡನೆಯ ವಯಸ್ಸಿನ ಹೊತ್ತಿಗೆ, ಶರದ್-ಪಂಡಿತ ನಾಲ್ಕು ಸಾವಿರ ಹಸ್ತಪ್ರತಿಗಳನ್ನು ನಕಲು ಮಾಡಿದ್ದಾನೆ. ಅವನ ಅಜ್ಜ ಚಳಿಗಾಲದಲ್ಲಿ ಸಾಯುತ್ತಾನೆ — ಸರೋವರ ದೋಣಿಯ ಸುತ್ತ ಹೆಪ್ಪುಗಟ್ಟುತ್ತದೆ — ಮತ್ತು ಶರದ್-ಪಂಡಿತ ಅಂತ್ಯಕ್ರಿಯೆಯ ಪದ್ಯಗಳನ್ನು ತಾನೇ ಓದುತ್ತಾನೆ, ಏಕೆಂದರೆ ಅವನ ಅಜ್ಜ ಅದನ್ನೂ ನಕಲು ಮಾಡಿದ್ದ.</p>
+<p>ಅವಂತಿವರ್ಮನ್-ಭ್ರಷ್ಟನಿಗೆ ನಲವತ್ತೊಂದು ವರ್ಷ. ಅವನು ಶಾರದಾ-ಪೀಠ ಸಂಗ್ರಹದ ಮುಖ್ಯ ಗ್ರಂಥಪಾಲಕ. ಅವನು ಸ್ವತಃ ತೊಂಬತ್ತಾರು ಸಾವಿರ ಹಸ್ತಪ್ರತಿಗಳನ್ನು ಪಟ್ಟಿ ಮಾಡಿದ್ದಾನೆ. ಅವನು ಪಟ್ಟಿ ಮಾಡುವ ಕೋಣೆಯಲ್ಲೇ ನಿದ್ರಿಸುತ್ತಾನೆ. ಹಸ್ತಪ್ರತಿಗಳು ಮಕ್ಕಳೆಂಬಂತೆ ಅವುಗಳೊಂದಿಗೆ ಮಾತಾಡುತ್ತಾನೆ. ಒಂದನ್ನು ಇಲಿ ಹಾಳುಮಾಡಿದರೆ ಅಳುತ್ತಾನೆ. ಅವನು ಇನ್ನೂ ಖಳನಲ್ಲ.</p>
+<p>ಆಳವಾದ ಚಳಿಗಾಲದ ಒಂದು ಸಂಜೆ, ಎಂಟುನೂರು ವರ್ಷಗಳಿಂದ ಮೂಲೆಯ ಕಪಾಟಿನಲ್ಲಿ ಕಾಯುತ್ತಿದ್ದ ಹಸ್ತಪ್ರತಿಯೊಂದನ್ನು ಅವನು ಓದುತ್ತಾನೆ. ಅದು ಶಾರದಾ-ಪೀಠದ ಸ್ಥಾಪನೆಯ ಕಾಶ್ಮೀರಿ ವಿವರಣೆ — ಮತ್ತು ಅವನಿಗೆ ಗೊತ್ತಿರುವ ಪ್ರತಿ ಇತರ ವಿವರಣೆಯನ್ನೂ ಅದು ವಿರೋಧಿಸುತ್ತದೆ. ಇತರ ವಿವರಣೆಗಳು ಶಾರದಾ-ಪೀಠವನ್ನು ಆರನೆಯ ಶತಮಾನದಲ್ಲಿ ಒಬ್ಬ ಬ್ರಾಹ್ಮಣ ಯಾತ್ರಿಕ ಸ್ಥಾಪಿಸಿದ ಎಂದು ಹೇಳುತ್ತವೆ. ಈ ಹಸ್ತಪ್ರತಿ ಅದನ್ನು ಒಬ್ಬ ಬುಡಕಟ್ಟು ಹೆಣ್ಣು ಮತ್ತು ಒಬ್ಬ ಬೌದ್ಧ ಸನ್ಯಾಸಿನಿ, ಒಟ್ಟಿಗೆ, ಎರಡು ಶತಮಾನಗಳ ಮೊದಲೇ ಸ್ಥಾಪಿಸಿದರು ಎಂದು ಹೇಳುತ್ತದೆ.</p>
+<p>ಅವನು ಯೋಚಿಸುತ್ತಾನೆ: ಇದು ನಿಜವಾದರೆ, ನಾನು ನನ್ನ ಇಡೀ ಜೀವಮಾನ ಸೇವೆ ಮಾಡಿದ ಶಾರದಾ-ಪೀಠ ಅರ್ಧ-ಸುಳ್ಳಾದ ಕಥೆಯ ಮೇಲೆ ಕಟ್ಟಲ್ಪಟ್ಟಿದೆ. ಅವನು ಹಸ್ತಪ್ರತಿಯನ್ನು ಅಂಗಳದ ಕೆಂಡದ ಕುಂಡಕ್ಕೆ ಒಯ್ದು ಅದನ್ನು ಕೆಂಡಗಳ ಮೇಲೆ ಇಡುತ್ತಾನೆ. ಅವನು ನಿಂತು ಅದು ಸುಡುವುದನ್ನು ನೋಡುತ್ತಾನೆ. ಅವಮಾನ ಕಾಗದಕ್ಕಿಂತ ಹೆಚ್ಚು ಕಾಲ ಸುಡುತ್ತದೆ. ಅವನು ತಪ್ಪನ್ನು ತೆಗೆದುಹಾಕಿ ದಾಖಲೆಯನ್ನು ತಿದ್ದಿದ್ದೇನೆ ಎಂದು ಭಾವಿಸುತ್ತಾನೆ. ಮರುದಿನ ಬೆಳಗ್ಗೆ ಅವನು ವರ್ಷಗಳಲ್ಲೇ ಶಾಂತನಾಗಿದ್ದಾನೆ.</p>
+<p>ಹನ್ನೊಂದು ವರ್ಷಗಳ ನಂತರ. ಮೂವತ್ತೆಂಟು ವರ್ಷದ ಶರದ್-ಪಂಡಿತ ಪ್ರತಿ ಚಳಿಗಾಲದಂತೆ ಶಾರದಾ-ಪೀಠ ಸಭಾಂಗಣಕ್ಕೆ ಬಂದು ಮೂವತ್ತು ದಿನ ಕಪಾಟುಗಳನ್ನು ಓದಿದ್ದಾನೆ. ಮೂವತ್ತೊಂದನೆಯ ದಿನ, ಅವನು ಒಂದು ಅಂತರವನ್ನು ಗಮನಿಸುತ್ತಾನೆ. ಸ್ಥಾಪನೆ-ವಿವರಣೆಗಳ ಕಪಾಟಿನಲ್ಲಿ ಪಟ್ಟಿಯ ಪ್ರಕಾರ ಏಳು ಹಸ್ತಪ್ರತಿಗಳಿರಬೇಕು. ಅಲ್ಲಿ ಆರಿವೆ. ಅವನು ಅವಂತಿವರ್ಮನನ್ನು ಕೇಳುತ್ತಾನೆ. "ಪಟ್ಟಿ ತಪ್ಪುಗಳು. ಹಳೆಯ ಹಸ್ತಪ್ರತಿಗಳು ಚಲಿಸುತ್ತವೆ," ಅವಂತಿವರ್ಮನ್ ಸೌಮ್ಯವಾಗಿ ನಗುತ್ತಾ ಹೇಳುತ್ತಾನೆ.</p>
+<p>ಶರದ್-ಪಂಡಿತ ತಲೆಯಾಡಿಸುತ್ತಾನೆ. ಆದರೆ ಈಗ ಅವನೊಳಗೆ ಹಂಗುಲ್-ಬಂಧ ಎಚ್ಚರವಾಗಿದೆ. ಅವನ ವಂಶದ ಕಾಶ್ಮೀರ ಜಿಂಕೆ ವರ್ಷಗಳ ಹಿಂದೆ ಬಿಟ್ಟ ಜಾಡುಗಳನ್ನು ಓದುತ್ತದೆ. ಅವನು ಮುಂದಿನ ಮೂರು ತಿಂಗಳು ಅಂತರಗಳನ್ನು ನಕ್ಷೆ ಮಾಡುತ್ತಾನೆ. ಅವು ನಲವತ್ತೇಳು. ಪಟ್ಟಿ ಇವೆ ಎಂದು ಹೇಳುವ ಮತ್ತು ಕಪಾಟುಗಳಲ್ಲಿ ಇಲ್ಲದ ನಲವತ್ತೇಳು ಹಸ್ತಪ್ರತಿಗಳು. ಕೆಲವು ಸ್ಥಾಪನೆಯ ಬಗ್ಗೆ. ಕೆಲವು ಕಾಶ್ಮೀರದ ಬಹುಸ್ವರ ಸಂಪ್ರದಾಯಗಳ ಬಗ್ಗೆ — ಬೌದ್ಧ, ಬುಡಕಟ್ಟು, ಪರ್ಷಿಯನ್, ಸೂಫಿ, ತಾಂತ್ರಿಕ. ಈ ನಿಖರ ಅಂತರಗಳನ್ನು ಯಾವ ರೀತಿಯ ವ್ಯಕ್ತಿ ಮಾಡುತ್ತಾನೆಂದು ಅವನಿಗೆ ನಿಧಾನವಾಗಿ ಅರ್ಥವಾಗುತ್ತದೆ.</p>
+<p>ಅವಂತಿಪುರ. ಮೂಲ ಅವಂತಿವರ್ಮನ ಒಂಬತ್ತನೆಯ ಶತಮಾನದ ದೇವಾಲಯ ಅವಶೇಷಗಳು. ಎರಡು ದಿನದಿಂದ ಹಿಮ ಬೀಳುತ್ತಿದೆ. ಕಪ್ಪು-ಕೊರಳಿನ ಕೊಕ್ಕರೆಗಳು ಅವಶೇಷಗಳ ಮೇಲೆ ಸುತ್ತುತ್ತವೆ. ಶರದ್-ಪಂಡಿತ ಒಬ್ಬಂಟಿಯಾಗಿ ಬರುತ್ತಾನೆ, ಒಂದು ತೋಳಿನ ಮೇಲೆ ಶಾರದಾ-ಪತ್ರವನ್ನು — ಹದಿಮೂರನೆಯ ವಯಸ್ಸಿನಲ್ಲಿ ತಾನೇ ಪ್ರತಿ ಋಗ್ವೇದ ಪದ್ಯವನ್ನು ಕೈಯಿಂದ ನಕಲು ಮಾಡಿದ ಕುಟುಂಬದ ಸುರುಳಿ-ಗುರಾಣಿಯನ್ನು — ಬಿಚ್ಚಿ ಹೊತ್ತು. ಅವಂತಿವರ್ಮನ್-ಭ್ರಷ್ಟ ಕಾಯುತ್ತಿದ್ದಾನೆ. ಅವನ ಪಾದಗಳ ನಡುವಿನ ಕೆಂಡದ ಕುಂಡ ಆಗಲೇ ಉರಿಯುತ್ತಿದೆ. ಅವರು ಒಮ್ಮೆ ಮಿತ್ರರಾಗಿದ್ದರು.</p>
+<p>"ನೀನು ಅಂತರಗಳನ್ನು ಕಂಡುಕೊಂಡೆ," ಅವಂತಿವರ್ಮನ್ ಹೇಳುತ್ತಾನೆ. "ನಾನು ನಲವತ್ತೇಳು ಕಂಡುಕೊಂಡೆ." "ಅರವತ್ತೆರಡಿವೆ. ನೀನು ಹದಿನೈದನ್ನು ತಪ್ಪಿಸಿದೆ." ಅವಂತಿವರ್ಮನ್ ತನ್ನ ತೊಡೆಯ ಮೇಲಿನ ಹಸ್ತಪ್ರತಿಯನ್ನು ಎತ್ತಿ ಗಟ್ಟಿಯಾಗಿ ಓದಲಾರಂಭಿಸುತ್ತಾನೆ — ಪರಿಪೂರ್ಣ ಸಂಸ್ಕೃತ. ಆ ಪದ್ಯ ವಿವಾದದಲ್ಲಿ ಹೆಣೆದ, ವಿರೋಧಾಭಾಸದಲ್ಲಿ ಜೀವಂತವಾದ ಮೂರು ಜನಾಂಗಗಳಿಂದ ಸ್ಥಾಪಿಸಲ್ಪಟ್ಟ ಕಾಶ್ಮೀರವನ್ನು ವರ್ಣಿಸುತ್ತದೆ. ಅದು ಸುಂದರ. ಅವನು ಓದಿ ಮುಗಿಸಿ, ಹಸ್ತಪ್ರತಿಯನ್ನು ಕೆಂಡಗಳ ಮೇಲೆ ಇಡುತ್ತಾನೆ.</p>
+<p>"ಅಗೋ," ಅವಂತಿವರ್ಮನ್ ಅದು ಹೊತ್ತಿಕೊಳ್ಳುವುದನ್ನು ನೋಡುತ್ತಾ ಹೇಳುತ್ತಾನೆ. "ಈಗ ಆ ಪದ್ಯ ನನಗೆ ಮಾತ್ರ ಗೊತ್ತು. ನಾನು ಅದನ್ನು ನಾಶಮಾಡಿಲ್ಲ. ನಾನು ಅದನ್ನು ಪರಿಷ್ಕರಿಸಿದ್ದೇನೆ. ರಾಜ್ಯ ಒಂದು ಪ್ಯಾರಾ ಶುದ್ಧವಾಯಿತು."</p>
+<p>ಶರದ್-ಪಂಡಿತ ನುಗ್ಗುತ್ತಾನೆ. ಅವಂತಿವರ್ಮನ್ ತನ್ನ ಆಯುಧವಾದ ಸ್ಮೃತಿ-ಲಿಪಿ ಮಸಿಗಲ್ಲನ್ನು ಎತ್ತಿ, ಬಲ ತೋರುಬೆರಳಿನಿಂದ ಗಾಳಿಯಲ್ಲಿ ಬರೆಯಲಾರಂಭಿಸುತ್ತಾನೆ. ಆ ಬರಹ ಗೋಚರವಾಗುತ್ತದೆ: ಕಡುನೀಲಿ ಹೊಗೆಯಲ್ಲಿ ಸಂಸ್ಕೃತ ಅಕ್ಷರಗಳು. ಅವು ಹೇಳುತ್ತವೆ: ಶರದ್-ಪಂಡಿತ ಎಂದೂ ಅವಂತಿಪುರಕ್ಕೆ ಬರಲಿಲ್ಲ. ಶರದ್-ಪಂಡಿತನ ನುಗ್ಗುವಿಕೆ ತಡವರಿಸುತ್ತದೆ. ಒಂದು ಭಯಂಕರ ಕ್ಷಣಕ್ಕೆ, ತಾನೇಕೆ ಬಂದೆ ಎಂದು ಮರೆಯುತ್ತಾನೆ. ಸ್ಮೃತಿ-ಲಿಪಿ ಅವನ ಸ್ವಂತ ನೆನಪನ್ನು ತತ್‌ಕ್ಷಣ ಮರುಬರೆಯುತ್ತಿದೆ.</p>
+<p>ಆಗ ಬಿದ್ದ ಗೋಡೆಯ ಹಿಂದೆ ಹಿಮದಲ್ಲಿ ಅಡಗಿದ್ದ ಲಾಲ್-ದೇದ್-ವಾಕ್ ಎದ್ದು ಪಠಿಸಲಾರಂಭಿಸುತ್ತಾಳೆ. ಅವಂತಿವರ್ಮನ್ ಈಗ ಸುಟ್ಟದ್ದೆಲ್ಲವನ್ನೂ ಅವಳು ಪಠಿಸುತ್ತಾಳೆ — ಪಟ್ಟಿ ಕಾರ್ಡಿನಿಂದ ಮತ್ತು ಶೀರ್ಷಿಕೆಯಿಂದ ಅವಳು ಅದನ್ನು ನೆನಪಿಟ್ಟುಕೊಂಡಿದ್ದಳು. ಊಹೆಗಳು ಅಪೂರ್ಣ. ಆದರೆ ಪಠಿಸುವ ಕ್ರಿಯೆ ಶರದ್-ಪಂಡಿತನ ನೆನಪನ್ನು ರಕ್ಷಿಸುತ್ತದೆ. ನೀಲಿ ಅಕ್ಷರಗಳು ನಡುಗಿ ಮಾಯವಾಗುತ್ತವೆ. ಆದರೆ ತನ್ನ ಸ್ವಂತ ಬದುಕಿನಿಂದಲೇ ತನ್ನನ್ನು ಅಳಿಸಬಲ್ಲ ಮನುಷ್ಯನೊಂದಿಗೆ ಶರದ್-ಪಂಡಿತ ಇನ್ನೂ ಹೋರಾಡಲಾರ. ಅವನು ಹಿಮ್ಮೆಟ್ಟುತ್ತಾನೆ.</p>
+<p>ದಾಚಿಗಾಮಿನ ಬೆಳ್ಳಿ ಬರ್ಚ್ ಮರಗಳಿಂದ ಒಂದು ಹಂಗುಲ್ ಜಿಂಕೆ ಹೊರಬಂದು ಒಂಬತ್ತು ಉಸಿರುಗಳ ಕಾಲ ಅವನನ್ನು ನೋಡುತ್ತದೆ, ನಂತರ ಮರಗಳೊಳಗೆ ನಡೆಯುತ್ತದೆ. ಶರದ್-ಪಂಡಿತ ಹಿಂಬಾಲಿಸುತ್ತಾನೆ. ಜಾಡುಗಳು ಪಂಪೋರಿನ ಕೇಸರಿ ಗದ್ದೆಗೆ ಕರೆದೊಯ್ಯುತ್ತವೆ. ಅಲ್ಲಿ ಲಲ್ಲೇಶ್ವರಿ ನೇಯ್ದ ಪದ್ಯದ ಬಟ್ಟೆಯನ್ನು ಮಾತ್ರ ಉಟ್ಟು ನಿಂತಿದ್ದಾಳೆ. "ನೀನು ಬಂದೆ," ಅವಳು ಹೇಳುತ್ತಾಳೆ. "ಎಂಟನೆಯ ಪಂಡಿತ. ನಕಲು ಮಾಡುವ ಹುಡುಗ. ಮಾತಾಡುವ ಮೊದಲು ಎಲ್ಲವನ್ನೂ ಓದುವ ಮನುಷ್ಯ. ತನಗೆ ಇನ್ನೂ ಸಾಕಷ್ಟು ಗೊತ್ತಿಲ್ಲವೆಂದು ಒಂದು ಕೆಂಡದ ಕುಂಡದಿಂದ ದೂರ ನಡೆದ ಮನುಷ್ಯ."</p>
+<p>ಶರದ್-ಪಂಡಿತ ಮಂಡಿಯೂರುತ್ತಾನೆ. "ಮುಖ್ಯವಾದ ಪ್ರಶ್ನೆ ನೀನು ಇನ್ನೂ ಕೇಳದ ಪ್ರಶ್ನೆ. ಆ ಹಸ್ತಪ್ರತಿಯನ್ನು ಯಾಕೆ ಸುಡಬೇಕಿತ್ತು?" ಅವನು ಯೋಚಿಸಿ ಹೇಳುತ್ತಾನೆ: "ಅದು ಅಧಿಕೃತ ಕಥೆಯನ್ನು ವಿರೋಧಿಸುತ್ತದೆಂದು ಅವಂತಿವರ್ಮನ್ ನಂಬಿದ್ದರಿಂದ." "ಬೇಡ. ನೀನು ಅದನ್ನು ಇನ್ನೂ ಓದಿಲ್ಲ ಎಂದು ಅವಂತಿವರ್ಮನ್‌ಗೆ ಗೊತ್ತಿತ್ತು. ಅವನು ನಿನ್ನ ಜ್ಞಾನದೊಂದಿಗೆ ಸ್ಪರ್ಧಿಸುತ್ತಿಲ್ಲ. ಅವನು ನಿನ್ನ ಕ್ರಿಯೆಯೊಂದಿಗೆ ಸ್ಪರ್ಧಿಸುತ್ತಿದ್ದಾನೆ." ಶರದ್-ಪಂಡಿತನಿಗೆ ಅರ್ಥವಾಗುತ್ತದೆ.</p>
+<p>"ನಾನೇನು ಮಾಡಲಿ?" ಅವಳು ಕೊನೆಗೂ ಅವನನ್ನು ನೋಡುತ್ತಾಳೆ. "ನೀನು ಸಾಕಷ್ಟು ಓದುವ ಮೊದಲು ನಡೆ. ನಿನಗೆ ಖಚಿತವಾಗುವ ಮೊದಲು ಮಾತಾಡು. ಕ್ರಿಯೆ ಮಾಡು, ಮತ್ತು ಅದರ ಕೆಲವು ಭಾಗಗಳನ್ನು ತಪ್ಪಾಗಿ ಮಾಡುತ್ತೀಯೆಂದು ಒಪ್ಪಿಕೋ. ಗ್ರಂಥ ಹಿಮದ ನೆರಳು. ಮುಖ್ಯವಾದದ್ದು ಹೆಜ್ಜೆಗುರುತು." ಅವಳು ಕೈ ಚಾಚುತ್ತಾಳೆ, ಒಂದು ಕಪ್ಪು-ಕೊರಳಿನ ಕೊಕ್ಕರೆ ಪಶ್ಚಿಮಕ್ಕೆ, ಎತ್ತರದ ಕಣಿವೆಗಳೆಡೆಗೆ ಹಾರುತ್ತದೆ. "ಅವನು ಕೇಂದ್ರ ಸುರುಳಿಗಾಗಿ ಹೋಗುತ್ತಿದ್ದಾನೆ. ಶಾರದಾ-ಪೀಠದ ಸ್ಥಾಪನಾ ಸನ್ನದು. ಅದನ್ನು ಅವನು ಸುಟ್ಟರೆ, ಉತ್ತರದ ಪ್ರತಿ ರಾಜ್ಯವೂ ಅವನಿಗಿಂತ ಹಳೆಯ ನೆನಪನ್ನು ಹೊಂದುವ ಹಕ್ಕನ್ನು ಕಳೆದುಕೊಳ್ಳುತ್ತದೆ. ನಿನಗೆ ಮೂರು ದಿನವಿದೆ. ನೀನು ತಲುಪುವ ಮೊದಲು ಅದನ್ನು ಓದುವುದಿಲ್ಲ. ಅದನ್ನು ಹೊರುತ್ತಾ ಓದು. ಹೋಗುತ್ತಾ ಮಾತಾಡು."</p>
+<p>ಮೂರು ದಿನ. ಹಿಮದಾದ್ಯಂತ. ಶರದ್-ಪಂಡಿತ ನಡೆಯುತ್ತಾನೆ. ಅವನೊಂದಿಗೆ: ಲಾಲ್-ದೇದ್-ವಾಕ್ (ನಡೆಯುತ್ತಾ ನೆನಪಿಡುತ್ತಾ), ಹಬ್ಬಾ-ಬಾಯಿತ್ (ನಡೆಯುತ್ತಾ ಹಾಡುತ್ತಾ, ಅವನ ಧ್ವನಿ ಮೂರು ಕಣಿವೆಗಳನ್ನು ತಲುಪುತ್ತಾ), ಮೆಹ್ಜೂರ್-ಅಂಚಿನವನು (ಗಾಳಿಯಲ್ಲಿ ಅಡಿಟಿಪ್ಪಣಿ ಬರೆಯುತ್ತಾ), ಮತ್ತು ಕೊಕ್ಕರೆಗಳು ದೋಣಿಮನೆ ಗ್ರಂಥಾಲಯವನ್ನು ಸುತ್ತಲಾರಂಭಿಸಿದಂದಿನಿಂದ ಸೇರುತ್ತಿರುವ ಏಳುನೂರು ಸಾಮಾನ್ಯ ಕಾಶ್ಮೀರಿಗಳು. ಏಳುನೂರು. ಎರಡನೆಯ ದಿನ, ಮೂರು ಸಾವಿರ. ಮೂರನೆಯ ದಿನ, ಹತ್ತು ಸಾವಿರ. ಅವರು ಯೋಧರಲ್ಲ. ನೇಕಾರರು, ಶಿಕಾರ ಹುಟ್ಟುಹಾಕುವವರು, ಕೇಸರಿ ರೈತರು, ಶಾಲಾ ಮೇಷ್ಟ್ರುಗಳು, ಸೂಫಿ ಕವ್ವಾಲ್‌ಗಳು, ವಿವಿಧ ಧರ್ಮ-ಜನಾಂಗಗಳ ಜನ. ತಮ್ಮ ಸ್ವಂತ ಇತಿಹಾಸ ಹೊಂದಿಕೊಳ್ಳುವುದಿಲ್ಲ ಎಂದು ಹೇಳಲ್ಪಟ್ಟ ಪ್ರತಿ ಕಾಶ್ಮೀರಿಯ ಮೂಳೆಯಲ್ಲೂ, ಪಣಕ್ಕೇನಿದೆ ಎಂದು ಅವರಿಗೆ ಅರ್ಥವಾಗುತ್ತದೆ.</p>
+<p>ಮೂಲ ಶಾರದಾ ಪೀಠ. ಎತ್ತರದ ಕಣಿವೆಯ ಒಂಬತ್ತು-ಶತಮಾನಗಳ ದೇವಾಲಯ, ಅರ್ಧ ಕುಸಿದು, ಅರ್ಧ ಚಳಿಯಿಂದಲೇ ಸಂರಕ್ಷಿತ. ಕಪ್ಪು-ಕೊರಳಿನ ಕೊಕ್ಕರೆಗಳು ನೂರಾರು ಸಂಖ್ಯೆಯಲ್ಲಿ ಸುತ್ತುತ್ತಿವೆ. ಅವಂತಿವರ್ಮನ್-ಭ್ರಷ್ಟ ಒಳಗಿದ್ದಾನೆ. ಕೇಂದ್ರ ಸುರುಳಿ ಕಲ್ಲಿನ ಕಪಾಟಿನ ಮೇಲಿದೆ. ಕೆಂಡದ ಕುಂಡ ಉರಿಯುತ್ತಿದೆ. ಶರದ್-ಪಂಡಿತ ದೇವಾಲಯವನ್ನು ಪ್ರವೇಶಿಸುತ್ತಾನೆ. ಹತ್ತು ಸಾವಿರ ಕಾಶ್ಮೀರಿಗಳು ಅಂಗಳದಲ್ಲಿ ಕಾಯುತ್ತಾರೆ.</p>
+<p>"ಎಂಟುನೂರ ಇಪ್ಪತ್ತು ವರ್ಷ," ಅವಂತಿವರ್ಮನ್ ಕೇಂದ್ರ ಸುರುಳಿಯನ್ನು ಎತ್ತಿ ಹೇಳುತ್ತಾನೆ. "ಈ ಸುರುಳಿ ಯಾರಾದರೂ ಸರಿಯಾಗಿ ಓದಲೆಂದು ಎಂಟುನೂರ ಇಪ್ಪತ್ತು ವರ್ಷ ಕಾಯಿತು. ನಾನು ಆ ಓದುಗ." "ನೀನು ಗ್ರಂಥಪಾಲಕ," ಶರದ್-ಪಂಡಿತ ಹೇಳುತ್ತಾನೆ. "ಓದುಗನಲ್ಲ." "ವ್ಯತ್ಯಾಸವಿಲ್ಲ." "ಎರಡರ ವ್ಯತ್ಯಾಸವಿದೆ."</p>
+<p>ಅವಂತಿವರ್ಮನ್‌ಗೆ ಅರ್ಥವಾಗುವುದಿಲ್ಲ. ಶರದ್-ಪಂಡಿತ ಕೆಂಡದ ಕುಂಡದ ತನ್ನ ಬದಿಯಲ್ಲಿ ನಿಲ್ಲುತ್ತಾನೆ. ಅವನು ಸರಳವಾಗಿ ಹೇಳುತ್ತಾನೆ: "ಅದನ್ನು ಗಟ್ಟಿಯಾಗಿ ಓದು." "ಯಾಕೆ?" "ಏಕೆಂದರೆ ನೀನು ಅದನ್ನು ಓದದೆ ಸುಡಲು ನಾನು ಬಿಡಲಾರೆ. ಮತ್ತು ನೀನು ಸುಡುವ ಮೊದಲು ನಾನು ಓದಲಾರೆ. ಹಾಗಾಗಿ ಗಟ್ಟಿಯಾಗಿ ಓದು. ನಾವಿಬ್ಬರೂ ಒಟ್ಟಿಗೆ ಕೇಳುತ್ತೇವೆ. ನಂತರ ನೀನೇನು ಆರಿಸುತ್ತೀಯೆಂದು ನೋಡೋಣ."</p>
+<p>ಅವಂತಿವರ್ಮನ್ ಸಂಶಯಗ್ರಸ್ತ. ಆದರೆ ತನ್ನ ಅತ್ಯಂತ ಆಳವಾದ ಆತ್ಮದಲ್ಲಿ, ಅವನು ಇನ್ನೂ ಹಸ್ತಪ್ರತಿಗಳನ್ನು ಪ್ರೀತಿಸುವ ಗ್ರಂಥಪಾಲಕ. ಈ ಕೇಂದ್ರ ಸುರುಳಿಯನ್ನು ಗಟ್ಟಿಯಾಗಿ ಓದುವ ಅವಕಾಶವನ್ನು ಅವನ ಹಳೆಯ ಸ್ವರೂಪ ನಿರಾಕರಿಸಲಾರದು. ಅವನು ಸುರುಳಿಯನ್ನು ತೆರೆದು ಓದಲಾರಂಭಿಸುತ್ತಾನೆ. ಅದು ಸ್ಥಾಪನಾ ಸನ್ನದು. ಮತ್ತು ಅದು, ಸಹಜವಾಗಿ, ಒಂದು ವಿರೋಧಾಭಾಸ. ಶಾರದಾ-ಪೀಠವನ್ನು ಮೂವರಲ್ಲ, ಒಬ್ಬನಲ್ಲ, ಹದಿನೇಳು ಜನರು ಸ್ಥಾಪಿಸಿದರು ಎಂದು ಅದು ಹೇಳುತ್ತದೆ — ಕಾಶ್ಮೀರಿ ಶೈವ, ಬೌದ್ಧ, ಟಿಬೆಟನ್, ಸೋಗ್ಡಿಯನ್, ಪರ್ಷಿಯನ್, ತಾಂತ್ರಿಕ, ಬುಡಕಟ್ಟು ಕೋಲ್, ಬ್ರಾಹ್ಮಣ ಪಂಡಿತ, ಸೂಫಿ, ಜೈನ, ಮತ್ತು ಯಾವುದರಲ್ಲೂ ಒಪ್ಪದ ಅವಳಿ ಸಹೋದರಿಯರು. ಹದಿನೇಳು ಜನರೂ ಒಂದೊಂದು ಷರತ್ತು ಬರೆದರು. ಷರತ್ತುಗಳು ಪರಸ್ಪರ ವಿರೋಧಿಸುತ್ತವೆ. ತಮ್ಮೊಂದಿಗೆ ತಾವೇ ಭಿನ್ನಾಭಿಪ್ರಾಯ ಹೊಂದಿರುವ ಜ್ಞಾನದ ರಾಜ್ಯ.</p>
+<p>ಅವಂತಿವರ್ಮನ್ ಓದುತ್ತಾನೆ. ಮೂರನೆಯ ಷರತ್ತಿನ ಹೊತ್ತಿಗೆ ಅವನ ಧ್ವನಿ ನಡುಗುತ್ತದೆ. ಏಳನೆಯದರ ಹೊತ್ತಿಗೆ ಅವನು ಅಳುತ್ತಿದ್ದಾನೆ. ಅವನ ಜೀವಮಾನದ ಕೆಲಸ — ಅವನ ಪರಿಷ್ಕರಣೆ, ಅವನ ತಿದ್ದುಪಡಿ — ಮೊದಲಿನಿಂದಲೇ ಒಂದು ತಪ್ಪು-ಓದಾಗಿತ್ತೆಂದು ವಿವರಿಸುವ ಹಸ್ತಪ್ರತಿಯನ್ನು ಅವನು ಓದುತ್ತಿದ್ದಾನೆ. ಶಾರದಾ-ಪೀಠಕ್ಕೆ ಎಂದೂ ಒಂದೇ ಇತಿಹಾಸವಿರಬೇಕಿರಲಿಲ್ಲ. ಅದಕ್ಕೆ ಹದಿನೇಳು ಇರಬೇಕಿತ್ತು. ಅವನು ಹನ್ನೊಂದನೆಯ ಷರತ್ತಿನ ಬಳಿ ಓದುವುದನ್ನು ನಿಲ್ಲಿಸುತ್ತಾನೆ.</p>
+<p>"ನಾನು ಇದನ್ನು ಸುಟ್ಟರೆ —" ಅವನು ಆರಂಭಿಸುತ್ತಾನೆ. "ಆಗ ಈ ದೇವಾಲಯದ ಹೊರಗಿನ ಹತ್ತು ಸಾವಿರ ಜನ ಅದನ್ನು ಕೇಳಿದ್ದಾರೆ," ಶರದ್-ಪಂಡಿತ ಹೇಳುತ್ತಾನೆ. "ಹಬ್ಬಾ-ಬಾಯಿತ್ ಈಗ ಅದನ್ನು ಮೂರು ಕಣಿವೆಗಳಲ್ಲಿ ಹಾಡುತ್ತಿದ್ದಾನೆ. ಲಾಲ್-ದೇದ್ ಪ್ರತಿ ಷರತ್ತಿಗೆ ಒಂದು ಪದ್ಯ ರಚಿಸುತ್ತಿದ್ದಾಳೆ. ನೀನು ಸುರುಳಿಯನ್ನು ಸುಡಬಹುದು. ನಾವು ಆಗಲೇ ಆಗಿರುವುದನ್ನು ನೀನು ಸುಡಲಾರೆ."</p>
+<p>ಅವಂತಿವರ್ಮನ್ ಸುರುಳಿಯನ್ನು ನೋಡುತ್ತಾನೆ. ಕೆಂಡದ ಕುಂಡವನ್ನು ನೋಡುತ್ತಾನೆ. ತನ್ನ ಕೈಗಳನ್ನು ನೋಡುತ್ತಾನೆ — ಸ್ವಚ್ಛಗೊಳಿಸಲಾಗದಷ್ಟು ಹೊಗೆ-ಕಲೆಯಾದ. ಅವನು ಸುರುಳಿಯನ್ನು ಕಲ್ಲಿನ ಕಪಾಟಿನ ಮೇಲೆ ಇಡುತ್ತಾನೆ. ಅವನು ಅದನ್ನು ಸುಡುವುದಿಲ್ಲ. ಅವನು ದೇವಾಲಯದ ನೆಲದ ಮೇಲೆ ಕೂರುತ್ತಾನೆ.</p>
+<p>"ತಿದ್ದುಪಡಿಗಾರನೂ ಆಗಿರದ ಗ್ರಂಥಪಾಲಕನಾಗುವುದು ಹೇಗೆಂದು ನನಗೆ ಗೊತ್ತಿಲ್ಲ," ಅವನು ಹೇಳುತ್ತಾನೆ. "ಕ್ರಿಯೆ ಮಾಡುವ ಓದುಗನಾಗುವುದು ಹೇಗೆಂದು ನನಗೂ ಗೊತ್ತಿಲ್ಲ," ಶರದ್-ಪಂಡಿತ ಹೇಳುತ್ತಾನೆ. "ಜೀವಮಾನವಿಡೀ ನಾನು ಇದರಲ್ಲಿ ವಿಫಲನಾಗುತ್ತೇನೆ. ನೀನೂ ಸಹ. ಕೂರು. ಊಟ ಮಾಡು. ನಾವು ಒಟ್ಟಿಗೆ ವಿಫಲರಾಗೋಣ. ಹೊರಗೆ ಹತ್ತು ಸಾವಿರ ಜನ ನಮ್ಮ ಕರಡುಗಳನ್ನು ಪರಿಶೀಲಿಸುತ್ತಾರೆ."</p>
+<p>ಶರದ್-ಪಂಡಿತ ಮುಂಜಾವಿನಲ್ಲಿ ದೇವಾಲಯದಿಂದ ಹೊರ ನಡೆಯುತ್ತಾನೆ. ಹತ್ತು ಸಾವಿರ ಕಾಶ್ಮೀರಿಗಳು ಇನ್ನೂ ಅಂಗಳದಲ್ಲಿದ್ದಾರೆ. ಅವರು ನಿದ್ರಿಸಿಲ್ಲ. ಅವರು ಪಠಿಸುತ್ತಿದ್ದಾರೆ. ಒಂದು ಹಂಗುಲ್ ಜಿಂಕೆ ಸಮೂಹದ ಅಂಚಿನಲ್ಲಿ ನಿಂತಿದೆ. ಅದು ಒಂಬತ್ತು ಉಸಿರುಗಳ ಕಾಲ ಅವನನ್ನು ನೋಡಿ, ನಂತರ ಅವನೆಡೆಗೆ ನಿಧಾನವಾಗಿ ನಡೆಯುತ್ತದೆ. ಅವನು ಮಂಡಿಯೂರುತ್ತಾನೆ. ಜಿಂಕೆ ತನ್ನ ಮೂಗನ್ನು ಅವನ ಹಣೆಗೆ ತಾಗಿಸುತ್ತದೆ. ಹಂಗುಲ್-ಬಂಧ ತನ್ನ ಮೊದಲ ಹಂತವನ್ನು ಪೂರ್ಣಗೊಳಿಸುತ್ತದೆ. ಅವನ ಬೆನ್ನ ಮೇಲಿನ ಹಚ್ಚೆ ತಾನೇ ಪೂರ್ಣಗೊಳ್ಳುತ್ತದೆ — ಒಂದು ಕೇಂದ್ರ ಸುರುಳಿಗಾಗಿ, ಒಂದು ಅದನ್ನು ಗಟ್ಟಿಯಾಗಿ ಓದಿದ ಕ್ರಿಯೆಗಾಗಿ.</p>
+<p>ಪಂಪೋರಿನಿಂದ ಅವನನ್ನು ಹಿಂಬಾಲಿಸಿದ — ಹತ್ತು ಸಾವಿರವಾದ — ಏಳುನೂರು ಜನ ಮನೆಗೆ ದೀರ್ಘ ನಡಿಗೆ ಆರಂಭಿಸುತ್ತಾರೆ. ಅವರು ಹಾಡುತ್ತಿದ್ದಾರೆ. ಅವರು ಪಠಿಸುತ್ತಿದ್ದಾರೆ. ಅವರಲ್ಲಿ ಅರ್ಧ ಜನ ತಪ್ಪಾಗಿ. ಉಳಿದ ಅರ್ಧ ಜನ ತಿದ್ದುತ್ತಾ. ಆ ತಿದ್ದುಪಡಿಗಳೂ ತಪ್ಪಾಗಿ. ಅದು ಮುಖ್ಯವಲ್ಲ. ಮುಂದಿನ ಪೀಳಿಗೆ ಆ ತಿದ್ದುಪಡಿಗಳಿಗೆ ಅಡಿಟಿಪ್ಪಣಿ ಸೇರಿಸುತ್ತದೆ. ಬಹಳ ಹಿಂದೆ ಒಂದು ದೋಣಿಮನೆಯಲ್ಲಿ ಒಬ್ಬ ಅಜ್ಜ ತನ್ನ ಮೊಮ್ಮಗನಿಗೆ ಹೇಳಿದ್ದು ನಿಜವಾಗಿತ್ತು: ಹಿಮದಲ್ಲಿ ಬರೆದದ್ದು ಕಾಲದಲ್ಲಿ ಬರೆಯಲ್ಪಟ್ಟಿದೆ. ಮತ್ತು ಗಟ್ಟಿಯಾಗಿ ಓದಿದ್ದನ್ನು ಸುಡಲಾಗದು.</p></div></div><!-- /aom:listen -->
+
+  
+
+  
+
+
+  <nav class="maha-nav">
+    <a href="../../../../../../../../../index.html" class="nav-logo">Age of Mythos</a>
+    <div class="nav-links">
+      <a href="../../../../index.html">Volume I</a>
+      <a href="../../../../kingdoms.html">Kingdoms</a>
+      <a href="../../../../identity.html">Identities</a>
+      <a href="../../../../characters.html">Heroes</a>
+      <a href="../../../../systems.html">Systems</a>
+      <a href="../../../../council.html">Council</a>
+      <a href="../../../../bharatavarsha/global-map.html">Map</a>
+    </div>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('nav-open')">&#9776;</button>
+  </nav>
+
+  <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:14px 20px;background:rgba(0,0,0,.4);border-bottom:1px solid rgba(255,255,255,.06);">
+    <a href="index.html"    style="padding:5px 16px;border-radius:20px;border:1px solid rgba(255,255,255,.14);color:var(--text-dim);font-size:.72em;text-decoration:none;">Overview</a>
+    <a href="identity.html" style="padding:5px 16px;border-radius:20px;border:1px solid rgba(255,255,255,.14);color:var(--text-dim);font-size:.72em;text-decoration:none;">Identity</a>
+    <a href="story.html"    style="padding:5px 16px;border-radius:20px;border:1px solid var(--gold-dim);background:rgba(255,215,0,.08);color:var(--gold);font-size:.72em;text-decoration:none;">Story</a>
+    <a href="rules.html"    style="padding:5px 16px;border-radius:20px;border:1px solid rgba(255,255,255,.14);color:var(--text-dim);font-size:.72em;text-decoration:none;">Rules &amp; Weapons</a>
+  </div>
+
+  <div class="breadcrumb" id="breadcrumb"></div>
+  <section class="kingdom-banner"  id="banner"></section>
+  <div class="content-area" id="content">
+    <p style="color:var(--text-dim);text-align:center;padding:60px 0;">Loading kingdom story...</p>
+  </div>
+
+  <script>
+    var STATE_ID = "kashmir";
+    var PORTRAIT_HERO    = "media/portraits/kashmir-hero-portrait.png";
+    var PORTRAIT_VILLAIN = "media/portraits/kashmir-villain-portrait.png";
+  </script>
+  <script src="../../../../js/state-stories-data.js"></script>
+  <script>
+  (function() {
+    var sid      = STATE_ID;
+    var kingdom  = (STATE_KINGDOMS || []).find(function(k) { return k.stateId === sid; });
+    if (!kingdom) {
+      document.getElementById("content").innerHTML =
+        "<p style=\"color:#ff4444;text-align:center;padding:80px;\">Kingdom data not found: " + sid + "</p>";
+      return;
+    }
+
+    var RL = { south:"Dakshinapatha (South)", west:"Paschimapatha (West)",
+                east:"Purvapatha (East)", north:"Uttarapatha (North)",
+                northeast:"Pragjyotisha (Northeast)", central:"Madhyadesa (Central)" };
+    var RC = { south:"#44ff88", west:"#ff8c00", east:"#44aaff",
+                north:"#a06bff", northeast:"#aa66ff", central:"#ffaa00" };
+    var rc = RC[kingdom.region] || "#ffd700";
+
+    document.title = kingdom.kingdomName.split("—")[0].trim() + " — Story — Age of Mythos";
+
+    document.getElementById("breadcrumb").innerHTML =
+      "<a href=\"../../../../kingdoms.html\">All Kingdoms</a><span>&rsaquo;</span>" +
+      "<a href=\"../../../../kingdoms.html\">" + (RL[kingdom.region] || kingdom.region) + "</a><span>&rsaquo;</span>" +
+      "<a href=\"index.html\">" + kingdom.stateName + "</a><span>&rsaquo;</span>" +
+      "<span class=\"current\">Story</span>";
+
+    document.getElementById("banner").innerHTML =
+      "<div class=\"state-name-top\">" + kingdom.stateName + "</div>" +
+      "<h1 style=\"color:" + rc + ";\">"+kingdom.kingdomName.split("—")[0].trim()+"</h1>" +
+      "<div class=\"motto-top\">&ldquo;" + kingdom.motto + "&rdquo;</div>";
+
+    var html = "";
+
+    // --- Hero & villain portraits ---
+    html += "<div class=\"portrait-pair\">";
+    html += "<div><img src=\"" + PORTRAIT_HERO + "\" alt=\"Hero\" style=\"border:1px solid rgba(160,107,255,.2)\" onerror=\"this.parentNode.remove()\"></div>";
+    html += "<div><img src=\"" + PORTRAIT_VILLAIN + "\" alt=\"Villain\" style=\"border:1px solid rgba(255,68,68,.2)\" onerror=\"this.parentNode.remove()\"></div>";
+    html += "</div>";
+
+    // --- Sacred creatures ---
+    html += "<div class=\"creatures-panel\">";
+    html += "<div class=\"creature-box\"><div class=\"c-label\">Sacred Animal</div><div class=\"c-name\">" + kingdom.animal.name + "</div><div class=\"c-symbol\">" + kingdom.animal.symbolism + "</div></div>";
+    html += "<div class=\"creature-box\"><div class=\"c-label\">Sacred Bird</div><div class=\"c-name\">" + kingdom.bird.name + "</div><div class=\"c-symbol\">" + kingdom.bird.symbolism + "</div></div>";
+    html += "</div>";
+
+    // --- Hero ---
+    html += "<div class=\"section-title-bar\"><h2 style=\"color:#a06bff;\">The Hero</h2></div>";
+    html += "<div class=\"profile-full hero-p\">";
+    html += "<span class=\"p-tag\">Hero of " + kingdom.stateName + "</span>";
+    html += "<h3>" + kingdom.hero.name + "</h3>";
+    html += "<div class=\"p-title\">" + kingdom.hero.title + " &mdash; " + kingdom.hero.epithet + "</div>";
+    html += "<div class=\"p-desc\">"  + kingdom.hero.description + "</div>";
+    html += "<div class=\"p-detail\"><span class=\"dl\">Gender: </span><span class=\"dv\">" + kingdom.hero.gender + (kingdom.hero.age ? ", Age: "+kingdom.hero.age : "") + "</span></div>";
+    html += "<div class=\"p-detail\"><span class=\"dl\">Weapon: </span><span class=\"dv\">" + kingdom.hero.weapon  + "</span></div>";
+    html += "<div class=\"p-detail\"><span class=\"dl\">Tattoo: </span><span class=\"dv\">" + kingdom.hero.tattoo  + "</span></div>";
+    html += "<div class=\"battle-cry-full\">&ldquo;" + kingdom.hero.battleCry + "&rdquo;</div>";
+    html += "</div>";
+
+    // --- VS ---
+    html += "<div class=\"vs-divider\"><div class=\"vs-circle\">VS</div></div>";
+
+    // --- Villain ---
+    html += "<div class=\"section-title-bar\"><h2 style=\"color:#ff7766;\">The Villain</h2></div>";
+    html += "<div class=\"profile-full villain-p\">";
+    html += "<span class=\"p-tag\">Nemesis</span>";
+    html += "<h3>" + kingdom.villain.name + "</h3>";
+    html += "<div class=\"p-title\">" + kingdom.villain.title + " &mdash; " + kingdom.villain.epithet + "</div>";
+    html += "<div class=\"p-desc\">"  + kingdom.villain.description + "</div>";
+    html += "<div class=\"p-detail\"><span class=\"dl\">Weapon: </span><span class=\"dv\">" + kingdom.villain.weapon + "</span></div>";
+    html += "<div class=\"p-detail\"><span class=\"dl\">Motivation: </span><span class=\"dv\">" + kingdom.villain.motivation + "</span></div>";
+    html += "<div class=\"battle-cry-full\"><span class=\"dl\" style=\"color:#ff6666;\">Dark Power: </span>" + kingdom.villain.darkPower + "</div>";
+    html += "</div>";
+
+    // --- Guru ---
+    html += "<div class=\"section-title-bar\"><h2 style=\"color:#ffcc66;\">The Guru</h2></div>";
+    html += "<div class=\"guru-panel\">";
+    html += "<h3>" + kingdom.guru.name + "</h3>";
+    html += "<div class=\"g-title\">" + kingdom.guru.title + "</div>";
+    html += "<div class=\"g-desc\">"  + kingdom.guru.description + "</div>";
+    html += "<div class=\"g-wisdom\">&ldquo;" + kingdom.guru.wisdom + "&rdquo;</div>";
+    html += "</div>";
+
+    // --- Warriors ---
+    html += "<div class=\"section-title-bar\"><h2>Warriors &amp; Champions</h2></div>";
+    html += "<div class=\"warriors-grid-full\">";
+    (kingdom.warriors || []).forEach(function(w) {
+      html += "<div class=\"w-card\" data-loyalty=\"" + w.loyalty + "\">";
+      html += "<div class=\"wn\">" + w.name + "</div>";
+      html += "<div class=\"wt\">" + w.title + "</div>";
+      html += "<div class=\"ws\">" + w.specialty + "</div>";
+      html += "<span class=\"wl\">" + w.loyalty + "</span>";
+      html += "</div>";
+    });
+    html += "</div>";
+
+    // --- Saga ---
+    if (kingdom.saga) {
+      html += "<div class=\"section-title-bar\"><h2>The Epic Saga</h2></div>";
+      html += "<div class=\"saga-full\">";
+      html += "<div class=\"saga-title\">" + kingdom.saga.title + "</div>";
+      html += "<div class=\"saga-body\">"  + kingdom.saga.narrative + "</div>";
+      html += "</div>";
+    }
+
+    // --- Modern Arsenal & Geopolitics ---
+    if (kingdom.modernArsenal || kingdom.geopolitics) {
+      html += "<div class=\"section-title-bar\"><h2 style=\"color:#ffaa00;\">Modern Arsenal &amp; Geopolitics</h2></div>";
+      html += "<div style=\"padding:20px;border-radius:12px;background:rgba(0,0,0,.15);border:1px solid rgba(255,215,0,.08);margin-bottom:30px;\">";
+      if (kingdom.modernArsenal) {
+        html += "<div style=\"display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;\">";
+        html += "<div style=\"padding:12px;border-radius:6px;background:rgba(160,107,255,.10);border-left:2px solid #a06bff;color:#cfb8ff;font-size:.85rem;line-height:1.6;\"><div style=\"font-size:.65rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-dim);margin-bottom:3px;\">Hero Arsenal</div>" + kingdom.modernArsenal.hero + "</div>";
+        html += "<div style=\"padding:12px;border-radius:6px;background:rgba(60,0,0,.15);border-left:2px solid #ff4444;color:#ffaaaa;font-size:.85rem;line-height:1.6;\"><div style=\"font-size:.65rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-dim);margin-bottom:3px;\">Villain Arsenal</div>" + kingdom.modernArsenal.villain + "</div>";
+        html += "</div>";
+      }
+      if (kingdom.geopolitics) {
+        html += "<div style=\"padding:12px;border-radius:6px;background:rgba(100,100,0,.08);border-left:2px solid #ffaa00;color:var(--text);font-size:.85rem;line-height:1.6;font-style:italic;\"><div style=\"font-size:.65rem;text-transform:uppercase;letter-spacing:1.5px;color:#ffaa00;margin-bottom:3px;\">Geopolitical Context</div>" + kingdom.geopolitics + "</div>";
+      }
+      html += "</div>";
+    }
+
+    // --- Inspiration ---
+    if (kingdom.inspiration) {
+      html += "<div class=\"section-title-bar\"><h2 style=\"color:var(--gold);\">Mythological Inspiration</h2></div>";
+      html += "<div class=\"insp-grid\">";
+      var insp = kingdom.inspiration;
+      html += "<div class=\"insp-card\" style=\"border-left:3px solid var(--gold-dim);\"><div style=\"font-size:.65rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-dim);margin-bottom:4px;\">Hero &mdash; Divine Inspiration</div><div style=\"color:var(--gold);font-size:1rem;font-weight:bold;margin-bottom:2px;\">" + insp.heroGod.name + "</div><div style=\"color:var(--text-dim);font-style:italic;font-size:.8rem;margin-bottom:6px;\">" + insp.heroGod.domain + "</div><div style=\"color:var(--text);font-size:.85rem;line-height:1.6;\">" + insp.heroGod.parallel + "</div></div>";
+      html += "<div class=\"insp-card\" style=\"border-left:3px solid var(--gold-dim);\"><div style=\"font-size:.65rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-dim);margin-bottom:4px;\">Hero &mdash; Mahabharata Parallel</div><div style=\"color:var(--gold);font-size:1rem;font-weight:bold;margin-bottom:2px;\">" + insp.heroMahabharata.name + "</div><div style=\"color:var(--text);font-size:.85rem;line-height:1.6;\">" + insp.heroMahabharata.parallel + "</div></div>";
+      html += "<div class=\"insp-card\" style=\"border-left:3px solid #ff4444;\"><div style=\"font-size:.65rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-dim);margin-bottom:4px;\">Villain &mdash; Demon Inspiration</div><div style=\"color:#ff6666;font-size:1rem;font-weight:bold;margin-bottom:2px;\">" + insp.villainDemon.name + "</div><div style=\"color:var(--text-dim);font-style:italic;font-size:.8rem;margin-bottom:6px;\">" + insp.villainDemon.domain + "</div><div style=\"color:var(--text);font-size:.85rem;line-height:1.6;\">" + insp.villainDemon.parallel + "</div></div>";
+      html += "<div class=\"insp-card\" style=\"border-left:3px solid #ff4444;\"><div style=\"font-size:.65rem;text-transform:uppercase;letter-spacing:2px;color:var(--text-dim);margin-bottom:4px;\">Villain &mdash; Mahabharata Parallel</div><div style=\"color:#ff6666;font-size:1rem;font-weight:bold;margin-bottom:2px;\">" + insp.villainMahabharata.name + "</div><div style=\"color:var(--text);font-size:.85rem;line-height:1.6;\">" + insp.villainMahabharata.parallel + "</div></div>";
+      html += "</div>";
+    }
+
+    // --- Story images (from storyImages field if present) ---
+    if (kingdom.storyImages) {
+      var si = kingdom.storyImages;
+      var bp = si.basePath || "";
+      if (si.heroPortrait || si.villainPortrait) {
+        html += "<div class=\"section-title-bar\"><h2 style=\"color:" + rc + ";\">Character Portraits</h2></div>";
+        html += "<div class=\"portrait-pair\">";
+        if (si.heroPortrait)    html += "<div><img src=\"" + bp + si.heroPortrait    + "\" onerror=\"this.parentNode.remove()\" style=\"border:1px solid rgba(160,107,255,.2)\"></div>";
+        if (si.villainPortrait) html += "<div><img src=\"" + bp + si.villainPortrait + "\" onerror=\"this.parentNode.remove()\" style=\"border:1px solid rgba(255,68,68,.2)\"></div>";
+        html += "</div>";
+      }
+      if (si.warriors && si.warriors.length) {
+        html += "<div class=\"section-title-bar\"><h2 style=\"color:" + rc + ";\">Warriors &amp; Allies</h2></div>";
+        html += "<div class=\"img-gallery\">";
+        si.warriors.forEach(function(w) {
+          html += "<div style=\"border-radius:9px;overflow:hidden;border:1px solid var(--border-dim);\"><img src=\"" + bp + w.file + "\" onerror=\"this.parentNode.remove()\"><div style=\"padding:7px 9px;background:rgba(0,0,0,.3);\"><div style=\"color:var(--gold);font-size:.83em;font-weight:bold;\">" + w.name + "</div><div style=\"color:var(--text-dim);font-size:.7em;font-style:italic;\">" + w.role + "</div></div></div>";
+        });
+        html += "</div>";
+      }
+      if (si.scenes && si.scenes.length) {
+        html += "<div class=\"section-title-bar\"><h2 style=\"color:" + rc + ";\">Story Scenes</h2></div>";
+        html += "<div class=\"img-gallery\">";
+        si.scenes.forEach(function(s) {
+          html += "<div style=\"border-radius:9px;overflow:hidden;border:1px solid var(--border-dim);\"><img src=\"" + bp + s.file + "\" onerror=\"this.parentNode.remove()\"><div style=\"padding:6px 9px;background:rgba(0,0,0,.3);font-size:.7em;color:var(--text-dim);font-style:italic;\">" + s.label + "</div></div>";
+        });
+        html += "</div>";
+      }
+    }
+
+    // --- Sibling kingdom nav ---
+    var siblings = STATE_KINGDOMS.filter(function(k) { return k.region === kingdom.region; });
+    html += "<div class=\"k-sibling-nav\">";
+    html += "<h3>Other Kingdoms in " + (RL[kingdom.region] || kingdom.region) + "</h3>";
+    html += "<div class=\"sibling-links\">";
+    siblings.forEach(function(s) {
+      var kslug = s.kingdomName.split("—")[0].trim().toLowerCase().replace(/\s+/g,"-").replace(/[^a-z0-9-]/g,"");
+      var isCurrent = s.stateId === kingdom.stateId;
+      html += "<a href=\"../" + kslug + "/story.html\"" + (isCurrent ? " class=\"current\"" : "") + ">" + s.stateName + "</a>";
+    });
+    html += "</div>";
+    html += "<div class=\"back-links\">";
+    html += "<a href=\"index.html\">&larr; Kingdom Overview</a>";
+    html += "<a href=\"../../../../kingdoms.html\">&larr; All Kingdoms</a>";
+    html += "</div></div>";
+
+    document.getElementById("content").innerHTML = html;
+  })();
+  </script>
+  <script src="../../../../js/app.js"></script>
+  <script src="../../../../../../../assets/manifest.js"></script>
+  <script src="../../../../../../../assets/aom.js"></script> <!-- aom:injected -->
+</body>
+</html>

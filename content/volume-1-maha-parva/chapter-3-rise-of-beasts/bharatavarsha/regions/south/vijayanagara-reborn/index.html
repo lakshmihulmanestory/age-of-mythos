@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vijayanagara Reborn &mdash; South Dominant &mdash; Rise of Beasts &mdash; Age of Mythos</title>
+  <style>
+    :root { --bg:#0d0a14; --ac:#e88060; --gold:#d4a040; --text:#f0e8f8; --dim:#c8b0d8; --card:#1a1424; --border:rgba(232,128,96,.20); }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:Georgia,serif; background:var(--bg); color:var(--text); line-height:1.75; min-height:100vh; }
+
+    .k-banner { text-align:center; padding:82px 24px 44px; background:radial-gradient(ellipse at center,rgba(232,128,96,.15) 0%,transparent 70%); border-bottom:1px solid var(--border); position:relative; }
+    .k-banner .badge { font-size:.55em; letter-spacing:5px; text-transform:uppercase; color:var(--ac); opacity:.88; margin-bottom:18px; }
+    .k-banner .badge .border { color:var(--gold); font-weight:bold; }
+    .k-banner h1 { font-size:clamp(2.4em,5vw,3.4em); color:#e8c870; margin-bottom:14px; letter-spacing:2px; }
+    .k-banner .state-label { font-size:.78em; color:var(--dim); opacity:.7; letter-spacing:1px; margin-bottom:.6em; }
+    .k-banner .tagline { color:#e0d4ee; font-size:.95em; max-width:740px; margin:0 auto; line-height:1.85; font-style:italic; }
+    .boundary { display:block; margin:24px auto 0; width:280px; height:1px; background:linear-gradient(90deg,transparent,#e88060 35%,transparent 50%,#d4a040 65%,transparent); position:relative; opacity:.75; }
+
+    .k-nav { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; padding:14px 20px; background:rgba(0,0,0,.5); border-bottom:1px solid rgba(232,128,96,.1); }
+    .k-nav a { padding:5px 16px; border-radius:20px; border:1px solid rgba(232,128,96,.28); color:var(--dim); font-size:.72em; letter-spacing:1px; text-decoration:none; transition:all .15s; }
+    .k-nav a:hover, .k-nav a.active { background:rgba(232,128,96,.12); border-color:#e8c870; color:#fff; }
+
+    .k-section { max-width:1080px; margin:0 auto; padding:48px 22px 24px; }
+    .k-section h2 { font-size:1.4em; color:#e8c870; letter-spacing:1px; margin-bottom:14px; font-family:Georgia,serif; }
+    .k-section h3 { font-size:1.05em; color:var(--ac); margin:24px 0 10px; font-family:Georgia,serif; }
+    .k-section p { font-size:.9em; color:#e0d4ee; margin-bottom:16px; }
+    .k-section p em { color:#e8c870; }
+    .k-section p strong { color:#f0e8a8; }
+
+    .alert-banner { background:linear-gradient(135deg,rgba(232,128,96,.10),rgba(212,160,64,.04)); border:1px solid rgba(232,128,96,.32); padding:18px 22px; border-radius:11px; margin-bottom:22px; }
+    .alert-banner .alert-label { font-size:.55em; letter-spacing:2px; text-transform:uppercase; color:var(--ac); margin-bottom:6px; }
+    .alert-banner .alert-text { color:#e8c870; font-size:.88em; line-height:1.75; }
+
+    .four-phase { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:24px 0 8px; }
+    @media (max-width:760px) { .four-phase { grid-template-columns:repeat(2,1fr); } }
+    .phase-card { background:var(--card); border:1px solid var(--border); border-radius:11px; padding:18px 16px; }
+    .phase-card .ph-tag { font-size:.55em; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+    .phase-card h4 { font-size:.86em; color:var(--ac); font-family:Georgia,serif; margin-bottom:8px; letter-spacing:.5px; }
+    .phase-card p { font-size:.75em; color:#d4c5e8; line-height:1.7; }
+
+    .absorbed-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin:18px 0 0; }
+    @media (max-width:680px) { .absorbed-grid { grid-template-columns:1fr; } }
+    .abs-card { background:rgba(232,128,96,.04); border:1px solid rgba(232,128,96,.18); border-radius:10px; padding:16px 18px; }
+    .abs-card .abs-tag { font-size:.55em; letter-spacing:2px; text-transform:uppercase; color:var(--ac); margin-bottom:6px; }
+    .abs-card h4 { font-size:.92em; color:#e8c870; font-family:Georgia,serif; margin-bottom:6px; }
+    .abs-card p { font-size:.78em; color:#d4c5e8; line-height:1.7; }
+
+    .cast-card { background:var(--card); border:1px solid var(--border); border-radius:11px; padding:20px 22px; margin-bottom:14px; }
+    .cast-card .cast-tag { font-size:.55em; letter-spacing:2px; text-transform:uppercase; color:var(--ac); margin-bottom:5px; }
+    .cast-card .cast-name { font-size:1em; color:#e8c870; font-family:Georgia,serif; margin-bottom:7px; }
+    .cast-card .cast-desc { font-size:.8em; color:#d4c5e8; line-height:1.7; }
+    .cast-card.dominant { border-color:rgba(232,200,112,.40); background:rgba(28,22,14,.6); }
+    .cast-card.dominant .cast-tag { color:var(--gold); }
+    .cast-card.dominant .cast-name { color:#e8c870; }
+    .cast-card.unity { border-color:rgba(196,77,170,.32); background:rgba(20,14,28,.5); }
+    .cast-card.unity .cast-tag { color:#c44daa; }
+    .cast-card.unity .cast-name { color:#d4a0c8; }
+
+    .sanctuary-card { background:linear-gradient(135deg,rgba(212,160,64,.10),rgba(232,128,96,.06)); border:1px solid rgba(212,160,64,.32); border-radius:14px; padding:30px 32px; margin:36px 0 24px; }
+    .sanctuary-card .sanc-tag { font-size:.6em; letter-spacing:4px; text-transform:uppercase; color:var(--gold); margin-bottom:12px; }
+    .sanctuary-card h3 { font-size:1.3em; color:#e8c870; font-family:Georgia,serif; margin-bottom:12px; letter-spacing:1px; }
+    .sanctuary-card p { font-size:.86em; color:#d4c5e8; line-height:1.85; }
+
+    .k-quick-links { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:32px; }
+    .k-quick-link { display:block; padding:18px 20px; border-radius:11px; border:1px solid rgba(232,200,112,.22); background:rgba(18,14,24,.5); text-decoration:none; text-align:center; transition:border-color .15s; }
+    .k-quick-link:hover { border-color:#e8c870; }
+    .k-quick-link .ql-title { font-size:.85em; color:#e8c870; display:block; margin-bottom:4px; }
+    .k-quick-link .ql-sub { font-size:.7em; color:var(--dim); opacity:.75; }
+    .footer { text-align:center; padding:36px 20px; border-top:1px solid var(--border); color:#9a8db0; font-size:.72em; }
+    .footer a { color:var(--ac); text-decoration:none; }
+  </style>
+  <link rel="stylesheet" href="../../../../../../../assets/aom.css"> <!-- aom:injected -->
+</head>
+<body class="aom" data-aom-type="kingdom" >
+  <div class="k-banner">
+    <div class="badge"><span class="border">South Dominant &bull; Saga&rsquo;s First Tattoo-3 Half-Body Mark &bull; Sanctuary&rsquo;s Host Kingdom</span> &bull; Chapter Three &bull; Rise of Beasts</div>
+    <h1>Vijayanagara Reborn</h1>
+    <div class="state-label">Karnataka &bull; South Region &bull; Bloodline-A Gajavamsha Maha-Adhipati-in-Waiting</div>
+    <p class="tagline">After the standing-Tungabhadra-Bhoomi-Takshaka mutual-death at the standing-Chapter-Two buried-temple climax, the standing-Bloodline-A Gajavamsha elephant-bond transferred to the standing-Krishnadevaraya-Bhrata Anegondi-branch defector at the standing-Hampi-throne-stone fall-moment. Through Chapter Three he carries the standing-saga&rsquo;s standing-first male-state-hero-Tattoo-3-half-body-mark at the standing-South-Dominant administrative-cross-reference. The standing-elephants walk a figure-eight that takes seven days; the standing-buried-temple under Hampi opens because his standing-tattoo-3 is required to open it; the standing-Sanctuary&rsquo;s seven-seat slab waits inside. Per restructure §1 male-led-succession cross-reference + D2 standing-Maha-Adhipati cross-reference, Krishnadevaraya-Bhrata is the standing-Volume-I standing-Maha-Adhipati at the standing-Chapter-Four supreme-seat administrative-cross-reference. Per restructure §4 cross-reference: Hampi-of-the-Bronze (11 in Ch 3) is the standing-heir-presumptive of Volume II Yavana-Khanda; the standing-Third Herald (Bronze-Dust Child) walks openly with Krishnadevaraya-Bhrata&rsquo;s standing-three-Herald-cohort at the standing-Maw-audible-declaration cross-reference.</p>
+    <span class="boundary"></span>
+  </div>
+
+  <div class="k-nav">
+    <a href="../../../../index.html">&larr; Chapter 3</a>
+    <a href="index.html" class="active">Overview</a>
+    <a href="identity.html">Identity</a>
+    <a href="story.html">Story</a>
+    <a href="rules.html">Rules &amp; Weapons</a>
+  </div>
+
+  <div class="k-section">
+
+    <div class="alert-banner">
+      <div class="alert-label">South Dominant &bull; This Chapter</div>
+      <div class="alert-text">Vijayanagara Reborn is the standing-saga&rsquo;s standing-first South-Dominant kingdom and the standing-Sanctuary&rsquo;s host. Across the standing-twelve-month chapter-arc (October 2026 &mdash; September 2027) the standing-30 standing-Ch-2 kingdoms narrow to 6 Regional Dominants; Krishnadevaraya-Bhrata at standing-Karnataka administers the standing-South-cluster federation at standing-Kerala + AP + TN + Telangana absorbed/federated configurations. <strong>Phase 1 (Animal Chooses):</strong> the standing-Hampi-elephants walk a standing-7-day figure-eight from Karnataka into Tamil Nadu and back at the standing-cardinal-rangoli-pattern Maw-witness configuration, blindfolded Krishnadevaraya-Bhrata at their lead at the standing-blind-walk-by-feel administrative-cross-reference; the standing-land beneath their path is fertile for a generation. <strong>Phase 2 (Bargain or Battle):</strong> Kerala bargains (Parashurama steps down to guru-status; Sivakami-Acharyini at standing-first-female-108-form-grandmaster seat; 108-form-school transfers under Karnataka banner). AP fractures (Krishnaveni reveals as cousin-sister; Kalaniksha returns from exile; Krishnaveni-Kalaniksha mutual-kill at the standing-Krishna-river-bank duel; Pulakeshi-Babu kills Kalaniksha standing-week-after; Pulakeshi-Babu inherits AP visible-throne; pledges fealty to Krishnadevaraya-Bhrata; Krishnaveni&rsquo;s river-bond transfers to Krishnadevaraya-Bhrata at standing-second-bond-mechanic configuration). TN federates (Kurinjiselvi at standing-step-back-to-elder seat; Tholkappiyan-the-Younger as TN visible-seat at Sangam Hall; federation-by-vote standing-Sangam-amended-charter cross-reference). Telangana splits (Chittaranga rules physical-Hyderabad federated with Karnataka; standing-shadow-city remains autonomous). <strong>Phase 3 (Unity Trial):</strong> Krishnadevaraya-Bhrata must accept Pulakeshi-Babu (the standing-cousin-historian who recused himself, who killed Kalaniksha) into the standing-Karnataka inner-council. This is the standing-Ch-2 cross-region cousin-lineage-confrontation at the standing-Ch-3 Sanctuary-preparation cross-reference. The standing-Half-Body-Tattoo-3 mark forms across 47 minutes 4:11-4:58 a.m. on May 11 2027 at the standing-Hampi Royal-Court courtyard standing-eastern-cardinal-position. <strong>Phase 4 (Convening):</strong> June 11 2027 the standing-buried-temple under Hampi opens at Krishnadevaraya-Bhrata&rsquo;s standing-tattoo-3-half-body palm-print; the standing-seven-seat slab waits; the standing-Six Regional Dominants arrive across the standing-following 23 days; the standing-Sanctuary convening administered July 4 2027 4:11-7:23 a.m. The standing-Void-Maw cracks the standing-seventh blackened seat at 4:23 a.m. Krishnadevaraya-Bhrata places his standing-tattoo-3 palm on the standing-cracked seat; the standing-seat does not crack further. The standing-Chapter-Four cosmic-stalemate has begun. <strong>Volume-I Maha-Adhipati Recognition:</strong> at the standing-Sanctuary-convening completion the standing-six Dominants vote 5-1 at the standing-secret-ballot Maha-Adhipati ratification-vote (Krishnadevaraya-Bhrata abstains per standing-state-hero standing-conflict-of-interest charter-clause); standing-result: Krishnadevaraya-Bhrata is the standing-Volume-I Maha-Adhipati per D2 cross-reference. The standing-Krishna-river-bond + standing-Hampi-elephant-bond double-bond-mechanic at the standing-Karnataka standing-Bloodline-A Gajavamsha cross-reference is the standing-saga&rsquo;s standing-third double-bond after Gujarat Simhavikrama (lion + Goan-gaur) and Maharashtra Shivagati (squirrel + Goan-gaur deceased Ch 3).</div>
+    </div>
+
+    <h2>The Four-Phase Structure</h2>
+    <p>Per standing-Chapter-Three master-plan §3 cross-reference, the standing-South-Dominant arc administers the standing-universal-four-phase scaffold at the standing-Karnataka administrative-cell:</p>
+    <div class="four-phase">
+      <div class="phase-card">
+        <div class="ph-tag">Phase 1 &bull; Cosmic</div>
+        <h4>The Hampi Elephants Walk a Figure-Eight</h4>
+        <p>October 23 &mdash; October 30 2026 (7-day standing-Animal-Chooses window). 47 standing-Hampi-elephant cohort walks single-file from Karnataka into Tamil Nadu and back at standing-cardinal-rangoli figure-eight pattern. Krishnadevaraya-Bhrata at lead, blindfolded, by feel. The standing-figure-eight path-area becomes fertile for a generation.</p>
+      </div>
+      <div class="phase-card">
+        <div class="ph-tag">Phase 2 &bull; Political</div>
+        <h4>The Four Absorptions</h4>
+        <p>November 2026 &mdash; March 2027 (5-month Bargain-or-Battle window). Kerala bargains (Parashurama guru-step-down); AP fractures (Krishnaveni mutual-kill Ch 3 + Pulakeshi-Babu Kalaniksha-kill); TN federates (Kurinjiselvi step-back to elder); Telangana splits (Chittaranga physical-Hyderabad federation).</p>
+      </div>
+      <div class="phase-card">
+        <div class="ph-tag">Phase 3 &bull; Unity Trial</div>
+        <h4>Krishnadevaraya-Bhrata Accepts Pulakeshi-Babu</h4>
+        <p>May 11 2027 4:11-4:58 a.m. at standing-Hampi Royal-Court courtyard. Standing-Half-Body Tattoo-3 mark forms across 47-minute window at standing-state-hero standing-right-upper-back-and-chest-and-left-upper-back cross-reference. Saga&rsquo;s standing-first male-state-hero Tattoo-3-half-body mark.</p>
+      </div>
+      <div class="phase-card">
+        <div class="ph-tag">Phase 4 &bull; Convening</div>
+        <h4>The Sanctuary at the Buried-Temple</h4>
+        <p>July 4 2027 4:11-7:23 a.m. at standing-buried-temple under Hampi. Standing-seven-seat slab; six Dominants sit; standing-Void-Maw cracks the standing-seventh blackened seat at 4:23 a.m. Standing-Maha-Adhipati ratification-vote 5-1 (Krishnadevaraya-Bhrata abstains). Standing-Volume-I Maha-Adhipati recognition per D2.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="k-section">
+    <h2>The Four Absorbed/Federated Kingdoms</h2>
+    <p>Per standing-master-plan §4 cross-reference, the standing-South-cluster Federation under Krishnadevaraya-Bhrata absorbs/federates four kingdoms at the standing-Bargain-or-Battle Phase-2 cross-reference:</p>
+    <div class="absorbed-grid">
+      <div class="abs-card">
+        <div class="abs-tag">Voluntary Transfer &bull; Bargain</div>
+        <h4>Kerala (Parashurama-Kshetra)</h4>
+        <p>Parashurama steps back to guru-status; Sivakami-Acharyini (29, his elder brother&rsquo;s daughter) becomes the standing-first-female-108-form-grandmaster at the standing-Sea-Front-Kalari standing-charter-foundational ceremony. The standing-108-form-school transfers under Karnataka banner at standing-31-day teaching-transmission window per Krishnadevaraya-Bhrata standing-Kannada-Malayalam bilingual-cross-reference. <a href="absorbed/kerala-parashurama-kshetra.html" style="color:var(--ac);text-decoration:none;">&rarr; Full folding-page</a></p>
+      </div>
+      <div class="abs-card">
+        <div class="abs-tag">Bloodline-A Cousin-Claim &bull; Bargain</div>
+        <h4>Andhra Pradesh (Dharmakshetra Amaravati)</h4>
+        <p>Pulakeshi-Babu (43, Bloodline-A senior-historian; first-cousin to Krishnaveni-Kalaniksha) discovers in his standing-maternal-grandfather&rsquo;s safe at 6:23 p.m. week-4 the standing-1992-supplementary-affidavit fourth-matter. Recuses himself from the standing-Authenticity-Cell preliminary-report at 8:06 p.m. discovery-day. Krishnaveni-Kalaniksha mutual-kill at Krishna-river-bank standing-twin-confrontation Ch 3 week-11. Pulakeshi-Babu kills Kalaniksha standing-week-after at the standing-archive-corridor. Inherits AP visible-throne; pledges fealty to Krishnadevaraya-Bhrata; Krishnaveni&rsquo;s river-bond transfers to Krishnadevaraya-Bhrata at standing-double-bond-mechanic configuration. <a href="absorbed/andhra-pradesh-amaravati.html" style="color:var(--ac);text-decoration:none;">&rarr; Full folding-page</a></p>
+      </div>
+      <div class="abs-card">
+        <div class="abs-tag">Federation by Vote &bull; Bargain</div>
+        <h4>Tamil Nadu (Sangam Tamilakam)</h4>
+        <p>Kurinjiselvi (standing-step-back-to-elder seat per Ch 2 restructure §4) administers the standing-Sangam-Hall federation-vote at the standing-amended Sangam-charter cross-reference. Tholkappiyan-the-Younger (27, standing-Ch-2 new-male-visible-seat) accepts the standing-TN visible-seat at standing-Sangam-Hall under Karnataka federation. Kurinjiselvi at standing-living-archive elder-seat at standing-Madurai-Manimekalai manuscript-vault. <a href="absorbed/tamil-nadu-sangam-tamilakam.html" style="color:var(--ac);text-decoration:none;">&rarr; Full folding-page</a></p>
+      </div>
+      <div class="abs-card">
+        <div class="abs-tag">Mirror-City Split &bull; Bargain-and-Battle</div>
+        <h4>Telangana (Chaya-Golkonda)</h4>
+        <p>Standing-Chittaranga rules physical-Hyderabad at standing-Karnataka-federation cross-reference; standing-shadow-city remains autonomous at standing-Telangana-fissure mirror-city configuration. The standing-Charminar-five-shadows Maw-sign (Ch 2 #17) reappears at the standing-shadow-city secession-anniversary cross-reference. <a href="absorbed/telangana-chaya-golkonda.html" style="color:var(--ac);text-decoration:none;">&rarr; Full folding-page</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="k-section">
+    <h2>Cast &mdash; South-Dominant Core</h2>
+
+    <div class="cast-card dominant">
+      <div class="cast-tag">South-Dominant State-Hero &bull; Volume-I Maha-Adhipati Per D2 &bull; Tattoo-3 Half-Body Mark</div>
+      <div class="cast-name">Krishnadevaraya-Bhrata &mdash; The Bloodline-A Anegondi-Branch Defector Who Inherited The Throne At The Throne-Stone Fall (Yudhishthira-Mapped Reluctant King)</div>
+      <div class="cast-desc"><strong>Thirty-seven.</strong> Kingdom-council&rsquo;s standing-state-hero of Karnataka since Ch-2 December 23 2026 (the standing-throne-stone fall-moment when Tungabhadra-Bhoomi-Takshaka mutual-die at the standing-buried-temple climax). Bloodline-A Gajavamsha &mdash; dispossessed Anegondi-branch heir who lived 36 years as Bhoomi-Takshaka&rsquo;s standing-silent court-architect; defected with the standing-buried-temple blueprints at standing-Ch-2 Beat-2 defection-scene. Yudhishthira-mapped (reluctant king per restructure §1 male-led-succession cross-reference). Standing-twin-brother of Bhoomi-Takshaka (deceased); standing-first-cousin to Tungabhadra (deceased) + Krishnaveni (AP, deceased Ch 3) + Gangaputra (UP, North-Regional-Dominant standing-step-back-regent). Standing-foster-father to Hampi-of-the-Bronze (now 11) and the standing-Third Herald (Bronze-Dust Child, ~6). Standing-Hampi-elephant-bond inherited at throne-stone fall-moment from Tungabhadra; in Ch 3 Phase-1 administers standing-7-day figure-eight elephant-walk October 23-30 2026 blindfolded standing-by-feel cross-reference. Standing-Krishna-river-bond inherited from Krishnaveni at Ch-3 Phase-2 mutual-kill week-11 at standing-Krishna-river-bank standing-twin-confrontation; saga&rsquo;s standing-third double-bond-mechanic after Gujarat Simhavikrama and Maharashtra Shivagati. Stage III at Ch-2 Karnataka throne-stone fall-moment + Stage IV (Half-Body Tattoo-3) at Ch-3 Phase-3 May 11 2027 Hampi Royal-Court Unity-Trial Pulakeshi-Babu acceptance. Per D2: standing-Volume-I Maha-Adhipati at standing-Sanctuary-convening July 4 2027 5-1 secret-ballot ratification-vote. Per Ch 4 plan: standing-Chapter-Four supreme-seat at standing-Grand-Council standing-Maha-Adhipati administrative-cross-reference; the standing-cracked seventh seat awaits standing-Stage-IV-supreme-mark at standing-Ch-4-epilogue resolution.</div>
+    </div>
+
+    <div class="cast-card unity">
+      <div class="cast-tag">Unity-Trial Acceptance &bull; Saga&rsquo;s First Cousin-Recused-Historian Council Entry</div>
+      <div class="cast-name">Pulakeshi-Babu &mdash; The Forty-Three-Year-Old Bloodline-A Cousin-Historian Who Recused, Killed Kalaniksha, And Took The AP Throne</div>
+      <div class="cast-desc"><strong>Forty-three.</strong> AP State-Archive pre-independence-records cell chair since 2014. Bloodline-A Authenticity Cell chair since 2019 (recused 8:06 p.m. on discovery-day at standing-1992-supplementary-affidavit fourth-matter recovery from maternal-grandfather B. Narayana-Babu&rsquo;s safe at week-4 of Ch 2). Author of standard 3-volume reference work standing-Bloodline-A Cousin-Network in Southern Bharatavarsha 1700-2020. First-cousin to Krishnaveni (AP, deceased Ch 3) and Kalaniksha (AP, deceased Ch 3 by Pulakeshi-Babu&rsquo;s hand) via his standing-aunt Lakshmi-Babu (deceased; the standing-twins&rsquo; mother). Standing-related-by-4-generations-back maternal-line ancestor to Krishnadevaraya-Bhrata. In Ch 3 Phase-2: kills Kalaniksha at the standing-AP State-Archive standing-archive-corridor standing-week-after Krishnaveni-Kalaniksha mutual-kill at the standing-Krishna-river-bank twin-confrontation; inherits AP visible-throne; pledges fealty to Krishnadevaraya-Bhrata standing-cousin-by-Bloodline-A administrative-cross-reference. In Ch 3 Phase-3: accepted by Krishnadevaraya-Bhrata into the standing-Karnataka inner-council at the standing-Hampi Royal-Court Unity-Trial Pulakeshi-Babu acceptance-ceremony at the standing-May-11-2027 dawn-window. Per Ch 4 plan: serves as the standing-federation&rsquo;s standing-archive-and-lineage authority at the standing-Kurukshetra Council; standing-saga&rsquo;s first standing-recused-historian-cousin entry in the standing-recusal-record administrative-cross-reference.</div>
+    </div>
+
+    <div class="cast-card">
+      <div class="cast-tag">Heir-Presumptive of Volume-II Yavana-Khanda</div>
+      <div class="cast-name">Hampi-of-the-Bronze &mdash; The Eleven-Year-Old Ward of Krishnadevaraya-Bhrata (Heir-Presumptive of Volume II)</div>
+      <div class="cast-desc"><strong>Eleven years old in Chapter Three</strong> (was 10 at Ch-2 end). Orphan of the standing-Chapter-1 temple-quake (grandmother was Bloodline-A noblewoman); raised by Tungabhadra from age 4; standing-ward of Krishnadevaraya-Bhrata from Ch-2 end. In Ch 3 Phase-1 walks at standing-cardinal-rangoli figure-eight observation-position with Sivakami-Acharyini (Kerala 108-form grandmaster) at the standing-7-day elephant-walk Maw-witness administrative-cross-reference; standing-cross-region Sarus-pigeon-cohort correspondent with Aranya-Putri (Chhattisgarh, 11) + Tholkappiyan-the-Younger-cohort (TN) + the standing-Volume-II Yavana-Khanda launch-point seedling-cohort. Sees the standing-three Heralds walking together at Hampi at the standing-Ch-3 third-act Phase-3 dawn-window (Krishnadevaraya-Bhrata sees only the absence where they should be). Takes the standing-Third-Herald&rsquo;s hand at chapter&rsquo;s end. Per Ch 4 plan: standing-heir-presumptive of Karnataka + standing-Volume-II Yavana-Khanda standing-future-Maha-Adhipati at the standing-Volume-II spine-seed administrative-cross-reference per D7.</div>
+    </div>
+
+    <div class="cast-card">
+      <div class="cast-tag">The Third Herald &bull; Walks Openly in Ch 3 Third-Act</div>
+      <div class="cast-name">The Third Herald (Bronze-Dust Child) &mdash; The Saga&rsquo;s Third Of Four Heralds, Recognized By Krishnadevaraya-Bhrata Through The Bond</div>
+      <div class="cast-desc"><strong>About six years old in Chapter Three</strong> (was ~5 at Ch-2 epilogue). Standing-Bloodline-A infant standing-swallowed by the standing-Chapter-1 temple-earthquake, now returned in the standing-form a Herald takes. Recognized as a Herald by Krishnadevaraya-Bhrata through the bond at Ch-2 epilogue. Walks openly at Hampi in Ch-3 third-act with the standing-Second Herald (Vasco-without-a-ship Goa) + the standing-First Herald (Sahodara-Aapun Arunachal) at the standing-Maw-audible-declaration cross-reference. Hampi-of-the-Bronze sees all three clearly; Krishnadevaraya-Bhrata sees only the standing-absence where they should be. Per Ch 4 plan: the standing-Third-Herald&rsquo;s true identity (Tungabhadra&rsquo;s standing-forgotten cousin-son) is revealed when Krishnadevaraya-Bhrata speaks his standing-full lineage inside the Maw at the standing-Ch-4-resolution administrative-cross-reference. Per restructure §6: Heralds are named, not killed.</div>
+    </div>
+
+    <div class="cast-card">
+      <div class="cast-tag">Kerala 108-Form Grandmaster &bull; Cross-Kingdom Student-Mentor Pair</div>
+      <div class="cast-name">Sivakami-Acharyini &mdash; The Twenty-Nine-Year-Old First Female 108-Form Grandmaster (Cross-Region Student-Side-Mentor To Hampi-of-the-Bronze)</div>
+      <div class="cast-desc"><strong>Twenty-nine.</strong> Parashurama&rsquo;s standing-elder-brother&rsquo;s daughter; at the standing-Sea-Front-Kalari since age-6; trained at the standing-senior daily-teaching cadre since age-22. Standing-first-female 108-form grandmaster (the standing-kingdom&rsquo;s first standing-female 108-form grandmaster ceremony in standing-recorded-history) at the standing-evening-ceremony day-23 of Ch-2. Cross-kingdom Sarus-pigeon-cohort correspondent with Hampi-of-the-Bronze at the standing-southern-bloc&rsquo;s standing-cross-kingdom student-side-mentor pair. Provides Kannada-Malayalam translation for Krishnadevaraya-Bhrata during the standing-entire 31-day teaching at Ch-2-late. In Ch 3 Phase-2: administers Kerala&rsquo;s standing-voluntary-transfer of the 108-form school under Karnataka banner; her standing-grandmaster-aspirant journal entry on day-23 (&ldquo;Uncle is paying the years. The bond is bargaining with time. The bond is winning the bargain.&rdquo;) is preserved in the standing-kalari-tradition&rsquo;s standing-archive box. Per Ch 4 plan: standing-southern-bloc&rsquo;s standing-kalari-tradition voice at the standing-Kurukshetra Grand-Council administrative-cross-reference.</div>
+    </div>
+
+  </div>
+
+  <div class="k-section">
+    <div class="sanctuary-card">
+      <div class="sanc-tag">The Climax of Chapter Three &bull; Saga&rsquo;s First Sanctuary-Convening</div>
+      <h3>The Buried-Temple at Hampi Opens to Krishnadevaraya-Bhrata&rsquo;s Tattoo-3 Half-Body Palm-Print</h3>
+      <p>
+        At standing-4:11 a.m. June 11 2027 (33 days after the standing-Half-Body Tattoo-3 mark-formation at the Hampi Royal-Court Unity-Trial), Krishnadevaraya-Bhrata walks alone to the standing-buried-temple entrance at the standing-Hampi-fort eastern-ridge position. He places his standing-tattoo-3-half-body palm against the standing-Bhoomi-Takshaka-network serpent-tunnel sealed-entrance carved with the standing-Vijayanagara-Reborn standing-Maha-Adhipati invocation cross-reference. The standing-entrance opens at 4:11:11-4:11:22 a.m. across an 11-second window. Inside: a standing-stone-slab with standing-seven-seats carved into it, in a circle. Six are clean. The standing-seventh is blackened.
+        <br><br>
+        Across the standing-following 23-day arrival-window the standing-Six Regional Dominants ride to Hampi: Simhavikrama (West, Gujarat) + Dvadashashringa (Central, MP) + Gangaputra (North, UP, regent for Yamunadatta) + Jagannath-Bandhu (East, Odisha) + Moirangthem (Northeast, Manipur). Each arrives with their standing-bonded-animal: the standing-Asiatic-lion + Goan-gaur double-bonded Simhavikrama; the standing-twelve-barasingha cohort Dvadashashringa; the standing-ten-thousand-barasingha super-herd memory Gangaputra; the standing-sambar-deer cohort Jagannath-Bandhu; the standing-rhino-and-sangai cohort Moirangthem. At standing-July 4 2027 4:11 a.m. the standing-Six Dominants sit at the six standing-clean seats. The standing-six animals sit behind them.
+        <br><br>
+        The standing-Void-Maw speaks for the first time &mdash; not in words but in the floor: the standing-seventh-seat <em>cracks</em> in real time at 4:23 a.m., splitting from the slab. The standing-Six rise. Krishnadevaraya-Bhrata places his standing-tattoo-3-half-body palm on the standing-cracked seat; the standing-seat does not crack further. At 5:00 p.m. July 4 the standing-Six Dominants administer the standing-secret-ballot Volume-I Maha-Adhipati ratification-vote: <strong>5-1 in favour of Krishnadevaraya-Bhrata</strong> (Krishnadevaraya-Bhrata abstains per standing-state-hero standing-conflict-of-interest charter-clause; the standing-1-vote-against is at the standing-Moirangthem Manipur standing-pause-school standing-Yudhishthira-parallel administrative-cross-reference dissent at the standing-supreme-seat-not-yet-needed administrative-protocol). Krishnadevaraya-Bhrata accepts the standing-Volume-I Maha-Adhipati seat at the standing-buried-temple chamber 5:23 p.m. July 4 2027. The standing-Chapter-Four cosmic-stalemate has begun. The standing-cracked seventh seat awaits standing-Stage-IV-supreme-mark at the standing-Ch-4-epilogue resolution-administrative-cross-reference.
+      </p>
+    </div>
+  </div>
+
+  <div class="k-section">
+    <div class="k-quick-links">
+      <a href="identity.html" class="k-quick-link">
+        <span class="ql-title">Identity &amp; Cast</span>
+        <span class="ql-sub">Full cast cards, amended Vijayanagara-Reborn-charter, four absorbed kingdoms</span>
+      </a>
+      <a href="story.html" class="k-quick-link">
+        <span class="ql-title">Full Story</span>
+        <span class="ql-sub">The Figure-Eight Walk &mdash; A Film in Four Phases</span>
+      </a>
+      <a href="rules.html" class="k-quick-link">
+        <span class="ql-title">Rules &amp; Weapons</span>
+        <span class="ql-sub">Tattoo-3 half-body mark, the buried-temple palm-print, the Krishna-river + elephant double-bond</span>
+      </a>
+      <a href="../../../index.html" class="k-quick-link" style="border-color:rgba(212,160,64,.22);">
+        <span class="ql-title" style="color:var(--gold);">All Rise-of-Beasts Dominants</span>
+        <span class="ql-sub">Back to Chapter 3</span>
+      </a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>Vijayanagara Reborn &bull; South Dominant &bull; Rise of Beasts &bull; Chapter 3 &bull; Maha Parva &bull; Age of Mythos Volume I</p>
+    <p style="margin-top:8px;"><a href="../../../index.html">&larr; Chapter 3 Index</a></p>
+  </footer>
+  <script src="../../../../../../../assets/manifest.js"></script>
+  <script src="../../../../../../../assets/aom.js"></script> <!-- aom:injected -->
+</body>
+</html>
