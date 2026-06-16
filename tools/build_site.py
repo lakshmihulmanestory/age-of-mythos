@@ -202,11 +202,45 @@ def story_asset_key(relpath):
     story = parts[si + 1] if si + 1 < len(parts) else None
     if not (chapter and kingdom and story):
         return None
+    if story.endswith(".html"):  # bespoke flat leaf: …/stories/<slug>.html
+        story = story[:-5]
     return "%s__%s__%s" % (chapter, kingdom, story)
+
+def _single_kingdom_key(chapter, kingdom):
+    """Find THE asset key for a kingdom-level page (e.g. story.html), which has
+    no story slug in its path. Returns a key only if it is unambiguous."""
+    pref = "%s__%s__" % (chapter, kingdom)
+    keys = set()
+    for p in glob.glob(os.path.join(ROOT, "audio", pref + "*.m4a")):
+        keys.add(os.path.basename(p)[:-4])
+    for p in glob.glob(os.path.join(ROOT, "audio", "kannada", pref + "*.kn.mp3")):
+        keys.add(os.path.basename(p)[:-7])
+    for p in glob.glob(os.path.join(ROOT, "story-text", "kannada", pref + "*.kn.txt")):
+        keys.add(os.path.basename(p)[:-7])
+    if len(keys) == 1:
+        return keys.pop()
+    if not keys:  # later chapters use  chapter__kingdom  (no story slug)
+        flat = "%s__%s" % (chapter, kingdom)
+        for sub, ext in (("audio", ".m4a"), ("audio/kannada", ".kn.mp3"),
+                         ("story-text/kannada", ".kn.txt")):
+            if os.path.isfile(os.path.join(ROOT, sub, flat + ext)):
+                return flat
+    return None  # zero or ambiguous → leave the page untouched
+
+def resolve_story_key(relpath):
+    """Asset key for any story-bearing page: a /stories/ leaf or a kingdom story.html."""
+    parts = relpath.split("/")
+    if "stories" in parts:
+        return story_asset_key(relpath)
+    if parts[-1] == "story.html" and "regions" in parts:
+        ri = parts.index("regions")
+        if len(parts) > ri + 2 and len(parts) > 2:
+            return _single_kingdom_key(parts[2], parts[ri + 2])
+    return None
 
 def story_lang_assets(relpath):
     """Return {en_audio, kn_audio, kn_text} rel-paths that exist on disk (or None)."""
-    key = story_asset_key(relpath)
+    key = resolve_story_key(relpath)
     if not key:
         return {}
     cands = {
@@ -242,6 +276,22 @@ def build_media(relpath, assets):
                   '<button type="button" class="active" data-lang="en">English</button>'
                   '<button type="button" data-lang="kn">ಕನ್ನಡ</button></div>')
     return '<div class="reader-media">%s%s</div>' % (toggle, "".join(rows))
+
+def build_listen_panel(relpath, assets):
+    """A self-contained 'Listen & Read' panel for pages whose English body we do
+    not template (kingdom story.html, bespoke story leaves). English audio plus,
+    under the Kannada tab, Kannada audio and the full Kannada prose. The page's
+    own English text stays in place below the panel."""
+    if not assets:
+        return ""
+    media = build_media(relpath, assets)  # toggle + audio (en/kn)
+    kn_prose = ""
+    if "kn_text" in assets:
+        kn_html = md_to_html(read(os.path.join(ROOT, assets["kn_text"])))
+        kn_prose = ('<div class="reader-lang" data-lang="kn" lang="kn" hidden>%s</div>'
+                    % kn_html)
+    # splice the prose inside the same .reader-media container (before its close)
+    return media[:-6] + kn_prose + "</div>" if media else ""
 
 def md_to_html(body):
     out = []
@@ -653,6 +703,37 @@ for relpath, meta in pages.items():
 for f in glob.glob(os.path.join(ROOT, AOM, "**", "*.html"), recursive=True):
     refresh_assets(rel_of(f))
 
+# ---- "Listen & Read" panel for pages we don't fully template -------------
+# (kingdom story.html + bespoke story leaves). Idempotent & refreshable: any
+# previously-injected panel is stripped and rebuilt from the current assets.
+# Clean reader leaves already embed a richer inline toggle and are left alone.
+LISTEN_OPEN, LISTEN_CLOSE = "<!-- aom:listen -->", "<!-- /aom:listen -->"
+
+def attach_listen_panel(relpath):
+    assets = story_lang_assets(relpath)
+    if not assets:
+        return False
+    abspath = os.path.join(ROOT, relpath)
+    txt = read(abspath)
+    if "reader-media" in txt and LISTEN_OPEN not in txt:
+        return False  # clean reader leaf — already has the inline language toggle
+    txt = re.sub(re.escape(LISTEN_OPEN) + ".*?" + re.escape(LISTEN_CLOSE), "",
+                 txt, flags=re.S)
+    panel = build_listen_panel(relpath, assets)
+    if not panel:
+        return False
+    m = re.search(r"<body[^>]*>", txt)
+    if not m:
+        return False
+    block = "\n  %s%s%s\n" % (LISTEN_OPEN, panel, LISTEN_CLOSE)
+    write(abspath, txt[:m.end()] + block + txt[m.end():])
+    return True
+
+report["panels"] = 0
+for relpath in list(pages.keys()):
+    if relpath.startswith("%s/volume-1" % AOM) and attach_listen_panel(relpath):
+        report["panels"] += 1
+
 # ---- plain-language README.txt in every kingdom and story folder ----
 def write_readme(folder, lines):
     open(os.path.join(folder, "README.txt"), "w", encoding="utf-8").write("\n".join(lines) + "\n")
@@ -770,6 +851,7 @@ lines.append("reading spine     : %d pages" % len(spine))
 lines.append("chrome injected   : %d" % len(report["injected"]))
 lines.append("stories retemplated: %d" % len(report["retemplated"]))
 lines.append("stubs generated   : %d" % len(report["stubs"]))
+lines.append("listen panels     : %d" % report.get("panels", 0))
 lines.append("already done(skip): %d" % len(report["skipped"]))
 lines.append("")
 lines.append("OUTLIERS — story pages that need a manual pass (%d):" % len(report["outliers"]))

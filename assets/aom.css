@@ -191,5 +191,13 @@ body.aom-reader { background: var(--aom-bg); color: var(--aom-text); font-family
 .reader-audio audio { width: 100%; max-width: 520px; }
 .reader-lang[lang="kn"] { line-height: 2.0; }
 
+/* Kannada prose shown inside an injected "Listen & Read" panel */
+.reader-media .reader-lang {
+  width: 100%; max-width: var(--aom-max); margin: 8px auto 0;
+  text-align: left; color: var(--aom-text); line-height: 2.0;
+  border-top: 1px solid rgba(255,255,255,.10); padding-top: 18px;
+}
+.reader-media .reader-lang p { margin-bottom: 18px; }
+
 /* generic helper used by stub shells & overview cards */
 .aom-wrap { max-width: 1100px; margin: 0 auto; padding: 40px 22px 80px; }
