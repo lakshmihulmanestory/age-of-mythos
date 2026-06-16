@@ -132,7 +132,9 @@
       "Bash(python3.14 -c \"import argostranslate; print\\('yes'\\)\")",
       "Bash(curl -s -m 6 -o /dev/null -w \"%{http_code}\\\\n\" \"https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=kn&dt=t&q=hello\")",
       "Bash(chmod +x tools/render_kannada_audio.sh)",
-      "Bash(./tools/render_kannada_audio.sh)"
+      "Bash(./tools/render_kannada_audio.sh)",
+      "Bash(git check-ignore *)",
+      "Bash(echo \"EXIT: $?\")"
     ],
     "additionalDirectories": [
       "/Users/smk/repos/MahaHulmane/images",

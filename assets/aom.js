@@ -118,6 +118,28 @@
     document.body.appendChild(pager);
   }
 
+  /* ============================================================
+     STORY LANGUAGE TOGGLE  (English / Kannada text + audio)
+     ============================================================ */
+  (function () {
+    var toggle = document.querySelector('.reader-langtoggle');
+    if (!toggle) return;
+    var langEls = document.querySelectorAll('.reader-lang, .reader-audio');
+    toggle.addEventListener('click', function (ev) {
+      var btn = ev.target.closest ? ev.target.closest('button[data-lang]') : null;
+      if (!btn) return;
+      var lang = btn.getAttribute('data-lang');
+      toggle.querySelectorAll('button').forEach(function (b) {
+        b.classList.toggle('active', b === btn);
+      });
+      langEls.forEach(function (e) {
+        var on = e.getAttribute('data-lang') === lang;
+        e.hidden = !on;
+        if (!on) { var a = e.querySelector ? e.querySelector('audio') : null; if (a) a.pause(); }
+      });
+    });
+  })();
+
   var footer = el('footer', 'aom-footer');
   var homeA = '<a href="' + href(M.home || 'index.html') + '">Home</a>';
   var mapA  = '<a href="' + href(M.overview || 'hierarchy.html') + '">Map</a>';

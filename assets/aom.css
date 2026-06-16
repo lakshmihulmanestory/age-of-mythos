@@ -165,5 +165,31 @@ body.aom-reader { background: var(--aom-bg); color: var(--aom-text); font-family
 .half-banner span { display: inline-block; padding: 10px 26px; border-top: 1px solid var(--k-accent); border-bottom: 1px solid var(--k-accent);
   color: var(--k-accent); letter-spacing: 4px; font-size: .85rem; text-transform: uppercase; }
 
+/* ---- story media bar: language toggle + audio players ---- */
+.reader-media {
+  max-width: var(--aom-max); margin: 26px auto 0; padding: 18px 24px 0;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.reader-langtoggle {
+  display: inline-flex; align-self: center; gap: 0;
+  border: 1px solid var(--k-accent); border-radius: 22px; overflow: hidden;
+}
+.reader-langtoggle button {
+  font-family: Georgia, serif; font-size: .72rem; letter-spacing: 1.5px;
+  padding: 8px 20px; cursor: pointer; border: 0; background: transparent;
+  color: var(--aom-dim); transition: all .15s;
+}
+.reader-langtoggle button + button { border-left: 1px solid var(--k-accent); }
+.reader-langtoggle button:hover { color: var(--aom-text); }
+.reader-langtoggle button.active { background: var(--k-accent); color: var(--aom-bg); font-weight: bold; }
+.reader-audio {
+  display: flex; flex-direction: column; gap: 8px; align-items: center;
+}
+.reader-audio-label {
+  font-size: .58rem; letter-spacing: 3px; text-transform: uppercase; color: var(--k-accent);
+}
+.reader-audio audio { width: 100%; max-width: 520px; }
+.reader-lang[lang="kn"] { line-height: 2.0; }
+
 /* generic helper used by stub shells & overview cards */
 .aom-wrap { max-width: 1100px; margin: 0 auto; padding: 40px 22px 80px; }

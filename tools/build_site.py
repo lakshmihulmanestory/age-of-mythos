@@ -183,6 +183,66 @@ def md_inline(s):
     s = re.sub(r"(?<!\*)\*(?!\*)(.+?)\*(?!\*)", r"<em>\1</em>", s)
     return s
 
+# ---------------------------------------------------------------------------
+# multilingual story assets (English + Kannada audio / Kannada text)
+# Assets are keyed by  "{chapter}__{kingdom}__{story}"  and live at the repo
+# root:  audio/<key>.m4a  (English narration),
+#        audio/kannada/<key>.kn.mp3  (Kannada narration),
+#        story-text/kannada/<key>.kn.txt  (Kannada prose).
+# ---------------------------------------------------------------------------
+def story_asset_key(relpath):
+    """Derive the language-asset key for a story leaf from its rel path."""
+    parts = relpath.split("/")
+    try:
+        si = parts.index("stories")
+    except ValueError:
+        return None
+    chapter = parts[2] if len(parts) > 2 else None
+    kingdom = parts[si - 1] if si >= 1 else None
+    story = parts[si + 1] if si + 1 < len(parts) else None
+    if not (chapter and kingdom and story):
+        return None
+    return "%s__%s__%s" % (chapter, kingdom, story)
+
+def story_lang_assets(relpath):
+    """Return {en_audio, kn_audio, kn_text} rel-paths that exist on disk (or None)."""
+    key = story_asset_key(relpath)
+    if not key:
+        return {}
+    cands = {
+        "en_audio": "audio/%s.m4a" % key,
+        "kn_audio": "audio/kannada/%s.kn.mp3" % key,
+        "kn_text":  "story-text/kannada/%s.kn.txt" % key,
+    }
+    return {k: v for k, v in cands.items() if os.path.isfile(os.path.join(ROOT, v))}
+
+def build_media(relpath, assets):
+    """Language toggle + audio players. Empty string when nothing is available."""
+    if not assets:
+        return ""
+    pre = prefix_for(relpath)
+    has_kn = "kn_audio" in assets or "kn_text" in assets
+    rows = []
+    if "en_audio" in assets:
+        rows.append(
+            '<div class="reader-audio" data-lang="en">'
+            '<span class="reader-audio-label">Listen — English</span>'
+            '<audio controls preload="none" src="%saudio/%s"></audio></div>'
+            % (pre, html.escape(os.path.basename(assets["en_audio"]))))
+    if "kn_audio" in assets:
+        rows.append(
+            '<div class="reader-audio" data-lang="kn"%s>'
+            '<span class="reader-audio-label">ಆಲಿಸಿ — ಕನ್ನಡ</span>'
+            '<audio controls preload="none" src="%saudio/kannada/%s"></audio></div>'
+            % ("" if "en_audio" not in assets else " hidden",
+               pre, html.escape(os.path.basename(assets["kn_audio"]))))
+    toggle = ""
+    if has_kn:
+        toggle = ('<div class="reader-langtoggle" role="tablist" aria-label="Language">'
+                  '<button type="button" class="active" data-lang="en">English</button>'
+                  '<button type="button" data-lang="kn">ಕನ್ನಡ</button></div>')
+    return '<div class="reader-media">%s%s</div>' % (toggle, "".join(rows))
+
 def md_to_html(body):
     out = []
     for b in re.split(r"\n\s*\n", body.strip()):
@@ -490,6 +550,7 @@ READER_TMPL = """<!DOCTYPE html>
     {eyebrow}{h1}{subtitle}{motto}
   </div>
   {cast}
+  {media}
   <article class="reader-body">
 {body}
   </article>
@@ -524,7 +585,7 @@ def retemplate_story(relpath, meta):
         motto=('<div class="motto">%s</div>' % motto) if motto else "",
         cast=('<div class="reader-cast">%s</div>' %
               re.sub(r'</?div[^>]*>', '', cast).strip()) if cast else "",
-        body=body)
+        media=build_media(relpath, story_lang_assets(relpath)), body=body)
     write(abspath, out)
     return "ok"
 
@@ -542,13 +603,26 @@ def render_md_story(relpath, meta):
     if bits:
         cast = '<div class="reader-cast">%s</div>' % ' &bull; '.join(bits)
     title = fm.get("title") or meta["title"]
+
+    # ---- multilingual: English (story.md) + optional Kannada (.kn.txt) ----
+    assets = story_lang_assets(relpath)
+    en_html = md_to_html(body)
+    if "kn_text" in assets:
+        kn_body = read(os.path.join(ROOT, assets["kn_text"]))
+        kn_html = md_to_html(kn_body)
+        body_html = ('<div class="reader-lang" data-lang="en">%s</div>\n'
+                     '<div class="reader-lang" data-lang="kn" lang="kn" hidden>%s</div>'
+                     % (en_html, kn_html))
+    else:
+        body_html = en_html
+
     out = READER_TMPL.format(
         title=html.escape(title), pre=pre, mark=MARK,
         eyebrow=('<div class="eyebrow">%s</div>' % html.escape(fm["context"])) if fm.get("context") else "",
         h1='<h1>%s</h1>' % html.escape(title),
         subtitle=('<div class="subtitle">%s</div>' % html.escape(fm["subtitle"])) if fm.get("subtitle") else "",
         motto=('<div class="motto">%s</div>' % html.escape(fm["motto"])) if fm.get("motto") else "",
-        cast=cast, body=md_to_html(body))
+        cast=cast, media=build_media(relpath, assets), body=body_html)
     write(abspath, out)
 
 # ===========================================================================
