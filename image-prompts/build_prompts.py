@@ -202,11 +202,11 @@ STORIES = [
         "modern_ok": False,
         "style": (
             "cinematic concept art, Andhra river-kingdom fantasy, Amaravati and Krishna-Godavari "
-            "delta, flowing-water motif, lush green-and-blue palette versus scorched red drought, "
-            "dynamic motion, monsoon light, mythic action, highly detailed, intricate, volumetric "
-            "spray and steam, artstation, octane render, 8k"
+            "delta, flowing-water motif, vivid turquoise-and-aqua water palette versus scorched "
+            "crimson drought, dynamic motion, monsoon light, mythic action, highly detailed, "
+            "intricate, volumetric spray and steam, artstation, octane render, 8k"
         ),
-        "color_theme": "river blue-green, emerald parakeet green, wet stone grey, water-silver vs scorched crimson, ember-orange, steam-white, cracked-earth ochre",
+        "color_theme": "turquoise and aquamarine water, cyan river-spray, wet slate-grey, water-silver vs scorched crimson and ember-orange, steam-white, cracked-earth ochre",
         "entities": [
             ("hero", "Krishnaveni-River-Guardian", (
                 "a strong graceful South Indian woman warrior mid-30s, beloved river-guardian of "
@@ -328,11 +328,11 @@ STORIES = [
         "modern_ok": True,  # blends mythic with near-future tech
         "style": (
             "cinematic concept art, Tamil mytho-techno fantasy, Nilgiri mountains and Coromandel "
-            "coast, sound-as-light motif, blue-violet Kurinji bloom palette, "
-            "sacred-meets-acoustic-warfare, atmospheric cloud and stone, highly detailed, intricate, "
-            "volumetric light, artstation, octane render, 8k"
+            "coast, sound-as-light motif, vivid violet-and-amethyst Kurinji bloom palette with "
+            "magenta accents, sacred-meets-acoustic-warfare, atmospheric cloud and stone, highly "
+            "detailed, intricate, volumetric light, artstation, octane render, 8k"
         ),
-        "color_theme": "Kurinji blue-violet, shola-forest green, mountain cloud-grey and basalt black, meteorite-blue fire vs amber-bronze veena and cold electromagnetic blue-white",
+        "color_theme": "Kurinji violet and amethyst-purple, magenta-pink bloom, mountain cloud-grey and basalt black, amber-bronze veena warmth vs cold electromagnetic blue-white",
         "entities": [
             ("hero", "Kurinjiselvi-Mountain-Bloom", (
                 "a lean angular Tamil woman warrior age 36, dark skin weathered by ten years of "
@@ -455,11 +455,12 @@ STORIES = [
         "modern_ok": False,
         "style": (
             "cinematic concept art, Karnataka Malenad rainforest fantasy, Hoysala temple "
-            "architecture, soapstone carving detail, serpent-and-stone motif, deep emerald-green and "
-            "white-sand palette, misty primordial jungle, reverent archaeological awe, highly "
-            "detailed, intricate filigree carving, volumetric god-rays, artstation, octane render, 8k"
+            "architecture, soapstone carving detail, serpent-and-stone motif, deep emerald-and-jade "
+            "rainforest-green palette with white-sand contrast, misty primordial jungle, reverent "
+            "archaeological awe, highly detailed, intricate filigree carving, volumetric god-rays, "
+            "artstation, octane render, 8k"
         ),
-        "color_theme": "suffocating Malenad green, white Yagachi sand, dark magnetite-iron grey, soapstone honey-beige, translucent jade-green, torch-gold, cardamom-and-sandalwood warmth",
+        "color_theme": "suffocating Malenad emerald-green, translucent jade-green, white Yagachi sand, dark magnetite-iron grey, soapstone honey-beige, mossy forest-shadow, cardamom-and-sandalwood warmth",
         "entities": [
             ("hero", "Vikramaditya-Hoysala-Guardian", (
                 "a massive immovable South Indian warrior-scholar built like the carved pillars of "
@@ -557,10 +558,11 @@ STORIES = [
         "style": (
             "cinematic concept art, Kerala mythic martial-arts fantasy, Kalaripayattu and "
             "elephant-temple aesthetic, backwater-and-Western-Ghats setting, meteorite-axe motif, "
-            "lush emerald-and-gold palette, monsoon light through palm thatch, epic tragic-"
-            "brotherhood mood, highly detailed, intricate, volumetric light, artstation, octane render, 8k"
+            "rich temple-gold and deep-crimson palette, monsoon light through palm thatch, epic "
+            "tragic-brotherhood mood, highly detailed, intricate, volumetric light, artstation, "
+            "octane render, 8k"
         ),
-        "color_theme": "Kerala backwater green, temple gold and crimson, kalari red earth, meteorite-iron grey, Theyyam ritual red-orange-black paint, elephant caparison gold, golden blood",
+        "color_theme": "temple gold and deep crimson, Theyyam ritual red-orange-black paint, kalari red earth, elephant caparison gold, golden blood, meteorite-iron grey accents, muted backwater-green background",
         "entities": [
             ("hero", "Parashurama-VII-Axe-Bearer", (
                 "the oldest hero of the saga, a 58-year-old South Indian Kalari master, every year "
