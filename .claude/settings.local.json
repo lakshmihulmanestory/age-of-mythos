@@ -135,7 +135,10 @@
       "Bash(./tools/render_kannada_audio.sh)",
       "Bash(git check-ignore *)",
       "Bash(echo \"EXIT: $?\")",
-      "Bash(grep -nE '<body|</body>|aom:injected|<script|reader-|<h1|<h2' __TRACKED_VAR__/story.html)"
+      "Bash(grep -nE '<body|</body>|aom:injected|<script|reader-|<h1|<h2' __TRACKED_VAR__/story.html)",
+      "Bash(python3 image-prompts/build_prompts.py)",
+      "Bash(python3 -c \"import json;d=json.load\\(open\\('index.json'\\)\\);print\\(json.dumps\\(d['field_schema'],indent=2\\)\\);print\\('total_jobs:',d['total_jobs']\\)\")",
+      "Bash(python3 -m json.tool)"
     ],
     "additionalDirectories": [
       "/Users/smk/repos/MahaHulmane/images",

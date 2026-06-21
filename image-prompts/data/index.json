@@ -1,0 +1,60 @@
+{
+  "stories": [
+    {
+      "id": "01-chaya-golkonda",
+      "kingdom": "Chaya-Golkonda",
+      "state": "Telangana",
+      "title": "The War of Mirrors",
+      "job_count": 20,
+      "file": "01-chaya-golkonda.json"
+    },
+    {
+      "id": "02-amaravati",
+      "kingdom": "Dharmakshetra-Amaravati",
+      "state": "Andhra Pradesh",
+      "title": "The River's Oath",
+      "job_count": 21,
+      "file": "02-amaravati.json"
+    },
+    {
+      "id": "03-tamilakam",
+      "kingdom": "Sangam-Tamilakam",
+      "state": "Tamil Nadu",
+      "title": "The Song That Shatters",
+      "job_count": 20,
+      "file": "03-tamilakam.json"
+    },
+    {
+      "id": "04-vijayanagara",
+      "kingdom": "Vijayanagara-Reborn",
+      "state": "Karnataka",
+      "title": "The Buried Temple of the Malenad",
+      "job_count": 16,
+      "file": "04-vijayanagara.json"
+    },
+    {
+      "id": "05-parashurama",
+      "kingdom": "Parashurama-Kshetra",
+      "state": "Kerala",
+      "title": "The 109th Form",
+      "job_count": 19,
+      "file": "05-parashurama.json"
+    }
+  ],
+  "field_schema": {
+    "id": "stable unique job id",
+    "story_id": "which story file this belongs to",
+    "kingdom": "in-world kingdom name",
+    "state": "real South Indian state",
+    "category": "hero|villain|ally|operative|animal|weapon|relic|artifact|environment|palace|crowd|scene",
+    "name": "entity name",
+    "variant": "null for the base image, else the variant label",
+    "prompt": "FULL ready-to-send positive prompt (style anchor already prepended)",
+    "negative_prompt": "ready-to-send negative prompt",
+    "color_theme": "palette guidance for the story",
+    "width": "suggested width px",
+    "height": "suggested height px",
+    "seq": "global generation order index"
+  },
+  "total_jobs": 96
+}
