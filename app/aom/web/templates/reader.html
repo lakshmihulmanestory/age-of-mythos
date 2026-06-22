@@ -31,10 +31,19 @@
   </div>
   {% endif %}
 
-  {% if story.audio_url %}
+  {% if story.audio_tracks %}
   <div class="audiobar">
-    <div class="lbl">🔊 Listen to this story</div>
-    <audio controls preload="none" src="{{ story.audio_url }}"></audio>
+    <div class="lbl">🔊 Listen to this story
+      {% if story.audio_tracks|length > 1 %}
+      <span class="langtabs">
+        {% for t in story.audio_tracks %}
+        <button class="langtab {{ 'on' if loop.first }}" data-src="{{ t.url }}"
+                onclick="aomAudioLang(this)">{{ t.label }}</button>
+        {% endfor %}
+      </span>
+      {% endif %}
+    </div>
+    <audio id="story-audio" controls preload="none" src="{{ story.audio_tracks[0].url }}"></audio>
   </div>
   {% endif %}
 </article>

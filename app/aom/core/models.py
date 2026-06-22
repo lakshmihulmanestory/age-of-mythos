@@ -10,6 +10,12 @@ from typing import Optional
 from pydantic import BaseModel, Field
 
 
+class AudioTrack(BaseModel):
+    lang: str       # "en" | "kn"
+    label: str      # "English" | "ಕನ್ನಡ"
+    url: str
+
+
 class Weapon(BaseModel):
     name: str
     type: Optional[str] = None
@@ -64,7 +70,8 @@ class Story(BaseModel):
     body_md: str = ""
     body_html: str = ""
     image_urls: list[str] = Field(default_factory=list)
-    audio_url: Optional[str] = None
+    audio_url: Optional[str] = None  # primary (English) — kept for convenience
+    audio_tracks: list[AudioTrack] = Field(default_factory=list)
     word_count: int = 0
 
 

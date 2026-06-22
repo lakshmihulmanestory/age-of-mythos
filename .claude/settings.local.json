@@ -152,7 +152,14 @@
       "Bash(curl -s localhost:8011/k/chaya-golkonda)",
       "Bash(chmod +x \"Start Modern Website.command\")",
       "Bash(timeout 25 docker compose build web)",
-      "Bash(curl -s \"localhost:8011/api/kingdoms/chaya-golkonda\")"
+      "Bash(curl -s \"localhost:8011/api/kingdoms/chaya-golkonda\")",
+      "Bash(app/.venv/bin/python -m aom.web.main)",
+      "Bash(curl -s -o /dev/null -w \" localhost:5566/ -> %{http_code}\\\\n\" localhost:5566/)",
+      "Bash(curl -s localhost:5566/healthz)",
+      "Bash(curl -s localhost:5566/api/stories/__TRACKED_VAR__)",
+      "Bash(app/.venv/bin/python -c ' *)",
+      "Bash(curl -s \"localhost:5566/v/1/c/2\")",
+      "Bash(curl -s \"localhost:5566/v/1/c/3\")"
     ],
     "additionalDirectories": [
       "/Users/smk/repos/MahaHulmane/images",

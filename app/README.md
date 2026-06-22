@@ -26,7 +26,7 @@ from the website app.
 
 Double-click **`Start Modern Website.command`** in the project's main folder.
 The first run sets everything up; then your browser opens to
-<http://localhost:8000>.
+<http://localhost:5566>.
 
 Or from a terminal:
 
@@ -34,7 +34,7 @@ Or from a terminal:
 cd app
 python3 -m venv .venv && source .venv/bin/activate
 pip install -e .
-python -m aom.web.main          # → http://localhost:8000
+python -m aom.web.main          # → http://localhost:5566
 ```
 
 What you get:
@@ -54,7 +54,7 @@ docker compose -f docker/docker-compose.yml up
 ```
 
 The story folders are mounted **read-only** into the container, so the app can
-read them but never alter them. Site is at <http://localhost:8000>.
+read them but never alter them. Site is at <http://localhost:5566>.
 
 ## 3. Game-building data (JSON API)
 
@@ -88,5 +88,5 @@ app/.venv/bin/python mcp-server/server.py     # speaks MCP over stdio
 | Variable | Default | Purpose |
 |---|---|---|
 | `AOM_REPO_ROOT` | the repo root | where the story content lives |
-| `AOM_PORT` / `AOM_HOST` | `8000` / `0.0.0.0` | website address |
+| `AOM_PORT` / `AOM_HOST` | `5566` / `0.0.0.0` | website address |
 | `AOM_RELOAD` | unset | set to `1` for auto-reload while developing |

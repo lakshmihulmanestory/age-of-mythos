@@ -17,7 +17,7 @@ import json5
 from aom.core import assets, config
 from aom.core.markdown import render
 from aom.core.models import (
-    Chapter, Character, Kingdom, Story, Vehicle, Volume, Weapon,
+    AudioTrack, Chapter, Character, Kingdom, Story, Vehicle, Volume, Weapon,
 )
 from aom.core.config import kingdom_slug_from_name, slugify
 
@@ -194,8 +194,9 @@ class Catalog:
     def _load_stories(self) -> None:
         for path in sorted(config.CONTENT_DIR.glob("**/stories/*/story.md")):
             self._add_story_md(path)
-        # Fill gaps from the flat story-text/ sources (later chapters etc.)
-        for path in sorted(config.STORY_TEXT_DIR.glob("chapter-*__*__*.txt")):
+        # Fill gaps from the flat story-text/ sources (chapters 2-4, which are
+        # stored one file per kingdom: chapter__kingdom[.__story].txt).
+        for path in sorted(config.STORY_TEXT_DIR.glob("chapter-*__*.txt")):
             sid = path.stem
             if sid not in self.stories:
                 self._add_story_txt(path, sid)
@@ -237,20 +238,34 @@ class Catalog:
             k.story_ids.append(sid)
 
     def _add_story_txt(self, path: Path, sid: str) -> None:
-        chapter_slug, kingdom_slug, story_slug = (sid.split("__") + ["", "", ""])[:3]
+        parts = sid.split("__")
+        chapter_slug = parts[0]
+        kingdom_slug = parts[1] if len(parts) > 1 else ""
+        story_slug = parts[2] if len(parts) > 2 else kingdom_slug
         chapter = config.CHAPTER_SLUG_NUM.get(chapter_slug, 1)
-        first = path.read_text(encoding="utf-8", errors="ignore").lstrip().split("\n", 1)[0]
-        title = first.lstrip("# ").strip() or story_slug.replace("-", " ").title()
+        k = self.kingdoms.get(kingdom_slug)
+        first = path.read_text(encoding="utf-8", errors="ignore").lstrip().split("\n", 1)[0].strip()
+        if first.startswith("#"):
+            title = first.lstrip("# ").strip()
+        elif k:
+            import re
+            title = re.split(r"\s+[—–-]\s+", k.name, maxsplit=1)[0]
+        elif first and len(first) <= 80 and not first.endswith((".", ",", "!", "?", ";", ":")):
+            title = first
+        else:
+            title = (story_slug or kingdom_slug).replace("-", " ").title()
+        region = k.region if k else None
         story = Story(
-            id=sid, title=title, volume=1, chapter=chapter,
-            kingdom_slug=kingdom_slug, story_slug=story_slug, source="story-text",
-            has_audio=assets.find_audio(sid) is not None,
+            id=sid, title=title, subtitle=(k.theme if k else None),
+            volume=1, chapter=chapter, region=region,
+            kingdom_slug=kingdom_slug, story_slug=story_slug or kingdom_slug,
+            source="story-text", has_audio=assets.find_audio(sid) is not None,
         )
         self.stories[sid] = story
         self._story_dirs[sid] = path
-        k = self._ensure_kingdom(kingdom_slug)
-        if sid not in k.story_ids:
-            k.story_ids.append(sid)
+        kk = self._ensure_kingdom(kingdom_slug, region=region or "")
+        if sid not in kk.story_ids:
+            kk.story_ids.append(sid)
 
     def _match_kingdom(self, token: str) -> Optional[Kingdom]:
         """Best-effort match of an image filename token to a kingdom slug."""
@@ -354,7 +369,8 @@ class Catalog:
         story.body_html = html
         story.image_urls = imgs
         story.word_count = wc
-        story.audio_url = assets.find_audio(sid)
+        story.audio_tracks = [AudioTrack(**t) for t in assets.find_audio_tracks(sid)]
+        story.audio_url = story.audio_tracks[0].url if story.audio_tracks else None
         self._bodies[sid] = story
         return story
 

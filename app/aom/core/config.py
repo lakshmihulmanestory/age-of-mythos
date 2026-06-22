@@ -25,7 +25,7 @@ KINGDOM_IDENTITY_JS = CH1_DIR / "js" / "kingdom-identity-data.js"
 DATA_DIR = CH1_DIR / "data"
 
 WEB_HOST = os.environ.get("AOM_HOST", "0.0.0.0")
-WEB_PORT = int(os.environ.get("AOM_PORT", "8000"))
+WEB_PORT = int(os.environ.get("AOM_PORT", "5566"))
 
 # --- volume palettes (match .v1..v6 in index.html / build_site.py) ----------
 VOL_PALETTE = {

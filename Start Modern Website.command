@@ -13,7 +13,7 @@ fi
 
 echo ""
 echo "Starting the Age of Mythos website..."
-echo "When it says 'Uvicorn running', your site is live at:  http://localhost:8000"
+echo "When it says 'Uvicorn running', your site is live at:  http://localhost:5566"
 echo "Leave this window open while you read. Close it to stop."
-( sleep 3 ; open "http://localhost:8000" ) &
+( sleep 3 ; open "http://localhost:5566" ) &
 exec .venv/bin/python -m aom.web.main

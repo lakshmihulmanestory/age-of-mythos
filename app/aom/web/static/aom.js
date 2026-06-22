@@ -46,6 +46,19 @@
     lb.addEventListener("click", () => lb.classList.remove("open"));
   }
 
+  // --- audio language switch (English / Kannada) ---
+  window.aomAudioLang = function (btn) {
+    const audio = document.getElementById("story-audio");
+    if (!audio) return;
+    const wasPlaying = !audio.paused;
+    const t = audio.currentTime;
+    audio.src = btn.dataset.src;
+    document.querySelectorAll(".langtab").forEach((b) => b.classList.toggle("on", b === btn));
+    audio.load();
+    audio.currentTime = isFinite(t) ? t : 0;
+    if (wasPlaying) audio.play().catch(() => {});
+  };
+
   // --- keyboard prev/next ---
   document.addEventListener("keydown", (e) => {
     if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;

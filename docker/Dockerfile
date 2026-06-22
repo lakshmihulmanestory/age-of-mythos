@@ -8,11 +8,11 @@ WORKDIR /srv
 ENV PYTHONUNBUFFERED=1 \
     AOM_REPO_ROOT=/world \
     AOM_HOST=0.0.0.0 \
-    AOM_PORT=8000
+    AOM_PORT=5566
 
 COPY app/pyproject.toml ./
 COPY app/aom ./aom
 RUN pip install --no-cache-dir .
 
-EXPOSE 8000
+EXPOSE 5566
 CMD ["python", "-m", "aom.web.main"]
