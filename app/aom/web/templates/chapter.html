@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}{{ vol.title }} — Chapter {{ ch.number }}: {{ ch.title }}{% endblock %}
+{% block content %}
+<div class="wrap" style="--accent: {{ ch.accent }}; --accent-2: {{ vol.color_secondary }};">
+  <div class="eyebrow"><a href="/v/{{ vol.number }}">Volume {{ vol.roman }} · {{ vol.title }}</a></div>
+  <h1 class="page">Chapter {{ ch.number }} · {{ ch.title }}</h1>
+  <p class="lede">{{ stories|length }} stories · {{ kingdoms|length }} kingdoms.</p>
+
+  {% for region in ch.regions %}
+  <h2 class="section-title">{{ region_label.get(region, region) }}</h2>
+  <div class="cards">
+    {% for s in stories if s.region == region %}
+      <a class="scard" href="/read/{{ s.id }}">
+        <div class="region">{{ s.kingdom_slug.replace('-', ' ') }}</div>
+        <h3>{{ s.title }}</h3>
+        {% if s.subtitle %}<div class="motto">{{ s.subtitle }}</div>{% endif %}
+        <div class="who">
+          {% if s.hero %}<span>⚔ {{ s.hero }}</span>{% endif %}
+          {% if s.villain %}<span>☠ {{ s.villain }}</span>{% endif %}
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+  {% endfor %}
+
+  {% set no_region = stories|rejectattr('region','in', ch.regions)|list %}
+  {% if no_region %}
+  <h2 class="section-title">More</h2>
+  <div class="cards">
+    {% for s in no_region %}
+      <a class="scard" href="/read/{{ s.id }}"><h3>{{ s.title }}</h3></a>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

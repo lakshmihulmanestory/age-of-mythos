@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Volume {{ vol.roman }} — {{ vol.title }}{% endblock %}
+{% block content %}
+<section class="hero" style="--accent: {{ vol.color_primary }}; --accent-2: {{ vol.color_secondary }};">
+  <div class="eyebrow">Volume {{ vol.roman }} · {{ vol.subtitle }}</div>
+  <h1>{{ vol.title }}</h1>
+</section>
+<div class="wrap" style="--accent: {{ vol.color_primary }}; --accent-2: {{ vol.color_secondary }};">
+  {% for ch in vol.chapters %}
+  <h2 class="section-title" style="color: {{ ch.accent }}">Chapter {{ ch.number }} · {{ ch.title }}</h2>
+  <p class="lede">{{ ch.story_ids|length }} stories across {{ ch.regions|length }} regions ·
+     <a href="/v/{{ vol.number }}/c/{{ ch.number }}" style="color: {{ ch.accent }}">open chapter →</a></p>
+  <div class="cards" style="margin-top:1rem">
+    {% for sid in ch.story_ids %}
+      {% set s = catalog.story_meta(sid) %}
+      <a class="scard" href="/read/{{ s.id }}" style="--accent: {{ ch.accent }}">
+        <div class="region">{{ region_label.get(s.region, s.region or '') }}</div>
+        <h3>{{ s.title }}</h3>
+        {% if s.motto %}<div class="motto">{{ s.motto }}</div>{% endif %}
+        <div class="who">
+          {% if s.hero %}<span>⚔ {{ s.hero }}</span>{% endif %}
+          {% if s.villain %}<span>☠ {{ s.villain }}</span>{% endif %}
+          {% if s.has_audio %}<span>🔊 narrated</span>{% endif %}
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

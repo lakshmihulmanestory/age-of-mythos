@@ -1,0 +1,3 @@
+[console_scripts]
+aom-mcp = aom.mcpserver.server:main
+aom-web = aom.web.main:run

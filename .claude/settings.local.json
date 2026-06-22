@@ -138,7 +138,14 @@
       "Bash(grep -nE '<body|</body>|aom:injected|<script|reader-|<h1|<h2' __TRACKED_VAR__/story.html)",
       "Bash(python3 image-prompts/build_prompts.py)",
       "Bash(python3 -c \"import json;d=json.load\\(open\\('index.json'\\)\\);print\\(json.dumps\\(d['field_schema'],indent=2\\)\\);print\\('total_jobs:',d['total_jobs']\\)\")",
-      "Bash(python3 -m json.tool)"
+      "Bash(python3 -m json.tool)",
+      "Bash(python3 -m venv .venv)",
+      "Bash(.venv/bin/python -m pip install -q --upgrade pip)",
+      "Bash(.venv/bin/python -m pip install -q -e .)",
+      "Bash(.venv/bin/pip show *)",
+      "Bash(.venv/bin/python -)",
+      "Bash(curl -s localhost:8011/api/stories)",
+      "Bash(.venv/bin/python -c ' *)"
     ],
     "additionalDirectories": [
       "/Users/smk/repos/MahaHulmane/images",

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}{{ k.name }}{% endblock %}
+{% block content %}
+{% set tint = k.color_primary or '#c44daa' %}
+{% set tint2 = k.color_secondary or '#9a3088' %}
+<div class="wrap" style="--accent: {{ tint }}; --accent-2: {{ tint2 }};">
+  <div class="khead" style="--tint: {{ tint }}; --tint2: {{ tint2 }};">
+    <div style="font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;opacity:.85">
+      {{ region_label.get(k.region, k.region or '') }}{% if k.state %} · {{ k.state }}{% endif %}
+    </div>
+    <h1>{{ k.name }}</h1>
+    {% if k.theme %}<div class="theme">{{ k.theme }}</div>{% endif %}
+    {% if k.food %}<div class="chips">{% for f in k.food %}<span class="chip">{{ f }}</span>{% endfor %}</div>{% endif %}
+  </div>
+
+  {% if k.landscape %}<p class="lede" style="margin-top:1.4rem">{{ k.landscape }}</p>{% endif %}
+  {% if k.culture %}<p class="lede">{{ k.culture }}</p>{% endif %}
+
+  {% if stories %}
+  <h2 class="section-title">Stories</h2>
+  <div class="cards">
+    {% for s in stories %}
+    <a class="scard" href="/read/{{ s.id }}">
+      <div class="region">Chapter {{ s.chapter }}</div>
+      <h3>{{ s.title }}</h3>
+      {% if s.motto %}<div class="motto">{{ s.motto }}</div>{% endif %}
+    </a>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if heroes or villains %}
+  <h2 class="section-title">Who fights here</h2>
+  <div class="cards">
+    {% for c in heroes %}
+    <div class="charcard">
+      <div class="role">Hero</div>
+      <h4>{{ c.name }}</h4>
+      {% if c.title %}<div class="kv">{{ c.title }}</div>{% endif %}
+      {% if c.sacred_animal %}<div class="kv"><b>Animal:</b> {{ c.sacred_animal }}</div>{% endif %}
+      {% if c.deity %}<div class="kv"><b>Deity:</b> {{ c.deity }}</div>{% endif %}
+      {% for w in c.weapons %}<div class="kv"><b>{{ w.era|capitalize }} weapon:</b> {{ w.name }}</div>{% endfor %}
+      {% for v in c.vehicles %}<div class="kv"><b>{{ v.era|capitalize }} mount:</b> {{ v.name }}</div>{% endfor %}
+    </div>
+    {% endfor %}
+    {% for c in villains %}
+    <div class="charcard villain">
+      <div class="role">Villain</div>
+      <h4>{{ c.name }}</h4>
+      {% if c.title %}<div class="kv">{{ c.title }}</div>{% endif %}
+      {% if c.mahabharata_echo %}<div class="kv"><b>Echoes:</b> {{ c.mahabharata_echo }}</div>{% endif %}
+      {% if c.motivation %}<div class="kv">{{ c.motivation }}</div>{% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

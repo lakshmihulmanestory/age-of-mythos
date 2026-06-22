@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}{{ story.title }} — Age of Mythos{% endblock %}
+{% set tint = (kingdom.color_primary if kingdom else none) or '#c44daa' %}
+{% set tint2 = (kingdom.color_secondary if kingdom else none) or '#9a3088' %}
+{% block body_attrs %} style="--accent: {{ tint }}; --accent-2: {{ tint2 }};"{% endblock %}
+{% block progress %}<div class="progress" id="progress"></div>{% endblock %}
+{% block content %}
+<article class="reader">
+  {% if story.context %}<div class="ctx">{{ story.context }}</div>{% endif %}
+  <h1>{{ story.title }}</h1>
+  {% if story.subtitle %}<div class="subtitle">{{ story.subtitle }}</div>{% endif %}
+  {% if story.motto %}<div class="motto">{{ story.motto }}</div>{% endif %}
+  <div class="ctx" style="color:var(--ink-dim);letter-spacing:.05em;text-transform:none">
+    {% if kingdom %}<a href="/k/{{ kingdom.slug }}" style="color:var(--accent)">{{ kingdom.name }}</a> · {% endif %}
+    {{ story.word_count }} words · ~{{ (story.word_count / 220)|round(0,'ceil')|int }} min read
+  </div>
+  <div class="rule"></div>
+
+  <div class="prose">{{ story.body_html|safe }}</div>
+
+  {% if story.audio_url %}
+  <div class="audiobar">
+    <div class="lbl">🔊 Listen to this story</div>
+    <audio controls preload="none" src="{{ story.audio_url }}"></audio>
+  </div>
+  {% endif %}
+</article>
+
+<div class="spine">
+  {% if prev %}
+  <a class="prev" href="/read/{{ prev.id }}" data-prev>
+    <div class="dir">‹ Previous</div><div class="t">{{ prev.title }}</div>
+  </a>
+  {% else %}<a class="prev" href="/" ><div class="dir">‹ Home</div><div class="t">Age of Mythos</div></a>{% endif %}
+  {% if nxt %}
+  <a class="next" href="/read/{{ nxt.id }}" data-next>
+    <div class="dir">Next ›</div><div class="t">{{ nxt.title }}</div>
+  </a>
+  {% else %}<a class="next" href="/" ><div class="dir">The end ›</div><div class="t">Back to volumes</div></a>{% endif %}
+</div>
+
+<div class="rtools">
+  <button class="iconbtn" title="Larger text" onclick="aomFont(0.08)">A+</button>
+  <button class="iconbtn" title="Smaller text" onclick="aomFont(-0.08)">A−</button>
+  <button class="iconbtn" title="Light / dark" onclick="aomToggleTheme()">☾</button>
+</div>
+{% endblock %}

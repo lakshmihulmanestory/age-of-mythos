@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Age of Mythos — the continents reborn{% endblock %}
+{% block content %}
+{% set first = volumes[0] %}
+<section class="hero" style="--accent: {{ first.color_primary }}; --accent-2: {{ first.color_secondary }};">
+  <div class="eyebrow">A living mythology of the continents</div>
+  <h1>Age of Mythos</h1>
+  <p>Six continents. Thirty kingdoms in the first. Heroes drawn from living cultures,
+     villains drawn from their shadows — read it as a novel, or mine it as a game world.</p>
+  <div class="cta">
+    {% set spine0 = catalog.spine[0] if catalog.spine else none %}
+    {% if spine0 %}<a class="btn" href="/read/{{ spine0 }}">Start reading →</a>{% endif %}
+    <a class="btn ghost" href="/v/1">Explore Volume I</a>
+  </div>
+</section>
+
+<div class="wrap">
+  <h2 class="section-title">The Volumes</h2>
+  <div class="grid">
+    {% for v in volumes %}
+    <a class="tile" href="{{ '/v/' ~ v.number if v.available else '#' }}"
+       style="--tint: {{ v.color_primary }}; --tint2: {{ v.color_secondary }};">
+      <div class="band"></div>
+      <div class="body">
+        <div class="roman">Volume {{ v.roman }}</div>
+        <h3>{{ v.title }}</h3>
+        <div class="sub">{{ v.subtitle }}</div>
+        <div class="meta">
+          {% if v.available %}
+            <span class="badge live">Available</span>
+            {{ v.chapters|length }} chapter{{ 's' if v.chapters|length != 1 }} ·
+            {{ v.chapters|map(attribute='story_ids')|map('length')|sum }} stories
+          {% else %}
+            <span class="badge soon">Coming soon</span>
+          {% endif %}
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

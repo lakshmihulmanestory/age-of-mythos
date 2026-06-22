@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Search — Age of Mythos{% endblock %}
+{% block content %}
+<div class="wrap">
+  <div class="eyebrow">Find a story, a kingdom, a hero</div>
+  <h1 class="page">Search</h1>
+  <form class="searchbox" method="get" action="/search">
+    <input name="q" value="{{ q }}" placeholder="e.g. river, Karnataka, Tungabhadra…" autofocus>
+    <button class="btn" type="submit">Search</button>
+  </form>
+
+  {% if q %}
+    {% if res.stories %}
+    <h2 class="section-title">Stories</h2>
+    <div class="cards">
+      {% for s in res.stories %}
+      <a class="scard" href="/read/{{ s.id }}"><h3>{{ s.title }}</h3>
+        {% if s.subtitle %}<div class="motto">{{ s.subtitle }}</div>{% endif %}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% if res.kingdoms %}
+    <h2 class="section-title">Kingdoms</h2>
+    <div class="cards">
+      {% for k in res.kingdoms %}
+      <a class="scard" href="/k/{{ k.slug }}"><h3>{{ k.name }}</h3>
+        {% if k.theme %}<div class="motto">{{ k.theme }}</div>{% endif %}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% if res.characters %}
+    <h2 class="section-title">Characters</h2>
+    <div class="cards">
+      {% for c in res.characters %}
+      <a class="charcard {{ 'villain' if c.role=='villain' }}" href="/k/{{ c.kingdom_slug }}">
+        <div class="role">{{ c.role }}</div><h4>{{ c.name }}</h4>
+        {% if c.title %}<div class="kv">{{ c.title }}</div>{% endif %}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% if not res.stories and not res.kingdoms and not res.characters %}
+    <p class="lede">No matches for “{{ q }}”.</p>
+    {% endif %}
+  {% endif %}
+</div>
+{% endblock %}

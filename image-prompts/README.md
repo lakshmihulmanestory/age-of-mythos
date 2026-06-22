@@ -1,35 +1,43 @@
-# Image Generation Prompt Packs — Volume I, Chapter 1 (South India)
+# Image Generation Prompt Packs — Volume I (Maha Parva), all 4 chapters
 
 Ready-to-use prompts for open-source text-to-image models (SDXL, FLUX.1, SD3, Playground v2.5,
-Juggernaut, RealVisXL, etc.) hosted on Hugging Face. Each character, animal, weapon, vehicle,
-location, and key scene has its own **copy-paste prompt** plus a **negative prompt** and a
-**color theme**.
+Juggernaut, RealVisXL, etc.) hosted on Hugging Face. Each character, animal, weapon, location, and
+key scene has its own **copy-paste prompt** plus a **negative prompt** and a **color theme**.
 
-## The five stories (one per South Indian state)
+**Coverage: 42 stories / 491 image jobs.**
+- **Chapter 1 — Rise of Legends:** all **30 kingdoms** (one story each), derived faithfully from
+  each kingdom's `story.md`. Covers all six regions — South, Central, East, North, Northeast, West.
+- **Chapters 2–4 — Civil War / Rise of Beasts / The Great Epic:** **4 saga-wide packs each** (no
+  per-kingdom prose exists yet, so these are invented from each chapter's premise — the Void Maw &
+  Heralds, the titanic Rise of Beasts, and the final Grand Council / Maha-Adhipati / Kurukshetra /
+  Mending).
 
-| # | State | Kingdom | Story | File |
-|---|-------|---------|-------|------|
-| 1 | Telangana | Chaya-Golkonda | The War of Mirrors | [01-chaya-golkonda-war-of-mirrors.md](01-chaya-golkonda-war-of-mirrors.md) |
-| 2 | Andhra Pradesh | Dharmakshetra-Amaravati | The River's Oath | [02-amaravati-rivers-oath.md](02-amaravati-rivers-oath.md) |
-| 3 | Tamil Nadu | Sangam-Tamilakam | The Song That Shatters | [03-tamilakam-song-that-shatters.md](03-tamilakam-song-that-shatters.md) |
-| 4 | Karnataka | Vijayanagara-Reborn | The Buried Temple | [04-vijayanagara-buried-temple.md](04-vijayanagara-buried-temple.md) |
-| 5 | Kerala | Parashurama-Kshetra | The 109th Form | [05-parashurama-109th-form.md](05-parashurama-109th-form.md) |
+### Two hard guarantees enforced for EVERY job (in the engine)
+1. **Indian characters, Indian origin.** People always read as authentic Indians of Indian origin
+   with regionally accurate features and traditional attire (a global positive anchor + a
+   non-Indian negative). Settings are always the Indian subcontinent.
+2. **Each kingdom has its own dedicated palette + architecture + dress.** All 42 stories carry a
+   distinct `color_theme`, and each `style` anchor names that kingdom's real architecture/structures
+   and traditional dress. (Verified: 42 unique themes.)
 
 ## Programmatic / machine-readable data (for your image pipeline)
 
-If another program should consume these one entity at a time, **use the structured data in
-[`data/`](data/)** instead of the markdown. The markdown files are the human-readable source; the
-JSON/JSONL are generated from [`build_prompts.py`](build_prompts.py).
+Story data now lives in the **[`stories/`](stories/) Python package**, split per region/chapter
+(`ch1_south.py`, `ch1_central.py`, … `ch4_great_epic.py`). [`build_prompts.py`](build_prompts.py)
+is just the engine — it imports `stories/`, prepends each kingdom's style anchor, appends the global
+India anchor, and writes the structured data in [`data/`](data/):
 
 ```
+stories/                  per-region / per-chapter story data (edit here)
+  __init__.py             load order -> ALL_STORIES
+  ch1_south.py … ch1_west.py    Chapter 1, 30 kingdoms across 6 regions
+  ch2_civil_war.py        Chapter 2 (invented, saga-wide)
+  ch3_rise_of_beasts.py   Chapter 3 (invented, saga-wide)
+  ch4_great_epic.py       Chapter 4 (invented, saga-wide)
 data/
-  index.json            manifest: list of stories, job counts, and the field schema
+  index.json            manifest: stories (with chapter/region/color_theme), counts, field schema
   all_prompts.jsonl     EVERY image job, one JSON object per line  ← iterate this
-  01-chaya-golkonda.json  ┐
-  02-amaravati.json       │ one JSON array of jobs per story (same records as the jsonl)
-  03-tamilakam.json       │
-  04-vijayanagara.json    │
-  05-parashurama.json     ┘
+  <story_id>.json       one JSON array of jobs per story (42 files)
 ```
 
 Each **job = one image to generate**. Fields:
@@ -38,7 +46,8 @@ Each **job = one image to generate**. Fields:
 |-------|---------|
 | `id` | stable unique job id |
 | `story_id` | which story it belongs to |
-| `kingdom` / `state` | in-world kingdom + real South Indian state |
+| `chapter` / `region` | chapter number (1–4) + region of Bharatavarsha (or `saga-wide`) |
+| `kingdom` / `state` | in-world kingdom + real Indian state / territory inspiration |
 | `category` | `hero` `villain` `ally` `operative` `animal` `weapon` `relic` `artifact` `environment` `palace` `crowd` `scene` |
 | `name` | entity name |
 | `variant` | `null` for the base image, else a label (e.g. `final-form`, `defeated`) |
@@ -49,7 +58,7 @@ Each **job = one image to generate**. Fields:
 | `filename` | suggested output filename stem (no extension) |
 | `seq` | global generation order index |
 
-There are **96 jobs** total. A consumer only needs `prompt`, `negative_prompt`, `width`, `height`,
+There are **491 jobs** total. A consumer only needs `prompt`, `negative_prompt`, `width`, `height`,
 and `filename` — everything else is metadata for filtering/sorting.
 
 ### Minimal consumer loop (Python)
@@ -70,9 +79,9 @@ with open("image-prompts/data/all_prompts.jsonl") as f:
         print("done:", job["id"])
 ```
 
-Process one story only by reading `data/03-tamilakam.json`, or filter the JSONL by
-`job["category"] == "hero"`, etc. To regenerate the data after editing prompts:
-`python3 image-prompts/build_prompts.py`.
+Process one story only by reading e.g. `data/03-tamilakam.json`, or filter the JSONL by
+`job["category"] == "hero"` or `job["chapter"] == 1`, etc. To regenerate the data after editing any
+module in `stories/`: `python3 image-prompts/build_prompts.py`.
 
 ---
 

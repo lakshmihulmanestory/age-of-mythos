@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Characters — Age of Mythos{% endblock %}
+{% block content %}
+<div class="wrap">
+  <div class="eyebrow">The cast of the world</div>
+  <h1 class="page">Characters</h1>
+  <p class="lede">{{ characters|selectattr('role','equalto','hero')|list|length }} heroes ·
+     {{ characters|selectattr('role','equalto','villain')|list|length }} villains across the kingdoms.</p>
+  <div class="cards" style="margin-top:1.4rem">
+    {% for c in characters %}
+    <a class="charcard {{ 'villain' if c.role == 'villain' }}" href="/k/{{ c.kingdom_slug }}">
+      <div class="role">{{ c.role }}{% if c.region %} · {{ region_label.get(c.region, c.region) }}{% endif %}</div>
+      <h4>{{ c.name }}</h4>
+      {% if c.title %}<div class="kv">{{ c.title }}</div>{% endif %}
+      {% if c.deity %}<div class="kv"><b>Deity:</b> {{ c.deity }}</div>{% endif %}
+      {% if c.mahabharata_echo %}<div class="kv"><b>Echoes:</b> {{ c.mahabharata_echo }}</div>{% endif %}
+    </a>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

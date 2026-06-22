@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Age of Mythos{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Spectral:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/aom.css">
+  {% block head %}{% endblock %}
+</head>
+<body{% block body_attrs %}{% endblock %}>
+  {% block progress %}{% endblock %}
+  <header class="topbar">
+    <a class="brand" href="/">Age of <b>Mythos</b></a>
+    <nav>
+      <a href="/" class="keep">Volumes</a>
+      <a href="/characters">Characters</a>
+      <a href="/search">Search</a>
+      <button class="iconbtn" title="Toggle light/dark" onclick="aomToggleTheme()">☾</button>
+    </nav>
+  </header>
+
+  {% block content %}{% endblock %}
+
+  <div class="lightbox" id="lightbox"><img alt=""></div>
+  <footer class="foot">
+    Age of Mythos · a living mythology of the continents · stories edited in plain text, read here.
+  </footer>
+  <script src="/static/aom.js"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

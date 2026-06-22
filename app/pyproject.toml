@@ -1,0 +1,33 @@
+[project]
+name = "age-of-mythos-app"
+version = "0.1.0"
+description = "Modern reader website + game-data API + MCP server for the Age of Mythos story world. All technical code; story content lives outside this package."
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.110",
+    "uvicorn[standard]>=0.29",
+    "jinja2>=3.1",
+    "markdown-it-py>=3.0",
+    "python-frontmatter>=1.1",
+    "pydantic>=2.6",
+    "json5>=0.9",
+    "mcp>=1.2",
+]
+
+[project.optional-dependencies]
+dev = ["httpx>=0.27"]
+
+[project.scripts]
+aom-web = "aom.web.main:run"
+aom-mcp = "aom.mcpserver.server:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["aom*"]
+
+[tool.setuptools.package-data]
+"aom.web" = ["templates/*.html", "static/*"]
