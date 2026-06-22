@@ -1,0 +1,21 @@
+# One command to run the website:  docker compose -f docker/docker-compose.yml up
+# Story content is mounted read-only from the repo root so the container never
+# changes your writing; edit a story.md on disk, POST /api/reload (or restart) to refresh.
+services:
+  web:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: age-of-mythos-web
+    ports:
+      - "8000:8000"
+    environment:
+      AOM_REPO_ROOT: /world
+    volumes:
+      - ../content:/world/content:ro
+      - ../story-text:/world/story-text:ro
+      - ../audio:/world/audio:ro
+      - ../generated-images:/world/generated-images:ro
+      - ../media:/world/media:ro
+      - ../Volume-1-Family-Tree.md:/world/Volume-1-Family-Tree.md:ro
+    restart: unless-stopped

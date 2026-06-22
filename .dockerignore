@@ -1,0 +1,19 @@
+# Build context is the repo root, but the image only needs app/. Keep the
+# context small and never ship the (bind-mounted) story content or local venvs.
+.git/
+app/.venv/
+**/__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+
+content/
+story-text/
+audio/
+generated-images/
+media/
+docs/
+project_planning/
+*.png
+*.m4a
+*.mp3

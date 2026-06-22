@@ -1,0 +1,12 @@
+{
+  "_comment": "Add this 'age-of-mythos' entry to your Claude Desktop config so the AI agent can explore the world. On macOS the file lives at: ~/Library/Application Support/Claude/claude_desktop_config.json . Adjust the absolute paths if you move the project. The 'command' is the website's Python (created by Start Modern Website.command) so the MCP dependencies are present.",
+  "mcpServers": {
+    "age-of-mythos": {
+      "command": "/Users/smk/repos/age-of-mythos/app/.venv/bin/python",
+      "args": ["/Users/smk/repos/age-of-mythos/mcp-server/server.py"],
+      "env": {
+        "AOM_REPO_ROOT": "/Users/smk/repos/age-of-mythos"
+      }
+    }
+  }
+}

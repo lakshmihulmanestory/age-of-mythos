@@ -143,6 +143,12 @@ h1.page { font-family: var(--display); font-size: clamp(2.2rem, 6vw, 3.6rem); ma
   text-align: center; letter-spacing: .02em; }
 .prose h2::before { content: "❖"; display: block; color: var(--accent); font-size: 1rem; margin-bottom: .3rem; opacity: .7; }
 .story-img { border-radius: 12px; margin: 2rem auto; box-shadow: var(--shadow); cursor: zoom-in; }
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); gap: .8rem; margin: 1.4rem 0; }
+.gallery .story-img { margin: 0; aspect-ratio: 1; object-fit: cover; width: 100%; }
+.khead.has-img { position: relative; overflow: hidden; }
+.khead .bg { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: .28; }
+.khead.has-img > * { position: relative; z-index: 1; }
+.portrait { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 12px; margin-bottom: .7rem; }
 .story-video { width: 100%; border-radius: 12px; margin: 2rem auto; }
 .audiobar { position: sticky; bottom: 0; margin-top: 2rem; background: var(--card); border: 1px solid var(--line);
   border-radius: 12px; padding: .8rem 1rem; box-shadow: var(--shadow); }

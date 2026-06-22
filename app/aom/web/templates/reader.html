@@ -16,7 +16,20 @@
   </div>
   <div class="rule"></div>
 
+  {% if gallery %}
+  <img class="story-img" src="{{ gallery[0] }}" data-full="{{ gallery[0] }}" alt="" style="margin-top:0">
+  {% endif %}
+
   <div class="prose">{{ story.body_html|safe }}</div>
+
+  {% if gallery|length > 1 %}
+  <div class="rule"></div>
+  <div class="gallery">
+    {% for img in gallery[1:] %}
+    <img class="story-img" src="{{ img }}" data-full="{{ img }}" alt="">
+    {% endfor %}
+  </div>
+  {% endif %}
 
   {% if story.audio_url %}
   <div class="audiobar">

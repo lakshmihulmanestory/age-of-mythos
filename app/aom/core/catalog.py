@@ -81,6 +81,7 @@ class Catalog:
         self._load_kingdoms()
         self._load_characters()
         self._load_stories()
+        self._load_images()
         self._build_volumes()
 
     def reload(self) -> None:
@@ -251,6 +252,43 @@ class Catalog:
         if sid not in k.story_ids:
             k.story_ids.append(sid)
 
+    def _match_kingdom(self, token: str) -> Optional[Kingdom]:
+        """Best-effort match of an image filename token to a kingdom slug."""
+        if token in self.kingdoms:
+            return self.kingdoms[token]
+        cands = [k for k in self.kingdoms.values()
+                 if token in k.slug or k.slug in token
+                 or token in slugify(k.state or "") or token in slugify(k.name)]
+        return max(cands, key=lambda k: len(k.slug)) if cands else None
+
+    def _load_images(self) -> None:
+        """Index ``generated-images/`` and attach art to kingdoms.
+
+        Files are named ``NN-<kingdom-token>_<type>_<desc>.png`` (type is one of
+        hero / villain / ally / animal / bird / environment / scene / weapon …).
+        """
+        import re
+        if not config.IMAGES_DIR.is_dir():
+            return
+        for p in sorted(config.IMAGES_DIR.glob("*")):
+            if p.suffix.lower() not in (".png", ".jpg", ".jpeg", ".webp"):
+                continue
+            m = re.match(r"^\d+-(.+?)_([a-z]+)_", p.name)
+            if not m:
+                continue
+            token, typ = m.group(1), m.group(2)
+            k = self._match_kingdom(token)
+            if not k:
+                continue
+            url = f"/media/gallery/{p.name}"
+            k.images.append(url)
+            k.images_by_type.setdefault(typ, []).append(url)
+        for k in self.kingdoms.values():
+            k.hero_image = (k.images_by_type.get("hero") or [None])[0]
+            k.banner_image = (k.images_by_type.get("environment")
+                              or k.images_by_type.get("scene")
+                              or k.images_by_type.get("hero") or [None])[0]
+
     def _build_volumes(self) -> None:
         self.volumes = []
         for num in range(1, 7):
@@ -330,6 +368,17 @@ class Catalog:
         prev = self.spine[i - 1] if i > 0 else None
         nxt = self.spine[i + 1] if i < len(self.spine) - 1 else None
         return prev, nxt
+
+    def story_gallery(self, sid: str, limit: int = 6) -> list[str]:
+        """Scene / environment art to illustrate a story (from its kingdom)."""
+        meta = self.stories.get(sid)
+        k = self.kingdoms.get(meta.kingdom_slug) if meta else None
+        if not k:
+            return []
+        gallery: list[str] = []
+        for typ in ("scene", "environment", "hero", "villain"):
+            gallery += k.images_by_type.get(typ, [])
+        return gallery[:limit]
 
     def characters_for(self, kingdom_slug: str) -> list[Character]:
         k = self.kingdoms.get(kingdom_slug)

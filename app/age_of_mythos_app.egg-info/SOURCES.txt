@@ -1,3 +1,4 @@
+README.md
 pyproject.toml
 age_of_mythos_app.egg-info/PKG-INFO
 age_of_mythos_app.egg-info/SOURCES.txt
@@ -12,3 +13,16 @@ aom/core/catalog.py
 aom/core/config.py
 aom/core/markdown.py
 aom/core/models.py
+aom/web/__init__.py
+aom/web/api.py
+aom/web/main.py
+aom/web/static/aom.css
+aom/web/static/aom.js
+aom/web/templates/base.html
+aom/web/templates/chapter.html
+aom/web/templates/characters.html
+aom/web/templates/home.html
+aom/web/templates/kingdom.html
+aom/web/templates/reader.html
+aom/web/templates/search.html
+aom/web/templates/volume.html

@@ -145,7 +145,14 @@
       "Bash(.venv/bin/pip show *)",
       "Bash(.venv/bin/python -)",
       "Bash(curl -s localhost:8011/api/stories)",
-      "Bash(.venv/bin/python -c ' *)"
+      "Bash(.venv/bin/python -c ' *)",
+      "Bash(pkill -f \"aom.web.main\")",
+      "Bash(AOM_PORT=8011 .venv/bin/python -m aom.web.main)",
+      "Bash(curl -s localhost:8011/api/kingdoms)",
+      "Bash(curl -s localhost:8011/k/chaya-golkonda)",
+      "Bash(chmod +x \"Start Modern Website.command\")",
+      "Bash(timeout 25 docker compose build web)",
+      "Bash(curl -s \"localhost:8011/api/kingdoms/chaya-golkonda\")"
     ],
     "additionalDirectories": [
       "/Users/smk/repos/MahaHulmane/images",

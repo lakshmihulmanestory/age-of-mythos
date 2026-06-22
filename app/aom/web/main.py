@@ -83,6 +83,7 @@ def read(request: Request, sid: str):
     return templates.TemplateResponse(request, "reader.html", _ctx(
         request, story=story,
         kingdom=c.kingdom(story.kingdom_slug),
+        gallery=c.story_gallery(sid),
         prev=c.story_meta(prev) if prev else None,
         nxt=c.story_meta(nxt) if nxt else None,
     ))

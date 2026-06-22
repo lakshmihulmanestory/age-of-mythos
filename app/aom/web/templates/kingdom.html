@@ -4,7 +4,8 @@
 {% set tint = k.color_primary or '#c44daa' %}
 {% set tint2 = k.color_secondary or '#9a3088' %}
 <div class="wrap" style="--accent: {{ tint }}; --accent-2: {{ tint2 }};">
-  <div class="khead" style="--tint: {{ tint }}; --tint2: {{ tint2 }};">
+  <div class="khead {{ 'has-img' if k.banner_image }}" style="--tint: {{ tint }}; --tint2: {{ tint2 }};">
+    {% if k.banner_image %}<div class="bg" style="background-image:url('{{ k.banner_image }}')"></div>{% endif %}
     <div style="font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;opacity:.85">
       {{ region_label.get(k.region, k.region or '') }}{% if k.state %} · {{ k.state }}{% endif %}
     </div>
@@ -34,6 +35,7 @@
   <div class="cards">
     {% for c in heroes %}
     <div class="charcard">
+      {% if k.hero_image %}<img class="portrait" src="{{ k.hero_image }}" alt="" loading="lazy">{% endif %}
       <div class="role">Hero</div>
       <h4>{{ c.name }}</h4>
       {% if c.title %}<div class="kv">{{ c.title }}</div>{% endif %}
@@ -45,6 +47,7 @@
     {% endfor %}
     {% for c in villains %}
     <div class="charcard villain">
+      {% if k.images_by_type.get('villain') %}<img class="portrait" src="{{ k.images_by_type['villain'][0] }}" alt="" loading="lazy">{% endif %}
       <div class="role">Villain</div>
       <h4>{{ c.name }}</h4>
       {% if c.title %}<div class="kv">{{ c.title }}</div>{% endif %}

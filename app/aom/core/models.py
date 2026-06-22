@@ -85,6 +85,10 @@ class Kingdom(BaseModel):
     heroes: list[str] = Field(default_factory=list)  # character ids
     villains: list[str] = Field(default_factory=list)
     story_ids: list[str] = Field(default_factory=list)
+    banner_image: Optional[str] = None  # environment/scene art for the header
+    hero_image: Optional[str] = None
+    images: list[str] = Field(default_factory=list)
+    images_by_type: dict[str, list[str]] = Field(default_factory=dict)
     raw: dict = Field(default_factory=dict)
 
 
