@@ -159,7 +159,17 @@
       "Bash(curl -s localhost:5566/api/stories/__TRACKED_VAR__)",
       "Bash(app/.venv/bin/python -c ' *)",
       "Bash(curl -s \"localhost:5566/v/1/c/2\")",
-      "Bash(curl -s \"localhost:5566/v/1/c/3\")"
+      "Bash(curl -s \"localhost:5566/v/1/c/3\")",
+      "Bash(brew install *)",
+      "Bash(pdfinfo COCO.pdf)",
+      "Bash(pdftotext -f 1 -l 3 COCO.pdf -)",
+      "Bash(pdfimages -list -f 1 -l 2 COCO.pdf)",
+      "Bash(mkdir -p /tmp/coco_preview)",
+      "Bash(pdftoppm -png -r 40 -f 1 -l 6 COCO.pdf /tmp/coco_preview/p)",
+      "Bash(python3 /tmp/make_vijayanagara_book.py)",
+      "Bash(python3 -m pip install --quiet img2pdf)",
+      "Bash(python3 -c \"import img2pdf; print\\('img2pdf OK'\\)\")",
+      "Bash(pdfinfo The-Buried-Temple.pdf)"
     ],
     "additionalDirectories": [
       "/Users/smk/repos/MahaHulmane/images",
