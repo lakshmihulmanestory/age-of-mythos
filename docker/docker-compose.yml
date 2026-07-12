@@ -13,9 +13,8 @@ services:
       AOM_REPO_ROOT: /world
     volumes:
       - ../content:/world/content:ro
-      - ../story-text:/world/story-text:ro
-      - ../audio:/world/audio:ro
-      - ../generated-images:/world/generated-images:ro
+      # Story text, audio and generated images now live under targets/.
+      - ../targets:/world/targets:ro
       - ../media:/world/media:ro
       - ../Volume-1-Family-Tree.md:/world/Volume-1-Family-Tree.md:ro
     restart: unless-stopped
