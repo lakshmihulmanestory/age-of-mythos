@@ -69,6 +69,26 @@ def find_audio(story_id: str) -> str | None:
     return find_audio_en(story_id) or find_audio_kn(story_id)
 
 
+def find_story_text_kn(story_id: str, story_dir: Path | None) -> Path | None:
+    """Kannada prose source for a story, if one has been provided.
+
+    Mirrors the audio convention: a translation may live beside the English
+    ``story.md`` (as ``story.kn.md``) or in ``targets/story-text/kannada/``,
+    keyed by full story id or the ``chapter__kingdom`` short id.
+    """
+    short = "__".join(story_id.split("__")[:2])
+    cands: list[Path] = []
+    if story_dir is not None and story_dir.is_dir():
+        cands += [story_dir / "story.kn.md", story_dir / "story-kn.md"]
+    kn_dir = config.STORY_TEXT_DIR / "kannada"
+    for base in (story_id, short):
+        cands += [kn_dir / f"{base}.kn.txt", kn_dir / f"{base}.kn.md"]
+    for p in cands:
+        if p.is_file():
+            return p
+    return None
+
+
 def find_audio_tracks(story_id: str) -> list[dict]:
     """All narration tracks for a story, English first then Kannada."""
     tracks: list[dict] = []

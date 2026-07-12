@@ -14,13 +14,22 @@
     {% if kingdom %}<a href="/k/{{ kingdom.slug }}" style="color:var(--accent)">{{ kingdom.name }}</a> · {% endif %}
     {{ story.word_count }} words · ~{{ (story.word_count / 220)|round(0,'ceil')|int }} min read
   </div>
+  {% if story.has_text_kn %}
+  <div class="textlang" role="tablist" aria-label="Reading language">
+    <button class="langtab on" data-lang="en" onclick="aomTextLang(this)">English</button>
+    <button class="langtab" data-lang="kn" onclick="aomTextLang(this)">ಕನ್ನಡ</button>
+  </div>
+  {% endif %}
   <div class="rule"></div>
 
   {% if gallery %}
   <img class="story-img" src="{{ gallery[0] }}" data-full="{{ gallery[0] }}" alt="" style="margin-top:0">
   {% endif %}
 
-  <div class="prose">{{ story.body_html|safe }}</div>
+  <div class="prose" data-lang="en">{{ story.body_html|safe }}</div>
+  {% if story.has_text_kn %}
+  <div class="prose prose-kn" data-lang="kn" hidden>{{ story.body_html_kn|safe }}</div>
+  {% endif %}
 
   {% if gallery|length > 1 %}
   <div class="rule"></div>

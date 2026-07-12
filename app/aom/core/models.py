@@ -69,6 +69,8 @@ class Story(BaseModel):
     # heavy fields populated on demand:
     body_md: str = ""
     body_html: str = ""
+    body_html_kn: Optional[str] = None  # Kannada prose, when a translation exists
+    has_text_kn: bool = False
     image_urls: list[str] = Field(default_factory=list)
     audio_url: Optional[str] = None  # primary (English) — kept for convenience
     audio_tracks: list[AudioTrack] = Field(default_factory=list)

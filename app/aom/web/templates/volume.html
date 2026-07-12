@@ -1,30 +1,49 @@
 {% extends "base.html" %}
 {% block title %}Volume {{ vol.roman }} — {{ vol.title }}{% endblock %}
 {% block content %}
-<section class="hero" style="--accent: {{ vol.color_primary }}; --accent-2: {{ vol.color_secondary }};">
+{% set ns = namespace(hk=none) %}
+{% for ch in vol.chapters %}{% for slug in ch.kingdom_slugs %}
+  {% set k = catalog.kingdom(slug) %}
+  {% if ns.hk is none and k and k.banner_image %}{% set ns.hk = k %}{% endif %}
+{% endfor %}{% endfor %}
+{% set hk = ns.hk %}
+<section class="hero {{ 'has-bg' if hk }}"
+         style="--accent: {{ vol.color_primary }}; --accent-2: {{ vol.color_secondary }};
+                {% if hk %}--hero-img: url('{{ hk.banner_image }}');{% endif %}">
   <div class="eyebrow">Volume {{ vol.roman }} · {{ vol.subtitle }}</div>
   <h1>{{ vol.title }}</h1>
+  <p>{{ vol.chapters|length }} chapter{{ 's' if vol.chapters|length != 1 }} ·
+     {{ vol.chapters|map(attribute='story_ids')|map('length')|sum }} stories across the continent.</p>
 </section>
-<div class="wrap" style="--accent: {{ vol.color_primary }}; --accent-2: {{ vol.color_secondary }};">
-  {% for ch in vol.chapters %}
-  <h2 class="section-title" style="color: {{ ch.accent }}">Chapter {{ ch.number }} · {{ ch.title }}</h2>
-  <p class="lede">{{ ch.story_ids|length }} stories across {{ ch.regions|length }} regions ·
-     <a href="/v/{{ vol.number }}/c/{{ ch.number }}" style="color: {{ ch.accent }}">open chapter →</a></p>
-  <div class="cards" style="margin-top:1rem">
+
+{% for ch in vol.chapters %}
+<div class="shelf" style="--accent: {{ ch.accent }}; --accent-2: {{ vol.color_secondary }};">
+  <div class="shelf-head">
+    <h2 style="color: {{ ch.accent }}">Chapter {{ ch.number }} · {{ ch.title }}</h2>
+    <a class="see" href="/v/{{ vol.number }}/c/{{ ch.number }}">Open chapter ›</a>
+  </div>
+  <div class="shelf-row">
     {% for sid in ch.story_ids %}
       {% set s = catalog.story_meta(sid) %}
-      <a class="scard" href="/read/{{ s.id }}" style="--accent: {{ ch.accent }}">
-        <div class="region">{{ region_label.get(s.region, s.region or '') }}</div>
-        <h3>{{ s.title }}</h3>
-        {% if s.motto %}<div class="motto">{{ s.motto }}</div>{% endif %}
-        <div class="who">
-          {% if s.hero %}<span>⚔ {{ s.hero }}</span>{% endif %}
-          {% if s.villain %}<span>☠ {{ s.villain }}</span>{% endif %}
-          {% if s.has_audio %}<span>🔊 narrated</span>{% endif %}
+      {% set k = catalog.kingdom(s.kingdom_slug) %}
+      <a class="poster overlay" href="/read/{{ s.id }}"
+         style="{% if k and k.banner_image %}--art: url('{{ k.banner_image }}');{% endif %}
+                --tint: {{ ch.accent }}; --tint2: {{ vol.color_secondary }};">
+        <div class="art">
+          {% if not (k and k.banner_image) %}<div class="band"></div>{% endif %}
+          <div class="on-art">
+            <div class="r">{{ region_label.get(s.region, s.region or '') }}</div>
+            <div class="k">{{ s.title }}</div>
+          </div>
+        </div>
+        <div class="cap">
+          <div class="s">
+            {% if s.hero %}⚔ {{ s.hero }}{% endif %}{% if s.has_audio %} · 🔊{% endif %}
+          </div>
         </div>
       </a>
     {% endfor %}
   </div>
-  {% endfor %}
 </div>
+{% endfor %}
 {% endblock %}

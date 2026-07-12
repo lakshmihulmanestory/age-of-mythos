@@ -13,9 +13,11 @@ from pathlib import Path
 REPO_ROOT = Path(os.environ.get("AOM_REPO_ROOT", Path(__file__).resolve().parents[3]))
 
 CONTENT_DIR = REPO_ROOT / "content"
-STORY_TEXT_DIR = REPO_ROOT / "story-text"
-AUDIO_DIR = REPO_ROOT / "audio"
-IMAGES_DIR = REPO_ROOT / "generated-images"
+# Story text, audio and generated images were consolidated under targets/.
+TARGETS_DIR = REPO_ROOT / "targets"
+STORY_TEXT_DIR = TARGETS_DIR / "story-text"
+AUDIO_DIR = TARGETS_DIR / "audio"
+IMAGES_DIR = TARGETS_DIR / "story-images"
 MEDIA_DIR = REPO_ROOT / "media"
 FAMILY_TREE = REPO_ROOT / "Volume-1-Family-Tree.md"
 

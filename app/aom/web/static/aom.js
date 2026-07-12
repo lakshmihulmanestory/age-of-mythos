@@ -59,6 +59,23 @@
     if (wasPlaying) audio.play().catch(() => {});
   };
 
+  // --- story text language switch (English / Kannada) ---
+  window.aomTextLang = function (btn) {
+    const lang = btn.dataset.lang;
+    document.querySelectorAll(".textlang .langtab").forEach((b) =>
+      b.classList.toggle("on", b === btn));
+    document.querySelectorAll(".prose[data-lang]").forEach((el) => {
+      el.hidden = el.dataset.lang !== lang;
+    });
+    localStorage.setItem("aom-text-lang", lang);
+  };
+  // restore saved reading language on load
+  (function () {
+    const saved = localStorage.getItem("aom-text-lang");
+    const btn = saved && document.querySelector('.textlang .langtab[data-lang="' + saved + '"]');
+    if (btn) window.aomTextLang(btn);
+  })();
+
   // --- keyboard prev/next ---
   document.addEventListener("keydown", (e) => {
     if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;

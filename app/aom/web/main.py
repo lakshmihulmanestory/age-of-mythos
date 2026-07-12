@@ -37,7 +37,14 @@ def _ctx(request: Request, **extra) -> dict:
 
 @app.get("/", response_class=HTMLResponse)
 def home(request: Request):
-    return templates.TemplateResponse(request, "home.html", _ctx(request))
+    c = get_catalog()
+    # Kingdoms that have cover art, for the Apple-TV-style artwork shelves.
+    featured = [k for k in c.kingdoms.values() if k.banner_image]
+    featured.sort(key=lambda k: (k.region or "zz", k.name))
+    hero_img = next((k.banner_image for k in featured), None)
+    hero_kingdom = next((k for k in featured), None)
+    return templates.TemplateResponse(request, "home.html", _ctx(
+        request, featured=featured, hero_img=hero_img, hero_kingdom=hero_kingdom))
 
 
 @app.get("/v/{number}", response_class=HTMLResponse)
@@ -112,6 +119,18 @@ def story_asset(sid: str, filename: str):
     if not path:
         raise HTTPException(404, "asset not found")
     return FileResponse(path)
+
+
+@app.get("/kingdom-media/{slug}/{filename}")
+def kingdom_media(slug: str, filename: str):
+    """Serve a kingdom's curated art from its content ``media/kingdoms`` folder."""
+    base = get_catalog().kingdom_media_dirs.get(slug)
+    if base is None:
+        raise HTTPException(404, "no media for this kingdom")
+    target = (base / filename).resolve()
+    if base.resolve() not in target.parents or not target.is_file():
+        raise HTTPException(404, "asset not found")
+    return FileResponse(target)
 
 
 @app.get("/healthz")

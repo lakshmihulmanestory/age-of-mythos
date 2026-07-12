@@ -7,6 +7,7 @@ writer can edit a ``story.md`` on disk and just refresh the page.
 from __future__ import annotations
 
 import csv
+import re
 import threading
 from pathlib import Path
 from typing import Optional
@@ -54,6 +55,19 @@ def _extract_array_literal(text: str, anchor: str) -> str:
     raise ValueError("unbalanced array literal")
 
 
+_TYPE_ALIASES = {"env": "environment", "people": "crowd", "char": "hero",
+                 "characters": "hero"}
+
+
+def _image_type(name: str) -> str:
+    """Infer an art type from a filename in either naming convention."""
+    m = re.match(r"^\d+-.+?_([a-z]+)_", name)  # NN-token_<type>_desc.png
+    if m:
+        return m.group(1)
+    prefix = re.split(r"[-_]", name.rsplit(".", 1)[0], 1)[0].lower()  # <type>-desc.png
+    return _TYPE_ALIASES.get(prefix, prefix or "misc")
+
+
 def _csv_rows(path: Path) -> list[dict]:
     if not path.is_file():
         return []
@@ -74,6 +88,7 @@ class Catalog:
         self.spine: list[str] = []                       # ordered story ids
         self._story_dirs: dict[str, Path] = {}           # story_id -> folder/file
         self._bodies: dict[str, Story] = {}              # lazy body cache
+        self.kingdom_media_dirs: dict[str, Path] = {}    # slug -> content media/kingdoms dir
         self.build()
 
     # -- build ------------------------------------------------------------- #
@@ -277,27 +292,45 @@ class Catalog:
         return max(cands, key=lambda k: len(k.slug)) if cands else None
 
     def _load_images(self) -> None:
-        """Index ``generated-images/`` and attach art to kingdoms.
+        """Attach art to kingdoms, preferring each kingdom's own media folder.
 
-        Files are named ``NN-<kingdom-token>_<type>_<desc>.png`` (type is one of
-        hero / villain / ally / animal / bird / environment / scene / weapon …).
+        A kingdom keeps its curated art in ``<kingdom>/media/kingdoms/`` inside
+        the content tree; those are used first. Only kingdoms with no such art
+        fall back to the shared ``generated-images/`` pool. Files follow either
+        ``NN-<token>_<type>_<desc>.png`` or a freeform ``<type>-<desc>.png`` name.
         """
-        import re
-        if not config.IMAGES_DIR.is_dir():
-            return
-        for p in sorted(config.IMAGES_DIR.glob("*")):
-            if p.suffix.lower() not in (".png", ".jpg", ".jpeg", ".webp"):
-                continue
-            m = re.match(r"^\d+-(.+?)_([a-z]+)_", p.name)
-            if not m:
-                continue
-            token, typ = m.group(1), m.group(2)
-            k = self._match_kingdom(token)
+        _IMG_EXT = (".png", ".jpg", ".jpeg", ".webp")
+
+        # 1) per-kingdom content art: <kingdom-slug>/media/kingdoms/*
+        for mdir in sorted(config.CONTENT_DIR.glob("**/media/kingdoms")):
+            slug = mdir.parent.parent.name  # .../<slug>/media/kingdoms
+            k = self.kingdoms.get(slug) or self._match_kingdom(slug)
             if not k:
                 continue
-            url = f"/media/gallery/{p.name}"
-            k.images.append(url)
-            k.images_by_type.setdefault(typ, []).append(url)
+            self.kingdom_media_dirs[k.slug] = mdir
+            for p in sorted(mdir.iterdir()):
+                if p.suffix.lower() not in _IMG_EXT:
+                    continue
+                url = f"/kingdom-media/{k.slug}/{p.name}"
+                k.images.append(url)
+                k.images_by_type.setdefault(_image_type(p.name), []).append(url)
+
+        # 2) shared pool — only for kingdoms that got nothing above
+        has_content_art = {k.slug for k in self.kingdoms.values() if k.images}
+        if config.IMAGES_DIR.is_dir():
+            for p in sorted(config.IMAGES_DIR.glob("*")):
+                if p.suffix.lower() not in _IMG_EXT:
+                    continue
+                m = re.match(r"^\d+-(.+?)_", p.name)
+                if not m:
+                    continue
+                k = self._match_kingdom(m.group(1))
+                if not k or k.slug in has_content_art:  # kingdom has its own art
+                    continue
+                url = f"/media/gallery/{p.name}"
+                k.images.append(url)
+                k.images_by_type.setdefault(_image_type(p.name), []).append(url)
+
         for k in self.kingdoms.values():
             k.hero_image = (k.images_by_type.get("hero") or [None])[0]
             k.banner_image = (k.images_by_type.get("environment")
@@ -371,6 +404,13 @@ class Catalog:
         story.word_count = wc
         story.audio_tracks = [AudioTrack(**t) for t in assets.find_audio_tracks(sid)]
         story.audio_url = story.audio_tracks[0].url if story.audio_tracks else None
+        # Optional Kannada translation of the prose (mirrors the audio tracks).
+        kn_path = assets.find_story_text_kn(sid, src if src.is_dir() else src.parent)
+        if kn_path:
+            kn_post = frontmatter.load(kn_path)
+            kn_body = kn_post.content if kn_path.name.endswith(".md") else kn_path.read_text(encoding="utf-8", errors="ignore")
+            story.body_html_kn = render(kn_body, f"/story-asset/{sid}")[0]
+            story.has_text_kn = True
         self._bodies[sid] = story
         return story
 
