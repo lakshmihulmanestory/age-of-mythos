@@ -33,6 +33,7 @@ OUT_DIR = os.path.join(HERE, "data")
 sys.path.insert(0, HERE)
 
 from stories import ALL_STORIES  # noqa: E402
+from reference_cast import assign_reference, reference_index  # noqa: E402
 
 # Default negative prompt shared by all jobs unless a job overrides it.
 DEFAULT_NEGATIVE = (
@@ -44,24 +45,93 @@ DEFAULT_NEGATIVE = (
 # Appended for pre-modern scenes (most of them). Tech scenes set "modern_ok": True to skip this.
 NO_MODERN = ", modern clothing, wristwatch, sneakers, cars, smartphones, power lines"
 
+# No eyewear on ANY image (several reference photos wear glasses/sunglasses).
+NO_SPECS = ", spectacles, eyeglasses, glasses, sunglasses, reading glasses, eyewear"
+# No facial hair UNLESS the character's own description asks for it (keeps the
+# bearded reference photos from adding a beard to clean-shaven characters).
+NO_BEARD = ", beard, bearded, facial hair, moustache, mustache, goatee, stubble"
+FACIAL_HAIR_CUES = (
+    "beard", "bearded", "stubble", "moustache", "mustache", "goatee",
+    "facial hair", "whisker", "sideburn",
+)
+
+
+def wants_facial_hair(*texts):
+    blob = " ".join(t for t in texts if t).lower()
+    return any(cue in blob for cue in FACIAL_HAIR_CUES)
+
 # --- Global India anchors (the user's hard requirement) -------------------
-# People must read as authentic Indians of Indian origin; settings must be Indian.
+# EVERYTHING must read as authentically Indian / Indic — people, places, temples,
+# weapons, relics, wildlife. Each category group gets its own positive anchor and
+# an anti-Western/anti-foreign negative so nothing drifts to European/East-Asian.
 INDIA_PEOPLE = (
     "authentic Indian person of Indian ethnicity and Indian origin, "
-    "regionally accurate Indian features, traditional Indian attire"
+    "regionally accurate Indian features, traditional Indian attire, "
+    "Indic aesthetic rooted in ancient Bharata"
 )
-INDIA_PLACE = "authentic Indian subcontinent setting, Indian architecture and landscape"
+INDIA_PLACE = (
+    "authentic Indian subcontinent setting, classical Indian and regional temple "
+    "architecture, sacred Bharatiya landscape, Indic aesthetic rooted in ancient India"
+)
+INDIA_OBJECT = (
+    "authentic traditional Indian craftsmanship, classical Indic ornamentation and "
+    "motifs, temple and regional Indian metalwork and carving, forged in ancient Bharata"
+)
+INDIA_FAUNA = (
+    "native wildlife of the Indian subcontinent, natural Indian wilderness habitat, "
+    "Indic aesthetic"
+)
+# Scenes are landscapes that usually contain people -> place anchor + Indian people.
+INDIA_SCENE = INDIA_PLACE + ", all figures are authentic Indians of Indian origin"
+
 NON_INDIAN_NEG = (
     ", non-Indian, foreigner, european features, caucasian, east asian features, "
-    "african features, western clothing"
+    "african features, western clothing, greek, roman, medieval european"
 )
-PEOPLE_CATEGORIES = {"hero", "villain", "ally", "operative", "crowd"}
+NON_INDIAN_PLACE_NEG = (
+    ", european castle, gothic cathedral, greek roman columns, chinese pagoda, "
+    "japanese architecture, medieval european village, western fantasy architecture, "
+    "non-Indian architecture"
+)
+NON_INDIAN_OBJECT_NEG = (
+    ", european longsword, katana, western fantasy weapon, greek roman armor, "
+    "gothic design, non-Indian ornamentation"
+)
 
-# Suggested dimensions by category (SDXL-friendly).
+PEOPLE_CATEGORIES = {"hero", "villain", "ally", "operative", "crowd"}
+PLACE_CATEGORIES = {"environment", "palace"}
+OBJECT_CATEGORIES = {"weapon", "relic", "artifact"}
+FAUNA_CATEGORIES = {"animal"}
+
+
+def india_anchor_for(category):
+    if category in PEOPLE_CATEGORIES:
+        return INDIA_PEOPLE
+    if category in OBJECT_CATEGORIES:
+        return INDIA_OBJECT
+    if category in FAUNA_CATEGORIES:
+        return INDIA_FAUNA
+    if category == "scene":
+        return INDIA_SCENE
+    return INDIA_PLACE  # environment, palace, and any fallback
+
+
+def india_negative_for(category):
+    if category in PEOPLE_CATEGORIES:
+        return NON_INDIAN_NEG
+    if category in OBJECT_CATEGORIES:
+        return NON_INDIAN_OBJECT_NEG
+    if category in PLACE_CATEGORIES or category == "scene":
+        return NON_INDIAN_PLACE_NEG
+    return ""
+
+# Suggested dimensions by category. First-version pass: minimum size that still
+# holds detail (~768px base, all multiples of 64, SDXL/FLUX-friendly). Bump these
+# for a final high-res render once compositions are approved.
 DIMS = {
-    "portrait": (832, 1216),
-    "square": (1024, 1024),
-    "landscape": (1216, 832),
+    "portrait": (768, 1152),
+    "square": (768, 768),
+    "landscape": (1152, 768),
 }
 CATEGORY_ORIENTATION = {
     "hero": "portrait",
@@ -103,6 +173,11 @@ def build():
         "color_theme": "dedicated palette guidance for this kingdom/story",
         "width": "suggested width px",
         "height": "suggested height px",
+        "reference_archetype": "which real-person archetype this character is cast as (null = text-only)",
+        "reference_image": "repo-relative path to the primary reference photo (null for objects/animals/places)",
+        "reference_pool": "all photos available for this archetype (pick any for variety)",
+        "reference_mode": "face = lock the person's identity, style = borrow group look only",
+        "reference_weight": "suggested face/style conditioning strength",
         "seq": "global generation order index",
     }}
 
@@ -122,22 +197,35 @@ def build():
             base_negative = opts.get("negative")
             orientation = CATEGORY_ORIENTATION.get(category, "square")
             w, h = DIMS[orientation]
-            india_anchor = INDIA_PEOPLE if category in PEOPLE_CATEGORIES else INDIA_PLACE
+            india_anchor = india_anchor_for(category)
+            india_neg = india_negative_for(category)
 
             def make_job(variant_label, subject_text):
                 nonlocal seq
                 neg = DEFAULT_NEGATIVE
                 if base_negative:
                     neg = neg + ", " + base_negative
-                if category in PEOPLE_CATEGORIES:
-                    neg = neg + NON_INDIAN_NEG
+                if india_neg:
+                    neg = neg + india_neg
                 if not ent_modern_ok:
                     neg = neg + NO_MODERN
+                # No eyewear anywhere; no beard unless this character asks for it.
+                neg = neg + NO_SPECS
+                if category in PEOPLE_CATEGORIES and not wants_facial_hair(subject, subject_text):
+                    neg = neg + NO_BEARD
                 jid = f"{story['id']}__{slug(name)}"
                 fname = f"{story['id']}_{slug(category)}_{slug(name)}"
                 if variant_label:
                     jid += f"__{slug(variant_label)}"
                     fname += f"__{slug(variant_label)}"
+
+                # Cast a real-person reference photo for people; append an
+                # identity clause so the render keeps that person's face/look.
+                ref = assign_reference(category, name, subject_text, seq)
+                prompt = story["style"] + ", " + subject_text + ", " + india_anchor
+                if ref:
+                    prompt += ", " + ref.pop("identity_clause")
+
                 job = {
                     "id": jid,
                     "story_id": story["id"],
@@ -148,11 +236,16 @@ def build():
                     "category": category,
                     "name": name,
                     "variant": variant_label,
-                    "prompt": story["style"] + ", " + subject_text + ", " + india_anchor,
+                    "prompt": prompt,
                     "negative_prompt": neg,
                     "color_theme": story["color_theme"],
                     "width": w,
                     "height": h,
+                    "reference_archetype": ref["reference_archetype"] if ref else None,
+                    "reference_image": ref["reference_image"] if ref else None,
+                    "reference_pool": ref["reference_pool"] if ref else None,
+                    "reference_mode": ref["reference_mode"] if ref else None,
+                    "reference_weight": ref["reference_weight"] if ref else None,
                     "filename": fname,
                     "seq": seq,
                 }
@@ -187,6 +280,10 @@ def build():
     manifest["total_stories"] = len(ALL_STORIES)
     with open(os.path.join(OUT_DIR, "index.json"), "w") as f:
         json.dump(manifest, f, indent=2, ensure_ascii=False)
+
+    # reference-image casting catalog (machine-readable companion to reference-casting.md)
+    with open(os.path.join(OUT_DIR, "reference_index.json"), "w") as f:
+        json.dump(reference_index(), f, indent=2, ensure_ascii=False)
 
     print(f"Wrote {len(all_jobs)} jobs across {len(ALL_STORIES)} stories to {OUT_DIR}/")
     by_chapter = {}

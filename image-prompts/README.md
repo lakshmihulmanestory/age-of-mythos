@@ -13,9 +13,14 @@ key scene has its own **copy-paste prompt** plus a **negative prompt** and a **c
   Mending).
 
 ### Two hard guarantees enforced for EVERY job (in the engine)
-1. **Indian characters, Indian origin.** People always read as authentic Indians of Indian origin
-   with regionally accurate features and traditional attire (a global positive anchor + a
-   non-Indian negative). Settings are always the Indian subcontinent.
+1. **Everything is authentically Indian / Indic.** Each category group carries its own Indic
+   positive anchor **and** an anti-Western/foreign negative, so nothing drifts to European or
+   East-Asian: **people** → authentic Indians of Indian origin, regional features + traditional
+   attire; **environments/palaces** → classical Indian & regional temple architecture, sacred
+   Bharatiya landscape; **weapons/relics/artifacts** → traditional Indian craftsmanship, Indic
+   motifs & metalwork; **animals** → native subcontinent wildlife; **scenes** → Indian setting with
+   Indian figures. (Anchors live in `build_prompts.py`: `INDIA_PEOPLE/PLACE/OBJECT/FAUNA/SCENE` +
+   `NON_INDIAN_*_NEG`.)
 2. **Each kingdom has its own dedicated palette + architecture + dress.** All 42 stories carry a
    distinct `color_theme`, and each `style` anchor names that kingdom's real architecture/structures
    and traditional dress. (Verified: 42 unique themes.)
@@ -54,12 +59,24 @@ Each **job = one image to generate**. Fields:
 | `prompt` | **full ready-to-send positive prompt** (the story's style anchor is already prepended) |
 | `negative_prompt` | ready-to-send negative prompt (era-aware) |
 | `color_theme` | palette guidance for that story |
-| `width` / `height` | suggested SDXL dimensions (portrait for characters, landscape for scenes, square for objects) |
+| `width` / `height` | suggested dimensions — first-pass **768px base** (portrait 768×1152, square 768×768, landscape 1152×768) |
+| `reference_image` | repo-relative path to a real-person **face reference** photo, or `null` for objects/animals/places |
+| `reference_pool` / `reference_archetype` | all photos for this archetype + which archetype the character is cast as |
+| `reference_mode` / `reference_weight` | `face` (lock identity) vs `style` (look only) + suggested conditioning strength |
 | `filename` | suggested output filename stem (no extension) |
 | `seq` | global generation order index |
 
 There are **491 jobs** total. A consumer only needs `prompt`, `negative_prompt`, `width`, `height`,
-and `filename` — everything else is metadata for filtering/sorting.
+`filename`, and (for people) `reference_image` — everything else is metadata for filtering/sorting.
+
+### Real-person face references
+
+People in each image are cast to look like the real photos in
+[`images-reference/`](../images-reference/). See
+**[`reference-casting.md`](reference-casting.md)** for the full cast/archetype map
+and pipeline usage; casting logic lives in [`reference_cast.py`](reference_cast.py)
+and the catalog in [`data/reference_index.json`](data/reference_index.json).
+Objects, animals, weapons, environments and pure scenes have no reference.
 
 ### Minimal consumer loop (Python)
 

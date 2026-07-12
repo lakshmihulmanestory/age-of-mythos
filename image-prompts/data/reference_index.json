@@ -1,0 +1,121 @@
+{
+  "reference_dir": "images-reference",
+  "face_weight": 0.65,
+  "style_weight": 0.3,
+  "people_categories": [
+    "ally",
+    "crowd",
+    "hero",
+    "operative",
+    "villain"
+  ],
+  "archetypes": {
+    "lead_man": {
+      "label": "Lead man (protagonist)",
+      "who": "young adult male, ~30s, beard — the recurring male hero",
+      "mode": "face",
+      "descriptor": "adult Indian man",
+      "refs": [
+        "images-reference/460.jpeg",
+        "images-reference/642.jpeg",
+        "images-reference/139934.jpeg",
+        "images-reference/2P6A9388.jpeg",
+        "images-reference/IMG_4576.jpeg",
+        "images-reference/122298.jpeg"
+      ]
+    },
+    "lead_woman": {
+      "label": "Lead woman (protagonist)",
+      "who": "young adult female, ~30s — the recurring female hero",
+      "mode": "face",
+      "descriptor": "adult Indian woman",
+      "refs": [
+        "images-reference/IMG_6299.jpeg",
+        "images-reference/172962.jpeg",
+        "images-reference/86391.jpeg",
+        "images-reference/IMG_1999.jpeg",
+        "images-reference/2P6A9388.jpeg",
+        "images-reference/IMG_4576.jpeg"
+      ]
+    },
+    "young_man": {
+      "label": "Young man (ally / friend)",
+      "who": "secondary adult males — friends, brothers, operatives",
+      "mode": "face",
+      "descriptor": "young adult Indian man",
+      "refs": [
+        "images-reference/122298.jpeg",
+        "images-reference/505.jpeg",
+        "images-reference/IMG_20211219_181434_Original.jpeg",
+        "images-reference/109555.jpeg"
+      ]
+    },
+    "young_woman": {
+      "label": "Young woman (ally / sister)",
+      "who": "secondary adult females — sisters, friends, seers",
+      "mode": "face",
+      "descriptor": "young adult Indian woman",
+      "refs": [
+        "images-reference/250.jpeg",
+        "images-reference/173115.jpeg",
+        "images-reference/153441.jpeg",
+        "images-reference/132299.jpeg",
+        "images-reference/IMG_7373.jpeg"
+      ]
+    },
+    "elder_man": {
+      "label": "Elder man (sage / king / old villain)",
+      "who": "elderly male, silver hair, white dhoti — grandfather",
+      "mode": "face",
+      "descriptor": "elderly Indian man",
+      "refs": [
+        "images-reference/83167.jpeg",
+        "images-reference/83168.jpeg"
+      ]
+    },
+    "elder_woman": {
+      "label": "Elder woman (matriarch / queen mother)",
+      "who": "elderly female — grandmother / mother",
+      "mode": "face",
+      "descriptor": "elderly Indian woman",
+      "refs": [
+        "images-reference/IMG_6288.jpeg",
+        "images-reference/83168.jpeg"
+      ]
+    },
+    "boy_child": {
+      "label": "Boy child (young prince / child hero)",
+      "who": "young boy ~6 years",
+      "mode": "face",
+      "descriptor": "young Indian boy",
+      "refs": [
+        "images-reference/IMG_2784 Edited.jpeg",
+        "images-reference/IMG_4537.jpeg"
+      ]
+    },
+    "infant_child": {
+      "label": "Infant / girl child",
+      "who": "baby girl / infant character",
+      "mode": "face",
+      "descriptor": "Indian infant child",
+      "refs": [
+        "images-reference/IMG_3901.jpeg",
+        "images-reference/IMG_6450.jpeg",
+        "images-reference/IMG_4346.jpeg"
+      ]
+    },
+    "crowd_group": {
+      "label": "Crowd / group look",
+      "who": "group photos — used as a STYLE reference for crowds, not a face lock",
+      "mode": "style",
+      "descriptor": "crowd of everyday Indian people",
+      "refs": [
+        "images-reference/109555.jpeg",
+        "images-reference/IMG_7373.jpeg",
+        "images-reference/IMG_4566.jpeg",
+        "images-reference/153441.jpeg"
+      ]
+    }
+  },
+  "how_to_use": "For each job with a non-null reference_image, feed that photo to a face/identity conditioner (IP-Adapter, InstantID, or img2img) at reference_weight. mode=face locks the person's identity; mode=style only borrows the group's look. Objects/animals/places have no reference and are pure text-to-image."
+}

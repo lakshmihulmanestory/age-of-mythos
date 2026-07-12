@@ -478,6 +478,11 @@
     "color_theme": "dedicated palette guidance for this kingdom/story",
     "width": "suggested width px",
     "height": "suggested height px",
+    "reference_archetype": "which real-person archetype this character is cast as (null = text-only)",
+    "reference_image": "repo-relative path to the primary reference photo (null for objects/animals/places)",
+    "reference_pool": "all photos available for this archetype (pick any for variety)",
+    "reference_mode": "face = lock the person's identity, style = borrow group look only",
+    "reference_weight": "suggested face/style conditioning strength",
     "seq": "global generation order index"
   },
   "total_jobs": 491,
