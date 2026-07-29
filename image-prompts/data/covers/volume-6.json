@@ -1,0 +1,72 @@
+[
+  {
+    "id": "volume-6__the-southern-cross",
+    "level": "volume",
+    "volume": 6,
+    "chapter": null,
+    "title": "The Southern Cross",
+    "prompt": "cinematic epic fantasy key art, mythological blockbuster movie poster, grand awe-inspiring scale, dramatic volumetric god-rays, atmospheric depth, highly detailed intricate matte painting, trending on artstation, octane render, 8k, epic volume key-art poster for 'The Southern Cross', a volume of the Age of Mythos saga, world of Eka-Bhumi once one supercontinent, seven colossal Vimana Brother-giants who harvest the cosmic metal Brahma-Dhatu, the dying planet Vimana-Loka returning through the sky, the Void Maw threat set in the Southern lands (Sub-Saharan Africa and Oceania), authentic African and Aboriginal-Pacific people in ancestral regalia, sweeping vista of the vast savannas, red-earth outback and star-domed nights of the South with Great-Zimbabwe stone enclosures, ancestral rock-art shelters, bonework totems, acacia savanna under the Southern Cross constellation and glowing rock art, Tamas void-and-starfield cosmic power of the guardian Tamas-Vara, the Void Brother, a Vimana sky-chariot and the distant approaching planet Vimana-Loka faint in the sky, glowing Brahma-Dhatu cosmic-metal veins, ochre-red earth, savanna-gold, deep indigo night and bone-white palette, grand mythic scale, movie-poster composition, face completely free of any eyewear, no glasses, no spectacles, no goggles, no sunglasses, bare eyes clearly visible, clean-shaven smooth face, no beard, no moustache, no stubble, no facial hair whatsoever, even if a reference photo shows facial hair",
+    "negative_prompt": "lowres, low quality, worst quality, blurry, jpeg artifacts, deformed, disfigured, bad anatomy, extra limbs, extra fingers, fused fingers, mutated hands, poorly drawn hands, poorly drawn face, malformed, mutation, out of frame, cropped, watermark, signature, text, logo, username, oversaturated, plastic skin, modern clothing, wristwatch, sneakers, cars, smartphones, power lines, spectacles, eyeglasses, glasses, sunglasses, reading glasses, goggles, eyewear, beard, bearded, facial hair, moustache, mustache, goatee, stubble, indian, european, east asian, middle eastern, western features, wrong ethnicity, modern clothing",
+    "color_theme": "ochre-red earth, savanna-gold, deep indigo night and bone-white",
+    "width": 1536,
+    "height": 1024,
+    "target_path": "media/volumes/volume-6-the-southern-cross.png",
+    "filename": "volume-6-the-southern-cross"
+  },
+  {
+    "id": "volume-6-chapter-1__rise-of-legends",
+    "level": "chapter",
+    "volume": 6,
+    "chapter": 1,
+    "title": "The Southern Cross -- Rise of Legends",
+    "prompt": "cinematic epic fantasy key art, mythological blockbuster movie poster, grand awe-inspiring scale, dramatic volumetric god-rays, atmospheric depth, highly detailed intricate matte painting, trending on artstation, octane render, 8k, chapter poster 'Rise of Legends' from the 'The Southern Cross' volume (the Southern lands (Sub-Saharan Africa and Oceania)) of the Age of Mythos, DAWN OF THE AGE -- authentic African and Aboriginal-Pacific people in ancestral regalia awakening their first Brahma-Dhatu powers, unearthing buried Vimana relics beneath acacia savanna under the Southern Cross constellation and glowing rock art, a hopeful golden mythic sunrise over the vast savannas, red-earth outback and star-domed nights of the South, ordinary mortals rising into legend, glowing cosmic-metal veins threading the earth, wonder and destiny, ochre-red earth, savanna-gold, deep indigo night and bone-white palette, Tamas void-and-starfield cosmic power, glowing Brahma-Dhatu cosmic metal, tall dramatic poster composition, face completely free of any eyewear, no glasses, no spectacles, no goggles, no sunglasses, bare eyes clearly visible, clean-shaven smooth face, no beard, no moustache, no stubble, no facial hair whatsoever, even if a reference photo shows facial hair",
+    "negative_prompt": "lowres, low quality, worst quality, blurry, jpeg artifacts, deformed, disfigured, bad anatomy, extra limbs, extra fingers, fused fingers, mutated hands, poorly drawn hands, poorly drawn face, malformed, mutation, out of frame, cropped, watermark, signature, text, logo, username, oversaturated, plastic skin, modern clothing, wristwatch, sneakers, cars, smartphones, power lines, spectacles, eyeglasses, glasses, sunglasses, reading glasses, goggles, eyewear, beard, bearded, facial hair, moustache, mustache, goatee, stubble, indian, european, east asian, middle eastern, western features, wrong ethnicity, modern clothing",
+    "color_theme": "ochre-red earth, savanna-gold, deep indigo night and bone-white",
+    "width": 1024,
+    "height": 1536,
+    "target_path": "media/volumes/v6/chapter-1-rise-of-legends.png",
+    "filename": "v6-chapter-1-rise-of-legends"
+  },
+  {
+    "id": "volume-6-chapter-2__civil-war",
+    "level": "chapter",
+    "volume": 6,
+    "chapter": 2,
+    "title": "The Southern Cross -- Civil War",
+    "prompt": "cinematic epic fantasy key art, mythological blockbuster movie poster, grand awe-inspiring scale, dramatic volumetric god-rays, atmospheric depth, highly detailed intricate matte painting, trending on artstation, octane render, 8k, chapter poster 'Civil War' from the 'The Southern Cross' volume (the Southern lands (Sub-Saharan Africa and Oceania)) of the Age of Mythos, THE AGE FRACTURES -- rival authentic African and Aboriginal-Pacific people in ancestral regalia kingdoms turned against one another, acacia savanna under the Southern Cross constellation and glowing rock art split by battle-lines, brother against brother, torn banners, void and night weapons clashing beneath a bleeding blood-red sky, betrayal and shattered alliances across the vast savannas, red-earth outback and star-domed nights of the South, grim and divided, ochre-red earth, savanna-gold, deep indigo night and bone-white palette, Tamas void-and-starfield cosmic power, glowing Brahma-Dhatu cosmic metal, tall dramatic poster composition, face completely free of any eyewear, no glasses, no spectacles, no goggles, no sunglasses, bare eyes clearly visible, clean-shaven smooth face, no beard, no moustache, no stubble, no facial hair whatsoever, even if a reference photo shows facial hair",
+    "negative_prompt": "lowres, low quality, worst quality, blurry, jpeg artifacts, deformed, disfigured, bad anatomy, extra limbs, extra fingers, fused fingers, mutated hands, poorly drawn hands, poorly drawn face, malformed, mutation, out of frame, cropped, watermark, signature, text, logo, username, oversaturated, plastic skin, modern clothing, wristwatch, sneakers, cars, smartphones, power lines, spectacles, eyeglasses, glasses, sunglasses, reading glasses, goggles, eyewear, beard, bearded, facial hair, moustache, mustache, goatee, stubble, indian, european, east asian, middle eastern, western features, wrong ethnicity, modern clothing",
+    "color_theme": "ochre-red earth, savanna-gold, deep indigo night and bone-white",
+    "width": 1024,
+    "height": 1536,
+    "target_path": "media/volumes/v6/chapter-2-civil-war.png",
+    "filename": "v6-chapter-2-civil-war"
+  },
+  {
+    "id": "volume-6-chapter-3__rise-of-beasts",
+    "level": "chapter",
+    "volume": 6,
+    "chapter": 3,
+    "title": "The Southern Cross -- Rise of Beasts",
+    "prompt": "cinematic epic fantasy key art, mythological blockbuster movie poster, grand awe-inspiring scale, dramatic volumetric god-rays, atmospheric depth, highly detailed intricate matte painting, trending on artstation, octane render, 8k, chapter poster 'Rise of Beasts' from the 'The Southern Cross' volume (the Southern lands (Sub-Saharan Africa and Oceania)) of the Age of Mythos, THE BEASTS AWAKEN -- colossal mythic titan-creatures of the vast savannas, red-earth outback and star-domed nights of the South rising from earth and sea, authentic African and Aboriginal-Pacific people in ancestral regalia warriors dwarfed beneath monstrous guardians, void and night-charged behemoths trampling acacia savanna under the Southern Cross constellation and glowing rock art, primal chaos and terror, wild untamed power, ochre-red earth, savanna-gold, deep indigo night and bone-white palette, Tamas void-and-starfield cosmic power, glowing Brahma-Dhatu cosmic metal, tall dramatic poster composition, face completely free of any eyewear, no glasses, no spectacles, no goggles, no sunglasses, bare eyes clearly visible, clean-shaven smooth face, no beard, no moustache, no stubble, no facial hair whatsoever, even if a reference photo shows facial hair",
+    "negative_prompt": "lowres, low quality, worst quality, blurry, jpeg artifacts, deformed, disfigured, bad anatomy, extra limbs, extra fingers, fused fingers, mutated hands, poorly drawn hands, poorly drawn face, malformed, mutation, out of frame, cropped, watermark, signature, text, logo, username, oversaturated, plastic skin, modern clothing, wristwatch, sneakers, cars, smartphones, power lines, spectacles, eyeglasses, glasses, sunglasses, reading glasses, goggles, eyewear, beard, bearded, facial hair, moustache, mustache, goatee, stubble, indian, european, east asian, middle eastern, western features, wrong ethnicity, modern clothing",
+    "color_theme": "ochre-red earth, savanna-gold, deep indigo night and bone-white",
+    "width": 1024,
+    "height": 1536,
+    "target_path": "media/volumes/v6/chapter-3-rise-of-beasts.png",
+    "filename": "v6-chapter-3-rise-of-beasts"
+  },
+  {
+    "id": "volume-6-chapter-4__the-great-epic",
+    "level": "chapter",
+    "volume": 6,
+    "chapter": 4,
+    "title": "The Southern Cross -- The Great Epic",
+    "prompt": "cinematic epic fantasy key art, mythological blockbuster movie poster, grand awe-inspiring scale, dramatic volumetric god-rays, atmospheric depth, highly detailed intricate matte painting, trending on artstation, octane render, 8k, chapter poster 'The Great Epic' from the 'The Southern Cross' volume (the Southern lands (Sub-Saharan Africa and Oceania)) of the Age of Mythos, THE FINAL RECKONING -- every authentic African and Aboriginal-Pacific people in ancestral regalia kingdom united at last upon a Kurukshetra-scale battlefield, the towering Vimana Brothers descending from the planet Vimana-Loka looming huge in the sky, the Void Maw tearing open the heavens, void and night and cosmic fire, apocalyptic climax over the vast savannas, red-earth outback and star-domed nights of the South, the great epic of Earth's last stand, ochre-red earth, savanna-gold, deep indigo night and bone-white palette, Tamas void-and-starfield cosmic power, glowing Brahma-Dhatu cosmic metal, tall dramatic poster composition, face completely free of any eyewear, no glasses, no spectacles, no goggles, no sunglasses, bare eyes clearly visible, clean-shaven smooth face, no beard, no moustache, no stubble, no facial hair whatsoever, even if a reference photo shows facial hair",
+    "negative_prompt": "lowres, low quality, worst quality, blurry, jpeg artifacts, deformed, disfigured, bad anatomy, extra limbs, extra fingers, fused fingers, mutated hands, poorly drawn hands, poorly drawn face, malformed, mutation, out of frame, cropped, watermark, signature, text, logo, username, oversaturated, plastic skin, modern clothing, wristwatch, sneakers, cars, smartphones, power lines, spectacles, eyeglasses, glasses, sunglasses, reading glasses, goggles, eyewear, beard, bearded, facial hair, moustache, mustache, goatee, stubble, indian, european, east asian, middle eastern, western features, wrong ethnicity, modern clothing",
+    "color_theme": "ochre-red earth, savanna-gold, deep indigo night and bone-white",
+    "width": 1024,
+    "height": 1536,
+    "target_path": "media/volumes/v6/chapter-4-the-great-epic.png",
+    "filename": "v6-chapter-4-the-great-epic"
+  }
+]

@@ -26,12 +26,13 @@
   <div class="shelf-row">
     {% for v in volumes %}
     <a class="poster tall overlay" href="{{ '/v/' ~ v.number if v.available else '#' }}"
-       style="--tint: {{ v.color_primary }}; --tint2: {{ v.color_secondary }};">
+       style="{% if v.map_image %}--art: url('{{ v.map_image }}');{% endif %}
+              --tint: {{ v.color_primary }}; --tint2: {{ v.color_secondary }};">
       <div class="art">
-        <div class="band"></div>
+        {% if not v.map_image %}<div class="band"></div>{% endif %}
         {% if not v.available %}<span class="badge-soon">Coming soon</span>{% endif %}
         <div class="on-art">
-          <div class="r">Volume {{ v.roman }}</div>
+          <div class="r">Volume {{ v.roman }} · {{ v.subtitle }}</div>
           <div class="k">{{ v.title }}</div>
         </div>
       </div>

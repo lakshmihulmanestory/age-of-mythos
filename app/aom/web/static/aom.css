@@ -178,6 +178,12 @@ h1.page {
   opacity: 0; transition: opacity .3s var(--ease);
 }
 .poster.overlay .art::after { opacity: 1; }
+.poster.chapter-cover .art { /* the lead cover art that opens a whole chapter */
+  border-color: color-mix(in srgb, var(--tint, var(--accent)) 60%, transparent);
+  box-shadow: 0 6px 22px rgba(0,0,0,.45),
+              0 0 0 1px color-mix(in srgb, var(--tint, var(--accent)) 40%, transparent);
+}
+.poster.chapter-cover .on-art .r { color: #fff; opacity: .95; }
 .poster .art .band { /* accent strip for art-less posters */
   position: absolute; inset: 0;
   background: linear-gradient(135deg, var(--tint, var(--accent)), var(--tint2, var(--accent-2)));
@@ -224,6 +230,13 @@ h1.page {
   transition: transform .3s var(--ease), background .3s var(--ease);
 }
 .scard:hover { transform: translateY(-4px); background: var(--card-2); }
+.scard.has-photo { padding: 0; overflow: hidden; }
+.scard.has-photo .scard-body { padding: 1.1rem 1.4rem 1.3rem; display: flex; flex-direction: column; gap: .5rem; flex: 1; }
+.scard .thumb {
+  aspect-ratio: 16 / 10; background: var(--card-2) center/cover no-repeat;
+  border-bottom: 1px solid var(--line-soft);
+}
+.scard.has-photo:hover .thumb { filter: brightness(1.06); }
 .scard .region { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--brand); font-weight: 600; }
 .scard h3 { font-family: var(--sans); font-weight: 600; letter-spacing: -.02em; font-size: 1.4rem; margin: 0; line-height: 1.15; }
 .scard .motto { font-style: italic; color: var(--ink-soft); font-size: .95rem; }

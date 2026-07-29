@@ -30,6 +30,32 @@ def story_asset_path(story_dir: Path, filename: str) -> Path | None:
     return None
 
 
+def volume_map_url(vol_num: int) -> str | None:
+    """Served URL of the continent map art for a volume, if the file exists."""
+    stem = config.VOL_MAP.get(vol_num)
+    if not stem:
+        return None
+    for ext in _IMG_EXT:
+        if (config.MAPS_DIR / f"{stem}{ext}").is_file():
+            return f"/media/maps/{stem}{ext}"
+    return None
+
+
+def chapter_cover_url(chapter_num: int) -> str | None:
+    """Served URL of a chapter's cover art from ``media/volumes/``.
+
+    The cover files are named ``volume-<chapter>-<title>.png`` (the first four
+    covers belong to Volume I's four chapters). We glob by the leading number so
+    a stray filename typo (e.g. ``volume-4-1he-great-epic.png``) still resolves.
+    """
+    if not config.VOL_COVERS_DIR.is_dir():
+        return None
+    for p in sorted(config.VOL_COVERS_DIR.glob(f"volume-{chapter_num}-*")):
+        if p.suffix.lower() in _IMG_EXT:
+            return f"/media/volumes/{p.name}"
+    return None
+
+
 def _first_existing(candidates: list[tuple]) -> str | None:
     """candidates: list of (path, served_url). Return the first url that exists."""
     for path, url in candidates:

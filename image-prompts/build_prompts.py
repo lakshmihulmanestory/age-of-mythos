@@ -45,11 +45,24 @@ DEFAULT_NEGATIVE = (
 # Appended for pre-modern scenes (most of them). Tech scenes set "modern_ok": True to skip this.
 NO_MODERN = ", modern clothing, wristwatch, sneakers, cars, smartphones, power lines"
 
-# No eyewear on ANY image (several reference photos wear glasses/sunglasses).
-NO_SPECS = ", spectacles, eyeglasses, glasses, sunglasses, reading glasses, eyewear"
+# No eyewear on ANY image (several reference photos wear glasses/sunglasses/goggles).
+NO_SPECS = ", spectacles, eyeglasses, glasses, sunglasses, reading glasses, goggles, eyewear"
 # No facial hair UNLESS the character's own description asks for it (keeps the
 # bearded reference photos from adding a beard to clean-shaven characters).
 NO_BEARD = ", beard, bearded, facial hair, moustache, mustache, goatee, stubble"
+
+# nano-banana-pro (and similar) IGNORE negative_prompt, so the no-eyewear /
+# clean-shaven rules must ALSO live in the POSITIVE prompt. These are appended
+# LAST — after the reference identity clause — so they override any glasses,
+# goggles or beard the character would otherwise inherit from a reference photo.
+NO_EYEWEAR_POS = (
+    "face completely free of any eyewear, no glasses, no spectacles, no goggles, "
+    "no sunglasses, bare eyes clearly visible"
+)
+CLEAN_SHAVEN_POS = (
+    "clean-shaven smooth face, no beard, no moustache, no stubble, no facial hair "
+    "whatsoever, even if a reference photo shows facial hair"
+)
 FACIAL_HAIR_CUES = (
     "beard", "bearded", "stubble", "moustache", "mustache", "goatee",
     "facial hair", "whisker", "sideburn",
@@ -225,6 +238,13 @@ def build():
                 prompt = story["style"] + ", " + subject_text + ", " + india_anchor
                 if ref:
                     prompt += ", " + ref.pop("identity_clause")
+                # Bake the no-eyewear / clean-shaven rules into the POSITIVE prompt
+                # too (models like nano-banana-pro ignore negative_prompt). Appended
+                # last so they override any glasses/goggles/beard from a face reference.
+                if category in PEOPLE_CATEGORIES or category == "scene":
+                    prompt += ", " + NO_EYEWEAR_POS
+                    if not wants_facial_hair(subject, subject_text):
+                        prompt += ", " + CLEAN_SHAVEN_POS
 
                 job = {
                     "id": jid,

@@ -345,6 +345,7 @@ class Catalog:
                 number=num, slug=config.VOL_SLUG[num], title=config.VOL_TITLE[num],
                 subtitle=config.VOL_SUBTITLE[num], roman=config.ROMAN[num],
                 color_primary=pal[0], color_secondary=pal[1],
+                map_image=assets.volume_map_url(num),
             )
             for cnum, (cslug, ctitle) in config.CHAPTERS.items():
                 ch_stories = sorted(
@@ -366,6 +367,7 @@ class Catalog:
                 vol.chapters.append(Chapter(
                     number=cnum, slug=cslug, title=ctitle, volume=num,
                     accent=_shade(pal[0], cnum),
+                    cover_image=assets.chapter_cover_url(cnum),
                     regions=regions, kingdom_slugs=kingdoms_in,
                     story_ids=[s.id for s in ch_stories],
                 ))
@@ -435,6 +437,24 @@ class Catalog:
         for typ in ("scene", "environment", "hero", "villain"):
             gallery += k.images_by_type.get(typ, [])
         return gallery[:limit]
+
+    def story_hero_image(self, sid: str) -> Optional[str]:
+        """Best hero portrait to illustrate a story card.
+
+        Prefer a hero image whose filename matches the story's own hero name;
+        otherwise fall back to the kingdom's first hero image, then its banner.
+        """
+        meta = self.stories.get(sid)
+        k = self.kingdoms.get(meta.kingdom_slug) if meta else None
+        if not k:
+            return None
+        hero_imgs = k.images_by_type.get("hero", [])
+        if meta and meta.hero and hero_imgs:
+            token = slugify(meta.hero.split("—")[0])
+            for url in hero_imgs:
+                if token and token in slugify(url):
+                    return url
+        return (hero_imgs[0] if hero_imgs else None) or k.hero_image or k.banner_image
 
     def characters_for(self, kingdom_slug: str) -> list[Character]:
         k = self.kingdoms.get(kingdom_slug)

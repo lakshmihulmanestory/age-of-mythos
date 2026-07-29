@@ -25,6 +25,10 @@ if config.MEDIA_DIR.is_dir():
     app.mount("/media/video", StaticFiles(directory=str(config.MEDIA_DIR)), name="video")
 if config.IMAGES_DIR.is_dir():
     app.mount("/media/gallery", StaticFiles(directory=str(config.IMAGES_DIR)), name="gallery")
+if config.MAPS_DIR.is_dir():
+    app.mount("/media/maps", StaticFiles(directory=str(config.MAPS_DIR)), name="maps")
+if config.VOL_COVERS_DIR.is_dir():
+    app.mount("/media/volumes", StaticFiles(directory=str(config.VOL_COVERS_DIR)), name="volumes")
 
 
 def _ctx(request: Request, **extra) -> dict:

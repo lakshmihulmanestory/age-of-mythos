@@ -1,0 +1,16 @@
+[
+  {
+    "id": "album__age-of-mythos",
+    "level": "album",
+    "volume": null,
+    "chapter": null,
+    "title": "Age of Mythos -- The Saga",
+    "prompt": "cinematic epic fantasy key art, mythological blockbuster movie poster, grand awe-inspiring scale, dramatic volumetric god-rays, atmospheric depth, highly detailed intricate matte painting, trending on artstation, octane render, 8k, grand master key-art poster for 'AGE OF MYTHOS' (Hulmane -- The Saga), the complete mythic epic of Earth, the Age of Mythos saga, world of Eka-Bhumi once one supercontinent, seven colossal Vimana Brother-giants who harvest the cosmic metal Brahma-Dhatu, the dying planet Vimana-Loka returning through the sky, the Void Maw threat, Eka-Bhumi the one supercontinent breaking apart into seven lands, seven colossal towering Vimana Brother-giants each wreathed in a different element -- fire, wind, sky, earth, water, void and ice -- standing over the continents, heroes of every civilization of Earth (Indian, European, East Asian, Middle Eastern, indigenous American, African) united shoulder to shoulder in the foreground, the dying planet Vimana-Loka looming huge in a star-filled sky, the Void Maw wound tearing the cosmos, rivers of glowing Brahma-Dhatu cosmic metal threading the earth, saffron-gold, cosmic-violet and deep-space palette, biblical mythic scale, the ultimate saga poster, face completely free of any eyewear, no glasses, no spectacles, no goggles, no sunglasses, bare eyes clearly visible, clean-shaven smooth face, no beard, no moustache, no stubble, no facial hair whatsoever, even if a reference photo shows facial hair",
+    "negative_prompt": "lowres, low quality, worst quality, blurry, jpeg artifacts, deformed, disfigured, bad anatomy, extra limbs, extra fingers, fused fingers, mutated hands, poorly drawn hands, poorly drawn face, malformed, mutation, out of frame, cropped, watermark, signature, text, logo, username, oversaturated, plastic skin, modern clothing, wristwatch, sneakers, cars, smartphones, power lines, spectacles, eyeglasses, glasses, sunglasses, reading glasses, goggles, eyewear, beard, bearded, facial hair, moustache, mustache, goatee, stubble",
+    "color_theme": "saffron-gold, cosmic-violet, deep-space blue-black, Brahma-Dhatu glow",
+    "width": 1024,
+    "height": 1536,
+    "target_path": "media/album/age-of-mythos-saga.png",
+    "filename": "age-of-mythos-saga"
+  }
+]

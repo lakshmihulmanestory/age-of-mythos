@@ -1,0 +1,2 @@
+.pdf-venv/
+# print-pdf/ contains generated output; comment this line if you want to commit the PDFs

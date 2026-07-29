@@ -19,6 +19,8 @@ STORY_TEXT_DIR = TARGETS_DIR / "story-text"
 AUDIO_DIR = TARGETS_DIR / "audio"
 IMAGES_DIR = TARGETS_DIR / "story-images"
 MEDIA_DIR = REPO_ROOT / "media"
+MAPS_DIR = MEDIA_DIR / "maps"            # continent maps, one per volume
+VOL_COVERS_DIR = MEDIA_DIR / "volumes"   # chapter cover art (named volume-N-title.png)
 FAMILY_TREE = REPO_ROOT / "Volume-1-Family-Tree.md"
 
 # Authoritative kingdom registry (window.KINGDOM_IDENTITY) + game-data CSVs.
@@ -49,6 +51,11 @@ VOL_SLUG = {
     5: "volume-5-the-new-world", 6: "volume-6-the-southern-cross",
 }
 SLUG_VOL = {v: k for k, v in VOL_SLUG.items()}
+# Continent map art per volume (each volume is set on one continent).
+VOL_MAP = {
+    1: "bharatavarsha", 2: "europa", 3: "asia",
+    4: "africa", 5: "americas", 6: "australia",
+}
 CHAPTERS = {
     1: ("chapter-1-rise-of-legends", "Rise of Legends"),
     2: ("chapter-2-civil-war", "Civil War"),

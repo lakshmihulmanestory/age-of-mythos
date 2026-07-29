@@ -7,9 +7,10 @@
   {% if ns.hk is none and k and k.banner_image %}{% set ns.hk = k %}{% endif %}
 {% endfor %}{% endfor %}
 {% set hk = ns.hk %}
-<section class="hero {{ 'has-bg' if hk }}"
+{% set hero_bg = vol.map_image or (hk.banner_image if hk else none) %}
+<section class="hero {{ 'has-bg' if hero_bg }}"
          style="--accent: {{ vol.color_primary }}; --accent-2: {{ vol.color_secondary }};
-                {% if hk %}--hero-img: url('{{ hk.banner_image }}');{% endif %}">
+                {% if hero_bg %}--hero-img: url('{{ hero_bg }}');{% endif %}">
   <div class="eyebrow">Volume {{ vol.roman }} · {{ vol.subtitle }}</div>
   <h1>{{ vol.title }}</h1>
   <p>{{ vol.chapters|length }} chapter{{ 's' if vol.chapters|length != 1 }} ·
@@ -23,6 +24,18 @@
     <a class="see" href="/v/{{ vol.number }}/c/{{ ch.number }}">Open chapter ›</a>
   </div>
   <div class="shelf-row">
+    {% if ch.cover_image %}
+    <a class="poster tall overlay chapter-cover" href="/v/{{ vol.number }}/c/{{ ch.number }}"
+       style="--art: url('{{ ch.cover_image }}'); --tint: {{ ch.accent }}; --tint2: {{ vol.color_secondary }};">
+      <div class="art">
+        <div class="on-art">
+          <div class="r">Chapter {{ ch.number }}</div>
+          <div class="k">{{ ch.title }}</div>
+        </div>
+      </div>
+      <div class="cap"><div class="s">{{ ch.story_ids|length }} stories · {{ ch.kingdom_slugs|length }} kingdoms</div></div>
+    </a>
+    {% endif %}
     {% for sid in ch.story_ids %}
       {% set s = catalog.story_meta(sid) %}
       {% set k = catalog.kingdom(s.kingdom_slug) %}

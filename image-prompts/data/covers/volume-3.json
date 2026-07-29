@@ -1,0 +1,72 @@
+[
+  {
+    "id": "volume-3__the-eastern-dragon",
+    "level": "volume",
+    "volume": 3,
+    "chapter": null,
+    "title": "The Eastern Dragon",
+    "prompt": "cinematic epic fantasy key art, mythological blockbuster movie poster, grand awe-inspiring scale, dramatic volumetric god-rays, atmospheric depth, highly detailed intricate matte painting, trending on artstation, octane render, 8k, epic volume key-art poster for 'The Eastern Dragon', a volume of the Age of Mythos saga, world of Eka-Bhumi once one supercontinent, seven colossal Vimana Brother-giants who harvest the cosmic metal Brahma-Dhatu, the dying planet Vimana-Loka returning through the sky, the Void Maw threat set in the Eastern realm (East Asia), authentic East Asian people in imperial silk robes and lamellar armor, sweeping vista of the misted mountains, terraced valleys and imperial cities of the East with tiered pagodas, sweeping tiled palace roofs, the great serpent-wall, cloud-wreathed pagodas and a coiling celestial dragon, Akasha sky-and-cloud-dragon power of the guardian Akasha-Vara, the Sky Brother, a Vimana sky-chariot and the distant approaching planet Vimana-Loka faint in the sky, glowing Brahma-Dhatu cosmic-metal veins, jade-green, imperial vermilion-red, ink-black and gold palette, grand mythic scale, movie-poster composition, face completely free of any eyewear, no glasses, no spectacles, no goggles, no sunglasses, bare eyes clearly visible, clean-shaven smooth face, no beard, no moustache, no stubble, no facial hair whatsoever, even if a reference photo shows facial hair",
+    "negative_prompt": "lowres, low quality, worst quality, blurry, jpeg artifacts, deformed, disfigured, bad anatomy, extra limbs, extra fingers, fused fingers, mutated hands, poorly drawn hands, poorly drawn face, malformed, mutation, out of frame, cropped, watermark, signature, text, logo, username, oversaturated, plastic skin, modern clothing, wristwatch, sneakers, cars, smartphones, power lines, spectacles, eyeglasses, glasses, sunglasses, reading glasses, goggles, eyewear, beard, bearded, facial hair, moustache, mustache, goatee, stubble, indian, european, middle eastern, african, western features, wrong ethnicity, modern clothing",
+    "color_theme": "jade-green, imperial vermilion-red, ink-black and gold",
+    "width": 1536,
+    "height": 1024,
+    "target_path": "media/volumes/volume-3-the-eastern-dragon.png",
+    "filename": "volume-3-the-eastern-dragon"
+  },
+  {
+    "id": "volume-3-chapter-1__rise-of-legends",
+    "level": "chapter",
+    "volume": 3,
+    "chapter": 1,
+    "title": "The Eastern Dragon -- Rise of Legends",
+    "prompt": "cinematic epic fantasy key art, mythological blockbuster movie poster, grand awe-inspiring scale, dramatic volumetric god-rays, atmospheric depth, highly detailed intricate matte painting, trending on artstation, octane render, 8k, chapter poster 'Rise of Legends' from the 'The Eastern Dragon' volume (the Eastern realm (East Asia)) of the Age of Mythos, DAWN OF THE AGE -- authentic East Asian people in imperial silk robes and lamellar armor awakening their first Brahma-Dhatu powers, unearthing buried Vimana relics beneath cloud-wreathed pagodas and a coiling celestial dragon, a hopeful golden mythic sunrise over the misted mountains, terraced valleys and imperial cities of the East, ordinary mortals rising into legend, glowing cosmic-metal veins threading the earth, wonder and destiny, jade-green, imperial vermilion-red, ink-black and gold palette, Akasha sky-and-cloud-dragon power, glowing Brahma-Dhatu cosmic metal, tall dramatic poster composition, face completely free of any eyewear, no glasses, no spectacles, no goggles, no sunglasses, bare eyes clearly visible, clean-shaven smooth face, no beard, no moustache, no stubble, no facial hair whatsoever, even if a reference photo shows facial hair",
+    "negative_prompt": "lowres, low quality, worst quality, blurry, jpeg artifacts, deformed, disfigured, bad anatomy, extra limbs, extra fingers, fused fingers, mutated hands, poorly drawn hands, poorly drawn face, malformed, mutation, out of frame, cropped, watermark, signature, text, logo, username, oversaturated, plastic skin, modern clothing, wristwatch, sneakers, cars, smartphones, power lines, spectacles, eyeglasses, glasses, sunglasses, reading glasses, goggles, eyewear, beard, bearded, facial hair, moustache, mustache, goatee, stubble, indian, european, middle eastern, african, western features, wrong ethnicity, modern clothing",
+    "color_theme": "jade-green, imperial vermilion-red, ink-black and gold",
+    "width": 1024,
+    "height": 1536,
+    "target_path": "media/volumes/v3/chapter-1-rise-of-legends.png",
+    "filename": "v3-chapter-1-rise-of-legends"
+  },
+  {
+    "id": "volume-3-chapter-2__civil-war",
+    "level": "chapter",
+    "volume": 3,
+    "chapter": 2,
+    "title": "The Eastern Dragon -- Civil War",
+    "prompt": "cinematic epic fantasy key art, mythological blockbuster movie poster, grand awe-inspiring scale, dramatic volumetric god-rays, atmospheric depth, highly detailed intricate matte painting, trending on artstation, octane render, 8k, chapter poster 'Civil War' from the 'The Eastern Dragon' volume (the Eastern realm (East Asia)) of the Age of Mythos, THE AGE FRACTURES -- rival authentic East Asian people in imperial silk robes and lamellar armor kingdoms turned against one another, cloud-wreathed pagodas and a coiling celestial dragon split by battle-lines, brother against brother, torn banners, sky weapons clashing beneath a bleeding blood-red sky, betrayal and shattered alliances across the misted mountains, terraced valleys and imperial cities of the East, grim and divided, jade-green, imperial vermilion-red, ink-black and gold palette, Akasha sky-and-cloud-dragon power, glowing Brahma-Dhatu cosmic metal, tall dramatic poster composition, face completely free of any eyewear, no glasses, no spectacles, no goggles, no sunglasses, bare eyes clearly visible, clean-shaven smooth face, no beard, no moustache, no stubble, no facial hair whatsoever, even if a reference photo shows facial hair",
+    "negative_prompt": "lowres, low quality, worst quality, blurry, jpeg artifacts, deformed, disfigured, bad anatomy, extra limbs, extra fingers, fused fingers, mutated hands, poorly drawn hands, poorly drawn face, malformed, mutation, out of frame, cropped, watermark, signature, text, logo, username, oversaturated, plastic skin, modern clothing, wristwatch, sneakers, cars, smartphones, power lines, spectacles, eyeglasses, glasses, sunglasses, reading glasses, goggles, eyewear, beard, bearded, facial hair, moustache, mustache, goatee, stubble, indian, european, middle eastern, african, western features, wrong ethnicity, modern clothing",
+    "color_theme": "jade-green, imperial vermilion-red, ink-black and gold",
+    "width": 1024,
+    "height": 1536,
+    "target_path": "media/volumes/v3/chapter-2-civil-war.png",
+    "filename": "v3-chapter-2-civil-war"
+  },
+  {
+    "id": "volume-3-chapter-3__rise-of-beasts",
+    "level": "chapter",
+    "volume": 3,
+    "chapter": 3,
+    "title": "The Eastern Dragon -- Rise of Beasts",
+    "prompt": "cinematic epic fantasy key art, mythological blockbuster movie poster, grand awe-inspiring scale, dramatic volumetric god-rays, atmospheric depth, highly detailed intricate matte painting, trending on artstation, octane render, 8k, chapter poster 'Rise of Beasts' from the 'The Eastern Dragon' volume (the Eastern realm (East Asia)) of the Age of Mythos, THE BEASTS AWAKEN -- colossal mythic titan-creatures of the misted mountains, terraced valleys and imperial cities of the East rising from earth and sea, authentic East Asian people in imperial silk robes and lamellar armor warriors dwarfed beneath monstrous guardians, sky-charged behemoths trampling cloud-wreathed pagodas and a coiling celestial dragon, primal chaos and terror, wild untamed power, jade-green, imperial vermilion-red, ink-black and gold palette, Akasha sky-and-cloud-dragon power, glowing Brahma-Dhatu cosmic metal, tall dramatic poster composition, face completely free of any eyewear, no glasses, no spectacles, no goggles, no sunglasses, bare eyes clearly visible, clean-shaven smooth face, no beard, no moustache, no stubble, no facial hair whatsoever, even if a reference photo shows facial hair",
+    "negative_prompt": "lowres, low quality, worst quality, blurry, jpeg artifacts, deformed, disfigured, bad anatomy, extra limbs, extra fingers, fused fingers, mutated hands, poorly drawn hands, poorly drawn face, malformed, mutation, out of frame, cropped, watermark, signature, text, logo, username, oversaturated, plastic skin, modern clothing, wristwatch, sneakers, cars, smartphones, power lines, spectacles, eyeglasses, glasses, sunglasses, reading glasses, goggles, eyewear, beard, bearded, facial hair, moustache, mustache, goatee, stubble, indian, european, middle eastern, african, western features, wrong ethnicity, modern clothing",
+    "color_theme": "jade-green, imperial vermilion-red, ink-black and gold",
+    "width": 1024,
+    "height": 1536,
+    "target_path": "media/volumes/v3/chapter-3-rise-of-beasts.png",
+    "filename": "v3-chapter-3-rise-of-beasts"
+  },
+  {
+    "id": "volume-3-chapter-4__the-great-epic",
+    "level": "chapter",
+    "volume": 3,
+    "chapter": 4,
+    "title": "The Eastern Dragon -- The Great Epic",
+    "prompt": "cinematic epic fantasy key art, mythological blockbuster movie poster, grand awe-inspiring scale, dramatic volumetric god-rays, atmospheric depth, highly detailed intricate matte painting, trending on artstation, octane render, 8k, chapter poster 'The Great Epic' from the 'The Eastern Dragon' volume (the Eastern realm (East Asia)) of the Age of Mythos, THE FINAL RECKONING -- every authentic East Asian people in imperial silk robes and lamellar armor kingdom united at last upon a Kurukshetra-scale battlefield, the towering Vimana Brothers descending from the planet Vimana-Loka looming huge in the sky, the Void Maw tearing open the heavens, sky and cosmic fire, apocalyptic climax over the misted mountains, terraced valleys and imperial cities of the East, the great epic of Earth's last stand, jade-green, imperial vermilion-red, ink-black and gold palette, Akasha sky-and-cloud-dragon power, glowing Brahma-Dhatu cosmic metal, tall dramatic poster composition, face completely free of any eyewear, no glasses, no spectacles, no goggles, no sunglasses, bare eyes clearly visible, clean-shaven smooth face, no beard, no moustache, no stubble, no facial hair whatsoever, even if a reference photo shows facial hair",
+    "negative_prompt": "lowres, low quality, worst quality, blurry, jpeg artifacts, deformed, disfigured, bad anatomy, extra limbs, extra fingers, fused fingers, mutated hands, poorly drawn hands, poorly drawn face, malformed, mutation, out of frame, cropped, watermark, signature, text, logo, username, oversaturated, plastic skin, modern clothing, wristwatch, sneakers, cars, smartphones, power lines, spectacles, eyeglasses, glasses, sunglasses, reading glasses, goggles, eyewear, beard, bearded, facial hair, moustache, mustache, goatee, stubble, indian, european, middle eastern, african, western features, wrong ethnicity, modern clothing",
+    "color_theme": "jade-green, imperial vermilion-red, ink-black and gold",
+    "width": 1024,
+    "height": 1536,
+    "target_path": "media/volumes/v3/chapter-4-the-great-epic.png",
+    "filename": "v3-chapter-4-the-great-epic"
+  }
+]

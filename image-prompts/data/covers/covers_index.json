@@ -1,0 +1,225 @@
+{
+  "total_jobs": 31,
+  "album": 1,
+  "volumes": 6,
+  "chapters": 24,
+  "jobs": [
+    {
+      "id": "album__age-of-mythos",
+      "level": "album",
+      "volume": null,
+      "chapter": null,
+      "target_path": "media/album/age-of-mythos-saga.png"
+    },
+    {
+      "id": "volume-1__maha-parva",
+      "level": "volume",
+      "volume": 1,
+      "chapter": null,
+      "target_path": "media/volumes/volume-1-maha-parva.png"
+    },
+    {
+      "id": "volume-1-chapter-1__rise-of-legends",
+      "level": "chapter",
+      "volume": 1,
+      "chapter": 1,
+      "target_path": "media/volumes/v1/chapter-1-rise-of-legends.png"
+    },
+    {
+      "id": "volume-1-chapter-2__civil-war",
+      "level": "chapter",
+      "volume": 1,
+      "chapter": 2,
+      "target_path": "media/volumes/v1/chapter-2-civil-war.png"
+    },
+    {
+      "id": "volume-1-chapter-3__rise-of-beasts",
+      "level": "chapter",
+      "volume": 1,
+      "chapter": 3,
+      "target_path": "media/volumes/v1/chapter-3-rise-of-beasts.png"
+    },
+    {
+      "id": "volume-1-chapter-4__the-great-epic",
+      "level": "chapter",
+      "volume": 1,
+      "chapter": 4,
+      "target_path": "media/volumes/v1/chapter-4-the-great-epic.png"
+    },
+    {
+      "id": "volume-2__the-great-west",
+      "level": "volume",
+      "volume": 2,
+      "chapter": null,
+      "target_path": "media/volumes/volume-2-the-great-west.png"
+    },
+    {
+      "id": "volume-2-chapter-1__rise-of-legends",
+      "level": "chapter",
+      "volume": 2,
+      "chapter": 1,
+      "target_path": "media/volumes/v2/chapter-1-rise-of-legends.png"
+    },
+    {
+      "id": "volume-2-chapter-2__civil-war",
+      "level": "chapter",
+      "volume": 2,
+      "chapter": 2,
+      "target_path": "media/volumes/v2/chapter-2-civil-war.png"
+    },
+    {
+      "id": "volume-2-chapter-3__rise-of-beasts",
+      "level": "chapter",
+      "volume": 2,
+      "chapter": 3,
+      "target_path": "media/volumes/v2/chapter-3-rise-of-beasts.png"
+    },
+    {
+      "id": "volume-2-chapter-4__the-great-epic",
+      "level": "chapter",
+      "volume": 2,
+      "chapter": 4,
+      "target_path": "media/volumes/v2/chapter-4-the-great-epic.png"
+    },
+    {
+      "id": "volume-3__the-eastern-dragon",
+      "level": "volume",
+      "volume": 3,
+      "chapter": null,
+      "target_path": "media/volumes/volume-3-the-eastern-dragon.png"
+    },
+    {
+      "id": "volume-3-chapter-1__rise-of-legends",
+      "level": "chapter",
+      "volume": 3,
+      "chapter": 1,
+      "target_path": "media/volumes/v3/chapter-1-rise-of-legends.png"
+    },
+    {
+      "id": "volume-3-chapter-2__civil-war",
+      "level": "chapter",
+      "volume": 3,
+      "chapter": 2,
+      "target_path": "media/volumes/v3/chapter-2-civil-war.png"
+    },
+    {
+      "id": "volume-3-chapter-3__rise-of-beasts",
+      "level": "chapter",
+      "volume": 3,
+      "chapter": 3,
+      "target_path": "media/volumes/v3/chapter-3-rise-of-beasts.png"
+    },
+    {
+      "id": "volume-3-chapter-4__the-great-epic",
+      "level": "chapter",
+      "volume": 3,
+      "chapter": 4,
+      "target_path": "media/volumes/v3/chapter-4-the-great-epic.png"
+    },
+    {
+      "id": "volume-4__the-ancient-sands",
+      "level": "volume",
+      "volume": 4,
+      "chapter": null,
+      "target_path": "media/volumes/volume-4-the-ancient-sands.png"
+    },
+    {
+      "id": "volume-4-chapter-1__rise-of-legends",
+      "level": "chapter",
+      "volume": 4,
+      "chapter": 1,
+      "target_path": "media/volumes/v4/chapter-1-rise-of-legends.png"
+    },
+    {
+      "id": "volume-4-chapter-2__civil-war",
+      "level": "chapter",
+      "volume": 4,
+      "chapter": 2,
+      "target_path": "media/volumes/v4/chapter-2-civil-war.png"
+    },
+    {
+      "id": "volume-4-chapter-3__rise-of-beasts",
+      "level": "chapter",
+      "volume": 4,
+      "chapter": 3,
+      "target_path": "media/volumes/v4/chapter-3-rise-of-beasts.png"
+    },
+    {
+      "id": "volume-4-chapter-4__the-great-epic",
+      "level": "chapter",
+      "volume": 4,
+      "chapter": 4,
+      "target_path": "media/volumes/v4/chapter-4-the-great-epic.png"
+    },
+    {
+      "id": "volume-5__the-new-world",
+      "level": "volume",
+      "volume": 5,
+      "chapter": null,
+      "target_path": "media/volumes/volume-5-the-new-world.png"
+    },
+    {
+      "id": "volume-5-chapter-1__rise-of-legends",
+      "level": "chapter",
+      "volume": 5,
+      "chapter": 1,
+      "target_path": "media/volumes/v5/chapter-1-rise-of-legends.png"
+    },
+    {
+      "id": "volume-5-chapter-2__civil-war",
+      "level": "chapter",
+      "volume": 5,
+      "chapter": 2,
+      "target_path": "media/volumes/v5/chapter-2-civil-war.png"
+    },
+    {
+      "id": "volume-5-chapter-3__rise-of-beasts",
+      "level": "chapter",
+      "volume": 5,
+      "chapter": 3,
+      "target_path": "media/volumes/v5/chapter-3-rise-of-beasts.png"
+    },
+    {
+      "id": "volume-5-chapter-4__the-great-epic",
+      "level": "chapter",
+      "volume": 5,
+      "chapter": 4,
+      "target_path": "media/volumes/v5/chapter-4-the-great-epic.png"
+    },
+    {
+      "id": "volume-6__the-southern-cross",
+      "level": "volume",
+      "volume": 6,
+      "chapter": null,
+      "target_path": "media/volumes/volume-6-the-southern-cross.png"
+    },
+    {
+      "id": "volume-6-chapter-1__rise-of-legends",
+      "level": "chapter",
+      "volume": 6,
+      "chapter": 1,
+      "target_path": "media/volumes/v6/chapter-1-rise-of-legends.png"
+    },
+    {
+      "id": "volume-6-chapter-2__civil-war",
+      "level": "chapter",
+      "volume": 6,
+      "chapter": 2,
+      "target_path": "media/volumes/v6/chapter-2-civil-war.png"
+    },
+    {
+      "id": "volume-6-chapter-3__rise-of-beasts",
+      "level": "chapter",
+      "volume": 6,
+      "chapter": 3,
+      "target_path": "media/volumes/v6/chapter-3-rise-of-beasts.png"
+    },
+    {
+      "id": "volume-6-chapter-4__the-great-epic",
+      "level": "chapter",
+      "volume": 6,
+      "chapter": 4,
+      "target_path": "media/volumes/v6/chapter-4-the-great-epic.png"
+    }
+  ]
+}

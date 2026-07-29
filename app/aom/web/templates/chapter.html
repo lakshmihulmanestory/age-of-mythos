@@ -1,22 +1,37 @@
 {% extends "base.html" %}
 {% block title %}{{ vol.title }} — Chapter {{ ch.number }}: {{ ch.title }}{% endblock %}
 {% block content %}
+{% if ch.cover_image %}
+<section class="hero has-bg"
+         style="--accent: {{ ch.accent }}; --accent-2: {{ vol.color_secondary }};
+                --hero-img: url('{{ ch.cover_image }}');">
+  <div class="eyebrow"><a href="/v/{{ vol.number }}">Volume {{ vol.roman }} · {{ vol.title }}</a></div>
+  <h1>Chapter {{ ch.number }} · {{ ch.title }}</h1>
+  <p>{{ stories|length }} stories · {{ kingdoms|length }} kingdoms.</p>
+</section>
+{% endif %}
 <div class="wrap" style="--accent: {{ ch.accent }}; --accent-2: {{ vol.color_secondary }};">
+  {% if not ch.cover_image %}
   <div class="eyebrow"><a href="/v/{{ vol.number }}">Volume {{ vol.roman }} · {{ vol.title }}</a></div>
   <h1 class="page">Chapter {{ ch.number }} · {{ ch.title }}</h1>
   <p class="lede">{{ stories|length }} stories · {{ kingdoms|length }} kingdoms.</p>
+  {% endif %}
 
   {% for region in ch.regions %}
   <h2 class="section-title">{{ region_label.get(region, region) }}</h2>
   <div class="cards">
     {% for s in stories if s.region == region %}
-      <a class="scard" href="/read/{{ s.id }}">
-        <div class="region">{{ s.kingdom_slug.replace('-', ' ') }}</div>
-        <h3>{{ s.title }}</h3>
-        {% if s.subtitle %}<div class="motto">{{ s.subtitle }}</div>{% endif %}
-        <div class="who">
-          {% if s.hero %}<span>⚔ {{ s.hero }}</span>{% endif %}
-          {% if s.villain %}<span>☠ {{ s.villain }}</span>{% endif %}
+      {% set hero_img = catalog.story_hero_image(s.id) %}
+      <a class="scard {{ 'has-photo' if hero_img }}" href="/read/{{ s.id }}">
+        {% if hero_img %}<div class="thumb" style="background-image: url('{{ hero_img }}');"></div>{% endif %}
+        <div class="scard-body">
+          <div class="region">{{ s.kingdom_slug.replace('-', ' ') }}</div>
+          <h3>{{ s.title }}</h3>
+          {% if s.subtitle %}<div class="motto">{{ s.subtitle }}</div>{% endif %}
+          <div class="who">
+            {% if s.hero %}<span>⚔ {{ s.hero }}</span>{% endif %}
+            {% if s.villain %}<span>☠ {{ s.villain }}</span>{% endif %}
+          </div>
         </div>
       </a>
     {% endfor %}

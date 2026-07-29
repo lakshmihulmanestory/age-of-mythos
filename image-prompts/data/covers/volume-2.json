@@ -1,0 +1,72 @@
+[
+  {
+    "id": "volume-2__the-great-west",
+    "level": "volume",
+    "volume": 2,
+    "chapter": null,
+    "title": "The Great West",
+    "prompt": "cinematic epic fantasy key art, mythological blockbuster movie poster, grand awe-inspiring scale, dramatic volumetric god-rays, atmospheric depth, highly detailed intricate matte painting, trending on artstation, octane render, 8k, epic volume key-art poster for 'The Great West', a volume of the Age of Mythos saga, world of Eka-Bhumi once one supercontinent, seven colossal Vimana Brother-giants who harvest the cosmic metal Brahma-Dhatu, the dying planet Vimana-Loka returning through the sky, the Void Maw threat set in the Western lands (Yavana-Khanda, classical Europe), authentic European people in classical Hellenic and Norse attire, sweeping vista of the marble city-states, alpine highlands and cold northern seas of the West with classical Greco-Roman marble columns, megalithic stone circles, alpine keeps, colonnaded acropolis temples and jagged storm-wracked cliffs, Vayu wind-and-lightning tempest power of the guardian Vayu-Vara, the Storm Brother, a Vimana sky-chariot and the distant approaching planet Vimana-Loka faint in the sky, glowing Brahma-Dhatu cosmic-metal veins, marble-white, storm-grey, electric cobalt-blue and verdigris bronze palette, grand mythic scale, movie-poster composition, face completely free of any eyewear, no glasses, no spectacles, no goggles, no sunglasses, bare eyes clearly visible, clean-shaven smooth face, no beard, no moustache, no stubble, no facial hair whatsoever, even if a reference photo shows facial hair",
+    "negative_prompt": "lowres, low quality, worst quality, blurry, jpeg artifacts, deformed, disfigured, bad anatomy, extra limbs, extra fingers, fused fingers, mutated hands, poorly drawn hands, poorly drawn face, malformed, mutation, out of frame, cropped, watermark, signature, text, logo, username, oversaturated, plastic skin, modern clothing, wristwatch, sneakers, cars, smartphones, power lines, spectacles, eyeglasses, glasses, sunglasses, reading glasses, goggles, eyewear, beard, bearded, facial hair, moustache, mustache, goatee, stubble, indian, east asian, middle eastern, african features, wrong ethnicity, modern clothing",
+    "color_theme": "marble-white, storm-grey, electric cobalt-blue and verdigris bronze",
+    "width": 1536,
+    "height": 1024,
+    "target_path": "media/volumes/volume-2-the-great-west.png",
+    "filename": "volume-2-the-great-west"
+  },
+  {
+    "id": "volume-2-chapter-1__rise-of-legends",
+    "level": "chapter",
+    "volume": 2,
+    "chapter": 1,
+    "title": "The Great West -- Rise of Legends",
+    "prompt": "cinematic epic fantasy key art, mythological blockbuster movie poster, grand awe-inspiring scale, dramatic volumetric god-rays, atmospheric depth, highly detailed intricate matte painting, trending on artstation, octane render, 8k, chapter poster 'Rise of Legends' from the 'The Great West' volume (the Western lands (Yavana-Khanda, classical Europe)) of the Age of Mythos, DAWN OF THE AGE -- authentic European people in classical Hellenic and Norse attire awakening their first Brahma-Dhatu powers, unearthing buried Vimana relics beneath colonnaded acropolis temples and jagged storm-wracked cliffs, a hopeful golden mythic sunrise over the marble city-states, alpine highlands and cold northern seas of the West, ordinary mortals rising into legend, glowing cosmic-metal veins threading the earth, wonder and destiny, marble-white, storm-grey, electric cobalt-blue and verdigris bronze palette, Vayu wind-and-lightning tempest power, glowing Brahma-Dhatu cosmic metal, tall dramatic poster composition, face completely free of any eyewear, no glasses, no spectacles, no goggles, no sunglasses, bare eyes clearly visible, clean-shaven smooth face, no beard, no moustache, no stubble, no facial hair whatsoever, even if a reference photo shows facial hair",
+    "negative_prompt": "lowres, low quality, worst quality, blurry, jpeg artifacts, deformed, disfigured, bad anatomy, extra limbs, extra fingers, fused fingers, mutated hands, poorly drawn hands, poorly drawn face, malformed, mutation, out of frame, cropped, watermark, signature, text, logo, username, oversaturated, plastic skin, modern clothing, wristwatch, sneakers, cars, smartphones, power lines, spectacles, eyeglasses, glasses, sunglasses, reading glasses, goggles, eyewear, beard, bearded, facial hair, moustache, mustache, goatee, stubble, indian, east asian, middle eastern, african features, wrong ethnicity, modern clothing",
+    "color_theme": "marble-white, storm-grey, electric cobalt-blue and verdigris bronze",
+    "width": 1024,
+    "height": 1536,
+    "target_path": "media/volumes/v2/chapter-1-rise-of-legends.png",
+    "filename": "v2-chapter-1-rise-of-legends"
+  },
+  {
+    "id": "volume-2-chapter-2__civil-war",
+    "level": "chapter",
+    "volume": 2,
+    "chapter": 2,
+    "title": "The Great West -- Civil War",
+    "prompt": "cinematic epic fantasy key art, mythological blockbuster movie poster, grand awe-inspiring scale, dramatic volumetric god-rays, atmospheric depth, highly detailed intricate matte painting, trending on artstation, octane render, 8k, chapter poster 'Civil War' from the 'The Great West' volume (the Western lands (Yavana-Khanda, classical Europe)) of the Age of Mythos, THE AGE FRACTURES -- rival authentic European people in classical Hellenic and Norse attire kingdoms turned against one another, colonnaded acropolis temples and jagged storm-wracked cliffs split by battle-lines, brother against brother, torn banners, wind and storm weapons clashing beneath a bleeding blood-red sky, betrayal and shattered alliances across the marble city-states, alpine highlands and cold northern seas of the West, grim and divided, marble-white, storm-grey, electric cobalt-blue and verdigris bronze palette, Vayu wind-and-lightning tempest power, glowing Brahma-Dhatu cosmic metal, tall dramatic poster composition, face completely free of any eyewear, no glasses, no spectacles, no goggles, no sunglasses, bare eyes clearly visible, clean-shaven smooth face, no beard, no moustache, no stubble, no facial hair whatsoever, even if a reference photo shows facial hair",
+    "negative_prompt": "lowres, low quality, worst quality, blurry, jpeg artifacts, deformed, disfigured, bad anatomy, extra limbs, extra fingers, fused fingers, mutated hands, poorly drawn hands, poorly drawn face, malformed, mutation, out of frame, cropped, watermark, signature, text, logo, username, oversaturated, plastic skin, modern clothing, wristwatch, sneakers, cars, smartphones, power lines, spectacles, eyeglasses, glasses, sunglasses, reading glasses, goggles, eyewear, beard, bearded, facial hair, moustache, mustache, goatee, stubble, indian, east asian, middle eastern, african features, wrong ethnicity, modern clothing",
+    "color_theme": "marble-white, storm-grey, electric cobalt-blue and verdigris bronze",
+    "width": 1024,
+    "height": 1536,
+    "target_path": "media/volumes/v2/chapter-2-civil-war.png",
+    "filename": "v2-chapter-2-civil-war"
+  },
+  {
+    "id": "volume-2-chapter-3__rise-of-beasts",
+    "level": "chapter",
+    "volume": 2,
+    "chapter": 3,
+    "title": "The Great West -- Rise of Beasts",
+    "prompt": "cinematic epic fantasy key art, mythological blockbuster movie poster, grand awe-inspiring scale, dramatic volumetric god-rays, atmospheric depth, highly detailed intricate matte painting, trending on artstation, octane render, 8k, chapter poster 'Rise of Beasts' from the 'The Great West' volume (the Western lands (Yavana-Khanda, classical Europe)) of the Age of Mythos, THE BEASTS AWAKEN -- colossal mythic titan-creatures of the marble city-states, alpine highlands and cold northern seas of the West rising from earth and sea, authentic European people in classical Hellenic and Norse attire warriors dwarfed beneath monstrous guardians, wind and storm-charged behemoths trampling colonnaded acropolis temples and jagged storm-wracked cliffs, primal chaos and terror, wild untamed power, marble-white, storm-grey, electric cobalt-blue and verdigris bronze palette, Vayu wind-and-lightning tempest power, glowing Brahma-Dhatu cosmic metal, tall dramatic poster composition, face completely free of any eyewear, no glasses, no spectacles, no goggles, no sunglasses, bare eyes clearly visible, clean-shaven smooth face, no beard, no moustache, no stubble, no facial hair whatsoever, even if a reference photo shows facial hair",
+    "negative_prompt": "lowres, low quality, worst quality, blurry, jpeg artifacts, deformed, disfigured, bad anatomy, extra limbs, extra fingers, fused fingers, mutated hands, poorly drawn hands, poorly drawn face, malformed, mutation, out of frame, cropped, watermark, signature, text, logo, username, oversaturated, plastic skin, modern clothing, wristwatch, sneakers, cars, smartphones, power lines, spectacles, eyeglasses, glasses, sunglasses, reading glasses, goggles, eyewear, beard, bearded, facial hair, moustache, mustache, goatee, stubble, indian, east asian, middle eastern, african features, wrong ethnicity, modern clothing",
+    "color_theme": "marble-white, storm-grey, electric cobalt-blue and verdigris bronze",
+    "width": 1024,
+    "height": 1536,
+    "target_path": "media/volumes/v2/chapter-3-rise-of-beasts.png",
+    "filename": "v2-chapter-3-rise-of-beasts"
+  },
+  {
+    "id": "volume-2-chapter-4__the-great-epic",
+    "level": "chapter",
+    "volume": 2,
+    "chapter": 4,
+    "title": "The Great West -- The Great Epic",
+    "prompt": "cinematic epic fantasy key art, mythological blockbuster movie poster, grand awe-inspiring scale, dramatic volumetric god-rays, atmospheric depth, highly detailed intricate matte painting, trending on artstation, octane render, 8k, chapter poster 'The Great Epic' from the 'The Great West' volume (the Western lands (Yavana-Khanda, classical Europe)) of the Age of Mythos, THE FINAL RECKONING -- every authentic European people in classical Hellenic and Norse attire kingdom united at last upon a Kurukshetra-scale battlefield, the towering Vimana Brothers descending from the planet Vimana-Loka looming huge in the sky, the Void Maw tearing open the heavens, wind and storm and cosmic fire, apocalyptic climax over the marble city-states, alpine highlands and cold northern seas of the West, the great epic of Earth's last stand, marble-white, storm-grey, electric cobalt-blue and verdigris bronze palette, Vayu wind-and-lightning tempest power, glowing Brahma-Dhatu cosmic metal, tall dramatic poster composition, face completely free of any eyewear, no glasses, no spectacles, no goggles, no sunglasses, bare eyes clearly visible, clean-shaven smooth face, no beard, no moustache, no stubble, no facial hair whatsoever, even if a reference photo shows facial hair",
+    "negative_prompt": "lowres, low quality, worst quality, blurry, jpeg artifacts, deformed, disfigured, bad anatomy, extra limbs, extra fingers, fused fingers, mutated hands, poorly drawn hands, poorly drawn face, malformed, mutation, out of frame, cropped, watermark, signature, text, logo, username, oversaturated, plastic skin, modern clothing, wristwatch, sneakers, cars, smartphones, power lines, spectacles, eyeglasses, glasses, sunglasses, reading glasses, goggles, eyewear, beard, bearded, facial hair, moustache, mustache, goatee, stubble, indian, east asian, middle eastern, african features, wrong ethnicity, modern clothing",
+    "color_theme": "marble-white, storm-grey, electric cobalt-blue and verdigris bronze",
+    "width": 1024,
+    "height": 1536,
+    "target_path": "media/volumes/v2/chapter-4-the-great-epic.png",
+    "filename": "v2-chapter-4-the-great-epic"
+  }
+]

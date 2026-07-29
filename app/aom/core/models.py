@@ -107,6 +107,7 @@ class Chapter(BaseModel):
     title: str
     volume: int
     accent: str
+    cover_image: Optional[str] = None  # media/volumes/volume-N-title.png
     regions: list[str] = Field(default_factory=list)
     kingdom_slugs: list[str] = Field(default_factory=list)
     story_ids: list[str] = Field(default_factory=list)
@@ -120,5 +121,6 @@ class Volume(BaseModel):
     roman: str
     color_primary: str
     color_secondary: str
+    map_image: Optional[str] = None  # media/maps/<continent>.png
     available: bool = False
     chapters: list[Chapter] = Field(default_factory=list)
