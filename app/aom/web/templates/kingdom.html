@@ -35,7 +35,8 @@
   <div class="cards">
     {% for c in heroes %}
     <div class="charcard">
-      {% if k.hero_image %}<img class="portrait" src="{{ k.hero_image }}" alt="" loading="lazy">{% endif %}
+      {% set hero_art = k.hero_tile or k.hero_image %}
+      {% if hero_art %}<img class="portrait" src="{{ hero_art }}" alt="" loading="lazy">{% endif %}
       <div class="role">Hero</div>
       <h4>{{ c.name }}</h4>
       {% if c.title %}<div class="kv">{{ c.title }}</div>{% endif %}
@@ -47,7 +48,8 @@
     {% endfor %}
     {% for c in villains %}
     <div class="charcard villain">
-      {% if k.images_by_type.get('villain') %}<img class="portrait" src="{{ k.images_by_type['villain'][0] }}" alt="" loading="lazy">{% endif %}
+      {% set villain_art = k.villain_tile or (k.images_by_type.get('villain') or [none])[0] %}
+      {% if villain_art %}<img class="portrait" src="{{ villain_art }}" alt="" loading="lazy">{% endif %}
       <div class="role">Villain</div>
       <h4>{{ c.name }}</h4>
       {% if c.title %}<div class="kv">{{ c.title }}</div>{% endif %}

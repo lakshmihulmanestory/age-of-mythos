@@ -89,6 +89,7 @@ class Catalog:
         self._story_dirs: dict[str, Path] = {}           # story_id -> folder/file
         self._bodies: dict[str, Story] = {}              # lazy body cache
         self.kingdom_media_dirs: dict[str, Path] = {}    # slug -> content media/kingdoms dir
+        self.kingdom_tile_dirs: dict[str, Path] = {}     # slug -> content media/tiles dir
         self.build()
 
     # -- build ------------------------------------------------------------- #
@@ -315,6 +316,20 @@ class Catalog:
                 k.images.append(url)
                 k.images_by_type.setdefault(_image_type(p.name), []).append(url)
 
+        # 1b) per-kingdom 16:9 face-framed tile crops: <kingdom>/media/tiles/*
+        for tdir in sorted(config.CONTENT_DIR.glob("**/media/tiles")):
+            slug = tdir.parent.parent.name  # .../<slug>/media/tiles
+            k = self.kingdoms.get(slug) or self._match_kingdom(slug)
+            if not k:
+                continue
+            self.kingdom_tile_dirs[k.slug] = tdir
+            for p in sorted(tdir.iterdir()):
+                if p.suffix.lower() not in _IMG_EXT:
+                    continue
+                url = f"/kingdom-tile/{k.slug}/{p.name}"
+                k.tiles.append(url)
+                k.tiles_by_type.setdefault(_image_type(p.name), []).append(url)
+
         # 2) shared pool — only for kingdoms that got nothing above
         has_content_art = {k.slug for k in self.kingdoms.values() if k.images}
         if config.IMAGES_DIR.is_dir():
@@ -336,6 +351,16 @@ class Catalog:
             k.banner_image = (k.images_by_type.get("environment")
                               or k.images_by_type.get("scene")
                               or k.images_by_type.get("hero") or [None])[0]
+            # 16:9 face-framed tiles for card display (much better than cropping
+            # a tall portrait into a landscape box). Prefer the base portrait over
+            # ``__variant`` finale/alt crops.
+            _base_first = lambda urls: (sorted(urls, key=lambda u: ("__" in u, u))[0]
+                                        if urls else None)
+            k.hero_tile = _base_first(k.tiles_by_type.get("hero"))
+            k.villain_tile = _base_first(k.tiles_by_type.get("villain"))
+            # Art for an Apple-TV shelf card: a character tile reads best; fall
+            # back to the environment/scene banner, then the raw hero portrait.
+            k.card_image = k.hero_tile or k.banner_image or k.hero_image
 
     def _build_volumes(self) -> None:
         self.volumes = []

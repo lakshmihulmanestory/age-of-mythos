@@ -58,7 +58,7 @@
   <div class="shelf-row">
     {% for k in group %}
     <a class="poster overlay" href="/k/{{ k.slug }}"
-       style="--art: url('{{ k.banner_image }}'); --tint: {{ k.color_primary or '#c44daa' }}; --tint2: {{ k.color_secondary or '#9a3088' }};">
+       style="--art: url('{{ k.card_image }}'); --tint: {{ k.color_primary or '#c44daa' }}; --tint2: {{ k.color_secondary or '#9a3088' }};">
       <div class="art">
         <div class="on-art">
           {% if k.state %}<div class="r">{{ k.state }}</div>{% endif %}

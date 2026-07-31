@@ -98,6 +98,12 @@ class Kingdom(BaseModel):
     hero_image: Optional[str] = None
     images: list[str] = Field(default_factory=list)
     images_by_type: dict[str, list[str]] = Field(default_factory=dict)
+    # 16:9 face-framed "Apple-TV" tile crops (from media/tiles/)
+    tiles: list[str] = Field(default_factory=list)
+    tiles_by_type: dict[str, list[str]] = Field(default_factory=dict)
+    hero_tile: Optional[str] = None
+    villain_tile: Optional[str] = None
+    card_image: Optional[str] = None  # best art for a shelf/character card
     raw: dict = Field(default_factory=dict)
 
 

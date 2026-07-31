@@ -43,10 +43,12 @@ def _ctx(request: Request, **extra) -> dict:
 def home(request: Request):
     c = get_catalog()
     # Kingdoms that have cover art, for the Apple-TV-style artwork shelves.
-    featured = [k for k in c.kingdoms.values() if k.banner_image]
+    featured = [k for k in c.kingdoms.values() if k.card_image]
     featured.sort(key=lambda k: (k.region or "zz", k.name))
-    hero_img = next((k.banner_image for k in featured), None)
-    hero_kingdom = next((k for k in featured), None)
+    # The full-bleed hero prefers a wide environment banner; fall back to a tile.
+    hero_kingdom = next((k for k in featured if k.banner_image), None) or \
+        (featured[0] if featured else None)
+    hero_img = (hero_kingdom.banner_image or hero_kingdom.card_image) if hero_kingdom else None
     return templates.TemplateResponse(request, "home.html", _ctx(
         request, featured=featured, hero_img=hero_img, hero_kingdom=hero_kingdom))
 
@@ -131,6 +133,18 @@ def kingdom_media(slug: str, filename: str):
     base = get_catalog().kingdom_media_dirs.get(slug)
     if base is None:
         raise HTTPException(404, "no media for this kingdom")
+    target = (base / filename).resolve()
+    if base.resolve() not in target.parents or not target.is_file():
+        raise HTTPException(404, "asset not found")
+    return FileResponse(target)
+
+
+@app.get("/kingdom-tile/{slug}/{filename}")
+def kingdom_tile(slug: str, filename: str):
+    """Serve a kingdom's 16:9 face-framed tile crop from its ``media/tiles`` folder."""
+    base = get_catalog().kingdom_tile_dirs.get(slug)
+    if base is None:
+        raise HTTPException(404, "no tiles for this kingdom")
     target = (base / filename).resolve()
     if base.resolve() not in target.parents or not target.is_file():
         raise HTTPException(404, "asset not found")
