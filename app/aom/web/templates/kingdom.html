@@ -1,12 +1,35 @@
 {% extends "base.html" %}
 {% block title %}{{ k.name }}{% endblock %}
+
+{% macro shelf(title, sub, items, fit='cover', shape='wide') %}
+{% if items %}
+<section class="artsec">
+  <div class="artsec-head"><h2>{{ title }}</h2>{% if sub %}<p>{{ sub }}</p>{% endif %}</div>
+  <div class="mediarow">
+    {% for it in items %}
+    <figure class="mcard {{ shape }}">
+      <div class="mimg {{ fit }}"><img src="{{ it.url }}" alt="{{ it.name }}" loading="lazy"></div>
+      {% if it.name %}<figcaption>{{ it.name }}{% if it.era %}<span class="era">{{ it.era }}</span>{% endif %}</figcaption>{% endif %}
+    </figure>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+{% endmacro %}
+
 {% block content %}
 {% set tint = k.color_primary or '#c44daa' %}
 {% set tint2 = k.color_secondary or '#9a3088' %}
-<div class="wrap" style="--accent: {{ tint }}; --accent-2: {{ tint2 }};">
+{% set animals = (k.images_by_type.get('animal') or []) %}
+{% set world = (k.images_by_type.get('environment') or []) + (k.images_by_type.get('scene') or []) %}
+{% set relics = (k.images_by_type.get('relic') or []) %}
+{% set allies = (k.tiles_by_type.get('ally') or k.images_by_type.get('ally') or []) %}
+
+<div class="wrap kpage" style="--accent: {{ tint }}; --accent-2: {{ tint2 }};">
   <div class="khead {{ 'has-img' if k.banner_image }}" style="--tint: {{ tint }}; --tint2: {{ tint2 }};">
     {% if k.banner_image %}<div class="bg" style="background-image:url('{{ k.banner_image }}')"></div>{% endif %}
-    <div style="font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;opacity:.85">
+    {% if k.emblems %}<img class="khead-emblem" src="{{ k.emblems[0] }}" alt="emblem">{% endif %}
+    <div class="eyebrow">
       {{ region_label.get(k.region, k.region or '') }}{% if k.state %} · {{ k.state }}{% endif %}
     </div>
     <h1>{{ k.name }}</h1>
@@ -14,50 +37,101 @@
     {% if k.food %}<div class="chips">{% for f in k.food %}<span class="chip">{{ f }}</span>{% endfor %}</div>{% endif %}
   </div>
 
-  {% if k.landscape %}<p class="lede" style="margin-top:1.4rem">{{ k.landscape }}</p>{% endif %}
+  {% if k.landscape %}<p class="lede">{{ k.landscape }}</p>{% endif %}
   {% if k.culture %}<p class="lede">{{ k.culture }}</p>{% endif %}
 
-  {% if stories %}
-  <h2 class="section-title">Stories</h2>
-  <div class="cards">
-    {% for s in stories %}
-    <a class="scard" href="/read/{{ s.id }}">
-      <div class="region">Chapter {{ s.chapter }}</div>
-      <h3>{{ s.title }}</h3>
-      {% if s.motto %}<div class="motto">{{ s.motto }}</div>{% endif %}
-    </a>
-    {% endfor %}
-  </div>
+  {# ---------- the cast ---------- #}
+  {% if heroes or villains %}
+  <section class="artsec">
+    <div class="artsec-head"><h2>Who fights here</h2></div>
+    <div class="castgrid">
+      {% for c in heroes %}
+      <article class="charcard">
+        {% set hero_art = k.hero_tile or k.hero_image %}
+        {% if hero_art %}<div class="mimg cover portrait"><img src="{{ hero_art }}" alt="{{ c.name }}" loading="lazy"></div>{% endif %}
+        <div class="cc-body">
+          <div class="role">Hero</div>
+          <h4>{{ c.name }}</h4>
+          {% if c.title %}<div class="cc-title">{{ c.title }}</div>{% endif %}
+          <dl class="cc-facts">
+            {% if c.deity %}<div><dt>Deity</dt><dd>{{ c.deity }}</dd></div>{% endif %}
+            {% if c.sacred_animal %}<div><dt>Animal</dt><dd>{{ c.sacred_animal }}</dd></div>{% endif %}
+            {% if c.sacred_bird %}<div><dt>Bird</dt><dd>{{ c.sacred_bird }}</dd></div>{% endif %}
+            {% for w in c.weapons %}<div><dt>{{ w.era|capitalize }} weapon</dt><dd>{{ w.name }}{% if w.ability %} — {{ w.ability }}{% endif %}</dd></div>{% endfor %}
+            {% for v in c.vehicles %}<div><dt>{{ v.era|capitalize }} mount</dt><dd>{{ v.name }}</dd></div>{% endfor %}
+          </dl>
+        </div>
+      </article>
+      {% endfor %}
+      {% for c in villains %}
+      <article class="charcard villain">
+        {% set villain_art = k.villain_tile or (k.images_by_type.get('villain') or [none])[0] %}
+        {% if villain_art %}<div class="mimg cover portrait"><img src="{{ villain_art }}" alt="{{ c.name }}" loading="lazy"></div>{% endif %}
+        <div class="cc-body">
+          <div class="role">Villain</div>
+          <h4>{{ c.name }}</h4>
+          {% if c.title %}<div class="cc-title">{{ c.title }}</div>{% endif %}
+          <dl class="cc-facts">
+            {% if c.deity %}<div><dt>Dark deity</dt><dd>{{ c.deity }}</dd></div>{% endif %}
+            {% if c.mahabharata_echo %}<div><dt>Echoes</dt><dd>{{ c.mahabharata_echo }}</dd></div>{% endif %}
+            {% for w in c.weapons %}<div><dt>{{ w.era|capitalize }} weapon</dt><dd>{{ w.name }}{% if w.ability %} — {{ w.ability }}{% endif %}</dd></div>{% endfor %}
+          </dl>
+          {% if c.motivation %}<p class="cc-note">{{ c.motivation }}</p>{% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
   {% endif %}
 
-  {% if heroes or villains %}
-  <h2 class="section-title">Who fights here</h2>
-  <div class="cards">
-    {% for c in heroes %}
-    <div class="charcard">
-      {% set hero_art = k.hero_tile or k.hero_image %}
-      {% if hero_art %}<img class="portrait" src="{{ hero_art }}" alt="" loading="lazy">{% endif %}
-      <div class="role">Hero</div>
-      <h4>{{ c.name }}</h4>
-      {% if c.title %}<div class="kv">{{ c.title }}</div>{% endif %}
-      {% if c.sacred_animal %}<div class="kv"><b>Animal:</b> {{ c.sacred_animal }}</div>{% endif %}
-      {% if c.deity %}<div class="kv"><b>Deity:</b> {{ c.deity }}</div>{% endif %}
-      {% for w in c.weapons %}<div class="kv"><b>{{ w.era|capitalize }} weapon:</b> {{ w.name }}</div>{% endfor %}
-      {% for v in c.vehicles %}<div class="kv"><b>{{ v.era|capitalize }} mount:</b> {{ v.name }}</div>{% endfor %}
+  {# ---------- gods & deities ---------- #}
+  {% if k.deity_image or k.dark_deity_image %}
+  <section class="artsec">
+    <div class="artsec-head"><h2>Gods &amp; Deities</h2><p>The light and the shadow worshipped here</p></div>
+    <div class="godgrid">
+      {% if k.deity_image %}
+      <figure class="godcard">
+        <div class="mimg cover"><img src="{{ k.deity_image }}" alt="deity" loading="lazy"></div>
+        <figcaption><span class="god-role light">Deity</span>
+          <b>{{ (heroes and heroes[0].deity) or 'Presiding Deity' }}</b></figcaption>
+      </figure>
+      {% endif %}
+      {% if k.dark_deity_image %}
+      <figure class="godcard dark">
+        <div class="mimg cover"><img src="{{ k.dark_deity_image }}" alt="dark deity" loading="lazy"></div>
+        <figcaption><span class="god-role dark">Dark Deity</span>
+          <b>{{ (villains and villains[0].deity) or 'Shadow Deity' }}</b></figcaption>
+      </figure>
+      {% endif %}
     </div>
-    {% endfor %}
-    {% for c in villains %}
-    <div class="charcard villain">
-      {% set villain_art = k.villain_tile or (k.images_by_type.get('villain') or [none])[0] %}
-      {% if villain_art %}<img class="portrait" src="{{ villain_art }}" alt="" loading="lazy">{% endif %}
-      <div class="role">Villain</div>
-      <h4>{{ c.name }}</h4>
-      {% if c.title %}<div class="kv">{{ c.title }}</div>{% endif %}
-      {% if c.mahabharata_echo %}<div class="kv"><b>Echoes:</b> {{ c.mahabharata_echo }}</div>{% endif %}
-      {% if c.motivation %}<div class="kv">{{ c.motivation }}</div>{% endif %}
-    </div>
-    {% endfor %}
-  </div>
+  </section>
   {% endif %}
+
+  {{ shelf('Allies & the People', 'Those who stand with the kingdom', allies|map('to_item')|list, 'cover', 'wide') }}
+  {{ shelf('Royal Emblem', 'The sigils of the throne', k.emblems|map('to_item')|list, 'contain', 'square') }}
+  {{ shelf('Sacred Animals & Birds', 'Totems of the land', animals|map('to_item')|list, 'cover', 'square') }}
+  {{ shelf('The Arsenal', 'Weapons of two ages — ancient and reborn', k.weapons_art, 'contain', 'square') }}
+  {{ shelf('Chariots & Machines', 'Mounts across the eras', k.vehicles_art, 'contain', 'wide') }}
+  {{ shelf('The Sacred Mark', 'How the tattoo grows with the bearer', k.tattoo_stages, 'contain', 'tall') }}
+  {{ shelf('The World', 'Places and moments of this kingdom', world|map('to_item')|list, 'cover', 'wide') }}
+  {{ shelf('Relics', 'Artifacts of power', relics|map('to_item')|list, 'contain', 'square') }}
+
+  {# ---------- stories ---------- #}
+  {% if stories %}
+  <section class="artsec">
+    <div class="artsec-head"><h2>Stories</h2></div>
+    <div class="cards">
+      {% for s in stories %}
+      <a class="scard" href="/read/{{ s.id }}">
+        <div class="region">Chapter {{ s.chapter }}</div>
+        <h3>{{ s.title }}</h3>
+        {% if s.motto %}<div class="motto">{{ s.motto }}</div>{% endif %}
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  <p class="connect-cta"><a href="/connections">See how every hero, villain and guru connects ›</a></p>
 </div>
 {% endblock %}

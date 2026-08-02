@@ -76,6 +76,49 @@
     if (btn) window.aomTextLang(btn);
   })();
 
+  // --- story cards: cycle through the kingdom's cast ---
+  // Each card holds several face-framed tiles; every 5 minutes it cross-fades
+  // to the next one, so a shelf gradually shows a whole cast instead of one
+  // frozen portrait. Cards are staggered so the page doesn't blink in unison.
+  (function () {
+    const PERIOD = 5 * 60 * 1000;
+    const cards = [];
+    document.querySelectorAll(".scard .thumb[data-frames]").forEach((thumb) => {
+      let frames;
+      try { frames = JSON.parse(thumb.dataset.frames); } catch (e) { return; }
+      if (!Array.isArray(frames) || frames.length < 2) return;
+      const fade = thumb.querySelector(".thumb-fade");
+      if (!fade) return;
+      cards.push({ thumb, fade, frames, i: 0 });
+    });
+    if (!cards.length) return;
+
+    function advance(card) {
+      const next = card.frames[(card.i + 1) % card.frames.length];
+      const img = new Image();
+      img.onload = () => {
+        card.fade.style.backgroundImage = "url('" + next + "')";
+        card.fade.classList.add("show");
+        // once the fade has landed, promote it to the base layer and reset,
+        // so the next transition always fades from the picture on screen
+        setTimeout(() => {
+          card.thumb.style.backgroundImage = "url('" + next + "')";
+          card.fade.classList.remove("show");
+          card.i = (card.i + 1) % card.frames.length;
+        }, 1200);
+      };
+      img.src = next;
+    }
+
+    cards.forEach((card, n) => {
+      const stagger = (n % 12) * (PERIOD / 12);
+      setTimeout(() => {
+        advance(card);
+        setInterval(() => advance(card), PERIOD);
+      }, stagger + PERIOD / 12);
+    });
+  })();
+
   // --- keyboard prev/next ---
   document.addEventListener("keydown", (e) => {
     if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;

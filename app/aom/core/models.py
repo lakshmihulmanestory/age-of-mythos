@@ -104,6 +104,13 @@ class Kingdom(BaseModel):
     hero_tile: Optional[str] = None
     villain_tile: Optional[str] = None
     card_image: Optional[str] = None  # best art for a shelf/character card
+    # curated reference art from the kingdom's media/* sub-folders
+    emblems: list[str] = Field(default_factory=list)          # media/emblem/*
+    weapons_art: list[dict] = Field(default_factory=list)     # [{era,url,name}]
+    vehicles_art: list[dict] = Field(default_factory=list)    # [{era,url,name}]
+    tattoo_stages: list[dict] = Field(default_factory=list)   # [{stage,label,url}]
+    deity_image: Optional[str] = None       # media/god/deity.png
+    dark_deity_image: Optional[str] = None  # media/god/dark-deity.png
     raw: dict = Field(default_factory=dict)
 
 

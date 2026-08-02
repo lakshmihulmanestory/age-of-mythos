@@ -18,6 +18,7 @@ TARGETS_DIR = REPO_ROOT / "targets"
 STORY_TEXT_DIR = TARGETS_DIR / "story-text"
 AUDIO_DIR = TARGETS_DIR / "audio"
 IMAGES_DIR = TARGETS_DIR / "story-images"
+TILES_DIR = TARGETS_DIR / "story-tiles"  # 16:9 face-framed crops of the above
 MEDIA_DIR = REPO_ROOT / "media"
 MAPS_DIR = MEDIA_DIR / "maps"            # continent maps, one per volume
 VOL_COVERS_DIR = MEDIA_DIR / "volumes"   # chapter cover art (named volume-N-title.png)

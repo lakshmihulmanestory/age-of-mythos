@@ -90,6 +90,7 @@ class Catalog:
         self._bodies: dict[str, Story] = {}              # lazy body cache
         self.kingdom_media_dirs: dict[str, Path] = {}    # slug -> content media/kingdoms dir
         self.kingdom_tile_dirs: dict[str, Path] = {}     # slug -> content media/tiles dir
+        self.kingdom_media_roots: dict[str, Path] = {}   # slug -> content media/ root
         self.build()
 
     # -- build ------------------------------------------------------------- #
@@ -330,6 +331,63 @@ class Catalog:
                 k.tiles.append(url)
                 k.tiles_by_type.setdefault(_image_type(p.name), []).append(url)
 
+        # 1c) curated reference art: emblem / weapons / vehicles / tattoo folders
+        #     that sit beside media/kingdoms inside each kingdom's media/ root.
+        def _era(name: str) -> str:
+            n = name.lower()
+            return "modern" if "modern" in n else ("ancient" if "ancient" in n else "")
+
+        def _pretty(name: str, drop: str) -> str:
+            stem = name.rsplit(".", 1)[0]
+            stem = re.sub(r"^[a-z]+-", "", stem)          # strip state prefix
+            stem = re.sub(rf"-?{drop}-?", "-", stem)      # strip 'weapon'/'vehicle'
+            stem = re.sub(r"-(ancient|modern|mk-?ii|mk-?i)\b", "", stem)
+            return stem.replace("-", " ").strip().title()
+
+        def _imgs(d: Path) -> list[Path]:
+            return ([p for p in sorted(d.iterdir()) if p.suffix.lower() in _IMG_EXT]
+                    if d.is_dir() else [])
+
+        for mroot in sorted(config.CONTENT_DIR.glob("**/media")):
+            slug = mroot.parent.name  # .../<slug>/media
+            k = self.kingdoms.get(slug) or self._match_kingdom(slug)
+            if not k:
+                continue
+            emb = _imgs(mroot / "emblem")
+            wpn = _imgs(mroot / "weapons")
+            veh = _imgs(mroot / "vehicles")
+            tat = _imgs(mroot / "tattoo")
+            god = _imgs(mroot / "god")
+            if not (emb or wpn or veh or tat or god):
+                continue  # empty per-chapter media root (chapters 2-4)
+            if k.slug in self.kingdom_media_roots:
+                continue  # first chapter that actually has art wins
+            self.kingdom_media_roots[k.slug] = mroot
+            art = lambda sub, p: f"/kingdom-art/{k.slug}/{sub}/{p.name}"
+
+            k.emblems = [art("emblem", p) for p in emb]
+            k.weapons_art = sorted(
+                [{"era": _era(p.name) or "ancient", "url": art("weapons", p),
+                  "name": _pretty(p.name, "weapon")} for p in wpn],
+                key=lambda w: (w["era"] != "ancient", w["name"]))
+            k.vehicles_art = sorted(
+                [{"era": _era(p.name) or "ancient", "url": art("vehicles", p),
+                  "name": _pretty(p.name, "vehicle")} for p in veh],
+                key=lambda v: (v["era"] != "ancient", v["name"]))
+            stages = []
+            for p in tat:
+                m = re.search(r"stage-(\d+)-([a-z-]+)", p.name.lower())
+                stages.append({"stage": int(m.group(1)) if m else 99,
+                               "label": (m.group(2).replace("-", " ").title()
+                                         if m else p.stem),
+                               "url": art("tattoo", p)})
+            k.tattoo_stages = sorted(stages, key=lambda s: s["stage"])
+            for p in god:  # deity.png / dark-deity.png
+                if "dark" in p.name.lower():
+                    k.dark_deity_image = art("god", p)
+                else:
+                    k.deity_image = art("god", p)
+
         # 2) shared pool — only for kingdoms that got nothing above
         has_content_art = {k.slug for k in self.kingdoms.values() if k.images}
         if config.IMAGES_DIR.is_dir():
@@ -345,6 +403,22 @@ class Catalog:
                 url = f"/media/gallery/{p.name}"
                 k.images.append(url)
                 k.images_by_type.setdefault(_image_type(p.name), []).append(url)
+
+        # 2b) face-framed crops of that shared pool (tools/build_tiles.py)
+        has_content_tiles = {k.slug for k in self.kingdoms.values() if k.tiles}
+        if config.TILES_DIR.is_dir():
+            for p in sorted(config.TILES_DIR.glob("*")):
+                if p.suffix.lower() not in _IMG_EXT:
+                    continue
+                m = re.match(r"^\d+-(.+?)_", p.name)
+                if not m:
+                    continue
+                k = self._match_kingdom(m.group(1))
+                if not k or k.slug in has_content_tiles:
+                    continue
+                url = f"/media/tiles/{p.name}"
+                k.tiles.append(url)
+                k.tiles_by_type.setdefault(_image_type(p.name), []).append(url)
 
         for k in self.kingdoms.values():
             k.hero_image = (k.images_by_type.get("hero") or [None])[0]
@@ -462,6 +536,57 @@ class Catalog:
         for typ in ("scene", "environment", "hero", "villain"):
             gallery += k.images_by_type.get(typ, [])
         return gallery[:limit]
+
+    def story_tiles(self, sid: str, limit: int = 6) -> list[str]:
+        """Face-framed 16:9 tiles for a story card, in rotation order.
+
+        The card shows these one at a time so a shelf slowly cycles through a
+        kingdom's cast instead of freezing on one portrait. Lead with the
+        story's own hero, then its villain, then the rest of the cast; hold the
+        ``__variant`` crops (finale forms, alternates) back to the tail so the
+        first thing a reader sees is the character's canonical look.
+        """
+        meta = self.stories.get(sid)
+        k = self.kingdoms.get(meta.kingdom_slug) if meta else None
+        if not k:
+            return []
+
+        def token_of(name: Optional[str]) -> str:
+            return slugify(name.split("—")[0]) if name else ""
+
+        hero_tok = token_of(meta.hero if meta else None)
+        villain_tok = token_of(meta.villain if meta else None)
+        by_url = {u: t for t, urls in k.tiles_by_type.items() for u in urls}
+
+        def rank(url: str) -> int:
+            """Cast billing: lead, antagonist, supporting, extras."""
+            slug, typ = slugify(url), by_url.get(url, "")
+            # some art is named freeform (``karnataka-hero-vikram…``), so the
+            # role can hide in the filename rather than the type token
+            if (hero_tok and hero_tok in slug) or typ == "hero" or "-hero-" in slug:
+                return 0
+            if (villain_tok and villain_tok in slug) or typ == "villain" or "-villain-" in slug:
+                return 1
+            if typ in ("ally", "operative"):
+                return 2
+            if typ == "crowd":
+                return 4  # a street scene is the least interesting card face
+            return 3
+
+        # within a rank: an explicit hero/villain portrait wins over art that
+        # merely mentions the name, and base crops come before finale variants
+        billing = {"hero": 0, "villain": 1}
+        return sorted(k.tiles,
+                      key=lambda u: (rank(u), billing.get(by_url.get(u, ""), 2),
+                                     "__" in u or "_alt_" in u, u))[:limit]
+
+    def story_card_images(self, sid: str, limit: int = 6) -> list[str]:
+        """Art for a story card — face-framed tiles, else the old portrait."""
+        tiles = self.story_tiles(sid, limit)
+        if tiles:
+            return tiles
+        one = self.story_hero_image(sid)
+        return [one] if one else []
 
     def story_hero_image(self, sid: str) -> Optional[str]:
         """Best hero portrait to illustrate a story card.

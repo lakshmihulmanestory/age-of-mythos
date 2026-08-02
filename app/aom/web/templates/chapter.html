@@ -21,9 +21,16 @@
   <h2 class="section-title">{{ region_label.get(region, region) }}</h2>
   <div class="cards">
     {% for s in stories if s.region == region %}
-      {% set hero_img = catalog.story_hero_image(s.id) %}
-      <a class="scard {{ 'has-photo' if hero_img }}" href="/read/{{ s.id }}">
-        {% if hero_img %}<div class="thumb" style="background-image: url('{{ hero_img }}');"></div>{% endif %}
+      {% set frames = catalog.story_card_images(s.id) %}
+      <a class="scard {{ 'has-photo' if frames }}" href="/read/{{ s.id }}">
+        {% if frames %}
+        {# single quotes: tojson escapes ' but not ", so a double-quoted
+           attribute would be cut off at the first URL #}
+        <div class="thumb" data-frames='{{ frames|tojson }}'
+             style="background-image: url('{{ frames[0] }}');">
+          <div class="thumb-fade"></div>
+        </div>
+        {% endif %}
         <div class="scard-body">
           <div class="region">{{ s.kingdom_slug.replace('-', ' ') }}</div>
           <h3>{{ s.title }}</h3>

@@ -14,6 +14,27 @@ from aom.web.api import router as api_router
 HERE = Path(__file__).resolve().parent
 templates = Jinja2Templates(directory=str(HERE / "templates"))
 
+
+def _artlabel(url: str) -> str:
+    """Turn an art URL into a readable caption, for either naming scheme."""
+    import os
+    import re
+    stem = os.path.splitext(os.path.basename(url or ""))[0]
+    stem = stem.replace("_tile", "")
+    stem = re.sub(r"__.*$", "", stem)  # drop __variant / finale markers
+    m = re.match(r"^\d+-.+?_[a-z]+_(.+)$", stem)  # NN-slug_type_desc
+    if m:
+        stem = m.group(1)
+    else:
+        stem = re.sub(r"^[a-z]+-", "", stem)  # freeform type-desc
+    # collapse a leading duplicated "scene scene" etc.
+    stem = re.sub(r"^(scene|env|environment)[ _-]+", "", stem)
+    return stem.replace("_", " ").replace("-", " ").strip().title()
+
+
+templates.env.filters["artlabel"] = _artlabel
+templates.env.filters["to_item"] = lambda url: {"url": url, "name": _artlabel(url)}
+
 app = FastAPI(title="Age of Mythos", version="0.1.0")
 app.include_router(api_router)
 
@@ -25,6 +46,8 @@ if config.MEDIA_DIR.is_dir():
     app.mount("/media/video", StaticFiles(directory=str(config.MEDIA_DIR)), name="video")
 if config.IMAGES_DIR.is_dir():
     app.mount("/media/gallery", StaticFiles(directory=str(config.IMAGES_DIR)), name="gallery")
+if config.TILES_DIR.is_dir():
+    app.mount("/media/tiles", StaticFiles(directory=str(config.TILES_DIR)), name="tiles")
 if config.MAPS_DIR.is_dir():
     app.mount("/media/maps", StaticFiles(directory=str(config.MAPS_DIR)), name="maps")
 if config.VOL_COVERS_DIR.is_dir():
@@ -149,6 +172,29 @@ def kingdom_tile(slug: str, filename: str):
     if base.resolve() not in target.parents or not target.is_file():
         raise HTTPException(404, "asset not found")
     return FileResponse(target)
+
+
+@app.get("/kingdom-art/{slug}/{path:path}")
+def kingdom_art(slug: str, path: str):
+    """Serve any curated art (emblem/weapons/vehicles/tattoo/…) from a kingdom's
+    ``media/`` root, with a path-traversal guard."""
+    root = get_catalog().kingdom_media_roots.get(slug)
+    if root is None:
+        raise HTTPException(404, "no media for this kingdom")
+    target = (root / path).resolve()
+    if root.resolve() not in target.parents or not target.is_file():
+        raise HTTPException(404, "asset not found")
+    return FileResponse(target)
+
+
+@app.get("/connections", response_class=HTMLResponse)
+def connections():
+    """The interactive family/connection tree for Volume I."""
+    p = (config.CONTENT_DIR /
+         "volume-1-maha-parva/chapter-1-rise-of-legends/connections.html")
+    if not p.is_file():
+        raise HTTPException(404, "no connection map")
+    return HTMLResponse(p.read_text(encoding="utf-8"))
 
 
 @app.get("/healthz")
